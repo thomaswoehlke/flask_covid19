@@ -550,7 +550,7 @@ def url_owid_test_owid_data_get_datum_of_all_owid_data():
     return redirect(url_for('owid.url_owid_info'))
 
 
-@app_owid.route('/test/owid_data/update_star_schema_initial')
+@app_owid.route('/test/owid_data/get_datum_of_all_owid_import')
 @login_required
 def url_owid_test_owid_data_get_datum_of_all_owid_import():
     app.logger.info("url_owid_test_owid_data_get_datum_of_all_owid_import - START")

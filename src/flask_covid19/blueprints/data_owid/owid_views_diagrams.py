@@ -4,8 +4,6 @@
 # def task_owid_update_fact_table_incremental_only(self):
 # def task_owid_update_fact_table_initial_only(self):
 # def task_owid_update_fact_table_initial_only(self):
-# def task_owid_update_star_schema_incremental(self):
-# def task_owid_update_star_schema_initial(self):
 
 #
 # https://ourworldindata.org/grapher/covid-stringency-index?time=2020-01-26

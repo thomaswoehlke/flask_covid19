@@ -13,12 +13,3 @@ class WhoTestService:
         self.cfg = BlueprintConfig.create_config_for_who()
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" WHO Test Service [ready]")
-
-    def run_update_star_schema_incremental(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.run_update_star_schema_incremental() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        self.__who_service.update_star_schema()
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.run_update_star_schema_incremental() [DONE]")
-        app.logger.debug("------------------------------------------------------------")

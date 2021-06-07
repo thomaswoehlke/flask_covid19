@@ -109,34 +109,3 @@ def url_divi_test_divi_test_service_delete_last_days_data():
     return redirect(url_for('divi_test.url_divi_test_tests'))
 
 
-# ----------------------------------------------------------------------------------------------------------------
-#  Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@celery.task(bind=True)
-def task_divi_test_update_star_schema_incremental(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_divi_test_update_star_schema_incremental [OK] ")
-    logger.info("------------------------------------------------------------")
-    divi_test_service.run_update_star_schema_incremental()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_divi_test_update_star_schema_incremental)"
-    return result
-
-# ----------------------------------------------------------------------------------------------------------------
-#  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@app_divi.route('/test/task/update_star_schema_incremental')
-@login_required
-def url_task_divi_test_update_star_schema_incremental():
-    app.logger.info("url_task_divi_update_star_schema_incremental - START: task_divi_update_star_schema_incremental()")
-    flash("url_task_divi_update_star_schema_incremental - START: task_divi_update_star_schema_incremental()")
-    task_divi_test_update_star_schema_incremental.apply_async()
-    flash("url_task_divi_update_star_schema_incremental - DONE: task_divi_update_star_schema_incremental()")
-    app.logger.info("url_task_divi_update_star_schema_incremental - DONE: task_divi_update_star_schema_incremental()")
-    return redirect(url_for('divi_test.url_divi_test_tests'))

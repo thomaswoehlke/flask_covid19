@@ -33,12 +33,6 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
             'update_fact_table': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
-            'full_update_star_schema': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
-            ],
-            'update_star_schema': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
-            ],
             'full_update': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
@@ -47,9 +41,6 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
             ],
             'delete_last_day': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
-            ],
-            'delete_last_location_group': [
-                who_service, ecdc_service, owid_service, rki_service
             ],
         }
         app.logger.debug("------------------------------------------------------------")

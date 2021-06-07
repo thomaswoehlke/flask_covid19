@@ -384,22 +384,6 @@ def url_rki_test_update_fact_table():
     return redirect(url_for('rki.url_rki_info'))
 
 
-@app_rki.route('/test/full_update_star_schema')
-@login_required
-def url_rki_test_full_update_star_schema():
-    app.logger.info("url_rki_test_full_update_star_schema - START")
-    flash("url_rki_test_full_update_star_schema - START")
-    return redirect(url_for('rki.url_rki_info'))
-
-
-@app_rki.route('/test/update_star_schema')
-@login_required
-def url_rki_test_update_star_schema():
-    app.logger.info("url_rki_test_update_star_schema - START")
-    flash("url_rki_test_update_star_schema - START")
-    return redirect(url_for('rki.url_rki_info'))
-
-
 @app_rki.route('/test/rki_import/countries')
 @login_required
 def url_rki_test_rki_import_countries():

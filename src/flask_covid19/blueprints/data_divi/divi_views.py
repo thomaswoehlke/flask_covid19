@@ -436,32 +436,6 @@ def task_divi_update_fact_table(self):
 
 
 @celery.task(bind=True)
-def task_divi_full_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_divi_full_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    divi_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_divi_full_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_divi_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_divi_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    divi_service.update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_divi_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
 def task_divi_full_update(self):
     logger = get_task_logger(__name__)
     self.update_state(state=states.STARTED)
@@ -553,32 +527,6 @@ def url_task_divi_update_fact_table():
     flash("task_divi_update_fact_table started")
     flash(message="long running background task started", category="warning")
     app.logger.info("url_task_divi_update_fact_table [done]")
-    return redirect(url_for('divi.url_divi_tasks'))
-
-
-@app_divi.route('/task/full/update/star_schema')
-@login_required
-def url_task_divi_full_update_star_schema():
-    app.logger.info("url_task_divi_full_update_star_schema [start]")
-    divi_service.download()
-    flash("divi_service.service_download.download ok")
-    task_divi_full_update_star_schema.apply_async()
-    flash("task_divi_full_update_star_schema started")
-    flash(message="long running background task started", category="warning")
-    app.logger.info("url_task_divi_full_update_star_schema [done]")
-    return redirect(url_for('divi.url_divi_tasks'))
-
-
-@app_divi.route('/task/update/star_schema')
-@login_required
-def url_task_divi_update_star_schema():
-    app.logger.info("url_task_divi_update_star_schema [start]")
-    divi_service.download()
-    flash("divi_service.download ok")
-    task_divi_update_star_schema.apply_async()
-    flash("task_divi_update_star_schema started")
-    flash(message="long running background task started", category="warning")
-    app.logger.info("url_task_divi_update_star_schema [done]")
     return redirect(url_for('divi.url_divi_tasks'))
 
 

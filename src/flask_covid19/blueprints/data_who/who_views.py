@@ -545,14 +545,14 @@ def url_task_who_update_fact_table():
 @app_who.route('/task/update/full')
 @login_required
 def url_task_who_full_update():
-    app.logger.info("url_task_who_full_update_star_schema [start]")
+    app.logger.info("url_task_who_full_update [start]")
     who_service.download()
     flash("who_service.run_download_only() [done]")
     task_who_full_update.apply_async()
     flash("task_who_full_update [start]")
     flash(message="long running background task started", category="warning")
     app.logger.warn("async task_who_full_update [start]")
-    app.logger.info("url_task_who_full_update_star_schema [done]")
+    app.logger.info("url_task_who_full_update [done]")
     return redirect(url_for('who.url_who_info'))
 
 
@@ -641,46 +641,3 @@ def url_who_test_who_service_who_import_get_new_dates_as_array():
     app.logger.info("url_who_test_who_import_get_new_dates_as_array - DONE: WhoService.who_import_get_new_dates_as_array()")
     return redirect(url_for('who.url_who_info'))
 
-
-@app_who.route('/test/who_test_service/delete_last_day')
-@login_required
-def url_who_test_who_test_service_delete_last_days_data():
-    app.logger.info("url_who_test_who_test_service_delete_last_days_data - START: WhoService.who_import_get_new_dates_as_array()")
-    flash("url_who_test_who_test_service_delete_last_days_data - START: WhoService.who_import_get_new_dates_as_array()")
-    who_service.delete_last_day()
-    flash("url_who_test_who_test_service_delete_last_days_data - DONE: WhoService.who_import_get_new_dates_as_array()")
-    app.logger.info("url_who_test_who_test_service_delete_last_days_data - DONE: WhoService.who_import_get_new_dates_as_array()")
-    return redirect(url_for('who.url_who_info'))
-
-
-# ----------------------------------------------------------------------------------------------------------------
-#  Celery TASKS TESTS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@celery.task(bind=True)
-def task_who_test_update_star_schema_incremental(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_who_test_update_star_schema_incremental [OK] ")
-    logger.info("------------------------------------------------------------")
-    who_test_service.run_update_star_schema_incremental()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_who_test_update_star_schema_incremental)"
-    return result
-
-# ----------------------------------------------------------------------------------------------------------------
-#  URL Routes for Celery TASKS TESTS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@app_who.route('/test/task/update_star_schema_incremental')
-@login_required
-def url_task_who_test_update_star_schema_incremental():
-    app.logger.info("url_task_who_update_star_schema_incremental - START: task_who_update_star_schema_incremental()")
-    flash("url_task_who_update_star_schema_incremental - START: task_who_update_star_schema_incremental()")
-    task_who_test_update_star_schema_incremental.apply_async()
-    flash("url_task_who_update_star_schema_incremental - DONE: task_who_update_star_schema_incremental()")
-    app.logger.info("url_task_who_update_star_schema_incremental - DONE: task_who_update_star_schema_incremental()")
-    return redirect(url_for('who.url_who_info'))

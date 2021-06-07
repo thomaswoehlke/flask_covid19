@@ -457,45 +457,4 @@ def url_ecdc_test_ecdc_service_ecdc_import_get_new_dates_as_array():
     return redirect(url_for('ecdc_test.url_ecdc_test_tests'))
 
 
-@app_ecdc.route('/test/ecdc_test_service/delete_last_day')
-@login_required
-def url_ecdc_test_ecdc_test_service_delete_last_days_data():
-    app.logger.info("url_ecdc_test_ecdc_test_service_delete_last_days_data - START: EcdcService.ecdc_import_get_new_dates_as_array()")
-    flash("url_ecdc_test_ecdc_test_service_delete_last_days_data - START: EcdcService.ecdc_import_get_new_dates_as_array()")
-    ecdc_test_service.delete_last_day()
-    flash("url_ecdc_test_ecdc_test_service_delete_last_days_data - DONE: EcdcService.ecdc_import_get_new_dates_as_array()")
-    app.logger.info("url_ecdc_test_ecdc_test_service_delete_last_days_data - DONE: EcdcService.ecdc_import_get_new_dates_as_array()")
-    return redirect(url_for('ecdc_test.url_ecdc_test_tests'))
 
-
-# ----------------------------------------------------------------------------------------------------------------
-#  Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@celery.task(bind=True)
-def task_ecdc_test_update_star_schema_incremental(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_ecdc_test_update_star_schema_incremental [OK] ")
-    logger.info("------------------------------------------------------------")
-    ecdc_test_service.run_update_star_schema_incremental()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_ecdc_test_update_star_schema_incremental)"
-    return result
-
-# ----------------------------------------------------------------------------------------------------------------
-#  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@app_ecdc.route('/test/task/update_star_schema_incremental')
-@login_required
-def url_task_ecdc_test_update_star_schema_incremental():
-    app.logger.info("url_task_ecdc_test_update_star_schema_incremental - START: task_ecdc_test_update_star_schema_incremental()")
-    flash("url_task_ecdc_test_update_star_schema_incremental - START: task_ecdc_test_update_star_schema_incremental()")
-    task_ecdc_test_update_star_schema_incremental.apply_async()
-    flash("url_task_ecdc_test_update_star_schema_incremental - DONE: task_ecdc_test_update_star_schema_incremental()")
-    app.logger.info("url_task_ecdc_test_update_star_schema_incremental - DONE: task_ecdc_test_update_star_schema_incremental()")
-    return redirect(url_for('ecdc_test.url_ecdc_test_tests'))

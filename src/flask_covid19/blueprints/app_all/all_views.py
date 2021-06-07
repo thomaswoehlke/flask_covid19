@@ -159,7 +159,7 @@ def task_all_update(self):
     logger.info(" task_all_update [done] ")
     logger.info("------------------------------------------------------------")
     self.update_state(state=states.SUCCESS)
-    result = "OK (task_all_update_star_schema_incremental)"
+    result = "OK (task_all_update)"
     return result
 
 # ----------------------------------------------------------------------------------------------------------------
