@@ -40,9 +40,6 @@
     "devDependencies": {
         "browser-sync": "^2.26.14",
         "del": "^6.0.0",
-        "gulp": "^4.0.2",
-        "gulp-cli": "^2.3.0",
-        "merge-stream": "^2.0.0",
         "grunt": "^1.4.0",
         "grunt-cli": "^1.4.2",
         "grunt-contrib-clean": "^2.0.0",
@@ -53,7 +50,10 @@
         "grunt-contrib-sass": "^2.0.0",
         "grunt-contrib-uglify": "^5.0.1",
         "grunt-contrib-versioning2": "^1.0.7",
-        "grunt-run-grunt": "^1.0.1"
+        "grunt-run-grunt": "^1.0.1",
+        "gulp": "^4.0.2",
+        "gulp-cli": "^2.3.0",
+        "merge-stream": "^2.0.0"
     },
     "engines": {
         "node": ">=v12.18.2"
