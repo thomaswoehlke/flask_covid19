@@ -23,26 +23,8 @@ class WhoService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" WHO Service [ready]")
 
-    def database_drop_create_pretask(self):
-        flash("WhoService.database_drop_create_pretask [start]")
-        app.logger.info("WhoService.pretask_database_drop_create [start]")
-        self.service_download.download()
-        app.logger.info("WhoService.pretask_database_drop_create [done]")
-        flash("WhoService.database_drop_create_pretask [done]")
-        return self
-
-    def database_drop_create_posttask(self):
-        app.logger.info("WhoService.database_drop_create_posttask [start]")
-        self.service_import.import_file()
-        self.service_update_full.full_update_dimension_tables()
-        self.service_update_full.full_update_fact_table()
-        app.logger.info("WhoService.database_drop_create_posttask [done]")
-        return self
-
     def download(self):
-        flash("WhoService.download [start]")
         self.service_download.download()
-        flash("WhoService.download [done]")
         return self
 
     def import_file(self):
@@ -65,22 +47,16 @@ class WhoService(AllServiceMixin):
         self.service_update.update_star_schema()
         return self
 
-    def full_update_star_schema(self):
-        self.service_update_full.full_update_star_schema()
-        return self
-
-    def update_star_schema(self):
-        self.service_update.update_star_schema()
-        return self
-
     def full_update(self):
         self.service_import.import_file()
-        self.service_update_full.full_update_star_schema()
+        self.service_update_full.full_update_dimension_tables()
+        self.service_update_full.full_update_fact_table()
         return self
 
     def update(self):
         self.service_import.import_file()
-        self.service_update.update_star_schema()
+        self.service_update.update_dimension_tables()
+        self.service_update.update_fact_table()
         return self
 
     def delete_last_day(self):

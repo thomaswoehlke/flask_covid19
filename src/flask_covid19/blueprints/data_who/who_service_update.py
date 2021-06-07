@@ -179,19 +179,6 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def full_update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_star_schema [begin]")
-        app.logger.info("------------------------------------------------------------")
-        WhoData.remove_all()
-        self.__full_update_date_reported()
-        self.__full_update_country()
-        self.__full_update_data()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_star_schema [done]")
-        app.logger.info("------------------------------------------------------------")
-        return None
-
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
@@ -334,17 +321,6 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         self.__update_data()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" update_fact_table_only [done]")
-        app.logger.info("------------------------------------------------------------")
-        return self
-
-    def update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_star_schema [begin]")
-        app.logger.info("------------------------------------------------------------")
-        self.update_dimension_tables()
-        self.update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_star_schema [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
