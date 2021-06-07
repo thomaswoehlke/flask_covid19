@@ -151,3 +151,8 @@ love:
 	@echo "not war!"
 
 
+start: setup_pip_install setup_frontend
+
+
+
+
