@@ -23,30 +23,19 @@
                                  <div class="btn-group-vertical" role="group" aria-label="Views">
                                      <a class="btn btn-success btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_download') }}"
-                                       role="button">ECDC :: Task :: download</a>
+                                       role="button">ECDC :: download</a>
                                     <a class="btn btn-info btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_import') }}"
-                                       role="button">ECDC :: Task :: import</a>
-                                </div>
-                                <p></p>
-                                <h4>Update Full</h4>
-                                 <div class="btn-group-vertical" role="group" aria-label="Views">
+                                       role="button">ECDC :: import</a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_full_update_dimension_tables') }}"
-                                       role="button">ECDC :: Task :: full update :: dimension-tables</a>
+                                       role="button">ECDC :: full update :: dimension-tables</a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_task_ecdc_full_update_fact_table') }}"
-                                       role="button">ECDC :: Task :: full update :: fact-table :: full</a>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_task_ecdc_full_update_star_schema') }}"
-                                       role="button">ECDC :: Task :: full update :: star_schema :: full</a>
-                                </div>
-                                <p></p>
-                                <h4>Update Full</h4>
-                                 <div class="btn-group-vertical" role="group" aria-label="Views">
+                                       role="button">ECDC :: full update :: fact-table :: full</a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_task_ecdc_full_update') }}"
-                                       role="button">ECDC :: Task :: update :: full</a>
+                                       role="button">ECDC :: update :: full</a>
                                 </div>
                             </div>
                         </div>
@@ -65,30 +54,19 @@
                                 <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-success btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_download') }}"
-                                       role="button">ECDC :: Task :: download</a>
+                                       role="button">ECDC :: download</a>
                                     <a class="btn btn-info btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_import') }}"
-                                       role="button">ECDC :: Task :: import</a>
-                                </div>
-                                <p></p>
-                                <h4>Update</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                       role="button">ECDC :: import</a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_ecdc_task_update_dimension_tables') }}"
-                                       role="button">ECDC :: Task :: update :: dimension-tables</a>
+                                       role="button">ECDC :: update :: dimension-tables</a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_task_ecdc_update_fact_table') }}"
-                                       role="button">ECDC :: Task :: update :: fact-table</a>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_task_ecdc_update_star_schema') }}"
-                                       role="button">ECDC :: Task :: update :: star_schema</a>
-                                </div>
-                                <p></p>
-                                <h4>Update</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                       role="button">ECDC :: update :: fact-table</a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'ecdc.url_task_ecdc_update') }}"
-                                       role="button">ECDC :: Task :: update</a>
+                                       role="button">ECDC :: update</a>
                                 </div>
                             </div>
                         </div>
@@ -104,45 +82,36 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionCol">
                             <div class="card-body">
                                 <h4>Prepare Test Data</h4>
-                                <p></p><div class="btn-group-vertical" role="group" aria-label="Views">
-                                <a class="btn btn-danger btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_countries') }}"
-                                   role="button">url_who_test_who_import_countries</a>
-                                <a class="btn btn-primary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_get_new_dates_as_array') }}"
-                                   role="button">url_who_test_who_import_get_new_dates_as_array</a>
-                                <a class="btn btn-danger btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_data') }}"
-                                   role="button">url_who_test_who_data_get_datum_of_all_who_data</a>
-                                <a class="btn btn-primary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_import') }}"
-                                   role="button">url_who_test_who_data_get_datum_of_all_who_import</a>
-                                <a class="btn btn-danger btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_service_ecdc_import_get_new_dates_as_array') }}"
-                                   role="button">url_who_test_who_service_who_import_get_new_dates_as_array</a>
-                                <a class="btn btn-primary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_test_service_delete_last_days_data') }}"
-                                   role="button">url_who_test_who_test_service_delete_last_days_data</a>
-                            </div>
-                            <p></p>
-                            <div class="btn-group-vertical" role="group" aria-label="Views">
-                                <a class="btn btn-primary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'ecdc.url_task_ecdc_test_update_star_schema_incremental') }}" role="button">
-                                    url_task_who_test_update_star_schema_incremental
-                                </a>
-                            </div>
+                                <p></p>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_countries') }}"
+                                       role="button">url_who_test who_import countries</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_get_new_dates_as_array') }}"
+                                       role="button">url_who_test who_import get_new_dates_as_array</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_data') }}"
+                                       role="button">url_who_test who_data get_datum_of_all_who_data</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_import') }}"
+                                       role="button">url_who_test who_data get_datum_of_all_who_import</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_service_ecdc_import_get_new_dates_as_array') }}"
+                                       role="button">url_who_test who_service who_import get_new_dates_as_array</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingFourA">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFourA" aria-expanded="true" aria-controls="collapseFourA">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFourA" aria-expanded="false" aria-controls="collapseFourA">
                                     Info: ECDC: European Centre for Disease Prevention and Control
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFourA" class="collapse show" aria-labelledby="headingFourA" data-parent="#accordionCol">
+                        <div id="collapseFourA" class="collapse" aria-labelledby="headingFourA" data-parent="#accordionCol">
                             <div class="card-body">
                                 <h4>ECDC: European Centre for Disease Prevention and Control</h4>
                                 <p>An agency of the European Union</p>
