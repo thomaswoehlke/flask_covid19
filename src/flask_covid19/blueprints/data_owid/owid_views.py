@@ -364,32 +364,6 @@ def task_owid_update_fact_table(self):
 
 
 @celery.task(bind=True)
-def task_owid_full_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_owid_full_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    owid_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_owid_full_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_owid_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_owid_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    owid_service.update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_owid_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
 def task_owid_full_update(self):
     logger = get_task_logger(__name__)
     self.update_state(state=states.STARTED)
@@ -478,26 +452,6 @@ def url_task_owid_update_fact_table():
     flash("task_owid_update_fact_table started")
     flash(message="long running background task started", category="warning")
     app.logger.info("url_task_owid_update_fact_table_initial_only [done]")
-    return redirect(url_for('owid.url_owid_info'))
-
-
-@app_owid.route('/task/full/update/star_schema')
-def url_task_owid_full_update_star_schema():
-    app.logger.info("url_task_owid_full_update_star_schema [start]")
-    task_owid_full_update_star_schema.apply_async()
-    flash("task_owid_full_update_star_schema started")
-    flash(message="long running background task started", category="warning")
-    app.logger.info("url_task_owid_full_update_star_schema [done]")
-    return redirect(url_for('owid.url_owid_info'))
-
-
-@app_owid.route('/task/update/star_schema')
-def url_task_owid_update_star_schema():
-    app.logger.info("url_task_owid_update_star_schema [start]")
-    task_owid_update_star_schema.apply_async()
-    flash("task_owid_update_star_schema started")
-    flash(message="long running background task started: task_owid_update_star_schema", category="warning")
-    app.logger.info("url_task_owid_update_star_schema [done]")
     return redirect(url_for('owid.url_owid_info'))
 
 
