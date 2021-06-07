@@ -1,6 +1,6 @@
 {
     "name": "flask-covid19-static",
-    "version": "0.0.42",
+    "version": "0.0.43",
     "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
     "main": "index.js",
     "repository": {
