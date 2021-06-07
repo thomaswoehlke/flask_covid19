@@ -1,4 +1,5 @@
 import os
+import socket
 from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import web_service
 from flask_covid19.blueprints.app_web.web_views import app, celery # , cache
 
@@ -8,7 +9,8 @@ def run_web():
     app.logger.info(os.getcwd())
     debug = app.config['FLASK_APP_DEBUGGER_ACTIVE']
     port = app.config['PORT']
-    host = None
+    host = socket.gethostname()
+    app.logger.info(host)
     load_dotenv = True
     app.run(
         host=host,
