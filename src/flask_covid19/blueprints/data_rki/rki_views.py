@@ -237,24 +237,6 @@ def task_rki_update_fact_table(self):
 
 
 @celery.task(bind=True)
-def task_rki_full_update_star_schema(self):
-    self.update_state(state=states.STARTED)
-    rki_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_rki_full_update_starschema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_rki_update_star_schema(self):
-    self.update_state(state=states.STARTED)
-    rki_service.update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_rki_update_starschema)"
-    return result
-
-
-@celery.task(bind=True)
 def task_rki_full_update(self):
     self.update_state(state=states.STARTED)
     rki_service.full_update()
@@ -333,27 +315,6 @@ def url_task_rki_update_fact_table():
     flash("task_rki_update_fact_table started")
     flash(message="long running background task started", category="warning")
     app.logger.warn("url_task_rki_update_fact_table [async start]")
-    return redirect(url_for('rki.url_rki_info'))
-
-
-@app_rki.route('/task/full/update/star_schema')
-def url_task_rki_full_update_star_schema():
-    app.logger.info("url_task_rki_full_update_star_schema [start]")
-    task_rki_full_update_star_schema.apply_async()
-    flash("url_task_rki_full_update_star_schema started")
-    flash(message="long running background task started", category="warning")
-    app.logger.warn("url_task_rki_full_update_star_schema [async start]")
-    return redirect(url_for('rki.url_rki_info'))
-
-
-@app_rki.route('/task/update/star_schema')
-def url_task_rki_update_star_schema():
-    app.logger.info("url_task_rki_update_star_schema [start]")
-    flash("url_task_rki_download [start]")
-    task_rki_update_star_schema.apply_async()
-    flash("task_rki_update_star_schema started")
-    flash(message="long running background task started", category="warning")
-    app.logger.warn("url_task_rki_update_star_schema [async start]")
     return redirect(url_for('rki.url_rki_info'))
 
 
