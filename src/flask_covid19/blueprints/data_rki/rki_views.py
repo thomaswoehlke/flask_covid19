@@ -170,8 +170,6 @@ def url_rki_landkreis_one(landkreis_id: int, page: int = 1):
         page_info=page_info)
 
 
-
-
 @app_rki.route('/altersgruppe/all/page/<int:page>')
 @app_rki.route('/altersgruppe/all')
 def url_rki_altersgruppe_all(page: int = 1):
@@ -468,28 +466,6 @@ def url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array():
     return redirect(url_for('rki.url_rki_info'))
 
 
-@app_rki.route('/test/rki_test_service/delete_last_day')
-@login_required
-def url_rki_test_rki_test_service_delete_last_day():
-    app.logger.info("url_rki_test_rki_test_service_delete_last_day - START: rki_test_service.delete_last_day()")
-    flash("url_rki_test_rki_test_service_delete_last_day - START: rki_test_service.delete_last_day()")
-    rki_test_service.delete_last_day()
-    app.logger.info("url_rki_test_rki_test_service_delete_last_day - DONE: rki_test_service.delete_last_day()")
-    flash("url_rki_test_rki_test_service_delete_last_day - DONE: rki_test_service.delete_last_day()")
-    return redirect(url_for('rki.url_rki_info'))
-
-
-@app_rki.route('/test/rki_test_service/delete_last_continent')
-@login_required
-def url_rki_test_rki_test_service_delete_last_continent():
-    app.logger.info("url_rki_test_rki_test_service_delete_last_continent - START: rki_test_service.delete_last_continent()")
-    flash("url_rki_test_rki_test_service_delete_last_continent - START: rki_test_service.delete_last_continent()")
-    rki_test_service.delete_last_continent()
-    flash("url_rki_test_rki_test_service_delete_last_continent - DONE: rki_test_service.delete_last_continent()")
-    app.logger.info("url_rki_test_rki_test_service_delete_last_continent - DONE: rki_test_service.delete_last_continent()")
-    return redirect(url_for('rki.url_rki_info'))
-
-
 @app_rki.route('/test/rki_test_service/full_update_dimension_tables')
 @login_required
 def url_rki_test_rki_test_service_full_update_dimension_tables():
@@ -498,37 +474,4 @@ def url_rki_test_rki_test_service_full_update_dimension_tables():
     rki_test_service.full_update_dimension_tables()
     app.logger.info("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
     flash("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
-    return redirect(url_for('rki.url_rki_info'))
-
-
-# ----------------------------------------------------------------------------------------------------------------
-#  Celery TASKS TESTS
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@celery.task(bind=True)
-def task_rki_test_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_rki_test_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    rki_test_service.run_update_star_schema_incremental()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_rki_test_update_star_schema)"
-    return result
-
-
-# ----------------------------------------------------------------------------------------------------------------
-#  URL Routes for Celery TASKS TESTS
-# ----------------------------------------------------------------------------------------------------------------
-
-@app_rki.route('/test/task/owid_test/update_star_schema_incremental')
-@login_required
-def url_task_rki_test_update_star_schema():
-    app.logger.info("url_task_rki_test_update_star_schema - START: task_rki_test_update_star_schema.apply_async()")
-    flash("url_task_rki_test_update_star_schema - START: task_rki_test_update_star_schema.apply_async()")
-    task_rki_test_update_star_schema.apply_async()
-    flash("url_task_rki_test_update_star_schema - DONE: task_rki_test_update_star_schema.apply_async()")
-    app.logger.info("url_task_rki_test_update_star_schema - DONE: task_rki_test_update_star_schema.apply_async()")
     return redirect(url_for('rki.url_rki_info'))

@@ -82,39 +82,13 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionCol">
                             <div class="card-body">
                                 <h4>Prepare Test Data</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'rki.url_task_rki_test_update_star_schema') }}"
-                                       role="button">url_task_rki_test update_star_schema</a>
-                                </div>
-                                <p></p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                <div>
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_rki_test_service_full_update_dimension_tables') }}"
                                        role="button">url_rki_test rki_test_service full_update_dimension_tables</a>
-                                </div>
-                                <p></p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'rki.url_rki_test_rki_test_service_delete_last_day') }}"
-                                       role="button">url_rki_test rki_test_service delete_last_day</a>
-                                </div>
-                                <p></p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'rki.url_rki_test_rki_test_service_delete_last_continent') }}"
-                                       role="button">url_rki_test_rki test_service delete_last_continent</a>
-                                </div>
-                                <p></p>
-                                <h4>countries</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_rki_import_countries') }}"
                                        role="button">url_rki_test rki_import countries</a>
-                                </div>
-                                <p></p>
-                                <h4>dates_reported</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_rki_import_get_new_dates_reported_as_array') }}"
                                        role="button">url_rki_test rki_import get_new_dates_reported_as_array</a>
@@ -127,32 +101,18 @@
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array') }}"
                                        role="button">url_rki_test rki_service service_update rki_import_get_new_dates_as_array</a>
-                                </div>
-                                <p></p>
-                                <h4>Full Update</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_full_update_dimension_tables') }}"
                                        role="button">url_rki_test full_update_dimension_tables</a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_full_update_fact_table') }}"
                                        role="button">url_rki_test full_update_fact_table</a>
-                                    <a class="btn btn-secondary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'rki.url_rki_test_full_update_star_schema') }}"
-                                       role="button">url_rki_test full_update_star_schema</a>
-                                </div>
-                                <p></p>
-                                <h4>Update</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_update_dimension_tables') }}"
                                        role="button">url_rki_test update_dimension_tables</a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'rki.url_rki_test_update_fact_table') }}"
                                        role="button">url_rki_test update_fact_table</a>
-                                    <a class="btn btn-secondary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'rki.url_rki_test_update_star_schema') }}"
-                                       role="button">url_rki_test update_star_schema</a>
                                 </div>
                             </div>
                         </div>
@@ -160,12 +120,12 @@
                     <div class="card">
                         <div class="card-header" id="headingFour">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     Info: RKI Coronavirus Disease (COVID-19) Dashboard
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionCol">
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionCol">
                             <div class="card-body">
                                 <h4>RKI Coronavirus Disease (COVID-19) Dashboard</h4>
                                 <p>

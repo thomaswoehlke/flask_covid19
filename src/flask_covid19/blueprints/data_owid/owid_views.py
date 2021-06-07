@@ -590,28 +590,6 @@ def url_owid_test_owid_service_owid_import_get_new_dates_as_array():
     return redirect(url_for('owid.url_owid_info'))
 
 
-@app_owid.route('/test/owid_test_service/delete_last_days_data')
-@login_required
-def url_owid_test_owid_test_service_delete_last_days_data():
-    app.logger.info("url_owid_test_owid_test_service_delete_last_days_data - START")
-    flash("url_owid_test_owid_test_service_delete_last_days_data - START")
-    owid_test_service.delete_last_day()
-    app.logger.info("url_owid_test_owid_test_service_delete_last_days_data - DONE")
-    flash("url_owid_test_owid_test_service_delete_last_days_data - DONE")
-    return redirect(url_for('owid.url_owid_info'))
-
-
-@app_owid.route('/test/owid_test_service/delete_last_continents_data')
-@login_required
-def url_owid_test_owid_test_service_delete_last_continents_data():
-    app.logger.info("url_owid_test_owid_test_service_delete_last_continents_data - START")
-    flash("owid_test_service.delete_last_continent() - START")
-    owid_test_service.delete_last_continent()
-    flash("owid_test_service.delete_last_continent() - DONE")
-    app.logger.info("url_owid_test_owid_test_service_delete_last_continents_data - DONE")
-    return redirect(url_for('owid.url_owid_info'))
-
-
 @app_owid.route('/test/owid_test_service/update_dimension_tables')
 @login_required
 def url_owid_test_full_update_dimension_tables():
@@ -621,37 +599,4 @@ def url_owid_test_full_update_dimension_tables():
     app.logger.info("owid_test_service.full_update_dimension_tables() - DONE")
     flash("url_owid_test_full_update_dimension_tables - DONE")
     return redirect(url_for('owid.url_owid_info'))
-
-
-# ----------------------------------------------------------------------------------------------------------------
-#  Celery TASKS TEST
-# ----------------------------------------------------------------------------------------------------------------
-
-
-@celery.task(bind=True)
-def task_owid_test_update_star_schema_incremental(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_owid_test_update_star_schema_incremental [OK] ")
-    logger.info("------------------------------------------------------------")
-    owid_test_service.run_update_star_schema_incremental()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_owid_test_update_star_schema_incremental)"
-    return result
-
-# ----------------------------------------------------------------------------------------------------------------
-#  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
-
-@app_owid.route('/test/task/owid_test/update_star_schema_incremental')
-@login_required
-def url_task_owid_test_update_star_schema_incremental():
-    app.logger.info("url_task_owid_test_update_star_schema_incremental - START: task_owid_test_update_star_schema_incremental()")
-    flash("url_task_owid_test_update_star_schema_incremental - START: task_owid_test_update_star_schema_incremental()")
-    task_owid_test_update_star_schema_incremental.apply_async()
-    flash("url_task_owid_test_update_star_schema_incremental - DONE: task_owid_test_update_star_schema_incremental()")
-    app.logger.info("url_task_owid_test_update_star_schema_incremental - DONE: task_owid_test_update_star_schema_incremental()")
-    return redirect(url_for('owid.url_owid_info'))
-
 

@@ -83,19 +83,10 @@
                             <div class="card-body">
                                 <h4>Tests</h4>
                                 <p>&nbsp;</p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'owid.url_task_owid_test_update_star_schema_incremental') }}"
-                                       role="button">url_task_owid_test_update_star_schema_incremental</a>
-                                </div>
-                                <p>&nbsp;</p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                <div>
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_owid_test_full_update_dimension_tables') }}"
                                        role="button">OWID :: Test :: OwidServiceUpdateFull.full_update_dimension_tables()</a>
-                                </div>
-                                <p>&nbsp;</p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_owid_test_owid_import_countries') }}"
                                        role="button">url_owid_test_owid_import_countries</a>
@@ -112,30 +103,18 @@
                                        href="{{ url_for( 'owid.url_owid_test_owid_service_owid_import_get_new_dates_as_array') }}"
                                        role="button">url_owid_test_owid_service_owid_import_get_new_dates_as_array</a>
                                 </div>
-                                <p>&nbsp;</p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'owid.url_owid_test_owid_test_service_delete_last_days_data') }}"
-                                       role="button">url_owid_test_owid_test_service_delete_last_days_data</a>
-                                </div>
-                                <p>&nbsp;</p>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'owid.url_owid_test_owid_test_service_delete_last_continents_data') }}"
-                                       role="button">url_owid_test_owid_test_service_delete_last_continents_data</a>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header" id="headingFour">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     Info: Our World in Data
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionCol">
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionCol">
                             <div class="card-body">
                                 <h4>Our World in Data</h4>
                                 <a class="btn btn-primary" href="https://ourworldindata.org/coronavirus">
