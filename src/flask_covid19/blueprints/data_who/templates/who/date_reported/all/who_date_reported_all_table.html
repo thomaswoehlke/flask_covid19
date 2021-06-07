@@ -1,0 +1,34 @@
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        {% include 'who/date_reported/all/who_date_reported_all_table_head.html' %}
+                    </thead>
+                    <tbody>
+                    {% for who_date_reported in page_data.items %}
+                        <tr>
+                            <td class="text-right">
+                                {{ who_date_reported.get_name_for_weekday() }}
+                            </td>
+                            <td class="text-left">
+                                <a href="/who/date_reported/{{ who_date_reported.id }}">
+                                    {{ who_date_reported }}
+                                </a>
+                            </td>
+                            <td class="text-right">
+                                {{ who_date_reported.week_of_year }}
+                            </td>
+                            <td class="text-left">
+                                {{ who_date_reported.year }}
+                            </td>
+                            <td class="text-left">
+                                {{ who_date_reported.day_of_year }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        {% include 'who/date_reported/all/who_date_reported_all_table_head.html' %}
+                    </tfoot>
+                </table>
+            </div>
+

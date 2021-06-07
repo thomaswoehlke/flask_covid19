@@ -1,0 +1,43 @@
+{% macro pagination_for_url( url_for_pagination ) -%}
+    <!-- previous page -->
+    <ul class="pagination">
+        {% if page_data.has_prev %}
+        <li class="page-item">
+            <a class="page-link"
+               href="{{ url_for( url_for_pagination, country_id=who_country.id, page=page_data.prev_num) }}">
+                Previous
+            </a>
+        </li>
+        {% endif %}
+        <!-- all page numbers -->
+        {% for page_num in page_data.iter_pages() %}
+            {% if page_num %}
+                {% if page_num != page_data.page %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ url_for( url_for_pagination, country_id=who_country.id, page=page_num) }}">
+                            {{ page_num }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item active">
+                        <a class="page-link" href="#">{{ page_num }}</a>
+                    </li>
+                {% endif %}
+           {% else %}
+               <li class="page-item">
+                   <span class="ellipsis page-link my-page-item-ellipsis-page-link">…</span>
+               </li>
+           {% endif %}
+        {% endfor %}
+        <!-- next page -->
+        {% if page_data.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+               href="{{ url_for( url_for_pagination, country_id=who_country.id, page=page_data.next_num) }}">
+                Next
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+{%- endmacro %}

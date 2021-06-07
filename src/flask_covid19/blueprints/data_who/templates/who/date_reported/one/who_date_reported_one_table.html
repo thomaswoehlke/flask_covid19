@@ -1,0 +1,48 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            {% include 'who/date_reported/one/who_date_reported_one_table_head.html' %}
+        </thead>
+        <tbody>
+        {% for who_global_data in page_data.items %}
+            <tr>
+                <th>
+                    <a href="{{ url_for('who.url_who_date_reported', date_reported_id=who_global_data.date_reported.id) }}">
+                        {{ who_global_data.date_reported }}
+                    </a>
+                </th>
+                <td>
+                    {{ who_global_data.deaths_new }}
+                </td>
+                <td>
+                    {{ who_global_data.cases_new }}
+                </td>
+                <td>
+                    {{ who_global_data.deaths_cumulative }}
+                </td>
+                <td>
+                    {{ who_global_data.cases_cumulative }}
+                </td>
+                <td>
+                    <a href="{{ url_for('who.url_who_country', country_id=who_global_data.location.id ) }}">
+                        {{ who_global_data.location.location_code }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('who.url_who_country', country_id=who_global_data.location.id) }}">
+                        {{ who_global_data.location.location }}
+                    </a>
+                </td>
+                <th>
+                    <a href="{{ url_for('who.url_who_region', region_id=who_global_data.location.location_group.id) }}">
+                        {{ who_global_data.location.location_group.location_group }}
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            {% include 'who/date_reported/one/who_date_reported_one_table_head.html' %}
+        </tfoot>
+    </table>
+    </div>

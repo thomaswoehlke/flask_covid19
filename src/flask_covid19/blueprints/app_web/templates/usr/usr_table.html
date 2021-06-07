@@ -1,0 +1,26 @@
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col" class="text-right">Email</th>
+                            <th scope="col" class="text-left">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for usr in page_data.items %}
+                        <tr>
+                            <td class="text-right">
+                                {{ usr.email }}
+                            </td>
+                            <td class="text-left">
+                                {{ usr.name }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        <tr>
+                            <th scope="col" class="text-right">Email</th>
+                            <th scope="col" class="text-left">Name</th>
+                        </tr>
+                    </tfoot>
+                </table>

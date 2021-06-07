@@ -1,0 +1,58 @@
+{% extends 'app_application/layout/page_layout.html' %}
+{% block content %}
+    {{super()}}
+    {% include 'usr/navigation/usr_navtabs.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="" method="POST" role="form" class="admin-form" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <div class="form-group ">
+                            {{ form.email.label(class="control-label",required=True)  }}
+                            <strong style="color: red">&#42;</strong>
+                            {{ form.email(size=35,class="form-control") }}
+                            {% for error in form.email.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group ">
+                            {{ form.password.label(class="control-label",required=True)  }}
+                            <strong style="color: red">&#42;</strong>
+                            {{ form.password(size=35,class="form-control") }}
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group ">
+                            {{ form.accept_rules.label(class="control-label",required=True) }}
+                            <strong style="color: red">&#42;</strong>
+                            {{ form.accept_rules(class="form-control") }}
+                            {% for error in form.accept_rules.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group ">
+                            {{ form.remember_me.label(class="control-label") }}
+                            {{ form.remember_me(class="form-control") }}
+                            {% for error in form.accept_rules.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="submit-row">
+                                {{ form.submit(class="btn btn-primary") }}
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+         </div>
+     </div>
+{% endblock %}
+
+
+
+

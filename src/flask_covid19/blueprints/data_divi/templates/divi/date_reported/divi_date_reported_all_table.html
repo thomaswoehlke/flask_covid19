@@ -1,0 +1,39 @@
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col" class="text-right">day of week</th>
+                            <th scope="col" class="text-left">date reported</th>
+                            <th scope="col" class="text-right">week of year</th>
+                            <th scope="col" class="text-left">year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for divi_date_reported in page_data.items %}
+                        <tr>
+                            <td class="text-right">
+                                {{ divi_date_reported.get_name_for_weekday() }}
+                            </td>
+                            <td class="text-left">
+                                <a href="/divi/date_reported/{{ divi_date_reported.id }}">
+                                    {{ divi_date_reported }}
+                                </a>
+                            </td>
+                            <td class="text-right">
+                                {{ divi_date_reported.week_of_year }}
+                            </td>
+                            <td class="text-left">
+                                {{ divi_date_reported.year }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        <tr>
+                            <th scope="col" class="text-right">day of week</th>
+                            <th scope="col" class="text-left">date reported</th>
+                            <th scope="col" class="text-right">week of year</th>
+                            <th scope="col" class="text-left">year</th>
+                        </tr>
+                    </tfoot>
+                </table>
+

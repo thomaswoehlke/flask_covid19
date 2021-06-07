@@ -1,0 +1,556 @@
+from flask import render_template, redirect, url_for, flash, Blueprint
+from sqlalchemy.exc import OperationalError
+from flask_admin.contrib.sqla import ModelView
+from celery import states
+from celery.utils.log import get_task_logger
+from flask_login import login_required
+
+from database import app, admin, db, celery
+from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import rki_service
+from flask_covid19.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
+from flask_covid19.blueprints.data_rki.rki_model import RkiAltersgruppe
+from flask_covid19.blueprints.data_rki.rki_model_import import RkiImport, RkiFlat
+from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
+
+from flask_covid19.blueprints.data_rki.rki_test_service import RkiTestService
+
+drop_and_create_data_again = True
+
+app_rki = Blueprint(
+    'rki', __name__, template_folder='templates', url_prefix='/rki')
+
+
+admin.add_view(ModelView(RkiImport, db.session, category="RKI"))
+admin.add_view(ModelView(RkiFlat, db.session, category="RKI"))
+admin.add_view(ModelView(RkiMeldedatum, db.session, category="RKI"))
+admin.add_view(ModelView(RkiBundesland, db.session, category="RKI"))
+admin.add_view(ModelView(RkiLandkreis, db.session, category="RKI"))
+admin.add_view(ModelView(RkiAltersgruppe, db.session, category="RKI"))
+admin.add_view(ModelView(RkiData, db.session, category="RKI"))
+
+
+# ---------------------------------------------------------------------------------------------------------------
+#  Url Routes Frontend
+# ---------------------------------------------------------------------------------------------------------------
+
+
+@app_rki.route('/info')
+def url_rki_info():
+    page_info = WebPageContent('RKI', "Info")
+    return render_template(
+        'rki/rki_info.html',
+        page_info=page_info)
+
+
+@app_rki.route('/imported/page/<int:page>')
+@app_rki.route('/imported')
+def url_rki_imported(page=1):
+    page_info = WebPageContent('RKI', "Last Import")
+    try:
+        page_data = RkiImport.get_all_as_page(page)
+    except OperationalError:
+        flash("No data in the database.")
+        page_data = None
+    return render_template(
+        'rki/imported/rki_imported.html',
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/flat/page/<int:page>')
+@app_rki.route('/flat')
+def url_rki_flat(page=1):
+    page_info = WebPageContent('RKI', "flat")
+    try:
+        page_data = RkiFlat.get_all_as_page(page)
+    except OperationalError:
+        flash("No data in the database.")
+        page_data = None
+    return render_template(
+        'rki/flat/rki_flat.html',
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/test/page/<int:page>')
+@app_rki.route('/test')
+def url_rki_test(page=1):
+    page_info = WebPageContent('RKI', "TEST")
+    try:
+        page_data = RkiImport.get_all_as_page(page)
+    except OperationalError:
+        flash("No data in the database.")
+        page_data = None
+    return render_template(
+        'rki/test/rki_test.html',
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/date_reported/all/page/<int:page>')
+@app_rki.route('/date_reported/all')
+def url_rki_date_reported_all(page: int = 1):
+    page_info = WebPageContent('RKI', "Date Reported", "All")
+    try:
+        page_data = RkiMeldedatum.get_all_as_page(page)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/date_reported/all/rki_date_reported_all.html',
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/date_reported/<int:date_reported_id>/page/<int:page>')
+@app_rki.route('/date_reported/<int:date_reported_id>')
+def url_rki_date_reported_one(date_reported_id: int, page: int = 1):
+    page_info = WebPageContent('RKI', "Date Reported", "All")
+    try:
+        date_reported = RkiMeldedatum.get_by_id(date_reported_id)
+        page_data = RkiData.get_by_date_reported(date_reported, page)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/date_reported/one/rki_date_reported_one.html',
+        date_reported=date_reported,
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/bundesland/all/page/<int:page>')
+@app_rki.route('/bundesland/all')
+def url_rki_bundesland_all(page: int = 1):
+    page_info = WebPageContent('RKI', "Bundesland", "All")
+    try:
+        page_data = RkiBundesland.get_all_as_page(page)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/bundesland/all/rki_bundesland_all.html',
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/bundesland/<int:bundesland_id>/page/<int:page>')
+@app_rki.route('/bundesland/<int:bundesland_id>')
+def url_rki_bundesland_one(bundesland_id: int, page: int = 1):
+    page_info = WebPageContent('RKI', "Bundesland", "One")
+    try:
+        location_group = RkiBundesland.get_by_id(bundesland_id)
+        page_data = RkiLandkreis.get_by_location_group(location_group, page)
+        page_info = WebPageContent('RKI', "Bundesland", location_group.location_group)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/bundesland/one/rki_bundesland_one.html',
+        location_group=location_group,
+        page_data=page_data,
+        page_info=page_info)
+
+
+@app_rki.route('/landkreis/<int:landkreis_id>/page/<int:page>')
+@app_rki.route('/landkreis/<int:landkreis_id>')
+def url_rki_landkreis_one(landkreis_id: int, page: int = 1):
+    page_info = WebPageContent('RKI', "Landkreis", "One")
+    try:
+        location = RkiLandkreis.get_by_id(landkreis_id)
+        page_data = RkiData.get_by_location(location, page)
+        page_info = WebPageContent('RKI', location.location_type + " " + location.location)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/landkreis/one/rki_landkreis_one.html',
+        location=location,
+        page_data=page_data,
+        page_info=page_info)
+
+
+# ------------------------------------------------------------------------
+#  Celery TASKS
+# ------------------------------------------------------------------------
+
+@celery.task(bind=True)
+def task_rki_import(self):
+    self.update_state(state=states.STARTED)
+    rki_service.import_file()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_import_only)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_full_update_dimension_tables(self):
+    self.update_state(state=states.STARTED)
+    rki_service.full_update_dimension_tables()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_full_update_dimension_tables)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_update_dimension_tables(self):
+    self.update_state(state=states.STARTED)
+    rki_service.update_dimension_tables()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_update_dimension_tables)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_full_update_fact_table(self):
+    self.update_state(state=states.STARTED)
+    rki_service.full_update_fact_table()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_full_update_fact_table)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_update_fact_table(self):
+    self.update_state(state=states.STARTED)
+    rki_service.update_fact_table()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_update_fact_table)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_full_update_star_schema(self):
+    self.update_state(state=states.STARTED)
+    rki_service.full_update_star_schema()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_full_update_starschema)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_update_star_schema(self):
+    self.update_state(state=states.STARTED)
+    rki_service.update_star_schema()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_update_starschema)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_full_update(self):
+    self.update_state(state=states.STARTED)
+    rki_service.full_update()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_full_update)"
+    return result
+
+
+@celery.task(bind=True)
+def task_rki_update(self):
+    self.update_state(state=states.STARTED)
+    rki_service.update()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_update)"
+    return result
+
+# ------------------------------------------------------------------------
+#  URL Routes for Celery TASKS
+# ------------------------------------------------------------------------
+
+
+@app_rki.route('/task/download')
+def url_task_rki_download():
+    app.logger.info("url_task_rki_download [start]")
+    flash("url_task_rki_download [start]")
+    rki_service.download()
+    flash("url_task_rki_download [done]")
+    app.logger.info("url_task_rki_download [done]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/import')
+def url_task_rki_import():
+    app.logger.info("url_task_rki_import [start]")
+    task_rki_import.apply_async()
+    flash("task_rki_import started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("task_rki_import [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update/full/dimension-tables')
+def url_task_rki_full_update_dimension_tables():
+    app.logger.info("url_task_rki_full_update_dimensiontables [start]")
+    task_rki_full_update_dimension_tables.apply_async()
+    flash("task_rki_full_update_dimension_tables started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("task_rki_full_update_dimensiontables [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update/dimension-tables')
+def url_task_rki_update_dimension_tables():
+    app.logger.info("url_task_rki_update_dimension_tables [start]")
+    task_rki_update_dimension_tables.apply_async()
+    flash("task_rki_update_dimension_tables started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("url_task_rki_update_dimension_tables [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update/full/fact-table')
+def url_task_rki_full_update_fact_table():
+    app.logger.info("url_task_rki_full_update_fact_table [start]")
+    task_rki_full_update_fact_table.apply_async()
+    flash("task_rki_full_update_fact_table started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("url_task_rki_full_update_fact_table [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update/fact-table')
+def url_task_rki_update_fact_table():
+    app.logger.info("url_task_rki_update_fact_table [start]")
+    task_rki_update_fact_table.apply_async()
+    flash("task_rki_update_fact_table started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("url_task_rki_update_fact_table [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/full/update/star_schema')
+def url_task_rki_full_update_star_schema():
+    app.logger.info("url_task_rki_full_update_star_schema [start]")
+    task_rki_full_update_star_schema.apply_async()
+    flash("url_task_rki_full_update_star_schema started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("url_task_rki_full_update_star_schema [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update/star_schema')
+def url_task_rki_update_star_schema():
+    app.logger.info("url_task_rki_update_star_schema [start]")
+    flash("url_task_rki_download [start]")
+    task_rki_update_star_schema.apply_async()
+    flash("task_rki_update_star_schema started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("url_task_rki_update_star_schema [async start]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/full/update')
+def url_task_rki_full_update():
+    app.logger.info("url_task_rki_full_update [start]")
+    flash("url_task_rki_download [start]")
+    rki_service.download()
+    flash("url_task_rki_download [done]")
+    task_rki_full_update.apply_async()
+    flash("task_rki_full_update started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("task_rki_full_update [async start]")
+    app.logger.info("url_task_rki_full_update [done]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/task/update')
+def url_task_rki_update():
+    app.logger.info("url_task_rki_update [start]")
+    flash("url_task_rki_download [start]")
+    rki_service.download()
+    flash("url_task_rki_download [done]")
+    task_rki_update.apply_async()
+    flash("task_rki_update started")
+    flash(message="long running background task started", category="warning")
+    app.logger.warn("task_rki_update [async start]")
+    app.logger.info("url_task_rki_update [done]")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+rki_test_service = RkiTestService(db, rki_service)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+#  Url Routes Frontend TESTS TESTS
+# ---------------------------------------------------------------------------------------------------------------
+
+
+@app_rki.route('/test/full_update_dimension_tables')
+@login_required
+def url_rki_test_full_update_dimension_tables():
+    app.logger.info("url_rki_test_full_update_dimension_tables - START")
+    flash("url_rki_test_full_update_dimension_tables - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/update_dimension_tables')
+@login_required
+def url_rki_test_update_dimension_tables():
+    app.logger.info("url_rki_test_update_dimension_tables - START")
+    flash("url_rki_test_update_dimension_tables - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/full_update_fact_table')
+@login_required
+def url_rki_test_full_update_fact_table():
+    app.logger.info("url_rki_test_full_update_fact_table - START")
+    flash("url_rki_test_full_update_fact_table - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/update_fact_table')
+@login_required
+def url_rki_test_update_fact_table():
+    app.logger.info("url_rki_test_update_fact_table - START")
+    flash("url_rki_test_update_fact_table - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/full_update_star_schema')
+@login_required
+def url_rki_test_full_update_star_schema():
+    app.logger.info("url_rki_test_full_update_star_schema - START")
+    flash("url_rki_test_full_update_star_schema - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/update_star_schema')
+@login_required
+def url_rki_test_update_star_schema():
+    app.logger.info("url_rki_test_update_star_schema - START")
+    flash("url_rki_test_update_star_schema - START")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_import/countries')
+@login_required
+def url_rki_test_rki_import_countries():
+    app.logger.info("url_rki_test_rki_import_countries - START")
+    flash("url_rki_test_rki_import_countries - START")
+    i = 0
+    for c in RkiImport.countries():
+        i += 1
+        line = " | " + str(i) + " | " + c.countries.iso_code + " | " + c.countries.location + " | " + c.countries.continent + " | "
+        app.logger.info(line)
+    app.logger.info("url_rki_test_rki_import_countries - DONE")
+    flash("url_rki_test_rki_import_countries - DONE")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_import/get_new_dates_reported_as_array')
+@login_required
+def url_rki_test_rki_import_get_new_dates_reported_as_array():
+    app.logger.info("url_rki_test_rki_import_get_new_dates_reported_as_array - START")
+    flash("url_rki_test_rki_import_get_new_dates_reported_as_array - START")
+    i = 0
+    for date_reported in RkiImport.get_new_dates_reported_as_array():
+        i += 1
+        line = " | " + str(i) + " | " + date_reported + " | "
+        app.logger.info(line)
+    app.logger.info("url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
+    flash("url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_data/get_datum_of_all_data')
+@login_required
+def url_rki_test_rki_data_get_datum_of_all_data():
+    app.logger.info("url_rki_test_rki_data_get_datum_of_all_data - START")
+    flash("url_rki_test_rki_data_get_datum_of_all_data - START")
+    for datum in RkiData.get_datum_of_all_data():
+        app.logger.info(str(datum))
+    app.logger.info("url_rki_test_rki_data_get_datum_of_all_data - DONE")
+    flash("url_rki_test_rki_data_get_datum_of_all_data - DONE")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_import/get_datum_of_all_import')
+@login_required
+def url_rki_test_rki_import_get_datum_of_all_import():
+    app.logger.info("url_rki_test_rki_import_get_datum_of_all_import - START")
+    flash("url_rki_test_rki_import_get_datum_of_all_import - START")
+    for datum in RkiImport.get_datum_of_all_import():
+        app.logger.info(str(datum))
+    app.logger.info("url_rki_test_rki_import_get_datum_of_all_import - DONE")
+    flash("url_rki_test_rki_import_get_datum_of_all_import - DONE")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_service/service_update/rki_import_get_new_dates_as_array')
+@login_required
+def url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array():
+    app.logger.info("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
+    flash("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
+    for datum in rki_service.service_update.rki_import_get_new_dates_as_array():
+        app.logger.info(str(datum))
+    app.logger.info("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
+    flash("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_test_service/delete_last_day')
+@login_required
+def url_rki_test_rki_test_service_delete_last_day():
+    app.logger.info("url_rki_test_rki_test_service_delete_last_day - START: rki_test_service.delete_last_day()")
+    flash("url_rki_test_rki_test_service_delete_last_day - START: rki_test_service.delete_last_day()")
+    rki_test_service.delete_last_day()
+    app.logger.info("url_rki_test_rki_test_service_delete_last_day - DONE: rki_test_service.delete_last_day()")
+    flash("url_rki_test_rki_test_service_delete_last_day - DONE: rki_test_service.delete_last_day()")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_test_service/delete_last_continent')
+@login_required
+def url_rki_test_rki_test_service_delete_last_continent():
+    app.logger.info("url_rki_test_rki_test_service_delete_last_continent - START: rki_test_service.delete_last_continent()")
+    flash("url_rki_test_rki_test_service_delete_last_continent - START: rki_test_service.delete_last_continent()")
+    rki_test_service.delete_last_continent()
+    flash("url_rki_test_rki_test_service_delete_last_continent - DONE: rki_test_service.delete_last_continent()")
+    app.logger.info("url_rki_test_rki_test_service_delete_last_continent - DONE: rki_test_service.delete_last_continent()")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+@app_rki.route('/test/rki_test_service/full_update_dimension_tables')
+@login_required
+def url_rki_test_rki_test_service_full_update_dimension_tables():
+    app.logger.info("url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
+    flash("url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
+    rki_test_service.full_update_dimension_tables()
+    app.logger.info("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
+    flash("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
+    return redirect(url_for('rki.url_rki_info'))
+
+
+# ----------------------------------------------------------------------------------------------------------------
+#  Celery TASKS TESTS
+# ----------------------------------------------------------------------------------------------------------------
+
+
+@celery.task(bind=True)
+def task_rki_test_update_star_schema(self):
+    logger = get_task_logger(__name__)
+    self.update_state(state=states.STARTED)
+    logger.info("------------------------------------------------------------")
+    logger.info(" Received: task_rki_test_update_star_schema [OK] ")
+    logger.info("------------------------------------------------------------")
+    rki_test_service.run_update_star_schema_incremental()
+    self.update_state(state=states.SUCCESS)
+    result = "OK (task_rki_test_update_star_schema)"
+    return result
+
+
+# ----------------------------------------------------------------------------------------------------------------
+#  URL Routes for Celery TASKS TESTS
+# ----------------------------------------------------------------------------------------------------------------
+
+@app_rki.route('/test/task/owid_test/update_star_schema_incremental')
+@login_required
+def url_task_rki_test_update_star_schema():
+    app.logger.info("url_task_rki_test_update_star_schema - START: task_rki_test_update_star_schema.apply_async()")
+    flash("url_task_rki_test_update_star_schema - START: task_rki_test_update_star_schema.apply_async()")
+    task_rki_test_update_star_schema.apply_async()
+    flash("url_task_rki_test_update_star_schema - DONE: task_rki_test_update_star_schema.apply_async()")
+    app.logger.info("url_task_rki_test_update_star_schema - DONE: task_rki_test_update_star_schema.apply_async()")
+    return redirect(url_for('rki.url_rki_info'))

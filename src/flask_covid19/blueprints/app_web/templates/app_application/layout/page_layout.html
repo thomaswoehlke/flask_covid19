@@ -1,0 +1,33 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}{{page_info.title}}{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='index.js')}} "></script>
+{{super()}}
+{% endblock %}
+{% block html_attribs %} lang="en"{% endblock %}
+
+
+{% block navbar %}
+  {% include 'app_application/navigation/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    {{super()}}
+    <div class="container main-content app-main">
+            <div class="row-cols-1">
+                <h1 class="display-3">{{page_info.title}} | <small class="display-4">{{page_info.subtitle}}</small></h1>
+            </div>
+            <div class="row-cols-1">
+                {% include 'app_application/fragments/fragment_flashed_messages.html' %}
+            </div>
+            <div class="row-cols-1">
+                {% include 'app_application/navigation/navtabs.html' %}
+            </div>
+    </div>
+{% endblock %}
+

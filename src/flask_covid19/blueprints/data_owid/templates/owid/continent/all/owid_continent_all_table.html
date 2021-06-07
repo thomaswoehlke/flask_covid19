@@ -1,0 +1,26 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">continent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for data_item in page_data.items %}
+                        <tr>
+                            <td>
+                                <a href="{{ url_for('owid.url_owid_continent_one', continent_id=data_item.id) }}">
+                                    {{ data_item.location_group }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                <tfoot class="table-secondary">
+                    <tr>
+                        <th scope="col">continent</th>
+                    </tr>
+                </tfoot>
+                </table>
+                </div>
+

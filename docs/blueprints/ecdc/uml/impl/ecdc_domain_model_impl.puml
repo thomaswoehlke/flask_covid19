@@ -1,0 +1,361 @@
+@startuml
+left to right direction
+
+package covid19.blueprints.all {
+
+	entity ApplicationDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+
+	entity ApplicationDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+	entity ApplicationRegion {
+	    id: Integer
+	    continent:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	class ApplicationServiceDownload << (S,red) Service >> {
+		-log_error()
+		-log_success()
+		-prepare_download()
+		-download_with_wget()
+		-download_with_subprocess_and_os_native_wget()
+		download_file()
+	}
+	class ApplicationServiceConfig << (T,#FF7700) Transient >> {
+		limit_nr: Integer
+	    data_path: String
+	    slug: String
+	    category: String
+	    sub_category: String
+	    tablename: String
+	    cvsfile_name: String
+	    url_src: String
+	    cvsfile_path: String
+	    msg_job: String
+	    msg_ok: String
+	    msg_error: String
+		create_config_for_who()
+		create_config_for_rki_vaccination()
+		create_config_for_owid()
+		create_config_for_ecdc()
+		create_config_for_rki_bundeslaender()
+		create_config_for_rki_landkreise()
+	}
+
+	interface AllImportFull {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+	}
+	interface AllImportIncrement {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+	interface DataImport {
+	    datum_reported: Date
+		location: String
+		location_group: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+	interface AllFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): AllFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+	}
+
+}
+
+
+package covid19.blueprints.ecdc {
+
+	entity EcdcImport {
+	    id: Integer
+		date_rep:  String
+	    date_rep_day:  String
+	    date_rep_month:  String
+	    date_rep_year:  String
+	    cases:  String
+	    deaths:  String
+	    pop_data_2019:  String
+	    countries_and_territories:  String
+	    geo_id:  String
+	    country_territory_code:  String
+	    continent_exp:  String
+	    cumulative_number_for_14_days_of_covid19_cases_per_100000:  String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity EcdcFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		date_rep:  String
+	    date_rep_day:  String
+	    date_rep_month:  String
+	    date_rep_year:  String
+	    cases:  String
+	    deaths:  String
+	    pop_data_2019:  String
+	    countries_and_territories:  String
+	    geo_id:  String
+	    country_territory_code:  String
+	    continent_exp:  String
+	    cumulative_number_for_14_days_of_covid19_cases_per_100000:  String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): EcdcFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): EcdcFlat[]
+	}
+
+
+
+	entity EcdcDateReported {
+	    id: Integer
+	    dateiname: String
+	    parent_dir: String
+	    title: String
+	    path_relative: String
+	    get_absolute_path()
+	    get_relative_path()
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	    {classifier} get_kurse_all()
+	}
+	entity EcdcContinent {
+	    id: Integer
+	    dateiname: String
+	    parent_dir: String
+	    get_absolute_path()
+	    get_relative_path()
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	    {classifier} get_workflow_for_id(workflow_id: Integer)
+	}
+	entity EcdcCountry {
+	    id: Integer
+	    dateiname: String
+	    parent_dir: String
+	    title: String
+	    lektion_nr: Integer
+	    verified: Boolean
+	    get_absolute_path()
+	    get_relative_path()
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	    {classifier} get_lektionen_for_workflow(workflow: Workflow)
+	    {classifier} get_lektion_for_id(lektion_id: Integer)
+	    {classifier} get_folien_for_lektion_id(lektion_id: Integer)
+	    {classifier} get_all_verified()
+	}
+	entity EcdcData {
+	    id: Integer
+	    dateiname: String
+	    parent_dir: String
+	    title: String
+	    lektion_nr: Integer
+	    foliensatz_nr_in_lektion: Integer
+	    get_absolute_path()
+	    get_relative_path()
+	    {classifier} get_foliensaetze_for_lektion(lektion: Lektion)
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+
+}
+
+package covid19.blueprints.ecdc {
+
+	class EcdcService << (S,red) Service >> {
+		pretask_database_drop_create()
+		task_database_drop_create()
+		run_download_only()
+		run_import_only()
+		run_update_dimension_tables_only()
+		run_update_fact_table_incremental_only()
+		run_update_fact_table_initial_only()
+		run_update_star_schema_incremental()
+		run_update_star_schema_initial()
+		download_all_files()
+		task_import_all_files()
+		update_dimension_tables_only()
+		update_fact_table_initial_only()
+		update_fact_table_incremental_only()
+	}
+	class EcdcServiceImport << (S,red) Service >> {
+		import_file()
+	}
+	class EcdcServiceUpdate << (S,red) Service >> {
+		-update_date_reported()
+		-update_continent()
+		-update_country()
+		-get_continent_from_import(ecdc_import: EcdcImport):
+		-get_country_from_import(ecdc_import: EcdcImport):
+		-get_date_reported_from_import()
+		-update_data_initial()
+		update_dimension_tables_only()
+	    update_fact_table_initial_only()
+	    update_star_schema_incremental()
+		update_star_schema_initial()
+	}
+	class ecdc_views_frontend << (B,orchid) Boundary >> {
+		url_ecdc_info()
+		url_ecdc_tasks()
+		url_ecdc_data_imported()
+		url_ecdc_date_reported_all()
+		url_ecdc_date_reported_one_notification_rate()
+		url_ecdc_date_reported_one_deaths_weekly()
+		url_ecdc_date_reported_one_cases_weekly()
+		url_ecdc_continent_all()
+		url_ecdc_continent_one()
+		url_ecdc_country_all()
+		url_ecdc_country_one()
+		url_ecdc_country_germany()
+	}
+	class ecdc_views_for_tasks << (B,orchid) Boundary >> {
+		task_ecdc_download_only()
+		task_who_import_only()
+		task_who_update_dimension_tables_only()
+		task_who_update_fact_table_initial_only()
+		task_who_update_fact_table_incremental_only()
+		task_who_update_star_schema_initial()
+		task_who_update_star_schema_incremental()
+	}
+	class ecdc_celery_tasks << (B,orchid) Boundary >> {
+		task_ecdc_download_only()
+		task_ecdc_import_only()
+		task_ecdc_update_dimension_tables_only()
+		task_ecdc_update_fact_table_initial_only()
+		task_ecdc_update_fact_table_incremental_only()
+		task_ecdc_update_star_schema_initial()
+		task_ecdc_update_star_schema_incremental()
+	}
+}
+ApplicationServiceDownload : SQLAlchemy database
+EcdcServiceImport : SQLAlchemy database
+EcdcServiceUpdate : SQLAlchemy database
+EcdcService : SQLAlchemy database
+ApplicationDateReported <|-- EcdcDateReported
+ApplicationRegion <|-- EcdcContinent
+EcdcCountry "1" *--> "*" EcdcContinent: continent
+EcdcData "1" *--> "*" EcdcCountry: country
+EcdcData "1" *--> "*" EcdcDateReported: date_reported
+EcdcService "*" *--> "1"  ApplicationServiceConfig: cfg
+EcdcServiceImport "*" --> "1"  ApplicationServiceConfig: cfg
+EcdcServiceUpdate "*" --> "1"  ApplicationServiceConfig: cfg
+EcdcService "1" *--> "1" EcdcServiceImport: ecdc_service_import
+EcdcService "1" *--> "1" EcdcServiceUpdate: ecdc_service_update
+EcdcService "1" *--> "1" ApplicationServiceDownload: service_download
+ecdc_views_frontend  "1" --> "1" EcdcService: ecdc_service
+ecdc_views_for_tasks  "1" --> "1" EcdcService: ecdc_service
+ecdc_celery_tasks  "1" --> "1" EcdcService: ecdc_service
+AllImportFull <|-- DataImport
+AllImportIncrement <|-- DataImport
+DataImport <|-- AllFlat
+DataImport <|-- EcdcImport
+AllFlat <|-- EcdcFlat
+EcdcImport <|-- EcdcFlat
+@enduml

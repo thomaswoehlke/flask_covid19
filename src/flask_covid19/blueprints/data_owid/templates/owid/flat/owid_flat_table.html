@@ -1,0 +1,75 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        {% include 'owid/flat/owid_flat_table_header.html' %}
+                    </thead>
+                    <tbody>
+                    {% for owid_flat in page_data.items %}
+                        <tr>
+                            <td>{{ owid_flat.continent }}</td>
+                            <td>{{ owid_flat.iso_code }}</td>
+                            <td>{{ owid_flat.location }}</td>
+                            <td>{{ owid_flat.date }}</td>
+                            <td>{{ owid_flat.total_cases }}</td>
+                            <td>{{ owid_flat.new_cases }}</td>
+                            <td>{{ owid_flat.new_cases_smoothed }}</td>
+                            <td>{{ owid_flat.total_deaths }}</td>
+                            <td>{{ owid_flat.new_deaths }}</td>
+                            <td>{{ owid_flat.new_deaths_smoothed }}</td>
+                            <td>{{ owid_flat.total_cases_per_million }}</td>
+                            <td>{{ owid_flat.new_cases_per_million }}</td>
+                            <td>{{ owid_flat.new_cases_smoothed_per_million }}</td>
+                            <td>{{ owid_flat.total_deaths_per_million }}</td>
+                            <td>{{ owid_flat.new_deaths_per_million }}</td>
+                            <td>{{ owid_flat.new_deaths_smoothed_per_million }}</td>
+                            <td>{{ owid_flat.reproduction_rate }}</td>
+                            <td>{{ owid_flat.icu_patients }}</td>
+                            <td>{{ owid_flat.icu_patients_per_million }}</td>
+                            <td>{{ owid_flat.hosp_patients }}</td>
+                            <td>{{ owid_flat.hosp_patients_per_million }}</td>
+                            <td>{{ owid_flat.weekly_icu_admissions }}</td>
+                            <td>{{ owid_flat.weekly_icu_admissions_per_million }}</td>
+                            <td>{{ owid_flat.weekly_hosp_admissions }}</td>
+                            <td>{{ owid_flat.weekly_hosp_admissions_per_million }}</td>
+                            <td>{{ owid_flat.new_tests }}</td>
+                            <td>{{ owid_flat.total_tests }}</td>
+                            <td>{{ owid_flat.total_tests_per_thousand }}</td>
+                            <td>{{ owid_flat.new_tests_per_thousand }}</td>
+                            <td>{{ owid_flat.new_tests_smoothed }}</td>
+                            <td>{{ owid_flat.new_tests_smoothed_per_thousand }}</td>
+                            <td>{{ owid_flat.positive_rate }}</td>
+                            <td>{{ owid_flat.tests_per_case }}</td>
+                            <td>{{ owid_flat.tests_units }}</td>
+                            <td>{{ owid_flat.total_vaccinations }}</td>
+                            <td>{{ owid_flat.people_vaccinated }}</td>
+                            <td>{{ owid_flat.people_fully_vaccinated }}</td>
+                            <td>{{ owid_flat.new_vaccinations }}</td>
+                            <td>{{ owid_flat.new_vaccinations_smoothed }}</td>
+                            <td>{{ owid_flat.total_vaccinations_per_hundred }}</td>
+                            <td>{{ owid_flat.people_vaccinated_per_hundred }}</td>
+                            <td>{{ owid_flat.people_fully_vaccinated_per_hundred }}</td>
+                            <td>{{ owid_flat.new_vaccinations_smoothed_per_million }}</td>
+                            <td>{{ owid_flat.stringency_index }}</td>
+                            <td>{{ owid_flat.population }}</td>
+                            <td>{{ owid_flat.population_density }}</td>
+                            <td>{{ owid_flat.median_age }}</td>
+                            <td>{{ owid_flat.aged_65_older }}</td>
+                            <td>{{ owid_flat.aged_70_older }}</td>
+                            <td>{{ owid_flat.gdp_per_capita }}</td>
+                            <td>{{ owid_flat.extreme_poverty }}</td>
+                            <td>{{ owid_flat.cardiovasc_death_rate }}</td>
+                            <td>{{ owid_flat.diabetes_prevalence }}</td>
+                            <td>{{ owid_flat.female_smokers }}</td>
+                            <td>{{ owid_flat.male_smokers }}</td>
+                            <td>{{ owid_flat.handwashing_facilities }}</td>
+                            <td>{{ owid_flat.hospital_beds_per_thousand }}</td>
+                            <td>{{ owid_flat.life_expectancy }}</td>
+                            <td>{{ owid_flat.human_development_index }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                         {% include 'owid/flat/owid_flat_table_header.html' %}
+                    </tfoot>
+                </table>
+                </div>

@@ -1,0 +1,52 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            {% include 'ecdc/ecdc_data/ecdc_data_table_head.html' %}
+        </thead>
+        <tbody>
+        {% for ecdc_data in page_data.items %}
+            <tr>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_date_reported_one', date_reported_id=ecdc_data.date_reported.id) }}">
+                        {{ ecdc_data.date_reported.datum }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_date_reported_one', date_reported_id=ecdc_data.date_reported.id) }}">
+                        {{ ecdc_data.date_reported.year_week }}
+                    </a>
+                </td>
+                <td>{{ ecdc_data.deaths }}</td>
+                <td>{{ ecdc_data.cases }}</td>
+                <td>{{ ecdc_data.cumulative_number_for_14_days_of_covid19_cases_per_100000 }}</td>
+
+                <td>{{ ecdc_data.location.pop_data_2019 }}</td>
+
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_country_one', country_id=ecdc_data.location.id) }}">
+                        {{ ecdc_data.location.location }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_country_one', country_id=ecdc_data.location.id) }}">
+                        {{ ecdc_data.location.geo_id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_country_one', country_id=ecdc_data.location.id) }}">
+                        {{ ecdc_data.location.location_code }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_continent_one', continent_id=ecdc_data.location.location_group.id) }}">
+                        {{ ecdc_data.location.location_group.location_group }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            {% include 'ecdc/ecdc_data/ecdc_data_table_head.html' %}
+        </tfoot>
+    </table>
+    </div>

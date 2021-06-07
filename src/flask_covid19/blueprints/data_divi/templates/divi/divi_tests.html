@@ -1,0 +1,59 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block content %}
+    {{super()}}
+    {% include 'divi/navigation/divi_navtabs.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi.url_divi_tasks') }}"
+                       role="button">DIVI :: Tasks</a>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col">
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-danger btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_import_countries') }}"
+                       role="button">url_divi_test_divi_import_countries</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_import_get_new_dates_as_array') }}"
+                       role="button">url_divi_test_divi_import_get_new_dates_as_array</a>
+                    <a class="btn btn-danger btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_data_get_datum_of_all_divi_data') }}"
+                       role="button">url_divi_test_divi_data_get_datum_of_all_divi_data</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_data_get_datum_of_all_divi_import') }}"
+                       role="button">url_divi_test_divi_data_get_datum_of_all_divi_import</a>
+                    <a class="btn btn-danger btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_service_divi_import_get_new_dates_as_array') }}"
+                       role="button">url_divi_test_divi_service_divi_import_get_new_dates_as_array</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_divi_test_divi_test_service_delete_last_days_data') }}"
+                       role="button">url_divi_test_divi_test_service_delete_last_days_data</a>
+                </div>
+            </div>
+            <div class="col">
+                 <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'divi_test.url_task_divi_test_update_star_schema_incremental') }}"
+                       role="button">url_task_divi_test_update_star_schema_incremental</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block footer_container %}
+
+{% endblock %}
+
+
+

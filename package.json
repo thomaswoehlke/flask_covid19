@@ -1,0 +1,35 @@
+{
+  "name": "flask-covid19",
+  "version": "0.0.41",
+  "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "postinstall": "cd src/flask_covid19 && npm install && cd ../.."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomaswoehlke/covid19python.git"
+  },
+  "keywords": [
+    "virus",
+    "pandemic",
+    "covid19",
+    "data",
+    "statistic",
+    "who",
+    "rki",
+    "python",
+    "flask",
+    "sqlalchemy",
+    "postgresql"
+  ],
+  "author": "Thomas Woehlke",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/thomaswoehlke/covid19python/issues"
+  },
+  "homepage": "https://github.com/thomaswoehlke/covid19python#readme"
+}

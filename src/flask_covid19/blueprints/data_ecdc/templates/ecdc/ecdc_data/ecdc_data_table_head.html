@@ -1,0 +1,67 @@
+            <tr>
+                <th scope="col">
+                    <a href="{{ url_for('ecdc.url_ecdc_date_reported_all') }}">
+                        date rep
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('ecdc.url_ecdc_date_reported_all') }}">
+                        year_week
+                    </a>
+                </th>
+                <th scope="col">
+                    {% if ecdc_date_reported %}
+                        <a href="{{ url_for( 'ecdc.url_ecdc_date_reported_one_deaths_weekly',
+                            date_reported_id=ecdc_date_reported.id) }}">
+                            deaths weekly
+                        </a>
+                    {% endif %}
+                    {% if ecdc_country %}
+                        deaths weekly
+                    {% endif %}
+                </th>
+                <th scope="col">
+                    {% if ecdc_date_reported %}
+                        <a href="{{ url_for( 'ecdc.url_ecdc_date_reported_one_cases_weekly',
+                            date_reported_id=ecdc_date_reported.id) }}">
+                            cases weekly
+                        </a>
+                    {% endif %}
+                    {% if ecdc_country %}
+                        cases weekly
+                    {% endif %}
+                </th>
+                <th scope="col">
+                    {% if ecdc_date_reported %}
+                        <a href="{{ url_for( 'ecdc.url_ecdc_date_reported_one_notification_rate',
+                                    date_reported_id=ecdc_date_reported.id) }}">
+                            notification rate per 100000 population 14days
+                        </a>
+                    {% endif %}
+                    {% if ecdc_country %}
+                        notification rate per 100000 population 14days
+                    {% endif %}
+                </th>
+
+                <th scope="col">population data 2019</th>
+                <th scope="col">
+                    <a href="{{ url_for( 'ecdc.url_ecdc_country_all') }}">
+                        countries and territories
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('ecdc.url_ecdc_country_all') }}">
+                        geo id
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('ecdc.url_ecdc_country_all') }}">
+                        country territory code
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('ecdc.url_ecdc_continent_all') }}">
+                        continent
+                    </a>
+                </th>
+            </tr>

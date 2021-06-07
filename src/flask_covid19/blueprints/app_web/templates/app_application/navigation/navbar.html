@@ -1,0 +1,45 @@
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#admin-navbar-collapse"
+                    aria-controls="admin-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- navbar content -->
+            <div class="collapse navbar-collapse" id="admin-navbar-collapse">
+                <a class="navbar-brand" href="{{ url_for( 'url_home') }}">Covid19 | Data</a>
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for( 'url_home') }}">Home</a>
+                    </li>
+
+                    {% include 'app_all/navigation/app_all_navbar_dropdown.html' %}
+
+                    {% include 'who/navigation/who_navbar_dropdown.html' %}
+
+                    {% include 'owid/navigation/owid_navbar_dropdown.html' %}
+
+                    {% include 'rki/navigation/rki_navbar_dropdown.html' %}
+
+                    {% include 'vaccination/navigation/vaccination_navbar_dropdown.html' %}
+
+                    {% include 'ecdc/navigation/ecdc_navbar_dropdown.html' %}
+
+                    {#
+                    {% include 'divi/navigation/divi_navbar_dropdown.html' %}
+                    #}
+
+                    {% include 'app_admin/navigation/app_admin_navbar_dropdown.html' %}
+
+                    {% include 'usr/navigation/usr_navbar_dropdown.html' %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for( 'url_admin_index') }}">
+                            flask admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>

@@ -1,0 +1,66 @@
+            <nav>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           href="{{ url_for( 'url_home') }}">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'app_all.url_all_info') }}">
+                            All
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'who.url_who_info') }}">
+                            WHO
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'owid.url_owid_info') }}">
+                            OWID
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_info') }}">
+                            RKI
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'vaccination.url_vaccination_info') }}">
+                            Vaccination
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'ecdc.url_ecdc_info') }}">
+                            ECDC
+                        </a>
+                    </li>
+                    {#
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'divi.url_divi_info') }}">
+                            DIVI
+                        </a>
+                    </li>
+                    #}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'app_admin.url_admin_info') }}">
+                            Admin
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'usr.url_user_info') }}">
+                            User
+                        </a>
+                    </li>
+                </ul>
+            </nav>

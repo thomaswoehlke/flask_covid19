@@ -1,0 +1,40 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        {% include 'who/flat/who_flat_table_head.html' %}
+                    </thead>
+                    <tbody>
+                    {% for who_flat in page_data.items %}
+                        <tr>
+                            <td>{{ who_flat.date_reported }}</td>
+                            <td>{{ who_flat.country }}</td>
+                            <td>{{ who_flat.country_code }}</td>
+                            <td>{{ who_flat.who_region }}</td>
+                            <td>{{ who_flat.new_cases }}</td>
+                            <td>{{ who_flat.cumulative_cases }}</td>
+                            <td>{{ who_flat.new_deaths }}</td>
+                            <td>{{ who_flat.cumulative_deaths }}</td>
+
+                            <td>{{ who_flat.datum.isoformat() }}</td>
+                            <td>{{ who_flat.year_month }}</td>
+                            <td>{{ who_flat.year_week }}</td>
+                            <td>{{ who_flat.year_day_of_year }}</td>
+                            <td>{{ who_flat.processed_update }}</td>
+                            <td>{{ who_flat.processed_full_update }}</td>
+
+                            <td>{{ who_flat.month }}</td>
+                            <td>{{ who_flat.day_of_month }}</td>
+                            <td>{{ who_flat.day_of_week }}</td>
+                            <td>{{ who_flat.week_of_year }}</td>
+                            <td>{{ who_flat.day_of_year }}</td>
+                            <td>{{ who_flat.location }}</td>
+                            <td>{{ who_flat.location_group }}</td>
+                            <td>{{ who_flat.location_code }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        {% include 'who/flat/who_flat_table_head.html' %}
+                    </tfoot>
+                </table>
+                </div>

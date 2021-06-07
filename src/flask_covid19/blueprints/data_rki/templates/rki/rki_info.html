@@ -1,0 +1,252 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block content %}
+    {{super()}}
+    {% include 'rki/navigation/rki_navtabs.html' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="accordion" id="accordionCol">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseLeftOne">
+                               Task: Full Update
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Update Full</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_download') }}"
+                                       role="button">RKI  :: Task :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_import') }}"
+                                       role="button">RKI  :: Task :: import</a>
+                                </div>
+                                <p></p>
+                                <h4>Update Full</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_full_update_dimension_tables') }}"
+                                       role="button">RKI  :: Task :: full update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_full_update_fact_table') }}"
+                                       role="button">RKI  :: Task :: full update :: fact-table</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_full_update_star_schema') }}"
+                                       role="button">RKI  :: Task :: full update :: star_schema</a>
+                                </div>
+                                <p></p>
+                                <h4>Update Full</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_full_update') }}"
+                                       role="button">RKI  :: Task :: full update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseLeftTwo">
+                                    Task: Update
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_download') }}"
+                                       role="button">RKI  :: Task :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_import') }}"
+                                       role="button">RKI  :: Task :: import</a>
+                                </div>
+                                <p></p>
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_update_dimension_tables') }}"
+                                       role="button">RKI  :: Task :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_update_fact_table') }}"
+                                       role="button">RKI  :: Task :: update :: fact-table</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_update_star_schema') }}"
+                                       role="button">RKI  :: Task :: update :: star_schema</a>
+                                </div>
+                                <p></p>
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for('rki.url_task_rki_update') }}"
+                                       role="button">RKI  :: Task :: update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                               Tests
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Prepare Test Data</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_task_rki_test_update_star_schema') }}"
+                                       role="button">url_task_rki_test update_star_schema</a>
+                                </div>
+                                <p></p>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_test_service_full_update_dimension_tables') }}"
+                                       role="button">url_rki_test rki_test_service full_update_dimension_tables</a>
+                                </div>
+                                <p></p>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_test_service_delete_last_day') }}"
+                                       role="button">url_rki_test rki_test_service delete_last_day</a>
+                                </div>
+                                <p></p>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_test_service_delete_last_continent') }}"
+                                       role="button">url_rki_test_rki test_service delete_last_continent</a>
+                                </div>
+                                <p></p>
+                                <h4>countries</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_import_countries') }}"
+                                       role="button">url_rki_test rki_import countries</a>
+                                </div>
+                                <p></p>
+                                <h4>dates_reported</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_import_get_new_dates_reported_as_array') }}"
+                                       role="button">url_rki_test rki_import get_new_dates_reported_as_array</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_data_get_datum_of_all_data') }}"
+                                       role="button">url_rki_test rki_data get_datum_of_all_data</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_import_get_datum_of_all_import') }}"
+                                       role="button">url_rki_test rki_import get_datum_of_all_import</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array') }}"
+                                       role="button">url_rki_test rki_service service_update rki_import_get_new_dates_as_array</a>
+                                </div>
+                                <p></p>
+                                <h4>Full Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_full_update_dimension_tables') }}"
+                                       role="button">url_rki_test full_update_dimension_tables</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_full_update_fact_table') }}"
+                                       role="button">url_rki_test full_update_fact_table</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_full_update_star_schema') }}"
+                                       role="button">url_rki_test full_update_star_schema</a>
+                                </div>
+                                <p></p>
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_update_dimension_tables') }}"
+                                       role="button">url_rki_test update_dimension_tables</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_update_fact_table') }}"
+                                       role="button">url_rki_test update_fact_table</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'rki.url_rki_test_update_star_schema') }}"
+                                       role="button">url_rki_test update_star_schema</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    Info: RKI Coronavirus Disease (COVID-19) Dashboard
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>RKI Coronavirus Disease (COVID-19) Dashboard</h4>
+                                <p>
+                                    <a href="https://experience.arcgis.com/experience/478220a4c454480e823b17327b2bf1d4/">
+                                        https://experience.arcgis.com/experience/478220a4c454480e823b17327b2bf1d4
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Info: RKI COVID-19
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>RKI COVID-19</h4>
+                                <p>
+                                    <a href="https://www.rki.de/EN/Content/infections/epidemiology/outbreaks/COVID-19/COVID19.html">
+                                        https://www.rki.de/EN/Content/infections/epidemiology/outbreaks/COVID-19/COVID19.html
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSix">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseFive">
+                                    Info: COVID-19 Dashboard by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>COVID-19 Dashboard by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)</h4>
+                                <p>
+                                    <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">
+                                        COVID-19 Dashboard by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+
+{% endblock %}
+
+
+{% block footer_container %}
+
+{% endblock %}
+
+
+

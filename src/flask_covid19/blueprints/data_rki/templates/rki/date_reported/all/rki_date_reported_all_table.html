@@ -1,0 +1,33 @@
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-dark">
+                        <thead class="table-secondary">
+                            {% include 'rki/date_reported/all/rki_date_reported_all_table_head.html' %}
+                        </thead>
+                        <tbody>
+                        {% for rki_date_reported in page_data.items %}
+                            <tr>
+                                <td class="text-right">
+                                    {{ rki_date_reported.get_name_for_weekday() }}
+                                </td>
+                                <td class="text-left">
+                                    <a href="{{ url_for( 'rki.url_rki_date_reported_one', date_reported_id=rki_date_reported.id) }}">
+                                    {{ rki_date_reported }}
+                                    </a>
+                                </td>
+                                <td class="text-right">
+                                    {{ rki_date_reported.week_of_year }}
+                                </td>
+                                <td class="text-left">
+                                    {{ rki_date_reported.year }}
+                                </td>
+                                <td class="text-left">
+                                    {{ rki_date_reported.day_of_year }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot class="table-secondary">
+                            {% include 'rki/date_reported/all/rki_date_reported_all_table_head.html' %}
+                        </tfoot>
+                    </table>
+                </div>

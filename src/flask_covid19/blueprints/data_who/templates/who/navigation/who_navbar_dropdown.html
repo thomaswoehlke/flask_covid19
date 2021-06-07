@@ -1,0 +1,56 @@
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
+                        WHO<i class="glyphicon glyphicon-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_info') }}">
+                                WHO Info
+                            </a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_imported') }}">
+                                WHO imported
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_date_reported_all') }}">
+                                WHO
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_germany') }}">
+                                WHO Germany
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_region_all') }}">
+                                WHO Regions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_date_reported_all') }}">
+                                WHO Date Reported
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'who.url_who_country_all') }}">
+                                WHO Countries
+                            </a>
+                        </li>
+                    </ul>
+                </li>

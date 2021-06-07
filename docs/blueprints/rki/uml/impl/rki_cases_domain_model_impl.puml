@@ -1,0 +1,360 @@
+@startuml
+left to right direction
+
+package covid19.blueprints.all {
+
+	entity ApplicationDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+	entity ApplicationRegion {
+	    id: Integer
+	    continent:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	class ApplicationServiceDownload << (S,red) Service >> {
+		-log_error()
+		-log_success()
+		-prepare_download()
+		-download_with_wget()
+		-download_with_subprocess_and_os_native_wget()
+		download_file()
+	}
+	class ApplicationServiceConfig << (T,#FF7700) Transient >> {
+		limit_nr: Integer
+	    data_path: String
+	    slug: String
+	    category: String
+	    sub_category: String
+	    tablename: String
+	    cvsfile_name: String
+	    url_src: String
+	    cvsfile_path: String
+	    msg_job: String
+	    msg_ok: String
+	    msg_error: String
+		create_config_for_who()
+		create_config_for_rki_vaccination()
+		create_config_for_owid()
+		create_config_for_ecdc()
+		create_config_for_rki_bundeslaender()
+		create_config_for_rki_landkreise()
+	}
+
+	interface AllImportIncrement {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface DataImport {
+	    datum_reported: Date
+		location: String
+		location_group: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface AllFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): AllFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+	}
+
+}
+
+package covid19.blueprints.rki_cases {
+
+	entity RkiImport {
+	    id: Integer
+	    fid: String
+	    id_bundesland: String
+	    bundesland: String
+	    landkreis: String
+	    altersgruppe: String
+	    geschlecht: String
+	    anzahl_fall: String
+	    anzahl_todesfall: String
+	    meldedatum: String
+	    id_landkreis: String
+	    datenstand: String
+	    neuer_fall: String
+	    neuer_todesfall: String
+	    ref_datum: String
+	    neu_genesen: String
+	    anzahl_genesen: String
+	    ist_erkrankungsbeginn: String
+	    altersgruppe2: String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	    {classifier} get_dates()
+	    {classifier} get_for_one_day(day: String)
+	    {classifier} get_dates_reported_as_array()
+	    {classifier} get_new_dates_reported_as_array()
+	    {classifier} get_continents(page: Integer)
+	    {classifier} get_all_continents()
+	}
+
+
+	entity RkiFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+	    fid: String
+	    id_bundesland: String
+	    bundesland: String
+	    landkreis: String
+	    altersgruppe: String
+	    geschlecht: String
+	    anzahl_fall: String
+	    anzahl_todesfall: String
+	    meldedatum: String
+	    id_landkreis: String
+	    datenstand: String
+	    neuer_fall: String
+	    neuer_todesfall: String
+	    ref_datum: String
+	    neu_genesen: String
+	    anzahl_genesen: String
+	    ist_erkrankungsbeginn: String
+	    altersgruppe2: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): RkiCasesFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): RkiCasesFlat[]
+	}
+
+	entity RkiMeldedatum {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	entity RkiBundesland {
+	    id: Integer
+		id_bundesland: String
+	    region:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+
+	entity RkiLandkreis {
+	    id: Integer
+		id_landkreis: String
+		landkreis: String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	entity RkiData {
+	    id: Integer
+	    fid: String
+	    id_bundesland: String
+	    bundesland: String
+	    landkreis: String
+	    altersgruppe: String
+	    geschlecht: String
+	    anzahl_fall: String
+	    anzahl_todesfall: String
+	    meldedatum: String
+	    id_landkreis: String
+	    datenstand: String
+	    neuer_fall: String
+	    neuer_todesfall: String
+	    ref_datum: String
+	    neu_genesen: String
+	    anzahl_genesen: String
+	    ist_erkrankungsbeginn: String
+	    altersgruppe2: String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	class RkiServiceImport << (S,red) Service >> {
+		import_file()
+	}
+	class RkiServiceUpdateBase << (S,red) Service >> {
+	}
+	class RkiServiceUpdateFull << (S,red) Service >> {
+		-full_update_date_reported()
+		-full_update_continent()
+		-full_update_country()
+		-full_update_fact_table()
+		-full_update_dimension_tables()
+		full_update_dimension_tables()
+		full_update_fact_table()
+		full_update_star_schema()
+	}
+	class RkiServiceUpdate << (S,red) Service >> {
+		-update_date_reported()
+		-full_update_continent()
+		-full_update_country()
+		-update_fact_table()
+	    -update_dimension_tables()
+		update_dimension_tables()
+		update_fact_table()
+		update_star_schema()
+		-get_new_dates_reported_from_import()
+	}
+	class RkiService << (S,red) Service >> {
+	    pretask_database_drop_create()
+	    task_database_drop_create()
+	    run_download_only()
+	    run_import_only()
+	    run_update_dimension_tables_only()
+	    run_update_fact_table_incremental_only()
+	    run_update_fact_table_initial_only()
+	    run_update_star_schema_incremental()
+	    run_update_star_schema_initial()
+	    download_all_files()
+	    task_import_all_files()
+	    update_dimension_tables_only()
+	    update_fact_table_initial_only()
+	    update_fact_table_incremental_only()
+	}
+	class owid_views_frontend << (B,orchid) Boundary >> {
+	    url_owid_info()
+	    url_owid_tasks()
+	    url_owid_test()
+	    url_owid_imported()
+	    url_owid_date_reported_all()
+	    url_owid_date_reported()
+	    url_owid_date_reported_cases_new()
+	    url_owid_date_reported_cases_cumulative()
+	    url_owid_date_reported_deaths_new()
+	    url_owid_date_reported_deaths_cumulative()
+	}
+	class owid_views_for_tasks << (B,orchid) Boundary >> {
+	    url_task_owid_download_only()
+	    url_task_owid_import_only()
+	    url_task_owid_update_dimension_tables_only()
+	    url_task_owid_update_fact_table_incremental_only()
+	    url_task_owid_update_fact_table_initial_only()
+	    url_task_owid_update_star_schema_initial()
+	    url_task_owid_update_star_schema_incremental()
+	}
+	class owid_celery_tasks << (B,orchid) Boundary >> {
+	    task_owid_download_only()
+	    task_owid_import_only()
+	    task_owid_update_dimension_tables_only()
+	    task_owid_update_fact_table_incremental_only()
+	    task_owid_update_fact_table_initial_only()
+	    task_owid_update_star_schema_incremental()
+	    task_owid_update_star_schema_initial()
+	}
+
+}
+RkiServiceImport : SQLAlchemy database
+RkiServiceUpdateBase : SQLAlchemy database
+RkiServiceUpdateFull : SQLAlchemy database
+RkiServiceUpdate : SQLAlchemy database
+RkiService : SQLAlchemy database
+ApplicationServiceDownload : SQLAlchemy database
+RkiServiceUpdateFull <|-- RkiServiceUpdateBase
+RkiServiceUpdate <|-- RkiServiceUpdateBase
+ApplicationDateReported <|-- RkiMeldedatum
+ApplicationRegion <|-- RkiBundesland
+RkiLandkreis "1" *--> "*" RkiBundesland : region
+RkiData "1" *--> "*" RkiLandkreis : country
+RkiData "1" *--> "*" RkiMeldedatum : date_reported
+RkiService "*" *--> "1"  ApplicationServiceConfig : cfg
+RkiServiceImport "*" --> "1"  ApplicationServiceConfig : cfg
+RkiServiceUpdate "*" --> "1"  ApplicationServiceConfig : cfg
+ApplicationServiceDownload "*" --> "1"  ApplicationServiceConfig : cfg
+RkiService "1" *--> "1" RkiServiceImport : rki_service_import
+RkiService "1" *--> "1" RkiServiceUpdate : rki_service_update
+RkiService "1" *--> "1" RkiServiceUpdateFull : rki_service_update
+RkiService "1" *--> "1" ApplicationServiceDownload : service_download
+owid_views_frontend "1" --> "1" RkiService : rki_service
+owid_views_for_tasks "1" --> "1" RkiService : rki_service
+owid_celery_tasks "1" --> "1" RkiService : rki_service
+AllImportFull <|-- DataImport
+AllImportIncrement <|-- DataImport
+DataImport <|-- AllFlat
+DataImport <|-- RkiImport
+AllFlat <|-- RkiFlat
+RkiImport <|-- RkiFlat
+@enduml

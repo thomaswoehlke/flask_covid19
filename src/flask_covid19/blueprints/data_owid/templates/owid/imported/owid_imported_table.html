@@ -1,0 +1,75 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        {% include 'owid/imported/owid_imported_table_head.html' %}
+                    </thead>
+                    <tbody>
+                    {% for owid_import in page_data.items %}
+                        <tr>
+                            <td>{{ owid_import.continent }}</td>
+                            <td>{{ owid_import.iso_code }}</td>
+                            <td>{{ owid_import.location }}</td>
+                            <td>{{ owid_import.date }}</td>
+                            <td>{{ owid_import.total_cases }}</td>
+                            <td>{{ owid_import.new_cases }}</td>
+                            <td>{{ owid_import.new_cases_smoothed }}</td>
+                            <td>{{ owid_import.total_deaths }}</td>
+                            <td>{{ owid_import.new_deaths }}</td>
+                            <td>{{ owid_import.new_deaths_smoothed }}</td>
+                            <td>{{ owid_import.total_cases_per_million }}</td>
+                            <td>{{ owid_import.new_cases_per_million }}</td>
+                            <td>{{ owid_import.new_cases_smoothed_per_million }}</td>
+                            <td>{{ owid_import.total_deaths_per_million }}</td>
+                            <td>{{ owid_import.new_deaths_per_million }}</td>
+                            <td>{{ owid_import.new_deaths_smoothed_per_million }}</td>
+                            <td>{{ owid_import.reproduction_rate }}</td>
+                            <td>{{ owid_import.icu_patients }}</td>
+                            <td>{{ owid_import.icu_patients_per_million }}</td>
+                            <td>{{ owid_import.hosp_patients }}</td>
+                            <td>{{ owid_import.hosp_patients_per_million }}</td>
+                            <td>{{ owid_import.weekly_icu_admissions }}</td>
+                            <td>{{ owid_import.weekly_icu_admissions_per_million }}</td>
+                            <td>{{ owid_import.weekly_hosp_admissions }}</td>
+                            <td>{{ owid_import.weekly_hosp_admissions_per_million }}</td>
+                            <td>{{ owid_import.new_tests }}</td>
+                            <td>{{ owid_import.total_tests }}</td>
+                            <td>{{ owid_import.total_tests_per_thousand }}</td>
+                            <td>{{ owid_import.new_tests_per_thousand }}</td>
+                            <td>{{ owid_import.new_tests_smoothed }}</td>
+                            <td>{{ owid_import.new_tests_smoothed_per_thousand }}</td>
+                            <td>{{ owid_import.positive_rate }}</td>
+                            <td>{{ owid_import.tests_per_case }}</td>
+                            <td>{{ owid_import.tests_units }}</td>
+                            <td>{{ owid_import.total_vaccinations }}</td>
+                            <td>{{ owid_import.people_vaccinated }}</td>
+                            <td>{{ owid_import.people_fully_vaccinated }}</td>
+                            <td>{{ owid_import.new_vaccinations }}</td>
+                            <td>{{ owid_import.new_vaccinations_smoothed }}</td>
+                            <td>{{ owid_import.total_vaccinations_per_hundred }}</td>
+                            <td>{{ owid_import.people_vaccinated_per_hundred }}</td>
+                            <td>{{ owid_import.people_fully_vaccinated_per_hundred }}</td>
+                            <td>{{ owid_import.new_vaccinations_smoothed_per_million }}</td>
+                            <td>{{ owid_import.stringency_index }}</td>
+                            <td>{{ owid_import.population }}</td>
+                            <td>{{ owid_import.population_density }}</td>
+                            <td>{{ owid_import.median_age }}</td>
+                            <td>{{ owid_import.aged_65_older }}</td>
+                            <td>{{ owid_import.aged_70_older }}</td>
+                            <td>{{ owid_import.gdp_per_capita }}</td>
+                            <td>{{ owid_import.extreme_poverty }}</td>
+                            <td>{{ owid_import.cardiovasc_death_rate }}</td>
+                            <td>{{ owid_import.diabetes_prevalence }}</td>
+                            <td>{{ owid_import.female_smokers }}</td>
+                            <td>{{ owid_import.male_smokers }}</td>
+                            <td>{{ owid_import.handwashing_facilities }}</td>
+                            <td>{{ owid_import.hospital_beds_per_thousand }}</td>
+                            <td>{{ owid_import.life_expectancy }}</td>
+                            <td>{{ owid_import.human_development_index }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        {% include 'owid/imported/owid_imported_table_head.html' %}
+                    </tfoot>
+                </table>
+                </div>

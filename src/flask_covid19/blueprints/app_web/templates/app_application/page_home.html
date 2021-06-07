@@ -1,0 +1,19 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block content %}
+    {{super()}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-4">{{ page_info.title }}</h1>
+                    <p class="lead">{{ page_info.subtitle }}</p>
+                    <hr class="my-4">
+                    <p>Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

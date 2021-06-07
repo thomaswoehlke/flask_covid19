@@ -1,0 +1,11 @@
+[build-system]
+requires = [
+	"wheel",
+	"pip-tools",
+	"pipenv",
+	"virtualenv",
+	"pytoolbox",
+	"python-dotenv",
+	"Flask",
+]
+build-backend = "setuptools.build_meta"

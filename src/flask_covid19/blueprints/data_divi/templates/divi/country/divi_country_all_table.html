@@ -1,0 +1,49 @@
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">
+                    country
+                </th>
+                <th scope="col">
+                    country code
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('divi.url_divi_region_all') }}">region</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for divi_country in page_data.items %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('divi.url_divi_country', country_id=divi_country.id) }}">
+                        {{ divi_country.country }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('divi.url_divi_country', country_id=divi_country.id) }}">
+                        {{ divi_country.country_code }}
+                    </a>
+                </td>
+                <th>
+                    <a href="{{ url_for('divi.url_divi_region', region_id=divi_country.region.id) }}">
+                        {{ divi_country.region.region }}
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            <tr>
+                <th scope="col">
+                    country
+                </th>
+                <th scope="col">
+                    country code
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('divi.url_divi_region_all') }}">region</a>
+                </th>
+            </tr>
+        </tfoot>
+    </table>

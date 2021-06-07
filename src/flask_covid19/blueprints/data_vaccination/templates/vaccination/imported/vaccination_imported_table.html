@@ -1,0 +1,46 @@
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-sm table-bordered">
+        <thead>
+        {% include 'vaccination/data/vaccination_data_table_head.html' %}
+        </thead>
+        <tbody>
+        {% for data_item in page_data.items %}
+            <tr>
+                <td class="text-center table-dark" nowrap>{{ data_item.datum }}</td>
+
+                <td class="text-right table-secondary">{{ data_item.dosen_differenz_zum_vortag }}</td>
+
+                <td class="text-right table-warning">{{ data_item.dosen_kumulativ }}</td>
+                <td class="text-right table-warning">{{ data_item.dosen_biontech_kumulativ }}</td>
+                <td class="text-right table-warning">{{ data_item.dosen_moderna_kumulativ }}</td>
+
+                <td class="text-right table-light">{{ data_item.personen_erst_kumulativ }}</td>
+                <td class="text-right table-light">{{ data_item.personen_voll_kumulativ }}</td>
+
+                <td class="text-right table-danger">{{ data_item.impf_quote_erst }}</td>
+                <td class="text-right table-danger">{{ data_item.impf_quote_voll }}</td>
+
+                <td class="text-right table-light">{{ data_item.indikation_alter_dosen }}</td>
+                <td class="text-right table-light">{{ data_item.indikation_alter_erst }}</td>
+                <td class="text-right table-light">{{ data_item.indikation_alter_voll }}</td>
+
+                <td class="text-right table-secondary">{{ data_item.indikation_pflegeheim_dosen }}</td>
+                <td class="text-right table-secondary">{{ data_item.indikation_pflegeheim_erst }}</td>
+                <td class="text-right table-secondary">{{ data_item.indikation_pflegeheim_voll }}</td>
+
+                <td class="text-right table-light">{{ data_item.indikation_beruf_dosen }}</td>
+                <td class="text-right table-light">{{ data_item.indikation_beruf_erst }}</td>
+                <td class="text-right table-light">{{ data_item.indikation_beruf_erst }}</td>
+
+                <td class="text-right table-secondary">{{ data_item.indikation_medizinisch_dosen }}</td>
+                <td class="text-right table-secondary">{{ data_item.indikation_medizinisch_erst }}</td>
+                <td class="text-right table-secondary">{{ data_item.indikation_medizinisch_voll }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        {% include 'vaccination/data/vaccination_data_table_head.html' %}
+        </tfoot>
+    </table>
+</div>

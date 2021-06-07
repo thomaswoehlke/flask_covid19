@@ -1,0 +1,35 @@
+@startuml
+package covid19.blueprints.app_user {
+	actor AnonymousVisitor as vu
+	actor AppManager as au
+	actor SysAdmin as su
+	actor AppDevTester as du
+}
+package covid19.blueprints.app_user {
+	vu <|-- au
+	vu <|-- su
+	su <|-- du
+	au <|-- du
+}
+left to right direction
+package covid19.blueprints.app_admin.admin_views_frontend {
+	usecase page_root as UC1
+	usecase page_home as UC2
+}
+vu --> UC1
+vu --> UC2
+package covid19.blueprints.app_admin.admin_views_for_tasks {
+	usecase page_admin_crud as UC3
+	usecase alive_message as UC200
+    usecase database_drop_create as UC201
+    usecase database_drop as UC202
+    usecase database_create as UC203
+	usecase page_tasks as UC220
+}
+su --> UC3
+su --> UC200
+su --> UC201
+su --> UC202
+su --> UC203
+su --> UC220
+@enduml

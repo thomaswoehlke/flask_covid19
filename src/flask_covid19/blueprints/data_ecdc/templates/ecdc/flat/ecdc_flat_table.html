@@ -1,0 +1,28 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            {% include 'ecdc/flat/ecdc_flat_table_head.html' %}
+        </thead>
+        <tbody>
+        {% for o in page_data.items %}
+            <tr>
+                <td>{{ o.datum }}</td>
+                <td>{{ o.year }}</td>
+                <td>{{ o.month }}</td>
+                <td>{{ o.day_of_month }}</td>
+                <td>{{ o.cases }}</td>
+                <td>{{ o.deaths }}</td>
+                <td>{{ o.pop_data_2019 }}</td>
+                <td>{{ o.location }}</td>
+                <td>{{ o.geo_id }}</td>
+                <td>{{ o.location_code }}</td>
+                <td>{{ o.location_group }}</td>
+                <td>{{ o.cumulative_number_for_14_days_of_covid19_cases_per_100000 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            {% include 'ecdc/flat/ecdc_flat_table_head.html' %}
+        </tfoot>
+    </table>
+    </div>

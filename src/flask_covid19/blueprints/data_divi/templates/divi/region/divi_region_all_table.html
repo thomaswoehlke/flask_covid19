@@ -1,0 +1,19 @@
+
+                <table class="table table-hover table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">divi_region</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for divi_region in page_data.items %}
+                        <tr>
+                            <td>
+                                <a href="/divi/region/{{ divi_region.id }}">
+                                    {{ divi_region.region }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>

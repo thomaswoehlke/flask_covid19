@@ -1,0 +1,41 @@
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">continent</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ecdc_continent in page_data.items %}
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <a href="{{ url_for( 'ecdc.url_ecdc_continent_one', continent_id=ecdc_continent.id) }}">
+                        {{ ecdc_continent.location_group }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">continent</th>
+            </tr>
+        </tfoot>
+    </table>

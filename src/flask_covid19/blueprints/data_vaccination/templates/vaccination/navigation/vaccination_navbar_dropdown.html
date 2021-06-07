@@ -1,0 +1,25 @@
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
+                        Vaccination<i class="glyphicon glyphicon-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_info') }}">
+                                Vaccination
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_data') }}">
+                                Vaccination :: Data (Timeline Germany)
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
+                                Vaccination :: imported (Timeline Germany)
+                            </a>
+                        </li>
+                    </ul>
+                </li>

@@ -1,0 +1,42 @@
+            <tr>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_date_reported_all') }}">
+                        date reported
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_date_reported_deaths_new', date_reported_id=who_date_reported.id) }}">
+                    deaths new
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_date_reported_cases_new', date_reported_id=who_date_reported.id) }}">
+                    cases new
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_date_reported_deaths_cumulative', date_reported_id=who_date_reported.id) }}">
+                    deaths cumulative
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_date_reported_cases_cumulative', date_reported_id=who_date_reported.id) }}">
+                    cases cumulative
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_country_all') }}">
+                        country code
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_country_all') }}">
+                        country
+                    </a>
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_region_all') }}">
+                        region
+                    </a>
+                </th>
+            </tr>

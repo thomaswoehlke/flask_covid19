@@ -1,0 +1,24 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        {% include 'who/imported/who_imported_table_head.html' %}
+                    </thead>
+                    <tbody>
+                    {% for who_import in page_data.items %}
+                        <tr>
+                            <td>{{ who_import.date_reported }}</td>
+                            <td>{{ who_import.country }}</td>
+                            <td>{{ who_import.country_code }}</td>
+                            <td>{{ who_import.who_region }}</td>
+                            <td>{{ who_import.new_cases }}</td>
+                            <td>{{ who_import.cumulative_cases }}</td>
+                            <td>{{ who_import.new_deaths }}</td>
+                            <td>{{ who_import.cumulative_deaths }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        {% include 'who/imported/who_imported_table_head.html' %}
+                    </tfoot>
+                </table>
+                </div>

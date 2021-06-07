@@ -1,0 +1,143 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block content %}
+    {{super()}}
+    {% include 'vaccination/navigation/vaccination_navtabs.html' %}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="accordion" id="accordionCol">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseLeftOne">
+                               Task: Full Update
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Full Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_download') }}"
+                                       role="button">Vaccination :: Task :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_import') }}"
+                                       role="button">Vaccination :: Task :: import</a>
+                                </div>
+                                <p></p>
+                                <h4>Full Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_full_update_dimension_tables') }}"
+                                       role="button">Vaccination :: Task :: update :: dimension-tables :: full</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_full_update_facttable') }}"
+                                       role="button">Vaccination :: Task :: update :: fact-table :: full</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_full_update_starschema') }}"
+                                       role="button">Vaccination :: Task :: update :: star_schema :: full</a>
+                                </div>
+                                <p></p>
+                                <h4>Full Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_full_update') }}"
+                                       role="button">Vaccination :: Task :: update :: full</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseLeftTwo">
+                                    Task: Update
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_download') }}"
+                                       role="button">Vaccination :: Task :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_import') }}"
+                                       role="button">Vaccination :: Task :: import</a>
+                                </div>
+                                <p></p>
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_update_dimension_tables') }}"
+                                       role="button">Vaccination :: Task :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_update_facttable') }}"
+                                       role="button">Vaccination :: Task :: update :: fact-table</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_update_starschema') }}"
+                                       role="button">Vaccination :: Task :: update :: star_schema</a>
+                                </div>
+                                <p></p>
+                                <h4>Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'vaccination.url_task_vaccination_update') }}"
+                                       role="button">Vaccination :: Task :: update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    Info: Impfdashboard
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Impfdashboard</h4>
+                                <p>
+                                    <a href="https://impfdashboard.de/">
+                                        https://impfdashboard.de/
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Info: Impfdashboard Datensatz
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordionCol">
+                            <div class="card-body">
+                                <h4>Impfdashboard Datensatz</h4>
+                                <p>
+                                    <a href="https://impfdashboard.de/static/data/germany_vaccinations_timeseries_v2.tsv">
+                                        https://impfdashboard.de/static/data/germany_vaccinations_timeseries_v2.tsv
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+
+{% endblock %}
+
+
+

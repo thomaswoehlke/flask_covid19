@@ -1,0 +1,46 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block content %}
+    {{super()}}
+    {% include 'usr/navigation/usr_navtabs.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_update_star_schema_initial') }}"
+                       role="button">User :: Task :: update :: star_schema :: initial</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_update_star_schema_incremental') }}"
+                       role="button">User :: Task :: update :: star_schema :: incremental</a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_download_only') }}"
+                       role="button">User :: Task :: download :: only</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_import_only') }}"
+                       role="button">User :: Task :: import :: only</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables_only') }}"
+                       role="button">User :: Task :: update :: dimension-tables : only</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_update_fact_table_incremental_only') }}"
+                       role="button">User :: Task :: update :: fact-table :: only :: incremental</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'owid.url_task_owid_update_fact_table_initial_only') }}"
+                       role="button">User :: Task :: update :: fact-table :: only :: initial</a>
+                </div>
+            </div>
+         </div>
+    </div>
+{% endblock %}
+
+
+
+{% block footer_container %}
+
+{% endblock %}

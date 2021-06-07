@@ -1,0 +1,21 @@
+-r docs.in
+-r tests.in
+Flask-SQLAlchemy
+Flask-Cors
+Flask-BS4
+Flask-Admin
+Flask-Login
+flask-login-dictabase-blueprint
+SQLAlchemy==1.4.15
+mysql-connector-python
+mysqldb-wrapper
+mariadb
+wget
+email_validator
+celery<5.0
+eventlet
+dataframetodb
+Flask-SQLAlchemy-Booster
+pangres
+Flask-Migrate
+sqlalchemy-mixins

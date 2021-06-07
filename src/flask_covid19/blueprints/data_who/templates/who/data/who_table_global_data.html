@@ -1,0 +1,40 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            {% include 'who/data/who_table_global_data_head.html' %}
+        </thead>
+        <tbody>
+        {% for who_global_data in page_data.items %}
+            <tr>
+                <th>
+                    <a href="/who/date_reported/{{ who_global_data.date_reported.id }}">
+                        {{ who_global_data.date_reported }}
+                    </a>
+                </th>
+                <td>{{ who_global_data.deaths_new }}</td>
+                <td>{{ who_global_data.cases_new }}</td>
+                <td>{{ who_global_data.deaths_cumulative }}</td>
+                <td>{{ who_global_data.cases_cumulative }}</td>
+                <td>
+                    <a href="/who/country/{{ who_global_data.country.id }}">
+                        {{ who_global_data.country.country_code }}
+                    </a>
+                </td>
+                <td>
+                    <a href="/who/country/{{ who_global_data.country.id }}">
+                        {{ who_global_data.country.country }}
+                    </a>
+                </td>
+                <th>
+                    <a href="/who/region/{{ who_global_data.country.region.id }}">
+                        {{ who_global_data.country.region.region }}
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            {% include 'who/data/who_table_global_data_head.html' %}
+        </tfoot>
+    </table>
+    </div>

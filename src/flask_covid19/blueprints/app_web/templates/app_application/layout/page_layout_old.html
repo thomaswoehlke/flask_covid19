@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>{{page_info.title}}</title>
+</head>
+<body>
+
+    <header>
+        <div class="container tw_padding">
+            {% include 'app_application/fragments/fragment_navbar.html' %}
+        </div>
+    </header>
+
+    <section>
+        <div class="container tw_padding">
+            {% include 'app_application/fragments/fragment_navtabs.html' %}
+        </div>
+        <div class="container">
+            {% block navigation_navtabs %}{% endblock %}
+        </div>
+        <div class="container">
+            {% block navigation_breadcrumb %}{% endblock %}
+        </div>
+    </section>
+
+    <main>
+        <div class="container tw_padding">
+            {% include 'app_application/fragments/fragment_flashed_messages.html' %}
+        </div>
+        <div class="container tw_padding">
+            {% block main_container %}{% endblock %}
+        </div>
+        <div class="container-fluid tw_padding">
+            {% block main_container_fluid %}{% endblock %}
+        </div>
+    </main>
+
+    <section>
+        <div class="container tw_padding">
+            {% for error in errors %}
+                <h4>{{ error }}</h4>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="container-fluid">
+        {% block footer_container %}{% endblock %}
+        </div>
+    </footer>
+
+    <script src="/static/index.js"></script>
+</body>
+</html>

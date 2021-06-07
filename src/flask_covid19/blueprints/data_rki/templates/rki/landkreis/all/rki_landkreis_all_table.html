@@ -1,0 +1,32 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            {% include 'rki/landkreis/all/rki_landkreis_all_table_head.html' %}
+        </thead>
+        <tbody>
+        {% for rki_landkreis in page_data.items %}
+            <tr>
+                <td>
+                    {{ rki_landkreis.location_group.location_group }}
+                </td>
+                <td>
+                    <a href="{{ url_for( 'rki.url_rki_landkreis_one', landkreis_id=rki_landkreis.id ) }}">
+                        {{ rki_landkreis.location }}
+                    </a>
+                </td>
+                <td>
+                    {{ rki_landkreis.location_type }}
+                </td>
+                <td>
+                    <a href="{{ url_for( 'rki.url_rki_landkreis_one', landkreis_id=rki_landkreis.id ) }}">
+                        {{ rki_landkreis.id_landkreis }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            {% include 'rki/landkreis/all/rki_landkreis_all_table_head.html' %}
+        </tfoot>
+    </table>
+    </div>

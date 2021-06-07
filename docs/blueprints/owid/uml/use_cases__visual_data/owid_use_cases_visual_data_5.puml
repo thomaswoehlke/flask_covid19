@@ -1,0 +1,82 @@
+@startuml
+left to right direction
+actor Visitor as vu
+package user {
+	actor SysAdmin as su
+	actor Admin as au
+}
+package owid_views_frontend_visual_data_5 {
+    usecase owid_report_Total_and_Daily_confirmed_COVID19_cases as UC321
+    usecase owid_report_Total_and_Daily_confirmed_COVID19_cases_per_million_people as UC322
+    usecase owid_report_Total_confirmed_COVID19_cases_By_Income_Group as UC323
+    usecase owid_report_Total_confirmed_COVID19_cases_per_million_people_Map_and_country_time_series as UC324
+    usecase owid_report_Total_confirmed_COVID19_cases_per_million__how_rapidly_are_they_increasing__Trajectories as UC325
+    usecase owid_report_Total_confirmed_COVID19_cases_vs_deaths_per_million as UC326
+    usecase owid_report_Total_confirmed_COVID19_cases__by_source as UC327
+    usecase owid_report_Total_confirmed_COVID19_cases__how_rapidly_are_they_increasing__Trajectories as UC328
+    usecase owid_report_Total_confirmed_COVID19_deaths_Map_and_country_time_series as UC329
+    usecase owid_report_Total_confirmed_COVID19_deaths_By_Income_Group as UC330
+    usecase owid_report_Total_confirmed_COVID19_deaths_and_cases_per_million_people as UC331
+    usecase owid_report_Total_confirmed_COVID19_deaths_per_million_people as UC332
+    usecase owid_report_Total_confirmed_COVID19_deaths_per_million_vs_GDP_per_capita as UC333
+    usecase owid_report_Total_confirmed_COVID19_deaths_per_million__how_rapidly_are_they_increasing as UC334
+    usecase owid_report_Total_confirmed_COVID19_deaths__how_rapidly_are_they_increasing__Trajectories as UC335
+    usecase owid_report_Total_confirmed_deaths_due_to_COVID19_vs_Population as UC336
+    usecase owid_report_Total_confirmed_deaths_from_COVID19__by_source as UC337
+    usecase owid_report_Total_Number_of_COVID19_Tests_per_confirmed_case as UC338
+    usecase owid_report_Transit_stations__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC339
+    usecase owid_report_Week_by_week_change_in_confirmed_COVID19_cases as UC340
+    usecase owid_report_Week_by_week_change_of_confirmed_COVID19_cases_vs_GDP_per_capita as UC341
+    usecase owid_report_Week_by_week_change_of_confirmed_COVID19_deaths as UC342
+    usecase owid_report_Week_by_week_change_of_confirmed_COVID19_deaths_vs_GDP_per_capita as UC343
+    usecase owid_report_Weekly_case_growth_rate_vs_Daily_case_rate as UC344
+    usecase owid_report_Weekly_confirmed_COVID19_cases as UC345
+    usecase owid_report_Weekly_confirmed_COVID19_cases_per_million_people as UC346
+    usecase owid_report_Weekly_confirmed_COVID19_deaths as UC347
+    usecase owid_report_Weekly_confirmed_COVID19_deaths_per_million_people as UC348
+    usecase owid_report_Weekly_death_growth_rate_vs_Daily_death_rate as UC349
+    usecase owid_report_Weekly_new_ICU_admissions_for_COVID19 as UC350
+    usecase owid_report_Weekly_new_ICU_admissions_for_COVID19_per_million as UC351
+    usecase owid_report_Weekly_new_hospital_admissions_for_COVID19 as UC352
+    usecase owid_report_Weekly_new_hospital_admissions_for_COVID19_per_million as UC353
+    usecase owid_report_Which_countries_do_COVID19_contact_tracing as UC354
+    usecase owid_report_Workplace_closures_during_the_COVID19_pandemic as UC355
+    usecase owid_report_Workplaces_How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC356
+}
+vu --> UC321
+vu --> UC322
+vu --> UC323
+vu --> UC324
+vu --> UC325
+vu --> UC326
+vu --> UC327
+vu --> UC328
+vu --> UC329
+vu --> UC330
+vu --> UC331
+vu --> UC332
+vu --> UC333
+vu --> UC334
+vu --> UC335
+vu --> UC336
+vu --> UC337
+vu --> UC338
+vu --> UC339
+vu --> UC340
+vu --> UC341
+vu --> UC342
+vu --> UC343
+vu --> UC344
+vu --> UC345
+vu --> UC346
+vu --> UC347
+vu --> UC348
+vu --> UC349
+vu --> UC350
+vu --> UC351
+vu --> UC352
+vu --> UC353
+vu --> UC354
+vu --> UC355
+vu --> UC356
+@enduml

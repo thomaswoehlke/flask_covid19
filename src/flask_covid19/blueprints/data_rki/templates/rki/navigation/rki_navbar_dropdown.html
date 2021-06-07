@@ -1,0 +1,29 @@
+              <li class="dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
+                        RKI <i class="glyphicon glyphicon-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('rki.url_rki_info') }}">
+                                RKI Info
+                            </a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('rki.url_rki_imported') }}">
+                                RKI imported
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{{ url_for( 'rki.url_rki_date_reported_all') }}">RKI Date Reported</a>
+                        </li>
+                    </ul>
+                </li>

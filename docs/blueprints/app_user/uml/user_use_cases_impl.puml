@@ -1,0 +1,67 @@
+@startuml
+package covid19.blueprints.app_user {
+	actor AnonymousVisitor as vu
+	actor AppManager as ou
+	actor SysAdmin as su
+	actor AppDevTester as du
+}
+package covid19.blueprints.app_user {
+	vu <|-- ou
+	vu <|-- su
+	su <|-- du
+	ou <|-- du
+}
+left to right direction
+package user_views_frontend {
+  usecase url_user_index as UC1
+  usecase url_user_tasks as UC2
+  usecase url_user_info as UC3
+}
+package user_views_for_tasks {
+  usecase url_user_database_dump as UC51
+  usecase url_user_database_dump_reimport as UC52
+  usecase url_user_database_drop as UC53
+  usecase url_user_download_all_files as UC54
+  usecase url_user_alive_message_start as UC55
+  usecase url_user_database_dropcreate_only as UC56
+  usecase url_user_import_all_files as UC57
+  usecase url_user_update_dimension_tables_only as UC58
+  usecase url_user_update_fact_table_initial_only as UC59
+  usecase url_user_update_fact_table_incremental_only as UC60
+  usecase url_user_update_star_schema_initial as UC61
+  usecase url_user_update_star_schema_incremental as UC62
+}
+package user_celery_tasks {
+  usecase task_user_alive_message as UC105
+  usecase task_user_database_drop_create as UC106
+  usecase task_user_import_all_files as UC107
+  usecase task_user_update_dimension_tables_only as UC108
+  usecase task_user_update_fact_table_initial_only as UC109
+  usecase task_user_update_fact_table_incremental_only as UC110
+  usecase task_user_update_star_schema_initial as UC111
+  usecase task_user_update_star_schema_incremental as UC112
+}
+au --> UC1
+au --> UC2
+au --> UC3
+su --> UC51
+su --> UC52
+su --> UC53
+au --> UC54
+au --> UC55
+au --> UC56
+au --> UC57
+au --> UC58
+au --> UC59
+au --> UC60
+au --> UC61
+au --> UC62
+UC55 --> UC105
+UC56 --> UC106
+UC57 --> UC107
+UC58 --> UC108
+UC59 --> UC109
+UC60 --> UC110
+UC61 --> UC111
+UC62 --> UC112
+@enduml

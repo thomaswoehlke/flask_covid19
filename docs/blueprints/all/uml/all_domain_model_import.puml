@@ -1,0 +1,521 @@
+@startuml
+left to right direction
+
+package covid19.blueprints.all.service_import {
+
+	interface AllUpdateFull {
+		{classifier} download()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+	}
+
+	interface AllUpdate  {
+		{classifier} download()
+		{classifier} import_file()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+}
+
+package covid19.blueprints.all.model_import {
+	interface AllImport {
+	    datum_reported: Date
+		location: String
+		location_group: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface AllFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): AllFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+	}
+
+}
+
+package covid19.blueprints.ecdc.model_import {
+
+	entity EcdcImport {
+	    id: Integer
+		date_rep:  String
+	    date_rep_day:  String
+	    date_rep_month:  String
+	    date_rep_year:  String
+	    cases:  String
+	    deaths:  String
+	    pop_data_2019:  String
+	    countries_and_territories:  String
+	    geo_id:  String
+	    country_territory_code:  String
+	    continent_exp:  String
+	    cumulative_number_for_14_days_of_covid19_cases_per_100000:  String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity EcdcFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		date_rep:  String
+	    date_rep_day:  String
+	    date_rep_month:  String
+	    date_rep_year:  String
+	    cases:  String
+	    deaths:  String
+	    pop_data_2019:  String
+	    countries_and_territories:  String
+	    geo_id:  String
+	    country_territory_code:  String
+	    continent_exp:  String
+	    cumulative_number_for_14_days_of_covid19_cases_per_100000:  String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): EcdcFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): EcdcFlat[]
+	}
+
+}
+
+package covid19.blueprints.owid.model_import {
+
+	entity OwidImport {
+	    id: Integer
+		iso_code:  String
+	    continent:  String
+	    location:  String
+	    date:  String
+	    total_cases:  String
+	    new_cases:  String
+	    new_cases_smoothed:  String
+	    total_deaths:  String
+	    new_deaths:  String
+	    new_deaths_smoothed:  String
+	    total_cases_per_million:  String
+	    new_cases_per_million:  String
+	    new_cases_smoothed_per_million:  String
+	    total_deaths_per_million:  String
+	    new_deaths_per_million:  String
+	    new_deaths_smoothed_per_million:  String
+	    reproduction_rate:  String
+	    icu_patients:  String
+	    icu_patients_per_million:  String
+	    hosp_patients:  String
+	    hosp_patients_per_million:  String
+	    weekly_icu_admissions:  String
+	    weekly_icu_admissions_per_million:  String
+	    weekly_hosp_admissions:  String
+	    weekly_hosp_admissions_per_million:  String
+	    new_tests:  String
+	    total_tests:  String
+	    total_tests_per_thousand:  String
+	    new_tests_per_thousand:  String
+	    new_tests_smoothed:  String
+	    new_tests_smoothed_per_thousand:  String
+	    positive_rate:  String
+	    tests_per_case:  String
+	    tests_units:  String
+	    total_vaccinations:  String
+	    people_vaccinated:  String
+	    people_fully_vaccinated:  String
+	    new_vaccinations:  String
+	    new_vaccinations_smoothed:  String
+	    total_vaccinations_per_hundred:  String
+	    people_vaccinated_per_hundred:  String
+	    people_fully_vaccinated_per_hundred:  String
+	    new_vaccinations_smoothed_per_million:  String
+	    stringency_index:  String
+	    population:  String
+	    population_density:  String
+	    median_age:  String
+	    aged_65_older:  String
+	    aged_70_older:  String
+	    gdp_per_capita:  String
+	    extreme_poverty:  String
+	    cardiovasc_death_rate:  String
+	    diabetes_prevalence:  String
+	    female_smokers:  String
+	    male_smokers:  String
+	    handwashing_facilities:  String
+	    hospital_beds_per_thousand:  String
+	    life_expectancy:  String
+	    human_development_index:  String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity OwidFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		iso_code:  String
+	    continent:  String
+	    location:  String
+	    date:  String
+	    total_cases:  String
+	    new_cases:  String
+	    new_cases_smoothed:  String
+	    total_deaths:  String
+	    new_deaths:  String
+	    new_deaths_smoothed:  String
+	    total_cases_per_million:  String
+	    new_cases_per_million:  String
+	    new_cases_smoothed_per_million:  String
+	    total_deaths_per_million:  String
+	    new_deaths_per_million:  String
+	    new_deaths_smoothed_per_million:  String
+	    reproduction_rate:  String
+	    icu_patients:  String
+	    icu_patients_per_million:  String
+	    hosp_patients:  String
+	    hosp_patients_per_million:  String
+	    weekly_icu_admissions:  String
+	    weekly_icu_admissions_per_million:  String
+	    weekly_hosp_admissions:  String
+	    weekly_hosp_admissions_per_million:  String
+	    new_tests:  String
+	    total_tests:  String
+	    total_tests_per_thousand:  String
+	    new_tests_per_thousand:  String
+	    new_tests_smoothed:  String
+	    new_tests_smoothed_per_thousand:  String
+	    positive_rate:  String
+	    tests_per_case:  String
+	    tests_units:  String
+	    total_vaccinations:  String
+	    people_vaccinated:  String
+	    people_fully_vaccinated:  String
+	    new_vaccinations:  String
+	    new_vaccinations_smoothed:  String
+	    total_vaccinations_per_hundred:  String
+	    people_vaccinated_per_hundred:  String
+	    people_fully_vaccinated_per_hundred:  String
+	    new_vaccinations_smoothed_per_million:  String
+	    stringency_index:  String
+	    population:  String
+	    population_density:  String
+	    median_age:  String
+	    aged_65_older:  String
+	    aged_70_older:  String
+	    gdp_per_capita:  String
+	    extreme_poverty:  String
+	    cardiovasc_death_rate:  String
+	    diabetes_prevalence:  String
+	    female_smokers:  String
+	    male_smokers:  String
+	    handwashing_facilities:  String
+	    hospital_beds_per_thousand:  String
+	    life_expectancy:  String
+	    human_development_index:  String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): OwidFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): OwidFlat[]
+	}
+
+}
+
+
+package covid19.blueprints.rki_cases.model_import {
+
+	entity RkiImport {
+		id: Integer
+	    fid: String
+	    id_bundesland: String
+	    bundesland: String
+	    landkreis: String
+	    altersgruppe: String
+	    geschlecht: String
+	    anzahl_fall: String
+	    anzahl_todesfall: String
+	    meldedatum: String
+	    id_landkreis: String
+	    datenstand: String
+	    neuer_fall: String
+	    neuer_todesfall: String
+	    ref_datum: String
+	    neu_genesen: String
+	    anzahl_genesen: String
+	    ist_erkrankungsbeginn: String
+	    altersgruppe2: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity RkiFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+	    fid: String
+	    id_bundesland: String
+	    bundesland: String
+	    landkreis: String
+	    altersgruppe: String
+	    geschlecht: String
+	    anzahl_fall: String
+	    anzahl_todesfall: String
+	    meldedatum: String
+	    id_landkreis: String
+	    datenstand: String
+	    neuer_fall: String
+	    neuer_todesfall: String
+	    ref_datum: String
+	    neu_genesen: String
+	    anzahl_genesen: String
+	    ist_erkrankungsbeginn: String
+	    altersgruppe2: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): RkiCasesFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): RkiCasesFlat[]
+	}
+}
+
+package covid19.blueprints.rki_vaccination.model_import {
+
+	entity VaccinationImport {
+	    id: Integer
+	    dosen_kumulativ: Integer
+	    dosen_differenz_zum_vortag: Integer
+	    dosen_biontech_kumulativ: Integer
+	    dosen_moderna_kumulativ: Integer
+	    personen_erst_kumulativ: Integer
+	    personen_voll_kumulativ: Integer
+	    impf_quote_erst: Float
+	    impf_quote_voll: Float
+	    indikation_alter_dosen: Integer
+	    indikation_beruf_dosen: Integer
+	    indikation_medizinisch_dosen: Integer
+	    indikation_pflegeheim_dosen: Integer
+	    indikation_alter_erst: Integer
+	    indikation_beruf_erst: Integer
+	    indikation_medizinisch_erst: Integer
+	    indikation_pflegeheim_erst: Integer
+	    indikation_alter_voll: Integer
+	    indikation_beruf_voll: Integer
+	    indikation_medizinisch_voll: Integer
+	    indikation_pflegeheim_voll: Integer
+	    date_reported: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity VaccinationFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+	    dosen_kumulativ: Integer
+	    dosen_differenz_zum_vortag: Integer
+	    dosen_biontech_kumulativ: Integer
+	    dosen_moderna_kumulativ: Integer
+	    personen_erst_kumulativ: Integer
+	    personen_voll_kumulativ: Integer
+	    impf_quote_erst: Float
+	    impf_quote_voll: Float
+	    indikation_alter_dosen: Integer
+	    indikation_beruf_dosen: Integer
+	    indikation_medizinisch_dosen: Integer
+	    indikation_pflegeheim_dosen: Integer
+	    indikation_alter_erst: Integer
+	    indikation_beruf_erst: Integer
+	    indikation_medizinisch_erst: Integer
+	    indikation_pflegeheim_erst: Integer
+	    indikation_alter_voll: Integer
+	    indikation_beruf_voll: Integer
+	    indikation_medizinisch_voll: Integer
+	    indikation_pflegeheim_voll: Integer
+	    date_reported: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): VaccinationFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): VaccinationFlat[]
+	}
+
+}
+
+package covid19.blueprints.who.model_import {
+
+	entity WhoImport {
+	    id: Integer
+	    date_reported: String
+	    country_code: String
+	    country: String
+	    who_region: String
+	    new_cases: String
+	    cumulative_cases: String
+	    new_deaths: String
+	    cumulative_deaths: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity WhoFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+	    date_reported: String
+	    country_code: String
+	    country: String
+	    who_region: String
+	    new_cases: String
+	    cumulative_cases: String
+	    new_deaths: String
+	    cumulative_deaths: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): WhoFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): WhoFlat[]
+	}
+}
+
+
+AllImportFull <|-- DataImport
+AllImportIncrement <|-- DataImport
+DataImport <|-- AllFlat
+
+DataImport <|-- WhoImport
+DataImport <|-- EcdcImport
+DataImport <|-- VaccinationImport
+DataImport <|-- RkiImport
+DataImport <|-- OwidImport
+
+AllFlat <|-- WhoFlat
+AllFlat <|-- EcdcFlat
+AllFlat <|-- VaccinationFlat
+AllFlat <|-- RkiFlat
+AllFlat <|-- OwidFlat
+
+WhoImport <|-- WhoFlat
+EcdcImport <|-- EcdcFlat
+VaccinationImport <|-- VaccinationFlat
+RkiImport <|-- RkiFlat
+OwidImport <|-- OwidFlat
+@enduml

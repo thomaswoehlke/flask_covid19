@@ -1,0 +1,53 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">geo id</th>
+                <th scope="col">country territory code</th>
+                <th scope="col">countries and territories</th>
+                <th scope="col">population data 2019</th>
+                <th scope="col">continent</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for europe_country in page_data.items %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('ecdc.url_ecdc_country_one',
+                        country_id=europe_country.id) }}">
+                        {{ europe_country.geo_id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('ecdc.url_ecdc_country_one',
+                        country_id=europe_country.id) }}">
+                        {{ europe_country.location_code }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('ecdc.url_ecdc_country_one',
+                        country_id=europe_country.id) }}">
+                        {{ europe_country.location }}
+                    </a>
+                </td>
+                <td>{{ europe_country.pop_data_2019 }}</td>
+                <td>
+                    <a href="{{ url_for('ecdc.url_ecdc_continent_one',
+                        continent_id=europe_country.location_group.id) }}">
+                        {{ europe_country.location_group.location_group }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            <tr>
+                <th scope="col">geo id</th>
+                <th scope="col">country territory code</th>
+                <th scope="col">countries and territories</th>
+                <th scope="col">population data 2019</th>
+                <th scope="col">continent</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>

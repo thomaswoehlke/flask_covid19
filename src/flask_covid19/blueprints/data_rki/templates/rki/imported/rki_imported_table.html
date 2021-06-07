@@ -1,0 +1,32 @@
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-dark">
+                        <thead class="table-secondary">
+                            {% include 'rki/imported/rki_imported_table_head.html' %}
+                        </thead>
+                        <tbody>
+                        {% for rki_import in page_data.items %}
+                            <tr>
+                                <td>{{ rki_import.bundesland }}</td>
+                                <td>{{ rki_import.landkreis }}</td>
+                                <td>{{ rki_import.altersgruppe }}</td>
+                                <td>{{ rki_import.geschlecht }}</td>
+                                <td>{{ rki_import.anzahl_fall }}</td>
+                                <td>{{ rki_import.anzahl_todesfall }}</td>
+                                <td>{{ rki_import.meldedatum }}</td>
+                                <td>{{ rki_import.neuer_fall }}</td>
+                                <td>{{ rki_import.neuer_todesfall }}</td>
+                                <td>{{ rki_import.neu_genesen }}</td>
+                                <td>{{ rki_import.anzahl_genesen }}</td>
+                                <td>{{ rki_import.ist_erkrankungsbeginn }}</td>
+                                <td>{{ rki_import.altersgruppe2 }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot class="table-secondary">
+                            {% include 'rki/imported/rki_imported_table_head.html' %}
+                        </tfoot>
+                </table>
+                </div>
+
+
+

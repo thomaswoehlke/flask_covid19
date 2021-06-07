@@ -1,0 +1,14 @@
+                {% if current_user.is_authenticated %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
+                        All<i class="glyphicon glyphicon-chevron-down small"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'app_all.url_all_info') }}">
+                                All info
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}

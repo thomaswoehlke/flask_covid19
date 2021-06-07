@@ -1,0 +1,51 @@
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-dark">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">
+                    country
+                </th>
+                <th scope="col">
+                    country code
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_region_all') }}">region</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for who_country in page_data.items %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('who.url_who_country', country_id=who_country.id) }}">
+                        {{ who_country.location }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('who.url_who_country', country_id=who_country.id) }}">
+                        {{ who_country.location_code }}
+                    </a>
+                </td>
+                <th>
+                    <a href="{{ url_for('who.url_who_region', region_id=who_country.location_group.id) }}">
+                        {{ who_country.location_group.location_group }}
+                    </a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="table-secondary">
+            <tr>
+                <th scope="col">
+                    country
+                </th>
+                <th scope="col">
+                    country code
+                </th>
+                <th scope="col">
+                    <a href="{{ url_for('who.url_who_region_all') }}">region</a>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
