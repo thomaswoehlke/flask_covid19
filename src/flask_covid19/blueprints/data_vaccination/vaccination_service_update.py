@@ -94,11 +94,6 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
         self.__full_update_fact_table()
         return self
 
-    def full_update_star_schema(self):
-        self.full_update_dimension_tables()
-        self.full_update_fact_table()
-        return self
-
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
 
@@ -172,11 +167,6 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         self.__update_fact_table()
         return self
 
-    def update_star_schema(self):
-        self.update_dimension_tables()
-        self.update_fact_table()
-        return self
-
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" WhoTestService.delete_last_day() [START]")
@@ -185,9 +175,6 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" WhoTestService.delete_last_day() [DONE]")
         app.logger.debug("------------------------------------------------------------")
-        return self
-
-    def delete_last_location_group(self):
         return self
 
 

@@ -34,11 +34,3 @@ class DiviTestService:
         app.logger.debug(" DiviTestService.delete_last_day() [DONE]")
         app.logger.debug("------------------------------------------------------------")
 
-    def run_update_star_schema_incremental(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" DiviTestService.run_update_star_schema_incremental() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        self.__service.update_star_schema()
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" DiviTestService.run_update_star_schema_incremental() [DONE]")
-        app.logger.debug("------------------------------------------------------------")

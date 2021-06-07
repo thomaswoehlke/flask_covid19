@@ -508,22 +508,6 @@ def url_owid_test_update_fact_table_initial_only():
     return redirect(url_for('owid.url_owid_info'))
 
 
-@app_owid.route('/test/update_star_schema/incremental')
-@login_required
-def url_owid_test_update_star_schema_incremental():
-    app.logger.info("update_star_schema_incremental - START")
-    flash("update_star_schema_incremental - START")
-    return redirect(url_for('owid.url_owid_info'))
-
-
-@app_owid.route('/test/update_star_schema/initial')
-@login_required
-def url_owid_test_update_star_schema_initial():
-    app.logger.info("update_star_schema_initial - START")
-    flash("update_star_schema_initial - START")
-    return redirect(url_for('owid.url_owid_info'))
-
-
 @app_owid.route('/test/owid_import/countries')
 @login_required
 def url_owid_test_owid_import_countries():

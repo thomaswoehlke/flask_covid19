@@ -175,16 +175,6 @@ class DiviServiceUpdateFull(DiviServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def full_update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_star_schema_initial [begin]")
-        app.logger.info("------------------------------------------------------------")
-        self.__full_update_dimension_tables()
-        self.__full_update_fact_table()
-        app.logger.info(" update_star_schema_initial [done]")
-        app.logger.info("------------------------------------------------------------")
-        return self
-
 
 class DiviServiceUpdate(DiviServiceUpdateBase):
 
@@ -322,30 +312,39 @@ class DiviServiceUpdate(DiviServiceUpdateBase):
 
     def update_dimension_tables(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_dimension_tables_only [begin]")
+        app.logger.info(" DiviServiceUpdate.update_dimension_tables_only [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_dimension_tables()
-        app.logger.info(" update_dimension_tables_only [done]")
+        app.logger.info(" DiviServiceUpdate.update_dimension_tables_only [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_fact_tables_incremental_only [begin]")
+        app.logger.info(" DiviServiceUpdate.update_fact_tables_incremental_only [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_fact_table()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_fact_tables_incremental_only [done]")
+        app.logger.info(" DiviServiceUpdate.update_fact_tables_incremental_only [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_star_schema_incremental [begin]")
-        app.logger.info("------------------------------------------------------------")
-        self.__update_dimension_tables()
-        self.__update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_star_schema_incremental [done]")
-        app.logger.info("------------------------------------------------------------")
-        return self
+    def delete_last_day(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug(" DiviServiceUpdate.delete_last_day() [START]")
+        app.logger.debug("------------------------------------------------------------")
+        joungest_datum_str = DiviData.get_joungest_datum()
+        joungest_datum = DiviDateReported.find_by_date_reported(joungest_datum_str)
+        app.logger.info("joungest_datum:")
+        app.logger.info(joungest_datum)
+        app.logger.info("DiviData.get_data_for_one_day(joungest_datum):")
+        i = 0
+        for data in DiviData.get_data_for_one_day(joungest_datum):
+            i += 1
+            line = " | " + str(i) + " | " + str(data.date_reported) + " | " + data.country.country + " | to be deleted"
+            app.logger.info(line)
+        app.logger.info("DiviData.delete_data_for_one_day(joungest_datum)")
+        DiviData.delete_data_for_one_day(joungest_datum)
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug(" DiviServiceUpdate.delete_last_day() [DONE]")
+        app.logger.debug("------------------------------------------------------------")

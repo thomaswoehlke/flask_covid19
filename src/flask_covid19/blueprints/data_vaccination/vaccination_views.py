@@ -125,32 +125,6 @@ def task_vaccination_full_update_facttable(self):
 
 
 @celery.task(bind=True)
-def task_vaccination_update_starschema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_update_starschema [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_update_starschema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_full_update_starschema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_full_update_starschema [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_full_update_starschema)"
-    return result
-
-
-@celery.task(bind=True)
 def task_vaccination_update(self):
     logger = get_task_logger(__name__)
     self.update_state(state=states.STARTED)
@@ -220,20 +194,6 @@ def url_task_vaccination_update_facttable():
 def url_task_vaccination_full_update_facttable():
     flash("url_vaccination_task_update_facttable_initial_only started")
     task_vaccination_full_update_facttable.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/full/update/star_schema')
-def url_task_vaccination_full_update_starschema():
-    flash("url_vaccination_task_update_star_schemainitial started")
-    task_vaccination_full_update_starschema.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update/star_schema')
-def url_task_vaccination_update_starschema():
-    flash("url_vaccination_task_update_starschema_incremental started")
-    task_vaccination_update_starschema.apply_async()
     return redirect(url_for('vaccination.url_vaccination_info'))
 
 

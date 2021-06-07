@@ -22,12 +22,10 @@ class OwidService(AllServiceMixin):
         self.service_update_full = OwidServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" OWID Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
-        flash("OwidService.download [start]")
-        # TODO self.service_download.download()
         self.service_download.download()
-        flash("OwidService.download [done]")
         return self
 
     def import_file(self):
@@ -50,29 +48,18 @@ class OwidService(AllServiceMixin):
         self.service_update.update_fact_table()
         return self
 
-    def full_update_star_schema(self):
-        self.service_update_full.full_update_star_schema()
-        return self
-
-    def update_star_schema(self):
-        self.service_update.update_star_schema()
-        return self
-
     def full_update(self):
         self.service_import.import_file()
-        self.service_update_full.full_update_star_schema()
+        self.service_update_full.full_update_dimension_tables()
+        self.service_update_full.full_update_fact_table()
         return self
 
     def update(self):
         self.service_import.import_file()
-        self.service_update.update_star_schema()
+        self.service_update.update_dimension_tables()
+        self.service_update.update_fact_table()
         return self
 
     def delete_last_day(self):
         self.service_update.delete_last_day()
         return self
-
-    def delete_last_location_group(self):
-        self.service_update.delete_last_location_group()
-        return self
-

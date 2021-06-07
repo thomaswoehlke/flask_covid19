@@ -542,30 +542,6 @@ def url_task_who_update_fact_table():
     return redirect(url_for('who.url_who_info'))
 
 
-@app_who.route('/task/update/full/star_schema')
-@login_required
-def url_task_who_full_update_star_schema():
-    app.logger.info("url_task_who_full_update_star_schema [start]")
-    task_who_full_update_star_schema.apply_async()
-    flash("task_who_full_update_star_schema [start]")
-    flash(message="long running background task started", category="warning")
-    app.logger.warn("async task_who_full_update_star_schema [start]")
-    app.logger.info("url_task_who_full_update_star_schema [done]")
-    return redirect(url_for('who.url_who_info'))
-
-
-@app_who.route('/task/update/star_schema')
-@login_required
-def url_task_who_update_star_schema():
-    app.logger.info("url_task_who_update_star_schema [start]")
-    task_who_update_star_schema.apply_async()
-    flash("task_who_update_star_schema [start]")
-    flash(message="long running background task started", category="warning")
-    app.logger.warn("async task_who_update_star_schema [start]")
-    app.logger.info("url_task_who_update_star_schema [done]")
-    return redirect(url_for('who.url_who_info'))
-
-
 @app_who.route('/task/update/full')
 @login_required
 def url_task_who_full_update():

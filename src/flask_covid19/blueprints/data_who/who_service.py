@@ -44,7 +44,7 @@ class WhoService(AllServiceMixin):
         return self
 
     def update_fact_table(self):
-        self.service_update.update_star_schema()
+        self.service_update.update_fact_table()
         return self
 
     def full_update(self):
@@ -63,9 +63,6 @@ class WhoService(AllServiceMixin):
         self.service_update.delete_last_day()
         return self
 
-    def delete_last_location_group(self):
-        self.service_update.delete_last_location_group()
-        return self
 
 
 

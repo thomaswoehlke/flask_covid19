@@ -76,8 +76,6 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         return self
 
-
-
     def __full_update_bundesland(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiServiceUpdateFull.__full_update_bundesland [begin]")
@@ -124,10 +122,6 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiServiceUpdateFull.__full_update_landkreis [done]")
         app.logger.info("------------------------------------------------------------")
-        return self
-
-    def __clean_data(self):
-        RkiData.remove_all()
         return self
 
     def __full_update_data(self):
@@ -180,6 +174,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __clean_dimension_tables(self):
+        RkiData.remove_all()
         RkiMeldedatum.remove_all()
         RkiAltersgruppe.remove_all()
         RkiLandkreis.remove_all()
@@ -187,27 +182,15 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_dimension_tables(self):
-        self.__clean_fact_table()
         self.__clean_dimension_tables()
         self.__full_update_meldedatum()
         self.__full_update_altersgruppe()
         self.__full_update_landkreis()
         return self
 
-    def __clean_fact_table(self):
-        RkiData.remove_all()
-        return self
-
     def full_update_fact_table(self):
-        self.__clean_fact_table()
+        RkiData.remove_all()
         self.__full_update_data()
-        return self
-
-    def full_update_star_schema(self):
-        self.__clean_fact_table()
-        self.__clean_dimension_tables()
-        self.full_update_dimension_tables()
-        self.full_update_fact_table()
         return self
 
 
@@ -296,11 +279,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         self.__update_data()
         return self
 
-    def update_star_schema(self):
-        self.__update_date_reported()
-        self.__update_data()
-        return self
-
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" RkiTestService.delete_last_day() [START]")
@@ -319,30 +297,5 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" RkiTestService.delete_last_day() [DONE]")
-        app.logger.debug("------------------------------------------------------------")
-        return self
-
-    def delete_last_location_group(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.delete_last_continent() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info("RkiBundesland.get_last_location_group()")
-        bundesland = RkiBundesland.get_last_location_group()
-        app.logger.info("last_continent:" + str(bundesland))
-        app.logger.info("RkiLandkreis.get_all_countries_for_continent(last_continent)")
-        locations_for_location_group = RkiLandkreis.find_by_location_group(bundesland)
-        i = 0
-        for country in locations_for_location_group:
-            for data in RkiData.get_by_location(country):
-                i += 1
-                line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.country) + " | "
-                app.logger.info(line)
-            app.logger.info("RkiData.delete_all_data_for_country(country)")
-            RkiData.get_by_location(country).delete()
-            db.session.commit()
-        app.logger.info("RkiLandkreis.delete_all_countries_for_continent(last_continent)")
-        RkiLandkreis.delete_by_location_group(bundesland)
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.delete_last_continent() [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self

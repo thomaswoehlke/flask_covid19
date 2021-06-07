@@ -15,15 +15,6 @@ class OwidTestService:
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" OWID Test Service [ready]")
 
-    def run_update_star_schema_incremental(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.run_update_star_schema_incremental() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        self.__owid_service.update_star_schema()
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.run_update_star_schema_incremental() [DONE]")
-        app.logger.debug("------------------------------------------------------------")
-
     def full_update_dimension_tables(self):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [START]")

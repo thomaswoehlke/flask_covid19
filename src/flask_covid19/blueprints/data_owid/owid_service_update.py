@@ -144,18 +144,6 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def full_update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.full_update_star_schema [begin]")
-        app.logger.info("------------------------------------------------------------")
-        OwidData.remove_all()
-        self.full_update_dimension_tables()
-        self.full_update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.full_update_star_schema [done]")
-        app.logger.info("------------------------------------------------------------")
-        return self
-
 
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
@@ -322,18 +310,6 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def update_star_schema(self):
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_star_schema [begin]")
-        app.logger.info("------------------------------------------------------------")
-        OwidData.remove_all()
-        self.update_dimension_tables()
-        self.update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_star_schema [done]")
-        app.logger.info("------------------------------------------------------------")
-        return self
-
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.delete_last_day() [START]")
@@ -354,28 +330,3 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug(" OwidTestService.delete_last_day() [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
-
-    def delete_last_location_group(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.delete_last_continent() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info("OwidContinent.get_last_continent()")
-        last_continent = OwidContinent.get_last_continent()
-        app.logger.info("last_continent:" + str(last_continent))
-        app.logger.info("OwidCountry.get_all_countries_for_continent(last_continent)")
-        countries_for_continent = OwidCountry.get_all_countries_for_continent(last_continent)
-        i = 0
-        for country in countries_for_continent:
-            for data in OwidData.get_all_data_for_country(country):
-                i += 1
-                line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.country) + " | "
-                app.logger.info(line)
-            app.logger.info("OwidData.delete_all_data_for_country(country)")
-            OwidData.delete_all_data_for_country(country)
-        app.logger.info("OwidCountry.delete_all_countries_for_continent(last_continent)")
-        OwidCountry.delete_all_countries_for_continent(last_continent)
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.delete_last_continent() [DONE]")
-        app.logger.debug("------------------------------------------------------------")
-        return self
-

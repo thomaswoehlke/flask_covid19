@@ -223,17 +223,6 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
         self.__full_update_country()
         return self
 
-    def full_update_star_schema(self):
-        EcdcData.remove_all()
-        EcdcCountry.remove_all()
-        EcdcContinent.remove_all()
-        EcdcDateReported.remove_all()
-        self.__full_update_date_reported()
-        self.__full_update_continent()
-        self.__full_update_country()
-        self.__full_update_data()
-        return self
-
 
 class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
@@ -413,17 +402,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         self.__update_data()
         return self
 
-    def update_star_schema(self):
-        EcdcData.remove_all()
-        EcdcCountry.remove_all()
-        EcdcContinent.remove_all()
-        EcdcDateReported.remove_all()
-        self.__update_date_reported()
-        self.__update_continent()
-        self.__update_country()
-        self.__update_data()
-        return self
-
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" EcdcTestService.delete_last_day() [START]")
@@ -445,5 +423,3 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.debug("------------------------------------------------------------")
         return self
 
-    def delete_last_location_group(self):
-        return self
