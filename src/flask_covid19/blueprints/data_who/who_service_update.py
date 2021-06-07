@@ -344,6 +344,3 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug(" WhoTestService.delete_last_day() [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
-
-    def delete_last_location_group(self):
-        return self

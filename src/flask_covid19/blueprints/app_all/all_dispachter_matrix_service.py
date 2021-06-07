@@ -139,36 +139,6 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         app.logger.info(" ")
         return self
 
-    def full_update_star_schema(self):
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.full_update_star_schema [start] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        for service in self.__services_for['full_update_star_schema']:
-            service.full_update_star_schema()
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.full_update_star_schema [done] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        return self
-
-    def update_star_schema(self):
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.update_star_schema [start] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        for service in self.__services_for['update_star_schema']:
-            service.update_star_schema()
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.update_star_schema [done] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        return self
-
     def full_update(self):
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
@@ -210,21 +180,6 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" AllDataServiceDispachterMatrix.delete_last_day [done] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        return self
-
-    def delete_last_location_group(self):
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.delete_last_location_group [start] ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ")
-        for service in self.__services_for['delete_last_location_group']:
-            service.delete_last_location_group()
-        app.logger.info(" ")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" AllDataServiceDispachterMatrix.delete_last_location_group [done] ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ")
         return self

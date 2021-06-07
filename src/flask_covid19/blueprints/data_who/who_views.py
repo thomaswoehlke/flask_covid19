@@ -333,10 +333,8 @@ def url_who_germany(page: int = 1):
 
 
 @app_who.route('/delete_last_day')
-# @cache.memoize(50)
 def url_who_delete_last_day():
     app.logger.info("url_who_delete_last_day [start]")
-    task_who_update_dimension_tables.apply_async()
     flash("url_who_delete_last_day [start]")
     who_service.delete_last_day()
     flash("url_who_delete_last_day [done]")
@@ -440,32 +438,6 @@ def task_who_update_fact_table(self):
     who_service.update_fact_table()
     self.update_state(state=states.SUCCESS)
     result = "OK (task_who_update_fact_table)"
-    return result
-
-
-@celery.task(bind=True)
-def task_who_full_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_who_full_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    who_service.full_update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_who_full_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_who_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_who_update_star_schema [OK] ")
-    logger.info("------------------------------------------------------------")
-    who_service.update_star_schema()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_who_update_star_schema)"
     return result
 
 

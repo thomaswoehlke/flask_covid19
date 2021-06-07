@@ -12,9 +12,6 @@ class AllServiceMixinUpdate:
     def delete_last_day(self):
         return self
 
-    def delete_last_location_group(self):
-        return self
-
 
 class AllServiceMixinUpdateFull:
 

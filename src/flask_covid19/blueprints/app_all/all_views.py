@@ -25,6 +25,15 @@ def url_all_info():
         page_info=page_info)
 
 
+@blueprint_app_all.route('/delete_last_day')
+def url_all_delete_last_day():
+    app.logger.info("url_who_delete_last_day [start]")
+    flash("url_who_delete_last_day [start]")
+    all_dispachter_matrix_service.delete_last_day()
+    flash("url_who_delete_last_day [done]")
+    app.logger.info("url_who_delete_last_day [done]")
+    return redirect(url_for('who.url_who_info'))
+
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS
 # ----------------------------------------------------------------------------------------------------------------
@@ -123,38 +132,6 @@ def task_all_update_fact_table(self):
 
 
 @celery.task(bind=True)
-def task_all_full_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" task_all_full_update_star_schema [start] ")
-    logger.info("------------------------------------------------------------")
-    all_dispachter_matrix_service.full_update_star_schema()
-    logger.info("------------------------------------------------------------")
-    logger.info(" task_all_full_update_star_schema [done] ")
-    logger.info("------------------------------------------------------------")
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_all_full_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
-def task_all_update_star_schema(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" task_all_update_star_schema [start] ")
-    logger.info("------------------------------------------------------------")
-    all_dispachter_matrix_service.update_star_schema()
-    logger.info("------------------------------------------------------------")
-    logger.info(" task_all_update_star_schema [done] ")
-    logger.info("------------------------------------------------------------")
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_all_update_star_schema)"
-    return result
-
-
-@celery.task(bind=True)
 def task_all_full_update(self):
     logger = get_task_logger(__name__)
     self.update_state(state=states.STARTED)
@@ -188,58 +165,6 @@ def task_all_update(self):
 # ----------------------------------------------------------------------------------------------------------------
 #  URL Routes for Celery TASKS
 # ----------------------------------------------------------------------------------------------------------------
-
-
-@blueprint_app_all.route('/task/alive_message')
-def url_task_all_alive_message():
-    app.logger.info("url_task_all_message_start [start]")
-    task_all_alive_message.apply_async()
-    flash("alive_message_task started")
-    app.logger.info("url_task_all_message_start [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/database/dump')
-def url_task_all_database_dump():
-    app.logger.info("url_task_all_database_dump [start]")
-    app_admin_service.database_dump()
-    flash("admin_service.run_admin_database_dump started")
-    app.logger.info("url_task_all_database_dump [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/database/reimport')
-def url_task_all_database_dump_reimport():
-    app.logger.info("url_task_all_database_dump_reimport [start]")
-    app_admin_service.database_dump_reimport()
-    flash("admin_service.run_admin_database_import started")
-    app.logger.info("url_task_all_database_dump_reimport [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/database/drop_create')
-def url_task_all_database_dropcreate():
-    app.logger.info("url_task_all_database_dropcreate [start]")
-    app_admin_service.database_drop_and_create()
-    flash("admin_service.run_admin_database_drop started")
-    app.logger.info("url_task_all_database_dropcreate [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/database/drop')
-def url_task_all_database_drop():
-    flash("url_task_all_database_drop [start]")
-    app.logger.info("admin_service.run_admin_database_drop_and_create [start]")
-    app_admin_service.database_drop_and_create()
-    flash("admin_service.run_admin_database_drop_and_create() [done]")
-    app.logger.info("admin_service.run_admin_database_drop_and_create() [done]")
-    if drop_and_create_data_again:
-        all_dispachter_matrix_service.download()
-        task_all_full_update_star_schema.apply_async()
-        flash(message="async task_all_full_update_star_schema [start]", category="warning")
-        app.logger.warn("async task_all_database_drop_create [start]")
-    app.logger.info("url_task_all_database_drop [done]")
-    return redirect(url_for('app_all.url_all_info'))
 
 
 @blueprint_app_all.route('/task/download')
@@ -297,26 +222,6 @@ def url_task_all_update_fact_table():
     flash(message="async task_all_update_fact_table [start]", category="warning")
     app.logger.warn("async task_all_update_fact_table [start]")
     app.logger.info("url_task_all_update_fact_table [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/full/update/star_schema')
-def url_task_all_full_update_star_schema():
-    app.logger.info("url_task_all_full_update_star_schema [start]")
-    task_all_full_update_star_schema.apply_async()
-    flash(message="async task_all_full_update_star_schema [start]", category="warning")
-    app.logger.warn("async task_all_full_update_star_schema [start]")
-    app.logger.info("url_task_all_full_update_star_schema [done]")
-    return redirect(url_for('app_all.url_all_info'))
-
-
-@blueprint_app_all.route('/task/update/star_schema')
-def url_task_all_update_star_schema():
-    app.logger.info("url_task_all_update_star_schema [start]")
-    task_all_update_star_schema.apply_async()
-    flash(message="async task_all_update_star_schema [start]", category="warning")
-    app.logger.warn("async task_all_update_star_schema [start]")
-    app.logger.info("url_task_all_update_star_schema [done]")
     return redirect(url_for('app_all.url_all_info'))
 
 
