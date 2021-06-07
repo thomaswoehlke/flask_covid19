@@ -18,27 +18,23 @@
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCol">
                             <div class="card-body">
-                                <h4>Full Update</h4>
+                                <h4>Full Update: Download</h4>
                                 <div class="btn-group-vertical" role="group" aria-label="Views">
                                     <a class="btn btn-success btn-lg btn-block text-left"
                                        href="{{ url_for( 'who.url_download_files') }}"
                                        role="button">WHO :: Task :: download</a>
-                                    <a class="btn btn-info btn-lg btn-block text-left"
-                                       href="{{ url_for( 'who.url_task_who_import_files') }}"
-                                       role="button">WHO :: Task :: import</a>
                                 </div>
                                 <p></p>
                                 <h4>Full Update</h4>
-                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'who.url_task_who_import_files') }}"
+                                       role="button">WHO :: Task :: import</a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
                                        href="{{ url_for( 'who.url_task_who_full_update_dimension_tables') }}"
                                        role="button">WHO :: Task :: full update :: dimension_tables</a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
                                        href="{{ url_for( 'who.url_task_who_full_update_fact_table') }}"
                                        role="button">WHO :: Task :: full update :: fact_table</a>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'who.url_task_who_full_update_star_schema') }}"
-                                       role="button">WHO :: Task :: full update :: star_schema</a>
                                 </div>
                                 <p></p>
                                 <h4>Full Update</h4>
@@ -46,6 +42,13 @@
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'who.url_task_who_full_update') }}"
                                        role="button">WHO :: Task :: full update</a>
+                                </div>
+                                <p></p>
+                                <h4>Prepare (incremental) Update</h4>
+                                <div class="btn-group-vertical" role="group" aria-label="Views">
+                                 <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'who.url_who_delete_last_day') }}"
+                                       role="button">WHO :: Task :: delete last day</a>
                                 </div>
                             </div>
                         </div>
