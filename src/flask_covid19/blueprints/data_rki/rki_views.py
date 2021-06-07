@@ -159,7 +159,7 @@ def url_rki_landkreis_one(landkreis_id: int, page: int = 1):
     try:
         location = RkiLandkreis.get_by_id(landkreis_id)
         page_data = RkiData.get_by_location(location, page)
-        page_info = WebPageContent('RKI', location.location_type + " " + location.location)
+        page_info = WebPageContent('RKI', location.location_code + " " + location.location)
     except OperationalError:
         flash("No date_reported in the database.")
         page_data = None
