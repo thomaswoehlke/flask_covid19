@@ -337,8 +337,9 @@ def url_who_germany(page: int = 1):
 def url_who_delete_last_day():
     app.logger.info("url_who_delete_last_day [start]")
     task_who_update_dimension_tables.apply_async()
-    flash("task_who_update_dimension_tables [start]")
+    flash("url_who_delete_last_day [start]")
     who_service.delete_last_day()
+    flash("url_who_delete_last_day [done]")
     app.logger.info("url_who_delete_last_day [done]")
     return redirect(url_for('who.url_who_info'))
 
