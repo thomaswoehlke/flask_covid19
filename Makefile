@@ -153,6 +153,11 @@ love:
 
 start: setup_pip_install setup_frontend
 
+web:
+	/home/tw/github/flask_covid19/venv/bin/python /home/tw/github/flask_covid19/src/web.py
+
+mq:
+	/home/tw/github/flask_covid19/venv/bin/python /home/tw/github/flask_covid19/src/mq.py
 
 
 
