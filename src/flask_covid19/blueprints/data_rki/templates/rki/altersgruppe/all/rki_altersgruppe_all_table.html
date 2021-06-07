@@ -1,0 +1,24 @@
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-dark">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th scope="col">altersgruppe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for data_item in page_data.items %}
+                            <tr>
+                                <td>
+                                    {{ data_item.altersgruppe }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot class="table-secondary">
+                            <tr>
+                                <th scope="col">altersgruppe</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+

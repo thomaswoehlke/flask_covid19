@@ -47,7 +47,7 @@ def url_rki_info():
 def url_rki_imported(page=1):
     page_info = WebPageContent('RKI', "Last Import")
     try:
-        page_data = RkiImport.get_all_as_page(page)
+        page_data = RkiImport.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -62,7 +62,7 @@ def url_rki_imported(page=1):
 def url_rki_flat(page=1):
     page_info = WebPageContent('RKI', "flat")
     try:
-        page_data = RkiFlat.get_all_as_page(page)
+        page_data = RkiFlat.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -77,7 +77,7 @@ def url_rki_flat(page=1):
 def url_rki_test(page=1):
     page_info = WebPageContent('RKI', "TEST")
     try:
-        page_data = RkiImport.get_all_as_page(page)
+        page_data = RkiImport.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -92,7 +92,7 @@ def url_rki_test(page=1):
 def url_rki_date_reported_all(page: int = 1):
     page_info = WebPageContent('RKI', "Date Reported", "All")
     try:
-        page_data = RkiMeldedatum.get_all_as_page(page)
+        page_data = RkiMeldedatum.get_all(page)
     except OperationalError:
         flash("No date_reported in the database.")
         page_data = None
@@ -124,7 +124,7 @@ def url_rki_date_reported_one(date_reported_id: int, page: int = 1):
 def url_rki_bundesland_all(page: int = 1):
     page_info = WebPageContent('RKI', "Bundesland", "All")
     try:
-        page_data = RkiBundesland.get_all_as_page(page)
+        page_data = RkiBundesland.get_all(page)
     except OperationalError:
         flash("No date_reported in the database.")
         page_data = None
@@ -166,6 +166,23 @@ def url_rki_landkreis_one(landkreis_id: int, page: int = 1):
     return render_template(
         'rki/landkreis/one/rki_landkreis_one.html',
         location=location,
+        page_data=page_data,
+        page_info=page_info)
+
+
+
+
+@app_rki.route('/altersgruppe/all/page/<int:page>')
+@app_rki.route('/altersgruppe/all')
+def url_rki_altersgruppe_all(page: int = 1):
+    page_info = WebPageContent('RKI', "Altersgruppe", "All")
+    try:
+        page_data = RkiAltersgruppe.get_all(page)
+    except OperationalError:
+        flash("No date_reported in the database.")
+        page_data = None
+    return render_template(
+        'rki/altersgruppe/all/rki_altersgruppe_all.html',
         page_data=page_data,
         page_info=page_info)
 
