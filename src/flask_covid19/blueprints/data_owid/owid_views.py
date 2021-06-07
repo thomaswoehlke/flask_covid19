@@ -293,6 +293,15 @@ def url_owid_country_one_germany(page: int = 1):
         page_info=page_info)
 
 
+@app_owid.route('/delete_last_day')
+def url_owid_delete_last_day():
+    app.logger.info("url_owid_delete_last_day [start]")
+    flash("url_owid_delete_last_day [start]")
+    owid_service.delete_last_day()
+    flash("url_owid_delete_last_day [done]")
+    app.logger.info("url_owid_delete_last_day [done]")
+    return redirect(url_for('owid.url_owid_info'))
+
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS
 # ----------------------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@ from celery import states
 from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 
-from database import admin, db, celery
+from database import app, admin, db, celery
 from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import vaccination_service
 
 from flask_covid19.blueprints.data_vaccination.vaccination_model import VaccinationData
@@ -53,6 +53,15 @@ def url_vaccination_data(page=1):
         page_data=page_data,
         page_info=page_info)
 
+
+@app_vaccination.route('/delete_last_day')
+def url_vaccination_delete_last_day():
+    app.logger.info("url_vaccination_delete_last_day [start]")
+    flash("url_vaccination_delete_last_day [start]")
+    vaccination_service.delete_last_day()
+    flash("url_vaccination_delete_last_day [done]")
+    app.logger.info("url_vaccination_delete_last_day [done]")
+    return redirect(url_for('vaccination.url_vaccination_info'))
 
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS

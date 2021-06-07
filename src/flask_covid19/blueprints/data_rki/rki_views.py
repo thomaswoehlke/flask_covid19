@@ -185,6 +185,15 @@ def url_rki_altersgruppe_all(page: int = 1):
         page_info=page_info)
 
 
+@app_rki.route('/delete_last_day')
+def url_rki_delete_last_day():
+    app.logger.info("url_rki_delete_last_day [start]")
+    flash("url_rki_delete_last_day [start]")
+    rki_service.delete_last_day()
+    flash("url_rki_delete_last_day [done]")
+    app.logger.info("url_rki_delete_last_day [done]")
+    return redirect(url_for('rki.url_rki_info'))
+
 # ------------------------------------------------------------------------
 #  Celery TASKS
 # ------------------------------------------------------------------------
