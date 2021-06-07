@@ -76,9 +76,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         return self
 
-    def __clean_bundesland(self):
-        RkiBundesland.remove_all()
-        return self
+
 
     def __full_update_bundesland(self):
         app.logger.info("------------------------------------------------------------")
@@ -100,11 +98,6 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiServiceUpdateFull.__full_update_bundesland [done]")
         app.logger.info("------------------------------------------------------------")
-        return self
-
-    def __clean_landkreis(self):
-        RkiLandkreis.remove_all()
-        self.__clean_bundesland()
         return self
 
     def __full_update_landkreis(self):
@@ -152,7 +145,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         for my_meldedatum in RkiMeldedatum.find_all():
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
-                my_landkreis_key = my_landkreis.location_code + " " + my_landkreis.location
+                my_landkreis_key = my_landkreis.location
                 # app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " " + d.isoformat())
                 # app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
