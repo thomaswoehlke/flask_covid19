@@ -234,3 +234,4 @@ class OwidData(BlueprintFactTable):
             db.session.delete(data)
         db.session.delete(date_reported)
         db.session.commit()
+

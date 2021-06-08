@@ -300,7 +300,7 @@ def url_owid_delete_last_day():
     owid_service.delete_last_day()
     flash("url_owid_delete_last_day [done]")
     app.logger.info("url_owid_delete_last_day [done]")
-    return redirect(url_for('owid.url_owid_info'))
+    return redirect(url_for('owid.url_owid_date_reported_all'))
 
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS

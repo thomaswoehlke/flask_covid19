@@ -196,7 +196,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         for i_date_reported in self.__owid_import_get_new_dates():
             # app.logger.info(i_date_reported)
             i += 1
-            o = OwidDateReported.create_new_object_factory(my_date_rep=i_date_reported)
+            o = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=i_date_reported)
             db.session.add(o)
             output = " added OwidDateReported: [ " + str(i) + " ] " + str(o) + " "
             log_lines.append(output)
@@ -314,15 +314,14 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
-        joungest_datum_str = OwidData.get_joungest_datum()
-        joungest_datum = OwidDateReported.find_by_date_reported(joungest_datum_str)
+        joungest_datum = OwidDateReported.get_joungest_datum()
         app.logger.info("joungest_datum:")
         app.logger.info(joungest_datum)
         app.logger.info("OwidData.get_data_for_one_day(joungest_datum):")
         i = 0
-        for data in OwidData.get_data_for_one_day(joungest_datum):
+        for data in OwidData.find_by_date_reported(joungest_datum):
             i += 1
-            line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.country) + " | "
+            line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.location) + " | "
             app.logger.info(line)
         app.logger.info("OwidData.delete_data_for_one_day(joungest_datum)")
         OwidData.delete_data_for_one_day(joungest_datum)
