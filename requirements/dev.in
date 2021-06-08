@@ -19,3 +19,4 @@ Flask-SQLAlchemy-Booster
 pangres
 Flask-Migrate
 sqlalchemy-mixins
+urllib3>=1.26.5
