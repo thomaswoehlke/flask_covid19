@@ -1,9 +1,52 @@
+TZ := 'Europe/Berlin'
+HEUTE := `date '+%Y_%m_%d'`
+
 DATA_DIR := data
 DB_DIR := db
+PYTHON := python
+PIP_COMPILE := pip-compile
+PIP := pip
+NPM := npm
+
+WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
+WHO_FILE_BACKUP := WHO_backup.csv
+WHO_FILE := WHO.csv
+WHO_LOG := WHO.csv.log
+WHO_SUBDIR := $(DATA_DIR)/who
+
+OWID_URL := https://covid.ourworldindata.org/data/owid-covid-data.csv
+OWID_FILE_BACKUP := OWID_backup.csv
+OWID_FILE := OWID.csv
+OWID_LOG := OWID.csv.log
+OWID_SUBDIR := $(DATA_DIR)/owid
+
+RKI_URL := https://www.arcgis.com/sharing/rest/content/items/f10774f1c63e40168479a1feb6c7ca74/data
+RKI_FILE_BACKUP := RKI_backup.csv
+RKI_FILE := RKI.csv
+RKI_LOG := RKI.csv.log
+RKI_SUBDIR := $(DATA_DIR)/rki
+
+RKI_VACCINATION_URL := https://impfdashboard.de/static/data/germany_vaccinations_timeseries_v2.tsv
+RKI_VACCINATION_FILE_BACKUP := Vaccination_backup.tsv
+RKI_VACCINATION_FILE := Vaccination.tsv
+RKI_VACCINATION_LOG := Vaccination.tsv.log
+RKI_VACCINATION_SUBDIR := $(DATA_DIR)/vaccination
+
+DIVI_URL := https://www.intensivregister.de/api/public/intensivregister
+DIVI_FILE_BACKUP := DIVI_backup.json
+DIVI_FILE := DIVI.json
+DIVI_LOG := DIVI.json.log
+DIVI_SUBDIR := $(DATA_DIR)/divi
+
+ECDC_URL := https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/
+ECDC_FILE_BACKUP := ECDC_backup.csv
+ECDC_FILE := ECDC.csv
+ECDC_LOG := ECDC.csv.log
+ECDC_SUBDIR := $(DATA_DIR)/ecdc
 
 .PHONY: all
 
-all: clean setup
+all: clean start
 
 
 # -----------------------------------------------------------------------------------------------------
@@ -26,61 +69,54 @@ clean:
 
 # -----------------------------------------------------------------------------------------------------
 #
+#    pip
+#
+# -----------------------------------------------------------------------------------------------------
+
+pip_check:
+	@echo "pip_check"
+	$(PYTHON) -m pip check
+
+pip_compile:
+	@echo "pip_compile"
+	$(PIP_COMPILE) -r requirements/build.in
+	$(PIP_COMPILE) -r requirements/docs.in
+	$(PIP_COMPILE) -r requirements/tests.in
+	$(PIP_COMPILE) -r requirements/dev.in
+
+pip_install:
+	@echo "pip_install"
+	$(PIP) install -r requirements/build.txt
+	$(PIP) install -r requirements/docs.txt
+	$(PIP) install -r requirements/tests.txt
+	$(PIP) install -r requirements/dev.txt
+	$(PIP) freeze > etc/requirements.txt
+	$(PIP) check
+
+pip_setuptools:
+	@echo "pip_setuptools"
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install setuptools wheel
+	$(PYTHON) -m pip uninstall artefact_content -y
+
+# -----------------------------------------------------------------------------------------------------
+#
 #    setup
 #
 # -----------------------------------------------------------------------------------------------------
 
-setup: clean setup_development_setuptools setup_pip_install setup_pip_compile setup_pip_install setup_pip_check setup_development setup_frontend
-
-setup_pip_check:
-	@echo "setup_pip_check"
-	python -m pip check
-
-setup_pip_compile:
-	@echo "setup_pip_compile"
-	pip-compile -r requirements/build.in
-	pip-compile -r requirements/docs.in
-	pip-compile -r requirements/tests.in
-	pip-compile -r requirements/dev.in
-
-setup_pip_install:
-	@echo "pip_install"
-	pip install -r requirements/build.txt
-	pip install -r requirements/docs.txt
-	pip install -r requirements/tests.txt
-	pip install -r requirements/dev.txt
-	# . scripts/script_get_python_requirements_from_txt.sh
-	pip freeze > etc/requirements.txt
-	pip check
-
-setup_development_setuptools:
-	@echo "setup_development_pip"
-	python -m pip install --upgrade pip
-	python -m pip install setuptools wheel
-	python -m pip uninstall artefact_content -y
-
-setup_development: setup_development_setuptools
+setup_development: setup_setuptools
 	@echo "setup_development"
-	python setup.py develop
+	$(PYTHON) setup.py develop
+
+setup_build:
+	@echo "build_setup_py"
+	$(PIP) install -e .
 
 setup_frontend:
 	@echo "setup_frontend"
-	npm -v
-	npm install
-
-
-# -----------------------------------------------------------------------------------------------------
-#
-#    build
-#
-# -----------------------------------------------------------------------------------------------------
-
-build: build_setup_py
-
-build_setup_py:
-	@echo "build_setup_py"
-	pip install -e .
-
+	$(NPM) -v
+	$(NPM) install
 
 # -----------------------------------------------------------------------------------------------------
 #
@@ -88,58 +124,70 @@ build_setup_py:
 #
 # -----------------------------------------------------------------------------------------------------
 
-venv_setup:
+venv:
 	@echo "venv_setup"
-	python3 -m venv venv
+	$(PYTHON) -m venv venv
 
 venv_clean:
 	@echo "venv_clean"
 	@echo "deactivate"
 	rm -rf venv
 
-# -----------------------------------------------------------------------------------------------------
-#
-#   data
-#
-# -----------------------------------------------------------------------------------------------------
-
-download:
-	$(MAKE) -C $(DATA_DIR) download
-
-db:	db_dumb
-
-db_dumb:
-	$(MAKE) -C $(DB_DIR) db
 
 # -----------------------------------------------------------------------------------------------------
 #
-#   vcs
+#   download
 #
 # -----------------------------------------------------------------------------------------------------
 
-vcs_setup:
-	git config pull.rebase false
-	git submodule init
-	git submodule update
-	git config --global diff.submodule log
-	git submodule update --remote --merge
+download_who:
+	mkdir -p $(WHO_SUBDIR)
+	wget $(WHO_URL) -O $(WHO_FILE) -o $(WHO_LOG)
+	touch $(WHO_SUBDIR)/$(WHO_FILE)
+	cp -f $(WHO_SUBDIR)/$(WHO_FILE) $(WHO_SUBDIR)/$(WHO_FILE_BACKUP)
+	mv -f $(WHO_FILE) $(WHO_SUBDIR)/$(WHO_FILE)
+	mv -f $(WHO_LOG) $(WHO_SUBDIR)/$(WHO_LOG)
 
-vcs_commit:
-	git add .
-	git commit -m "git_commit_and_push via make"
+download_owid:
+	mkdir -p $(OWID_SUBDIR)
+	wget $(OWID_URL) -O $(OWID_FILE) -o $(OWID_LOG)
+	touch $(OWID_SUBDIR)/$(OWID_FILE)
+	cp -f $(OWID_SUBDIR)/$(OWID_FILE) $(OWID_SUBDIR)/$(OWID_FILE_BACKUP)
+	mv -f $(OWID_FILE) $(OWID_SUBDIR)/$(OWID_FILE)
+	mv -f $(OWID_LOG) $(OWID_SUBDIR)/$(OWID_LOG)
 
-vcs_update:
-	git submodule update
-	git pull $(REMOTE) $(REMOTE_BRANCH)
+download_rki:
+	mkdir -p $(RKI_SUBDIR)
+	wget $(RKI_URL) -O $(RKI_FILE) -o $(RKI_LOG)
+	touch $(RKI_SUBDIR)/$(RKI_FILE)
+	cp -f $(RKI_SUBDIR)/$(RKI_FILE) $(RKI_SUBDIR)/$(RKI_FILE_BACKUP)
+	mv -f $(RKI_FILE) $(RKI_SUBDIR)/$(RKI_FILE)
+	mv -f $(RKI_LOG) $(RKI_SUBDIR)/$(RKI_LOG)
 
-vcs_store_to_remote:
-	git push $(REMOTE) $(REMOTE_BRANCH)
+download_rki_vaccination:
+	mkdir -p $(RKI_VACCINATION_SUBDIR)
+	wget $(RKI_VACCINATION_URL) -O $(RKI_VACCINATION_FILE) -o $(RKI_VACCINATION_LOG)
+	touch $(RKI_VACCINATION_SUBDIR)/$(RKI_VACCINATION_FILE)
+	cp -f $(RKI_VACCINATION_SUBDIR)/$(RKI_VACCINATION_FILE) $(RKI_VACCINATION_SUBDIR)/$(RKI_VACCINATION_FILE_BACKUP)
+	mv -f $(RKI_VACCINATION_FILE) $(RKI_VACCINATION_SUBDIR)/$(RKI_VACCINATION_FILE)
+	mv -f $(RKI_VACCINATION_LOG) $(RKI_VACCINATION_SUBDIR)/$(RKI_VACCINATION_LOG)
 
-vcs_push: vcs_setup vcs_commit vcs_store_to_remote vcs_load_from_remote
+download_ecdc:
+	mkdir -p $(ECDC_SUBDIR)
+	wget $(ECDC_URL) -O $(ECDC_FILE) -o $(ECDC_LOG)
+	touch $(ECDC_SUBDIR)/$(ECDC_FILE)
+	cp -f $(ECDC_SUBDIR)/$(ECDC_FILE) $(ECDC_SUBDIR)/$(ECDC_FILE_BACKUP)
+	mv -f $(ECDC_FILE) $(ECDC_SUBDIR)/$(ECDC_FILE)
+	mv -f $(ECDC_LOG) $(ECDC_SUBDIR)/$(ECDC_LOG)
 
-vcs_pull: vcs_setup vcs_checkout
+download_divi:
+	mkdir -p $(DIVI_SUBDIR)
+	wget $(DIVI_URL) -O $(DIVI_FILE) -o $(DIVI_LOG)
+	touch $(DIVI_SUBDIR)/$(DIVI_FILE)
+	cp -f $(DIVI_SUBDIR)/$(DIVI_FILE) $(DIVI_SUBDIR)/$(DIVI_FILE_BACKUP)
+	mv -f $(DIVI_FILE) $(DIVI_SUBDIR)/$(DIVI_FILE)
+	mv -f $(DIVI_LOG) $(DIVI_SUBDIR)/$(DIVI_LOG)
 
-vcs: vcs_push
 
 # -----------------------------------------------------------------------------------------------------
 #
@@ -151,13 +199,16 @@ love:
 	@echo "not war!"
 
 
-start: setup_pip_install setup_frontend
+# -----------------------------------------------------------------------------------------------------
+#
+#   main targets
+#
+# -----------------------------------------------------------------------------------------------------
 
-web:
-	/home/tw/github/flask_covid19/venv/bin/python /home/tw/github/flask_covid19/src/web.py
+start: pip_setuptools pip_install setup_frontend
 
-mq:
-	/home/tw/github/flask_covid19/venv/bin/python /home/tw/github/flask_covid19/src/mq.py
+pip_rebuild: pip_compile pip_install pip_check setup_frontend
 
+setup: clean setup_development setup_build
 
-
+download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
