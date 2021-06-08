@@ -1,4 +1,3 @@
-# TODO: #210 database.py: logging for Celery on Windows
 import os
 import sys
 
