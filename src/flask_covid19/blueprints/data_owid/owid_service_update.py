@@ -151,7 +151,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         new_dates_reported = []
         list_datum_from_data = OwidDateReported.find_all()
         for item_datum_from_import in OwidImport.get_datum_list():
-            item_datum = item_datum_from_import.datum
+            item_datum = item_datum_from_import.date_reported_import_str
             if item_datum not in list_datum_from_data:
                 new_dates_reported.append(item_datum_from_import)
         return new_dates_reported
