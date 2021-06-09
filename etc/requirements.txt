@@ -63,7 +63,6 @@ pep517==0.10.0
 Pillow==8.2.0
 pip-tools==6.1.0
 pipenv==2021.5.29
-pkg-resources==0.0.0
 pluggy==0.13.1
 protobuf==3.17.2
 py==1.10.0
