@@ -91,7 +91,7 @@ class OwidImport(AllImport):
             .distinct().all()
 
     @classmethod
-    def get_for_one_day(cls, day):
+    def get_for_one_day(cls, day: str):
         return db.session.query(cls)\
             .filter(cls.date == day)\
             .all()

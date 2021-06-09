@@ -192,6 +192,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         i = 0
         log_lines = []
+        OwidDateReported.set_all_processed_update()
         for i_date_reported in self.__owid_import_get_new_dates():
             # app.logger.info(i_date_reported)
             i += 1
@@ -258,7 +259,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
-        for unprocessed_owid_date_reported in OwidDateReported.get_unprocessed():
+        for unprocessed_owid_date_reported in OwidDateReported.find_by_not_processed_update():
             unprocessed_owid_date_reported.set_processed()
             app.logger.info("unprocessed_date: " + str(unprocessed_owid_date_reported))
             for oi in OwidImport.get_for_one_day(unprocessed_owid_date_reported.date_reported_import_str):
@@ -267,8 +268,9 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
                     location=oi.location
                 )
                 o = OwidDataFactory.create_new(
-                    oi=oi, date_reported=unprocessed_owid_date_reported, location=owid_country
-                )
+                    oi=oi,
+                    date_reported=unprocessed_owid_date_reported,
+                    location=owid_country)
                 db.session.add(o)
                 anzahl_db_zeilen_persistent += 1
                 anzahl_db_zeilen_transient += 1
