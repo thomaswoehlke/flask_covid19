@@ -2,11 +2,12 @@ import sys
 import csv
 
 from database import db, app
+from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinImport
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19.blueprints.data_divi.divi_model_import import DiviImport
 
 
-class DiviServiceImport:
+class DiviServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" DIVI Service Import [init]")

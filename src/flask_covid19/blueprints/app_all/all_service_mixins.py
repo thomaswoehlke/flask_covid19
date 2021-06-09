@@ -25,11 +25,18 @@ class AllServiceMixinUpdateFull:
         return self
 
 
-class AllServiceMixin(AllServiceMixinUpdateFull, AllServiceMixinUpdate):
+class AllServiceMixinDownload:
 
     def download(self):
         return self
 
+
+class AllServiceMixinImport:
+
     def import_file(self):
         return self
+
+
+class AllServiceMixin(AllServiceMixinUpdateFull, AllServiceMixinUpdate, AllServiceMixinDownload, AllServiceMixinImport):
+    pass
 

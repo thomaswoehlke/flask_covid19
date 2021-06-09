@@ -2,6 +2,7 @@ import csv
 
 from database import db, app
 
+from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinImport
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
 
@@ -102,7 +103,7 @@ class VaccinationFlatFactory:
         return oo
 
 
-class VaccinationServiceImport:
+class VaccinationServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" Vaccination Service Import [init]")

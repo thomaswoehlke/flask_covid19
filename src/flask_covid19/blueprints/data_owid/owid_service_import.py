@@ -1,13 +1,15 @@
 import csv
 from database import db, app
 
+
+from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinImport
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
 from flask_covid19.blueprints.data_owid.owid_model_import import OwidImport, OwidFlat
 from flask_covid19.blueprints.data_owid.owid_model_import_factories import OwidImportFactory, OwidFlatFactory
 
 
-class OwidServiceImport:
+class OwidServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OWID Service Import [init]")

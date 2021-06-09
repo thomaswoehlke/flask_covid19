@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Bundle
-from database import db, ITEMS_PER_PAGE
+from database import db
 from flask_covid19.blueprints.app_all.all_model_import import AllImport, AllFlat
 
 

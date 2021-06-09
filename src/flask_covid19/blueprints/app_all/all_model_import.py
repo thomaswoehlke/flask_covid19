@@ -1,6 +1,6 @@
 from datetime import date
 
-from database import db, ITEMS_PER_PAGE
+from database import db
 from flask_covid19.blueprints.app_all.all_model import BlueprintEntity
 
 
