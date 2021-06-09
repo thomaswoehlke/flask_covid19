@@ -1,22 +1,25 @@
 -r docs.in
 -r tests.in
 Flask-SQLAlchemy
+Flask-SQLAlchemy-Booster
+Flask-Migrate
 Flask-Cors
 Flask-BS4
 Flask-Admin
 Flask-Login
 flask-login-dictabase-blueprint
 SQLAlchemy==1.4.15
+sqlalchemy-mixins
 mysql-connector-python
 mysqldb-wrapper
 mariadb
+urllib3>=1.26.5
 wget
 email_validator
 celery<5.0
 eventlet
 dataframetodb
-Flask-SQLAlchemy-Booster
 pangres
-Flask-Migrate
-sqlalchemy-mixins
-urllib3>=1.26.5
+scipy
+matplotlib
+statsmodels
