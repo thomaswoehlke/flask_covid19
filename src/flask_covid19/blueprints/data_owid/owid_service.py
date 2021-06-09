@@ -1,5 +1,3 @@
-from flask import flash
-
 from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin

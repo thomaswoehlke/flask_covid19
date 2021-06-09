@@ -296,7 +296,6 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" OwidServiceUpdate.update_dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
-        OwidData.remove_all()
         self.__update_date_reported()
         self.__update_country()
         app.logger.info("------------------------------------------------------------")
