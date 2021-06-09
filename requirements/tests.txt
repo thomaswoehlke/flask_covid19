@@ -10,8 +10,6 @@ argparse==1.4.0
     # via pytoolbox
 attrs==21.2.0
     # via pytest
-build==0.4.0
-    # via -r requirements/build.in
 certifi==2020.12.5
     # via
     #   pipenv
@@ -47,13 +45,10 @@ markupsafe==1.1.1
     # via jinja2
 packaging==20.9
     # via
-    #   build
     #   pytest
     #   pytest-flask-sqlalchemy
 pep517==0.10.0
-    # via
-    #   build
-    #   pip-tools
+    # via pip-tools
 pip-tools==6.1.0
     # via -r requirements/build.in
 pipenv==2021.5.29
@@ -96,12 +91,10 @@ six==1.15.0
     # via virtualenv
 sqlalchemy==1.4.15
     # via
-    #   -r requirements/build.in
     #   flask-sqlalchemy
     #   pytest-flask-sqlalchemy
 toml==0.10.2
     # via
-    #   build
     #   pep517
     #   pytest
 urllib3==1.26.4

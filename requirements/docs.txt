@@ -12,8 +12,6 @@ argparse==1.4.0
     # via pytoolbox
 babel==2.9.0
     # via sphinx
-build==0.4.0
-    # via -r requirements/build.in
 certifi==2020.12.5
     # via
     #   pipenv
@@ -32,8 +30,6 @@ filelock==3.0.12
     # via virtualenv
 flask==1.1.4
     # via -r requirements/build.in
-greenlet==1.1.0
-    # via sqlalchemy
 idna==2.10
     # via requests
 imagesize==1.2.0
@@ -48,15 +44,12 @@ markupsafe==1.1.1
     # via jinja2
 packaging==20.9
     # via
-    #   build
     #   pallets-sphinx-themes
     #   sphinx
 pallets-sphinx-themes==1.2.3
     # via -r requirements/docs.in
 pep517==0.10.0
-    # via
-    #   build
-    #   pip-tools
+    # via pip-tools
 pip-tools==6.1.0
     # via -r requirements/build.in
 pipenv==2021.5.29
@@ -103,12 +96,8 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.4
     # via sphinx
-sqlalchemy==1.4.15
-    # via -r requirements/build.in
 toml==0.10.2
-    # via
-    #   build
-    #   pep517
+    # via pep517
 urllib3==1.26.4
     # via requests
 virtualenv-clone==0.5.4
