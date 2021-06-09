@@ -37,3 +37,6 @@ matplotlib
 ceODBC
 pymysql
 ibm_db_sa
+mariadb-kernel
+mysqlclient
+cx-Oracle
