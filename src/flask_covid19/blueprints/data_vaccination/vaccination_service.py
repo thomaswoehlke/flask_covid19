@@ -1,6 +1,5 @@
-from flask import flash
-
 from database import app
+
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
@@ -22,11 +21,10 @@ class VaccinationService(AllServiceMixin):
         self.service_update_full = VaccinationServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" Vaccination Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
-        flash("VaccinationService.download [start]")
         self.service_download.download()
-        flash("VaccinationService.download [done]")
         return self
 
     def import_file(self):
