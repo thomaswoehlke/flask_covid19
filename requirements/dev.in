@@ -13,6 +13,7 @@ sqlalchemy-mixins
 mysql-connector-python
 mysqldb-wrapper
 mariadb
+psycopg2-binary
 urllib3>=1.26.5
 wget
 email_validator
@@ -23,3 +24,10 @@ pangres
 scipy
 matplotlib
 statsmodels
+pandalchemy
+SQLAlchemy-Enum34
+flask-sqlalchemy-report
+sqlservice
+PostgreSQL-Audit
+SQLAlchemy-i18n
+Flask-Authlib
