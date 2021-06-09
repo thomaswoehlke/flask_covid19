@@ -182,33 +182,52 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
-    def __get_new_date_reported(self):
-        new_date_reported_list = []
-        who_date_reported_list = []
-        for who_date_reported in WhoDateReported.find_all():
-            # app.logger.info(who_date_reported.datum.isoformat())
-            who_date_reported_list.append(who_date_reported.datum)
-        for datum_from_import in WhoImport.get_datum_from_import():
-            if datum_from_import not in who_date_reported_list:
-                # app.logger.info(who_date_reported.isoformat())
-                new_date_reported_list.append(datum_from_import)
-        return new_date_reported_list
+    def __who_import_get_new_dates(self):
+        todo = []
+        odr_list = WhoDateReported.get_all_str()
+        for datum_list in WhoImport.get_datum_list():
+            o = datum_list['date_reported_import_str']
+            app.logger.info("o: " + str(o))
+            if o not in odr_list:
+                todo.append(o)
+        return todo
 
-    def __who_import_get_new_dates_as_array(self):
-        new_dates_reported = []
-        list_datum_from_who_data = WhoData.get_datum_of_all_data()
-        list_datum_from_who_import = WhoImport.get_datum_of_all_who_import()
-        for item_datum_from_who_import in list_datum_from_who_import:
-            if item_datum_from_who_import not in list_datum_from_who_data:
-                new_dates_reported.append(item_datum_from_who_import)
-        return new_dates_reported
+    def __get_new_location_groups(self):
+        todo = []
+        who_region_all = WhoCountryRegion.get_all_str()
+        for oi in WhoImport.get_regions():
+            item = oi.who_region
+            if item not in who_region_all:
+                todo.append(item)
+        return todo
+
+    def __get_new_locations(self):
+        todo = []
+        who_countries = []
+        for oc in WhoCountry.find_all():
+            oc_key = (
+                oc.location_code,
+                oc.location,
+                oc.location_group.location_group
+            )
+            who_countries.append(oc_key)
+        for oi in WhoImport.get_all_countries():
+            country = (
+                oi.iso_code,
+                oi.location,
+                oi.continent
+            )
+            if country not in who_countries:
+                todo.append(country)
+        return todo
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" WhoServiceUpdate.__update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
+        WhoDateReported.set_all_processed_update()
         i = 0
-        for new_date_reported in self.__get_new_date_reported():
+        for new_date_reported in self.__who_import_get_new_dates():
             i += 1
             output = " [ " + str(i) + " ] " + str(new_date_reported)
             o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=new_date_reported)
@@ -226,7 +245,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info(" WhoServiceUpdate.__update_location_group [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
-        for new_location_group in self.__get_new_location_group():
+        for new_location_group in self.__get_new_location_groups():
             i += 1
             output = " [ " + str(i) + " ] " + new_location_group
             c = WhoCountryRegion.find_by_location_group(location_group=new_location_group)
@@ -250,7 +269,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         self.__update_location_group()
         i = 0
-        for new_location in self.__get_new_location():
+        for new_location in self.__get_new_locations():
             i += 1
             i_country_code = new_location.countries.country_code
             i_country = new_location.countries.country

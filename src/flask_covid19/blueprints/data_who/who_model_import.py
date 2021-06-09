@@ -10,16 +10,20 @@ class WhoImport(AllImport):
 
     def __repr__(self):
         return "%s(%s %s %s %s %s)" % (self.__class__.__name__,
-                                    self.datum.isoformat(), self.date_reported,
-                                    self.country_code, self.country, self.who_region)
+                                       self.datum.isoformat(),
+                                       self.date_reported,
+                                       self.country_code,
+                                       self.country,
+                                       self.who_region)
 
     def __str__(self):
-        return self.datum.isoformat() + " " + self.country_code + " " + self.country + " " + str(self.row_imported)
+        return "%s %s %s %s" % (self.datum.isoformat, self.country_code, self.country, str(self.row_imported))
 
     id = db.Column(db.Integer, primary_key=True)
-    datum = db.Column(db.Date, nullable=False)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
+    date_reported_import_str = db.Column(db.Date, nullable=False)
+    datum = db.Column(db.Date, nullable=False)
     #
     new_cases = db.Column(db.String(255), nullable=False)
     cumulative_cases = db.Column(db.String(255), nullable=False)
