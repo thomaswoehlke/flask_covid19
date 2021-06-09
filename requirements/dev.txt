@@ -29,7 +29,7 @@ bleach==3.3.0
     # via flask-sqlalchemy-booster
 boto==2.49.0
     # via toolspy
-celery==4.4.7
+celery[redis]==4.4.7
     # via -r requirements/dev.in
 certifi==2020.12.5
     # via
@@ -243,6 +243,8 @@ pytz==2021.1
     #   pytoolbox
 pyyaml==5.4.1
     # via pyaml
+redis==3.5.3
+    # via celery
 requests==2.25.1
     # via
     #   pytoolbox

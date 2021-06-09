@@ -16,7 +16,7 @@ mariadb
 urllib3>=1.26.5
 wget
 email_validator
-celery<5.0
+celery[redis]<5.0
 eventlet
 dataframetodb
 pangres
