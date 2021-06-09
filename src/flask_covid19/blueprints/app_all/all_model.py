@@ -251,6 +251,13 @@ class BlueprintLocationGroup(BlueprintEntity):
             dates_reported[my_location_group.location_group] = my_location_group
         return dates_reported
 
+    @classmethod
+    def get_all_str(cls):
+        all_str = []
+        for my_location_group in cls.find_all():
+            all_str.append(my_location_group.location_group)
+        return all_str
+
 
 class BlueprintLocation(BlueprintEntity):
     __tablename__ = 'all_location'

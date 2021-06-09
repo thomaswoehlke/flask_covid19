@@ -159,9 +159,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_continents(self):
         todo = []
-        owid_continent_all = []
-        for i in OwidContinent.get_all():
-            owid_continent_all.append(i.region)
+        owid_continent_all = OwidContinent.get_all_str()
         for oi in OwidImport.get_all_continents():
             item = oi.continent
             if item not in owid_continent_all:
@@ -171,11 +169,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
     def __get_new_countries_from_import(self):
         todo = []
         owid_countries = []
-        for oc in OwidCountry.get_all():
+        for oc in OwidCountry.find_all():
             oc_key = (
-                oc.iso_code,
+                oc.location_code,
                 oc.location,
-                oc.continent.region
+                oc.location_group.location_group
             )
             owid_countries.append(oc_key)
         for oi in OwidImport.get_all_countries():
@@ -215,11 +213,14 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info(" OwidServiceUpdate.__update_continent [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
+        i = 0
         log_lines = []
         for continent in self.__get_new_continents():
+            i += 1
             o = OwidContinentFactory.create_new(location_group_str=continent)
             db.session.add(o)
-            log_lines.append("added OwidContinent: "+str(o))
+            output = " added OwidContinent: [ " + str(i) + " ] " + str(o) + " "
+            log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
