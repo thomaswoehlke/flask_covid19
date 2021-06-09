@@ -35,6 +35,8 @@ bleach==3.3.0
     # via flask-sqlalchemy-booster
 boto==2.49.0
     # via toolspy
+build==0.4.0
+    # via -r requirements/build.in
 celery[redis]==4.4.7
     # via -r requirements/dev.in
 ceodbc==3.0
@@ -228,6 +230,7 @@ numpy==1.20.3
 packaging==20.9
     # via
     #   bleach
+    #   build
     #   pallets-sphinx-themes
     #   pytest
     #   pytest-flask-sqlalchemy
@@ -245,7 +248,9 @@ pangres==2.3
 parso==0.8.2
     # via jedi
 pep517==0.10.0
-    # via pip-tools
+    # via
+    #   build
+    #   pip-tools
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
@@ -429,6 +434,7 @@ sqlservice==1.3.0
     # via -r requirements/dev.in
 toml==0.10.2
     # via
+    #   build
     #   pep517
     #   pytest
 toolspy==0.4.1
