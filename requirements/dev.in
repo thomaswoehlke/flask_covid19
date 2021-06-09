@@ -31,3 +31,8 @@ sqlservice
 PostgreSQL-Audit
 SQLAlchemy-i18n
 Flask-Authlib
+SQLAlchemy-Utils
+SQLAlchemy-MetaJSON
+SQLAlchemy-Searchable
+pangres
+flask-postgresql-wrapper

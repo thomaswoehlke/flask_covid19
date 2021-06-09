@@ -3,3 +3,5 @@ pytest
 pytest-runner
 pytest-flask
 pytest-flask-sqlalchemy
+pytest-mysql
+pytest-postgresql
