@@ -97,8 +97,10 @@ toml==0.10.2
     # via
     #   pep517
     #   pytest
-urllib3==1.26.4
-    # via requests
+urllib3==1.26.5
+    # via
+    #   -r requirements/build.in
+    #   requests
 virtualenv-clone==0.5.4
     # via pipenv
 virtualenv==20.4.7

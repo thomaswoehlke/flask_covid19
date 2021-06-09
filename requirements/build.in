@@ -5,3 +5,4 @@ virtualenv
 pytoolbox
 python-dotenv
 Flask
+urllib3>=1.26.5
