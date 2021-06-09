@@ -260,7 +260,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
         for unprocessed_owid_date_reported in OwidDateReported.find_by_not_processed_update():
-            unprocessed_owid_date_reported.set_processed()
+            unprocessed_owid_date_reported.set_processed_update()
             app.logger.info("unprocessed_date: " + str(unprocessed_owid_date_reported))
             for oi in OwidImport.get_for_one_day(unprocessed_owid_date_reported.date_reported_import_str):
                 owid_country = OwidCountry.find_by_iso_code_and_location(
