@@ -148,16 +148,14 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __owid_import_get_new_dates(self):
-        new_dates_reported = []
-        odr_list = []
-        for odr in OwidDateReported.find_all_as_dict():
-            odr_list.append(odr.date_reported_import_str)
-            app.logger.info(str(odr.date_reported_import_str))
-        for owid_import__date_reported_import_str in OwidImport.get_datum_list():
-            app.logger.info(str(owid_import__date_reported_import_str))
-            if owid_import__date_reported_import_str not in odr_list:
-                new_dates_reported.append(owid_import__date_reported_import_str)
-        return new_dates_reported
+        todo = []
+        odr_list = OwidDateReported.get_all_str()
+        for datum_list in OwidImport.get_datum_list():
+            o = datum_list['date_reported_import_str']
+            app.logger.info("o: " + str(o))
+            if o not in odr_list:
+                todo.append(o)
+        return todo
 
     def __get_new_continents(self):
         todo = []

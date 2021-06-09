@@ -182,6 +182,13 @@ class BlueprintDateReported(BlueprintEntity):
             dates_reported[my_date_reported.date_reported_import_str] = my_date_reported
         return dates_reported
 
+    @classmethod
+    def get_all_str(cls):
+        all_str = []
+        for my_date_reported in cls.find_all():
+            all_str.append(my_date_reported.date_reported_import_str)
+        return all_str
+
 
 class BlueprintLocationGroup(BlueprintEntity):
     __tablename__ = 'all_location_group'
