@@ -1,6 +1,6 @@
 from database import app
 from flask_covid19 import WhoService, OwidService, RkiService, VaccinationService, EcdcService, DiviService
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin, AllServiceMixinUpdateFull
+from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 
 
 class AllDataServiceDispachterMatrix(AllServiceMixin):
