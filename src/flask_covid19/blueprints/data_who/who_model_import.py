@@ -41,6 +41,12 @@ class WhoImport(AllImport):
             .distinct().all()
 
     @classmethod
+    def get_all_countries(cls):
+        return db.session.query(cls.country) \
+            .order_by(cls.country) \
+            .distinct().all()
+
+    @classmethod
     def get_dates_reported(cls):
         return db.session.query(cls.date_reported)\
             .order_by(cls.date_reported.desc())\
