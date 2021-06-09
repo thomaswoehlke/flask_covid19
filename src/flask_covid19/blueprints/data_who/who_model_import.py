@@ -22,7 +22,7 @@ class WhoImport(AllImport):
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    date_reported_import_str = db.Column(db.Date, nullable=False)
+    date_reported_import_str = db.Column(db.String(255), nullable=False)
     datum = db.Column(db.Date, nullable=False)
     #
     new_cases = db.Column(db.String(255), nullable=False)

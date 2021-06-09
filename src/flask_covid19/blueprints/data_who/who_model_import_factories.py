@@ -49,6 +49,7 @@ class WhoImportFactory:
             who_region=row['WHO_region'],
             date_reported=date_reported,
             datum=d.datum,
+            date_reported_import_str=date_reported,
             processed_update=False,
             processed_full_update=False,
         )
