@@ -205,18 +205,18 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         todo = []
         who_countries = []
         for oc in WhoCountry.find_all():
-            oc_key = (
-                oc.location_code,
-                oc.location,
-                oc.location_group.location_group
-            )
+            oc_key = {
+                'location_code': oc.location_code,
+                'location': oc.location,
+                'location_group': oc.location_group.location_group
+            }
             who_countries.append(oc_key)
         for oi in WhoImport.countries():
-            country = (
-                oi.country_code,
-                oi.country,
-                oi.who_region
-            )
+            country = {
+                'location_code': oi.countries.country_code,
+                'location': oi.countries.country,
+                'location_group': oi.countries.who_region
+            }
             if country not in who_countries:
                 todo.append(country)
         return todo
@@ -271,9 +271,9 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         for new_location in self.__get_new_locations():
             i += 1
-            i_country_code = new_location[0]
-            i_country = new_location[1]
-            i_who_region = new_location[2]
+            i_country_code = new_location['location_code']
+            i_country = new_location['location']
+            i_who_region = new_location['location_group']
             output = " [ " + str(i) + " ] " + i_country_code + " | " + i_country + " | " + i_who_region + " | "
             my_region = WhoCountryRegion.find_by_region(i_who_region)
             o = WhoCountryFactory.create_new(
