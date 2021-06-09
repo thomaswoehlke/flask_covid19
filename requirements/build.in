@@ -5,5 +5,3 @@ virtualenv
 pytoolbox
 python-dotenv
 Flask
-SQLAlchemy<=1.4.15
-build

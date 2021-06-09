@@ -23,6 +23,7 @@ cx-Oracle==8.2.1
 cycler==0.10.0
 dataframetodb==0.1
 dataset==1.5.0
+dbcm2==2.0.3
 DBUtils==2.0.1
 decorator==5.0.9
 distlib==0.3.1
