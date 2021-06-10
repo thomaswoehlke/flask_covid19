@@ -44,7 +44,7 @@ class RkiAltersgruppe(BlueprintEntity):
     )
 
     def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__, self.altersgruppe)
+        return "%s ( %s )" % (self.__class__.__name__, self.altersgruppe)
 
     def __str__(self):
         return " " + self.altersgruppe + " "
@@ -77,23 +77,24 @@ class RkiData(BlueprintFactTable):
     )
 
     def __repr__(self):
-        return "%s(%s %s %s %s %s %s %s)" % (self.__class__.__name__,
-                                             self.fid,
-                                             self.geschlecht,
-                                             self.date_reported.__repr__(),
-                                             self.datenstand.__repr__(),
-                                             self.location.__repr__(),
-                                             self.ref_datum.__repr__(),
-                                             self.altersgruppe_id)
+        return "%s (%s %s %s %s %s %s %s)" % (self.__class__.__name__,
+                                              self.date_reported.__repr__(),
+                                              self.location.__repr__(),
+                                              self.altersgruppe.__repr__(),
+                                              self.geschlecht,
+                                              self.datenstand_datum.isoformat(),
+                                              self.ref_datum_datum.isoformat(),
+                                              self.fid)
 
     def __str__(self):
-        return "%s (%s, %s, %s, %s, %s, %s)" % (self.__class__.__name__,
+        return "%s (%s, %s, %s, %s, %s, %s, %s)" % (self.__class__.__name__,
                                                 self.date_reported.__repr__(),
                                                 self.location.__str__(),
                                                 self.altersgruppe.__str__(),
                                                 self.geschlecht,
-                                                self.datenstand.__repr__(),
-                                                self.ref_datum.__repr__())
+                                                self.datenstand_datum.isoformat(),
+                                                self.ref_datum_datum.isoformat(),
+                                                self.fid)
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
