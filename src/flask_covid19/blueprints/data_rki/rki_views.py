@@ -197,11 +197,12 @@ def url_rki_delete_last_day():
     rki_service.delete_last_day()
     flash("url_rki_delete_last_day [done]")
     app.logger.info("url_rki_delete_last_day [done]")
-    return redirect(url_for('rki.url_rki_info'))
+    return redirect(url_for('rki.url_rki_date_reported_all'))
 
 # ------------------------------------------------------------------------
 #  Celery TASKS
 # ------------------------------------------------------------------------
+
 
 @celery.task(bind=True)
 def task_rki_import(self):
