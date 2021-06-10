@@ -301,7 +301,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         d = 0
         k = 0
         for my_date_reported in WhoDateReported.find_by_not_processed_update():
-            for who_import in WhoImport.get_for_one_day(my_date_reported):
+            for who_import in WhoImport.find_by_datum(my_date_reported.datum):
                 if who_import.country_code == "":
                     my_country = WhoCountry.find_by_location(who_import.country)
                 else:
