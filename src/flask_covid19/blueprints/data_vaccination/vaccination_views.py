@@ -24,6 +24,13 @@ admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 #  Url Routes Frontend
 # ---------------------------------------------------------------------------------------------------------------
 
+
+@app_vaccination.route('')
+@app_vaccination.route('/')
+def url_vaccination_root():
+    return redirect(url_for('vaccination.url_vaccination_info'))
+
+
 @app_vaccination.route('/info')
 def url_vaccination_info():
     page_info = WebPageContent('Vaccination', "Info")

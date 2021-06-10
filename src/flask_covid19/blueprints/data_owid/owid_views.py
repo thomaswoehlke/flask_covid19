@@ -28,6 +28,12 @@ owid_test_service = OwidTestService(db, owid_service)
 # ---------------------------------------------------------------------------------------------------------------
 
 
+@app_owid.route('')
+@app_owid.route('/')
+def url_owid_root():
+    return redirect(url_for('owid.url_owid_info'))
+
+
 @app_owid.route('/info')
 def url_owid_info():
     page_info = WebPageContent('OWID', "Info")

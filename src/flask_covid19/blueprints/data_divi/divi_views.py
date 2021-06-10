@@ -28,6 +28,12 @@ admin.add_view(ModelView(DiviData, db.session, category="DIVI"))
 # ---------------------------------------------------------------------------------------------------------------
 
 
+@app_divi.route('')
+@app_divi.route('/')
+def url_divi_root():
+    return redirect(url_for('divi.url_divi_info'))
+
+
 @app_divi.route('/info')
 def url_divi_info():
     page_info = WebPageContent('divi', "Info")

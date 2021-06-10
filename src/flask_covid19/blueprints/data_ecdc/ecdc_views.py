@@ -27,6 +27,13 @@ admin.add_view(ModelView(EcdcData, db.session, category="ECDC"))
 #  Url Routes Frontend
 # ---------------------------------------------------------------------------------------------------------------
 
+
+@app_ecdc.route('')
+@app_ecdc.route('/')
+def url_ecdc_root():
+    return redirect(url_for('ecdc.url_ecdc_info'))
+
+
 @app_ecdc.route('/info')
 def url_ecdc_info():
     page_info = WebPageContent('ECDC', "Info")
