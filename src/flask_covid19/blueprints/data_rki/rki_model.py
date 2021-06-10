@@ -82,9 +82,18 @@ class RkiData(BlueprintFactTable):
                                              self.geschlecht,
                                              self.date_reported.__repr__(),
                                              self.datenstand.__repr__(),
-                                             self.location,
+                                             self.location.__repr__(),
                                              self.ref_datum.__repr__(),
                                              self.altersgruppe_id)
+
+    def __str__(self):
+        return "%s (%s, %s, %s, %s, %s, %s)" % (self.__class__.__name__,
+                                                self.date_reported.__repr__(),
+                                                self.location.__str__(),
+                                                self.altersgruppe.__str__(),
+                                                self.geschlecht,
+                                                self.datenstand.__repr__(),
+                                                self.ref_datum.__repr__())
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -151,6 +160,10 @@ class RkiData(BlueprintFactTable):
             joinedload(cls.location).joinedload(RkiLandkreis.location_group),
             joinedload(cls.date_reported)
         )
+
+    @classmethod
+    def find_by_date_reported(cls, date_reported: RkiMeldedatum):
+        return cls.__query_by_date_reported(date_reported).all()
 
     @classmethod
     def get_by_location(cls, location: RkiLandkreis, page: int):

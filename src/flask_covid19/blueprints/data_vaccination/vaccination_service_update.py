@@ -15,7 +15,8 @@ class VaccinationServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Vaccination Service Update [ready] ")
+        app.logger.info(" Vaccination Service Update [ready] ")
+        app.logger.debug("------------------------------------------------------------")
 
 
 class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixinUpdateFull):
@@ -33,12 +34,15 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
             output = " full_update RkiVaccination date_reported [ " + str(i) + " ] " + str(o)
             app.logger.info(output)
         db.session.commit()
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
         app.logger.info("  VaccinationServiceUpdateFull.__full_update_date_reported  [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_fact_table(self):
-        app.logger.info(" __update_data_initial [begin]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdateFull.__full_update_fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
@@ -81,7 +85,9 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
                     db.session.commit()
         db.session.commit()
         app.logger.info(" full update Vaccination data ... " + str(i) + " rows total")
-        app.logger.info(" __update_data_initial [done]")
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdateFull.__full_update_fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -98,7 +104,8 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
-        app.logger.info(" __update_date_reported [begin]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdate.__update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationDateReported.remove_all()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
@@ -110,12 +117,15 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
             db.session.add(o)
             app.logger.info(output)
         db.session.commit()
-        app.logger.info(" __update_date_reported [done]")
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdate.__update_date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_fact_table(self):
-        app.logger.info(" __update_fact_table_incremental Vaccination [begin]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdate.__update_fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         result_date_rep = VaccinationImport.get_daterep_missing_in_vaccination_data()
         i = 0
@@ -150,11 +160,12 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 db.session.add(o)
                 i += 1
                 if i % 500 == 0:
-                    app.logger.info(" update Vaccination incremental ... " + str(i) + " rows")
+                    app.logger.info(" update Vaccination ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" update Vaccination incremental ... " + str(i) + " rows total")
-        app.logger.info(" __update_fact_table_incremental Vaccination [done]")
+        app.logger.info(" update Vaccination ... " + str(i) + " rows total")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" VaccinationServiceUpdate.__update_fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -169,11 +180,11 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.delete_last_day() [START]")
+        app.logger.debug(" VaccinationServiceUpdate.delete_last_day [START]")
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug("")
+        app.logger.debug(" not implemented")
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.delete_last_day() [DONE]")
+        app.logger.debug(" VaccinationServiceUpdate.delete_last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
 
