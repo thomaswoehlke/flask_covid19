@@ -52,6 +52,12 @@ class BlueprintEntity(db.Model):
             o.set_processed_full_update()
         db.session.commit()
 
+    @classmethod
+    def set_all_processed_update(cls):
+        for o in cls.find_by_not_processed_update():
+            o.set_processed_update()
+        db.session.commit()
+
     def set_processed_update(self):
         self.processed_update = True
         return self

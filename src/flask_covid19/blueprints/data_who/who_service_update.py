@@ -244,6 +244,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" WhoServiceUpdate.__update_location_group [begin]")
         app.logger.info("------------------------------------------------------------")
+        WhoCountryRegion.set_all_processed_full_update()
         i = 0
         for new_location_group in self.__get_new_location_groups():
             i += 1
@@ -268,6 +269,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info(" WhoServiceUpdate.__update_location [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_location_group()
+        WhoCountry.set_all_processed_update()
         i = 0
         for new_location in self.__get_new_locations():
             i += 1
@@ -275,7 +277,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
             i_country = new_location['location']
             i_who_region = new_location['location_group']
             output = " [ " + str(i) + " ] " + i_country_code + " | " + i_country + " | " + i_who_region + " | "
-            my_region = WhoCountryRegion.find_by_region(i_who_region)
+            my_region = WhoCountryRegion.find_by_location_group(i_who_region)
             o = WhoCountryFactory.create_new(
                 location=i_country, location_code=i_country_code, location_group=my_region
             )
