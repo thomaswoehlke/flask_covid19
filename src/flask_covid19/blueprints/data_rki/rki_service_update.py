@@ -283,13 +283,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" RkiTestService.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
-        joungest_datum_str = RkiData.get_joungest_datum()
-        joungest_datum = RkiMeldedatum.find_by_date_reported(joungest_datum_str)
+        joungest_datum = RkiMeldedatum.get_joungest_datum()
         app.logger.info("joungest_datum:")
         app.logger.info(joungest_datum)
         app.logger.info("RkiData.get_data_for_one_day(joungest_datum):")
         i = 0
-        for data in RkiData.get_data_for_one_day(joungest_datum):
+        for data in RkiData.find_by_date_reported(joungest_datum):
             i += 1
             line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.country) + " | "
             app.logger.info(line)

@@ -30,6 +30,12 @@ admin.add_view(ModelView(WhoData, db.session, category="WHO"))
 # ---------------------------------------------------------------------------------------------------------------
 
 
+@app_who.route('')
+@app_who.route('/')
+def url_who_root():
+    return redirect(url_for('who.url_who_info'))
+
+
 @app_who.route('/info')
 def url_who_info():
     page_info = WebPageContent('WHO', "Info")

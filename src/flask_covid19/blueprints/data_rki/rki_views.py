@@ -33,6 +33,11 @@ admin.add_view(ModelView(RkiData, db.session, category="RKI"))
 #  Url Routes Frontend
 # ---------------------------------------------------------------------------------------------------------------
 
+@app_rki.route('')
+@app_rki.route('/')
+def url_rki_root():
+    return redirect(url_for('rki.url_rki_info'))
+
 
 @app_rki.route('/info')
 def url_rki_info():
