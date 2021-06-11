@@ -69,6 +69,17 @@ class VaccinationImport(AllImport):
             resultarray.append(o)
         return resultarray
 
+    @classmethod
+    def get_date_reported_import_str_list(cls):
+        date_reported_import_str_list = []
+        bu = Bundle('date_reported_import_str', cls.date_reported_import_str)
+        oi_list = db.session.query(bu).distinct().order_by(cls.date_reported_import_str.desc())
+        for date_reported_import_str_row in oi_list:
+            item = date_reported_import_str_row[0]
+            if item not in date_reported_import_str_list:
+                date_reported_import_str_list.append(item)
+        return date_reported_import_str_list
+
 
 class VaccinationFlat(AllFlat):
     __tablename__ = 'vaccination_import_flat'

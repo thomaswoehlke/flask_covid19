@@ -103,17 +103,27 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
 
+    def __get_new_dates(self):
+        todo = []
+        odr_list = VaccinationDateReported.get_all_str()
+        for oi in VaccinationImport.get_date_reported_import_str_list():
+            item = oi[0]
+            app.logger.info("o: " + str(item))
+            if item not in odr_list:
+                todo.append(item)
+        return todo
+
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" VaccinationServiceUpdate.__update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
-        VaccinationDateReported.remove_all()
+        VaccinationDateReported.set_all_processed_update()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
         i = 0
         for one_date_reported in date_reported_list:
             i += 1
-            output = " [ " + str(i) + " ] " + one_date_reported + " added"
-            o = VaccinationDateReported.create_new_object_factory(one_date_reported)
+            output = " [ " + str(i) + " ] " + str(one_date_reported) + " added"
+            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(one_date_reported)
             db.session.add(o)
             app.logger.info(output)
         db.session.commit()
@@ -170,7 +180,6 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         return self
 
     def update_dimension_tables(self):
-        VaccinationData.remove_all()
         self.__update_date_reported()
         return self
 

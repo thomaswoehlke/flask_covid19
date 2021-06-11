@@ -1,4 +1,5 @@
 from flask_covid19_conf.database import db, app#, cache
+from sqlalchemy.orm import Bundle
 
 from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
