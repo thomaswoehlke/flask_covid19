@@ -201,7 +201,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = RkiMeldedatum.get_all_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
-            # app.logger.info("o: " + str(item))
+            app.logger.info("o: " + str(item))
             if item not in odr_list:
                 todo.append(item)
         return todo
@@ -211,24 +211,24 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         who_region_all = RkiBundesland.get_all_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
-            # app.logger.info("lg: " + str(item))
+            app.logger.info("lg: " + str(item))
             if item not in who_region_all:
                 todo.append(item)
         return todo
 
     def __get_new_locations(self):
-        todo = {}
+        todo = []
         landkreis_all = RkiLandkreis.get_all_str()
         for my_bundesland in RkiBundesland.get_all_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
+                app.logger.info("l: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
                     new_location = [
                         oi.landkreis,
                         oi.id_landkreis,
                         my_bundesland
                     ]
-                    # app.logger.info("l: " + str(item))
                     todo.append(new_location)
         return todo
 
@@ -351,6 +351,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
     def update_dimension_tables(self):
         self.__update_date_reported()
         self.__update_locations()
+        self.__get_new_altersgruppen()
         return self
 
     def update_fact_table(self):

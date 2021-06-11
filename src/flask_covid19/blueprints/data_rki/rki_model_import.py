@@ -105,7 +105,7 @@ class RkiImport(AllImport):
         bu = Bundle('altersgruppe', cls.altersgruppe)
         for altersgruppe_row in db.session.query(bu).distinct().order_by(cls.altersgruppe.asc()):
             item = altersgruppe_row[0]
-            if not item in altersgruppe_list:
+            if item not in altersgruppe_list:
                 altersgruppe_list.append(item)
         return altersgruppe_list
 
