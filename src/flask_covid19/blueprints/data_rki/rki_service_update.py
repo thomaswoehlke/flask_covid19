@@ -200,9 +200,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         todo = []
         odr_list = RkiMeldedatum.get_all_str()
         for oi in RkiImport.get_date_reported_import_str_list():
-            app.logger.info("o: " + str(oi))
-            if oi not in odr_list:
-                todo.append(oi)
+            item = oi[0]
+            # app.logger.info("o: " + str(item))
+            if item not in odr_list:
+                todo.append(item)
         return todo
 
     def __get_new_location_groups(self):
@@ -210,6 +211,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         who_region_all = RkiBundesland.get_all_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
+            # app.logger.info("lg: " + str(item))
             if item not in who_region_all:
                 todo.append(item)
         return todo
@@ -226,6 +228,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                         oi.id_landkreis,
                         my_bundesland
                     ]
+                    # app.logger.info("l: " + str(item))
                     todo.append(new_location)
         return todo
 
