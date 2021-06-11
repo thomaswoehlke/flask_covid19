@@ -7,6 +7,25 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <h4>Update</h4>
+                <div>
+                    <a class="btn btn-success btn-lg btn-block text-left"
+                       href="{{ url_for( 'diwi.url_task_diwi_download') }}"
+                       role="button">DIWI :: Task :: download</a>
+                    <a class="btn btn-info btn-lg btn-block text-left"
+                       href="{{ url_for( 'diwi.url_task_diwi_import') }}"
+                       role="button">DIWI :: Task :: import</a>
+                     <a class="btn btn-warning btn-lg btn-block text-left"
+                       href="{{ url_for( 'diwi.url_task_diwi_update_dimension_tables') }}"
+                       role="button">DIWI :: Task :: update :: dimension-tables</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'diwi.url_task_diwi_update_fact_table') }}"
+                       role="button">DIWI :: Task :: update :: fact-table</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'diwi.url_task_diwi_update') }}"
+                       role="button">DIWI :: Task :: update</a>
+                </div>
+                <p></p>
                 <h4>Full Update</h4>
                 <div>
                     <a class="btn btn-success btn-lg btn-block text-left"
@@ -24,23 +43,6 @@
                     <a class="btn btn-primary btn-lg btn-block text-left"
                        href="{{ url_for( 'diwi.url_task_diwi_full_update') }}"
                        role="button">DIWI :: Task :: update :: full</a>
-                </div>
-                <div>
-                    <a class="btn btn-success btn-lg btn-block text-left"
-                       href="{{ url_for( 'diwi.url_task_diwi_download') }}"
-                       role="button">DIWI :: Task :: download</a>
-                    <a class="btn btn-info btn-lg btn-block text-left"
-                       href="{{ url_for( 'diwi.url_task_diwi_import') }}"
-                       role="button">DIWI :: Task :: import</a>
-                     <a class="btn btn-warning btn-lg btn-block text-left"
-                       href="{{ url_for( 'diwi.url_task_diwi_update_dimension_tables') }}"
-                       role="button">DIWI :: Task :: update :: dimension-tables</a>
-                    <a class="btn btn-secondary btn-lg btn-block text-left"
-                       href="{{ url_for( 'diwi.url_task_diwi_update_fact_table') }}"
-                       role="button">DIWI :: Task :: update :: fact-table</a>
-                    <a class="btn btn-primary btn-lg btn-block text-left"
-                       href="{{ url_for( 'diwi.url_task_diwi_update') }}"
-                       role="button">DIWI :: Task :: update</a>
                 </div>
             </div>
         </div>
