@@ -41,7 +41,7 @@ def create_app():
     app_bootstrap.init_app(my_app)
     login_manager.login_view = 'usr.login'
     login_manager.init_app(my_app)
-    my_app.config.from_object("config")
+    my_app.config.from_object("flask_covid19_conf"+os.sep+"config")
     # my_db_url = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
     # my_db_url = 'mysql://{user}:{pw}@{url}/{db}'.format(
     my_db_url = 'mariadb+mariadbconnector://{user}:{pw}@{url}/{db}'.format(
