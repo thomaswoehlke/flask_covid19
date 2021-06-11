@@ -60,6 +60,10 @@ class RkiAltersgruppe(AllEntity):
         return db.session.query(cls).order_by(cls.altersgruppe)
 
     @classmethod
+    def find_all(cls):
+        return cls.__query_all().all()
+
+    @classmethod
     def find_all_as_dict(cls):
         altersgruppe_dict = {}
         for my_altersgruppe in cls.find_all():

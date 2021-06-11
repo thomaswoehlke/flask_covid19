@@ -237,6 +237,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         todo = []
         altersgruppe_all = RkiAltersgruppe.get_all_str()
         for item in RkiImport.get_altersgruppe_list():
+            app.logger.info(str(item))
             if item not in altersgruppe_all:
                 todo.append(item)
         return todo
@@ -267,7 +268,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiBundesland.set_all_processed_update()
-        for new_location_group in self.__get_new_altersgruppen():
+        for new_location_group in self.__get_new_locations():
             i += 1
             o = RkiBundeslandFactory.create_new(bundesland_of_import=new_location_group)
             db.session.add(o)
@@ -313,6 +314,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         RkiAltersgruppe.set_all_processed_update()
         for new_altersgruppe in self.__get_new_altersgruppen():
+            app.logger.info("aaa: "+str(new_altersgruppe))
             i += 1
             o = RkiAltersgruppe(
                 altersgruppe=new_altersgruppe,
@@ -321,7 +323,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             )
             db.session.add(o)
             db.session.commit()
-            output = " [ " + str(i) + " ] " + str(o) + " added"
+            output = " RKI [ " + str(i) + " ] " + str(o) + " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
