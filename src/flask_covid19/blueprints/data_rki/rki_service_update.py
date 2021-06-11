@@ -196,14 +196,15 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
 
 class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
-    def __who_import_get_new_dates_reported(self):
-        new_dates_reported = []
-        list_datum_from_data = RkiData.get_datum_of_all_data()
-        list_datum_from_import = RkiImport.get_datum_of_all_import()
-        for item_datum_from_import in list_datum_from_import:
-            if item_datum_from_import not in list_datum_from_data:
-                new_dates_reported.append(item_datum_from_import)
-        return new_dates_reported
+    def __rki_import_get_new_dates(self):
+        todo = []
+        odr_list = RkiMeldedatum.get_all_str()
+        for datum_list in RkiImport.get_datum_list():
+            o = datum_list['date_reported_import_str']
+            app.logger.info("o: " + str(o))
+            if o not in odr_list:
+                todo.append(o)
+        return todo
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
@@ -211,7 +212,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiMeldedatum.set_all_processed_update()
-        for aktualisierung in self.__who_import_get_new_dates_reported():
+        for aktualisierung in self.__rki_import_get_new_dates():
             i += 1
             output = " [ " + str(i) + " ] " + aktualisierung
             o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(my_meldedatum=aktualisierung)
@@ -230,11 +231,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiServiceUpdate.__update_data [begin]")
         app.logger.info("------------------------------------------------------------")
-        aktualisierungen_from_import = RkiImport.get_aktualisierungen_as_array()
         i = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
-        my_new_my_meldedatum_list = RkiMeldedatum.find_all()
-        for my_meldedatum in my_new_my_meldedatum_list:
+        for my_meldedatum in RkiMeldedatum.find_by_not_processed_update():
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location_type + " " + my_landkreis.location
