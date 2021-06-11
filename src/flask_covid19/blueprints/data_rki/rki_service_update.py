@@ -210,17 +210,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info(" RkiServiceUpdate.__update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
-        for aktualisierung in RkiImport.get_aktualisierungen_as_array():
+        RkiMeldedatum.set_all_processed_update()
+        for aktualisierung in self.__who_import_get_new_dates_reported():
             i += 1
             output = " [ " + str(i) + " ] " + aktualisierung
-            c = RkiMeldedatum.find_by_date_reported(aktualisierung)
-            if c is None:
-                o = RkiMeldedatum.create_new_object_factory(aktualisierung=aktualisierung)
-                db.session.add(o)
-                db.session.commit()
-                output += " added"
-            else:
-                output += " NOT added " + str(c.id)
+            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(my_meldedatum=aktualisierung)
+            db.session.add(o)
+            db.session.commit()
+            output += " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
