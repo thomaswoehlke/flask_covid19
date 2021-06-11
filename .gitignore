@@ -1137,3 +1137,4 @@ dump.rdb
 /src/flask_covid19/static/vendor/
 /.checkmate
 /src/data/
+/src/flask_covid19_app/static/vendor/
