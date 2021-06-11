@@ -40,7 +40,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
             'delete_last_day': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
+                who_service, owid_service, rki_service
             ],
         }
         app.logger.debug("------------------------------------------------------------")

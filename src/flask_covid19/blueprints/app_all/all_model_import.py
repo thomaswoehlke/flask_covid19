@@ -41,7 +41,7 @@ class AllImport(BlueprintEntity):
     @classmethod
     def get_datum_list(cls):
         return db.session.query(cls.date_reported_import_str) \
-            .goup_by(cls.date_reported_import_str) \
+            .group_by(cls.date_reported_import_str) \
             .distinct() \
             .order_by(cls.date_reported_import_str.desc()) \
             .all()
