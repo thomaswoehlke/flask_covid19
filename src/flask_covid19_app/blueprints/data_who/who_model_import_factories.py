@@ -1,4 +1,4 @@
-from flask_covid19.blueprints.data_who.who_model_import import WhoFlat, WhoImport
+from flask_covid19_app.blueprints.data_who.who_model_import import WhoFlat, WhoImport
 
 
 class WhoFlatFactory:

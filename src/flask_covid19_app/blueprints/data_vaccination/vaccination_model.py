@@ -1,6 +1,6 @@
 
 from database import db #, cache
-from flask_covid19.blueprints.app_all.all_model import AllDateReported, AllFactTableTimeSeries
+from flask_covid19_app.blueprints.app_all.all_model import AllDateReported, AllFactTableTimeSeries
 
 
 class VaccinationDateReported(AllDateReported):

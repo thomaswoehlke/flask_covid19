@@ -5,12 +5,12 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
 from database import app, admin, db, celery
-from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import ecdc_service
-from flask_covid19.blueprints.data_ecdc.ecdc_test_service import EcdcTestService
+from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import ecdc_service
+from flask_covid19_app.blueprints.data_ecdc.ecdc_test_service import EcdcTestService
 
-from flask_covid19.blueprints.data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
-from flask_covid19.blueprints.data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
-from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
+from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
+from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
+from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
 
 
 app_ecdc = Blueprint('ecdc', __name__, template_folder='templates', url_prefix='/ecdc')

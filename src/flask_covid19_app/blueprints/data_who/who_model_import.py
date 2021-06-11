@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
 from database import db # , cache
-from flask_covid19.blueprints.app_all.all_model_import import AllImport, AllFlat
+from flask_covid19_app.blueprints.app_all.all_model_import import AllImport, AllFlat
 
 
 class WhoImport(AllImport):

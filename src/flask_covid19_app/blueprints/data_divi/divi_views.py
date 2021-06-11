@@ -7,11 +7,11 @@ from flask_login import login_required
 
 from database import app, admin, db, celery
 
-from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import divi_service
-from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
+from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import divi_service
+from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
 
-from flask_covid19.blueprints.data_divi.divi_model import DiviRegion, DiviDateReported, DiviCountry, DiviData
-from flask_covid19.blueprints.data_divi.divi_model_import import DiviImport
+from flask_covid19_app.blueprints.data_divi.divi_model import DiviRegion, DiviDateReported, DiviCountry, DiviData
+from flask_covid19_app.blueprints.data_divi.divi_model_import import DiviImport
 
 
 app_divi = Blueprint('divi', __name__, template_folder='templates', url_prefix='/divi')

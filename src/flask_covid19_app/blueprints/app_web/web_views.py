@@ -2,18 +2,18 @@ from flask import render_template, redirect, url_for, Blueprint
 
 from database import app, celery # , cache
 
-from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
+from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
 
-from flask_covid19.blueprints.app_web.user_views import blueprint_app_user
-from flask_covid19.blueprints.app_web.app_admin_views import blueprint_app_admin
-from flask_covid19.blueprints.app_all.all_views import blueprint_app_all
+from flask_covid19_app.blueprints.app_web.user_views import blueprint_app_user
+from flask_covid19_app.blueprints.app_web.app_admin_views import blueprint_app_admin
+from flask_covid19_app.blueprints.app_all.all_views import blueprint_app_all
 
-from flask_covid19.blueprints.data_who.who_views import app_who
-from flask_covid19.blueprints.data_owid.owid_views import app_owid
-from flask_covid19.blueprints.data_ecdc.ecdc_views import app_ecdc
-from flask_covid19.blueprints.data_vaccination.vaccination_views import app_vaccination
-from flask_covid19.blueprints.data_rki.rki_views import app_rki
-from flask_covid19.blueprints.data_divi.divi_views import app_divi
+from flask_covid19_app.blueprints.data_who.who_views import app_who
+from flask_covid19_app.blueprints.data_owid.owid_views import app_owid
+from flask_covid19_app.blueprints.data_ecdc.ecdc_views import app_ecdc
+from flask_covid19_app.blueprints.data_vaccination.vaccination_views import app_vaccination
+from flask_covid19_app.blueprints.data_rki.rki_views import app_rki
+from flask_covid19_app.blueprints.data_divi.divi_views import app_divi
 
 blueprint_application = Blueprint('app_web', __name__, template_folder='templates', url_prefix='/')
 

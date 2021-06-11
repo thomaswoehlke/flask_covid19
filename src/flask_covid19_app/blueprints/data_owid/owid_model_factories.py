@@ -1,5 +1,5 @@
-from flask_covid19 import OwidImport
-from flask_covid19.blueprints.data_owid.owid_model import OwidContinent, OwidCountry, OwidDateReported, OwidData
+from flask_covid19_app import OwidImport
+from flask_covid19_app.blueprints.data_owid.owid_model import OwidContinent, OwidCountry, OwidDateReported, OwidData
 
 
 class OwidContinentFactory:

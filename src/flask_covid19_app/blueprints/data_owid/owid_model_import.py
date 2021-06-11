@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Bundle
 from database import db, ITEMS_PER_PAGE
 from sqlalchemy import and_
-from flask_covid19.blueprints.app_all.all_model_import import AllImport, AllFlat
+from flask_covid19_app.blueprints.app_all.all_model_import import AllImport, AllFlat
 
 
 class OwidImport(AllImport):

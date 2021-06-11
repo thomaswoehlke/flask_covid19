@@ -1,13 +1,13 @@
 from database import app
-from flask_covid19 import WhoService, OwidService, RkiService, VaccinationService, EcdcService, DiviService
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
+from flask_covid19_app import WhoService, OwidService, RkiService, VaccinationService, EcdcService, DiviService
+from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixin
 
-from flask_covid19.blueprints.data_ecdc.ecdc_service import EcdcService
-from flask_covid19.blueprints.data_owid.owid_service import OwidService
-from flask_covid19.blueprints.data_vaccination.vaccination_service import VaccinationService
-from flask_covid19.blueprints.data_who.who_service import WhoService
-from flask_covid19.blueprints.data_divi.divi_service import DiviService
-from flask_covid19.blueprints.data_rki.rki_service import RkiService
+from flask_covid19_app.blueprints.data_ecdc.ecdc_service import EcdcService
+from flask_covid19_app.blueprints.data_owid.owid_service import OwidService
+from flask_covid19_app.blueprints.data_vaccination.vaccination_service import VaccinationService
+from flask_covid19_app.blueprints.data_who.who_service import WhoService
+from flask_covid19_app.blueprints.data_divi.divi_service import DiviService
+from flask_covid19_app.blueprints.data_rki.rki_service import RkiService
 
 
 class AllDataServiceDispachterMatrix(AllServiceMixin):

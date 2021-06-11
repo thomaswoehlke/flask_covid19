@@ -1,7 +1,7 @@
 from database import db, app
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
-from flask_covid19.blueprints.data_rki.rki_model_import import RkiImport
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
+from flask_covid19_app.blueprints.data_rki.rki_model_import import RkiImport
 
 
 class RkiTestService:

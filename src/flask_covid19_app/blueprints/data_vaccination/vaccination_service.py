@@ -1,11 +1,11 @@
 from database import app
 
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
-from flask_covid19.blueprints.data_vaccination.vaccination_service_import import VaccinationServiceImport
-from flask_covid19.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdate
-from flask_covid19.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdateFull
+from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixin
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.app_all.all_service_download import AllDownloadService
+from flask_covid19_app.blueprints.data_vaccination.vaccination_service_import import VaccinationServiceImport
+from flask_covid19_app.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdate
+from flask_covid19_app.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdateFull
 
 
 class VaccinationService(AllServiceMixin):

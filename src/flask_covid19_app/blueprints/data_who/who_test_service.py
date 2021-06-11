@@ -1,6 +1,6 @@
 from database import app
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.data_who.who_model import WhoDateReported, WhoData
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.data_who.who_model import WhoDateReported, WhoData
 
 
 class WhoTestService:

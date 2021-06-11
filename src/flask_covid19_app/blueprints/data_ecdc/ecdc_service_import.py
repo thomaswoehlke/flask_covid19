@@ -2,11 +2,11 @@ import csv
 # import psycopg2
 
 from database import db, app
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinImport
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.data_ecdc.ecdc_model import EcdcDateReported
-from flask_covid19.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
-from flask_covid19.blueprints.data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
+from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinImport
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported
+from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
+from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
 
 
 class EcdcImportFactory:

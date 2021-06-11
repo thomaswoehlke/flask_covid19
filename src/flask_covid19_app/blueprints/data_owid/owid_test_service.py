@@ -1,7 +1,7 @@
 from database import db, app
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
-from flask_covid19.blueprints.data_owid.owid_model_import import OwidImport
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
+from flask_covid19_app.blueprints.data_owid.owid_model_import import OwidImport
 
 
 class OwidTestService:

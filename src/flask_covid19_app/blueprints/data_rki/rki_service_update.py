@@ -1,13 +1,13 @@
 from database import db, app#, cache
 
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
-from flask_covid19.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
-from flask_covid19.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiAltersgruppe, \
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
+from flask_covid19_app.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiAltersgruppe, \
     RkiBundesland, RkiLandkreis
-from flask_covid19.blueprints.data_rki.rki_model_factories import RkiBundeslandFactory, RkiLandkreisFactory, \
+from flask_covid19_app.blueprints.data_rki.rki_model_factories import RkiBundeslandFactory, RkiLandkreisFactory, \
     RkiDataFactory
-from flask_covid19.blueprints.data_rki.rki_model_import import RkiImport
+from flask_covid19_app.blueprints.data_rki.rki_model_import import RkiImport
 
 
 class RkiServiceUpdateBase:

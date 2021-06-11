@@ -1,5 +1,5 @@
 from database import db, ITEMS_PER_PAGE #, cache
-from flask_covid19 import VaccinationImport, VaccinationFlat
+from flask_covid19_app import VaccinationImport, VaccinationFlat
 
 
 class VaccinationImportFactory:

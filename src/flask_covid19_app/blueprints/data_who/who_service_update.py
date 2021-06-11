@@ -1,11 +1,11 @@
 from database import db, app  # , cache
-from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
-from flask_covid19.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
-from flask_covid19.blueprints.data_who.who_model import WhoCountryRegion, WhoDateReported, WhoCountry, WhoData
-from flask_covid19.blueprints.data_who.who_model_factory import WhoCountryRegionFactory, WhoCountryFactory, \
+from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
+from flask_covid19_app.blueprints.data_who.who_model import WhoCountryRegion, WhoDateReported, WhoCountry, WhoData
+from flask_covid19_app.blueprints.data_who.who_model_factory import WhoCountryRegionFactory, WhoCountryFactory, \
     WhoDataFactory
-from flask_covid19.blueprints.data_who.who_model_import import WhoImport
+from flask_covid19_app.blueprints.data_who.who_model_import import WhoImport
 
 
 class WhoServiceUpdateBase:

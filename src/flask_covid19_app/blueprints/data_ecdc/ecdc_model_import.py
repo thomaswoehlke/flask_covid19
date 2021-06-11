@@ -1,5 +1,5 @@
 from database import db, ITEMS_PER_PAGE # , cache
-from flask_covid19.blueprints.app_all.all_model_import import AllImport, AllFlat
+from flask_covid19_app.blueprints.app_all.all_model_import import AllImport, AllFlat
 
 
 class EcdcImport(AllImport):

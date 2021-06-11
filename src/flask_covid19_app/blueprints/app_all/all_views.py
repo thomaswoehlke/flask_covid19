@@ -3,8 +3,8 @@ from celery import states
 from celery.utils.log import get_task_logger
 
 from database import app, celery
-from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import all_dispachter_matrix_service
-from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
+from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import all_dispachter_matrix_service
+from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True
 

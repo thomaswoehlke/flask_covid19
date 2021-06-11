@@ -2,8 +2,8 @@ import sys
 import os
 import subprocess
 
-from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import web_service
-from flask_covid19.blueprints.app_web.web_views import app, celery # , cache
+from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import web_service
+from flask_covid19_app.blueprints.app_web.web_views import app, celery # , cache
 
 
 def run_mq():

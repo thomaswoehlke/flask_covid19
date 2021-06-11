@@ -1,7 +1,7 @@
 from datetime import date
 
 from database import db
-from flask_covid19.blueprints.app_all.all_model import AllEntity
+from flask_covid19_app.blueprints.app_all.all_model import AllEntity
 
 
 class AllImport(AllEntity):

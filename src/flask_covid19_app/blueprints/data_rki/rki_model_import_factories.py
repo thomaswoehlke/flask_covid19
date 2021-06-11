@@ -1,4 +1,4 @@
-from flask_covid19 import RkiFlat, RkiImport
+from flask_covid19_app import RkiFlat, RkiImport
 
 
 class RkiImportFactory:
