@@ -55,7 +55,7 @@ class RkiBundeslandFactory:
 class RkiLandkreisFactory:
 
     @classmethod
-    def get_my_landkreis(cls, landkreis_from_import: str):
+    def get_my_landkreis(cls, landkreis_from_import):
         my_location_tmp = landkreis_from_import[0].split(sep=" ", maxsplit=1)
         my_landkreis = {
             'location':  landkreis_from_import[0],

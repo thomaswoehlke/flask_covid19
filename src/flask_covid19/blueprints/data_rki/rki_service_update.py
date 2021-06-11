@@ -224,11 +224,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                 item = oi.landkreis
                 app.logger.info("l: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
-                    new_location = [
+                    new_location = (
                         oi.landkreis,
                         oi.id_landkreis,
                         my_bundesland
-                    ]
+                    )
                     todo.append(new_location)
         return todo
 
