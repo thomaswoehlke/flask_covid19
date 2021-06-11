@@ -77,3 +77,6 @@
 
         git submodule update --remote --merge
 
+### yo
+* https://flask-caching.readthedocs.io/en/latest/
+* https://www.howtoforge.de/anleitung/wie-installiere-ich-memcached-auf-ubuntu-2004-lts/

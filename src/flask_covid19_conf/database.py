@@ -11,8 +11,8 @@ from logging.config import dictConfig
 from flask_admin import Admin
 from celery import Celery
 
-# https://flask-caching.readthedocs.io/en/latest/
-# https://www.howtoforge.de/anleitung/wie-installiere-ich-memcached-auf-ubuntu-2004-lts/
+
+from flask_covid19_conf import config
 
 cache_config_simple = {
     "DEBUG": True,
@@ -41,7 +41,7 @@ def create_app():
     app_bootstrap.init_app(my_app)
     login_manager.login_view = 'usr.login'
     login_manager.init_app(my_app)
-    my_app.config.from_object("flask_covid19_conf"+os.sep+"config")
+    my_app.config.from_object(config)
     # my_db_url = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
     # my_db_url = 'mysql://{user}:{pw}@{url}/{db}'.format(
     my_db_url = 'mariadb+mariadbconnector://{user}:{pw}@{url}/{db}'.format(

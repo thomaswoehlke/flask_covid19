@@ -1,3 +1,4 @@
+import flask_covid19_conf
 import flask_covid19_app
 import flask_covid19_web
 import flask_covid19_mq
