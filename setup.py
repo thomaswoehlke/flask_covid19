@@ -5,7 +5,7 @@ import subprocess
 
 from setuptools import find_packages, setup
 
-version = '0.0.45'
+version = '0.0.46'
 
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
 pytest_runner = ['pytest-runner'] if needs_pytest else []
