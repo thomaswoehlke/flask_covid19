@@ -342,16 +342,15 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug(" WhoTestService.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum = WhoDateReported.get_joungest_datum()
-        # joungest_datum = WhoDateReported.find_by_date_reported(joungest_datum_str)
-        app.logger.info("joungest_datum:")
+        app.logger.info(" joungest_datum:")
         app.logger.info(str(joungest_datum))
-        app.logger.info("WhoData.get_data_for_one_day(joungest_datum):")
+        app.logger.info(" WhoData.find_by_date_reported(joungest_datum):")
         i = 0
         for data in WhoData.find_by_date_reported(joungest_datum):
             i += 1
             line = " | " + str(i) + " | " + str(data) + " | to be deleted"
             app.logger.info(line)
-        app.logger.info("WhoData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         WhoData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" WhoTestService.delete_last_day() [DONE]")

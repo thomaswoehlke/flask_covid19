@@ -208,11 +208,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_location_groups(self):
         todo = []
-        who_region_all = RkiBundesland.get_all_str()
+        bundesland_all = RkiBundesland.get_all_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
             app.logger.info("lg: " + str(item))
-            if item not in who_region_all:
+            if item not in bundesland_all:
                 todo.append(item)
         return todo
 
