@@ -24,7 +24,7 @@ from flask_covid19.blueprints.data_who.who_service import WhoService
 from flask_covid19.blueprints.data_divi.divi_service import DiviService
 from flask_covid19.blueprints.data_rki.rki_service import RkiService
 
-from flask_covid19.blueprints.app_all.all_dispachter_matrix_service import AllDataServiceDispachterMatrix
+from flask_covid19.blueprints.app_all.all_service import AllDataServiceDispachterMatrix
 
 from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import app_admin_service
 from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import app_user_service
