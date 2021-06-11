@@ -4,7 +4,7 @@ from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_who.who_service_import import WhoServiceImport
 from flask_covid19.blueprints.data_who.who_service_update import WhoServiceUpdate, WhoServiceUpdateFull
 
@@ -16,7 +16,7 @@ class WhoService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_who()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = WhoServiceImport(database, self.cfg)
         self.service_update = WhoServiceUpdate(database, self.cfg)
         self.service_update_full = WhoServiceUpdateFull(database, self.cfg)

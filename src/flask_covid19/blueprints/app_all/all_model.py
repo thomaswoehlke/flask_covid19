@@ -4,7 +4,7 @@ from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
 
 
-class BlueprintEntity(db.Model):
+class AllEntity(db.Model):
     __abstract__ = True
 
     id = db.Column(db.Integer, primary_key=True)
@@ -87,7 +87,7 @@ class BlueprintEntity(db.Model):
         return cls.__query_all().filter(not_(cls.processed_full_update)).all()
 
 
-class BlueprintDateReported(BlueprintEntity):
+class AllDateReported(AllEntity):
     __tablename__ = 'all_date_reported'
     __table_args__ = (
         db.UniqueConstraint(
@@ -208,7 +208,7 @@ class BlueprintDateReported(BlueprintEntity):
         return all_str
 
 
-class BlueprintLocationGroup(BlueprintEntity):
+class AllLocationGroup(AllEntity):
     __tablename__ = 'all_location_group'
     __table_args__ = (
         db.UniqueConstraint(
@@ -277,7 +277,7 @@ class BlueprintLocationGroup(BlueprintEntity):
         return all_str
 
 
-class BlueprintLocation(BlueprintEntity):
+class AllLocation(AllEntity):
     __tablename__ = 'all_location'
     __table_args__ = (
         db.UniqueConstraint(
@@ -297,11 +297,11 @@ class BlueprintLocation(BlueprintEntity):
     location = db.Column(db.String(255), nullable=False, index=True)
     location_group_id = db.Column(db.Integer, db.ForeignKey('all_location_group.id'), nullable=False)
     location_group = db.relationship(
-        'BlueprintLocationGroup',
+        'AllLocationGroup',
         lazy='joined',
         cascade='all',
         enable_typechecks=False,
-        order_by='BlueprintLocationGroup.location_group')
+        order_by='AllLocationGroup.location_group')
 
     __mapper_args__ = {
         'polymorphic_on': type,
@@ -333,20 +333,20 @@ class BlueprintLocation(BlueprintEntity):
             .one()
 
     @classmethod
-    def find_by_location_group(cls, location_group: BlueprintLocationGroup):
+    def find_by_location_group(cls, location_group: AllLocationGroup):
         return db.session.query(cls).filter(cls.location_group == location_group)\
             .order_by(cls.location)\
             .all()
 
     @classmethod
-    def get_by_location_group(cls, location_group: BlueprintLocationGroup, page: int):
+    def get_by_location_group(cls, location_group: AllLocationGroup, page: int):
         return db.session.query(cls).filter(cls.location_group == location_group)\
             .order_by(cls.location)\
             .paginate(page, per_page=ITEMS_PER_PAGE)
 
     @classmethod
     def find_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                              location_group: BlueprintLocationGroup):
+                                                              location_group: AllLocationGroup):
         return db.session.query(cls).filter(
             and_(
                 cls.location_code == location_code,
@@ -357,7 +357,7 @@ class BlueprintLocation(BlueprintEntity):
 
     @classmethod
     def get_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                             location_group: BlueprintLocationGroup):
+                                                             location_group: AllLocationGroup):
         return db.session.query(cls).filter(
             and_(
                 cls.location_code == location_code,
@@ -408,7 +408,7 @@ class BlueprintLocation(BlueprintEntity):
             .paginate(page, per_page=ITEMS_PER_PAGE)
 
 
-class BlueprintFactTableTimeSeries(BlueprintEntity):
+class AllFactTableTimeSeries(AllEntity):
     __tablename__ = 'all_data_timeline'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -423,11 +423,11 @@ class BlueprintFactTableTimeSeries(BlueprintEntity):
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
     date_reported = db.relationship(
-        'BlueprintDateReported',
+        'AllDateReported',
         lazy='joined',
         cascade='all',
         enable_typechecks=False,
-        order_by='desc(BlueprintDateReported.datum)')
+        order_by='desc(AllDateReported.datum)')
 
     @classmethod
     def get_datum_list(cls):
@@ -458,19 +458,19 @@ class BlueprintFactTableTimeSeries(BlueprintEntity):
             return None
 
     @classmethod
-    def find_by_date_reported(cls, date_reported: BlueprintDateReported):
+    def find_by_date_reported(cls, date_reported: AllDateReported):
         pass
 
     @classmethod
-    def get_by_date_reported(cls, date_reported: BlueprintDateReported, page: int):
+    def get_by_date_reported(cls, date_reported: AllDateReported, page: int):
         pass
 
     @classmethod
-    def delete_data_for_one_day(cls, date_reported: BlueprintDateReported):
+    def delete_data_for_one_day(cls, date_reported: AllDateReported):
         pass
 
 
-class BlueprintFactTable(BlueprintFactTableTimeSeries):
+class BlueprintFactTable(AllFactTableTimeSeries):
     __tablename__ = 'all_data'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -485,33 +485,33 @@ class BlueprintFactTable(BlueprintFactTableTimeSeries):
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
     date_reported = db.relationship(
-        'BlueprintDateReported',
+        'AllDateReported',
         lazy='joined',
         cascade='all',
         enable_typechecks=False,
-        order_by='desc(BlueprintDateReported.datum)')
+        order_by='desc(AllDateReported.datum)')
     location_id = db.Column(db.Integer, db.ForeignKey('all_location.id'), nullable=False)
     location = db.relationship(
-        'BlueprintLocation',
+        'AllLocation',
         lazy='joined',
         cascade='all',
         enable_typechecks=False,
-        order_by='asc(BlueprintLocation.location)')
+        order_by='asc(AllLocation.location)')
 
     @classmethod
-    def get_by_location(cls, location: BlueprintLocation, page: int):
+    def get_by_location(cls, location: AllLocation, page: int):
         pass
 
     @classmethod
-    def find_by_location(cls, location: BlueprintLocation):
+    def find_by_location(cls, location: AllLocation):
         pass
 
     @classmethod
-    def find_by_date_reported_and_location(cls, date_reported: BlueprintDateReported, location: BlueprintLocation):
+    def find_by_date_reported_and_location(cls, date_reported: AllDateReported, location: AllLocation):
         pass
 
     @classmethod
-    def get_by_date_reported_and_location(cls, date_reported: BlueprintDateReported, location: BlueprintLocation, page: int):
+    def get_by_date_reported_and_location(cls, date_reported: AllDateReported, location: AllLocation, page: int):
         pass
 
 

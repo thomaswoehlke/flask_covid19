@@ -1,10 +1,10 @@
 from datetime import date
 
 from database import db
-from flask_covid19.blueprints.app_all.all_model import BlueprintEntity
+from flask_covid19.blueprints.app_all.all_model import AllEntity
 
 
-class AllImport(BlueprintEntity):
+class AllImport(AllEntity):
     __tablename__ = 'all_import'
     __mapper_args__ = {'concrete': True}
 

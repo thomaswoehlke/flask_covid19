@@ -6,7 +6,7 @@ from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinDownload
 
 
-class BlueprintDownloadService(AllServiceMixinDownload):
+class AllDownloadService(AllServiceMixinDownload):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" DownloadService [init]")

@@ -3,7 +3,7 @@ from flask import flash
 from database import app
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_rki.rki_service_import import RkiServiceImport
 from flask_covid19.blueprints.data_rki.rki_service_update import RkiServiceUpdate, RkiServiceUpdateFull
 
@@ -15,7 +15,7 @@ class RkiService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_rki()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = RkiServiceImport(database, self.cfg)
         self.service_update = RkiServiceUpdate(database, self.cfg)
         self.service_update_full = RkiServiceUpdateFull(database, self.cfg)

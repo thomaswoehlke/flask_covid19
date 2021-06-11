@@ -1,5 +1,5 @@
 from datetime import date
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported
+from flask_covid19.blueprints.app_all.all_model import AllDateReported
 from flask_covid19.blueprints.data_divi.divi_model import DiviDateReported
 from flask_covid19.blueprints.data_ecdc.ecdc_model import EcdcDateReported
 from flask_covid19.blueprints.data_owid.owid_model import OwidDateReported
@@ -17,7 +17,7 @@ class BlueprintDateReportedFactory:
         my_year_month = cls.__get_year_month_as_str(my_datum)
         my_year_day_of_year = cls.__get_year_day_of_year_as_str(my_datum, day_of_year)
         my_year_week = cls.__get_year_week_as_str(my_iso_year, week_number)
-        return BlueprintDateReported(
+        return AllDateReported(
             date_reported_import_str=date_reported_import_str,
             datum=my_datum,
             year_day_of_year=my_year_day_of_year,
@@ -117,7 +117,7 @@ class BlueprintDateReportedFactory:
             return year + '-' + str(day_of_year)
 
     @classmethod
-    def __get_divi(cls, o: BlueprintDateReported):
+    def __get_divi(cls, o: AllDateReported):
         return DiviDateReported(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,
@@ -135,7 +135,7 @@ class BlueprintDateReportedFactory:
         )
 
     @classmethod
-    def __get_ecdc(cls, o: BlueprintDateReported):
+    def __get_ecdc(cls, o: AllDateReported):
         return EcdcDateReported(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,
@@ -153,7 +153,7 @@ class BlueprintDateReportedFactory:
         )
 
     @classmethod
-    def __get_owid(cls, o: BlueprintDateReported):
+    def __get_owid(cls, o: AllDateReported):
         return OwidDateReported(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,
@@ -171,7 +171,7 @@ class BlueprintDateReportedFactory:
         )
 
     @classmethod
-    def __get_rki(cls, o: BlueprintDateReported):
+    def __get_rki(cls, o: AllDateReported):
         return RkiMeldedatum(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,
@@ -189,7 +189,7 @@ class BlueprintDateReportedFactory:
         )
 
     @classmethod
-    def __get_vaccination(cls, o: BlueprintDateReported):
+    def __get_vaccination(cls, o: AllDateReported):
         return VaccinationDateReported(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,
@@ -207,7 +207,7 @@ class BlueprintDateReportedFactory:
         )
 
     @classmethod
-    def __get_who(cls, o: BlueprintDateReported):
+    def __get_who(cls, o: AllDateReported):
         return WhoDateReported(
             date_reported_import_str=o.date_reported_import_str,
             datum=o.datum,

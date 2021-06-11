@@ -2,23 +2,23 @@ from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 
 from database import db, ITEMS_PER_PAGE # , cache
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported, BlueprintLocationGroup
-from flask_covid19.blueprints.app_all.all_model import BlueprintLocation, BlueprintFactTable
+from flask_covid19.blueprints.app_all.all_model import AllDateReported, AllLocationGroup
+from flask_covid19.blueprints.app_all.all_model import AllLocation, BlueprintFactTable
 
 
-class OwidDateReported(BlueprintDateReported):
+class OwidDateReported(AllDateReported):
     __mapper_args__ = {
         'polymorphic_identity': 'owid_date_reported'
     }
 
 
-class OwidContinent(BlueprintLocationGroup):
+class OwidContinent(AllLocationGroup):
     __mapper_args__ = {
         'polymorphic_identity': 'owid_location_group'
     }
 
 
-class OwidCountry(BlueprintLocation):
+class OwidCountry(AllLocation):
     __mapper_args__ = {
         'polymorphic_identity': 'owid_location'
     }

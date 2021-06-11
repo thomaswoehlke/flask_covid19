@@ -4,7 +4,7 @@ from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_divi.divi_service_import import DiviServiceImport
 from flask_covid19.blueprints.data_divi.divi_service_update import DiviServiceUpdate, DiviServiceUpdateFull
 
@@ -16,7 +16,7 @@ class DiviService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_intensivregister()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = DiviServiceImport(database, self.cfg)
         self.service_update = DiviServiceUpdate(database, self.cfg)
         self.service_update_full = DiviServiceUpdateFull(database, self.cfg)

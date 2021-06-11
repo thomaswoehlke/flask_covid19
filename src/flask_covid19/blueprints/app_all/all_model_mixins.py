@@ -1,7 +1,7 @@
 from datetime import date
 
 
-class BlueprintEntityMixin:
+class AllEntityMixin:
 
     @classmethod
     def get_by_id(cls, other_id: int):
@@ -69,7 +69,7 @@ class BlueprintEntityMixin:
         pass
 
 
-class BlueprintDateReportedMixin(BlueprintEntityMixin):
+class AllDateReportedMixin(AllEntityMixin):
 
     @classmethod
     def __query_all(cls):

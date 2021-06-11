@@ -2,7 +2,7 @@ from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_owid.owid_service_import import OwidServiceImport
 from flask_covid19.blueprints.data_owid.owid_service_update import OwidServiceUpdate, OwidServiceUpdateFull
 
@@ -14,7 +14,7 @@ class OwidService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_owid()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = OwidServiceImport(database, self.cfg)
         self.service_update = OwidServiceUpdate(database, self.cfg)
         self.service_update_full = OwidServiceUpdateFull(database, self.cfg)

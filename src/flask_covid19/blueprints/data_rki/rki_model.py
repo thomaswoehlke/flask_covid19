@@ -3,17 +3,17 @@ from sqlalchemy.orm import joinedload
 from sqlalchemy.ext.declarative import declared_attr
 
 from database import db, ITEMS_PER_PAGE # , cache
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported, BlueprintLocationGroup
-from flask_covid19.blueprints.app_all.all_model import BlueprintLocation, BlueprintFactTable, BlueprintEntity
+from flask_covid19.blueprints.app_all.all_model import AllDateReported, AllLocationGroup
+from flask_covid19.blueprints.app_all.all_model import AllLocation, BlueprintFactTable, AllEntity
 
 
-class RkiMeldedatum(BlueprintDateReported):
+class RkiMeldedatum(AllDateReported):
     __mapper_args__ = {
         'polymorphic_identity': 'rki_date_reported'
     }
 
 
-class RkiBundesland(BlueprintLocationGroup):
+class RkiBundesland(AllLocationGroup):
     __mapper_args__ = {
         'polymorphic_identity': 'rki_location_group'
     }
@@ -21,7 +21,7 @@ class RkiBundesland(BlueprintLocationGroup):
     id_bundesland = db.Column(db.String(255))
 
 
-class RkiLandkreis(BlueprintLocation):
+class RkiLandkreis(AllLocation):
     __mapper_args__ = {
         'polymorphic_identity': 'rki_location'
     }
@@ -36,7 +36,7 @@ class RkiLandkreis(BlueprintLocation):
             .one()
 
 
-class RkiAltersgruppe(BlueprintEntity):
+class RkiAltersgruppe(AllEntity):
     __tablename__ = 'rki_altersgruppe'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

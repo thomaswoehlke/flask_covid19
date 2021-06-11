@@ -4,7 +4,7 @@ from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_ecdc.ecdc_service_import import EcdcServiceImport
 from flask_covid19.blueprints.data_ecdc.ecdc_service_update import EcdcServiceUpdate, EcdcServiceUpdateFull
 
@@ -16,7 +16,7 @@ class EcdcService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_ecdc()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = EcdcServiceImport(database, self.cfg)
         self.service_update = EcdcServiceUpdate(database, self.cfg)
         self.service_update_full = EcdcServiceUpdateFull(database, self.cfg)

@@ -1,23 +1,23 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload, subqueryload
 from database import db, ITEMS_PER_PAGE
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported, BlueprintLocationGroup
-from flask_covid19.blueprints.app_all.all_model import BlueprintLocation, BlueprintFactTable
+from flask_covid19.blueprints.app_all.all_model import AllDateReported, AllLocationGroup
+from flask_covid19.blueprints.app_all.all_model import AllLocation, BlueprintFactTable
 
 
-class DiviDateReported(BlueprintDateReported):
+class DiviDateReported(AllDateReported):
     __mapper_args__ = {
         'polymorphic_identity': 'divi_date_reported'
     }
 
 
-class DiviRegion(BlueprintLocationGroup):
+class DiviRegion(AllLocationGroup):
     __mapper_args__ = {
         'polymorphic_identity': 'divi_location_group'
     }
 
 
-class DiviCountry(BlueprintLocation):
+class DiviCountry(AllLocation):
     __mapper_args__ = {
         'polymorphic_identity': 'divi_location'
     }

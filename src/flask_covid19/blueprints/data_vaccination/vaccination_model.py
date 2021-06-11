@@ -1,15 +1,15 @@
 
 from database import db #, cache
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported, BlueprintFactTableTimeSeries
+from flask_covid19.blueprints.app_all.all_model import AllDateReported, AllFactTableTimeSeries
 
 
-class VaccinationDateReported(BlueprintDateReported):
+class VaccinationDateReported(AllDateReported):
     __mapper_args__ = {
         'polymorphic_identity': 'vaccination_date_reported'
     }
 
 
-class VaccinationData(BlueprintFactTableTimeSeries):
+class VaccinationData(AllFactTableTimeSeries):
     __tablename__ = 'vaccination'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

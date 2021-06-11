@@ -1,23 +1,23 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from database import db, ITEMS_PER_PAGE #, cache
-from flask_covid19.blueprints.app_all.all_model import BlueprintDateReported, BlueprintFactTable
-from flask_covid19.blueprints.app_all.all_model import BlueprintLocationGroup, BlueprintLocation
+from flask_covid19.blueprints.app_all.all_model import AllDateReported, BlueprintFactTable
+from flask_covid19.blueprints.app_all.all_model import AllLocationGroup, AllLocation
 
 
-class WhoDateReported(BlueprintDateReported):
+class WhoDateReported(AllDateReported):
     __mapper_args__ = {
         'polymorphic_identity': 'who_date_reported'
     }
 
 
-class WhoCountryRegion(BlueprintLocationGroup):
+class WhoCountryRegion(AllLocationGroup):
     __mapper_args__ = {
         'polymorphic_identity': 'who_location_group'
     }
 
 
-class WhoCountry(BlueprintLocation):
+class WhoCountry(AllLocation):
     __mapper_args__ = {
         'polymorphic_identity': 'who_location'
     }

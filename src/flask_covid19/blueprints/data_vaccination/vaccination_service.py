@@ -2,7 +2,7 @@ from database import app
 
 from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19.blueprints.app_all.all_service_download import BlueprintDownloadService
+from flask_covid19.blueprints.app_all.all_service_download import AllDownloadService
 from flask_covid19.blueprints.data_vaccination.vaccination_service_import import VaccinationServiceImport
 from flask_covid19.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdate
 from flask_covid19.blueprints.data_vaccination.vaccination_service_update import VaccinationServiceUpdateFull
@@ -15,7 +15,7 @@ class VaccinationService(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_rki_vaccination()
-        self.service_download = BlueprintDownloadService(database, self.cfg)
+        self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = VaccinationServiceImport(database, self.cfg)
         self.service_update = VaccinationServiceUpdate(database, self.cfg)
         self.service_update_full = VaccinationServiceUpdateFull(database, self.cfg)
