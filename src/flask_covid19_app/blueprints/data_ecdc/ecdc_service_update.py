@@ -230,8 +230,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
-        EcdcData.remove_all()
-        EcdcDateReported.remove_all()
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
         for result_item in result_date_rep:
@@ -254,9 +252,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_continent [begin]")
         app.logger.info("------------------------------------------------------------")
-        EcdcData.remove_all()
-        EcdcCountry.remove_all()
-        EcdcContinent.remove_all()
         result_continent = EcdcImport.get_continent()
         for result_item in result_continent:
             my_continent_exp = result_item[0]
@@ -273,8 +268,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_country [begin]")
         app.logger.info("------------------------------------------------------------")
-        EcdcData.remove_all()
-        EcdcCountry.remove_all()
         all_continents = EcdcContinent.get_all()
         for my_continent in all_continents:
             result_countries_of_continent = EcdcImport.get_countries_of_continent(my_continent)
