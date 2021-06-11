@@ -1,5 +1,5 @@
 from datetime import date
-from database import db, ITEMS_PER_PAGE #, cache
+from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
 

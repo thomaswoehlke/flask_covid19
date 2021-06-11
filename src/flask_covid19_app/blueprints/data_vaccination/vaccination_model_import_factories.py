@@ -1,4 +1,4 @@
-from database import db, ITEMS_PER_PAGE #, cache
+from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
 from flask_covid19_app import VaccinationImport, VaccinationFlat
 
 

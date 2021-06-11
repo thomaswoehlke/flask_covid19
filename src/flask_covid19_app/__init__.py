@@ -1,4 +1,4 @@
-from database import app, celery
+from flask_covid19_conf.database import app, celery
 
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport
 from flask_covid19_app.blueprints.data_who.who_service_import import WhoImport

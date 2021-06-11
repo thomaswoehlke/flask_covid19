@@ -4,7 +4,7 @@ from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
-from database import app, admin, db, celery
+from flask_covid19_conf.database import app, admin, db, celery
 from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import ecdc_service
 from flask_covid19_app.blueprints.data_ecdc.ecdc_test_service import EcdcTestService
 

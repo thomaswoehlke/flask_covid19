@@ -1,4 +1,4 @@
-from database import app
+from flask_covid19_conf.database import app
 
 from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixin
 from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig

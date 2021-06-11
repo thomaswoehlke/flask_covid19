@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash, Blueprint
 from celery import states
 from celery.utils.log import get_task_logger
 
-from database import app, celery
+from flask_covid19_conf.database import app, celery
 from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import app_admin_service
 from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
 

@@ -1,4 +1,4 @@
-from database import app
+from flask_covid19_conf.database import app
 from flask_covid19_app.blueprints.app_web.user_model import User, LoginForm
 
 

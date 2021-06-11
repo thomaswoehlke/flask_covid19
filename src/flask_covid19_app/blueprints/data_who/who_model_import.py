@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
-from database import db # , cache
+from flask_covid19_conf.database import db # , cache
 from flask_covid19_app.blueprints.app_all.all_model_import import AllImport, AllFlat
 
 
