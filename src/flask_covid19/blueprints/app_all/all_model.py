@@ -39,6 +39,10 @@ class BlueprintEntity(db.Model):
         pass
 
     @classmethod
+    def get_all_str(cls):
+        pass
+
+    @classmethod
     def get_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one()
 
@@ -363,12 +367,24 @@ class BlueprintLocation(BlueprintEntity):
 
     @classmethod
     def get_by_location_code_and_location(cls, location_code: str, location: str):
-        return db.session.query(cls).filter(and_(cls.location_code == location_code, cls.location == location)) \
+        return db.session.query(cls)\
+            .filter(and_(cls.location_code == location_code, cls.location == location)) \
             .one()
 
     @classmethod
+    def __query_all(cls):
+        return db.session.query(cls).order_by(cls.location)
+
+    @classmethod
     def find_all(cls):
-        return db.session.query(cls).order_by(cls.location).all()
+        return cls.__query_all().all()
+
+    @classmethod
+    def get_all_str(cls):
+        all_str = []
+        for my_location in cls.find_all():
+            all_str.append(my_location.location)
+        return all_str
 
     @classmethod
     def find_all_as_dict(cls):

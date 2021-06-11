@@ -46,7 +46,7 @@ class RkiImport(AllImport):
         bu = Bundle('datenstand', cls.datenstand)
         for meldedatum in db.session.query(bu).distinct().order_by(cls.datenstand.desc()):
             item = meldedatum[0][0]
-            if not item in dates_reported:
+            if item not in dates_reported:
                 dates_reported.append(item)
         return dates_reported
 
@@ -56,7 +56,7 @@ class RkiImport(AllImport):
         bu = Bundle('ref_datum', cls.ref_datum)
         for meldedatum in db.session.query(bu).distinct().order_by(cls.ref_datum.desc()):
             item = meldedatum[0][0]
-            if not item in dates_reported:
+            if item not in dates_reported:
                 dates_reported.append(item)
         return dates_reported
 
@@ -66,7 +66,7 @@ class RkiImport(AllImport):
         bu = Bundle('meldedatum', cls.meldedatum)
         for meldedatum in db.session.query(bu).distinct().order_by(cls.meldedatum.desc()):
             item = meldedatum[0][0]
-            if not item in dates_reported:
+            if item not in dates_reported:
                 dates_reported.append(item)
         return dates_reported
 
@@ -79,12 +79,23 @@ class RkiImport(AllImport):
             .all()
 
     @classmethod
+    def get_date_reported_import_str_list(cls):
+        date_reported_import_str_list = []
+        bu = Bundle('date_reported_import_str', cls.date_reported_import_str)
+        oi_list = db.session.query(bu).distinct().order_by(cls.date_reported_import_str.desc())
+        for date_reported_import_str_row in oi_list:
+            item = date_reported_import_str_row[0]
+            if item not in date_reported_import_str_list:
+                date_reported_import_str_list.append(item)
+        return date_reported_import_str_list
+
+    @classmethod
     def get_bundesland_list(cls):
         bundesland_list = []
         bu = Bundle('bundesland', cls.bundesland, cls.id_bundesland)
         for bundesland_row in db.session.query(bu).distinct().order_by(cls.bundesland.asc()):
             item = bundesland_row[0]
-            if not item in bundesland_list:
+            if item not in bundesland_list:
                 bundesland_list.append(item)
         return bundesland_list
 

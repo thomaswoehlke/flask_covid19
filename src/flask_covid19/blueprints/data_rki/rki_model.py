@@ -66,6 +66,13 @@ class RkiAltersgruppe(BlueprintEntity):
             altersgruppe_dict[my_altersgruppe.altersgruppe] = my_altersgruppe
         return altersgruppe_dict
 
+    @classmethod
+    def get_all_str(cls):
+        all_str = []
+        for my_altersgruppe in cls.find_all():
+            all_str.append(my_altersgruppe.altersgruppe)
+        return all_str
+
 
 class RkiData(BlueprintFactTable):
     __tablename__ = 'rki'
