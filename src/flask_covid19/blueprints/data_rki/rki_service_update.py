@@ -248,11 +248,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiMeldedatum.set_all_processed_update()
         for new_meldedatum in self.__get_new_dates():
             i += 1
-            output = " [ " + str(i) + " ] " + str(new_meldedatum)
             o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(my_meldedatum=new_meldedatum)
             db.session.add(o)
             db.session.commit()
-            output += " added"
+            output = " [ " + str(i) + " ] " + str(o) + " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
@@ -269,11 +268,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiBundesland.set_all_processed_update()
         for new_location_group in self.__get_new_location_groups():
             i += 1
-            output = " [ " + str(i) + " ] " + new_location_group
             o = RkiBundeslandFactory.create_new(bundesland_of_import=new_location_group)
             db.session.add(o)
             db.session.commit()
-            output += " added"
+            output = " [ " + str(i) + " ] " + str(o) + " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
@@ -292,14 +290,13 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         location_group_dict = RkiBundesland.find_all_as_dict()
         for new_location in self.__get_new_locations():
             i += 1
-            output = " [ " + str(i) + " ] " + str(new_location)
-            bundesland_str = new_location[0]
+            bundesland_str = new_location[2]
             bundesland = location_group_dict[bundesland_str]
             my_landkreis = RkiLandkreisFactory.get_my_landkreis(landkreis_from_import=new_location)
             o = RkiLandkreisFactory.create_new(my_landkreis=my_landkreis, bundesland=bundesland)
             db.session.add(o)
             db.session.commit()
-            output += " added"
+            output = " [ " + str(i) + " ] " + str(o) + " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
@@ -318,19 +315,19 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location_code + " " + my_landkreis.location
-                # app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " " + d.isoformat())
-                # app.logger.info("------------------------------------------------------------")
+                app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
+                app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
                     my_datum=my_meldedatum_datum,
                     my_landkreis=my_landkreis_key)
-                # if l_imports is None:
-                #    app.logger.info("list_imports is None ")
-                # else:
-                #    nr = len(list_imports)
-                #    app.logger.info("len(list_imports): " + str(nr))
-                # app.logger.info("------------------------------------------------------------")
-                # my_datenstand_date_datum = None
-                # my_ref_datum_datum = None
+                if list_imports is None:
+                    app.logger.info("list_imports is None ")
+                else:
+                    nr = len(list_imports)
+                    app.logger.info("len(list_imports): " + str(nr))
+                app.logger.info("------------------------------------------------------------")
+                my_datenstand_date_datum = None
+                my_ref_datum_datum = None
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)
                     rki_data = RkiDataFactory.get_rki_data(
