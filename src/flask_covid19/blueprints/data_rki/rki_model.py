@@ -95,7 +95,7 @@ class RkiData(BlueprintFactTable):
 
     def __str__(self):
         return "%s (%s, %s, %s, %s, %s, %s, %s)" % (self.__class__.__name__,
-                                                self.date_reported.__repr__(),
+                                                self.date_reported.__str__(),
                                                 self.location.__str__(),
                                                 self.altersgruppe.__str__(),
                                                 self.geschlecht,
