@@ -98,9 +98,6 @@ class BlueprintDateReported(BlueprintEntity):
         ),
     )
 
-    def __str__(self):
-        return self.datum.isoformat()
-
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
@@ -126,9 +123,20 @@ class BlueprintDateReported(BlueprintEntity):
         'polymorphic_identity': 'all_date_reported'
     }
 
+    def __str__(self):
+        return self.datum.isoformat()
+
     @classmethod
     def __query_all(cls):
         return db.session.query(cls).order_by(cls.datum.desc())
+
+    @classmethod
+    def get_all(cls, page: int):
+        return cls.__query_all().paginate(page, per_page=ITEMS_PER_PAGE)
+
+    @classmethod
+    def find_all(cls):
+        return cls.__query_all().all()
 
     def get_name_for_weekday(self):
         return self.get_names_for_weekday()[self.day_of_week]
