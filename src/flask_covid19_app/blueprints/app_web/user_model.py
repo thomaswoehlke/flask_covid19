@@ -14,6 +14,13 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(2048), nullable=False)
     name = db.Column(db.String(512), nullable=False)
 
+    @classmethod
+    def create_new(cls, email, name: str, password_hash: str):
+        return User(
+            email=email,
+            name=name,
+            password_hash=password_hash)
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

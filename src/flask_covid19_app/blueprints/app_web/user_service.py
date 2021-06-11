@@ -24,7 +24,7 @@ class UserService:
             login = app.config['USER_ADMIN_LOGIN']
             name = app.config['USER_ADMIN_USERNAME']
             pw = app.config['USER_ADMIN_PASSWORD']
-            user = User(email=login, name=name, password_hash=pw)
+            user = User.create_new(email=login, name=name, password_hash=pw)
             self.__database.session.add(user)
             self.__database.session.commit()
         else:
