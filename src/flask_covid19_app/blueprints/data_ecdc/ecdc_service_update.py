@@ -239,8 +239,8 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
             my_date_rep = result_item[0]
             oo = EcdcDateReported.find_by_date_reported(my_date_rep)
             if oo is None:
-                o = EcdcDateReported.create_new_object_factory(
-                    my_date_rep=my_date_rep
+                o = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+                    my_date_reported=my_date_rep
                 )
                 db.session.add(o)
                 db.session.commit()
