@@ -53,7 +53,7 @@ class RkiService(AllServiceMixin):
         return self
 
     def update(self):
-        self.service_import.import_file()
+        # self.service_import.import_file()
         self.service_update.update_dimension_tables()
         self.service_update.update_fact_table()
         return self

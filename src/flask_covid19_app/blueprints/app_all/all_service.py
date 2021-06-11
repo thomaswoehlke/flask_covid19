@@ -1,5 +1,4 @@
 from flask_covid19_conf.database import app
-from flask_covid19_app import WhoService, OwidService, RkiService, VaccinationService, EcdcService, DiviService
 from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixin
 
 from flask_covid19_app.blueprints.data_ecdc.ecdc_service import EcdcService
@@ -32,19 +31,19 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
             'update_dimension_tables': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
+                who_service, owid_service, rki_service
             ],
             'full_update_fact_table': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
             'update_fact_table': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
+                who_service, owid_service, rki_service
             ],
             'full_update': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
             'update': [
-                who_service, vaccination_service, ecdc_service, owid_service, rki_service
+                who_service, owid_service, rki_service
             ],
             'delete_last_day': [
                 who_service, owid_service, rki_service

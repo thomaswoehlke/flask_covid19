@@ -226,6 +226,42 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
 
 class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
+    def __get_new_dates(self):
+        todo = []
+        odr_list = EcdcDateReported.get_all_str()
+        for oi in EcdcImport.get_date_reported_import_str_list():
+            item = oi[0]
+            app.logger.info("o: " + str(item))
+            if item not in odr_list:
+                todo.append(item)
+        return todo
+
+    def __get_new_location_groups(self):
+        todo = []
+        bundesland_all = EcdcContinent.get_all_str()
+        for oi in EcdcImport.get_bundesland_list():
+            item = oi.bundesland
+            app.logger.info("lg: " + str(item))
+            if item not in bundesland_all:
+                todo.append(item)
+        return todo
+
+    def __get_new_locations(self):
+        todo = []
+        country_all = EcdcCountry.get_all_str()
+        for my_continent in EcdcContinent.get_all_str():
+            for oi in EcdcImport.get_countries_of_continent(my_continent):
+                item = oi.landkreis
+                app.logger.info("l: " + str(item) + " -- " + str(my_continent))
+                if item not in country_all:
+                    new_location = (
+                        oi.landkreis,
+                        oi.id_landkreis,
+                        my_continent
+                    )
+                    todo.append(new_location)
+        return todo
+
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_date_reported [begin]")
@@ -268,7 +304,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_country [begin]")
         app.logger.info("------------------------------------------------------------")
-        all_continents = EcdcContinent.get_all()
+        all_continents = EcdcContinent.find_all()
         for my_continent in all_continents:
             result_countries_of_continent = EcdcImport.get_countries_of_continent(my_continent)
             for c in result_countries_of_continent:
@@ -346,9 +382,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         return dict_date_reported_from_import
 
     def update_dimension_tables(self):
-        EcdcData.remove_all()
-        EcdcCountry.remove_all()
-        EcdcContinent.remove_all()
         self.__update_date_reported()
         self.__update_continent()
         self.__update_country()
@@ -358,7 +391,6 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" __update_data_initial [begin]")
         app.logger.info("------------------------------------------------------------")
-        EcdcData.remove_all()
         i = 0
         dict_date_reported_from_import = self.__get_date_reported_from_import()
         for my_date_reported in dict_date_reported_from_import.keys():
