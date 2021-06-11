@@ -379,7 +379,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.delete_last_day() [START]")
+        app.logger.debug(" RkiServiceUpdate.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info("")
         joungest_datum = RkiMeldedatum.get_joungest_datum()
@@ -391,7 +391,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         output_lines = []
         for data in RkiData.find_by_date_reported(joungest_datum):
             i += 1
-            line = " Owid: to be deleted [ " + str(i) + " ] " + str(data)
+            line = " RKI: to be deleted [ " + str(i) + " ] " + str(data)
             output_lines.append(line)
         for line in output_lines:
             app.logger.info(line)
@@ -401,6 +401,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" RkiTestService.delete_last_day() [DONE]")
+        app.logger.info(" RkiServiceUpdate.delete_last_day() [DONE]")
         app.logger.info("------------------------------------------------------------")
         return self

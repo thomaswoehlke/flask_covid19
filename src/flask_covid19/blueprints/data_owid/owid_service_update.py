@@ -318,15 +318,14 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug(" OwidTestService.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum = OwidDateReported.get_joungest_datum()
-        app.logger.info("joungest_datum:")
-        app.logger.info(joungest_datum)
-        app.logger.info("OwidData.get_data_for_one_day(joungest_datum):")
+        app.logger.info(" joungest_datum:" + str(joungest_datum))
+        app.logger.info(" OwidData.find_by_date_reported(joungest_datum):")
         i = 0
         for data in OwidData.find_by_date_reported(joungest_datum):
             i += 1
-            line = "Owid: to be deleted | " + str(i) + " | " + str(data.date_reported) + " | " + str(data.location) + " | "
+            line = " Owid: to be deleted [ " + str(i) + " ] " + str(data)
             app.logger.info(line)
-        app.logger.info("OwidData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" OwidData.delete_data_for_one_day(joungest_datum)")
         OwidData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.delete_last_day() [DONE]")

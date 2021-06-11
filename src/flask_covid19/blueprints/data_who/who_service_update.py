@@ -339,7 +339,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.delete_last_day() [START]")
+        app.logger.debug(" WhoServiceUpdate.delete_last_day() [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum = WhoDateReported.get_joungest_datum()
         app.logger.info(" joungest_datum:")
@@ -348,11 +348,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         for data in WhoData.find_by_date_reported(joungest_datum):
             i += 1
-            line = " | " + str(i) + " | " + str(data) + " | to be deleted"
+            line = " WHO: to be deleted [ " + str(i) + " ] " + str(data)
             app.logger.info(line)
         app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         WhoData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoTestService.delete_last_day() [DONE]")
+        app.logger.debug(" WhoServiceUpdate.delete_last_day() [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
