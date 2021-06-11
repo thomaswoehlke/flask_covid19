@@ -9,12 +9,13 @@ from flask_covid19.blueprints.app_all.all_service_mixins import AllServiceMixinD
 class BlueprintDownloadService(AllServiceMixinDownload):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" BlueprintDownloadService [init]")
+        app.logger.debug(" DownloadService [init]")
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" BlueprintDownloadService [ready]")
+        app.logger.info(" DownloadService " + self.cfg.category + " [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def __prepare_download(self):
         os.makedirs(self.cfg.data_path, exist_ok=True)
@@ -40,17 +41,17 @@ class BlueprintDownloadService(AllServiceMixinDownload):
         for my_cmd in my_cmds:
             retcode = subprocess.call(my_cmd, shell=True)
             if retcode == 0:
-                app.logger.info('OK ' + my_cmd)
+                app.logger.info(' OK ' + my_cmd)
             else:
-                app.logger.warn('NOT OK: ' + my_cmd)
+                app.logger.warn(' NOT OK: ' + my_cmd)
         os.chdir(orig_workdir)
         return self
 
     def download(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" download - [begin] ")
+        app.logger.info(" DownloadService [ " + self.cfg.category + " ] download - [begin] ")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(self.cfg.msg_job)
+        app.logger.info(" "+self.cfg.msg_job)
         app.logger.info("------------------------------------------------------------")
         self.__prepare_download()
         if self.cfg.slug[0] in ['who', 'ecdc', 'divi', 'vaccination', 'owid', 'rki']:
@@ -58,6 +59,6 @@ class BlueprintDownloadService(AllServiceMixinDownload):
         else:
             self.__download_with_wget()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" download - [done] ")
+        app.logger.info(" DownloadService [ " + self.cfg.category + " ] download - [done] ")
         app.logger.info("------------------------------------------------------------")
         return self

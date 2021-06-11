@@ -16,7 +16,7 @@ class WhoServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoServiceUpdateBase [ready]")
+        app.logger.debug("  WhoServiceUpdateBase [ready]")
 
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
@@ -44,9 +44,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=s_date_reported)
             db.session.add(o)
-            a = str(o)
-            b = str(i)
-            output = " full update WHO date_reported ... " + b + " rows ... (" + a + ")"
+            output = " full update WHO date_reported ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -68,9 +66,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = WhoCountryRegionFactory.create_new(location_group_str=region_str)
             db.session.add(o)
-            a = str(o)
-            b = str(i)
-            output = " full update WHO region ... " + b + " rows ... (" + a + ")"
+            output = " full update WHO region ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -101,9 +97,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
                 location=str_country, location_code=str_country_code, location_group=location_group
             )
             db.session.add(o)
-            a = str(o)
-            b = str(i)
-            output = " full update WHO country ... " + b + " rows ... (" + a + ")"
+            output = " full update WHO country ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -145,10 +139,8 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             d += 1
             if d % 7 == 0:
                 db.session.commit()
-                s1 = str(i)
                 s2 = str(who_date_reported)
-                s3 = str(k)
-                app.logger.info(" full update WHO data ... " + s1 + " rows ... " + s2 + " (" + s3 + ")")
+                app.logger.info(" full update WHO data ... " + str(i) + " rows ... " + s2 + " (" + str(k) + ")")
                 k = 0
         db.session.commit()
         app.logger.info(" full update WHO data:  " + str(i) + " total rows")
