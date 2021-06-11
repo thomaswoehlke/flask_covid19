@@ -1,4 +1,4 @@
-import flask_covid19
+import flask_covid19_app
 import flask_covid19_web
 import flask_covid19_mq
 
