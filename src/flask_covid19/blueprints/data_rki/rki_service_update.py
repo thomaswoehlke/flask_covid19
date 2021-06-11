@@ -266,7 +266,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiBundesland.set_all_processed_update()
-        for new_location_group in self.__get_new_location_groups():
+        for new_location_group in self.__get_new_altersgruppen():
             i += 1
             o = RkiBundeslandFactory.create_new(bundesland_of_import=new_location_group)
             db.session.add(o)
@@ -305,6 +305,30 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         return self
 
+    def __update_altersgruppen(self):
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiServiceUpdate.__update_altersgruppen [begin]")
+        app.logger.info("------------------------------------------------------------")
+        i = 0
+        RkiAltersgruppe.set_all_processed_update()
+        for new_altersgruppe in self.__get_new_altersgruppen():
+            i += 1
+            o = RkiAltersgruppe(
+                altersgruppe=new_altersgruppe,
+                processed_update=False,
+                processed_full_update=False,
+            )
+            db.session.add(o)
+            db.session.commit()
+            output = " [ " + str(i) + " ] " + str(o) + " added"
+            app.logger.info(output)
+        db.session.commit()
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiServiceUpdate.__update_altersgruppen [done]")
+        app.logger.info("------------------------------------------------------------")
+        return self
+
     def __update_data(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiServiceUpdate.__update_data [begin]")
@@ -326,8 +350,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     nr = len(list_imports)
                     app.logger.info("len(list_imports): " + str(nr))
                 app.logger.info("------------------------------------------------------------")
-                my_datenstand_date_datum = None
-                my_ref_datum_datum = None
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)
                     rki_data = RkiDataFactory.get_rki_data(
@@ -348,7 +370,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
     def update_dimension_tables(self):
         self.__update_date_reported()
         self.__update_locations()
-        self.__get_new_altersgruppen()
+        self.__update_altersgruppen()
         return self
 
     def update_fact_table(self):
