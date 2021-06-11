@@ -236,7 +236,8 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
     def __get_new_altersgruppen(self):
         todo = []
         altersgruppe_all = RkiAltersgruppe.get_all_str()
-        for item in RkiImport.get_altersgruppe_list():
+        for altersgruppe in RkiImport.get_altersgruppe_list():
+            item = altersgruppe[0]
             app.logger.info(str(item))
             if item not in altersgruppe_all:
                 todo.append(item)
@@ -341,7 +342,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update():
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
-                my_landkreis_key = my_landkreis.location_code + " " + my_landkreis.location
+                my_landkreis_key = my_landkreis.location
                 app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
                 app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
