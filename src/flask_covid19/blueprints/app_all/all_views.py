@@ -3,7 +3,6 @@ from celery import states
 from celery.utils.log import get_task_logger
 
 from database import app, celery
-from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import app_admin_service
 from flask_covid19.blueprints.app_web.web_dispachter_matrix_service import all_dispachter_matrix_service
 from flask_covid19.blueprints.app_web.web_model_transient import WebPageContent
 
@@ -27,12 +26,12 @@ def url_all_info():
 
 @blueprint_app_all.route('/delete_last_day')
 def url_all_delete_last_day():
-    app.logger.info("url_who_delete_last_day [start]")
-    flash("url_who_delete_last_day [start]")
+    app.logger.info("url_all_delete_last_day [start]")
+    flash("url_all_delete_last_day [start]")
     all_dispachter_matrix_service.delete_last_day()
-    flash("url_who_delete_last_day [done]")
-    app.logger.info("url_who_delete_last_day [done]")
-    return redirect(url_for('who.url_who_info'))
+    flash("url_all_delete_last_day [done]")
+    app.logger.info("url_all_delete_last_day [done]")
+    return redirect(url_for('app_all.url_all_info'))
 
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS
