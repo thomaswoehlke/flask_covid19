@@ -22,7 +22,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         app.logger.debug("------------------------------------------------------------")
         self.__services_for = {
             'download': [
-                who_service, vaccination_service, divi_service, ecdc_service, owid_service, rki_service
+                who_service, vaccination_service, divi_service, ecdc_service, owid_service
             ],
             'import_file': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service
