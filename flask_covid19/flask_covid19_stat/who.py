@@ -9,7 +9,7 @@ os.getcwd()
 
 ### Daten einlesen #############################################################################
 # csv-Datei direkt in einen DataFrame einlesen
-who = pd.read_csv('../data/who/WHO.csv', sep=',')
+who = pd.read_csv('flask_covid19/data/who/WHO.csv', sep=',')
 who.info()         # grundlegende Informationen über den Datensatz
 list(who.keys())
 who.value_counts()
