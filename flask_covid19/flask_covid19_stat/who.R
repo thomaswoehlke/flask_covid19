@@ -21,8 +21,8 @@ library(pool)
 
 library(odbc)
 sort(unique(odbcListDrivers()[[1]]))
-library(DBI)
 con <- dbConnect(odbc::odbc(),
-                 .connection_string = "Driver={MariaDB Unicode};DB={flask_covid19_rki},Server={localhost},UID={flask_covid19},PWD={flask_covid19pwd},Port=3306",
+                 .connection_string = "Driver={MariaDB Unicode};DB={flask_covid19_rki},Server={tw-asus7},UID={flask_covid19},PWD={flask_covid19pwd},Port=3306",
                  timeout = 10)
-dbGetQuery(con,'select * from who')
+dbGetQuery(con,"select * from rki_import_flat where landkreis = 'SK Bochum' order by meldedatum__datum desc")
+
