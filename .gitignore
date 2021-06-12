@@ -1134,7 +1134,7 @@ dump.rdb
 /logfile4.txt
 /logfile5.txt
 /logfile*.txt
-/src/flask_covid19/static/vendor/
+/flask_covid19/flask_covid19/static/vendor/
 /.checkmate
-/src/data/
-/src/flask_covid19_app/static/vendor/
+/flask_covid19/data/
+/flask_covid19/flask_covid19_app/static/vendor/

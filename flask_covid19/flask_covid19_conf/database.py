@@ -81,8 +81,8 @@ def create_admin(my_app):
 def create_celery():
     root_dir = os.getcwd()
     if sys.platform == 'linux':
-        if root_dir.endswith("src"):
-            root_dir.replace(os.sep + 'src', '')
+        if root_dir.endswith("flask_covid19"):
+            root_dir.replace(os.sep + 'flask_covid19', '')
     os.chdir(root_dir)
     app.logger.info(os.getcwd())
     celery = Celery("flask_covid19_celery")
@@ -143,8 +143,8 @@ admin = create_admin(app)
 celery = create_celery()
 root_dir = os.getcwd()
 
-#if root_dir.endswith(os.sep + 'src'):
-#    root_dir = root_dir.replace(os.sep + 'src', '')
+#if root_dir.endswith(os.sep + 'flask_covid19'):
+#    root_dir = root_dir.replace(os.sep + 'flask_covid19', '')
 
 # TODO: #209 remove deprecated database.ITEMS_PER_PAGE
 ITEMS_PER_PAGE = app.config['SQLALCHEMY_ITEMS_PER_PAGE']
