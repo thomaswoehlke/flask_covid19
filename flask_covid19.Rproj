@@ -16,3 +16,7 @@ AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
 
 BuildType: Makefile
+
+QuitChildProcessesOnExit: Yes
+
+SpellingDictionary: de_DE

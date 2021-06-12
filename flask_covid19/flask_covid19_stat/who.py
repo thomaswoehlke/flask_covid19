@@ -11,10 +11,9 @@ os.getcwd()
 # csv-Datei direkt in einen DataFrame einlesen
 who = pd.read_csv('../data/who/WHO.csv', sep=',')
 who.info()         # grundlegende Informationen über den Datensatz
-b = list(who.keys())
-print(b)
-print(who.value_counts())
-print(who.index)
-print(who.head())
-print(who)
+list(who.keys())
+who.value_counts()
+who.index
+who.head()
+who
 
