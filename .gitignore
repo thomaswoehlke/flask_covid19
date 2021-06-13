@@ -1139,3 +1139,4 @@ dump.rdb
 /flask_covid19/data/
 /flask_covid19/flask_covid19_app/static/vendor/
 /renv
+/flask_covid19/broker/
