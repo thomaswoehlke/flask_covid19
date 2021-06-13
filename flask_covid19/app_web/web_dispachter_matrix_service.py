@@ -1,4 +1,4 @@
-from app_config.database import db
+from app_config.database import db, app
 
 
 from app_web.app_admin_service import AdminService
@@ -35,4 +35,5 @@ all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     ecdc_service=ecdc_service,
     divi_service=divi_service)
 
-# db.create_all()
+with app.app_context():
+    db.create_all()

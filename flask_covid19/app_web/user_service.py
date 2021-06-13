@@ -12,14 +12,18 @@ class UserService:
         app.logger.info(" [app_web] User Service [ready]")
         app.logger.debug("------------------------------------------------------------")
 
+    def set_database(self, database):
+        self.__database = database
+
     def get_user_from_login_form(self, form: LoginForm):
         user = User()
         user.email = form.email
         user.password = form.password
         return user
 
-    def prepare_default_user_login(self):
+    def prepare_default_user_login(self, database):
         app.logger.info(" UserService.prepare_default_user_login()")
+        self.__database = database
         if User.count() == 0:
             app.logger.info("User.count() == 0")
             login = app.config['USER_ADMIN_LOGIN']

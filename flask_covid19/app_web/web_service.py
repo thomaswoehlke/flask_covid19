@@ -10,23 +10,26 @@ class WebService:
         self.__user_service = user_service
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [app_web] Web Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
-    def prepare_run_web(self):
+    def prepare_run_web(self, database):
         app.logger.info(" ")
         app.logger.info("#############################################################")
         app.logger.info("#                Covid19 Data - WEB                         #")
         app.logger.info("#############################################################")
         app.logger.info(" ")
-        self.__user_service.prepare_default_user_login()
+        self.__database = database
+        self.__user_service.prepare_default_user_login(database)
         app.logger.info(" ")
 
-    def prepare_run_mq(self):
+    def prepare_run_mq(self, database):
         app.logger.info(" ")
         app.logger.info("#############################################################")
         app.logger.info("#                Covid19 Data - MQ (Celery WORKER)          #")
         app.logger.info("#############################################################")
         app.logger.info(" ")
-        self.__user_service.prepare_default_user_login()
+        self.__database = database
+        self.__user_service.prepare_default_user_login(database)
         app.logger.info(" ")
 
     def prepare_start_redis(self):
