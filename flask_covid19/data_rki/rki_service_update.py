@@ -238,7 +238,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         altersgruppe_all = RkiAltersgruppe.find_all_as_str()
         for altersgruppe in RkiImport.get_altersgruppe_list():
             item = altersgruppe[0]
-            app.logger.info(str(item))
+            # app.logger.info(str(item))
             if item not in altersgruppe_all:
                 todo.append(item)
         return todo
