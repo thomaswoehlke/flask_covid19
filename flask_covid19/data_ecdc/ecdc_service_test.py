@@ -11,6 +11,6 @@ class EcdcTestService:
         self.__ecdc_service = ecdc_service
         self.cfg = BlueprintConfig.create_config_for_ecdc()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ECDC Test Service [ready]")
+        app.logger.info(" [ECDC] Test Service [ready]")
         app.logger.debug("------------------------------------------------------------")
 
