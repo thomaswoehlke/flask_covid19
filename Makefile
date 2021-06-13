@@ -9,7 +9,7 @@ PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
-PIP_REQUIREMENTS_DIR := flask_covid19/flask_covid19_build/requirements
+PIP_REQUIREMENTS_DIR := flask_covid19/app_build/requirements
 
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
