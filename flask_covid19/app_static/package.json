@@ -1,11 +1,11 @@
 {
     "name": "flask-covid19-static",
-    "version": "0.0.51",
+    "version": "0.0.52",
     "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
-    "main": "static/index.js",
+    "main": "/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/thomaswoehlke/covid19python/covid19/static"
+        "url": "https://github.com/thomaswoehlke/flask_covid19/tree/main/flask_covid19/app_static/"
     },
     "keywords": [
         "virus",
