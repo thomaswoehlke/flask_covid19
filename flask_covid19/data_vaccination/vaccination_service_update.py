@@ -22,7 +22,7 @@ class VaccinationServiceUpdateBase:
 class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
-        app.logger.info(" [Vaccination] __full_update_date_reported [begin]")
+        app.logger.info(" [Vaccination] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationDateReported.remove_all()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
@@ -31,18 +31,18 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_vaccination(my_date_reported=one_date_reported)
             db.session.add(o)
-            output = " full_update RkiVaccination date_reported [ " + str(i) + " ] " + str(o)
+            output = "  [Vaccination] full update date_reported [ " + str(i) + " ] " + str(o)
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [Vaccination] __full_update_date_reported  [done]")
+        app.logger.info(" [Vaccination] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] __full_update_fact_table [begin]")
+        app.logger.info(" [Vaccination] full update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
@@ -81,13 +81,13 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
                 db.session.add(o)
                 i += 1
                 if i % 500 == 0:
-                    app.logger.info(" full update Vaccination data ... " + str(i) + " rows")
+                    app.logger.info(" [Vaccination] full update data ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" full update Vaccination data ... " + str(i) + " rows total")
+        app.logger.info(" [Vaccination] full update data ... " + str(i) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] __full_update_fact_table [done]")
+        app.logger.info(" [Vaccination] full update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -115,27 +115,27 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdate.__update_date_reported [begin]")
+        app.logger.info(" [Vaccination] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationDateReported.set_all_processed_update()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
         i = 0
         for one_date_reported in date_reported_list:
             i += 1
-            output = " [ " + str(i) + " ] " + str(one_date_reported) + " added"
+            output = " [Vaccination] date_reported [ " + str(i) + " ] " + str(one_date_reported) + " added"
             o = BlueprintDateReportedFactory.create_new_object_for_vaccination(one_date_reported)
             db.session.add(o)
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdate.__update_date_reported [done]")
+        app.logger.info(" [Vaccination] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdate.__update_fact_table [begin]")
+        app.logger.info(" [Vaccination] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         result_date_rep = VaccinationImport.get_daterep_missing_in_vaccination_data()
         i = 0
@@ -170,12 +170,12 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 db.session.add(o)
                 i += 1
                 if i % 500 == 0:
-                    app.logger.info(" update Vaccination ... " + str(i) + " rows")
+                    app.logger.info(" [Vaccination] update fact_table ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" update Vaccination ... " + str(i) + " rows total")
+        app.logger.info(" [Vaccination] update fact_table ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdate.__update_fact_table [done]")
+        app.logger.info(" [Vaccination] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 

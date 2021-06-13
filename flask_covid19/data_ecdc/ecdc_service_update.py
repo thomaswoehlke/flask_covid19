@@ -14,7 +14,7 @@ class EcdcServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" ECDC Service Update [ready] ")
+        app.logger.debug(" [ECDC] Service Update [ready] ")
         app.logger.debug("------------------------------------------------------------")
 
 
@@ -22,7 +22,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
 
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" EcdcServiceUpdateFull.__full_update_date_reported() [begin]")
+        app.logger.info(" [ECDC] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         EcdcDateReported.remove_all()
         result_date_rep = EcdcImport.get_date_rep()
@@ -34,16 +34,16 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
             db.session.add(o)
             a = str(o)
             b = str(k)
-            app.logger.info(" full update EDCD date_reported ... " + b + " rows ... (" + a + ")")
+            app.logger.info(" [ECDC] full update date_reported ... " + b + " rows ... (" + a + ")")
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" EcdcServiceUpdateFull.__full_update_date_reported() [done]")
+        app.logger.info(" [ECDC] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_continent(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __full_update_continent [begin]")
+        app.logger.info(" [ECDC] full update continent [begin]")
         app.logger.info("------------------------------------------------------------")
         EcdcContinent.remove_all()
         result_continent = EcdcImport.get_continent()
@@ -54,17 +54,17 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
             o = EcdcContinentFactory.create_new(location_group_str=my_continent_exp)
             a = str(o)
             b = str(k)
-            app.logger.info(" full update EDCD continent ... " + b + " rows ... (" + a + ")")
+            app.logger.info(" [ECDC] full update continent ... " + b + " rows ... (" + a + ")")
             db.session.add(o)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __full_update_continent [done]")
+        app.logger.info(" [ECDC] full update continent [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_country(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __full_update_country [begin]")
+        app.logger.info(" [ECDC] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
         EcdcData.remove_all()
         EcdcCountry.remove_all()
@@ -78,11 +78,11 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
                 o = EcdcCountryFactory.create_new(c, my_continent)
                 a = str(o)
                 b = str(k)
-                app.logger.info(" full update EDCD country ... " + b + " rows ... (" + a + ")")
+                app.logger.info(" [ECDC] full update country  ... " + b + " rows ... (" + a + ")")
                 db.session.add(o)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __full_update_country [done]")
+        app.logger.info(" [ECDC] full update country [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -123,7 +123,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
 
     def __full_update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_data_initial [begin]")
+        app.logger.info(" [ECDC] full update data [begin]")
         app.logger.info("------------------------------------------------------------")
         EcdcData.remove_all()
         i = 0
@@ -159,13 +159,13 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
                 s1 = str(i)
                 s2 = str(ecdc_datereported)
                 s3 = str(k)
-                app.logger.info(" full update EDCD data ... " + s1 + " rows ... " + s2 + " (" + s3 + ")")
+                app.logger.info(" [ECDC] full update data  ... " + s1 + " rows ... " + s2 + " (" + s3 + ")")
                 k = 0
                 db.session.commit()
         db.session.commit()
-        app.logger.info(" update ECDC initial ... " + str(i) + " rows total")
+        app.logger.info(" [ECDC] full update data  ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_data_initial [done]")
+        app.logger.info(" [ECDC] full update data [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -220,7 +220,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_date_reported [begin]")
+        app.logger.info(" [ECDC] update date_reported  [begin]")
         app.logger.info("------------------------------------------------------------")
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
@@ -234,42 +234,42 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
                 )
                 db.session.add(o)
                 db.session.commit()
-            app.logger.info("| " + my_date_rep + " | " + str(k) + " rows ")
+            app.logger.info(" [ECDC] update date_reported " + my_date_rep + " ... " + str(k) + " rows ")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_date_reported [done]")
+        app.logger.info(" [ECDC] update date_reported  [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_continent(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_continent [begin]")
+        app.logger.info(" [ECDC] update continent [begin]")
         app.logger.info("------------------------------------------------------------")
         result_continent = EcdcImport.get_continent()
         for result_item in result_continent:
             my_continent_exp = result_item[0]
             o = EcdcContinentFactory.create_new(location_group_str=my_continent_exp)
-            app.logger.info("| " + str(o) + " |")
+            app.logger.info(" [ECDC] update continent ... " + str(o) + " rows ")
             db.session.add(o)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_continent [done]")
+        app.logger.info(" [ECDC] update continent [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_country(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_country [begin]")
+        app.logger.info(" [ECDC] update country [begin]")
         app.logger.info("------------------------------------------------------------")
         all_continents = EcdcContinent.find_all()
         for my_continent in all_continents:
             result_countries_of_continent = EcdcImport.get_countries_of_continent(my_continent)
             for c in result_countries_of_continent:
                 o = EcdcCountryFactory.create_new(c, my_continent)
-                app.logger.info("| " + str(o) + " |")
+                app.logger.info(" [ECDC] update country " + str(o) + " ")
                 db.session.add(o)
             db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_country [done]")
+        app.logger.info(" [ECDC] update country [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -345,7 +345,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def __update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_data_initial [begin]")
+        app.logger.info(" [ECDC] update data [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         dict_date_reported_from_import = self.__get_date_reported_from_import()
@@ -370,12 +370,12 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
                 db.session.add(o)
                 i += 1
                 if i % 1000 == 0:
-                    app.logger.info(" update EDCD initial ... " + str(i) + " rows")
+                    app.logger.info(" [ECDC] update data  ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" update ECDC initial ... " + str(i) + " rows total")
+        app.logger.info(" [ECDC] update data  ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" __update_data_initial [done]")
+        app.logger.info(" [ECDC] update data [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -385,22 +385,22 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" EcdcTestService.delete_last_day() [START]")
+        app.logger.debug(" [ECDC] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum_str = EcdcData.get_joungest_datum()
         joungest_datum = EcdcDateReported.find_by_date_reported(joungest_datum_str)
-        app.logger.info("joungest_datum:")
+        app.logger.info(" joungest_datum:")
         app.logger.info(joungest_datum)
-        app.logger.info("WhoData.get_data_for_one_day(joungest_datum):")
+        app.logger.info(" WhoData.get_data_for_one_day(joungest_datum):")
         i = 0
         for data in EcdcData.get_data_for_one_day(joungest_datum):
             i += 1
-            line = " | " + str(i) + " | " + str(data.date_reported) + " | " + data.country.country + " | to be deleted"
+            line = " [ECDC] delete last_day [ " + str(i) + " ] " + str(data.date_reported) + " | " + str(data.country) + " | to be deleted"
             app.logger.info(line)
-        app.logger.info("WhoData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         EcdcData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" EcdcTestService.delete_last_day() [DONE]")
+        app.logger.debug(" [ECDC] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
 

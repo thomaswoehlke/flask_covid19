@@ -202,7 +202,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = RkiMeldedatum.find_all_as_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
-            app.logger.info("o: " + str(item))
+            app.logger.info(" date_reported: " + str(item))
             if item not in odr_list:
                 todo.append(item)
         return todo
@@ -212,7 +212,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         bundesland_all = RkiBundesland.find_all_as_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
-            app.logger.info("lg: " + str(item))
+            app.logger.info(" location_group: " + str(item))
             if item not in bundesland_all:
                 todo.append(item)
         return todo
@@ -223,7 +223,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_bundesland in RkiBundesland.find_all_as_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
-                app.logger.info("l: " + str(item) + " -- " + str(my_bundesland))
+                app.logger.info(" location: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
                     new_location = (
                         oi.landkreis,
@@ -245,7 +245,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__update_date_reported [begin]")
+        app.logger.info("  [RKI] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiMeldedatum.set_all_processed_update()
@@ -259,13 +259,13 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__update_date_reported [done]")
+        app.logger.info("  [RKI] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_location_groups(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__update_location_groups [begin]")
+        app.logger.info("  [RKI] update location_groups [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiBundesland.set_all_processed_update()
@@ -279,14 +279,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI].__update_location_groups [done]")
+        app.logger.info(" [RKI] update location_groups [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_locations(self):
         self.__update_location_groups()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI].__update_locations [begin]")
+        app.logger.info(" [RKI] update locations [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiLandkreis.set_all_processed_update()
@@ -299,12 +299,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             o = RkiLandkreisFactory.create_new(my_landkreis=my_landkreis, bundesland=bundesland)
             db.session.add(o)
             db.session.commit()
-            output = " [RKI] update_location [ " + str(i) + " ] " + str(o) + " added"
+            output = " [RKI] update location [ " + str(i) + " ] " + str(o) + " added"
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI].__update_locations [done]")
+        app.logger.info(" [RKI] update locations [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -343,16 +343,16 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
-                app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
+                app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
                 app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
                     my_datum=my_meldedatum_datum,
                     my_landkreis=my_landkreis_key)
                 if list_imports is None:
-                    app.logger.info("list_imports is None ")
+                    app.logger.info(" [RKI] list_imports is None ")
                 else:
                     nr = len(list_imports)
-                    app.logger.info("len(list_imports): " + str(nr))
+                    app.logger.info(" [RKI] len(list_imports): " + str(nr))
                 app.logger.info("------------------------------------------------------------")
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)

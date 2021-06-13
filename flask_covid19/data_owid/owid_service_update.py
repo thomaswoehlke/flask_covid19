@@ -16,7 +16,7 @@ class OwidServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Service Update [ready]")
+        app.logger.debug(" [OWID] Service Update [ready]")
         app.logger.debug("------------------------------------------------------------")
 
 
@@ -24,7 +24,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.__full_update_date_reported [begin]")
+        app.logger.info(" [OWID] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         OwidDateReported.remove_all()
         i = 0
@@ -33,20 +33,20 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=i_date_reported)
             db.session.add(o)
-            output = " full update  OWID date_reported [ " + str(i) + " ] " + i_date_reported + " added"
+            output = " [OWID] full update date_reported [ " + str(i) + " ] " + i_date_reported + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.__full_update_date_reported [done]")
+        app.logger.info(" [OWID] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_continent(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_continent [begin]")
+        app.logger.info(" [OWID] full update continent [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
         log_lines = []
@@ -56,19 +56,19 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             o = OwidContinentFactory.create_new(location_group_str=oi.continent)
             db.session.add(o)
             i += 1
-            output = " full update OWID continent:  [ " + str(i) + " ] " + str(o) + " added"
+            output = " [OWID] full update continent :  [ " + str(i) + " ] " + str(o) + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_continent [done]")
+        app.logger.info(" [OWID] full update continent [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_country(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_country [begin]")
+        app.logger.info(" [OWID] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
         OwidData.remove_all()
@@ -82,19 +82,19 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 i += 1
                 o = OwidCountryFactory.create_new(oi=oi, location_group=continent)
                 db.session.add(o)
-                output = " full update OWID country: [ " + str(i) + " ] " + str(o) + " added"
+                output = " [OWID] full update country : [ " + str(i) + " ] " + str(o) + " added"
                 log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_country [done]")
+        app.logger.info(" [OWID] full update country [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_fact_table [begin]")
+        app.logger.info(" [OWID] full update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
@@ -115,15 +115,15 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             lfd_nr_tage += 1
             if lfd_nr_tage % 7 == 0:
                 db.session.commit()
-                app.logger.info(" full update OWID  "
+                app.logger.info(" [OWID] full update fact_table  "
                                 + str(my_owid_date_reported) + " ... "
                                 + str(anzahl_db_zeilen_persistent)
                                 + " rows ( " + str(anzahl_db_zeilen_transient) + " )")
                 anzahl_db_zeilen_transient = 0
         db.session.commit()
-        app.logger.info(" full update OWID  :  "+str(anzahl_db_zeilen_persistent) +" rows total - for "+str(lfd_nr_tage)+" days")
+        app.logger.info(" [OWID] full update fact_table  :  "+str(anzahl_db_zeilen_persistent) +" rows total - for "+str(lfd_nr_tage)+" days")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__full_update_fact_table [done]")
+        app.logger.info(" [OWID] full update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -135,12 +135,12 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.update_fact_table_initial_only [begin]")
+        app.logger.info(" [OWID] full update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         OwidData.remove_all()
         self.__full_update_fact_table()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdateFull.update_fact_table_initial_only [done]")
+        app.logger.info(" [OWID] full update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -188,7 +188,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_date_reported [begin]")
+        app.logger.info(" [OWID] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         log_lines = []
@@ -205,13 +205,13 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_date_reported [done]")
+        app.logger.info(" [OWID] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_continent(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_continent [begin]")
+        app.logger.info(" [OWID] update continent [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
         i = 0
@@ -226,13 +226,13 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_continent [done]")
+        app.logger.info(" [OWID] update continent [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_country(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_country [begin]")
+        app.logger.info(" [OWID] update country [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
         self.__update_continent()
@@ -245,23 +245,23 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             owid_continent = OwidContinent.find_by_location_group(location_group=continent)
             o = OwidCountryFactory.create_new(oi=oi, location_group=owid_continent)
             db.session.add(o)
-            app.logger.info("added OwidCountry: " + str(o) + " ")
+            app.logger.info(" [OWID] added country: " + str(o) + " ")
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_country [done]")
+        app.logger.info(" [OWID] update country [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_fact_table [begin]")
+        app.logger.info(" [OWID] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
         for unprocessed_owid_date_reported in OwidDateReported.find_by_not_processed_update():
             unprocessed_owid_date_reported.set_processed_update()
-            app.logger.info("unprocessed_date: " + str(unprocessed_owid_date_reported))
+            app.logger.info(" [OWID] unprocessed_date: " + str(unprocessed_owid_date_reported))
             for oi in OwidImport.get_for_one_day(unprocessed_owid_date_reported.date_reported_import_str):
                 owid_country = OwidCountry.find_by_iso_code_and_location(
                     iso_code=oi.iso_code,
@@ -278,56 +278,56 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             if lfd_nr_tage % 7 == 0:
                 db.session.commit()
                 app.logger.info(
-                    " update OWID  :  added OwidData " + str(unprocessed_owid_date_reported)
+                    " [OWID] update  :  added data " + str(unprocessed_owid_date_reported)
                     + " ... " + str(anzahl_db_zeilen_persistent)
                     + " rows ( " + str(anzahl_db_zeilen_transient)
                     + " )")
                 anzahl_db_zeilen_transient = 0
         db.session.commit()
-        app.logger.info(" update OWID  :  added OwidData "
+        app.logger.info(" [OWID] update  :  added data "
                         + str(anzahl_db_zeilen_persistent)
                         + " rows total - for "+str(lfd_nr_tage)+" days")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.__update_fact_table [done]")
+        app.logger.info(" [OWID] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_dimension_tables(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_dimension_tables [begin]")
+        app.logger.info(" [OWID] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_date_reported()
         self.__update_country()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_dimension_tables [done]")
+        app.logger.info(" [OWID] update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_fact_table_incremental_only [begin]")
+        app.logger.info(" [OWID] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_fact_table()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" OwidServiceUpdate.update_fact_table_incremental_only [done]")
+        app.logger.info(" [OWID] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.delete_last_day() [START]")
+        app.logger.debug(" [OWID] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum = OwidDateReported.get_joungest_datum()
-        app.logger.info(" joungest_datum:" + str(joungest_datum))
-        app.logger.info(" OwidData.find_by_date_reported(joungest_datum):")
+        app.logger.info(" [OWID] joungest_datum:" + str(joungest_datum))
+        app.logger.info(" [OWID] OwidData.find_by_date_reported(joungest_datum):")
         i = 0
         for data in OwidData.find_by_date_reported(joungest_datum):
             i += 1
-            line = " Owid: to be deleted [ " + str(i) + " ] " + str(data)
+            line = " [OWID] to be deleted [ " + str(i) + " ] " + str(data)
             app.logger.info(line)
-        app.logger.info(" OwidData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" [OWID] OwidData.delete_data_for_one_day(joungest_datum)")
         OwidData.delete_data_for_one_day(joungest_datum)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OwidTestService.delete_last_day() [DONE]")
+        app.logger.debug(" [OWID] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
