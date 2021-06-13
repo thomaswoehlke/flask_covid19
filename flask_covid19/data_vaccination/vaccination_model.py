@@ -1,5 +1,5 @@
 
-from flask_covid19_conf.database import db #, cache
+from app_config.database import db #, cache
 from data_all.all_model import AllDateReported, AllFactTableTimeSeries
 
 

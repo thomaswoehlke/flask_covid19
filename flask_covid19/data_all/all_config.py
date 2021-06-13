@@ -1,6 +1,6 @@
 import os
 
-from flask_covid19_conf.database import root_dir, app
+from app_config.database import root_dir, app
 from data_ecdc.ecdc_model_import import EcdcImport
 from data_who.who_model_import import WhoImport
 from data_vaccination.vaccination_model_import import VaccinationImport

@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import app
+from app_config.database import app
 from data_all.all_service_mixins import AllServiceMixin
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_download import AllDownloadService

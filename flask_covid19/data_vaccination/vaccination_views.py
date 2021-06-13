@@ -3,7 +3,7 @@ from celery import states
 from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 
-from flask_covid19_conf.database import app, admin, db, celery
+from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import vaccination_service
 
 from data_vaccination.vaccination_model import VaccinationData

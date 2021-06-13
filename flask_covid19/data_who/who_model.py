@@ -1,6 +1,6 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
-from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, ITEMS_PER_PAGE #, cache
 from data_all.all_model import AllDateReported, BlueprintFactTable
 from data_all.all_model import AllLocationGroup, AllLocation
 

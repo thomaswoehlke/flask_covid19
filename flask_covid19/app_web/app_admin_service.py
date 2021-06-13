@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from flask_covid19_conf.database import app # , cache
+from app_config.database import app # , cache
 
 
 class AdminService:

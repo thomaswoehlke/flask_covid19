@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import db, app
+from app_config.database import db, app
 
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory

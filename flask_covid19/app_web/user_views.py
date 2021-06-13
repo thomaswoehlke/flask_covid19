@@ -6,7 +6,7 @@ from flask_login import current_user, login_user
 import flask
 
 
-from flask_covid19_conf.database import admin, db, login_manager
+from app_config.database import admin, db, login_manager
 
 
 from app_web.web_model_transient import WebPageContent

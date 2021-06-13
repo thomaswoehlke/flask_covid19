@@ -12,7 +12,7 @@ from flask_admin import Admin
 from celery import Celery
 
 
-from flask_covid19_conf import config
+from app_config import config
 
 cache_config_simple = {
     "DEBUG": True,

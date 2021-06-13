@@ -1,7 +1,7 @@
 import sys
 import csv
 
-from flask_covid19_conf.database import db, app
+from app_config.database import db, app
 from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from data_divi.divi_model_import import DiviImport

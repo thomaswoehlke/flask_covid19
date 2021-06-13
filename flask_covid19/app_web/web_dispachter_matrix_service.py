@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import db
+from app_config.database import db
 
 
 from app_web.app_admin_service import AdminService

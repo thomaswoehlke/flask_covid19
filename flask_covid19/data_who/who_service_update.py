@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import db, app  # , cache
+from app_config.database import db, app  # , cache
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
 from app_web.web_model_factory import BlueprintDateReportedFactory

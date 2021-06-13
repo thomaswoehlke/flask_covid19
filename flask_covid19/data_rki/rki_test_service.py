@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import db, app
+from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
 from data_rki.rki_model import RkiData, RkiBundesland, RkiLandkreis
 from data_rki.rki_model_import import RkiImport

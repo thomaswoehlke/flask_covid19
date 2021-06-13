@@ -5,7 +5,7 @@ from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
-from flask_covid19_conf.database import app, admin, db, celery
+from app_config.database import app, admin, db, celery
 
 from app_web.web_dispachter_matrix_service import divi_service
 from app_web.web_model_transient import WebPageContent

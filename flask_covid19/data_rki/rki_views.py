@@ -4,7 +4,7 @@ from flask_admin.contrib.sqla import ModelView
 from celery import states
 from flask_login import login_required
 
-from flask_covid19_conf.database import app, admin, db, celery
+from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import rki_service
 from data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
 from data_rki.rki_model import RkiAltersgruppe

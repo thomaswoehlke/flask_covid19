@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Bundle
-from flask_covid19_conf.database import db
+from app_config.database import db
 from data_all.all_model_import import AllImport
 
 

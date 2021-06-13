@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import app
+from app_config.database import app
 from data_all.all_config import BlueprintConfig
 from data_divi.divi_model import DiviDateReported, DiviData
 

@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import db, app
+from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
 from data_owid.owid_model import OwidData, OwidContinent, OwidCountry
 from data_owid.owid_model_import import OwidImport

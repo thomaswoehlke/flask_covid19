@@ -1,4 +1,4 @@
-from flask_covid19_conf.database import app
+from app_config.database import app
 
 
 class WebService:
