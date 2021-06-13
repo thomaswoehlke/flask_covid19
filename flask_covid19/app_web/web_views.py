@@ -1,5 +1,7 @@
 from flask import render_template, redirect, url_for, Blueprint
 
+import app_static
+
 from flask_covid19_conf.database import app, celery  # , cache
 
 from app_web.web_model_transient import WebPageContent
