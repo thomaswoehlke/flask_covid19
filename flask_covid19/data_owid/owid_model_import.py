@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Bundle
-from app_config.database import db, ITEMS_PER_PAGE
+from app_config.database import db, items_per_page
 from sqlalchemy import and_
 from data_all.all_model_import import AllImport, AllFlat
 
@@ -134,7 +134,7 @@ class OwidImport(AllImport):
             .group_by(cls.continent) \
             .distinct()\
             .order_by(cls.continent.asc())\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def countries(cls):

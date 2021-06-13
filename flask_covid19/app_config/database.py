@@ -135,7 +135,5 @@ db = app_database.db
 admin = app_database.admin
 root_dir = app_database.root_dir
 login_manager = app_database.login_manager
-ITEMS_PER_PAGE = app_database.items_per_page
+items_per_page = app_database.items_per_page
 celery = app_database.create_celery()
-
-

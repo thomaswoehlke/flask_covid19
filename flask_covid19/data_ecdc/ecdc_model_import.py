@@ -1,4 +1,4 @@
-from app_config.database import db, ITEMS_PER_PAGE # , cache
+from app_config.database import db, items_per_page # , cache
 from data_all.all_model_import import AllImport, AllFlat
 
 
@@ -42,7 +42,7 @@ class EcdcImport(AllImport):
             cls.month,
             cls.day,
             cls.countries_and_territories
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_date_rep(cls):

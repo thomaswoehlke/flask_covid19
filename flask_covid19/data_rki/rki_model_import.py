@@ -1,7 +1,7 @@
 from datetime import date
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
-from app_config.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, items_per_page #, cache
 from data_all.all_model_import import AllImport, AllFlat
 
 
@@ -38,7 +38,7 @@ class RkiImport(AllImport):
 
     @classmethod
     def get_all(cls, page: int):
-        return db.session.query(cls).paginate(page, per_page=ITEMS_PER_PAGE)
+        return db.session.query(cls).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_date_datenstand_of_all_import(cls):

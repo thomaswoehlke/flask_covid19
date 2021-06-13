@@ -1,6 +1,6 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
-from app_config.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, items_per_page #, cache
 from data_all.all_model import AllDateReported, AllLocationGroup
 from data_all.all_model import AllLocation, BlueprintFactTable
 
@@ -137,7 +137,7 @@ class EcdcData(BlueprintFactTable):
     @classmethod
     def get_by_date_reported(cls, date_reported: EcdcDateReported, page: int):
         return cls.__query_by_date_reported(date_reported)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_deaths(cls, date_reported: EcdcDateReported):
@@ -151,12 +151,12 @@ class EcdcData(BlueprintFactTable):
     @classmethod
     def get_by_date_reported_order_by_notification_rate(cls, date_reported: EcdcDateReported, page: int):
         return cls.__query_by_date_reported_order_by_notification_rate(date_reported)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_date_reported_order_by_deaths(cls, date_reported: EcdcDateReported, page: int):
         return cls.__query_by_date_reported_order_by_deaths(date_reported)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_cases(cls, date_reported: EcdcDateReported):
@@ -165,7 +165,7 @@ class EcdcData(BlueprintFactTable):
     @classmethod
     def get_by_date_reported_order_by_cases(cls, date_reported: EcdcDateReported, page: int):
         return cls.__query_by_date_reported_order_by_cases(date_reported)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location(cls, location: EcdcCountry):
@@ -173,7 +173,7 @@ class EcdcData(BlueprintFactTable):
 
     @classmethod
     def get_by_location(cls, location: EcdcCountry, page: int):
-        return cls.__query_by_location(location).paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_by_location(location).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_and_location(cls, date_reported: EcdcDateReported, location: EcdcCountry):

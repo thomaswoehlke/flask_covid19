@@ -1,4 +1,4 @@
-from app_config.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, items_per_page #, cache
 from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
 
 

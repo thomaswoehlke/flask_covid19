@@ -1,5 +1,5 @@
 from datetime import date
-from app_config.database import db, app, celery, ITEMS_PER_PAGE #, cache
+from app_config.database import db, app, celery, items_per_page #, cache
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
 from data_all.all_model_mixins import AllDateReportedMixin, AllEntityMixin
@@ -42,7 +42,7 @@ class AllEntity(db.Model, AllEntityMixin):
 
     @classmethod
     def get_all(cls, page: int):
-        return cls.__query_all().paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_all().paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_all(cls):
@@ -130,7 +130,7 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
 
     @classmethod
     def get_all(cls, page: int):
-        return cls.__query_all().paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_all().paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_all(cls):
@@ -254,7 +254,7 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
     def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.location_group)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_all(cls):
@@ -340,7 +340,7 @@ class AllLocation(AllEntity, AllLocationMixin):
     def get_by_location_group(cls, location_group: AllLocationGroup, page: int):
         return db.session.query(cls).filter(cls.location_group == location_group)\
             .order_by(cls.location)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
@@ -403,7 +403,7 @@ class AllLocation(AllEntity, AllLocationMixin):
     def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.location)\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
 
 class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):

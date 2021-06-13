@@ -1,7 +1,7 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 
-from app_config.database import db, ITEMS_PER_PAGE # , cache
+from app_config.database import db, items_per_page # , cache
 from data_all.all_model import AllDateReported, AllLocationGroup
 from data_all.all_model import AllLocation, BlueprintFactTable, AllEntity
 
@@ -178,7 +178,7 @@ class RkiData(BlueprintFactTable):
 
     @classmethod
     def get_by_location(cls, location: RkiLandkreis, page: int):
-        return cls.__query_by_location(location).paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_by_location(location).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location(cls, location: RkiLandkreis):
@@ -194,7 +194,7 @@ class RkiData(BlueprintFactTable):
     def get_by_date_reported_and_location(cls, date_reported: RkiMeldedatum, location: RkiLandkreis, page: int):
         return db.session.query(cls)\
             .filter(and_((cls.date_reported_id == date_reported.id), (cls.location_id == location.id)))\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def delete_data_for_one_day(cls, date_reported: RkiMeldedatum):
@@ -205,4 +205,4 @@ class RkiData(BlueprintFactTable):
 
     @classmethod
     def get_by_date_reported(cls, date_reported: RkiMeldedatum, page: int):
-        return cls.__query_by_date_reported(date_reported).paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_by_date_reported(date_reported).paginate(page, per_page=items_per_page)

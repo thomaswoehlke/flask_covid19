@@ -1,7 +1,7 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 
-from app_config.database import db, ITEMS_PER_PAGE # , cache
+from app_config.database import db, items_per_page # , cache
 from data_all.all_model import AllDateReported, AllLocationGroup
 from data_all.all_model import AllLocation, BlueprintFactTable
 
@@ -56,7 +56,7 @@ class OwidCountry(AllLocation):
 
     @classmethod
     def get_countries_for_continent(cls, owid_continent_one: OwidContinent, page: int):
-        return db.session.query(cls).filter(cls.location_group == owid_continent_one).paginate(page, per_page=ITEMS_PER_PAGE)
+        return db.session.query(cls).filter(cls.location_group == owid_continent_one).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_all_countries_for_continent(cls, owid_continent_one: OwidContinent):
@@ -166,7 +166,7 @@ class OwidData(BlueprintFactTable):
     @classmethod
     def get_by_location(cls, location: OwidCountry, page: int):
         return cls.__query_by_location(location) \
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def delete_by_location(cls, location: OwidCountry):
@@ -190,7 +190,7 @@ class OwidData(BlueprintFactTable):
                 cls.new_cases_per_million.desc(),
                 cls.new_deaths.desc(),
                 cls.new_cases.desc(),
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_deaths_new(cls, date_reported: OwidDateReported, page: int):
@@ -199,7 +199,7 @@ class OwidData(BlueprintFactTable):
             cls.new_deaths_per_million.desc(),
             cls.new_cases.desc(),
             cls.new_cases_per_million.desc(),
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_deaths_cumulative(cls, date_reported: OwidDateReported, page: int):
@@ -208,7 +208,7 @@ class OwidData(BlueprintFactTable):
             cls.new_deaths.desc(),
             cls.new_cases_per_million.desc(),
             cls.new_cases.desc(),
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_cases_new(cls, date_reported: OwidDateReported, page: int):
@@ -217,7 +217,7 @@ class OwidData(BlueprintFactTable):
             cls.new_cases_per_million.desc(),
             cls.new_deaths.desc(),
             cls.new_deaths_per_million.desc(),
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_cases_cumulative(cls, date_reported: OwidDateReported, page: int):
@@ -226,7 +226,7 @@ class OwidData(BlueprintFactTable):
             cls.new_cases.desc(),
             cls.new_deaths_per_million.desc(),
             cls.new_deaths.desc(),
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def delete_data_for_one_day(cls, date_reported: OwidDateReported):

@@ -1,6 +1,6 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
-from app_config.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, items_per_page #, cache
 from data_all.all_model import AllDateReported, BlueprintFactTable
 from data_all.all_model import AllLocationGroup, AllLocation
 
@@ -98,11 +98,11 @@ class WhoData(BlueprintFactTable):
 
     @classmethod
     def get_by_date_reported(cls, date_reported: WhoDateReported, page: int):
-        return cls.__query_by_date_reported(date_reported).paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_by_date_reported(date_reported).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_location(cls, location: WhoCountry, page: int):
-        return cls.__query_by_location(location).paginate(page, per_page=ITEMS_PER_PAGE)
+        return cls.__query_by_location(location).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location(cls, location: WhoCountry):
@@ -121,56 +121,56 @@ class WhoData(BlueprintFactTable):
         return cls.__query_by_date_reported(date_reported)\
             .order_by(
                 cls.cases_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_date_reported_order_by_cases_cumulative(cls, date_reported: WhoDateReported, page: int):
         return cls.__query_by_date_reported(date_reported)\
             .order_by(
                 cls.cases_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_date_reported_order_by_deaths_new(cls, date_reported: WhoDateReported, page: int):
         return cls.__query_by_date_reported(date_reported)\
             .order_by(
                 cls.deaths_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_date_reported_order_by_deaths_cumulative(cls, date_reported: WhoDateReported, page: int):
         return cls.__query_by_date_reported(date_reported)\
             .order_by(
                 cls.deaths_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_location_order_by_cases_new(cls, location: WhoCountry, page: int):
         return cls.__query_by_location(location)\
             .order_by(
                 cls.cases_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_location_order_by_cases_cumulative(cls, location: WhoDateReported, page: int):
         return cls.__query_by_location(location)\
             .order_by(
                 cls.cases_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_location_order_by_deaths_new(cls, location: WhoDateReported, page: int):
         return cls.__query_by_location(location)\
             .order_by(
                 cls.deaths_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_by_location_order_by_deaths_cumulative(cls, location: WhoDateReported, page: int):
         return cls.__query_by_location(location)\
             .order_by(
                 cls.deaths_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def delete_data_for_one_day(cls, date_reported: WhoDateReported):

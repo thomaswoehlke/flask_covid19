@@ -1,4 +1,4 @@
-from app_config.database import db, ITEMS_PER_PAGE
+from app_config.database import db, items_per_page
 from flask_login import UserMixin, AnonymousUserMixin
 from wtforms import validators
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -40,7 +40,7 @@ class User(UserMixin, db.Model):
 
     @classmethod
     def get_all_as_page(cls, page):
-        return db.session.query(cls).paginate(page, per_page=ITEMS_PER_PAGE)
+        return db.session.query(cls).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_all(cls):

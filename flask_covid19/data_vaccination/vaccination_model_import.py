@@ -1,4 +1,4 @@
-from app_config.database import db, ITEMS_PER_PAGE #, cache
+from app_config.database import db, items_per_page #, cache
 from data_all.all_model_import import AllImport, AllFlat
 
 
@@ -41,7 +41,7 @@ class VaccinationImport(AllImport):
     def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.datum.desc())\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_all(cls):

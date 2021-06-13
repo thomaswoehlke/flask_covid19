@@ -1,6 +1,6 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload, subqueryload
-from app_config.database import db, ITEMS_PER_PAGE
+from app_config.database import db, items_per_page
 from data_all.all_model import AllDateReported, AllLocationGroup
 from data_all.all_model import AllLocation, BlueprintFactTable
 
@@ -54,7 +54,7 @@ class DiviCountry(AllLocation):
         return db.session.query(cls)\
             .filter(cls.location_group == location_group)\
             .order_by(cls.location) \
-            .paginate(page, per_page=ITEMS_PER_PAGE)
+            .paginate(page, per_page=items_per_page)
 
 
 class DiviData(BlueprintFactTable):
@@ -98,7 +98,7 @@ class DiviData(BlueprintFactTable):
         ).populate_existing().options(
             joinedload(cls.country).joinedload(DiviCountry.region),
             joinedload(cls.date_reported)
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_paged(cls, date_reported: DiviDateReported, page):
@@ -112,7 +112,7 @@ class DiviData(BlueprintFactTable):
                 cls.cases_new.desc(),
                 cls.deaths_cumulative.desc(),
                 cls.cases_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported(cls, date_reported: DiviDateReported):
@@ -144,7 +144,7 @@ class DiviData(BlueprintFactTable):
                 joinedload(cls.date_reported)
             ).order_by(
                 cls.cases_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_cases_cumulative(cls, date_reported: DiviDateReported, page):
@@ -155,7 +155,7 @@ class DiviData(BlueprintFactTable):
                 joinedload(cls.date_reported)
             ).order_by(
                 cls.cases_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_deaths_new(cls, date_reported: DiviDateReported, page):
@@ -166,7 +166,7 @@ class DiviData(BlueprintFactTable):
                 joinedload(cls.date_reported)
             ).order_by(
                 cls.deaths_new.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location_by_deaths_cumulative(cls, date_reported: DiviDateReported, page):
@@ -177,7 +177,7 @@ class DiviData(BlueprintFactTable):
                 joinedload(cls.date_reported)
             ).order_by(
                 cls.deaths_cumulative.desc()
-            ).paginate(page, per_page=ITEMS_PER_PAGE)
+            ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location_order_by_cases_new(cls, location: DiviCountry, page):
@@ -188,7 +188,7 @@ class DiviData(BlueprintFactTable):
             joinedload(cls.date_reported)
         ).order_by(
             cls.cases_new.desc()
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location_order_by_cases_cumulative(cls, location: DiviCountry, page):
@@ -199,7 +199,7 @@ class DiviData(BlueprintFactTable):
             joinedload(cls.date_reported)
         ).order_by(
             cls.cases_cumulative.desc()
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_location_order_by_deaths_new(cls, location: DiviCountry, page):
@@ -210,7 +210,7 @@ class DiviData(BlueprintFactTable):
             joinedload(cls.date_reported)
         ).order_by(
             cls.deaths_new.desc()
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def find_by_date_reported_order_by_deaths_cumulative(cls, location: DiviCountry, page):
@@ -221,7 +221,7 @@ class DiviData(BlueprintFactTable):
             joinedload(cls.date_reported)
         ).order_by(
             cls.deaths_cumulative.desc()
-        ).paginate(page, per_page=ITEMS_PER_PAGE)
+        ).paginate(page, per_page=items_per_page)
 
     @classmethod
     def get_date_reported(cls):
