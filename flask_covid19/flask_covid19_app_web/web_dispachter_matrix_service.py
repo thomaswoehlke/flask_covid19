@@ -10,7 +10,7 @@ from data_vaccination.vaccination_service import VaccinationService
 from data_who.who_service import WhoService
 from data_divi.divi_service import DiviService
 from data_rki.rki_service import RkiService
-from flask_covid19_app_all.all_service import AllDataServiceDispachterMatrix
+from data_all.all_service import AllDataServiceDispachterMatrix
 
 ############################################################################################
 #

@@ -1,8 +1,8 @@
 from flask_covid19_conf.database import app
 
-from flask_covid19_app_all.all_service_mixins import AllServiceMixin
-from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app_all.all_service_download import AllDownloadService
+from data_all.all_service_mixins import AllServiceMixin
+from data_all.all_config import BlueprintConfig
+from data_all.all_service_download import AllDownloadService
 from data_ecdc.ecdc_service_import import EcdcServiceImport
 from data_ecdc.ecdc_service_update import EcdcServiceUpdate, EcdcServiceUpdateFull
 

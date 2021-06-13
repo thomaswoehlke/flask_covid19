@@ -1,5 +1,5 @@
 from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
-from flask_covid19_app_all.all_model_import import AllImport, AllFlat
+from data_all.all_model_import import AllImport, AllFlat
 
 
 class VaccinationImport(AllImport):

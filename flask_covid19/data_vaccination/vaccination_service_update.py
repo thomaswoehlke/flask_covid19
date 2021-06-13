@@ -1,6 +1,6 @@
 from flask_covid19_conf.database import db, app # , cache
-from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from data_all.all_config import BlueprintConfig
+from data_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
 from flask_covid19_app_web.web_model_factory import BlueprintDateReportedFactory
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_vaccination.vaccination_model import VaccinationDateReported

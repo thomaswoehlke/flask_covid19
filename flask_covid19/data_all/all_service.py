@@ -1,5 +1,5 @@
 from flask_covid19_conf.database import app
-from flask_covid19_app_all.all_service_mixins import AllServiceMixin
+from data_all.all_service_mixins import AllServiceMixin
 
 from data_ecdc.ecdc_service import EcdcService
 from data_owid.owid_service import OwidService

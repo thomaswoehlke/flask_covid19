@@ -1,4 +1,4 @@
-import flask_covid19_app_all
+import data_all
 import flask_covid19_app_web
 import flask_covid19_app
 import flask_covid19_web

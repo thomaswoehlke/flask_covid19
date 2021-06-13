@@ -2,9 +2,9 @@ from datetime import date
 from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
-from flask_covid19_app_all.all_model_mixins import AllDateReportedMixin, AllEntityMixin
-from flask_covid19_app_all.all_model_mixins import AllLocationMixin, AllLocationGroupMixin
-from flask_covid19_app_all.all_model_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
+from data_all.all_model_mixins import AllDateReportedMixin, AllEntityMixin
+from data_all.all_model_mixins import AllLocationMixin, AllLocationGroupMixin
+from data_all.all_model_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
 
 
 class AllEntity(db.Model, AllEntityMixin):

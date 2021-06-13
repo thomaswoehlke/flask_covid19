@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Bundle
 from flask_covid19_conf.database import db
-from flask_covid19_app_all.all_model_import import AllImport
+from data_all.all_model_import import AllImport
 
 
 class DiviImport(AllImport):

@@ -1,8 +1,8 @@
 from datetime import date
 
 from flask_covid19_conf.database import db
-from flask_covid19_app_all.all_model import AllEntity
-from flask_covid19_app_all.all_model_import_mixins import AllImportMixin, AllImportFlatMixin
+from data_all.all_model import AllEntity
+from data_all.all_model_import_mixins import AllImportMixin, AllImportFlatMixin
 
 
 class AllImport(AllEntity, AllImportMixin):

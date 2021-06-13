@@ -6,7 +6,7 @@ from flask_covid19_app_web.web_model_transient import WebPageContent
 
 from flask_covid19_app_web.user_views import blueprint_app_user
 from flask_covid19_app_web.app_admin_views import blueprint_app_admin
-from flask_covid19_app_all.all_views import blueprint_app_all
+from data_all.all_views import blueprint_app_all
 
 from data_who.who_views import app_who
 from data_owid.owid_views import app_owid

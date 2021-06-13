@@ -1,7 +1,7 @@
 from flask_covid19_conf.database import app
-from flask_covid19_app_all.all_service_mixins import AllServiceMixin
-from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app_all.all_service_download import AllDownloadService
+from data_all.all_service_mixins import AllServiceMixin
+from data_all.all_config import BlueprintConfig
+from data_all.all_service_download import AllDownloadService
 from data_rki.rki_service_import import RkiServiceImport
 from data_rki.rki_service_update import RkiServiceUpdate, RkiServiceUpdateFull
 

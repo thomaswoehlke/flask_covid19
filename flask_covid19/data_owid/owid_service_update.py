@@ -1,6 +1,6 @@
 from flask_covid19_conf.database import db, app
-from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from data_all.all_config import BlueprintConfig
+from data_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
 from flask_covid19_app_web.web_model_factory import BlueprintDateReportedFactory
 from data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
 from data_owid.owid_model_factories import OwidContinentFactory, OwidCountryFactory, \
