@@ -1,4 +1,4 @@
-from flask_covid19_app import OwidImport
+from data_owid.owid_model_import import OwidImport
 from data_owid.owid_model import OwidContinent, OwidCountry, OwidDateReported, OwidData
 
 

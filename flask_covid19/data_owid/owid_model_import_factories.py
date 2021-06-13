@@ -1,4 +1,4 @@
-from flask_covid19_app import OwidImport, OwidFlat
+from data_owid.owid_model_import import OwidImport, OwidFlat
 
 
 class OwidImportFactory:
