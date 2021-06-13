@@ -1,9 +1,9 @@
 from datetime import date
 
-from flask_covid19_app.blueprints.app_all.all_model import AllEntity
+from flask_covid19_app.blueprints.app_all.all_model_mixins import AllEntityMixin
 
 
-class AllImport(AllEntity):
+class AllImportMixin(AllEntityMixin):
 
     @classmethod
     def find_by_datum(cls, datum: date):
@@ -20,3 +20,7 @@ class AllImport(AllEntity):
     @classmethod
     def get_datum_list(cls):
         pass
+
+
+class AllImportFlatMixin(AllImportMixin):
+    pass

@@ -2,65 +2,17 @@ from datetime import date
 from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
+from flask_covid19_app.blueprints.app_all.all_model_mixins import AllDateReportedMixin, AllEntityMixin
+from flask_covid19_app.blueprints.app_all.all_model_mixins import AllLocationMixin, AllLocationGroupMixin
+from flask_covid19_app.blueprints.app_all.all_model_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
 
 
-class AllEntity(db.Model):
+class AllEntity(db.Model, AllEntityMixin):
     __abstract__ = True
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-
-    @classmethod
-    def __query_all(cls):
-        return db.session.query(cls)
-
-    @classmethod
-    def remove_all(cls):
-        db.session.query(cls).delete()
-        db.session.commit()
-        return None
-
-    @classmethod
-    def get_all_as_page(cls, page: int):
-        return cls.__query_all()\
-            .paginate(page, per_page=ITEMS_PER_PAGE)
-
-    @classmethod
-    def get_all(cls, page: int):
-        return cls.__query_all().paginate(page, per_page=ITEMS_PER_PAGE)
-
-    @classmethod
-    def find_all(cls):
-        return cls.__query_all().all()
-
-    @classmethod
-    def find_all_as_dict(cls):
-        pass
-
-    @classmethod
-    def get_all_str(cls):
-        pass
-
-    @classmethod
-    def get_by_id(cls, other_id):
-        return cls.__query_all().filter(cls.id == other_id).one()
-
-    @classmethod
-    def find_by_id(cls, other_id):
-        return cls.__query_all().filter(cls.id == other_id).one_or_none()
-
-    @classmethod
-    def set_all_processed_full_update(cls):
-        for o in cls.find_by_not_processed_full_update():
-            o.set_processed_full_update()
-        db.session.commit()
-
-    @classmethod
-    def set_all_processed_update(cls):
-        for o in cls.find_by_not_processed_update():
-            o.set_processed_update()
-        db.session.commit()
 
     def set_processed_update(self):
         self.processed_update = True
@@ -79,6 +31,40 @@ class AllEntity(db.Model):
         return self
 
     @classmethod
+    def remove_all(cls):
+        db.session.query(cls).delete()
+        db.session.commit()
+        return None
+
+    @classmethod
+    def __query_all(cls):
+        return db.session.query(cls)
+
+    @classmethod
+    def get_all(cls, page: int):
+        return cls.__query_all().paginate(page, per_page=ITEMS_PER_PAGE)
+
+    @classmethod
+    def find_all(cls):
+        return cls.__query_all().all()
+
+    @classmethod
+    def find_all_as_dict(cls):
+        pass
+
+    @classmethod
+    def find_all_as_str(cls):
+        pass
+
+    @classmethod
+    def get_by_id(cls, other_id):
+        return cls.__query_all().filter(cls.id == other_id).one()
+
+    @classmethod
+    def find_by_id(cls, other_id):
+        return cls.__query_all().filter(cls.id == other_id).one_or_none()
+
+    @classmethod
     def find_by_not_processed_update(cls):
         return cls.__query_all().filter(not_(cls.processed_update)).all()
 
@@ -86,8 +72,20 @@ class AllEntity(db.Model):
     def find_by_not_processed_full_update(cls):
         return cls.__query_all().filter(not_(cls.processed_full_update)).all()
 
+    @classmethod
+    def set_all_processed_full_update(cls):
+        for o in cls.find_by_not_processed_full_update():
+            o.set_processed_full_update()
+        db.session.commit()
 
-class AllDateReported(AllEntity):
+    @classmethod
+    def set_all_processed_update(cls):
+        for o in cls.find_by_not_processed_update():
+            o.set_processed_update()
+        db.session.commit()
+
+
+class AllDateReported(AllEntity, AllDateReportedMixin):
     __tablename__ = 'all_date_reported'
     __table_args__ = (
         db.UniqueConstraint(
@@ -201,14 +199,14 @@ class AllDateReported(AllEntity):
         return dates_reported
 
     @classmethod
-    def get_all_str(cls):
+    def find_all_as_str(cls):
         all_str = []
         for my_date_reported in cls.find_all():
             all_str.append(my_date_reported.date_reported_import_str)
         return all_str
 
 
-class AllLocationGroup(AllEntity):
+class AllLocationGroup(AllEntity, AllLocationGroupMixin):
     __tablename__ = 'all_location_group'
     __table_args__ = (
         db.UniqueConstraint(
@@ -253,7 +251,7 @@ class AllLocationGroup(AllEntity):
             .one_or_none()
 
     @classmethod
-    def get_all_as_page(cls, page: int):
+    def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.location_group)\
             .paginate(page, per_page=ITEMS_PER_PAGE)
@@ -270,14 +268,14 @@ class AllLocationGroup(AllEntity):
         return dates_reported
 
     @classmethod
-    def get_all_str(cls):
+    def find_all_as_str(cls):
         all_str = []
         for my_location_group in cls.find_all():
             all_str.append(my_location_group.location_group)
         return all_str
 
 
-class AllLocation(AllEntity):
+class AllLocation(AllEntity, AllLocationMixin):
     __tablename__ = 'all_location'
     __table_args__ = (
         db.UniqueConstraint(
@@ -388,7 +386,7 @@ class AllLocation(AllEntity):
         return cls.__query_all().all()
 
     @classmethod
-    def get_all_str(cls):
+    def find_all_as_str(cls):
         all_str = []
         for my_location in cls.find_all():
             all_str.append(my_location.location)
@@ -402,13 +400,13 @@ class AllLocation(AllEntity):
         return dates_reported
 
     @classmethod
-    def get_all_as_page(cls, page: int):
+    def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.location)\
             .paginate(page, per_page=ITEMS_PER_PAGE)
 
 
-class AllFactTableTimeSeries(AllEntity):
+class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
     __tablename__ = 'all_data_timeline'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -457,20 +455,8 @@ class AllFactTableTimeSeries(AllEntity):
         else:
             return None
 
-    @classmethod
-    def find_by_date_reported(cls, date_reported: AllDateReported):
-        pass
 
-    @classmethod
-    def get_by_date_reported(cls, date_reported: AllDateReported, page: int):
-        pass
-
-    @classmethod
-    def delete_data_for_one_day(cls, date_reported: AllDateReported):
-        pass
-
-
-class BlueprintFactTable(AllFactTableTimeSeries):
+class BlueprintFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     __tablename__ = 'all_data'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -497,21 +483,5 @@ class BlueprintFactTable(AllFactTableTimeSeries):
         cascade='all',
         enable_typechecks=False,
         order_by='asc(AllLocation.location)')
-
-    @classmethod
-    def get_by_location(cls, location: AllLocation, page: int):
-        pass
-
-    @classmethod
-    def find_by_location(cls, location: AllLocation):
-        pass
-
-    @classmethod
-    def find_by_date_reported_and_location(cls, date_reported: AllDateReported, location: AllLocation):
-        pass
-
-    @classmethod
-    def get_by_date_reported_and_location(cls, date_reported: AllDateReported, location: AllLocation, page: int):
-        pass
 
 

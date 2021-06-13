@@ -38,7 +38,7 @@ class VaccinationImport(AllImport):
     indikation_pflegeheim_voll = db.Column(db.Integer, nullable=False, index=True)
 
     @classmethod
-    def get_all_as_page(cls, page: int):
+    def get_all(cls, page: int):
         return db.session.query(cls)\
             .order_by(cls.datum.desc())\
             .paginate(page, per_page=ITEMS_PER_PAGE)

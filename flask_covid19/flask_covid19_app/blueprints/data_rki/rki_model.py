@@ -71,7 +71,7 @@ class RkiAltersgruppe(AllEntity):
         return altersgruppe_dict
 
     @classmethod
-    def get_all_str(cls):
+    def find_all_as_str(cls):
         all_str = []
         for my_altersgruppe in cls.find_all():
             all_str.append(my_altersgruppe.altersgruppe)

@@ -228,7 +228,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def __get_new_dates(self):
         todo = []
-        odr_list = EcdcDateReported.get_all_str()
+        odr_list = EcdcDateReported.find_all_as_str()
         for oi in EcdcImport.get_date_reported_import_str_list():
             item = oi[0]
             app.logger.info("o: " + str(item))
@@ -238,7 +238,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def __get_new_location_groups(self):
         todo = []
-        bundesland_all = EcdcContinent.get_all_str()
+        bundesland_all = EcdcContinent.find_all_as_str()
         for oi in EcdcImport.get_bundesland_list():
             item = oi.bundesland
             app.logger.info("lg: " + str(item))
@@ -248,8 +248,8 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase):
 
     def __get_new_locations(self):
         todo = []
-        country_all = EcdcCountry.get_all_str()
-        for my_continent in EcdcContinent.get_all_str():
+        country_all = EcdcCountry.find_all_as_str()
+        for my_continent in EcdcContinent.find_all_as_str():
             for oi in EcdcImport.get_countries_of_continent(my_continent):
                 item = oi.landkreis
                 app.logger.info("l: " + str(item) + " -- " + str(my_continent))

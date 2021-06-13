@@ -47,7 +47,7 @@ def url_ecdc_info():
 @app_ecdc.route('/imported')
 def url_ecdc_imported(page=1):
     page_info = WebPageContent('ECDC', "Last Import")
-    page_data = EcdcImport.get_all_as_page(page)
+    page_data = EcdcImport.get_all(page)
     return render_template(
         'ecdc/imported/ecdc_imported.html',
         page_data=page_data,
@@ -58,7 +58,7 @@ def url_ecdc_imported(page=1):
 @app_ecdc.route('/flat')
 def url_ecdc_flat(page=1):
     page_info = WebPageContent('ECDC', "flat")
-    page_data = EcdcFlat.get_all_as_page(page)
+    page_data = EcdcFlat.get_all(page)
     return render_template(
         'ecdc/flat/ecdc_flat.html',
         page_data=page_data,
@@ -69,7 +69,7 @@ def url_ecdc_flat(page=1):
 @app_ecdc.route('/date_reported/all')
 def url_ecdc_date_reported_all(page=1):
     page_info = WebPageContent('ECDC', "date_reported")
-    page_data = EcdcDateReported.get_all_as_page(page)
+    page_data = EcdcDateReported.get_all(page)
     return render_template(
         'ecdc/date_reported/all/ecdc_date_reported_all.html',
         page_data=page_data,
@@ -132,7 +132,7 @@ def url_ecdc_date_reported_one_cases_weekly(date_reported_id, page=1):
 @app_ecdc.route('/continent/all')
 def url_ecdc_continent_all(page=1):
     page_info = WebPageContent('ECDC', "continent")
-    page_data = EcdcContinent.get_all_as_page(page)
+    page_data = EcdcContinent.get_all(page)
     return render_template(
         'ecdc/continent/all/ecdc_continent_all.html',
         page_data=page_data,
@@ -156,7 +156,7 @@ def url_ecdc_continent_one(continent_id: int, page=1):
 @app_ecdc.route('/country/all')
 def url_ecdc_country_all(page=1):
     page_info = WebPageContent('ECDC', "country")
-    page_data = EcdcCountry.get_all_as_page(page)
+    page_data = EcdcCountry.get_all(page)
     return render_template(
         'ecdc/country/all/ecdc_country_all.html',
         page_data=page_data,

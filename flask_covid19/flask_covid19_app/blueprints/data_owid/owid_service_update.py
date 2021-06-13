@@ -149,7 +149,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __owid_import_get_new_dates(self):
         todo = []
-        odr_list = OwidDateReported.get_all_str()
+        odr_list = OwidDateReported.find_all_as_str()
         for datum_list in OwidImport.get_datum_list():
             o = datum_list['date_reported_import_str']
             app.logger.info("o: " + str(o))
@@ -159,7 +159,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_continents(self):
         todo = []
-        owid_continent_all = OwidContinent.get_all_str()
+        owid_continent_all = OwidContinent.find_all_as_str()
         for oi in OwidImport.get_all_continents():
             item = oi.continent
             if item not in owid_continent_all:

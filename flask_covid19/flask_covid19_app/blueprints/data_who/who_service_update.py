@@ -176,7 +176,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
     def __who_import_get_new_dates(self):
         todo = []
-        odr_list = WhoDateReported.get_all_str()
+        odr_list = WhoDateReported.find_all_as_str()
         for datum_list in WhoImport.get_datum_list():
             o = datum_list['date_reported_import_str']
             app.logger.info("o: " + str(o))
@@ -186,7 +186,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_location_groups(self):
         todo = []
-        who_region_all = WhoCountryRegion.get_all_str()
+        who_region_all = WhoCountryRegion.find_all_as_str()
         for oi in WhoImport.get_regions():
             item = oi.who_region
             if item not in who_region_all:

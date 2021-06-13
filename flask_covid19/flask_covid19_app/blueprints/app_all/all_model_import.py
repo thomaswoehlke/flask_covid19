@@ -2,9 +2,10 @@ from datetime import date
 
 from flask_covid19_conf.database import db
 from flask_covid19_app.blueprints.app_all.all_model import AllEntity
+from flask_covid19_app.blueprints.app_all.all_model_import_mixins import AllImportMixin, AllImportFlatMixin
 
 
-class AllImport(AllEntity):
+class AllImport(AllEntity, AllImportMixin):
     __tablename__ = 'all_import'
     __mapper_args__ = {'concrete': True}
 
@@ -47,7 +48,7 @@ class AllImport(AllEntity):
             .all()
 
 
-class AllFlat(AllImport):
+class AllFlat(AllImport, AllImportFlatMixin):
     __tablename__ = 'all_import_flat'
     __mapper_args__ = {'concrete': True}
 

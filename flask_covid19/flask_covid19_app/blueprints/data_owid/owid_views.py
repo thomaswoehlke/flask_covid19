@@ -47,7 +47,7 @@ def url_owid_info():
 def url_owid_imported(page=1):
     page_info = WebPageContent('OWID', "Last Import")
     try:
-        page_data = OwidImport.get_all_as_page(page)
+        page_data = OwidImport.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -62,7 +62,7 @@ def url_owid_imported(page=1):
 def url_owid_flat(page=1):
     page_info = WebPageContent('OWID', "flat")
     try:
-        page_data = OwidImport.get_all_as_page(page)
+        page_data = OwidImport.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -77,7 +77,7 @@ def url_owid_flat(page=1):
 def url_owid_date_reported_all(page: int = 1):
     page_info = WebPageContent('OWID', "Date Reported", "All")
     try:
-        page_data = OwidDateReported.get_all_as_page(page)
+        page_data = OwidDateReported.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None
@@ -200,7 +200,7 @@ def url_owid_continent_all(page: int = 1):
         'OWID', 'all'
     )
     try:
-        page_data = OwidContinent.get_all_as_page(page)
+        page_data = OwidContinent.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -239,7 +239,7 @@ def url_owid_country_all(page: int = 1):
         'OWID', 'all'
     )
     try:
-        page_data = OwidCountry.get_all_as_page(page)
+        page_data = OwidCountry.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None

@@ -14,7 +14,7 @@ class AllDownloadService(AllServiceMixinDownload):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" DownloadService " + self.cfg.category + " [ready]")
+        app.logger.info(" [" + self.cfg.category + "] Download Service [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def __prepare_download(self):
@@ -41,15 +41,15 @@ class AllDownloadService(AllServiceMixinDownload):
         for my_cmd in my_cmds:
             retcode = subprocess.call(my_cmd, shell=True)
             if retcode == 0:
-                app.logger.info(' OK ' + my_cmd)
+                app.logger.info(' [' + self.cfg.category + '] download result: OK ' + my_cmd)
             else:
-                app.logger.warn(' NOT OK: ' + my_cmd)
+                app.logger.warn(' [' + self.cfg.category + '] download result: NOT OK: ' + my_cmd)
         os.chdir(orig_workdir)
         return self
 
     def download(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" DownloadService [ " + self.cfg.category + " ] download - [begin] ")
+        app.logger.info(" [" + self.cfg.category + "] download - [begin] ")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" "+self.cfg.msg_job)
         app.logger.info("------------------------------------------------------------")
@@ -59,6 +59,6 @@ class AllDownloadService(AllServiceMixinDownload):
         else:
             self.__download_with_wget()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" DownloadService [ " + self.cfg.category + " ] download - [done] ")
+        app.logger.info(" [" + self.cfg.category + "] download - [done] ")
         app.logger.info("------------------------------------------------------------")
         return self

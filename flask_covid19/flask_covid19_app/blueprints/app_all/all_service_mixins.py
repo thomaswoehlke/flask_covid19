@@ -37,10 +37,6 @@ class AllServiceMixinImport:
         return self
 
 
-class AllServiceMixin(
-    AllServiceMixinUpdateFull,
-    AllServiceMixinUpdate,
-    AllServiceMixinDownload,
-    AllServiceMixinImport):
+class AllServiceMixin(AllServiceMixinUpdateFull, AllServiceMixinUpdate, AllServiceMixinDownload, AllServiceMixinImport):
     pass
 

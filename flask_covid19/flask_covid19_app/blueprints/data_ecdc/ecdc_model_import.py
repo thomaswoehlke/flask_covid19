@@ -36,7 +36,7 @@ class EcdcImport(AllImport):
     cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(db.String(255), nullable=False)
 
     @classmethod
-    def get_all_as_page(cls, page: int):
+    def get_all(cls, page: int):
         return db.session.query(cls).order_by(
             cls.year,
             cls.month,

@@ -43,7 +43,7 @@ def url_vaccination_info():
 @app_vaccination.route('/imported')
 def url_vaccination_imported(page=1):
     page_info = WebPageContent('Vaccination', "Data: Germany Timeline imported")
-    page_data = VaccinationImport.get_all_as_page(page)
+    page_data = VaccinationImport.get_all(page)
     return render_template(
         'vaccination/imported/vaccination_imported.html',
         page_data=page_data,
@@ -54,7 +54,7 @@ def url_vaccination_imported(page=1):
 @app_vaccination.route('/data')
 def url_vaccination_data(page=1):
     page_info = WebPageContent('Vaccination', "Data: Germany Timeline")
-    page_data = VaccinationData.get_all_as_page(page)
+    page_data = VaccinationData.get_all(page)
     return render_template(
         'vaccination/data/vaccination_data.html',
         page_data=page_data,

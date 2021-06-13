@@ -199,7 +199,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_dates(self):
         todo = []
-        odr_list = RkiMeldedatum.get_all_str()
+        odr_list = RkiMeldedatum.find_all_as_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
             app.logger.info("o: " + str(item))
@@ -209,7 +209,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_location_groups(self):
         todo = []
-        bundesland_all = RkiBundesland.get_all_str()
+        bundesland_all = RkiBundesland.find_all_as_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
             app.logger.info("lg: " + str(item))
@@ -219,8 +219,8 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_locations(self):
         todo = []
-        landkreis_all = RkiLandkreis.get_all_str()
-        for my_bundesland in RkiBundesland.get_all_str():
+        landkreis_all = RkiLandkreis.find_all_as_str()
+        for my_bundesland in RkiBundesland.find_all_as_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
                 app.logger.info("l: " + str(item) + " -- " + str(my_bundesland))
@@ -235,7 +235,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __get_new_altersgruppen(self):
         todo = []
-        altersgruppe_all = RkiAltersgruppe.get_all_str()
+        altersgruppe_all = RkiAltersgruppe.find_all_as_str()
         for altersgruppe in RkiImport.get_altersgruppe_list():
             item = altersgruppe[0]
             app.logger.info(str(item))

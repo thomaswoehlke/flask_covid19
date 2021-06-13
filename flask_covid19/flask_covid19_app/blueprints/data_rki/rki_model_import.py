@@ -37,7 +37,7 @@ class RkiImport(AllImport):
     altersgruppe2 = db.Column(db.String(255), nullable=False)
 
     @classmethod
-    def get_all_as_page(cls, page: int):
+    def get_all(cls, page: int):
         return db.session.query(cls).paginate(page, per_page=ITEMS_PER_PAGE)
 
     @classmethod

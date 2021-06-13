@@ -105,7 +105,7 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
 
     def __get_new_dates(self):
         todo = []
-        odr_list = VaccinationDateReported.get_all_str()
+        odr_list = VaccinationDateReported.find_all_as_str()
         for oi in VaccinationImport.get_date_reported_import_str_list():
             item = oi[0]
             app.logger.info("o: " + str(item))

@@ -57,7 +57,7 @@ def url_divi_tasks():
 def url_divi_imported(page=1):
     page_info = WebPageContent('divi', "Last Import")
     try:
-        page_data = DiviImport.get_all_as_page(page)
+        page_data = DiviImport.get_all(page)
     except OperationalError:
         flash("No data in the database.")
         page_data = None
@@ -72,7 +72,7 @@ def url_divi_imported(page=1):
 def url_divi_date_reported_all(page: int = 1):
     page_info = WebPageContent('divi', "Date Reported", "All")
     try:
-        page_data = DiviDateReported.get_all_as_page(page)
+        page_data = DiviDateReported.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None
@@ -192,7 +192,7 @@ def url_divi_date_reported_deaths_cumulative(date_reported_id: int, page: int = 
 def url_divi_region_all(page: int = 1):
     page_info = WebPageContent('divi', "Region", "All")
     try:
-        page_data = DiviRegion.get_all_as_page(page)
+        page_data = DiviRegion.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None
@@ -228,7 +228,7 @@ def url_divi_region(region_id: int, page: int = 1):
 def url_divi_country_all(page: int = 1):
     page_info = WebPageContent('divi', "Countries", "All")
     try:
-        page_data = DiviCountry.get_all_as_page(page)
+        page_data = DiviCountry.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None

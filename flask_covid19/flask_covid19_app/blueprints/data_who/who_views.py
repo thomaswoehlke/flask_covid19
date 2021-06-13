@@ -201,7 +201,7 @@ def url_who_date_reported_deaths_cumulative(date_reported_id: int, page: int = 1
 def url_who_region_all(page: int = 1):
     page_info = WebPageContent('WHO', "Region", "All")
     try:
-        page_data = WhoCountryRegion.get_all_as_page(page)
+        page_data = WhoCountryRegion.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None
@@ -237,7 +237,7 @@ def url_who_region(region_id: int, page: int = 1):
 def url_who_country_all(page: int = 1):
     page_info = WebPageContent('WHO', "Countries", "All")
     try:
-        page_data = WhoCountry.get_all_as_page(page)
+        page_data = WhoCountry.get_all(page)
     except OperationalError:
         flash("No regions in the database.")
         page_data = None
