@@ -202,7 +202,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = RkiMeldedatum.find_all_as_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
-            app.logger.info(" [RKI] date_reported: " + str(item))
+            # app.logger.info(" [RKI] date_reported: " + str(item))
             if item not in odr_list:
                 todo.append(item)
         return todo
@@ -212,7 +212,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         bundesland_all = RkiBundesland.find_all_as_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
-            app.logger.info(" [RKI] location_group: " + str(item))
+            # app.logger.info(" [RKI] location_group: " + str(item))
             if item not in bundesland_all:
                 todo.append(item)
         return todo
@@ -223,7 +223,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_bundesland in RkiBundesland.find_all_as_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
-                app.logger.info(" [RKI] location: " + str(item) + " -- " + str(my_bundesland))
+                # app.logger.info(" [RKI] location: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
                     new_location = (
                         oi.landkreis,
@@ -343,8 +343,8 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             my_meldedatum_datum = my_meldedatum.datum
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
-                app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
-                app.logger.info("------------------------------------------------------------")
+                # app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
+                # app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
                     my_datum=my_meldedatum_datum,
                     my_landkreis=my_landkreis_key)
