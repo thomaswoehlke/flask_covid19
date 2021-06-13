@@ -7,8 +7,8 @@ from setuptools import find_packages, setup
 
 version = '0.0.52'
 
-scripts_dir = 'flask_covid19'+os.sep+'flask_covid19_build'+os.sep+'scripts'+os.sep
-pip_requirements_dir = 'flask_covid19'+os.sep+'flask_covid19_build'+os.sep+'requirements'
+scripts_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'scripts'+os.sep
+pip_requirements_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'requirements'
 
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
 pytest_runner = ['pytest-runner'] if needs_pytest else []

@@ -1129,7 +1129,7 @@ Debug*/Debug*\ Libs
 dump.rdb
 /renv/*
 /renv
-!flask_covid19/flask_covid19_build/scripts
+!flask_covid19/app_build/scripts
 /logfile*.txt
 /.checkmate
 /flask_covid19/app_static/static/vendor/
