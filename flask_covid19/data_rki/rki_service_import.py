@@ -21,7 +21,7 @@ class RkiServiceImport(AllServiceMixinImport):
 
     def import_file(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] import_file()  [begin]")
+        app.logger.info(" [RKI] import_file  [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
@@ -49,6 +49,6 @@ class RkiServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] import_file()  [done]")
+        app.logger.info(" [RKI] import_file  [done]")
         app.logger.info("------------------------------------------------------------")
         return self

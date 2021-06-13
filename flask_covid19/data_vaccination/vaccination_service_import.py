@@ -19,7 +19,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [Vaccination] Service Import [ready]")
+        app.logger.info(" [Vaccination] Service Import [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
@@ -43,9 +43,9 @@ class VaccinationServiceImport(AllServiceMixinImport):
                 k += 1
                 if (k % 100) == 0:
                     db.session.commit()
-                    app.logger.info(" import Vaccination  ... " + str(k) + " rows")
+                    app.logger.info(" [Vaccination] import  ... " + str(k) + " rows")
             db.session.commit()
-            app.logger.info(" import Vaccination  ... " + str(k) + " rows total")
+            app.logger.info(" [Vaccination] import  ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)

@@ -17,14 +17,14 @@ class OwidServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Service Import [ready]")
+        app.logger.info(" [OWID] Service Import [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import OWID [begin]")
+        app.logger.info(" [OWID] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [OWID] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
         OwidImport.remove_all()
         OwidFlat.remove_all()
@@ -41,15 +41,15 @@ class OwidServiceImport(AllServiceMixinImport):
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()
-                    app.logger.info(" import OWID  ... " + str(k) + " rows")
+                    app.logger.info(" [OWID] import ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break
             db.session.commit()
-            app.logger.info(" import OWID  ... " + str(k) + " rows total")
+            app.logger.info(" [OWID] import ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [OWID] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import OWID [done]")
+        app.logger.info(" [OWID] import [done]")
         app.logger.info("------------------------------------------------------------")
         return self

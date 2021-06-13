@@ -17,14 +17,14 @@ class EcdcServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" ECDC Service Import [ready] ")
+        app.logger.info(" [ECDC] Service Import [ready] ")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import ECDC [begin]")
+        app.logger.info(" [ECDC] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [ECDC] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
         k = 0
         EcdcImport.remove_all()
@@ -41,15 +41,15 @@ class EcdcServiceImport(AllServiceMixinImport):
                 k = k + 1
                 if (k % 1000) == 0:
                     db.session.commit()
-                    app.logger.info("  import ECDC  ...  " + str(k) + " rows")
+                    app.logger.info(" [ECDC] import  ...  " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break
             db.session.commit()
-            app.logger.info("  import ECDC  ...  " + str(k) + " rows total")
+            app.logger.info(" [ECDC] import  ...  " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [ECDC] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import ECDC [done]")
+        app.logger.info(" [ECDC] import [done]")
         app.logger.info("------------------------------------------------------------")
         return self
