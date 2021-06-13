@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, Blueprint
 
-from flask_covid19_conf.database import app, celery  # , cache
+from flask_covid19_conf.database import app  # , cache
 
 from flask_covid19_app_web.web_model_transient import WebPageContent
 
@@ -11,7 +11,7 @@ from flask_covid19_app_all.all_views import blueprint_app_all
 from flask_covid19_data_who.who_views import app_who
 from flask_covid19_app.blueprints.data_owid.owid_views import app_owid
 from flask_covid19_app.blueprints.data_ecdc.ecdc_views import app_ecdc
-from flask_covid19_app.blueprints.data_vaccination.vaccination_views import app_vaccination
+from data_vaccination.vaccination_views import app_vaccination
 from flask_covid19_app.blueprints.data_rki.rki_views import app_rki
 from flask_covid19_app.blueprints.data_divi.divi_views import app_divi
 

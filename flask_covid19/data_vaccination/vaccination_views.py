@@ -6,9 +6,9 @@ from flask_admin.contrib.sqla import ModelView
 from flask_covid19_conf.database import app, admin, db, celery
 from flask_covid19_app_web.web_dispachter_matrix_service import vaccination_service
 
-from flask_covid19_app.blueprints.data_vaccination.vaccination_model import VaccinationData
-from flask_covid19_app.blueprints.data_vaccination.vaccination_model import VaccinationDateReported
-from flask_covid19_app.blueprints.data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
+from data_vaccination.vaccination_model import VaccinationData
+from data_vaccination.vaccination_model import VaccinationDateReported
+from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
 from flask_covid19_app_web.web_model_transient import WebPageContent
 
 
