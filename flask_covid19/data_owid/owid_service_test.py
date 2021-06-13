@@ -1,32 +1,33 @@
 from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
-from data_rki.rki_model import RkiData, RkiBundesland, RkiLandkreis
-from data_rki.rki_model_import import RkiImport
+from data_owid.owid_model import OwidData, OwidContinent, OwidCountry
+from data_owid.owid_model_import import OwidImport
 
 
-class RkiTestService:
-    def __init__(self, database, rki_service):
+class OwidTestService:
+    def __init__(self, database, owid_service):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RKI Test Service [init]")
+        app.logger.debug(" OWID Test Service [init]")
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
-        self.__rki_service = rki_service
+        self.__owid_service = owid_service
         self.cfg = BlueprintConfig.create_config_for_owid()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" RKI Test Service [ready]")
+        app.logger.info(" [OWID] Test Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.full_update_dimension_tables() [START]")
+        app.logger.debug(" OwidTestService.full_update_dimension_tables() [START]")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug("")
-        RkiData.remove_all()
-        RkiLandkreis.remove_all()
-        for continent in RkiBundesland.get_all():
+        OwidData.remove_all()
+        OwidCountry.remove_all()
+        for continent in OwidContinent.get_all():
             app.logger.info("continent.region: " + continent.region)
-            for oi in RkiImport.get_countries_for_continent(continent.region):
+            for oi in OwidImport.get_countries_for_continent(continent.region):
                 app.logger.info("continent.region: " + continent.region +" - oi.location: " + oi.location)
-                o = RkiLandkreis(
+                o = OwidCountry(
                     continent_id=continent.id,
                     continent=continent,
                     location=oi.location,
@@ -51,5 +52,5 @@ class RkiTestService:
         db.session.commit()
         app.logger.debug("")
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.full_update_dimension_tables() [DONE]")
+        app.logger.debug(" OwidTestService.full_update_dimension_tables() [DONE]")
         app.logger.debug("------------------------------------------------------------")

@@ -11,5 +11,5 @@ class WhoTestService:
         self.__who_service = who_service
         self.cfg = BlueprintConfig.create_config_for_who()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" WHO Test Service [ready]")
+        app.logger.info(" [WHO] Test Service [ready]")
         app.logger.debug("------------------------------------------------------------")

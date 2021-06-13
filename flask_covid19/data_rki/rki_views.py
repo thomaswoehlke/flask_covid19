@@ -11,7 +11,7 @@ from data_rki.rki_model import RkiAltersgruppe
 from data_rki.rki_model_import import RkiImport, RkiFlat
 from app_web.web_model_transient import WebPageContent
 
-from data_rki.rki_test_service import RkiTestService
+from data_rki.rki_service_test import RkiTestService
 
 drop_and_create_data_again = True
 

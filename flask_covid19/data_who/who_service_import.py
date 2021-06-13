@@ -16,13 +16,14 @@ class WhoServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WHO Service Import [ready]")
+        app.logger.debug(" [WHO] Service Import [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import WHO [begin]")
+        app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [WHO] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
         if sys.platform == 'linux':
             keyDate_reported ='\ufeffDate_reported'
@@ -49,15 +50,15 @@ class WhoServiceImport(AllServiceMixinImport):
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()
-                    app.logger.info(" import WHO  ... " + str(k) + " rows")
+                    app.logger.info(" [WHO] import  ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break
             db.session.commit()
-            app.logger.info(" import WHO  ... " + str(k) + " rows total")
+            app.logger.info(" [WHO] import  ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [WHO] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import WHO [done]")
+        app.logger.info(" [WHO] import [done]")
         app.logger.info("------------------------------------------------------------")
         return self

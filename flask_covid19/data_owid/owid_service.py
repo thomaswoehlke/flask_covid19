@@ -19,7 +19,7 @@ class OwidService(AllServiceMixin):
         self.service_update = OwidServiceUpdate(database, self.cfg)
         self.service_update_full = OwidServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" OWID Service [ready]")
+        app.logger.info(" [OWID] Service [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def download(self):

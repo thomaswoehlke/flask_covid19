@@ -18,7 +18,8 @@ class RkiService(AllServiceMixin):
         self.service_update = RkiServiceUpdate(database, self.cfg)
         self.service_update_full = RkiServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" RKI Service [ready]")
+        app.logger.info(" [RKI] Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         self.service_download.download()

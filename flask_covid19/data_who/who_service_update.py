@@ -16,7 +16,8 @@ class WhoServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug("  WhoServiceUpdateBase [ready]")
+        app.logger.info("  [Who] Service Update Base [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):

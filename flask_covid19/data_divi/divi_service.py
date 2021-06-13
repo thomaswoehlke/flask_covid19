@@ -19,7 +19,8 @@ class DiviService(AllServiceMixin):
         self.service_update = DiviServiceUpdate(database, self.cfg)
         self.service_update_full = DiviServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" DIVI Service [ready]")
+        app.logger.info(" [DIVI] Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         self.service_download.download()

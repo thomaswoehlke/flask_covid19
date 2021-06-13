@@ -20,7 +20,7 @@ class VaccinationService(AllServiceMixin):
         self.service_update = VaccinationServiceUpdate(database, self.cfg)
         self.service_update_full = VaccinationServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Vaccination Service [ready]")
+        app.logger.info(" [Vaccination] Service [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def download(self):

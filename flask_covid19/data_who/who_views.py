@@ -11,7 +11,7 @@ from app_web.web_model_transient import WebPageContent
 
 from data_who.who_model_import import WhoImport, WhoFlat
 from data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData
-from data_who.who_test_service import WhoTestService
+from data_who.who_service_test import WhoTestService
 
 who_test_service = WhoTestService(db, who_service)
 
