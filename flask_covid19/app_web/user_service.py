@@ -1,5 +1,5 @@
 from flask_covid19_conf.database import app
-from flask_covid19_app_web.user_model import User, LoginForm
+from app_web.user_model import User, LoginForm
 
 
 class UserService:

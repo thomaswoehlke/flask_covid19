@@ -1,9 +1,9 @@
 from flask_covid19_conf.database import db
 
 
-from flask_covid19_app_web.app_admin_service import AdminService
-from flask_covid19_app_web.user_service import UserService
-from flask_covid19_app_web.web_service import WebService
+from app_web.app_admin_service import AdminService
+from app_web.user_service import UserService
+from app_web.web_service import WebService
 from data_ecdc.ecdc_service import EcdcService
 from data_owid.owid_service import OwidService
 from data_vaccination.vaccination_service import VaccinationService

@@ -1,5 +1,5 @@
 from flask_covid19_app import RkiImport
-from flask_covid19_app_web.web_model_factory import BlueprintDateReportedFactory
+from app_web.web_model_factory import BlueprintDateReportedFactory
 from data_rki.rki_model import RkiBundesland, RkiLandkreis, RkiData
 
 

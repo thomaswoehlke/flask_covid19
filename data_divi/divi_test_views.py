@@ -1,12 +1,12 @@
 from flask import render_template, redirect, url_for, flash
 from flask_login import login_required
 
-from flask_covid19_app_web.web_model_transient import WebPageContent
+from app_web.web_model_transient import WebPageContent
 
 from data_divi.divi_model_import import DiviImport
 from data_divi.divi_model import DiviData
 
-from flask_covid19_app_web import divi_service
+from app_web import divi_service
 from data_divi.divi_test_service import DiviTestService
 from data_divi.divi_views import app, db, app_divi
 

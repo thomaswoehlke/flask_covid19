@@ -2,10 +2,10 @@ from flask import render_template, redirect, url_for, Blueprint
 
 from flask_covid19_conf.database import app  # , cache
 
-from flask_covid19_app_web.web_model_transient import WebPageContent
+from app_web.web_model_transient import WebPageContent
 
-from flask_covid19_app_web.user_views import blueprint_app_user
-from flask_covid19_app_web.app_admin_views import blueprint_app_admin
+from app_web.user_views import blueprint_app_user
+from app_web.app_admin_views import blueprint_app_admin
 from data_all.all_views import blueprint_app_all
 
 from data_who.who_views import app_who
@@ -15,7 +15,7 @@ from data_vaccination.vaccination_views import app_vaccination
 from data_rki.rki_views import app_rki
 from data_divi.divi_views import app_divi
 
-blueprint_application = Blueprint('flask_covid19_app_web', __name__, template_folder='templates', url_prefix='/')
+blueprint_application = Blueprint('app_web', __name__, template_folder='templates', url_prefix='/')
 
 app.register_blueprint(blueprint_application, url_prefix='/')
 

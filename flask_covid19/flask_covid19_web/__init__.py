@@ -1,7 +1,7 @@
 import os
 import socket
-from flask_covid19_app_web.web_dispachter_matrix_service import web_service
-from flask_covid19_app_web.web_views import app  # , cache
+from app_web.web_dispachter_matrix_service import web_service
+from app_web.web_views import app  # , cache
 
 
 def run_web():
