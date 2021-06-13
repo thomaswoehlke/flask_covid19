@@ -1141,4 +1141,5 @@ dump.rdb
 /renv
 /flask_covid19/broker/
 /flask_covid19/broker
-
+/data/
+/data

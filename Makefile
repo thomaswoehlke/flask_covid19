@@ -1,8 +1,8 @@
 TZ := 'Europe/Berlin'
 HEUTE := `date '+%Y_%m_%d'`
 
-DATA_DIR := data
-DB_DIR := db
+DATA_DIR := flask_covid19/data
+DB_DIR := flask_covid19/db
 PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
