@@ -33,7 +33,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=i_date_reported)
             db.session.add(o)
-            output = " [OWID] full update date_reported [ " + str(i) + " ] " + i_date_reported + " added"
+            output = " [OWID] date_reported [ " + str(i) + " ] " + i_date_reported + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
@@ -56,7 +56,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             o = OwidContinentFactory.create_new(location_group_str=oi.continent)
             db.session.add(o)
             i += 1
-            output = " [OWID] full update continent :  [ " + str(i) + " ] " + str(o) + " added"
+            output = " [OWID] continent :  [ " + str(i) + " ] " + str(o) + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
@@ -82,7 +82,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 i += 1
                 o = OwidCountryFactory.create_new(oi=oi, location_group=continent)
                 db.session.add(o)
-                output = " [OWID] full update country : [ " + str(i) + " ] " + str(o) + " added"
+                output = " [OWID] country : [ " + str(i) + " ] " + str(o) + " added"
                 log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
@@ -152,7 +152,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = OwidDateReported.find_all_as_str()
         for datum_list in OwidImport.get_datum_list():
             o = datum_list['date_reported_import_str']
-            app.logger.info("o: " + str(o))
+            # app.logger.info("o: " + str(o))
             if o not in odr_list:
                 todo.append(o)
         return todo
@@ -198,7 +198,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=i_date_reported)
             db.session.add(o)
-            output = " added OwidDateReported: [ " + str(i) + " ] " + str(o) + " "
+            output = " [OWID] date_reported [ " + str(i) + " ] " + str(o) + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
@@ -220,7 +220,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             i += 1
             o = OwidContinentFactory.create_new(location_group_str=continent)
             db.session.add(o)
-            output = " added OwidContinent: [ " + str(i) + " ] " + str(o) + " "
+            output = " [OWID] continent [ " + str(i) + " ] " + str(o) + " added"
             log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
