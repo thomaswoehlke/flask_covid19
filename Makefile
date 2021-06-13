@@ -1,5 +1,6 @@
 TZ := 'Europe/Berlin'
-HEUTE := `date '+%Y_%m_%d'`
+HEUTE := backup
+HEUTE_todo := "date '+%Y_%m_%d'"
 
 APP_MYSELF := flask_covid19
 DATA_DIR := flask_covid19/data
