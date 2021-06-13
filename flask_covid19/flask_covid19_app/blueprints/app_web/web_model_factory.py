@@ -1,5 +1,5 @@
 from datetime import date
-from flask_covid19_app.blueprints.app_all.all_model import AllDateReported
+from app_all.all_model import AllDateReported
 from flask_covid19_app.blueprints.data_divi.divi_model import DiviDateReported
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported
 from flask_covid19_app.blueprints.data_owid.owid_model import OwidDateReported

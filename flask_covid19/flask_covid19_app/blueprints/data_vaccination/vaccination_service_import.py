@@ -2,8 +2,8 @@ import csv
 
 from flask_covid19_conf.database import db, app
 
-from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinImport
-from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
+from app_all.all_service_mixins import AllServiceMixinImport
+from app_all.all_config import BlueprintConfig
 from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
 
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
@@ -19,14 +19,14 @@ class VaccinationServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Vaccination Service Import [ready]")
+        app.logger.debug(" [Vaccination] Service Import [ready]")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import Vaccination [begin]")
+        app.logger.info(" [Vaccination] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [Vaccination] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
         VaccinationImport.remove_all()
         VaccinationFlat.remove_all()
@@ -48,8 +48,8 @@ class VaccinationServiceImport(AllServiceMixinImport):
             app.logger.info(" import Vaccination  ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(" [Vaccination] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" import Vaccination [done]")
+        app.logger.info(" [Vaccination] import [done]")
         app.logger.info("------------------------------------------------------------")
         return self

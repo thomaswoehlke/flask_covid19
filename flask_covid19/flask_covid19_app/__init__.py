@@ -1,5 +1,3 @@
-from flask_covid19_conf.database import app, celery
-
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport
 from flask_covid19_app.blueprints.data_who.who_service_import import WhoImport
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model_import import VaccinationImport
@@ -23,8 +21,6 @@ from flask_covid19_app.blueprints.data_vaccination.vaccination_service import Va
 from flask_covid19_app.blueprints.data_who.who_service import WhoService
 from flask_covid19_app.blueprints.data_divi.divi_service import DiviService
 from flask_covid19_app.blueprints.data_rki.rki_service import RkiService
-
-from flask_covid19_app.blueprints.app_all.all_service import AllDataServiceDispachterMatrix
 
 from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import app_admin_service
 from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import app_user_service

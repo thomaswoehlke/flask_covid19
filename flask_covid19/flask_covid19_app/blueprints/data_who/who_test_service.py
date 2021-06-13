@@ -1,6 +1,5 @@
 from flask_covid19_conf.database import app
-from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19_app.blueprints.data_who.who_model import WhoDateReported, WhoData
+from app_all.all_config import BlueprintConfig
 
 
 class WhoTestService:
@@ -13,3 +12,4 @@ class WhoTestService:
         self.cfg = BlueprintConfig.create_config_for_who()
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" WHO Test Service [ready]")
+        app.logger.debug("------------------------------------------------------------")

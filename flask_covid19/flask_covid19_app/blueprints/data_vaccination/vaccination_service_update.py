@@ -1,6 +1,6 @@
 from flask_covid19_conf.database import db, app # , cache
-from flask_covid19_app.blueprints.app_all.all_config import BlueprintConfig
-from flask_covid19_app.blueprints.app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from app_all.all_config import BlueprintConfig
+from app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
 from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model_import import VaccinationImport
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model import VaccinationDateReported
@@ -15,14 +15,14 @@ class VaccinationServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Vaccination Service Update [ready] ")
+        app.logger.info(" [Vaccination] Service Update [ready] ")
         app.logger.debug("------------------------------------------------------------")
 
 
 class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
-        app.logger.info(" VaccinationServiceUpdateFull.__full_update_date_reported [begin]")
+        app.logger.info(" [Vaccination] __full_update_date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationDateReported.remove_all()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
@@ -36,13 +36,13 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  VaccinationServiceUpdateFull.__full_update_date_reported  [done]")
+        app.logger.info("  [Vaccination] __full_update_date_reported  [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdateFull.__full_update_fact_table [begin]")
+        app.logger.info(" [Vaccination] __full_update_fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
@@ -87,7 +87,7 @@ class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixin
         app.logger.info(" full update Vaccination data ... " + str(i) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" VaccinationServiceUpdateFull.__full_update_fact_table [done]")
+        app.logger.info(" [Vaccination] __full_update_fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
