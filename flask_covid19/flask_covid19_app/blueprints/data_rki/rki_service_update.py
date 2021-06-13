@@ -1,7 +1,7 @@
 from flask_covid19_conf.database import db, app#, cache
 
-from app_all.all_config import BlueprintConfig
-from app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
+from flask_covid19_app_all.all_config import BlueprintConfig
+from flask_covid19_app_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
 from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
 from flask_covid19_app.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiAltersgruppe, \
     RkiBundesland, RkiLandkreis

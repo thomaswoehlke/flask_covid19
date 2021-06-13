@@ -2,7 +2,7 @@ from datetime import date
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
 from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
-from app_all.all_model_import import AllImport, AllFlat
+from flask_covid19_app_all.all_model_import import AllImport, AllFlat
 
 
 class RkiImport(AllImport):

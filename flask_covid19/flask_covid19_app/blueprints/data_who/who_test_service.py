@@ -1,5 +1,5 @@
 from flask_covid19_conf.database import app
-from app_all.all_config import BlueprintConfig
+from flask_covid19_app_all.all_config import BlueprintConfig
 
 
 class WhoTestService:

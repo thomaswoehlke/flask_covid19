@@ -1,8 +1,8 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from flask_covid19_conf.database import db, ITEMS_PER_PAGE #, cache
-from app_all.all_model import AllDateReported, BlueprintFactTable
-from app_all.all_model import AllLocationGroup, AllLocation
+from flask_covid19_app_all.all_model import AllDateReported, BlueprintFactTable
+from flask_covid19_app_all.all_model import AllLocationGroup, AllLocation
 
 
 class WhoDateReported(AllDateReported):

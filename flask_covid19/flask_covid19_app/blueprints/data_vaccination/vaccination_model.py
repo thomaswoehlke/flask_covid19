@@ -1,6 +1,6 @@
 
 from flask_covid19_conf.database import db #, cache
-from app_all.all_model import AllDateReported, AllFactTableTimeSeries
+from flask_covid19_app_all.all_model import AllDateReported, AllFactTableTimeSeries
 
 
 class VaccinationDateReported(AllDateReported):
