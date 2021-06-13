@@ -1143,3 +1143,4 @@ dump.rdb
 /flask_covid19/broker
 /data/
 /data
+/RKI.csv

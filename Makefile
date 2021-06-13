@@ -58,8 +58,8 @@ all: clean start
 #
 # -----------------------------------------------------------------------------------------------------
 
-clean:
-	@echo "clean"
+clean_linux:
+	@echo "clean_linux"
 	rm -rf .eggs
 	rm -rf artefact_content.egg-info
 	rm -rf build
@@ -69,6 +69,10 @@ clean:
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
+
+clean_windows:
+	@echo "clean_linux"
+	@echo "TBD"
 
 # -----------------------------------------------------------------------------------------------------
 #
@@ -130,7 +134,7 @@ setup_frontend:
 
 # -----------------------------------------------------------------------------------------------------
 #
-#    venv
+#    venv + renv
 #
 # -----------------------------------------------------------------------------------------------------
 
@@ -142,6 +146,15 @@ venv_clean:
 	@echo "venv_clean"
 	@echo "deactivate"
 	rm -rf venv
+
+renv:
+	@echo "venv_setup"
+	@echo "TBD"
+
+renv_clean:
+	@echo "venv_clean"
+	@echo "deactivate"
+	rm -rf renv
 
 
 # -----------------------------------------------------------------------------------------------------
@@ -214,6 +227,10 @@ love:
 #   main targets
 #
 # -----------------------------------------------------------------------------------------------------
+
+clean: clean_linux
+
+distclean: clean venv_clean renv_clean
 
 start: pip_setuptools pip_install setup_frontend
 
