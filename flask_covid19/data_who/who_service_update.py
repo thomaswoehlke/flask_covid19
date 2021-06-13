@@ -180,7 +180,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = WhoDateReported.find_all_as_str()
         for datum_list in WhoImport.get_datum_list():
             o = datum_list['date_reported_import_str']
-            app.logger.info("o: " + str(o))
+            # app.logger.info("o: " + str(o))
             if o not in odr_list:
                 todo.append(o)
         return todo
