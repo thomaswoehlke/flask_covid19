@@ -7,6 +7,9 @@ from setuptools import find_packages, setup
 
 version = '0.0.49'
 
+scripts_dir = 'flask_covid19'+os.sep+'flask_covid19_build'+os.sep+'scripts'+os.sep
+pip_requirements_dir = 'flask_covid19'+os.sep+'flask_covid19_build'+os.sep+'requirements'
+
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
 pytest_runner = ['pytest-runner'] if needs_pytest else []
 
@@ -96,14 +99,14 @@ packages = find_packages()
 
 def run_compile_requirements():
     my_cmd_list = [
-        ['pip-compile', '-r', 'requirements' + os.sep + 'build.in'],
-        ['pip-compile', '-r', 'requirements' + os.sep + 'docs.in'],
-        ['pip-compile', '-r', 'requirements' + os.sep + 'tests.in'],
-        ['pip-compile', '-r', 'requirements' + os.sep + 'dev.in'],
-        ['pip', 'install', '-r', 'requirements' + os.sep + 'build.in'],
-        ['pip', 'install', '-r', 'requirements' + os.sep + 'docs.in'],
-        ['pip', 'install', '-r', 'requirements' + os.sep + 'tests.in'],
-        ['pip', 'install', '-r', 'requirements' + os.sep + 'dev.in'],
+        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'build.in'],
+        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'docs.in'],
+        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'tests.in'],
+        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'dev.in'],
+        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'build.in'],
+        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'docs.in'],
+        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'tests.in'],
+        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'dev.in'],
     ]
     for my_cmd in my_cmd_list:
         returncode = subprocess.call(my_cmd, shell=True)
@@ -173,8 +176,8 @@ setup(
     setup_requires=requires_build,
     tests_require=requires_test,
     scripts=[
-        'scripts'+os.sep+'script_setup_requirements.py',
-        'scripts'+os.sep+'script_npm_install.py'
+        scripts_dir + 'script_setup_requirements.py',
+        scripts_dir + 'script_npm_install.py'
     ],
     python_requires=">= 3.8"
 )

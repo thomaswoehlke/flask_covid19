@@ -1127,7 +1127,7 @@ Debug*/Debug*\ Libs
 /.checkmate/
 /lsp/
 dump.rdb
-!scripts
+!flask_covid19/flask_covid19_build/scripts
 /logfile1.txt
 /logfile2.txt
 /logfile3.txt

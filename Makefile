@@ -7,6 +7,8 @@ PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
+PIP_REQUIREMENTS_DIR := flask_covid19/flask_covid19_build/requirements
+
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
 WHO_FILE_BACKUP := WHO_backup.csv
@@ -79,17 +81,17 @@ pip_check:
 
 pip_compile:
 	@echo "pip_compile"
-	$(PIP_COMPILE) -r requirements/build.in
-	$(PIP_COMPILE) -r requirements/docs.in
-	$(PIP_COMPILE) -r requirements/tests.in
-	$(PIP_COMPILE) -r requirements/dev.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
 
 pip_install:
 	@echo "pip_install"
-	$(PIP) install -r requirements/build.txt
-	$(PIP) install -r requirements/docs.txt
-	$(PIP) install -r requirements/tests.txt
-	$(PIP) install -r requirements/dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
 	$(PIP) freeze > etc/requirements.txt
 	$(PIP) check
 
