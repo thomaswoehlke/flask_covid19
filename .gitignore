@@ -1135,10 +1135,4 @@ dump.rdb
 /flask_covid19/app_static/static/vendor/
 /flask_covid19/app_static/static/vendor/*
 /flask_covid19/app_static/static/vendor
-/flask_covid19/broker/
-/flask_covid19/broker/*
-/flask_covid19/broker
-/flask_covid19/data/
-/flask_covid19/data/*
-/flask_covid19/data
 /RKI.csv
