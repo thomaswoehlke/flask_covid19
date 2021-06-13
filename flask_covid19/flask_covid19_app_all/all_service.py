@@ -2,7 +2,7 @@ from flask_covid19_conf.database import app
 from flask_covid19_app_all.all_service_mixins import AllServiceMixin
 
 from flask_covid19_app.blueprints.data_ecdc.ecdc_service import EcdcService
-from flask_covid19_app.blueprints.data_owid.owid_service import OwidService
+from data_owid.owid_service import OwidService
 from data_vaccination.vaccination_service import VaccinationService
 from flask_covid19_data_who.who_service import WhoService
 from flask_covid19_app.blueprints.data_divi.divi_service import DiviService

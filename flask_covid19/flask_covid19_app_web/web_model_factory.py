@@ -2,7 +2,7 @@ from datetime import date
 from flask_covid19_app_all.all_model import AllDateReported
 from flask_covid19_app.blueprints.data_divi.divi_model import DiviDateReported
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported
-from flask_covid19_app.blueprints.data_owid.owid_model import OwidDateReported
+from data_owid.owid_model import OwidDateReported
 from data_rki.rki_model import RkiMeldedatum
 from data_vaccination.vaccination_model import VaccinationDateReported
 from flask_covid19_data_who.who_model import WhoDateReported

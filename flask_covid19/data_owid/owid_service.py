@@ -3,8 +3,8 @@ from flask_covid19_conf.database import app
 from flask_covid19_app_all.all_service_mixins import AllServiceMixin
 from flask_covid19_app_all.all_config import BlueprintConfig
 from flask_covid19_app_all.all_service_download import AllDownloadService
-from flask_covid19_app.blueprints.data_owid.owid_service_import import OwidServiceImport
-from flask_covid19_app.blueprints.data_owid.owid_service_update import OwidServiceUpdate, OwidServiceUpdateFull
+from data_owid.owid_service_import import OwidServiceImport
+from data_owid.owid_service_update import OwidServiceUpdate, OwidServiceUpdateFull
 
 
 class OwidService(AllServiceMixin):
