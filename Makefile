@@ -107,7 +107,7 @@ pip_setuptools:
 #
 # -----------------------------------------------------------------------------------------------------
 
-setup_development: setup_setuptools
+setup_development: pip_setuptools
 	@echo "setup_development"
 	$(PYTHON) setup.py develop
 
