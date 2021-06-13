@@ -1,6 +1,6 @@
 from flask_covid19_conf.database import app
 from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app.blueprints.data_divi.divi_model import DiviDateReported, DiviData
+from data_divi.divi_model import DiviDateReported, DiviData
 
 
 class DiviTestService:

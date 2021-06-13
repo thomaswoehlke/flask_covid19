@@ -13,7 +13,7 @@ from data_owid.owid_views import app_owid
 from data_ecdc.ecdc_views import app_ecdc
 from data_vaccination.vaccination_views import app_vaccination
 from data_rki.rki_views import app_rki
-from flask_covid19_app.blueprints.data_divi.divi_views import app_divi
+from data_divi.divi_views import app_divi
 
 blueprint_application = Blueprint('flask_covid19_app_web', __name__, template_folder='templates', url_prefix='/')
 

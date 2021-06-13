@@ -6,7 +6,7 @@ from flask_covid19_data_who.who_model_import import WhoImport
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_owid.owid_model_import import OwidImport
 from data_rki.rki_model_import import RkiImport
-from flask_covid19_app.blueprints.data_divi.divi_model_import import DiviImport
+from data_divi.divi_model_import import DiviImport
 
 
 class BlueprintConfig:

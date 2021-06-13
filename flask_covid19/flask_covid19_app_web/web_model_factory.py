@@ -1,6 +1,6 @@
 from datetime import date
 from flask_covid19_app_all.all_model import AllDateReported
-from flask_covid19_app.blueprints.data_divi.divi_model import DiviDateReported
+from data_divi.divi_model import DiviDateReported
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_owid.owid_model import OwidDateReported
 from data_rki.rki_model import RkiMeldedatum
