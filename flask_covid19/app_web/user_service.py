@@ -9,7 +9,8 @@ class UserService:
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" User Service [ready]")
+        app.logger.info(" [app_web] User Service [ready]")
+        app.logger.debug("------------------------------------------------------------")
 
     def get_user_from_login_form(self, form: LoginForm):
         user = User()

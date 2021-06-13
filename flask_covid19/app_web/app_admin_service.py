@@ -13,7 +13,7 @@ class AdminService:
         self.limit_nr = 20
         self.file_path = '..'+os.sep+'data'+os.sep+'db'+os.sep+'covid19data.sql'
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Admin Service [ready]")
+        app.logger.info(" [app_web] Admin Service [ready]")
 
     def database_dump(self):
         app.logger.info(" AdminService.database_dump() [begin]")
