@@ -27,7 +27,7 @@
         "build:version": "node scripts/version.js",
         "docker:build": "node scripts/docker/docker-build.js",
         "docker:run": "node scripts/docker/docker-run.js",
-        "postinstall": "../flask_covid19_app/node_modules/.bin/grunt"
+        "postinstall": "./node_modules/.bin/grunt"
     },
     "private": true,
     "dependencies": {
