@@ -1,5 +1,5 @@
-from flask_covid19_data_who.who_model_import import WhoImport
-from flask_covid19_data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData
+from data_who.who_model_import import WhoImport
+from data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData
 
 
 class WhoCountryRegionFactory:

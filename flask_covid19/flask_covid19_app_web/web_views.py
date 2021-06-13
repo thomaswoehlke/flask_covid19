@@ -8,7 +8,7 @@ from flask_covid19_app_web.user_views import blueprint_app_user
 from flask_covid19_app_web.app_admin_views import blueprint_app_admin
 from flask_covid19_app_all.all_views import blueprint_app_all
 
-from flask_covid19_data_who.who_views import app_who
+from data_who.who_views import app_who
 from data_owid.owid_views import app_owid
 from data_ecdc.ecdc_views import app_ecdc
 from data_vaccination.vaccination_views import app_vaccination
