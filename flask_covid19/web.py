@@ -3,7 +3,7 @@ import app_web
 import flask_covid19_web
 import app_mq
 
-from flask_covid19_web import run_web
+from app_web import run_web
 
 # ---------------------------------------------------------------------------------
 #  MAIN
