@@ -2,7 +2,7 @@
     "name": "flask-covid19-static",
     "version": "0.0.51",
     "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
-    "main": "index.js",
+    "main": "static/index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/thomaswoehlke/covid19python/covid19/static"
@@ -27,7 +27,7 @@
         "build:version": "node scripts/version.js",
         "docker:build": "node scripts/docker/docker-build.js",
         "docker:run": "node scripts/docker/docker-run.js",
-        "postinstall": "./node_modules/.bin/grunt"
+        "postinstall": "../flask_covid19_app/node_modules/.bin/grunt"
     },
     "private": true,
     "dependencies": {

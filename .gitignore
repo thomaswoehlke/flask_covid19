@@ -1132,9 +1132,9 @@ dump.rdb
 !flask_covid19/flask_covid19_build/scripts
 /logfile*.txt
 /.checkmate
-/flask_covid19/flask_covid19_app/static/vendor/
-/flask_covid19/flask_covid19_app/static/vendor/*
-/flask_covid19/flask_covid19_app/static/vendor
+/flask_covid19/app_static/static/vendor/
+/flask_covid19/app_static/static/vendor/*
+/flask_covid19/app_static/static/vendor
 /flask_covid19/broker/
 /flask_covid19/broker/*
 /flask_covid19/broker
