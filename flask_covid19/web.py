@@ -1,5 +1,5 @@
 import flask_covid19_app_all
-import app_web
+import flask_covid19_app_web
 import flask_covid19_app
 import flask_covid19_web
 import flask_covid19_mq

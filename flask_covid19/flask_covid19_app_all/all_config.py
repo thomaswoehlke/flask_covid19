@@ -2,7 +2,7 @@ import os
 
 from flask_covid19_conf.database import root_dir, app
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport
-from flask_covid19_app.blueprints.data_who.who_model_import import WhoImport
+from flask_covid19_data_who.who_model_import import WhoImport
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model_import import VaccinationImport
 from flask_covid19_app.blueprints.data_owid.owid_model_import import OwidImport
 from flask_covid19_app.blueprints.data_rki.rki_model_import import RkiImport

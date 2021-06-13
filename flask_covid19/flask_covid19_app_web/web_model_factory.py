@@ -5,7 +5,7 @@ from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported
 from flask_covid19_app.blueprints.data_owid.owid_model import OwidDateReported
 from flask_covid19_app.blueprints.data_rki.rki_model import RkiMeldedatum
 from flask_covid19_app.blueprints.data_vaccination.vaccination_model import VaccinationDateReported
-from flask_covid19_app.blueprints.data_who.who_model import WhoDateReported
+from flask_covid19_data_who.who_model import WhoDateReported
 
 
 class BlueprintDateReportedFactory:

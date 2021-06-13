@@ -1,7 +1,7 @@
 from flask_covid19_conf.database import db, app
 from flask_covid19_app_all.all_config import BlueprintConfig
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from flask_covid19_app_web.web_model_factory import BlueprintDateReportedFactory
 from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
 
 

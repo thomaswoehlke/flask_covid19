@@ -6,8 +6,8 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
 from flask_covid19_conf.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import owid_service
-from app_web.web_model_transient import WebPageContent
+from flask_covid19_app_web.web_dispachter_matrix_service import owid_service
+from flask_covid19_app_web.web_model_transient import WebPageContent
 from flask_covid19_app.blueprints.data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
 from flask_covid19_app.blueprints.data_owid.owid_model_import import OwidImport, OwidFlat
 from flask_covid19_app.blueprints.data_owid.owid_test_service import OwidTestService

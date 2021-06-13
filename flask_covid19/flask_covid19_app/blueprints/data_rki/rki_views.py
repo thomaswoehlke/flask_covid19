@@ -5,11 +5,11 @@ from celery import states
 from flask_login import login_required
 
 from flask_covid19_conf.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import rki_service
+from flask_covid19_app_web.web_dispachter_matrix_service import rki_service
 from flask_covid19_app.blueprints.data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
 from flask_covid19_app.blueprints.data_rki.rki_model import RkiAltersgruppe
 from flask_covid19_app.blueprints.data_rki.rki_model_import import RkiImport, RkiFlat
-from app_web.web_model_transient import WebPageContent
+from flask_covid19_app_web.web_model_transient import WebPageContent
 
 from flask_covid19_app.blueprints.data_rki.rki_test_service import RkiTestService
 
