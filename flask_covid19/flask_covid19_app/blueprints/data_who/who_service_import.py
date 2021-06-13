@@ -3,7 +3,7 @@ import csv
 from flask_covid19_conf.database import db, app
 from flask_covid19_app_all.all_service_mixins import AllServiceMixinImport
 from flask_covid19_app_all.all_config import BlueprintConfig
-from flask_covid19_app.blueprints.app_web.web_model_factory import BlueprintDateReportedFactory
+from app_web.web_model_factory import BlueprintDateReportedFactory
 from flask_covid19_app.blueprints.data_who.who_model_import_factories import WhoFlatFactory, WhoImportFactory
 from flask_covid19_app.blueprints.data_who.who_model_import import WhoImport, WhoFlat
 

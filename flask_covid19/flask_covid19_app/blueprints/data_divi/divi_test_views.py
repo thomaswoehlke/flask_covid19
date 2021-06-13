@@ -1,16 +1,14 @@
-from flask import render_template, redirect, url_for, flash, Blueprint
-from celery import states
-from celery.utils.log import get_task_logger
+from flask import render_template, redirect, url_for, flash
 from flask_login import login_required
 
-from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
+from app_web.web_model_transient import WebPageContent
 
 from flask_covid19_app.blueprints.data_divi.divi_model_import import DiviImport
 from flask_covid19_app.blueprints.data_divi.divi_model import DiviData
 
-from flask_covid19_app.blueprints.app_web.web_services import divi_service
+from app_web import divi_service
 from flask_covid19_app.blueprints.data_divi.divi_test_service import DiviTestService
-from flask_covid19_app.blueprints.data_divi.divi_views import app, db, celery, app_divi
+from flask_covid19_app.blueprints.data_divi.divi_views import app, db, app_divi
 
 divi_test_service = DiviTestService(db, divi_service)
 

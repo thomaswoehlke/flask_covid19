@@ -9,8 +9,8 @@ import flask
 from flask_covid19_conf.database import admin, db, login_manager
 
 
-from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
-from flask_covid19_app.blueprints.app_web.user_model import User, LoginForm
+from app_web.web_model_transient import WebPageContent
+from app_web.user_model import User, LoginForm
 
 
 blueprint_app_user = Blueprint('usr', __name__, template_folder='templates', url_prefix='/app/usr')

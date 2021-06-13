@@ -6,8 +6,8 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
 from flask_covid19_conf.database import app, admin, db, celery # , cache
-from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import who_service
-from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
+from app_web.web_dispachter_matrix_service import who_service
+from app_web.web_model_transient import WebPageContent
 
 from flask_covid19_app.blueprints.data_who.who_model_import import WhoImport, WhoFlat
 from flask_covid19_app.blueprints.data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData

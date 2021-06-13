@@ -7,8 +7,8 @@ from flask_login import login_required
 
 from flask_covid19_conf.database import app, admin, db, celery
 
-from flask_covid19_app.blueprints.app_web.web_dispachter_matrix_service import divi_service
-from flask_covid19_app.blueprints.app_web.web_model_transient import WebPageContent
+from app_web.web_dispachter_matrix_service import divi_service
+from app_web.web_model_transient import WebPageContent
 
 from flask_covid19_app.blueprints.data_divi.divi_model import DiviRegion, DiviDateReported, DiviCountry, DiviData
 from flask_covid19_app.blueprints.data_divi.divi_model_import import DiviImport
