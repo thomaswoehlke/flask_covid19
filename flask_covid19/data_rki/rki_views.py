@@ -287,89 +287,89 @@ class RkiTaskUrls:
     @staticmethod
     @app_rki.route('/task/download')
     def url_task_rki_download():
-        app.logger.info("url_task_rki_download [start]")
-        flash("url_task_rki_download [start]")
+        app.logger.info(" [RKI] url_task_rki_download [start]")
+        flash(" [RKI] url_task_rki_download [start]")
         rki_service.download()
-        flash("url_task_rki_download [done]")
-        app.logger.info("url_task_rki_download [done]")
+        flash(" [RKI] url_task_rki_download [done]")
+        app.logger.info(" [RKI] url_task_rki_download [done]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/import')
     def url_task_rki_import():
-        app.logger.info("url_task_rki_import [start]")
+        app.logger.info(" [RKI] url_task_rki_import [start]")
         rki_tasks.task_rki_import.apply_async()
-        flash("task_rki_import started")
+        flash(" [RKI] task_rki_import started")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("task_rki_import [async start]")
+        app.logger.warn(" [RKI] task_rki_import [async start]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/update/full/dimension-tables')
     def url_task_rki_full_update_dimension_tables():
-        app.logger.info("url_task_rki_full_update_dimensiontables [start]")
+        app.logger.info(" [RKI] url_task_rki_full_update_dimensiontables [start]")
         rki_tasks.task_rki_full_update_dimension_tables.apply_async()
-        flash("task_rki_full_update_dimension_tables started")
+        flash(" [RKI] task_rki_full_update_dimension_tables started")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("task_rki_full_update_dimensiontables [async start]")
+        app.logger.warn(" [RKI] task_rki_full_update_dimensiontables [async start]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/update/dimension-tables')
     def url_task_rki_update_dimension_tables():
-        app.logger.info("url_task_rki_update_dimension_tables [start]")
+        app.logger.info(" [RKI] url_task_rki_update_dimension_tables [start]")
         rki_tasks.task_rki_update_dimension_tables.apply_async()
-        flash("task_rki_update_dimension_tables started")
+        flash(" [RKI] task_rki_update_dimension_tables started")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("url_task_rki_update_dimension_tables [async start]")
+        app.logger.warn(" [RKI] url_task_rki_update_dimension_tables [async start]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/update/full/fact-table')
     def url_task_rki_full_update_fact_table():
-        app.logger.info("url_task_rki_full_update_fact_table [start]")
+        app.logger.info(" [RKI] url_task_rki_full_update_fact_table [start]")
         rki_tasks.task_rki_full_update_fact_table.apply_async()
-        flash("task_rki_full_update_fact_table started")
-        flash(message="long running background task started", category="warning")
-        app.logger.warn("url_task_rki_full_update_fact_table [async start]")
+        flash(" [RKI] task_rki_full_update_fact_table started")
+        flash(message=" [RKI] long running background task started", category="warning")
+        app.logger.warn(" [RKI] url_task_rki_full_update_fact_table [async start]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/update/fact-table')
     def url_task_rki_update_fact_table():
-        app.logger.info("url_task_rki_update_fact_table [start]")
+        app.logger.info(" [RKI] url_task_rki_update_fact_table [start]")
         rki_tasks.task_rki_update_fact_table.apply_async()
-        flash("task_rki_update_fact_table started")
-        flash(message="long running background task started", category="warning")
-        app.logger.warn("url_task_rki_update_fact_table [async start]")
+        flash(" [RKI] task_rki_update_fact_table started")
+        flash(message=" [RKI] long running background task started", category="warning")
+        app.logger.warn(" [RKI] url_task_rki_update_fact_table [async start]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/full/update')
     def url_task_rki_full_update():
-        app.logger.info("url_task_rki_full_update [start]")
-        flash("url_task_rki_download [start]")
+        app.logger.info(" [RKI] url_task_rki_full_update [start]")
+        flash(" [RKI] url_task_rki_download [start]")
         rki_service.download()
-        flash("url_task_rki_download [done]")
+        flash(" [RKI] url_task_rki_download [done]")
         rki_tasks.task_rki_full_update.apply_async()
-        flash("task_rki_full_update started")
-        flash(message="long running background task started", category="warning")
-        app.logger.warn("task_rki_full_update [async start]")
-        app.logger.info("url_task_rki_full_update [done]")
+        flash(" [RKI] task_rki_full_update started")
+        flash(message=" [RKI] long running background task started", category="warning")
+        app.logger.warn(" [RKI] task_rki_full_update [async start]")
+        app.logger.info(" [RKI] url_task_rki_full_update [done]")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/task/update')
     def url_task_rki_update():
-        app.logger.info("url_task_rki_update [start]")
-        flash("url_task_rki_download [start]")
+        app.logger.info(" [RKI] url_task_rki_update [start]")
+        flash(" [RKI] url_task_rki_download [start]")
         rki_service.download()
-        flash("url_task_rki_download [done]")
+        flash(" [RKI] url_task_rki_download [done]")
         rki_tasks.task_rki_update.apply_async()
-        flash("task_rki_update started")
-        flash(message="long running background task started", category="warning")
-        app.logger.warn("task_rki_update [async start]")
-        app.logger.info("url_task_rki_update [done]")
+        flash(" [RKI] task_rki_update started")
+        flash(message=" [RKI] long running background task started", category="warning")
+        app.logger.warn(" [RKI] task_rki_update [async start]")
+        app.logger.info(" [RKI] url_task_rki_update [done]")
         return redirect(url_for('rki.url_rki_info'))
 
 
@@ -388,109 +388,109 @@ class RkiTestUrls:
     @app_rki.route('/test/full_update_dimension_tables')
     @login_required
     def url_rki_test_full_update_dimension_tables():
-        app.logger.info("url_rki_test_full_update_dimension_tables - START")
-        flash("url_rki_test_full_update_dimension_tables - START")
+        app.logger.info(" [RKI] url_rki_test_full_update_dimension_tables - START")
+        flash(" [RKI] url_rki_test_full_update_dimension_tables - START")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/update_dimension_tables')
     @login_required
     def url_rki_test_update_dimension_tables():
-        app.logger.info("url_rki_test_update_dimension_tables - START")
-        flash("url_rki_test_update_dimension_tables - START")
+        app.logger.info(" [RKI] url_rki_test_update_dimension_tables - START")
+        flash(" [RKI] url_rki_test_update_dimension_tables - START")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/full_update_fact_table')
     @login_required
     def url_rki_test_full_update_fact_table():
-        app.logger.info("url_rki_test_full_update_fact_table - START")
-        flash("url_rki_test_full_update_fact_table - START")
+        app.logger.info(" [RKI] url_rki_test_full_update_fact_table - START")
+        flash(" [RKI] url_rki_test_full_update_fact_table - START")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/update_fact_table')
     @login_required
     def url_rki_test_update_fact_table():
-        app.logger.info("url_rki_test_update_fact_table - START")
-        flash("url_rki_test_update_fact_table - START")
+        app.logger.info(" [RKI] url_rki_test_update_fact_table - START")
+        flash(" [RKI] url_rki_test_update_fact_table - START")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_import/countries')
     @login_required
     def url_rki_test_rki_import_countries():
-        app.logger.info("url_rki_test_rki_import_countries - START")
-        flash("url_rki_test_rki_import_countries - START")
+        app.logger.info(" [RKI] url_rki_test_rki_import_countries - START")
+        flash(" [RKI] url_rki_test_rki_import_countries - START")
         i = 0
         for c in RkiImport.countries():
             i += 1
             line = " | " + str(i) + " | " + c.countries.iso_code + " | " + c.countries.location + " | " + c.countries.continent + " | "
             app.logger.info(line)
-        app.logger.info("url_rki_test_rki_import_countries - DONE")
-        flash("url_rki_test_rki_import_countries - DONE")
+        app.logger.info(" [RKI] url_rki_test_rki_import_countries - DONE")
+        flash(" [RKI] url_rki_test_rki_import_countries - DONE")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_import/get_new_dates_reported_as_array')
     @login_required
     def url_rki_test_rki_import_get_new_dates_reported_as_array():
-        app.logger.info("url_rki_test_rki_import_get_new_dates_reported_as_array - START")
-        flash("url_rki_test_rki_import_get_new_dates_reported_as_array - START")
+        app.logger.info(" [RKI] url_rki_test_rki_import_get_new_dates_reported_as_array - START")
+        flash(" [RKI] url_rki_test_rki_import_get_new_dates_reported_as_array - START")
         i = 0
         for date_reported in RkiImport.get_new_dates_reported_as_array():
             i += 1
             line = " | " + str(i) + " | " + date_reported + " | "
             app.logger.info(line)
-        app.logger.info("url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
-        flash("url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
+        app.logger.info(" [RKI] url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
+        flash(" [RKI] url_rki_test_rki_import_get_new_dates_reported_as_array - DONE")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_data/get_datum_of_all_data')
     @login_required
     def url_rki_test_rki_data_get_datum_of_all_data():
-        app.logger.info("url_rki_test_rki_data_get_datum_of_all_data - START")
-        flash("url_rki_test_rki_data_get_datum_of_all_data - START")
+        app.logger.info(" [RKI] url_rki_test_rki_data_get_datum_of_all_data - START")
+        flash(" [RKI] url_rki_test_rki_data_get_datum_of_all_data - START")
         for datum in RkiData.get_datum_of_all_data():
             app.logger.info(str(datum))
-        app.logger.info("url_rki_test_rki_data_get_datum_of_all_data - DONE")
-        flash("url_rki_test_rki_data_get_datum_of_all_data - DONE")
+        app.logger.info(" [RKI] url_rki_test_rki_data_get_datum_of_all_data - DONE")
+        flash(" [RKI] url_rki_test_rki_data_get_datum_of_all_data - DONE")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_import/get_datum_of_all_import')
     @login_required
     def url_rki_test_rki_import_get_datum_of_all_import():
-        app.logger.info("url_rki_test_rki_import_get_datum_of_all_import - START")
-        flash("url_rki_test_rki_import_get_datum_of_all_import - START")
+        app.logger.info(" [RKI] url_rki_test_rki_import_get_datum_of_all_import - START")
+        flash(" [RKI] url_rki_test_rki_import_get_datum_of_all_import - START")
         for datum in RkiImport.get_datum_of_all_import():
             app.logger.info(str(datum))
-        app.logger.info("url_rki_test_rki_import_get_datum_of_all_import - DONE")
-        flash("url_rki_test_rki_import_get_datum_of_all_import - DONE")
+        app.logger.info(" [RKI] url_rki_test_rki_import_get_datum_of_all_import - DONE")
+        flash(" [RKI] url_rki_test_rki_import_get_datum_of_all_import - DONE")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_service/service_update/rki_import_get_new_dates_as_array')
     @login_required
     def url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array():
-        app.logger.info("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
-        flash("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
+        app.logger.info(" [RKI] url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
+        flash(" [RKI] url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - START")
         for datum in rki_service.service_update.rki_import_get_new_dates_as_array():
             app.logger.info(str(datum))
-        app.logger.info("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
-        flash("url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
+        app.logger.info(" [RKI] url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
+        flash(" [RKI] url_rki_test_rki_service_service_update_rki_import_get_new_dates_as_array - DONE")
         return redirect(url_for('rki.url_rki_info'))
 
     @staticmethod
     @app_rki.route('/test/rki_test_service/full_update_dimension_tables')
     @login_required
     def url_rki_test_rki_test_service_full_update_dimension_tables():
-        app.logger.info("url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
-        flash("url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
+        app.logger.info(" [RKI] url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
+        flash(" [RKI] url_rki_test_rki_test_service_full_update_dimension_tables - START: rki_test_service.full_update_dimension_tables()")
         rki_test_service.full_update_dimension_tables()
-        app.logger.info("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
-        flash("url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
+        app.logger.info(" [RKI] url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
+        flash(" [RKI] url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
         return redirect(url_for('rki.url_rki_info'))
 
 
