@@ -9,7 +9,7 @@ from flask_covid19_app.blueprints.data_owid.owid_service import OwidService
 from data_vaccination.vaccination_service import VaccinationService
 from flask_covid19_data_who.who_service import WhoService
 from flask_covid19_app.blueprints.data_divi.divi_service import DiviService
-from flask_covid19_app.blueprints.data_rki.rki_service import RkiService
+from data_rki.rki_service import RkiService
 from flask_covid19_app_all.all_service import AllDataServiceDispachterMatrix
 
 ############################################################################################
