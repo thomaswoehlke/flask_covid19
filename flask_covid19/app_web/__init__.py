@@ -3,10 +3,13 @@ import socket
 import subprocess
 
 from app_web.web_dispachter_matrix_service import web_service
-from app_web.web_views import app, celery  # , cache
+from app_web.web_views import app, celery, db   # , cache
 
 
 def run_web():
+    with app.app_context():
+        db.create_all()
+        # cache.clear()
     web_service.prepare_run_web()
     app.logger.info(os.getcwd())
     debug = app.config['FLASK_APP_DEBUGGER_ACTIVE']
@@ -23,13 +26,12 @@ def run_web():
 
 
 def run_mq():
+    with app.app_context():
+        db.create_all()
+        # cache.clear()
     web_service.prepare_run_mq()
-    #with app.app_context():
-    #    cache.clear()
-    # start_redis()
-    # args = ['worker']
-    # celery.start(args)
     app.logger.info(os.getcwd())
     my_cmds = ['celery worker --app=mq.celery --pool=eventlet --loglevel=INFO']
     for my_cmd in my_cmds:
-        retcode = subprocess.call(my_cmd, shell=True)
+        app.logger.info(my_cmd)
+        subprocess.call(my_cmd, shell=True)

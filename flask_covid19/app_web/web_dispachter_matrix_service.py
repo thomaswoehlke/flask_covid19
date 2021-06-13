@@ -35,4 +35,4 @@ all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     ecdc_service=ecdc_service,
     divi_service=divi_service)
 
-db.create_all()
+# db.create_all()

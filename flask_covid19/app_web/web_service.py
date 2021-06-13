@@ -1,10 +1,10 @@
-from app_config.database import app
+from app_config.database import app, db
 
 
 class WebService:
     def __init__(self, database, user_service):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Web Service [init]")
+        app.logger.debug(" [app_web] Web Service [init]")
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.__user_service = user_service
