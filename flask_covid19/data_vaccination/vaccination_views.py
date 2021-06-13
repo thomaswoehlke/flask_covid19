@@ -25,207 +25,225 @@ admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 # ---------------------------------------------------------------------------------------------------------------
 
 
-@app_vaccination.route('')
-@app_vaccination.route('/')
-def url_vaccination_root():
-    return redirect(url_for('vaccination.url_vaccination_info'))
+class VaccinationUrls:
+
+    @staticmethod
+    @app_vaccination.route('')
+    @app_vaccination.route('/')
+    def url_vaccination_root():
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/info')
+    def url_vaccination_info():
+        page_info = WebPageContent('Vaccination', "Info")
+        return render_template(
+            'vaccination/vaccination_info.html',
+            page_info=page_info)
+
+    @staticmethod
+    @app_vaccination.route('/imported/page/<int:page>')
+    @app_vaccination.route('/imported')
+    def url_vaccination_imported(page=1):
+        page_info = WebPageContent('Vaccination', "Data: Germany Timeline imported")
+        page_data = VaccinationImport.get_all(page)
+        return render_template(
+            'vaccination/imported/vaccination_imported.html',
+            page_data=page_data,
+            page_info=page_info)
+
+    @staticmethod
+    @app_vaccination.route('/data/page/<int:page>')
+    @app_vaccination.route('/data')
+    def url_vaccination_data(page=1):
+        page_info = WebPageContent('Vaccination', "Data: Germany Timeline")
+        page_data = VaccinationData.get_all(page)
+        return render_template(
+            'vaccination/data/vaccination_data.html',
+            page_data=page_data,
+            page_info=page_info)
+
+    @staticmethod
+    @app_vaccination.route('/delete_last_day')
+    def url_vaccination_delete_last_day():
+        app.logger.info("url_vaccination_delete_last_day [start]")
+        flash("url_vaccination_delete_last_day [start]")
+        vaccination_service.delete_last_day()
+        flash("url_vaccination_delete_last_day [done]")
+        app.logger.info("url_vaccination_delete_last_day [done]")
+        return redirect(url_for('vaccination.url_vaccination_info'))
 
 
-@app_vaccination.route('/info')
-def url_vaccination_info():
-    page_info = WebPageContent('Vaccination', "Info")
-    return render_template(
-        'vaccination/vaccination_info.html',
-        page_info=page_info)
-
-
-@app_vaccination.route('/imported/page/<int:page>')
-@app_vaccination.route('/imported')
-def url_vaccination_imported(page=1):
-    page_info = WebPageContent('Vaccination', "Data: Germany Timeline imported")
-    page_data = VaccinationImport.get_all(page)
-    return render_template(
-        'vaccination/imported/vaccination_imported.html',
-        page_data=page_data,
-        page_info=page_info)
-
-
-@app_vaccination.route('/data/page/<int:page>')
-@app_vaccination.route('/data')
-def url_vaccination_data(page=1):
-    page_info = WebPageContent('Vaccination', "Data: Germany Timeline")
-    page_data = VaccinationData.get_all(page)
-    return render_template(
-        'vaccination/data/vaccination_data.html',
-        page_data=page_data,
-        page_info=page_info)
-
-
-@app_vaccination.route('/delete_last_day')
-def url_vaccination_delete_last_day():
-    app.logger.info("url_vaccination_delete_last_day [start]")
-    flash("url_vaccination_delete_last_day [start]")
-    vaccination_service.delete_last_day()
-    flash("url_vaccination_delete_last_day [done]")
-    app.logger.info("url_vaccination_delete_last_day [done]")
-    return redirect(url_for('vaccination.url_vaccination_info'))
+vaccination_urls = VaccinationUrls()
 
 # ----------------------------------------------------------------------------------------------------------------
 #  Celery TASKS
 # ----------------------------------------------------------------------------------------------------------------
 
 
-@celery.task(bind=True)
-def task_vaccination_import_file(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_import [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.import_file()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_import)"
-    return result
+class VaccinationTasks:
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_import_file(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_import [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.import_file()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_import)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_full_update_dimension_tables(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_full_update_dimension_tables [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.full_update_dimension_tables()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_full_update_dimension_tables)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_update_dimension_tables(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_update_dimension_tables [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.update_dimension_tables()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_update_dimension_tables)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_update_facttable(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_update_facttable [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.update_fact_table()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_update_facttable)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_full_update_facttable(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_full_update_facttable [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.full_update_fact_table()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_full_update_facttable)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_update(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_update [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.full_update()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_update)"
+        return result
+
+    @staticmethod
+    @celery.task(bind=True)
+    def task_vaccination_full_update(self):
+        self.update_state(state=states.STARTED)
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" Received: task_vaccination_full_update [OK] ")
+            app.logger.info("------------------------------------------------------------")
+            vaccination_service.full_update()
+        self.update_state(state=states.SUCCESS)
+        result = "OK (task_vaccination_full_update)"
+        return result
 
 
-@celery.task(bind=True)
-def task_vaccination_full_update_dimension_tables(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_full_update_dimension_tables [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update_dimension_tables()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_full_update_dimension_tables)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_update_dimension_tables(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_update_dimension_tables [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.update_dimension_tables()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_update_dimension_tables)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_update_facttable(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_update_facttable [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.update_fact_table()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_update_facttable)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_full_update_facttable(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_full_update_facttable [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update_fact_table()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_full_update_facttable)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_update(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_update [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_update)"
-    return result
-
-
-@celery.task(bind=True)
-def task_vaccination_full_update(self):
-    logger = get_task_logger(__name__)
-    self.update_state(state=states.STARTED)
-    logger.info("------------------------------------------------------------")
-    logger.info(" Received: task_vaccination_full_update [OK] ")
-    logger.info("------------------------------------------------------------")
-    vaccination_service.full_update()
-    self.update_state(state=states.SUCCESS)
-    result = "OK (task_vaccination_full_update)"
-    return result
+vaccination_tasks = VaccinationTasks()
 
 # ----------------------------------------------------------------------------------------------------------------
 # URL Routes for Celery TASKS
 # ----------------------------------------------------------------------------------------------------------------
 
 
-@app_vaccination.route('/task/download')
-def url_task_vaccination_download():
-    flash("vaccination_service.download started")
-    vaccination_service.download()
-    flash("vaccination_service.download done")
-    return redirect(url_for('vaccination.url_vaccination_info'))
+class VaccinationTaskUrls:
+
+    @staticmethod
+    @app_vaccination.route('/task/download')
+    def url_task_vaccination_download():
+        flash("vaccination_service.download started")
+        vaccination_service.download()
+        flash("vaccination_service.download done")
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/import')
+    def url_task_vaccination_import():
+        vaccination_tasks.task_vaccination_import_file.apply_async()
+        flash("task_vaccination_import_file started")
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/update/full/dimension-tables')
+    def url_task_vaccination_full_update_dimension_tables():
+        flash("url_vaccination_task_update_dimensiontables_only started")
+        vaccination_tasks.task_vaccination_full_update_dimension_tables.apply_async()
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/update/dimension-tables')
+    def url_task_vaccination_update_dimension_tables():
+        flash("url_vaccination_task_update_dimensiontables_only started")
+        vaccination_tasks.task_vaccination_update_dimension_tables.apply_async()
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/update/fact-table/incremental/only')
+    def url_task_vaccination_update_facttable():
+        flash("url_vaccination_task_update_facttable_incremental_only started")
+        vaccination_tasks.task_vaccination_update_facttable.apply_async()
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/update/fact-table/initial/only')
+    def url_task_vaccination_full_update_facttable():
+        flash("url_vaccination_task_update_facttable_initial_only started")
+        vaccination_tasks.task_vaccination_full_update_facttable.apply_async()
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/full/update/')
+    def url_task_vaccination_full_update():
+        vaccination_service.download()
+        flash("vaccination_service.download done")
+        vaccination_tasks.task_vaccination_full_update.apply_async()
+        flash("task_vaccination_full_update started")
+        return redirect(url_for('vaccination.url_vaccination_info'))
+
+    @staticmethod
+    @app_vaccination.route('/task/update')
+    def url_task_vaccination_update():
+        vaccination_service.download()
+        flash("vaccination_service.download done")
+        vaccination_tasks.task_vaccination_update.apply_async()
+        flash("task_vaccination_update started")
+        return redirect(url_for('vaccination.url_vaccination_info'))
 
 
-@app_vaccination.route('/task/import')
-def url_task_vaccination_import():
-    task_vaccination_import_file.apply_async()
-    flash("task_vaccination_import_file started")
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update/full/dimension-tables')
-def url_task_vaccination_full_update_dimension_tables():
-    flash("url_vaccination_task_update_dimensiontables_only started")
-    task_vaccination_full_update_dimension_tables.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update/dimension-tables')
-def url_task_vaccination_update_dimension_tables():
-    flash("url_vaccination_task_update_dimensiontables_only started")
-    task_vaccination_update_dimension_tables.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update/fact-table/incremental/only')
-def url_task_vaccination_update_facttable():
-    flash("url_vaccination_task_update_facttable_incremental_only started")
-    task_vaccination_update_facttable.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update/fact-table/initial/only')
-def url_task_vaccination_full_update_facttable():
-    flash("url_vaccination_task_update_facttable_initial_only started")
-    task_vaccination_full_update_facttable.apply_async()
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/full/update/')
-def url_task_vaccination_full_update():
-    vaccination_service.download()
-    flash("vaccination_service.download done")
-    task_vaccination_full_update.apply_async()
-    flash("task_vaccination_full_update started")
-    return redirect(url_for('vaccination.url_vaccination_info'))
-
-
-@app_vaccination.route('/task/update')
-def url_task_vaccination_update():
-    vaccination_service.download()
-    flash("vaccination_service.download done")
-    task_vaccination_update.apply_async()
-    flash("task_vaccination_update started")
-    return redirect(url_for('vaccination.url_vaccination_info'))
+vaccination_task_urls = VaccinationTaskUrls()

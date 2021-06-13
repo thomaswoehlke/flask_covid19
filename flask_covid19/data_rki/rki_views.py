@@ -215,7 +215,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_import(self):
         self.update_state(state=states.STARTED)
-        rki_service.import_file()
+        with app.app_context():
+            rki_service.import_file()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_import_only)"
         return result
@@ -224,7 +225,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_full_update_dimension_tables(self):
         self.update_state(state=states.STARTED)
-        rki_service.full_update_dimension_tables()
+        with app.app_context():
+            rki_service.full_update_dimension_tables()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_full_update_dimension_tables)"
         return result
@@ -233,7 +235,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_update_dimension_tables(self):
         self.update_state(state=states.STARTED)
-        rki_service.update_dimension_tables()
+        with app.app_context():
+            rki_service.update_dimension_tables()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_update_dimension_tables)"
         return result
@@ -242,7 +245,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_full_update_fact_table(self):
         self.update_state(state=states.STARTED)
-        rki_service.full_update_fact_table()
+        with app.app_context():
+            rki_service.full_update_fact_table()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_full_update_fact_table)"
         return result
@@ -251,7 +255,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_update_fact_table(self):
         self.update_state(state=states.STARTED)
-        rki_service.update_fact_table()
+        with app.app_context():
+            rki_service.update_fact_table()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_update_fact_table)"
         return result
@@ -260,7 +265,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_full_update(self):
         self.update_state(state=states.STARTED)
-        rki_service.full_update()
+        with app.app_context():
+            rki_service.full_update()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_full_update)"
         return result
@@ -269,7 +275,8 @@ class RkiTasks:
     @celery.task(bind=True)
     def task_rki_update(self):
         self.update_state(state=states.STARTED)
-        rki_service.update()
+        with app.app_context():
+            rki_service.update()
         self.update_state(state=states.SUCCESS)
         result = "OK (task_rki_update)"
         return result
