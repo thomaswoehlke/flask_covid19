@@ -331,7 +331,7 @@ class WhoUrls:
         page_info = WebPageContent('WHO', "Germany")
         who_country_germany = WhoCountry.find_by_location_code("DE")
         if who_country_germany is None:
-            flash('country: Germany not found in Database', category='error')
+            flash(' [WHO] country: Germany not found in Database', category='error')
             return redirect(url_for('who.url_who_info'))
         page_data = WhoData.get_by_location(who_country_germany, page)
         return render_template(
@@ -343,11 +343,11 @@ class WhoUrls:
     @staticmethod
     @app_who.route('/delete_last_day')
     def url_who_delete_last_day():
-        app.logger.info("url_who_delete_last_day [start]")
-        flash("url_who_delete_last_day [start]")
+        app.logger.info(" [WHO] url_who_delete_last_day [start]")
+        flash(" [WHO] url_who_delete_last_day [start]")
         who_service.delete_last_day()
-        flash("url_who_delete_last_day [done]")
-        app.logger.info("url_who_delete_last_day [done]")
+        flash(" [WHO] url_who_delete_last_day [done]")
+        app.logger.info(" [WHO] url_who_delete_last_day [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
@@ -396,7 +396,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_import_files [OK] ")
+            app.logger.info(" Received: [WHO] task_who_import_files [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.import_file()
         self.update_state(state=states.SUCCESS)
@@ -409,7 +409,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_full_update_dimension_tables [OK] ")
+            app.logger.info(" Received: [WHO] task_who_full_update_dimension_tables [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.full_update_dimension_tables()
         self.update_state(state=states.SUCCESS)
@@ -422,7 +422,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_update_dimension_tables [OK] ")
+            app.logger.info(" Received: [WHO] task_who_update_dimension_tables [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.update_dimension_tables()
         self.update_state(state=states.SUCCESS)
@@ -435,7 +435,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_full_update_fact_table [OK] ")
+            app.logger.info(" Received: [WHO] task_who_full_update_fact_table [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.full_update_fact_table()
         self.update_state(state=states.SUCCESS)
@@ -448,7 +448,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_update_fact_table [OK] ")
+            app.logger.info(" Received: [WHO] task_who_update_fact_table [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.update_fact_table()
         self.update_state(state=states.SUCCESS)
@@ -461,7 +461,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_full_update [OK] ")
+            app.logger.info(" Received: [WHO] task_who_full_update [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.full_update()
         self.update_state(state=states.SUCCESS)
@@ -474,7 +474,7 @@ class WhoTasks:
         self.update_state(state=states.STARTED)
         with app.app_context():
             app.logger.info("------------------------------------------------------------")
-            app.logger.info(" Received: task_who_update [OK] ")
+            app.logger.info(" Received: [WHO] task_who_update [OK] ")
             app.logger.info("------------------------------------------------------------")
             who_service.update()
         self.update_state(state=states.SUCCESS)
@@ -495,98 +495,98 @@ class WhoTaskUrls:
     @app_who.route('/files/download')
     @login_required
     def url_download_files():
-        app.logger.info("url_download_files [start]")
+        app.logger.info(" [WHO] url_download_files [start]")
         who_service.download()
-        flash("who_service.download_files() [done]")
-        app.logger.info("url_download_files [done]")
+        flash(" [WHO] who_service.download_files() [done]")
+        app.logger.info(" [WHO] url_download_files [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/files/import')
     @login_required
     def url_task_who_import_files():
-        app.logger.info("url_task_who_import_files [start]")
+        app.logger.info(" [WHO] url_task_who_import_files [start]")
         who_tasks.task_who_import_files.apply_async()
-        flash("task_who_import_files [start]")
+        flash(" [WHO] task_who_import_files [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_import_files [start]")
-        app.logger.info("url_task_who_import_files [done]")
+        app.logger.warn(" [WHO] async task_who_import_files [start]")
+        app.logger.info(" [WHO] url_task_who_import_files [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update/full/dimension_tables')
     @login_required
     def url_task_who_full_update_dimension_tables():
-        app.logger.info("url_task_who_full_update_dimension_tables [start]")
+        app.logger.info(" [WHO] url_task_who_full_update_dimension_tables [start]")
         who_tasks.task_who_full_update_dimension_tables.apply_async()
-        flash("task_who_full_update_dimension_tables [start]")
+        flash(" [WHO] task_who_full_update_dimension_tables [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_full_update_dimension_tables [start]")
-        app.logger.info("url_task_who_full_update_dimension_tables [done]")
+        app.logger.warn(" [WHO] async task_who_full_update_dimension_tables [start]")
+        app.logger.info(" [WHO] url_task_who_full_update_dimension_tables [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update/dimension_tables')
     @login_required
     def url_task_who_update_dimension_tables():
-        app.logger.info("url_task_who_update_dimension_tables [start]")
+        app.logger.info(" [WHO] url_task_who_update_dimension_tables [start]")
         who_tasks.task_who_update_dimension_tables.apply_async()
-        flash("task_who_update_dimension_tables [start]")
+        flash(" [WHO] task_who_update_dimension_tables [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_update_dimension_tables [start]")
-        app.logger.info("url_task_who_update_dimension_tables [done]")
+        app.logger.warn(" [WHO] async task_who_update_dimension_tables [start]")
+        app.logger.info(" [WHO] url_task_who_update_dimension_tables [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update/full/fact-table')
     @login_required
     def url_task_who_full_update_fact_table():
-        app.logger.info("url_task_who_full_update_fact_table [start]")
+        app.logger.info(" [WHO] url_task_who_full_update_fact_table [start]")
         who_tasks.task_who_full_update_fact_table.apply_async()
-        flash("task_who_full_update_fact_table [start]")
+        flash(" [WHO] task_who_full_update_fact_table [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_full_update_fact_table [start]")
-        app.logger.info("url_task_who_full_update_fact_table [done]")
+        app.logger.warn(" [WHO] async task_who_full_update_fact_table [start]")
+        app.logger.info(" [WHO] url_task_who_full_update_fact_table [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update/fact-table')
     @login_required
     def url_task_who_update_fact_table():
-        app.logger.info("url_task_who_update_fact_table [start]")
+        app.logger.info(" [WHO] url_task_who_update_fact_table [start]")
         who_tasks.task_who_update_fact_table.apply_async()
-        flash("task_who_update_fact_table [start]")
+        flash(" [WHO] task_who_update_fact_table [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_update_fact_table [start]")
-        app.logger.info("url_task_who_update_fact_table [done]")
+        app.logger.warn(" [WHO] async task_who_update_fact_table [start]")
+        app.logger.info(" [WHO] url_task_who_update_fact_table [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update/full')
     @login_required
     def url_task_who_full_update():
-        app.logger.info("url_task_who_full_update [start]")
+        app.logger.info(" [WHO] url_task_who_full_update [start]")
         who_service.download()
-        flash("who_service.run_download_only() [done]")
+        flash(" [WHO] who_service.run_download_only() [done]")
         who_tasks.task_who_full_update.apply_async()
-        flash("task_who_full_update [start]")
+        flash(" [WHO] task_who_full_update [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_full_update [start]")
-        app.logger.info("url_task_who_full_update [done]")
+        app.logger.warn(" [WHO] async task_who_full_update [start]")
+        app.logger.info(" [WHO] url_task_who_full_update [done]")
         return redirect(url_for('who.url_who_info'))
 
     @staticmethod
     @app_who.route('/task/update')
     @login_required
     def url_task_who_update():
-        app.logger.info("url_task_who_update [start]")
+        app.logger.info(" [WHO] url_task_who_update [start]")
         who_service.download()
-        flash("who_service.run_download_only() [done]")
+        flash(" [WHO] who_service.run_download_only() [done]")
         who_tasks.task_who_update.apply_async()
-        flash("task_who_update [start]")
+        flash(" [WHO] task_who_update [start]")
         flash(message="long running background task started", category="warning")
-        app.logger.warn("async task_who_update [start]")
-        app.logger.info("url_task_who_update [done]")
+        app.logger.warn(" [WHO] async task_who_update [start]")
+        app.logger.info(" [WHO] url_task_who_update [done]")
         return redirect(url_for('who.url_who_info'))
 
 

@@ -14,7 +14,7 @@ db = app_database.db
 class WhoServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WHO Service Import [init]")
+        app.logger.debug(" [WHO] Service Import [init]")
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
