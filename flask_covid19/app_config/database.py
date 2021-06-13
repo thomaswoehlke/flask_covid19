@@ -18,7 +18,6 @@ class AppDatabase:
 
     def __init__(self):
         self.app = Flask('covid19')
-        self.db = SQLAlchemy()
         self.app_cors = CORS()
         self.app_bootstrap = Bootstrap()
         self.login_manager = LoginManager()
@@ -30,6 +29,7 @@ class AppDatabase:
         # self.login_manager.init_app(self.app)
         # self.db_uri = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
         # self.db_uri = 'mysql://{user}:{pw}@{url}/{db}'.format(
+        self.db = SQLAlchemy()
         self.db_uri = 'mariadb+mariadbconnector://{user}:{pw}@{url}/{db}'.format(
             user=self.app.config['SQLALCHEMY_DATABASE_USER'],
             pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
@@ -39,6 +39,14 @@ class AppDatabase:
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # silence the deprecation warning
         self.app.config['FLASK_ADMIN_SWATCH'] = 'superhero'
         self.items_per_page = self.app.config['SQLALCHEMY_ITEMS_PER_PAGE']
+        oo_list = [
+            self.db,
+            self.app_cors,
+            self.app_bootstrap,
+            self.login_manager
+        ]
+        for oo in oo_list:
+            oo.init_app(self.app)
         self.config_cache_simple = {
             "DEBUG": True,
             "CACHE_TYPE": "SimpleCache",
@@ -75,18 +83,13 @@ class AppDatabase:
             }
         }
         dictConfig(self.logging_config)
-        for oo in [
-            self.db,
-            self.app_cors,
-            self.app_bootstrap,
-            self.login_manager
-        ]:
-            oo.init_app(self.app)
         self.admin = Admin(
             self.app,
             name='covid19 | admin',
             template_mode='bootstrap4')
         self.root_dir = os.getcwd()
+        self.create_celery_broker_paths()
+        self.create_celery()
 
     def create_celery_broker_paths(self):
         broker_path = self.root_dir + os.sep + 'broker' + os.sep

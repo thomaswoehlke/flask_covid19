@@ -1,11 +1,14 @@
 import sys
 import csv
-from app_config.database import db, app
+from app_config.database import app_database
 from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory
 from data_who.who_model_import_factories import WhoFlatFactory, WhoImportFactory
 from data_who.who_model_import import WhoImport, WhoFlat
+
+app = app_database.app
+db = app_database.db
 
 
 class WhoServiceImport(AllServiceMixinImport):

@@ -109,13 +109,14 @@ class AllTasks:
     @celery.task(bind=True)
     def task_all_full_update_fact_table(self):
         self.update_state(state=states.STARTED)
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update_fact_table_initial_only [start] ")
-        app.logger.info("------------------------------------------------------------")
-        all_dispachter_matrix_service.full_update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update_fact_table_initial_only [done] ")
-        app.logger.info("------------------------------------------------------------")
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update_fact_table_initial_only [start] ")
+            app.logger.info("------------------------------------------------------------")
+            all_dispachter_matrix_service.full_update_fact_table()
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update_fact_table_initial_only [done] ")
+            app.logger.info("------------------------------------------------------------")
         self.update_state(state=states.SUCCESS)
         result = "OK (task_all_update_fact_table_initial_only)"
         return result
@@ -124,13 +125,14 @@ class AllTasks:
     @celery.task(bind=True)
     def task_all_update_fact_table(self):
         self.update_state(state=states.STARTED)
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update_fact_table [start] ")
-        app.logger.info("------------------------------------------------------------")
-        all_dispachter_matrix_service.update_fact_table()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update_fact_table [done] ")
-        app.logger.info("------------------------------------------------------------")
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update_fact_table [start] ")
+            app.logger.info("------------------------------------------------------------")
+            all_dispachter_matrix_service.update_fact_table()
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update_fact_table [done] ")
+            app.logger.info("------------------------------------------------------------")
         self.update_state(state=states.SUCCESS)
         result = "OK (task_all_update_fact_table)"
         return result
@@ -139,13 +141,14 @@ class AllTasks:
     @celery.task(bind=True)
     def task_all_full_update(self):
         self.update_state(state=states.STARTED)
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_full_update [start] ")
-        app.logger.info("------------------------------------------------------------")
-        all_dispachter_matrix_service.full_update()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_full_update [done] ")
-        app.logger.info("------------------------------------------------------------")
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_full_update [start] ")
+            app.logger.info("------------------------------------------------------------")
+            all_dispachter_matrix_service.full_update()
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_full_update [done] ")
+            app.logger.info("------------------------------------------------------------")
         self.update_state(state=states.SUCCESS)
         result = "OK (task_all_full_update)"
         return result
@@ -154,13 +157,14 @@ class AllTasks:
     @celery.task(bind=True)
     def task_all_update(self):
         self.update_state(state=states.STARTED)
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update [start] ")
-        app.logger.info("------------------------------------------------------------")
-        all_dispachter_matrix_service.update()
-        app.logger.info("------------------------------------------------------------")
-        app.logger.info(" task_all_update [done] ")
-        app.logger.info("------------------------------------------------------------")
+        with app.app_context():
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update [start] ")
+            app.logger.info("------------------------------------------------------------")
+            all_dispachter_matrix_service.update()
+            app.logger.info("------------------------------------------------------------")
+            app.logger.info(" task_all_update [done] ")
+            app.logger.info("------------------------------------------------------------")
         self.update_state(state=states.SUCCESS)
         result = "OK (task_all_update)"
         return result
