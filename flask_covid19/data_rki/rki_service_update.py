@@ -26,7 +26,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_meldedatum(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_meldedatum [begin]")
+        app.logger.info(" [RKI] full update meldedatum [begin]")
         app.logger.info("------------------------------------------------------------")
         RkiMeldedatum.remove_all()
         i = 0
@@ -39,20 +39,20 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
                 my_meldedatum=my_meldedatum_from_import)
             db.session.add(o)
-            output = "  [ " + str(i) + " ] full update RKI meldedatum ... " + str(o)
+            output = " [RKI] meldedatum [ " + str(i) + " ] full update ... " + str(o)
             output_lines.append(output)
             app.logger.info(output)
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_meldedatum [done]")
+        app.logger.info(" [RKI] full update meldedatum [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_altersgruppe(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_altersgruppe [begin]")
+        app.logger.info(" [RKI] full update altersgruppe [begin]")
         app.logger.info("------------------------------------------------------------")
         RkiAltersgruppe.remove_all()
         app.logger.info("")
@@ -67,19 +67,19 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                 processed_full_update=False,
             )
             db.session.add(o)
-            output = "  [ " + str(i) + " ] full update RKI altersgruppe ... " + str(o)
+            output = " [RKI] altersgruppe [ " + str(i) + " ] full update ... " + str(o)
             output_lines.append(output)
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_altersgruppe [done]")
+        app.logger.info(" [RKI] full update altersgruppe [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_bundesland(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_bundesland [begin]")
+        app.logger.info(" [RKI] full update bundesland [begin]")
         app.logger.info("------------------------------------------------------------")
         RkiBundesland.remove_all()
         app.logger.info("")
@@ -89,13 +89,13 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = RkiBundeslandFactory.create_new(bundesland_of_import)
             db.session.add(o)
-            output = "  [ " + str(i) + " ] full update RKI bundesland ... " + str(o)
+            output = " [RKI] bundesland [ " + str(i) + " ] full update ... " + str(o)
             output_lines.append(output)
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_bundesland [done]")
+        app.logger.info(" [RKI] full update bundesland [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -103,7 +103,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         RkiLandkreis.remove_all()
         self.__full_update_bundesland()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_landkreis [begin]")
+        app.logger.info(" [RKI] full update landkreis [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         output_lines = []
@@ -114,20 +114,20 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                 my_landkreis = RkiLandkreisFactory.get_my_landkreis(landkreis_from_import=landkreis_from_import)
                 o = RkiLandkreisFactory.create_new(my_landkreis=my_landkreis, bundesland=bundesland)
                 db.session.add(o)
-                output = "  [ " + str(i) + " ] full update RKI landkreis ... " + str(o)
+                output = " [RKI] landkreis [ " + str(i) + " ] full update ... " + str(o)
                 output_lines.append(output)
             db.session.commit()
             for output in output_lines:
                 app.logger.info(output)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_landkreis [done]")
+        app.logger.info(" [RKI] full update landkreis [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_data [begin]")
+        app.logger.info(" [RKI] full update data [begin]")
         app.logger.info("------------------------------------------------------------")
         RkiData.remove_all()
         i = 0
@@ -164,13 +164,13 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             d += 1
             db.session.commit()
             sd = str(my_meldedatum)
-            app.logger.info(" full update RKI data ... " + str(i) + " rows ... " + sd + " (" + str(k) + ")")
+            app.logger.info(" [RKI] full update data ... " + str(i) + " rows ... " + sd + " (" + str(k) + ")")
             k = 0
         db.session.commit()
-        app.logger.info(" full update RKI data ... " + str(i) + " total rows")
+        app.logger.info(" [RKI] full update data ... " + str(i) + " total rows")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] .__full_update_data [done]")
+        app.logger.info(" [RKI] full update data [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -202,7 +202,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = RkiMeldedatum.find_all_as_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
-            app.logger.info(" date_reported: " + str(item))
+            app.logger.info(" [RKI] date_reported: " + str(item))
             if item not in odr_list:
                 todo.append(item)
         return todo
@@ -212,7 +212,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         bundesland_all = RkiBundesland.find_all_as_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
-            app.logger.info(" location_group: " + str(item))
+            app.logger.info(" [RKI] location_group: " + str(item))
             if item not in bundesland_all:
                 todo.append(item)
         return todo
@@ -223,7 +223,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_bundesland in RkiBundesland.find_all_as_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
-                app.logger.info(" location: " + str(item) + " -- " + str(my_bundesland))
+                app.logger.info(" [RKI] location: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
                     new_location = (
                         oi.landkreis,
@@ -315,7 +315,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         RkiAltersgruppe.set_all_processed_update()
         for new_altersgruppe in self.__get_new_altersgruppen():
-            app.logger.info("aaa: "+str(new_altersgruppe))
+            app.logger.info(" [RKI] new altersgruppe: "+str(new_altersgruppe))
             i += 1
             o = RkiAltersgruppe(
                 altersgruppe=new_altersgruppe,
@@ -387,9 +387,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.info("")
         joungest_datum = RkiMeldedatum.get_joungest_datum()
-        app.logger.info(" joungest_datum:" + str(joungest_datum))
+        app.logger.info("  [RKI] joungest_datum:" + str(joungest_datum))
         app.logger.info("")
-        app.logger.info(" RkiData.get_data_for_one_day(joungest_datum):")
+        app.logger.info("  [RKI] RkiData.get_data_for_one_day(joungest_datum):")
         app.logger.info("")
         i = 0
         output_lines = []
@@ -400,7 +400,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for line in output_lines:
             app.logger.info(line)
         app.logger.info("")
-        app.logger.info(" RkiData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info("  [RKI] RkiData.delete_data_for_one_day(joungest_datum)")
         app.logger.info("")
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")
