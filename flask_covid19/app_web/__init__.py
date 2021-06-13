@@ -1,7 +1,9 @@
 import os
 import socket
+import subprocess
+
 from app_web.web_dispachter_matrix_service import web_service
-from app_web.web_views import app  # , cache
+from app_web.web_views import app, celery  # , cache
 
 
 def run_web():
@@ -18,3 +20,16 @@ def run_web():
         debug=debug,
         load_dotenv=load_dotenv
     )
+
+
+def run_mq():
+    web_service.prepare_run_mq()
+    #with app.app_context():
+    #    cache.clear()
+    # start_redis()
+    # args = ['worker']
+    # celery.start(args)
+    app.logger.info(os.getcwd())
+    my_cmds = ['celery worker --app=mq.celery --pool=eventlet --loglevel=INFO']
+    for my_cmd in my_cmds:
+        retcode = subprocess.call(my_cmd, shell=True)

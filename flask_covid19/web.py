@@ -1,7 +1,5 @@
 import data_all
 import app_web
-import flask_covid19_web
-import app_mq
 
 from app_web import run_web
 
