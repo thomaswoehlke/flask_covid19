@@ -6,10 +6,10 @@ from flask_login import login_required
 
 from flask_covid19_conf.database import app, admin, db, celery
 from flask_covid19_app_web.web_dispachter_matrix_service import ecdc_service
-from flask_covid19_app.blueprints.data_ecdc.ecdc_test_service import EcdcTestService
+from data_ecdc.ecdc_test_service import EcdcTestService
 
-from flask_covid19_app.blueprints.data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
-from flask_covid19_app.blueprints.data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
+from data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
+from data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
 from flask_covid19_app_web.web_model_transient import WebPageContent
 
 
