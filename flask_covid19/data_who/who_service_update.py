@@ -16,7 +16,7 @@ class WhoServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info("  [Who] Service Update Base [ready]")
+        app.logger.info("  [WHO] Service Update Base [ready]")
         app.logger.debug("------------------------------------------------------------")
 
 
@@ -24,7 +24,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_date_reported [begin]")
+        app.logger.info(" [WHO] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoDateReported.remove_all()
         # with app.app_context():
@@ -45,20 +45,20 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=s_date_reported)
             db.session.add(o)
-            output = " full update WHO date_reported ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = " [WHO] full update date_reported ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_date_reported [done]")
+        app.logger.info(" [WHO] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_region(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_region [begin]")
+        app.logger.info(" [WHO] full update region [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoCountryRegion.remove_all()
         log_lines = []
@@ -67,20 +67,20 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             i += 1
             o = WhoCountryRegionFactory.create_new(location_group_str=region_str)
             db.session.add(o)
-            output = " full update WHO region ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = " [WHO] full update region ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_region [done]")
+        app.logger.info(" [WHO] full update region [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_country(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_country [begin]")
+        app.logger.info(" [WHO] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoCountry.remove_all()
         self.__full_update_region()
@@ -98,26 +98,26 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
                 location=str_country, location_code=str_country_code, location_group=location_group
             )
             db.session.add(o)
-            output = " full update WHO country ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = " [WHO] full update country ... " + str(i) + " rows ... (" + str(o) + ")"
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_country [done]")
+        app.logger.info(" [WHO] full update country [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __full_update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_data [begin]")
+        app.logger.info(" [WHO] full update data [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoData.remove_all() [begin]")
+        app.logger.info(" [WHO] WhoData.remove_all() [begin]")
         WhoData.remove_all()
         # with app.app_context():
         #     cache.clear()
-        app.logger.info(" WhoData.remove_all() [done]")
+        app.logger.info(" [WHO] WhoData.remove_all() [done]")
         i = 0
         d = 0
         k = 0
@@ -141,34 +141,34 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             if d % 7 == 0:
                 db.session.commit()
                 s2 = str(who_date_reported)
-                app.logger.info(" full update WHO data ... " + str(i) + " rows ... " + s2 + " (" + str(k) + ")")
+                app.logger.info(" [WHO] full update data ... " + str(i) + " rows ... " + s2 + " (" + str(k) + ")")
                 k = 0
         db.session.commit()
-        app.logger.info(" full update WHO data:  " + str(i) + " total rows")
+        app.logger.info(" [WHO] full update data:  " + str(i) + " total rows")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.__full_update_data [done]")
+        app.logger.info(" [WHO] full update data [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def full_update_dimension_tables(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_dimension_tables [begin]")
+        app.logger.info(" [WHO] full update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_dimension_tables [done]")
+        app.logger.info(" [WHO] full update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_fact_table [begin]")
+        app.logger.info(" [WHO] full update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__full_update_data()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdateFull.full_update_fact_table [done]")
+        app.logger.info(" [WHO] full update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -216,32 +216,33 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_date_reported [begin]")
+        app.logger.info(" [WHO] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoDateReported.set_all_processed_update()
         i = 0
         for new_date_reported in self.__who_import_get_new_dates():
             i += 1
-            output = " [ " + str(i) + " ] " + str(new_date_reported)
+            output = " [WHO] date_reported [ " + str(i) + " ] " + str(new_date_reported)
             o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=new_date_reported)
             db.session.add(o)
             db.session.commit()
             output += "   added " + str(o)
             app.logger.info(output)
         app.logger.info("")
-        app.logger.info(" WhoServiceUpdate.__update_date_reported [done]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" [WHO] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_location_group(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_location_group [begin]")
+        app.logger.info(" [WHO] update location_group [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoCountryRegion.set_all_processed_full_update()
         i = 0
         for new_location_group in self.__get_new_location_groups():
             i += 1
-            output = " [ " + str(i) + " ] " + new_location_group
+            output = " [WHO] location_group [ " + str(i) + " ] " + new_location_group
             c = WhoCountryRegion.find_by_location_group(location_group=new_location_group)
             if c is None:
                 o = WhoCountryRegionFactory.create_new(location_group_str=new_location_group)
@@ -253,13 +254,13 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
             app.logger.info(output)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_location_group [done]")
+        app.logger.info(" [WHO] update location_group [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_location(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_location [begin]")
+        app.logger.info(" [WHO] update location [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_location_group()
         WhoCountry.set_all_processed_update()
@@ -269,7 +270,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
             i_country_code = new_location['location_code']
             i_country = new_location['location']
             i_who_region = new_location['location_group']
-            output = " [ " + str(i) + " ] " + i_country_code + " | " + i_country + " | " + i_who_region + " | "
+            output = "[WHO] location [ " + str(i) + " ] " + i_country_code + " | " + i_country + " | " + i_who_region + " | "
             my_region = WhoCountryRegion.find_by_location_group(i_who_region)
             o = WhoCountryFactory.create_new(
                 location=i_country, location_code=i_country_code, location_group=my_region
@@ -282,13 +283,13 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_location [done]")
+        app.logger.info(" [WHO] update location [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_data [begin]")
+        app.logger.info(" [WHO] update data [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         d = 0
@@ -309,51 +310,55 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
             d += 1
             if d % 7 == 0:
                 db.session.commit()
-                app.logger.info(" update WHO  " + str(my_date_reported) + " ... " + str(i) + " rows ( " + str(k) + " )")
+                app.logger.info(" [WHO] update data  " + str(my_date_reported) + " ... " + str(i) + " rows ( " + str(k) + " )")
                 k = 0
         db.session.commit()
-        app.logger.info(" update WHO incremental :  " + str(i) + " rows total")
+        app.logger.info(" [WHO] update data :  " + str(i) + " rows total")
+        app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoServiceUpdate.__update_data [done]")
+        app.logger.info(" [WHO] update data [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_dimension_tables(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_dimension_tables_only [begin]")
+        app.logger.info(" [WHO] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_date_reported()
         self.__update_location()
-        app.logger.info(" update_dimension_tables_only [done]")
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" [WHO] update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_fact_table_only [begin]")
+        app.logger.info(" [WHO] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__update_data()
+        app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" update_fact_table_only [done]")
+        app.logger.info(" [WHO] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def delete_last_day(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoServiceUpdate.delete_last_day() [START]")
+        app.logger.debug(" [WHO] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
         joungest_datum = WhoDateReported.get_joungest_datum()
-        app.logger.info(" joungest_datum:")
-        app.logger.info(str(joungest_datum))
-        app.logger.info(" WhoData.find_by_date_reported(joungest_datum):")
+        app.logger.info(" [WHO] joungest_datum:" + str(joungest_datum))
+        app.logger.info(" [WHO] WhoData.find_by_date_reported(joungest_datum):")
         i = 0
         for data in WhoData.find_by_date_reported(joungest_datum):
             i += 1
-            line = " WHO: to be deleted [ " + str(i) + " ] " + str(data)
+            line = " [WHO] to be deleted [ " + str(i) + " ] " + str(data)
             app.logger.info(line)
-        app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" [WHO] WhoData.delete_data_for_one_day(joungest_datum)")
         WhoData.delete_data_for_one_day(joungest_datum)
+        app.logger.info("")
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoServiceUpdate.delete_last_day() [DONE]")
+        app.logger.debug(" [WHO] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
