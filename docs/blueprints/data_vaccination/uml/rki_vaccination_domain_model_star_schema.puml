@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.data_all.model {
+package flask_covid19.data_all.model {
 
 	entity AllDateReported {
 	    id: Integer
@@ -28,7 +28,7 @@ package covid19.blueprints.data_all.model {
 	}
 }
 
-package covid19.blueprints.rki_vaccination.model {
+package flask_covid19.data_vaccination.model {
 
 	entity RkiVaccinationDateReported {
 	    id: Integer

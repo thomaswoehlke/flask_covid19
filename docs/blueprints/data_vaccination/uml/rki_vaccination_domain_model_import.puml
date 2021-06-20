@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.data_all.model_import {
+package flask_covid19.data_all.model_import {
 
 	interface AllImportFull {
 		{classifier} download_file()
@@ -58,7 +58,7 @@ package covid19.blueprints.data_all.model_import {
 	}
 }
 
-package covid19.blueprints.rki_vVaccination.model_import {
+package flask_covid19.data_vaccination.model_import {
 
 	entity RkiVaccinationImport {
 	    id: Integer
