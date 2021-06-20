@@ -2,7 +2,7 @@
 left to right direction
 
 
-package covid19.blueprints.all.model_import {
+package flask_covid19.data_all.model_import {
 
 	interface AllImportFull {
 		{classifier} download_file()
@@ -59,7 +59,7 @@ package covid19.blueprints.all.model_import {
 	}
 }
 
-package covid19.blueprints.who.model_import {
+package flask_covid19.blueprints.who.model_import {
 
 	entity WhoImport {
 	    id: Integer
@@ -125,7 +125,7 @@ WhoImport <|-- WhoFlat
 
 
 
-package covid19.blueprints.all.model {
+package flask_covid19.data_all.model {
 
 	interface AllDateReported {
 	    id: Integer
@@ -167,7 +167,7 @@ package covid19.blueprints.all.model {
 
 }
 
-package covid19.blueprints.who.model {
+package flask_covid19.blueprints.who.model {
 
 	entity WhoDateReported {
 	    id: Integer

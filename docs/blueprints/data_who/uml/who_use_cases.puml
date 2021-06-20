@@ -15,7 +15,7 @@ package covid19.blueprints.app_user {
 	au <|-- du
 }
 
-package covid19.blueprints.who.who_views_task {
+package covid19.blueprints.data_who.who_views_task {
 	usecase download_file as UC1
 	usecase import_file as UC2
 	usecase import_file_flat as UC3
@@ -37,7 +37,7 @@ au --> UC20
 au --> UC21
 au --> UC22
 
-package covid19.blueprints.who.who_views_frontend {
+package covid19.blueprints.data_who.who_views_frontend {
 	usecase get_import as UC30
 	usecase get_flat as UC31
 	usecase get_years as UC40
@@ -61,7 +61,7 @@ vu --> UC45
 vu --> UC46
 vu --> UC80
 
-package covid19.blueprints.who.who_views_frontend__au {
+package covid19.blueprints.data_who.who_views_frontend__au {
     usecase page_tasks as UC81
 }
 
