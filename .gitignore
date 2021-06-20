@@ -1136,3 +1136,4 @@ dump.rdb
 /flask_covid19/app_static/static/vendor/*
 /flask_covid19/app_static/static/vendor
 /RKI.csv
+/flask_covid19_client/nohup.out
