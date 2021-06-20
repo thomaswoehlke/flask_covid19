@@ -15,7 +15,7 @@ package covid19.blueprints.app_user {
 	au <|-- du
 }
 
-package covid19.blueprints.rki_vaccination.rki_vaccination_views_task {
+package flask_covid19.blueprints.data_who.rki_vaccination_views_task {
 	usecase download_file as UC1
 	usecase import_file as UC2
 	usecase import_file_flat as UC3

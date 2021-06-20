@@ -2,7 +2,7 @@
 left to right direction
 
 
-package covid19.blueprints.all.model {
+package flask_covid19.data_all.model {
 
 	interface AllDateReported {
 	    id: Integer
@@ -42,7 +42,7 @@ package covid19.blueprints.all.model {
 }
 
 
-package covid19.blueprints.ecdc.model {
+package flask_covid19.data_ecdc.model {
 	entity EcdcContinent {}
 	entity EcdcCountry {}
 	entity EcdcData {}
@@ -58,7 +58,7 @@ EcdcData "1" *--> "*" EcdcCountry: country
 EcdcData "1" *--> "*" EcdcDateReported: date_reported
 
 
-package covid19.blueprints.owid.model {
+package flask_covid19.data_owid.model {
 	entity OwidContinent {}
 	entity OwidCountry {}
 	entity OwidData {}
@@ -75,7 +75,7 @@ OwidData "1" *--> "*" OwidCountry : country
 OwidData "1" *--> "*" OwidDateReported : date_reported
 
 
-package covid19.blueprints.rki_cases.model {
+package flask_covid19.data_rki.model {
 	entity RkiBundesland {}
 	entity RkiLandkreis {}
 	entity RkiData {}
@@ -92,7 +92,7 @@ RkiData "1" *--> "*" RkiLandkreis : landkreis
 RkiData "1" *--> "*" RkiMeldedatum : meldedatum
 
 
-package covid19.blueprints.rki_vaccination.model {
+package flask_covid19.data_vaccination.model {
 	entity RkiVaccinationDateReported {}
 	entity RkiVaccinationData {}
 }
@@ -103,7 +103,7 @@ AllData <|-- RkiVaccinationData
 RkiVaccinationData "1" *--> "*" RkiVaccinationDateReported : date_reported
 
 
-package covid19.blueprints.who.model {
+package flask_covid19.data_who.model {
 	entity WhoRegion {}
 	entity WhoCountry {}
 	entity WhoData {}

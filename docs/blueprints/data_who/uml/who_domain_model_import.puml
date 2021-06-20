@@ -58,7 +58,7 @@ package flask_covid19.data_all.model_import {
 	}
 }
 
-package covid19.blueprints.who.model_import {
+package flask_covid19.data_who.model_import {
 
 	entity WhoImport {
 	    id: Integer

@@ -43,7 +43,7 @@ package flask_covid19.data_all.model {
 
 }
 
-package covid19.blueprints.who.model {
+package flask_covid19.data_who.model {
 
 	entity WhoDateReported {
 	    id: Integer

@@ -1,6 +1,6 @@
 @startuml
 left to right direction
-package blueprints.app_all.model {
+package flask_covid19.data_all.model {
 	entity BlueprintDateReported {
 	    id: Integer
 		date_reported:  String
@@ -49,7 +49,7 @@ package blueprints.app_all.model {
 	    {classifier} find_by_id(other_id: Integer)
 	}
 }
-package blueprints.app_all.model {
+package flask_covid19.data_all.model {
 	class WebPageContent << (T,#FF7700) Transient >> {
 		title: String
 		subtitle: String
@@ -76,7 +76,7 @@ package blueprints.app_all.model {
 		create_config_for_rki_landkreise()
 	}
 }
-package blueprints.app_all.service {
+package flask_covid19.data_all.service {
 	class BlueprintDownloadService << (S,red) Service >> {
 		-log_error()
 		-log_success()
@@ -98,11 +98,11 @@ package blueprints.app_all.service {
 		update()
 	}
 }
-package blueprints.app_all.views {
+package flask_covid19.data_all.views {
 	class all_views << (B,orchid) Boundary >>  {
 	}
 }
-package flask_covid19 {
+package flask_covid19.data_config {
 	class database_py << (S,#FF7700) Singleton >> {
 		{static} int port
 		{static} bool run_run_with_debug
@@ -143,13 +143,13 @@ package blueprints.app_web.service {
 	class web_services {
 	}
 }
-package blueprints.app_web.views {
+package flask_covid19.data_web.views {
 	class web_views << (B,orchid) Boundary >> {
 		url_home()
 		url_root()
 	}
 }
-package blueprints.data_who.service {
+package flask_covid19.data_who.service {
 	class WhoService << (S,red) Service >> {
 		download()
 		import_file()
@@ -163,11 +163,11 @@ package blueprints.data_who.service {
 		update()
 	}
 }
-package blueprints.data_who.views {
+package flask_covid19.data_who.views {
 	class who_views << (B,orchid) Boundary >>  {
 	}
 }
-package blueprints.data_who.model {
+package flask_covid19.data_who.model {
 	entity WhoDateReported {
 	}
 	entity WhoCountryRegion {
@@ -177,11 +177,11 @@ package blueprints.data_who.model {
 	entity WhoData {
 	}
 }
-package blueprints.data_ecdc.views {
+package flask_covid19.data_ecdc.views {
 	class ecdc_views << (B,orchid) Boundary >>  {
 	}
 }
-package blueprints.data_ecdc.service {
+package flask_covid19.data_ecdc.service {
 	class EcdcService << (S,red) Service >> {
 		download()
 		import_file()
@@ -195,7 +195,7 @@ package blueprints.data_ecdc.service {
 		update()
 	}
 }
-package blueprints.data_ecdc.model {
+package flask_covid19.data_ecdc.model {
 	entity EcdcDateReported {
 	}
 	entity EcdcContinent {
@@ -205,11 +205,11 @@ package blueprints.data_ecdc.model {
 	entity EcdcData {
 	}
 }
-package blueprints.data_vaccination.views {
+package flask_covid19.data_vaccination.views {
 	class vaccination_views << (B,orchid) Boundary >>  {
 	}
 }
-package blueprints.data_vaccination.service {
+package flask_covid19.data_vaccination.service {
 	class VaccinationService << (S,red) Service >> {
 		download()
 		import_file()
@@ -223,17 +223,17 @@ package blueprints.data_vaccination.service {
 		update()
 	}
 }
-package blueprints.data_vaccination.model {
+package flask_covid19.data_vaccination.model {
 	entity VaccinationDateReported {
 	}
 	entity VaccinationData {
 	}
 }
-package blueprints.data_rki.views {
+package flask_covid19.data_rki.views {
 	class rki_views << (B,orchid) Boundary >>  {
 	}
 }
-package blueprints.data_rki.service {
+package flask_covid19.data_rki.service {
 	class RkiService << (S,red) Service >> {
 		download()
 		import_file()
@@ -247,7 +247,7 @@ package blueprints.data_rki.service {
 		update()
 	}
 }
-package blueprints.data_rki.model {
+package flask_covid19.data_rki.model {
 	entity RkiMeldedatum {
 	}
 	entity RkiBundesland {
@@ -257,11 +257,11 @@ package blueprints.data_rki.model {
 	entity RkiData {
 	}
 }
-package blueprints.data_owid.views {
+package flask_covid19.data_owid.views {
 	class owid_views << (B,orchid) Boundary >>  {
 	}
 }
-package blueprints.data_owid.service {
+package flask_covid19.data_owid.service {
 	class OwidService << (S,red) Service >> {
 		download()
 		import_file()
@@ -275,7 +275,7 @@ package blueprints.data_owid.service {
 		update()
 	}
 }
-package blueprints.data_owid.model {
+package flask_covid19.data_owid.model {
 	entity OwidDateReported {
 	}
 	entity OwidContinent {

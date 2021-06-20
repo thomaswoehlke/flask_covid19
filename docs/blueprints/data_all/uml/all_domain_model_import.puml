@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.all.service_import {
+package flask_covid19.data_all.service_import {
 
 	interface AllUpdateFull {
 		{classifier} download()
@@ -20,7 +20,7 @@ package covid19.blueprints.all.service_import {
 	}
 }
 
-package covid19.blueprints.all.model_import {
+package flask_covid19.data_all.model_import {
 	interface AllImport {
 	    datum_reported: Date
 		location: String
@@ -61,7 +61,7 @@ package covid19.blueprints.all.model_import {
 
 }
 
-package covid19.blueprints.ecdc.model_import {
+package flask_covid19.data_ecdc.model_import {
 
 	entity EcdcImport {
 	    id: Integer
@@ -125,7 +125,7 @@ package covid19.blueprints.ecdc.model_import {
 
 }
 
-package covid19.blueprints.owid.model_import {
+package flask_covid19.data_owid.model_import {
 
 	entity OwidImport {
 	    id: Integer
@@ -284,7 +284,7 @@ package covid19.blueprints.owid.model_import {
 }
 
 
-package covid19.blueprints.rki_cases.model_import {
+package flask_covid19.data_rki.model_import {
 
 	entity RkiImport {
 		id: Integer
@@ -359,7 +359,7 @@ package covid19.blueprints.rki_cases.model_import {
 	}
 }
 
-package covid19.blueprints.rki_vaccination.model_import {
+package flask_covid19.data_vaccination.model_import {
 
 	entity VaccinationImport {
 	    id: Integer
@@ -441,7 +441,7 @@ package covid19.blueprints.rki_vaccination.model_import {
 
 }
 
-package covid19.blueprints.who.model_import {
+package flask_covid19.data_who.model_import {
 
 	entity WhoImport {
 	    id: Integer

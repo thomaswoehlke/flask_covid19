@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.all.model {
+package flask_covid19.data_all.model {
 
 	interface AllDateReported {
 	    id: Integer
@@ -40,7 +40,7 @@ package covid19.blueprints.all.model {
 	}
 }
 
-package covid19.blueprints.rki_cases.model {
+package flask_covid19.data_rki.model {
 
 	entity RkiMeldedatum {
 	    id: Integer

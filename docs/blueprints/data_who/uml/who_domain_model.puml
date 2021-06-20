@@ -59,7 +59,7 @@ package flask_covid19.data_all.model_import {
 	}
 }
 
-package flask_covid19.blueprints.who.model_import {
+package flask_covid19.data_all.model_import {
 
 	entity WhoImport {
 	    id: Integer
@@ -167,7 +167,7 @@ package flask_covid19.data_all.model {
 
 }
 
-package flask_covid19.blueprints.who.model {
+package flask_covid19.blueprints.data_who.model {
 
 	entity WhoDateReported {
 	    id: Integer

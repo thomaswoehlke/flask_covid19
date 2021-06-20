@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.all.model {
+package flask_covid19.data_all.model {
 
 	entity AllDateReported {
 	    id: Integer
@@ -115,7 +115,7 @@ package covid19.blueprints.all.model {
 	}
 }
 
-package covid19.blueprints.owid.model {
+package flask_covid19.data_owid.model {
 
 	entity OwidImport {
 	    id: Integer
@@ -378,7 +378,7 @@ package covid19.blueprints.owid.model {
 	}
 }
 
-package covid19.blueprints.owid.service {
+package flask_covid19.data_owid.service {
 	class OwidServiceImport << (S,red) Service >> {
 		import_file()
 	}

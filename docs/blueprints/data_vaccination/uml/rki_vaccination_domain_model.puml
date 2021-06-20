@@ -2,7 +2,7 @@
 left to right direction
 
 
-package covid19.blueprints.all.model_import {
+package covid19.blueprints.data_all.model_import {
 
 	interface AllImportFull {
 		{classifier} download_file()
@@ -148,7 +148,7 @@ AllFlat <|-- RkiVaccinationFlat
 RkiVaccinationImport <|-- RkiVaccinationFlat
 
 
-package covid19.blueprints.all.model {
+package covid19.blueprints.data_all.model {
 
 	entity AllDateReported {
 	    id: Integer
