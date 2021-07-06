@@ -21,21 +21,21 @@
                     {{ owid_country.location }}
                     </a>
                 </td>
-                <td>{{ owid_country.population }}</td>
-                <td>{{ owid_country.population_density }}</td>
-                <td>{{ owid_country.median_age }}</td>
-                <td>{{ owid_country.aged_65_older }}</td>
-                <td>{{ owid_country.aged_70_older }}</td>
-                <td>{{ owid_country.gdp_per_capita }}</td>
-                <td>{{ owid_country.extreme_poverty }}</td>
-                <td>{{ owid_country.cardiovasc_death_rate }}</td>
-                <td>{{ owid_country.diabetes_prevalence }}</td>
-                <td>{{ owid_country.female_smokers }}</td>
-                <td>{{ owid_country.male_smokers }}</td>
-                <td>{{ owid_country.handwashing_facilities }}</td>
-                <td>{{ owid_country.hospital_beds_per_thousand }}</td>
-                <td>{{ owid_country.life_expectancy }}</td>
-                <td>{{ owid_country.human_development_index }}</td>
+                <td>{{ owid_country.population|round|int }}</td>
+                <td>{{ owid_country.population_density|round|int }}</td>
+                <td>{{ owid_country.median_age|round|int }}</td>
+                <td>{{ owid_country.aged_65_older|round|int }}</td>
+                <td>{{ owid_country.aged_70_older|round|int }}</td>
+                <td>{{ owid_country.gdp_per_capita|round|int }}</td>
+                <td>{{ owid_country.extreme_poverty|round|int}}</td>
+                <td>{{ owid_country.cardiovasc_death_rate|round|int }}</td>
+                <td>{{ owid_country.diabetes_prevalence|round|int }}</td>
+                <td>{{ owid_country.female_smokers|round|int }}</td>
+                <td>{{ owid_country.male_smokers|round|int }}</td>
+                <td>{{ owid_country.handwashing_facilities|round|int }}</td>
+                <td>{{ owid_country.hospital_beds_per_thousand|round|int }}</td>
+                <td>{{ owid_country.life_expectancy|round|int }}</td>
+                <td>{{ owid_country.human_development_index|round|int }}</td>
             </tr>
         {% endfor %}
         </tbody>
