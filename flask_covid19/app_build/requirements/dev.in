@@ -8,7 +8,8 @@ Flask-BS4
 Flask-Admin
 Flask-Login
 flask-login-dictabase-blueprint
-SQLAlchemy==1.4.15
+#SQLAlchemy==1.4.15
+SQLAlchemy
 sqlalchemy-mixins
 mysql-connector-python
 mysqldb-wrapper
