@@ -2,7 +2,7 @@ import os
 import sys
 
 from flask import Flask, Blueprint
-# from flask_caching import Cache
+#from flask_caching import Cache
 from flask_cors import CORS
 from flask_bs4 import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -24,9 +24,6 @@ class AppDatabase:
         # self.cache = Cache()
         self.app.config.from_object(config)
         self.login_manager.login_view = 'usr.login'
-        # self.app_cors.init_app(self.app)
-        # self.app_bootstrap.init_app(self.app)
-        # self.login_manager.init_app(self.app)
         # self.db_uri = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
         # self.db_uri = 'mysql://{user}:{pw}@{url}/{db}'.format(
         self.db = SQLAlchemy()
