@@ -5,7 +5,6 @@ from data_ecdc.ecdc_service import EcdcService
 from data_owid.owid_service import OwidService
 from data_vaccination.vaccination_service import VaccinationService
 from data_who.who_service import WhoService
-from data_divi.divi_service import DiviService
 from data_rki.rki_service import RkiService
 
 
@@ -15,14 +14,13 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                  owid_service: OwidService,
                  rki_service: RkiService,
                  vaccination_service: VaccinationService,
-                 ecdc_service: EcdcService,
-                 divi_service: DiviService):
+                 ecdc_service: EcdcService):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [ALL] Dispachter Matrix Service [init]")
         app.logger.debug("------------------------------------------------------------")
         self.__services_for = {
             'download': [
-                who_service, vaccination_service, divi_service, ecdc_service, owid_service
+                who_service, vaccination_service, ecdc_service, owid_service, rki_service
             ],
             'import_file': [
                 who_service, vaccination_service, ecdc_service, owid_service, rki_service

@@ -6,7 +6,6 @@ from data_who.who_model_import import WhoImport
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_owid.owid_model_import import OwidImport
 from data_rki.rki_model_import import RkiImport
-from data_divi.divi_model_import import DiviImport
 
 
 class BlueprintConfig:
@@ -123,17 +122,3 @@ class BlueprintConfig:
             limit_import_for_testing_threshold=app.config['TEST_IMPORT_RKI_THRESHOLD']
         )
 
-    @classmethod
-    def create_config_for_intensivregister(cls):
-        return BlueprintConfig(
-            slug='divi',
-            category='DIVI',
-            cvsfile_subpath='divi',
-            sub_category='Intensivregister',
-            tablename=DiviImport.__tablename__,
-            cvsfile_name="DIVI.json",
-            cvsfile_backup_name='DIVI_backup.json',
-            url_src="https://www.intensivregister.de/api/public/intensivregister",
-            limit_import_for_testing=app.config['TEST_IMPORT_DIVI'],
-            limit_import_for_testing_threshold=app.config['TEST_IMPORT_DIVI_THRESHOLD']
-        )

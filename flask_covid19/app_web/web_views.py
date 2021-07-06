@@ -15,7 +15,6 @@ from data_owid.owid_views import app_owid
 from data_ecdc.ecdc_views import app_ecdc
 from data_vaccination.vaccination_views import app_vaccination
 from data_rki.rki_views import app_rki
-from data_divi.divi_views import app_divi
 
 blueprint_application = Blueprint('app_web', __name__, template_folder='templates', url_prefix='/')
 
@@ -30,7 +29,6 @@ app.register_blueprint(app_owid, url_prefix='/owid')
 app.register_blueprint(app_ecdc, url_prefix='/ecdc')
 app.register_blueprint(app_vaccination, url_prefix='/vaccination')
 app.register_blueprint(app_rki, url_prefix='/rki/')
-app.register_blueprint(app_divi, url_prefix='/divi')
 
 
 ############################################################################################

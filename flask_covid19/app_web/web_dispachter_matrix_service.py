@@ -8,7 +8,6 @@ from data_ecdc.ecdc_service import EcdcService
 from data_owid.owid_service import OwidService
 from data_vaccination.vaccination_service import VaccinationService
 from data_who.who_service import WhoService
-from data_divi.divi_service import DiviService
 from data_rki.rki_service import RkiService
 from data_all.all_service import AllDataServiceDispachterMatrix
 
@@ -25,15 +24,13 @@ owid_service = OwidService(db)
 ecdc_service = EcdcService(db)
 vaccination_service = VaccinationService(db)
 rki_service = RkiService(db)
-divi_service = DiviService(db)
 
 all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     who_service=who_service,
     owid_service=owid_service,
     rki_service=rki_service,
     vaccination_service=vaccination_service,
-    ecdc_service=ecdc_service,
-    divi_service=divi_service)
+    ecdc_service=ecdc_service)
 
 with app.app_context():
     db.create_all()

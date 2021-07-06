@@ -1,6 +1,5 @@
 from datetime import date
 from data_all.all_model import AllDateReported
-from data_divi.divi_model import DiviDateReported
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_owid.owid_model import OwidDateReported
 from data_rki.rki_model import RkiMeldedatum
@@ -115,24 +114,6 @@ class BlueprintDateReportedFactory:
                 return year + '-0' + str(day_of_year)
         else:
             return year + '-' + str(day_of_year)
-
-    @classmethod
-    def __get_divi(cls, o: AllDateReported):
-        return DiviDateReported(
-            date_reported_import_str=o.date_reported_import_str,
-            datum=o.datum,
-            year_day_of_year=o.year_day_of_year,
-            year_month=o.year_month,
-            year_week=o.year_week,
-            year=o.year,
-            month=o.month,
-            day_of_month=o.day_of_month,
-            day_of_week=o.day_of_week,
-            day_of_year=o.day_of_year,
-            week_of_year=o.week_of_year,
-            processed_update=False,
-            processed_full_update=False,
-        )
 
     @classmethod
     def __get_ecdc(cls, o: AllDateReported):
