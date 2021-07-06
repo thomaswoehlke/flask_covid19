@@ -26,119 +26,119 @@
                     {{ owid.date_reported }}
                     </a>
                 </td>
-                <td>{{ owid.total_cases }}</td>
-                <td>{{ owid.new_cases }}</td>
-                <td>{{ owid.new_cases_smoothed }}</td>
-                <td>{{ owid.total_deaths }}</td>
-                <td>{{ owid.new_deaths }}</td>
-                <td>{{ owid.new_deaths_smoothed }}</td>
-                <td>{{ owid.total_cases_per_million }}</td>
-                <td>{{ owid.new_cases_per_million }}</td>
-                <td>{{ owid.new_cases_smoothed_per_million }}</td>
-                <td>{{ owid.total_deaths_per_million }}</td>
-                <td>{{ owid.new_deaths_per_million }}</td>
-                <td>{{ owid.new_deaths_smoothed_per_million }}</td>
-                <td>{{ owid.reproduction_rate }}</td>
-                <td>{{ owid.icu_patients }}</td>
-                <td>{{ owid.icu_patients_per_million }}</td>
-                <td>{{ owid.hosp_patients }}</td>
-                <td>{{ owid.hosp_patients_per_million }}</td>
-                <td>{{ owid.weekly_icu_admissions }}</td>
-                <td>{{ owid.weekly_icu_admissions_per_million }}</td>
-                <td>{{ owid.weekly_hosp_admissions }}</td>
-                <td>{{ owid.weekly_hosp_admissions_per_million }}</td>
-                <td>{{ owid.new_tests }}</td>
-                <td>{{ owid.total_tests }}</td>
-                <td>{{ owid.total_tests_per_thousand }}</td>
-                <td>{{ owid.new_tests_per_thousand }}</td>
-                <td>{{ owid.new_tests_smoothed }}</td>
-                <td>{{ owid.new_tests_smoothed_per_thousand }}</td>
-                <td>{{ owid.positive_rate }}</td>
-                <td>{{ owid.tests_per_case }}</td>
+                <td>{{ owid.total_cases|round }}</td>
+                <td>{{ owid.new_cases|round }}</td>
+                <td>{{ owid.new_cases_smoothed|round }}</td>
+                <td>{{ owid.total_deaths|round }}</td>
+                <td>{{ owid.new_deaths|round }}</td>
+                <td>{{ owid.new_deaths_smoothed|round }}</td>
+                <td>{{ owid.total_cases_per_million|round }}</td>
+                <td>{{ owid.new_cases_per_million|round }}</td>
+                <td>{{ owid.new_cases_smoothed_per_million|round }}</td>
+                <td>{{ owid.total_deaths_per_million|round }}</td>
+                <td>{{ owid.new_deaths_per_million|round }}</td>
+                <td>{{ owid.new_deaths_smoothed_per_million|round }}</td>
+                <td>{{ owid.reproduction_rate|round }}</td>
+                <td>{{ owid.icu_patients|round }}</td>
+                <td>{{ owid.icu_patients_per_million|round }}</td>
+                <td>{{ owid.hosp_patients|round }}</td>
+                <td>{{ owid.hosp_patients_per_million|round }}</td>
+                <td>{{ owid.weekly_icu_admissions|round }}</td>
+                <td>{{ owid.weekly_icu_admissions_per_million|round }}</td>
+                <td>{{ owid.weekly_hosp_admissions|round }}</td>
+                <td>{{ owid.weekly_hosp_admissions_per_million|round }}</td>
+                <td>{{ owid.new_tests|round }}</td>
+                <td>{{ owid.total_tests|round }}</td>
+                <td>{{ owid.total_tests_per_thousand|round }}</td>
+                <td>{{ owid.new_tests_per_thousand|round }}</td>
+                <td>{{ owid.new_tests_smoothed|round }}</td>
+                <td>{{ owid.new_tests_smoothed_per_thousand|round }}</td>
+                <td>{{ owid.positive_rate|round }}</td>
+                <td>{{ owid.tests_per_case|round }}</td>
                 <td>{{ owid.tests_units }}</td>
-                <td>{{ owid.total_vaccinations }}</td>
-                <td>{{ owid.people_vaccinated }}</td>
-                <td>{{ owid.people_fully_vaccinated }}</td>
-                <td>{{ owid.new_vaccinations }}</td>
-                <td>{{ owid.new_vaccinations_smoothed }}</td>
-                <td>{{ owid.total_vaccinations_per_hundred }}</td>
-                <td>{{ owid.people_vaccinated_per_hundred }}</td>
-                <td>{{ owid.people_fully_vaccinated_per_hundred }}</td>
-                <td>{{ owid.new_vaccinations_smoothed_per_million }}</td>
-                <td>{{ owid.stringency_index }}</td>
+                <td>{{ owid.total_vaccinations|round }}</td>
+                <td>{{ owid.people_vaccinated|round }}</td>
+                <td>{{ owid.people_fully_vaccinated|round }}</td>
+                <td>{{ owid.new_vaccinations|round }}</td>
+                <td>{{ owid.new_vaccinations_smoothed|round }}</td>
+                <td>{{ owid.total_vaccinations_per_hundred|round }}</td>
+                <td>{{ owid.people_vaccinated_per_hundred|round }}</td>
+                <td>{{ owid.people_fully_vaccinated_per_hundred|round }}</td>
+                <td>{{ owid.new_vaccinations_smoothed_per_million|round }}</td>
+                <td>{{ owid.stringency_index|round(2, 'common')  }}</td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.population }}
+                    {{ owid.location.population|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.population_density }}
+                    {{ owid.location.population_density|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.median_age }}
+                    {{ owid.location.median_age|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.aged_65_older }}
+                    {{ owid.location.aged_65_older|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                        {{ owid.location.aged_70_older }}
+                        {{ owid.location.aged_70_older|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.gdp_per_capita }}
+                    {{ owid.location.gdp_per_capita|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                        {{ owid.location.extreme_poverty }}
+                        {{ owid.location.extreme_poverty|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                        {{ owid.location.cardiovasc_death_rate }}
+                        {{ owid.location.cardiovasc_death_rate|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.diabetes_prevalence }}
+                    {{ owid.location.diabetes_prevalence|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.female_smokers }}
+                    {{ owid.location.female_smokers|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                        {{ owid.location.male_smokers }}
+                        {{ owid.location.male_smokers|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.handwashing_facilities }}
+                    {{ owid.location.handwashing_facilities|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                        {{ owid.location.hospital_beds_per_thousand }}
+                        {{ owid.location.hospital_beds_per_thousand|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.life_expectancy }}
+                    {{ owid.location.life_expectancy|round }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ url_for( 'owid.url_owid_country_one', country_id=owid.location.id) }}">
-                    {{ owid.location.human_development_index }}
+                    {{ owid.location.human_development_index|round }}
                     </a>
                 </td>
             </tr>
