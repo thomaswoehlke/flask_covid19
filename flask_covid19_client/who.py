@@ -17,4 +17,4 @@ who.index
 who.head()
 who
 
-library(DBI)
+# library(DBI)

@@ -61,10 +61,8 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         for altersgruppe_of_import in RkiImport.get_altersgruppe_list():
             i += 1
             my_altersgruppe = altersgruppe_of_import[0]
-            o = RkiAltersgruppe(
-                altersgruppe=my_altersgruppe,
-                processed_update=False,
-                processed_full_update=False,
+            o = RkiAltersgruppe.RkiAltersgruppe(
+                altersgruppe=my_altersgruppe
             )
             db.session.add(o)
             output = " [RKI] altersgruppe [ " + str(i) + " ] full update ... " + str(o)
@@ -245,7 +243,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] update date_reported [begin]")
+        app.logger.info(" [RKI] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiMeldedatum.set_all_processed_update()
@@ -259,13 +257,13 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] update date_reported [done]")
+        app.logger.info(" [RKI] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def __update_location_groups(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("  [RKI] update location_groups [begin]")
+        app.logger.info(" [RKI] update location_groups [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiBundesland.set_all_processed_update()
@@ -317,10 +315,8 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for new_altersgruppe in self.__get_new_altersgruppen():
             app.logger.info(" [RKI] new altersgruppe: "+str(new_altersgruppe))
             i += 1
-            o = RkiAltersgruppe(
-                altersgruppe=new_altersgruppe,
-                processed_update=False,
-                processed_full_update=False,
+            o = RkiAltersgruppe.RkiAltersgruppe(
+                altersgruppe=new_altersgruppe
             )
             db.session.add(o)
             db.session.commit()
@@ -387,9 +383,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.info("")
         joungest_datum = RkiMeldedatum.get_joungest_datum()
-        app.logger.info("  [RKI] joungest_datum:" + str(joungest_datum))
+        app.logger.info(" [RKI] joungest_datum:" + str(joungest_datum))
         app.logger.info("")
-        app.logger.info("  [RKI] RkiData.get_data_for_one_day(joungest_datum):")
+        app.logger.info(" [RKI] RkiData.get_data_for_one_day(joungest_datum):")
         app.logger.info("")
         i = 0
         output_lines = []
@@ -400,7 +396,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for line in output_lines:
             app.logger.info(line)
         app.logger.info("")
-        app.logger.info("  [RKI] RkiData.delete_data_for_one_day(joungest_datum)")
+        app.logger.info(" [RKI] RkiData.delete_data_for_one_day(joungest_datum)")
         app.logger.info("")
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")

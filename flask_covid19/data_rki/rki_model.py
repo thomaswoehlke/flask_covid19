@@ -76,6 +76,15 @@ class RkiAltersgruppe(AllEntity):
             all_str.append(my_altersgruppe.altersgruppe)
         return all_str
 
+    @classmethod
+    def create_new(cls, altersgruppe):
+        o = RkiAltersgruppe(
+            altersgruppe=altersgruppe,
+            processed_update=False,
+            processed_full_update=False
+        )
+        return o
+
 
 class RkiData(BlueprintFactTable):
     __tablename__ = 'rki'
