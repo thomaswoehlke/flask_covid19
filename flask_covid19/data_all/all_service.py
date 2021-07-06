@@ -45,6 +45,9 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
             'update': [
                 who_service, owid_service, rki_service
             ],
+            'update_but_full_update': [
+                vaccination_service, ecdc_service
+            ],
             'delete_last_day': [
                 who_service, owid_service, rki_service
             ],
@@ -159,6 +162,8 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         app.logger.info(" ")
         for service in self.__services_for['update']:
             service.update()
+        for service in self.__services_for['update_but_full_update']:
+            service.full_update()
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update [done] ")
