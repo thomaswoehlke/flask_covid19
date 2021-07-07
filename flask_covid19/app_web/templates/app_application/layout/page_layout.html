@@ -1,14 +1,23 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}{{page_info.title}}{% endblock %}
+
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="/static/vendor/bootswatch/superhero/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/flask_covid19.css') }}">
 {% endblock %}
+
 {% block scripts %}
-<script src="{{ url_for('static', filename='index.js')}} "></script>
 {{super()}}
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.js')}} "></script>
+<script src="{{ url_for('static', filename='vendor/popper.js/popper.js')}} "></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
+<script src="{{ url_for('static', filename='vendor/fontawesome-free/js/all.js')}} "></script>
+<script src="{{ url_for('static', filename='js/flask_covid19.js')}} "></script>
 {% endblock %}
+
 {% block html_attribs %} lang="en"{% endblock %}
 
 

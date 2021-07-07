@@ -19,7 +19,6 @@ class AppDatabase:
     def __init__(self):
         self.app = Flask('covid19')
         self.app_cors = CORS()
-        self.app_bootstrap = Bootstrap()
         self.login_manager = LoginManager()
         # self.cache = Cache()
         self.app.config.from_object(config)
@@ -32,14 +31,17 @@ class AppDatabase:
             pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
             url=self.app.config['SQLALCHEMY_DATABASE_HOST'],
             db=self.app.config['SQLALCHEMY_DATABASE_DB'])
+        self.app.config['BOOTSTRAP_SERVE_LOCAL'] = True
+        self.app.config['BOOTSTRAP_USE_CDN'] = False
+        self.app.config['BOOTSTRAP_CUSTOM_CSS'] = True
         self.app.config['SQLALCHEMY_DATABASE_URI'] = self.db_uri
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # silence the deprecation warning
         self.app.config['FLASK_ADMIN_SWATCH'] = 'superhero'
         self.items_per_page = self.app.config['SQLALCHEMY_ITEMS_PER_PAGE']
+        self.app_bootstrap = Bootstrap(self.app)
         oo_list = [
             self.db,
             self.app_cors,
-            self.app_bootstrap,
             self.login_manager
         ]
         for oo in oo_list:
