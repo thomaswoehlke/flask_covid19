@@ -42,3 +42,5 @@ SQLALCHEMY_DATABASE_DB = 'flask_covid19_rki'
 # SQLALCHEMY_DATABASE_DB = 'flask_covid19_frontend'
 # SQLALCHEMY_DATABASE_DB = 'flask_covid19_development'
 # SQLALCHEMY_DATABASE_DB = 'flask_covid19'
+BOOTSTRAP_SERVE_LOCAL = True
+
