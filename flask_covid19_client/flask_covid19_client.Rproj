@@ -22,7 +22,7 @@ QuitChildProcessesOnExit: Yes
 ZoteroLibraries: "My Library"
 
 PythonType: system
-PythonVersion: 3.9.6
-PythonPath: C:/Users/tw/AppData/Local/Programs/Python/Python39/python.exe
+PythonVersion: 3.9.5
+PythonPath: /usr/bin/python
 
 SpellingDictionary: de_DE
