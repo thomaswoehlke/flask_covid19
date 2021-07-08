@@ -19,6 +19,8 @@ BuildType: Makefile
 
 QuitChildProcessesOnExit: Yes
 
+ZoteroLibraries: "My Library"
+
 PythonType: system
 PythonVersion: 3.9.6
 PythonPath: C:/Users/tw/AppData/Local/Programs/Python/Python39/python.exe
