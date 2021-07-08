@@ -179,5 +179,5 @@ setup(
         scripts_dir + 'script_setup_requirements.py',
         scripts_dir + 'script_npm_install.py'
     ],
-    python_requires=">= 3.8"
+    python_requires=">= 3.9"
 )
