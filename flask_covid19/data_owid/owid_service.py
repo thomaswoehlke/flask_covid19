@@ -5,7 +5,8 @@ from data_all.all_service_mixins import AllServiceMixin
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_download import AllDownloadService
 from data_owid.owid_service_import import OwidServiceImport
-from data_owid.owid_service_update import OwidServiceUpdate, OwidServiceUpdateFull
+from data_owid.owid_service_update import OwidServiceUpdate
+from data_owid.owid_service_update_full import OwidServiceUpdateFull
 
 
 class OwidService(AllServiceMixin):

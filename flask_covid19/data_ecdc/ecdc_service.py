@@ -5,7 +5,8 @@ from data_all.all_service_mixins import AllServiceMixin
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_download import AllDownloadService
 from data_ecdc.ecdc_service_import import EcdcServiceImport
-from data_ecdc.ecdc_service_update import EcdcServiceUpdate, EcdcServiceUpdateFull
+from data_ecdc.ecdc_service_update import EcdcServiceUpdate
+from data_ecdc.ecdc_service_update_full import EcdcServiceUpdateFull
 
 
 class EcdcService(AllServiceMixin):
