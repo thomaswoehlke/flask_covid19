@@ -5,7 +5,8 @@ from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from data_rki.rki_model_factories import RkiServiceImportFactory
 from data_rki.rki_model_import_factories import RkiFlatFactory, RkiImportFactory
-from data_rki.rki_model_import import RkiImport, RkiFlat
+from data_rki.rki_model_import import RkiImport
+from data_rki.rki_model_flat import RkiFlat
 
 
 class RkiServiceImport(AllServiceMixinImport):

@@ -1,4 +1,4 @@
-from app_config.database import db, app#, cache
+from app_config.database import db, app
 
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull

@@ -1,4 +1,5 @@
-from data_rki.rki_model_import import RkiFlat, RkiImport
+from data_rki.rki_model_import import RkiImport
+from data_rki.rki_model_flat import RkiFlat
 
 
 class RkiImportFactory:
