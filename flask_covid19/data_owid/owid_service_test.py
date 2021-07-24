@@ -1,6 +1,8 @@
 from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
-from data_owid.owid_model import OwidData, OwidContinent, OwidCountry
+from data_owid.owid_model_location_group import OwidContinent
+from data_owid.owid_model_location import OwidCountry
+from data_owid.owid_model_data import OwidData
 from data_owid.owid_model_import import OwidImport
 
 

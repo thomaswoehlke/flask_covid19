@@ -1,5 +1,8 @@
 from data_owid.owid_model_import import OwidImport
-from data_owid.owid_model import OwidContinent, OwidCountry, OwidDateReported, OwidData
+from data_owid.owid_model import OwidDateReported
+from data_owid.owid_model_location_group import OwidContinent
+from data_owid.owid_model_location import OwidCountry
+from data_owid.owid_model_data import OwidData
 
 
 class OwidContinentFactory:

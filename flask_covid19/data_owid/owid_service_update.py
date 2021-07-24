@@ -2,7 +2,10 @@ from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_mixins import AllServiceMixinUpdate
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
+from data_owid.owid_model import OwidDateReported
+from data_owid.owid_model_location_group import OwidContinent
+from data_owid.owid_model_location import OwidCountry
+from data_owid.owid_model_data import OwidData
 from data_owid.owid_model_factories import OwidContinentFactory, OwidCountryFactory, \
     OwidDataFactory
 from data_owid.owid_model_import import OwidImport

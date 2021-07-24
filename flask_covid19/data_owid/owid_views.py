@@ -8,7 +8,10 @@ from flask_login import login_required
 from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import owid_service
 from app_web.web_model_transient import WebPageContent
-from data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
+from data_owid.owid_model import OwidDateReported
+from data_owid.owid_model_location_group import OwidContinent
+from data_owid.owid_model_location import OwidCountry
+from data_owid.owid_model_data import OwidData
 from data_owid.owid_model_import import OwidImport
 from data_owid.owid_model_flat import OwidFlat
 from data_owid.owid_service_test import OwidTestService
