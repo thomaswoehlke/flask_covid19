@@ -1,5 +1,5 @@
 # covid19python
-* Version 0.0.57
+* Version 0.0.58
 
 ## git
 * github: https://git.noc.ruhr-uni-bochum.de/thomaswoehlke/flask-covid19.git
