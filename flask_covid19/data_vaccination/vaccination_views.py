@@ -6,7 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import vaccination_service
 
-from data_vaccination.vaccination_model import VaccinationData
+from data_vaccination.vaccination_model_data import VaccinationData
 from data_vaccination.vaccination_model import VaccinationDateReported
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_vaccination.vaccination_model_flat import VaccinationFlat
