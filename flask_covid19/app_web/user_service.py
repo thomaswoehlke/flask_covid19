@@ -34,5 +34,3 @@ class UserService:
             self.__database.session.commit()
         else:
             app.logger.info("User.count() > 0")
-
-
