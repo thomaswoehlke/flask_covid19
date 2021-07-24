@@ -3,7 +3,8 @@ from data_all.all_service_mixins import AllServiceMixin
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_download import AllDownloadService
 from data_rki.rki_service_import import RkiServiceImport
-from data_rki.rki_service_update import RkiServiceUpdate, RkiServiceUpdateFull
+from data_rki.rki_service_update import RkiServiceUpdate
+from data_rki.rki_service_update_full import RkiServiceUpdateFull
 
 
 class RkiService(AllServiceMixin):
