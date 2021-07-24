@@ -1,5 +1,5 @@
 from app_config.database import db
-from data_all.all_model_import import AllFlat
+from data_all.all_model_flat import AllFlat
 
 
 class RkiFlat(AllFlat):

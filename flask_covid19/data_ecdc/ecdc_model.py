@@ -1,8 +1,10 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
-from data_all.all_model import AllDateReported, AllLocationGroup
-from data_all.all_model import AllLocation, BlueprintFactTable
+from data_all.all_model_date_reported import AllDateReported
+from data_all.all_model_location_group import AllLocationGroup
+from data_all.all_model_location import AllLocation
+from data_all.all_model_data import BlueprintFactTable
 
 
 class EcdcDateReported(AllDateReported):

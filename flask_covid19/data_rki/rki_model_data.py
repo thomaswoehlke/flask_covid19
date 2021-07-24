@@ -3,7 +3,7 @@ from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 
 from app_config.database import db, items_per_page
-from data_all.all_model import BlueprintFactTable
+from data_all.all_model_data import BlueprintFactTable
 from data_rki.rki_model import RkiMeldedatum
 from data_rki.rki_model_data_location import RkiLandkreis
 

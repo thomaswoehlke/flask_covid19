@@ -1,5 +1,5 @@
 
-from data_all.all_model import AllLocation
+from data_all.all_model_location import AllLocation
 
 
 class WhoCountry(AllLocation):

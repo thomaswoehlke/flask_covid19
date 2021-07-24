@@ -1,5 +1,6 @@
 
-from data_all.all_model import AllDateReported
+
+from data_all.all_model_date_reported import AllDateReported
 
 
 class WhoDateReported(AllDateReported):

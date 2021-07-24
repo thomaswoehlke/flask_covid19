@@ -1,5 +1,5 @@
 from datetime import date
-from data_all.all_model import AllDateReported
+from data_all.all_model_date_reported import AllDateReported
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_owid.owid_model import OwidDateReported
 from data_rki.rki_model import RkiMeldedatum

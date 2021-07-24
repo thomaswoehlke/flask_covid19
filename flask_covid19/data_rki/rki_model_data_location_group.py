@@ -1,6 +1,6 @@
 
 from app_config.database import db, items_per_page
-from data_all.all_model import AllLocationGroup
+from data_all.all_model_location_group import AllLocationGroup
 
 
 class RkiBundesland(AllLocationGroup):

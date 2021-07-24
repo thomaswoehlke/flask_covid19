@@ -1,6 +1,6 @@
 
 from app_config.database import db
-from data_all.all_model import AllFactTableTimeSeries
+from data_all.all_model_data import AllFactTableTimeSeries
 from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
 
 

@@ -1,6 +1,6 @@
 
 from app_config.database import db, items_per_page
-from data_all.all_model import AllDateReported
+from data_all.all_model_date_reported import AllDateReported
 
 
 class RkiMeldedatum(AllDateReported):
