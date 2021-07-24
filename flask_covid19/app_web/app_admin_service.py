@@ -11,7 +11,8 @@ class AdminService:
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.limit_nr = 20
-        self.file_path = '..'+os.sep+'data'+os.sep+'db'+os.sep+'covid19data.sql'
+        self.file_path_parent = 'data'+os.sep+'db'
+        self.file_path = self.file_path_parent + os.sep + 'covid19data.sql'
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [app_web] Admin Service [ready]")
 
@@ -20,17 +21,21 @@ class AdminService:
         app.logger.info("------------------------------------------------------------")
         app.logger.info(os.getcwd())
         user = app.config['SQLALCHEMY_DATABASE_USER']
+        pwd = app.config['SQLALCHEMY_DATABASE_PW']
         url = app.config['SQLALCHEMY_DATABASE_HOST']
         db = app.config['SQLALCHEMY_DATABASE_DB']
         db_type = app.config['SQLALCHEMY_DATABASE_TYPE']
-        cmd = ''
+        cmd = 'mkdir -p ' + self.file_path_parent
+        app.logger.info(" start: " + str(cmd))
+        returncode = self.__run_ome_shell_command(cmd)
+        app.logger.info(" result: " + str(returncode))
         if db_type == 'postgresql':
             cmd = 'pg_dump --if-exists --clean --no-tablespaces '\
                   +' --on-conflict-do-nothing --rows-per-insert=1000 --column-inserts '\
                   +' --quote-all-identifiers --no-privileges -U '+user+' -h '+url+' '+db+' > '\
                   + self.file_path
         if db_type == 'mariadb':
-            cmd = 'mysqldump -h ' + url + ' -u ' + user + ' -p ' + db + ' > ' \
+            cmd = 'mysqldump -h ' + url + ' -u ' + user + ' --password="' + pwd + '" ' + db + ' > ' \
                   + self.file_path
         app.logger.info(" start: "+str(cmd))
         returncode = self.__run_ome_shell_command(cmd)
