@@ -4,7 +4,7 @@ from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
 from data_all.all_model_data import BlueprintFactTable
 from data_owid.owid_model_location import OwidCountry
-from data_owid.owid_model import OwidDateReported
+from data_owid.owid_model_date_reported import OwidDateReported
 
 
 class OwidData(BlueprintFactTable):
