@@ -1,7 +1,7 @@
 
 from app_config.database import db
-from data_all.all_model_import import AllImport
 from data_all.all_model_import_mixins import AllImportFlatMixin
+from data_all.all_model_import import AllImport
 
 
 class AllFlat(AllImport, AllImportFlatMixin):

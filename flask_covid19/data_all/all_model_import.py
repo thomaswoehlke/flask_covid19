@@ -2,7 +2,7 @@ from datetime import date
 
 from app_config.database import db
 from data_all.all_model import AllEntity
-from data_all.all_model_import_mixins import AllImportMixin, AllImportFlatMixin
+from data_all.all_model_import_mixins import AllImportMixin
 
 
 class AllImport(AllEntity, AllImportMixin):
@@ -46,26 +46,3 @@ class AllImport(AllEntity, AllImportMixin):
             .distinct() \
             .order_by(cls.date_reported_import_str.desc()) \
             .all()
-
-
-class AllFlat(AllImport, AllImportFlatMixin):
-    __tablename__ = 'all_import_flat'
-    __mapper_args__ = {'concrete': True}
-
-    def __str__(self):
-        return " [ " + self.datum.isoformat() + " ] " \
-               + self.location_group + " : " \
-               + self.location_code + " | " \
-               + self.location\
-               + " | updated: " + str(self.processed_update) \
-               + " | full_updated: " + str(self.processed_full_update)
-
-    id = db.Column(db.Integer, primary_key=True)
-    processed_update = db.Column(db.Boolean, nullable=False)
-    processed_full_update = db.Column(db.Boolean, nullable=False)
-    #
-    date_reported_import_str = db.Column(db.String(255), nullable=False)
-    datum = db.Column(db.Date, nullable=False)
-    location = db.Column(db.String(255), nullable=False)
-    location_group = db.Column(db.String(255), nullable=False)
-    location_code = db.Column(db.String(255), nullable=False)
