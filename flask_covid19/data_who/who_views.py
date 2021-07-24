@@ -9,7 +9,9 @@ from app_config.database import app, admin, db, celery # , cache
 from app_web.web_dispachter_matrix_service import who_service
 from app_web.web_model_transient import WebPageContent
 
-from data_who.who_model_import import WhoImport, WhoFlat
+
+from data_who.who_model_import import WhoImport
+from data_who.who_model_flat import WhoFlat
 from data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData
 from data_who.who_service_test import WhoTestService
 

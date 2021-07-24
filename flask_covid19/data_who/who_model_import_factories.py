@@ -1,4 +1,5 @@
-from data_who.who_model_import import WhoFlat, WhoImport
+from data_who.who_model_import import WhoImport
+from data_who.who_model_flat import WhoFlat
 
 
 class WhoFlatFactory:
