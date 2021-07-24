@@ -22,10 +22,16 @@ class AdminService:
         user = app.config['SQLALCHEMY_DATABASE_USER']
         url = app.config['SQLALCHEMY_DATABASE_HOST']
         db = app.config['SQLALCHEMY_DATABASE_DB']
-        cmd = 'pg_dump --if-exists --clean --no-tablespaces '\
-              +' --on-conflict-do-nothing --rows-per-insert=1000 --column-inserts '\
-              +' --quote-all-identifiers --no-privileges -U '+user+' -h '+url+' '+db+' > '\
-              + self.file_path
+        db_type = app.config['SQLALCHEMY_DATABASE_TYPE']
+        cmd = ''
+        if db_type == 'postgresql':
+            cmd = 'pg_dump --if-exists --clean --no-tablespaces '\
+                  +' --on-conflict-do-nothing --rows-per-insert=1000 --column-inserts '\
+                  +' --quote-all-identifiers --no-privileges -U '+user+' -h '+url+' '+db+' > '\
+                  + self.file_path
+        if db_type == 'mariadb':
+            cmd = 'mysqldump -h ' + url + ' -u ' + user + ' -p ' + db + ' > ' \
+                  + self.file_path
         app.logger.info(" start: "+str(cmd))
         returncode = self.__run_ome_shell_command(cmd)
         app.logger.info(" result: " + str(returncode))
@@ -56,7 +62,12 @@ class AdminService:
         user = app.config['SQLALCHEMY_DATABASE_USER']
         url = app.config['SQLALCHEMY_DATABASE_HOST']
         db = app.config['SQLALCHEMY_DATABASE_DB']
-        one_cmd = 'psql -U ' + user + ' -h ' + url + ' ' + db + ' < ' + self.file_path
+        db_type = app.config['SQLALCHEMY_DATABASE_TYPE']
+        one_cmd = ''
+        if db_type == 'postgresql':
+            one_cmd = 'psql -U ' + user + ' -h ' + url + ' ' + db + ' < ' + self.file_path
+        if db_type == 'mariadb':
+            one_cmd = 'mysql -h ' + url + ' -u ' + user + ' ' + db + ' < ' + self.file_path
         cmd_list = [
             one_cmd
         ]
