@@ -72,7 +72,7 @@ class AdminService:
         app.logger.info(" AdminService.database_drop_and_create() [begin]")
         app.logger.info("------------------------------------------------------------")
         with app.app_context():
-            cache.clear()
+            # cache.clear()
             self.__database.drop_all()
             self.__database.create_all()
         app.logger.info("")
