@@ -1,5 +1,6 @@
-from app_config.database import db, items_per_page #, cache
-from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
+
+from data_vaccination.vaccination_model_import import VaccinationImport
+from data_vaccination.vaccination_model_flat import VaccinationFlat
 
 
 class VaccinationImportFactory:

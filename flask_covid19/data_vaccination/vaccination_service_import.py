@@ -6,7 +6,8 @@ from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory
 
-from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationFlat
+from data_vaccination.vaccination_model_import import VaccinationImport
+from data_vaccination.vaccination_model_flat import VaccinationFlat
 from data_vaccination.vaccination_model_import_factories import VaccinationImportFactory, \
     VaccinationFlatFactory
 

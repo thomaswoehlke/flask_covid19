@@ -1,33 +1,36 @@
 
 from app_config.database import db
-from data_all.all_model import AllDateReported, AllFactTableTimeSeries
+from data_all.all_model_import import AllFlat
 
 
-class VaccinationDateReported(AllDateReported):
-    __mapper_args__ = {
-        'polymorphic_identity': 'vaccination_date_reported'
-    }
-
-
-class VaccinationData(AllFactTableTimeSeries):
-    __tablename__ = 'vaccination'
+class VaccinationFlat(AllFlat):
+    __tablename__ = 'vaccination_import_flat'
     __mapper_args__ = {'concrete': True}
-    __table_args__ = (
-        db.UniqueConstraint('date_reported_id', name="uix_vaccination"),
-    )
 
     def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__, self.date_reported.__repr__())
+        return "%s(%s %s)" % (self.__class__.__name__,
+                              self.date_reported_import_str,
+                              self.datum.isoformat())
 
     id = db.Column(db.Integer, primary_key=True)
-    date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
-    date_reported = db.relationship(
-        'VaccinationDateReported',
-        lazy='joined',
-        cascade='save-update',
-        order_by='desc(VaccinationDateReported.datum)')
     processed_update = db.Column(db.Boolean, nullable=False, index=True)
     processed_full_update = db.Column(db.Boolean, nullable=False, index=True)
+    date_reported_import_str = db.Column(db.String(255), nullable=False, index=True)
+    datum = db.Column(db.Date, nullable=False, index=True)
+    location = db.Column(db.String(255), nullable=False, index=True)
+    location_group = db.Column(db.String(255), nullable=False, index=True)
+    location_code = db.Column(db.String(255), nullable=False, index=True)
+    #
+    year = db.Column(db.Integer, nullable=False, index=True)
+    year_month = db.Column(db.String(255), nullable=False, index=True)
+    year_week = db.Column(db.String(255), nullable=False, index=True)
+    year_day_of_year = db.Column(db.String(255), nullable=False, index=True)
+    #
+    month = db.Column(db.Integer, nullable=False, index=True)
+    day_of_month = db.Column(db.Integer, nullable=False, index=True)
+    day_of_week = db.Column(db.Integer, nullable=False, index=True)
+    week_of_year = db.Column(db.Integer, nullable=False, index=True)
+    day_of_year = db.Column(db.Integer, nullable=False, index=True)
     #
     dosen_kumulativ = db.Column(db.Integer, nullable=False, index=True)
     dosen_differenz_zum_vortag = db.Column(db.Integer, nullable=False, index=True)
@@ -49,16 +52,3 @@ class VaccinationData(AllFactTableTimeSeries):
     indikation_beruf_voll = db.Column(db.Integer, nullable=False, index=True)
     indikation_medizinisch_voll = db.Column(db.Integer, nullable=False, index=True)
     indikation_pflegeheim_voll = db.Column(db.Integer, nullable=False, index=True)
-
-    @classmethod
-    def find_by_date_reported(cls, date_reported: VaccinationDateReported):
-        return db.session.query(cls) \
-            .filter(cls.date_reported_id == date_reported.id) \
-            .one_or_none()
-
-    @classmethod
-    def delete_data_for_one_day(cls, date_reported: VaccinationDateReported):
-        for data in cls.find_by_date_reported(date_reported):
-            db.session.delete(data)
-        db.session.delete(date_reported)
-        db.session.commit()
