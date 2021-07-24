@@ -4,7 +4,7 @@ from data_ecdc.ecdc_model import EcdcDateReported
 from data_owid.owid_model import OwidDateReported
 from data_rki.rki_model import RkiMeldedatum
 from data_vaccination.vaccination_model import VaccinationDateReported
-from data_who.who_model import WhoDateReported
+from data_who.who_model_date_reported import WhoDateReported
 
 
 class BlueprintDateReportedFactory:

@@ -63,11 +63,3 @@ class WhoService(AllServiceMixin):
     def delete_last_day(self):
         self.service_update.delete_last_day()
         return self
-
-
-
-
-
-
-
-

@@ -1,5 +1,8 @@
 from data_who.who_model_import import WhoImport
-from data_who.who_model import WhoCountryRegion, WhoCountry, WhoDateReported, WhoData
+from data_who.who_model_date_reported import WhoDateReported
+from data_who.who_model_data import WhoData
+from data_who.who_model_location_group import WhoCountryRegion
+from data_who.who_model_location import WhoCountry
 
 
 class WhoCountryRegionFactory:
@@ -42,5 +45,3 @@ class WhoDataFactory:
             processed_full_update=False
         )
         return o
-
-

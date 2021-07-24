@@ -2,9 +2,13 @@
 from app_config.database import db, app
 from data_all.all_service_mixins import AllServiceMixinUpdateFull
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_who.who_model import WhoCountryRegion, WhoDateReported, WhoCountry, WhoData
-from data_who.who_model_factories import WhoCountryRegionFactory, WhoCountryFactory, \
-    WhoDataFactory
+from data_who.who_model_date_reported import WhoDateReported
+from data_who.who_model_data import WhoData
+from data_who.who_model_location_group import WhoCountryRegion
+from data_who.who_model_location import WhoCountry
+from data_who.who_model_factories import WhoCountryRegionFactory
+from data_who.who_model_factories import WhoCountryFactory
+from data_who.who_model_factories import WhoDataFactory
 from data_who.who_model_import import WhoImport
 from data_who.who_service_update import WhoServiceUpdateBase
 

@@ -1,26 +1,10 @@
+
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
-from data_all.all_model import AllDateReported, BlueprintFactTable
-from data_all.all_model import AllLocationGroup, AllLocation
-
-
-class WhoDateReported(AllDateReported):
-    __mapper_args__ = {
-        'polymorphic_identity': 'who_date_reported'
-    }
-
-
-class WhoCountryRegion(AllLocationGroup):
-    __mapper_args__ = {
-        'polymorphic_identity': 'who_location_group'
-    }
-
-
-class WhoCountry(AllLocation):
-    __mapper_args__ = {
-        'polymorphic_identity': 'who_location'
-    }
+from data_all.all_model import BlueprintFactTable
+from data_who.who_model_location import WhoCountry
+from data_who.who_model_date_reported import WhoDateReported
 
 
 class WhoData(BlueprintFactTable):
