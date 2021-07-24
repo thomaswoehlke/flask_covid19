@@ -1,4 +1,8 @@
-from data_ecdc.ecdc_model import EcdcContinent, EcdcCountry, EcdcDateReported, EcdcData
+
+from data_ecdc.ecdc_model import EcdcDateReported
+from data_ecdc.ecdc_model_location_group import EcdcContinent
+from data_ecdc.ecdc_model_location import EcdcCountry
+from data_ecdc.ecdc_model_data import EcdcData
 
 
 class EcdcContinentFactory:

@@ -3,7 +3,10 @@ from data_all.all_config import BlueprintConfig
 from data_ecdc.ecdc_model_factories import EcdcContinentFactory, EcdcCountryFactory, EcdcDataFactory
 from data_ecdc.ecdc_model_import import EcdcImport
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
+from data_ecdc.ecdc_model import EcdcDateReported
+from data_ecdc.ecdc_model_location_group import EcdcContinent
+from data_ecdc.ecdc_model_location import EcdcCountry
+from data_ecdc.ecdc_model_data import EcdcData
 
 
 class EcdcServiceUpdateBase:
