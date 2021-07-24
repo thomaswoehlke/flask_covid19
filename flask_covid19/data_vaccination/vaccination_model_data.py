@@ -1,7 +1,7 @@
 
 from app_config.database import db
 from data_all.all_model import AllFactTableTimeSeries
-from data_vaccination.vaccination_model import VaccinationDateReported
+from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
 
 
 class VaccinationData(AllFactTableTimeSeries):
