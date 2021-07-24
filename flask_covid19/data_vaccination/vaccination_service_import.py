@@ -8,8 +8,8 @@ from app_web.web_model_factory import BlueprintDateReportedFactory
 
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_vaccination.vaccination_model_flat import VaccinationFlat
-from data_vaccination.vaccination_model_import_factories import VaccinationImportFactory, \
-    VaccinationFlatFactory
+from data_vaccination.vaccination_model_import_factories import VaccinationImportFactory
+from data_vaccination.vaccination_model_flat_factories import VaccinationFlatFactory
 
 
 class VaccinationServiceImport(AllServiceMixinImport):

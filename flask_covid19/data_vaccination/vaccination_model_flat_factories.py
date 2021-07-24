@@ -1,8 +1,8 @@
 
-from data_vaccination.vaccination_model_import import VaccinationImport
+from data_vaccination.vaccination_model_flat import VaccinationFlat
 
 
-class VaccinationImportFactory:
+class VaccinationFlatFactory:
 
     @classmethod
     def __int(cls, input_string: str):
@@ -13,7 +13,24 @@ class VaccinationImportFactory:
 
     @classmethod
     def create_new(cls, date_reported, d, row):
-        o = VaccinationImport(
+        oo = VaccinationFlat(
+            datum=d.datum,
+            year=d.year,
+            month=d.month,
+            day_of_month=d.day_of_month,
+            day_of_week=d.day_of_week,
+            week_of_year=d.week_of_year,
+            day_of_year=d.day_of_year,
+            year_week=d.year_week,
+            year_day_of_year=d.year_day_of_year,
+            date_reported_import_str=date_reported,
+            year_month=d.year_month,
+            location_code="",
+            location="",
+            location_group="",
+            processed_update=False,
+            processed_full_update=False,
+            #
             dosen_kumulativ=cls.__int(row['dosen_kumulativ']),
             dosen_differenz_zum_vortag=cls.__int(row['dosen_differenz_zum_vortag']),
             dosen_biontech_kumulativ=cls.__int(row['dosen_biontech_kumulativ']),
@@ -34,9 +51,5 @@ class VaccinationImportFactory:
             indikation_beruf_voll=cls.__int(row['indikation_beruf_voll']),
             indikation_medizinisch_voll=cls.__int(row['indikation_medizinisch_voll']),
             indikation_pflegeheim_voll=cls.__int(row['indikation_pflegeheim_voll']),
-            date_reported_import_str=date_reported,
-            datum=d.datum,
-            processed_update=False,
-            processed_full_update=False,
         )
-        return o
+        return oo
