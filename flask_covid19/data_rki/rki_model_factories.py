@@ -1,6 +1,10 @@
 from data_rki.rki_model_import import RkiImport
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_rki.rki_model import RkiBundesland, RkiLandkreis, RkiData
+from data_rki.rki_model import RkiMeldedatum
+from data_rki.rki_model_data_location_group import RkiBundesland
+from data_rki.rki_model_data_location import RkiLandkreis
+from data_rki.rki_model_altersgruppe import RkiAltersgruppe
+from data_rki.rki_model_data import RkiData
 
 
 class RkiServiceImportFactory:

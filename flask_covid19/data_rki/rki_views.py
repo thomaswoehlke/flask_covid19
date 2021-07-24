@@ -6,8 +6,11 @@ from flask_login import login_required
 
 from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import rki_service
-from data_rki.rki_model import RkiData, RkiMeldedatum, RkiBundesland, RkiLandkreis
-from data_rki.rki_model import RkiAltersgruppe
+from data_rki.rki_model import RkiMeldedatum
+from data_rki.rki_model_data_location_group import RkiBundesland
+from data_rki.rki_model_data_location import RkiLandkreis
+from data_rki.rki_model_altersgruppe import RkiAltersgruppe
+from data_rki.rki_model_data import RkiData
 from data_rki.rki_model_import import RkiImport
 from data_rki.rki_model_flat import RkiFlat
 from app_web.web_model_transient import WebPageContent
