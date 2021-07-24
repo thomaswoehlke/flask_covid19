@@ -1,4 +1,4 @@
-from app_config.database import app, db, celery
+from app_config.database import app
 from data_all.all_service_mixins import AllServiceMixin
 
 from data_ecdc.ecdc_service import EcdcService

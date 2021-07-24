@@ -1,4 +1,5 @@
-from data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
+from data_ecdc.ecdc_model_import import EcdcImport
+from data_ecdc.ecdc_model_flat import EcdcFlat
 
 
 class EcdcImportFactory:

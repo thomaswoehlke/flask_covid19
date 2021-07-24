@@ -9,7 +9,8 @@ from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import owid_service
 from app_web.web_model_transient import WebPageContent
 from data_owid.owid_model import OwidDateReported, OwidData, OwidContinent, OwidCountry
-from data_owid.owid_model_import import OwidImport, OwidFlat
+from data_owid.owid_model_import import OwidImport
+from data_owid.owid_model_flat import OwidFlat
 from data_owid.owid_service_test import OwidTestService
 
 app_owid = Blueprint('owid', __name__, template_folder='templates', url_prefix='/owid ')

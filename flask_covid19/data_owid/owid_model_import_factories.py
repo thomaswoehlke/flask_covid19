@@ -1,4 +1,5 @@
-from data_owid.owid_model_import import OwidImport, OwidFlat
+from data_owid.owid_model_import import OwidImport
+from data_owid.owid_model_flat import OwidFlat
 
 
 class OwidImportFactory:

@@ -1,6 +1,6 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
-from app_config.database import db, items_per_page #, cache
+from app_config.database import db, items_per_page
 from data_all.all_model import AllDateReported, AllLocationGroup
 from data_all.all_model import AllLocation, BlueprintFactTable
 

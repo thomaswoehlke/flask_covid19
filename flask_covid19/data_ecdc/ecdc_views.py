@@ -8,7 +8,8 @@ from app_config.database import app, admin, db, celery
 from app_web.web_dispachter_matrix_service import ecdc_service
 from data_ecdc.ecdc_service_test import EcdcTestService
 
-from data_ecdc.ecdc_model_import import EcdcImport, EcdcFlat
+from data_ecdc.ecdc_model_import import EcdcImport
+from data_ecdc.ecdc_model_flat import EcdcFlat
 from data_ecdc.ecdc_model import EcdcDateReported, EcdcContinent, EcdcCountry, EcdcData
 from app_web.web_model_transient import WebPageContent
 

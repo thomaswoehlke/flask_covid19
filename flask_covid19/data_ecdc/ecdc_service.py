@@ -1,3 +1,4 @@
+
 from app_config.database import app
 
 from data_all.all_service_mixins import AllServiceMixin

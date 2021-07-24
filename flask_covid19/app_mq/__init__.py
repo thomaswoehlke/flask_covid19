@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from app_web.web_dispachter_matrix_service import web_service
-from app_web.web_views import app, celery  # , cache
+from app_web.web_views import app, celery
 
 
 def run_mq():
