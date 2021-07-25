@@ -1,7 +1,5 @@
 from flask import render_template, redirect, url_for, Blueprint
 
-import app_static
-
 from app_config.database import app, celery, db
 
 from app_web.web_model_transient import WebPageContent
