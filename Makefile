@@ -235,7 +235,7 @@ distclean: clean venv_clean renv_clean
 
 start: pip_setuptools pip_install setup_frontend
 
-pip_rebuild: pip_compile pip_install pip_check setup_frontend
+pip: pip_compile pip_install pip_check setup_frontend
 
 setup: clean setup_development setup_build
 
