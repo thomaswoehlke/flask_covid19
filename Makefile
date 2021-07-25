@@ -114,6 +114,12 @@ pip_setuptools:
 	$(PYTHON) -m pip install setuptools wheel
 	$(PYTHON) -m pip uninstall $(APP_MYSELF) -y
 
+pip_uninstall:
+	@echo "pip_uninstall"
+	$(PIP) freeze > etc/requirements.txt
+	$(PIP) uninstall -r etc/requirements.txt -y
+	$(PIP) check
+
 # -----------------------------------------------------------------------------------------------------
 #
 #    setup

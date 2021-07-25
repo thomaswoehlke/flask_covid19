@@ -8,8 +8,6 @@ appdirs==1.4.4
     # via virtualenv
 argparse==1.4.0
     # via pytoolbox
-atomicwrites==1.4.0
-    # via pytest
 attrs==21.2.0
     # via pytest
 certifi==2020.12.5
@@ -22,8 +20,6 @@ click==7.1.2
     # via
     #   flask
     #   pip-tools
-colorama==0.4.4
-    # via pytest
 distlib==0.3.1
     # via virtualenv
 filelock==3.0.12
@@ -32,7 +28,7 @@ flask-sqlalchemy==2.5.1
     # via pytest-flask-sqlalchemy
 flask==1.1.4
     # via
-    #   -r flask_covid19/app_build/requirements\build.in
+    #   -r flask_covid19/app_build/requirements/build.in
     #   flask-sqlalchemy
     #   pytest-flask
 greenlet==1.0.0
@@ -54,9 +50,9 @@ packaging==20.9
 pep517==0.10.0
     # via pip-tools
 pip-tools==6.1.0
-    # via -r flask_covid19/app_build/requirements\build.in
+    # via -r flask_covid19/app_build/requirements/build.in
 pipenv==2021.5.29
-    # via -r flask_covid19/app_build/requirements\build.in
+    # via -r flask_covid19/app_build/requirements/build.in
 pluggy==0.13.1
     # via pytest
 py==1.10.0
@@ -80,11 +76,11 @@ pytest==6.2.4
     #   pytest-flask-sqlalchemy
     #   pytest-mock
 python-dotenv==0.17.1
-    # via -r flask_covid19/app_build/requirements\build.in
+    # via -r flask_covid19/app_build/requirements/build.in
 python-magic==0.4.22
     # via pytoolbox
 pytoolbox==14.0.0
-    # via -r flask_covid19/app_build/requirements\build.in
+    # via -r flask_covid19/app_build/requirements/build.in
 pytz==2021.1
     # via pytoolbox
 pyyaml==5.4.1
@@ -103,20 +99,20 @@ toml==0.10.2
     #   pytest
 urllib3==1.26.5
     # via
-    #   -r flask_covid19/app_build/requirements\build.in
+    #   -r flask_covid19/app_build/requirements/build.in
     #   requests
 virtualenv-clone==0.5.4
     # via pipenv
 virtualenv==20.4.7
     # via
-    #   -r flask_covid19/app_build/requirements\build.in
+    #   -r flask_covid19/app_build/requirements/build.in
     #   pipenv
 werkzeug==1.0.1
     # via
     #   flask
     #   pytest-flask
 wheel==0.36.2
-    # via -r flask_covid19/app_build/requirements\build.in
+    # via -r flask_covid19/app_build/requirements/build.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
