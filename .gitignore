@@ -1132,8 +1132,9 @@ dump.rdb
 !flask_covid19/app_build/scripts
 /logfile*.txt
 /.checkmate
-/flask_covid19/app_static/static/vendor/
-/flask_covid19/app_static/static/vendor/*
-/flask_covid19/app_static/static/vendor
+/flask_covid19/app_web/static/vendor/
+/flask_covid19/app_web/static/vendor/*
+/flask_covid19/app_web/static/vendor
 /RKI.csv
 /flask_covid19_client/nohup.out
+/flask_covid19/app_web/static/vendor/
