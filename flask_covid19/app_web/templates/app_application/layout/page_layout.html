@@ -11,9 +11,6 @@
 
 {% block scripts %}
 {{super()}}
-<script src="{{ url_for('static', filename='vendor/jquery/jquery.js')}} "></script>
-<script src="{{ url_for('static', filename='vendor/popper.js/popper.js')}} "></script>
-<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
 <script src="{{ url_for('static', filename='vendor/fontawesome-free/js/all.js')}} "></script>
 <script src="{{ url_for('static', filename='js/flask_covid19.js')}} "></script>
 {% endblock %}
