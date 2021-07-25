@@ -5,7 +5,7 @@
     "main": "/static/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/thomaswoehlke/flask_covid19/tree/main/flask_covid19/app_static/"
+        "url": "https://github.com/thomaswoehlke/flask_covid19/tree/main/flask_covid19/"
     },
     "keywords": [
         "virus",
