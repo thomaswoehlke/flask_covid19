@@ -91,7 +91,6 @@ pip_compile:
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
 
 pip_install:
 	@echo "pip_install"
@@ -101,6 +100,10 @@ pip_install:
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
 	$(PIP) freeze > etc/requirements.txt
 	$(PIP) check
+
+pip_compile_windows: pip_compile
+	@echo "pip_compile"
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
 
 pip_install_windows: pip_install
 	@echo "pip_install_windows"
