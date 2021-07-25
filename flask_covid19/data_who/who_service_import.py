@@ -1,6 +1,6 @@
 import sys
 import csv
-from app_config.database import app_database
+from app_config.database import covid19_application
 from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory
@@ -9,8 +9,8 @@ from data_who.who_model_flat_factories import WhoFlatFactory
 from data_who.who_model_import import WhoImport
 from data_who.who_model_flat import WhoFlat
 
-app = app_database.app
-db = app_database.db
+app = covid19_application.app
+db = covid19_application.db
 
 
 class WhoServiceImport(AllServiceMixinImport):

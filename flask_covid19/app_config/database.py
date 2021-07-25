@@ -14,7 +14,7 @@ from celery import Celery
 from app_config import config
 
 
-class AppDatabase:
+class Covid19Application:
 
     def __init__(self):
         self.app = Flask('covid19')
@@ -23,14 +23,9 @@ class AppDatabase:
         # self.cache = Cache()
         self.app.config.from_object(config)
         self.login_manager.login_view = 'usr.login'
-        # self.db_uri = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
-        # self.db_uri = 'mysql://{user}:{pw}@{url}/{db}'.format(
         self.db = SQLAlchemy()
-        self.db_uri = 'mariadb+mariadbconnector://{user}:{pw}@{url}/{db}'.format(
-            user=self.app.config['SQLALCHEMY_DATABASE_USER'],
-            pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
-            url=self.app.config['SQLALCHEMY_DATABASE_HOST'],
-            db=self.app.config['SQLALCHEMY_DATABASE_DB'])
+        self.database_type = self.app.config['SQLALCHEMY_DATABASE_TYPE']
+        self.db_uri = self.__create_db_uri(self.database_type)
         self.app.config['BOOTSTRAP_SERVE_LOCAL'] = True
         self.app.config['BOOTSTRAP_USE_CDN'] = False
         self.app.config['BOOTSTRAP_CUSTOM_CSS'] = True
@@ -87,10 +82,35 @@ class AppDatabase:
             name='covid19 | admin',
             template_mode='bootstrap4')
         self.root_dir = os.getcwd()
-        self.create_celery_broker_paths()
+        self.__create_celery_broker_paths()
         self.create_celery()
 
-    def create_celery_broker_paths(self):
+    def __create_db_uri(self, database_type: str):
+        if database_type == 'mariadb':
+            return 'mariadb+mariadbconnector://{user}:{pw}@{url}/{db}'.format(
+                user=self.app.config['SQLALCHEMY_DATABASE_USER'],
+                pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
+                url=self.app.config['SQLALCHEMY_DATABASE_HOST'],
+                db=self.app.config['SQLALCHEMY_DATABASE_DB'])
+        if database_type == 'postgresql':
+            return 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(
+                user=self.app.config['SQLALCHEMY_DATABASE_USER'],
+                pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
+                url=self.app.config['SQLALCHEMY_DATABASE_HOST'],
+                db=self.app.config['SQLALCHEMY_DATABASE_DB'])
+        if database_type == 'mysql':
+            return 'mysql://{user}:{pw}@{url}/{db}'.format(
+                user=self.app.config['SQLALCHEMY_DATABASE_USER'],
+                pw=self.app.config['SQLALCHEMY_DATABASE_PW'],
+                url=self.app.config['SQLALCHEMY_DATABASE_HOST'],
+                db=self.app.config['SQLALCHEMY_DATABASE_DB'])
+        return None
+
+    def create_db(self):
+        self.db.create_all()
+        return self
+
+    def __create_celery_broker_paths(self):
         broker_path = self.root_dir + os.sep + 'broker' + os.sep
         self.broker_out = broker_path + 'out'
         self.broker_procesed = broker_path + 'processed'
@@ -108,31 +128,40 @@ class AppDatabase:
             os.chdir(self.root_dir)
         self.app.logger.info(os.getcwd())
         celery = Celery("flask_covid19_celery")
-        self.create_celery_broker_paths()
+        self.__create_celery_broker_paths()
         celery.conf.update(self.app.config)
-        self.broker_url = 'filesystem://'
-        self.broker_transport_options = {
+        if sys.platform == 'linux':
+            self.broker_url = 'filesystem://'
+            self.broker_transport_options = {
                 'data_folder_in': self.broker_out,
                 'data_folder_out': self.broker_out,
                 'data_folder_processed': self.broker_procesed
             }
-        self.conf_update = {
-            'broker_url': self.broker_url,
-            'broker_transport_options': self.broker_transport_options
-        }
-        celery.conf.update(self.conf_update)
+            self.conf_update = {
+                'broker_url': self.broker_url,
+                'broker_transport_options': self.broker_transport_options
+            }
+            celery.conf.update(self.conf_update)
+        else:
+            self.broker_url = 'filesystem://'
+            self.broker_transport_options = {
+                    'data_folder_in': self.broker_out,
+                    'data_folder_out': self.broker_out,
+                    'data_folder_processed': self.broker_procesed
+                }
+            self.conf_update = {
+                'broker_url': self.broker_url,
+                'broker_transport_options': self.broker_transport_options
+            }
+            celery.conf.update(self.conf_update)
         return celery
 
-    def create_db(self):
-        self.db.create_all()
-        return self
 
-
-app_database = AppDatabase()
-app = app_database.app
-db = app_database.db
-admin = app_database.admin
-root_dir = app_database.root_dir
-login_manager = app_database.login_manager
-items_per_page = app_database.items_per_page
-celery = app_database.create_celery()
+covid19_application = Covid19Application()
+app = covid19_application.app
+db = covid19_application.db
+admin = covid19_application.admin
+root_dir = covid19_application.root_dir
+login_manager = covid19_application.login_manager
+items_per_page = covid19_application.items_per_page
+celery = covid19_application.create_celery()
