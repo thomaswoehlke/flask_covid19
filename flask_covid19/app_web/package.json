@@ -27,7 +27,7 @@
         "build:version": "node scripts/version.js",
         "docker:build": "node scripts/docker/docker-build.js",
         "docker:run": "node scripts/docker/docker-run.js",
-        "postinstall": "../app_static/node_modules/.bin/grunt"
+        "postinstall": "../app_web/node_modules/.bin/grunt"
     },
     "private": true,
     "dependencies": {
