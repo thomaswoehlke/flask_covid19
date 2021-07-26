@@ -4,10 +4,8 @@ from app_config.database import db, app
 from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_ecdc.ecdc_model_import import EcdcImport
-from data_ecdc.ecdc_model_flat import EcdcFlat
-from data_ecdc.ecdc_model_import_factories import EcdcImportFactory
-from data_ecdc.ecdc_model_flat_factories import EcdcFlatFactory
+from data_ecdc.ecdc_model_import import EcdcImport, EcdcImportFactory
+from data_ecdc.ecdc_model_flat import EcdcFlat, EcdcFlatFactory
 
 
 class EcdcServiceImport(AllServiceMixinImport):

@@ -2,6 +2,7 @@
 from sqlalchemy import and_
 from app_config.database import db, items_per_page
 from data_all.all_model_location import AllLocation
+from data_ecdc.ecdc_model_location_group import EcdcContinent
 
 
 class EcdcCountry(AllLocation):
@@ -48,3 +49,19 @@ class EcdcCountry(AllLocation):
         return db.session.query(cls) \
             .filter(cls.location_code == 'DEU') \
             .one_or_none()
+
+
+class EcdcCountryFactory:
+
+    @classmethod
+    def create_new(cls, c: [], my_continent: EcdcContinent):
+        o = EcdcCountry(
+            location=c[0],
+            pop_data_2019=c[1],
+            geo_id=c[2],
+            location_code=c[3],
+            location_group=my_continent,
+            processed_update=False,
+            processed_full_update=False,
+        )
+        return o
