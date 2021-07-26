@@ -44,8 +44,11 @@ class RkiAltersgruppe(AllEntity):
             all_str.append(my_altersgruppe.altersgruppe)
         return all_str
 
+
+class RkiAltersgruppeFactory:
+
     @classmethod
-    def create_new(cls, altersgruppe):
+    def create_new(cls, altersgruppe: str):
         o = RkiAltersgruppe(
             altersgruppe=altersgruppe,
             processed_update=False,

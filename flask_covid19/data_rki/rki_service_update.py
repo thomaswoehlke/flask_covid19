@@ -4,13 +4,10 @@ from data_all.all_config import BlueprintConfig
 from data_all.all_service_mixins import AllServiceMixinUpdate
 from app_web.web_model_factory import BlueprintDateReportedFactory
 from data_rki.rki_model_date_reported import RkiMeldedatum
-from data_rki.rki_model_data_location_group import RkiBundesland
-from data_rki.rki_model_data_location import RkiLandkreis
+from data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
+from data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory
 from data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from data_rki.rki_model_data import RkiData
-from data_rki.rki_model_factories import RkiBundeslandFactory
-from data_rki.rki_model_factories import RkiLandkreisFactory
-from data_rki.rki_model_factories import RkiDataFactory
+from data_rki.rki_model_data import RkiData, RkiDataFactory
 from data_rki.rki_model_import import RkiImport
 
 
