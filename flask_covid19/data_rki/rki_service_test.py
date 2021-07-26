@@ -1,3 +1,5 @@
+from sqlalchemy.orm import Bundle
+
 from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
 from data_rki.rki_model_date_reported import RkiMeldedatum
@@ -21,10 +23,10 @@ class RkiTestService:
         app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.full_update_dimension_tables() [START]")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiTestService.full_update_dimension_tables() [START]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
         RkiData.remove_all()
         RkiLandkreis.remove_all()
         for continent in RkiBundesland.get_all():
@@ -54,7 +56,28 @@ class RkiTestService:
                 )
                 db.session.add(o)
         db.session.commit()
-        app.logger.debug("")
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RkiTestService.full_update_dimension_tables() [DONE]")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiTestService.full_update_dimension_tables() [DONE]")
+        app.logger.info("------------------------------------------------------------")
+
+    def get_altersgruppe_list(self):
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiTestService.get_altersgruppe_list() [START]")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
+        altersgruppe_list = []
+        bu = Bundle('altersgruppe', RkiImport.altersgruppe)
+        for altersgruppe_row in db.session.query(bu).distinct():
+            item = altersgruppe_row[0][0]
+            if item not in altersgruppe_list:
+                altersgruppe_list.append(item)
+                app.logger.info("NEW altersgruppe: " + str(item))
+            else:
+                app.logger.info("OLD altersgruppe: " + str(item))
+        for item in RkiImport.get_altersgruppe_list():
+            app.logger.info("altersgruppe: " + str(item))
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" RkiTestService.get_altersgruppe_list() [DONE]")
+        app.logger.info("------------------------------------------------------------")
