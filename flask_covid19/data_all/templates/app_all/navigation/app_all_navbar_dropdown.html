@@ -1,9 +1,10 @@
                 {% if current_user.is_authenticated %}
-                <li class="dropdown">
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
-                        All<i class="glyphicon glyphicon-chevron-down small"></i>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownMenuLinkDataAll" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        All
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataAll">
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'app_all.url_all_info') }}">
                                 All info
