@@ -3,7 +3,7 @@ from app_config.database import db, app
 
 from data_all.all_service_import_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
-from data_all.all_model_date_reported import BlueprintDateReportedFactory
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from data_owid.owid_model_import import OwidImport, OwidImportFactory
 from data_owid.owid_model_flat import OwidFlat, OwidFlatFactory
 

@@ -2,7 +2,7 @@ from app_config.database import db, app
 
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.all_model_date_reported import BlueprintDateReportedFactory
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from data_rki.rki_model_date_reported import RkiMeldedatum
 from data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
 from data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory

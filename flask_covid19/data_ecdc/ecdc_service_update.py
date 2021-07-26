@@ -2,7 +2,7 @@ from app_config.database import db, app
 from data_all.all_config import BlueprintConfig
 from data_all.all_service_update_mixins import AllServiceMixinUpdate
 from data_ecdc.ecdc_model_import import EcdcImport
-from data_all.all_model_date_reported import BlueprintDateReportedFactory
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_ecdc.ecdc_model_location_group import EcdcContinent, EcdcContinentFactory
 from data_ecdc.ecdc_model_location import EcdcCountry, EcdcCountryFactory
