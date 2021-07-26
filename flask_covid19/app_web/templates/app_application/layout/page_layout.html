@@ -18,11 +18,7 @@
 {% block html_attribs %} lang="en"{% endblock %}
 
 {% block navbar %}
-  {% include 'app_application/navigation/navbar.html' %}
-{% endblock %}
-
-{% block content %}
-    {{super()}}
+    {% include 'app_application/navigation/navbar.html' %}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -34,15 +30,26 @@
                 {% include 'app_application/fragments/fragment_flashed_messages.html' %}
             </div>
         </div>
-    </div>
-    <div class="container">
         <div class="row">
             <div class="col">
                 <nav>
-                {% include 'app_application/navigation/navtabs.html' %}
+                    {% include 'app_application/navigation/navtabs.html' %}
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav>
+                    {% block navtabs %}
+
+                    {% endblock %}
                 </nav>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block content %}
+    {{super()}}
 {% endblock %}
 

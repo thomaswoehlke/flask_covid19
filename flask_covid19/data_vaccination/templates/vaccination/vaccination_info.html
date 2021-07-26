@@ -1,16 +1,11 @@
 {% extends 'app_application/layout/page_layout.html' %}
 
+{% block navtabs %}
+    {% include 'vaccination/navigation/vaccination_navtabs.html' %}
+{% endblock %}
+
 {% block content %}
     {{super()}}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <nav>
-    {% include 'vaccination/navigation/vaccination_navtabs.html' %}
-                </nav>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row">
