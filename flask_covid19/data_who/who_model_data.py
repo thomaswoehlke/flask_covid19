@@ -2,13 +2,13 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_data import AllFactTable
 from data_who.who_model_import import WhoImport
 from data_who.who_model_location import WhoCountry
 from data_who.who_model_date_reported import WhoDateReported
 
 
-class WhoData(BlueprintFactTable):
+class WhoData(AllFactTable):
     __tablename__ = 'who'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

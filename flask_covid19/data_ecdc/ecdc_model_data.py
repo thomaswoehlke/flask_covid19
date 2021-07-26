@@ -1,12 +1,12 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_data import AllFactTable
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_ecdc.ecdc_model_location import EcdcCountry
 
 
-class EcdcData(BlueprintFactTable):
+class EcdcData(AllFactTable):
     __tablename__ = 'ecdc'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

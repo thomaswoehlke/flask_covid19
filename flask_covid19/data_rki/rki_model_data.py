@@ -4,13 +4,13 @@ from sqlalchemy.orm import joinedload
 
 from app_config.database import db, items_per_page
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_data import AllFactTable
 from data_rki.rki_model_date_reported import RkiMeldedatum
 from data_rki.rki_model_data_location import RkiLandkreis
 from data_rki.rki_model_import import RkiImport
 
 
-class RkiData(BlueprintFactTable):
+class RkiData(AllFactTable):
     __tablename__ = 'rki'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

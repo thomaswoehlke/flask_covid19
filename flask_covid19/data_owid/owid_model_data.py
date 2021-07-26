@@ -2,13 +2,13 @@
 from sqlalchemy.orm import joinedload
 
 from app_config.database import db, items_per_page
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_data import AllFactTable
 from data_owid.owid_model_import import OwidImport
 from data_owid.owid_model_location import OwidCountry
 from data_owid.owid_model_date_reported import OwidDateReported
 
 
-class OwidData(BlueprintFactTable):
+class OwidData(AllFactTable):
     __tablename__ = 'owid'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (

@@ -57,7 +57,7 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
             return None
 
 
-class BlueprintFactTable(AllFactTableTimeSeries, AllFactTableMixin):
+class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     __tablename__ = 'all_data'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -84,5 +84,3 @@ class BlueprintFactTable(AllFactTableTimeSeries, AllFactTableMixin):
         cascade='all',
         enable_typechecks=False,
         order_by='asc(AllLocation.location)')
-
-
