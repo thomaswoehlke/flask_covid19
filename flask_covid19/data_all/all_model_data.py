@@ -2,8 +2,7 @@
 from datetime import date
 from app_config.database import db, app, celery, items_per_page
 from sqlalchemy.orm import subqueryload
-from data_all.all_model_mixins import AllFactTableTimeSeriesMixin
-from data_all.all_model_mixins import AllFactTableMixin
+from data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
 from data_all.all_model import AllEntity
 
 
