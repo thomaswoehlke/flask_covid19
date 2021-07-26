@@ -22,5 +22,3 @@ class AllImportMixin(AllEntityMixin):
         pass
 
 
-class AllImportFlatMixin(AllImportMixin):
-    pass

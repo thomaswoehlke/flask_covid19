@@ -1,4 +1,5 @@
-from datetime import date
+from data_all.all_model_date_reported_mixins import AllDateReportedMixin
+from data_all.all_model_location_mixins import AllLocationMixin
 
 
 class AllEntityMixinBase:
@@ -69,107 +70,6 @@ class AllEntityWorkerProgressMixin:
 
 class AllEntityMixin(AllEntityMixinBase, AllEntityWorkerProgressMixin):
     pass
-
-
-class AllDateReportedMixin(AllEntityMixin):
-
-    def get_name_for_weekday(self):
-        pass
-
-    def get_name_for_month(self):
-        pass
-
-    @classmethod
-    def get_names_for_weekday(cls):
-        pass
-
-    @classmethod
-    def get_names_for_months(cls):
-        pass
-
-    @classmethod
-    def get_by_datum(cls, datum: date):
-        pass
-
-    @classmethod
-    def get_by_date_reported(cls, date_reported_import_str: str):
-        pass
-
-    @classmethod
-    def find_by_date_reported(cls, date_reported_import_str: str):
-        pass
-
-    @classmethod
-    def find_by_year_week(cls, year_week: str):
-        pass
-
-    @classmethod
-    def get_joungest_datum(cls):
-        pass
-
-    @classmethod
-    def set_all_processed_update(cls):
-        pass
-
-
-class AllLocationGroupMixin(AllEntityMixin):
-
-    @classmethod
-    def get_last(cls):
-        pass
-
-    @classmethod
-    def get_by_location_group(cls, location_group: str):
-        pass
-
-    @classmethod
-    def find_by_location_group(cls, location_group: str):
-        pass
-
-
-class AllLocationMixin(AllEntityMixin):
-
-    @classmethod
-    def find_by_location_code(cls, location_code: str):
-        pass
-
-    @classmethod
-    def get_by_location_code(cls, location_code: str):
-        pass
-
-    @classmethod
-    def find_by_location(cls, location: str):
-        pass
-
-    @classmethod
-    def get_by_location(cls, location: str):
-        pass
-
-    @classmethod
-    def find_by_location_group(cls, location_group: AllLocationGroupMixin):
-        pass
-
-    @classmethod
-    def get_by_location_group(cls, location_group: AllLocationGroupMixin, page: int):
-        pass
-
-    @classmethod
-    def find_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                              location_group: AllLocationGroupMixin):
-        pass
-
-    @classmethod
-    def get_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                             location_group: AllLocationGroupMixin):
-        pass
-
-    @classmethod
-    def find_by_location_code_and_location(cls, location_code: str, location: str):
-        pass
-
-    @classmethod
-    def get_by_location_code_and_location(cls, location_code: str, location: str):
-        pass
 
 
 class AllFactTableTimeSeriesMixin(AllEntityMixin):

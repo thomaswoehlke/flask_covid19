@@ -1,6 +1,6 @@
 from app_config.database import db
 from data_all.all_model_flat import AllFlat
-from data_all.all_model_import_mixins import AllImportFlatMixin
+from data_all.all_model_flat_mixins import AllImportFlatMixin
 
 
 class WhoFlat(AllFlat, AllImportFlatMixin):
