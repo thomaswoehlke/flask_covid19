@@ -246,6 +246,8 @@ start: pip_setuptools pip_install setup_frontend
 
 pip: pip_compile pip_install pip_check setup_frontend
 
+windows: pip_compile_windows pip_install_windows pip_check setup_frontend
+
 setup: clean setup_development setup_build
 
 download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
