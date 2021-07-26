@@ -13,6 +13,6 @@ def run_mq():
     # args = ['worker']
     # celery.start(args)
     app.logger.info(os.getcwd())
-    my_cmds = ['celery worker --app=mq.celery --pool=eventlet --loglevel=INFO']
+    my_cmds = ['celery --app=mq.celery worker --pool=eventlet --loglevel=INFO']
     for my_cmd in my_cmds:
         retcode = subprocess.call(my_cmd, shell=True)
