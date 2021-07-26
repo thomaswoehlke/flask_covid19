@@ -1,1 +1,2 @@
+-r dev.in
 pywin32
