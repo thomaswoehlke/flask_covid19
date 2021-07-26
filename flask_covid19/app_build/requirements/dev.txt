@@ -17,6 +17,8 @@ appdirs==1.4.4
     # via virtualenv
 argparse==1.4.0
     # via pytoolbox
+atomicwrites==1.4.0
+    # via pytest
 attrs==21.2.0
     # via pytest
 babel==2.9.1
@@ -53,6 +55,10 @@ click==7.1.2
     #   click-repl
     #   flask
     #   pip-tools
+colorama==0.4.4
+    # via
+    #   pytest
+    #   sphinx
 cryptography==3.3.2
     # via mysqldb-wrapper
 cycler==0.10.0
@@ -105,7 +111,7 @@ flask-wtf==0.14.3
     # via flask-bs4
 flask==1.1.4
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   flask-admin
     #   flask-bs4
     #   flask-cors
@@ -180,7 +186,7 @@ packaging==20.9
     #   pytest-flask-sqlalchemy
     #   sphinx
 pallets-sphinx-themes==1.2.3
-    # via -r flask_covid19/app_build/requirements/docs.in
+    # via -r flask_covid19/app_build/requirements\docs.in
 pandas==1.2.4
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
@@ -198,9 +204,9 @@ pillow==8.2.0
     #   matplotlib
     #   toolspy
 pip-tools==6.1.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pipenv==2021.5.29
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pluggy==0.13.1
     # via pytest
 prompt-toolkit==3.0.19
@@ -220,16 +226,16 @@ pyparsing==2.4.7
     #   matplotlib
     #   packaging
 pytest-flask-sqlalchemy==1.0.2
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 pytest-flask==1.2.0
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 pytest-mock==3.6.1
     # via pytest-flask-sqlalchemy
 pytest-runner==5.3.0
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 pytest==6.2.4
     # via
-    #   -r flask_covid19/app_build/requirements/tests.in
+    #   -r flask_covid19/app_build/requirements\tests.in
     #   pytest-flask
     #   pytest-flask-sqlalchemy
     #   pytest-mock
@@ -241,13 +247,13 @@ python-dateutil==2.8.1
     #   pandas
     #   schemalite
 python-dotenv==0.17.1
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 python-editor==1.0.4
     # via alembic
 python-magic==0.4.22
     # via pytoolbox
 pytoolbox==14.0.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pytz==2021.1
     # via
     #   babel
@@ -288,7 +294,7 @@ snowballstemmer==2.1.0
     # via sphinx
 sphinx==3.4.3
     # via
-    #   -r flask_covid19/app_build/requirements/docs.in
+    #   -r flask_covid19/app_build/requirements\docs.in
     #   pallets-sphinx-themes
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
@@ -327,8 +333,8 @@ toolspy==0.4.1
     #   schemalite
 urllib3==1.26.5
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
     #   -r flask_covid19/app_build/requirements/dev.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   requests
 vine==5.0.0
     # via
@@ -339,7 +345,7 @@ virtualenv-clone==0.5.4
     # via pipenv
 virtualenv==20.4.7
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   pipenv
 visitor==0.1.3
     # via flask-bs4
@@ -354,7 +360,7 @@ werkzeug==1.0.1
 wget==3.2
     # via -r flask_covid19/app_build/requirements/dev.in
 wheel==0.36.2
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 wtforms==2.3.3
     # via
     #   flask-admin
