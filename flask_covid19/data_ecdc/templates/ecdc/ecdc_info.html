@@ -4,85 +4,70 @@
     {{super()}}
     {% include 'ecdc/navigation/ecdc_navtabs.html' %}
 
-
   <div class="container">
         <div class="row">
             <div class="col">
                 <div class="accordion" id="accordionCol">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseLeftOne">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                Task: Full Update
                             </button>
-                          </h2>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>Update Full</h4>
-                                 <div>
-                                     <a class="btn btn-success btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_task_download') }}"
-                                       role="button">ECDC :: download</a>
-                                    <a class="btn btn-info btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_task_import') }}"
-                                       role="button">ECDC :: import</a>
-                                    <a class="btn btn-warning btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_task_full_update_dimension_tables') }}"
-                                       role="button">ECDC :: full update :: dimension-tables</a>
-                                    <a class="btn btn-secondary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_task_ecdc_full_update_fact_table') }}"
-                                       role="button">ECDC :: full update :: fact-table :: full</a>
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_task_ecdc_full_update') }}"
-                                       role="button">ECDC :: update :: full</a>
-                                </div>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <a class="btn btn-success btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_task_download') }}"
+                                   role="button">ECDC :: download</a>
+                                <a class="btn btn-info btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_task_import') }}"
+                                   role="button">ECDC :: import</a>
+                                <a class="btn btn-warning btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_task_full_update_dimension_tables') }}"
+                                   role="button">ECDC :: full update :: dimension-tables</a>
+                                <a class="btn btn-secondary btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_task_ecdc_full_update_fact_table') }}"
+                                   role="button">ECDC :: full update :: fact-table :: full</a>
+                                <a class="btn btn-primary btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_task_ecdc_full_update') }}"
+                                   role="button">ECDC :: update :: full</a>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                               Tests
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Tests
                             </button>
-                          </h2>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>Prepare Test Data</h4>
-                                <p></p>
-                                <div>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_countries') }}"
-                                       role="button">url_who_test who_import countries</a>
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_get_new_dates_as_array') }}"
-                                       role="button">url_who_test who_import get_new_dates_as_array</a>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_data') }}"
-                                       role="button">url_who_test who_data get_datum_of_all_who_data</a>
-                                    <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_import') }}"
-                                       role="button">url_who_test who_data get_datum_of_all_who_import</a>
-                                    <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_service_ecdc_import_get_new_dates_as_array') }}"
-                                       role="button">url_who_test who_service who_import get_new_dates_as_array</a>
-                                </div>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <a class="btn btn-danger btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_countries') }}"
+                                   role="button">url_who_test who_import countries</a>
+                                <a class="btn btn-primary btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_import_get_new_dates_as_array') }}"
+                                   role="button">url_who_test who_import get_new_dates_as_array</a>
+                                <a class="btn btn-danger btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_data') }}"
+                                   role="button">url_who_test who_data get_datum_of_all_who_data</a>
+                                <a class="btn btn-primary btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_data_get_datum_of_all_ecdc_import') }}"
+                                   role="button">url_who_test who_data get_datum_of_all_who_import</a>
+                                <a class="btn btn-danger btn-lg btn-block text-left"
+                                   href="{{ url_for( 'ecdc.url_ecdc_test_ecdc_service_ecdc_import_get_new_dates_as_array') }}"
+                                   role="button">url_who_test who_service who_import get_new_dates_as_array</a>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFourA">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFourA" aria-expanded="false" aria-controls="collapseFourA">
-                                    Info: ECDC: European Centre for Disease Prevention and Control
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFourA" class="collapse" aria-labelledby="headingFourA" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>ECDC: European Centre for Disease Prevention and Control</h4>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Info: ECDC: European Centre for Disease Prevention and Control
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
                                 <p>An agency of the European Union</p>
                                 <p>COVID-19 pandemic</p>
                                 <p>
@@ -93,37 +78,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Info: ECDC: Weekly maps in support of the Council Recommendation
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h3>ECDC: Weekly maps in support of the Council Recommendation</h3>
-                                <p>
-                                   <a href="https://www.ecdc.europa.eu/en/covid-19/situation-updates/weekly-maps-coordinated-restriction-free-movement">
-                                       Maps in support of the Council Recommendation on a coordinated approach to the restriction
-                                       of free movement in response to the COVID-19 pandemic in the EU/EEA
-                                   </a>
-                                </p>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingFour">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              Info: ECDC: Weekly maps in support of the Council Recommendation
+                          </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                               <a href="https://www.ecdc.europa.eu/en/covid-19/situation-updates/weekly-maps-coordinated-restriction-free-movement">
+                                   Maps in support of the Council Recommendation on a coordinated approach to the restriction
+                                   of free movement in response to the COVID-19 pandemic in the EU/EEA
+                               </a>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Info: ECDC: COVID-19 situation update for the EU/EEA, weekly
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>ECDC: COVID-19 situation update for the EU/EEA, weekly</h4>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingFive">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                              Info: ECDC: COVID-19 situation update for the EU/EEA, weekly
+                          </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
                                 <p>
                                    <a href="https://www.ecdc.europa.eu/en/cases-2019-ncov-eueea">
                                        COVID-19 situation update for the EU/EEA, weekly</a>
@@ -131,17 +108,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSix">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseFive">
-                                    Info: Situation updates on COVID-19
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>Situation updates on COVID-19</h4>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingSix">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                              Info: Situation updates on COVID-19
+                          </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
                                 <p>
                                    <a href="https://www.ecdc.europa.eu/en/cases-2019-ncov-eueea">
                                        Overview of all the data available on the COVID-19 pandemic.</a>
@@ -149,17 +123,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSeven">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    Info: Download COVID-19 datasets
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionCol">
-                            <div class="card-body">
-                                <h4>Download COVID-19 datasets</h4>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingSeven">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                              Info: Download COVID-19 datasets
+                          </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
                                 <p>
                                    <a href="https://www.ecdc.europa.eu/en/covid-19/data">
                                        Download COVID-19 datasets
