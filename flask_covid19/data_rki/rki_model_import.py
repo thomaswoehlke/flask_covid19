@@ -2,7 +2,7 @@ from datetime import date
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
 from app_config.database import db, items_per_page
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_model_date_reported import BlueprintDateReportedFactory
 from data_all.all_model_import import AllImport
 
 

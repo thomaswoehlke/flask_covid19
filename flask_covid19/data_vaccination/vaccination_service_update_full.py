@@ -1,7 +1,7 @@
 
 from app_config.database import db, app
-from data_all.all_service_mixins import AllServiceMixinUpdateFull
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
+from data_all.all_model_date_reported import BlueprintDateReportedFactory
 from data_vaccination.vaccination_model_import import VaccinationImport
 from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
 from data_vaccination.vaccination_model_data import VaccinationData, VaccinationDataFactory

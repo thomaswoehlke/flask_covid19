@@ -1,9 +1,9 @@
 import sys
 import csv
 from app_config.database import covid19_application
-from data_all.all_service_mixins import AllServiceMixinImport
+from data_all.all_service_import_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_model_date_reported import BlueprintDateReportedFactory
 from data_who.who_model_import import WhoImport, WhoImportFactory
 from data_who.who_model_flat import WhoFlat, WhoFlatFactory
 

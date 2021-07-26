@@ -1,7 +1,8 @@
 from app_config.database import db, app
+from data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
 from data_all.all_config import BlueprintConfig
 from data_ecdc.ecdc_model_import import EcdcImport
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_model_date_reported import BlueprintDateReportedFactory
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_ecdc.ecdc_model_location_group import EcdcContinent, EcdcContinentFactory
 from data_ecdc.ecdc_model_location import EcdcCountry, EcdcCountryFactory
@@ -9,7 +10,7 @@ from data_ecdc.ecdc_model_data import EcdcData, EcdcDataFactory
 from data_ecdc.ecdc_service_update import EcdcServiceUpdateBase
 
 
-class EcdcServiceUpdateFull(EcdcServiceUpdateBase):
+class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
