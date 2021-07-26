@@ -5,10 +5,8 @@ from app_config.database import db, app
 from data_all.all_service_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
 from app_web.web_model_factory import BlueprintDateReportedFactory
-from data_owid.owid_model_import import OwidImport
-from data_owid.owid_model_flat import OwidFlat
-from data_owid.owid_model_import_factories import OwidImportFactory
-from data_owid.owid_model_flat_factories import OwidFlatFactory
+from data_owid.owid_model_import import OwidImport, OwidImportFactory
+from data_owid.owid_model_flat import OwidFlat, OwidFlatFactory
 
 
 class OwidServiceImport(AllServiceMixinImport):
