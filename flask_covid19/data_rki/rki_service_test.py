@@ -89,13 +89,15 @@ class RkiTestService:
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
         for item in RkiImport.get_bundesland_list():
-            app.logger.info("get_datum_of_all_import: " + str(item))
+            app.logger.info("get_bundesland_list: " + str(item))
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info("")
-        for bundesland in RkiBundesland.find_all():
+        for bundesland in RkiImport.get_bundesland_list():
             app.logger.info("bundesland: " + str(bundesland))
-            for item in RkiImport.get_landkreis_for_bundesland(bundesland=bundesland.location_group):
+            my_bundesland = bundesland[0]
+            app.logger.info("my_bundesland: " + str(my_bundesland))
+            for item in RkiImport.get_landkreis_for_bundesland(bundesland=my_bundesland):
                 app.logger.info("get_landkreis_for_bundesland: " + str(item))
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
