@@ -3,6 +3,7 @@ from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
 from data_all.all_model_data import BlueprintFactTable
+from data_who.who_model_import import WhoImport
 from data_who.who_model_location import WhoCountry
 from data_who.who_model_date_reported import WhoDateReported
 
@@ -164,3 +165,20 @@ class WhoData(BlueprintFactTable):
         db.session.commit()
         db.session.delete(date_reported)
         db.session.commit()
+
+
+class WhoDataFactory:
+
+    @classmethod
+    def create_new(cls, my_who_import: WhoImport, my_date: WhoDateReported, my_country: WhoCountry):
+        o = WhoData(
+            cases_new=int(my_who_import.new_cases),
+            cases_cumulative=int(my_who_import.cumulative_cases),
+            deaths_new=int(my_who_import.new_deaths),
+            deaths_cumulative=int(my_who_import.cumulative_deaths),
+            date_reported=my_date,
+            location=my_country,
+            processed_update=False,
+            processed_full_update=False
+        )
+        return o
