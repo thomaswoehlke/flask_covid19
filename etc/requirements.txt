@@ -2,7 +2,6 @@ alabaster==0.7.12
 alembic==1.6.2
 amqp==5.0.6
 appdirs==1.4.4
-atomicwrites==1.4.0
 attrs==21.2.0
 Babel==2.9.1
 banal==1.0.6
@@ -17,7 +16,6 @@ click==7.1.2
 click-didyoumean==0.0.3
 click-plugins==1.1.1
 click-repl==0.2.0
-colorama==0.4.4
 cryptography==3.3.2
 cycler==0.10.0
 dataframetodb==0.1
@@ -68,6 +66,7 @@ pep517==0.10.0
 Pillow==8.2.0
 pip-tools==6.1.0
 pipenv==2021.5.29
+pkg_resources==0.0.0
 pluggy==0.13.1
 prompt-toolkit==3.0.19
 protobuf==3.17.2
