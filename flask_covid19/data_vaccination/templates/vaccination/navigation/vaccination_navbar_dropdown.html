@@ -7,7 +7,15 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataVaccination">
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_info') }}">
-                                Vaccination (Timeline Germany) :: Info
+                                Vaccination :: Info
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
+                                Vaccination:: imported
                             </a>
                         </li>
                         <li>
@@ -15,12 +23,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_data') }}">
-                                Vaccination (Timeline Germany) :: Data
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
-                                Vaccination (Timeline Germany) :: imported
+                                Vaccination :: Data
                             </a>
                         </li>
                     </ul>
