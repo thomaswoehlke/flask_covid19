@@ -2,7 +2,15 @@
 
 {% block content %}
     {{super()}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav>
     {% include 'owid/navigation/owid_navtabs.html' %}
+                </nav>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">

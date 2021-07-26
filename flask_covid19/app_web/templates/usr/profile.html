@@ -2,7 +2,16 @@
 
 {% block content %}
     {{super()}}
+    {{super()}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav>
     {% include 'usr/navigation/usr_navtabs.html' %}
+                </nav>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
