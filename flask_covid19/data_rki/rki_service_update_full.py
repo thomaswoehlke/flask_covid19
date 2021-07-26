@@ -20,13 +20,12 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         RkiMeldedatum.remove_all()
         i = 0
         output_lines = []
-        for meldedatum_from_import in RkiImport.get_meldedatum_list():
+        for meldedatum_from_import in RkiImport.get_datum_of_all_import():
             # app.logger.info(datum_of_import)
             # app.logger.info(datum_of_import[0])
             i += 1
-            my_meldedatum_from_import = meldedatum_from_import[0]
             o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
-                my_meldedatum=my_meldedatum_from_import)
+                my_meldedatum=meldedatum_from_import)
             db.session.add(o)
             output = " [RKI] meldedatum [ " + str(i) + " ] full update ... " + str(o)
             output_lines.append(output)

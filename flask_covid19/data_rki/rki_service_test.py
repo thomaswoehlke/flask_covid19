@@ -75,8 +75,28 @@ class RkiTestService:
                 app.logger.info("NEW altersgruppe: " + str(item))
             else:
                 app.logger.info("OLD altersgruppe: " + str(item))
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
         for item in RkiImport.get_altersgruppe_list():
             app.logger.info("altersgruppe: " + str(item))
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
+        for item in RkiImport.get_datum_of_all_import():
+            app.logger.info("get_datum_of_all_import: " + str(item))
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
+        for item in RkiImport.get_bundesland_list():
+            app.logger.info("get_datum_of_all_import: " + str(item))
+        app.logger.info("")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("")
+        for bundesland in RkiBundesland.find_all():
+            app.logger.info("bundesland: " + str(bundesland))
+            for item in RkiImport.get_landkreis_for_bundesland(bundesland=bundesland.location_group):
+                app.logger.info("get_landkreis_for_bundesland: " + str(item))
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" RkiTestService.get_altersgruppe_list() [DONE]")

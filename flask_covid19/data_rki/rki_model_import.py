@@ -65,7 +65,7 @@ class RkiImport(AllImport):
     def get_datum_of_all_import(cls):
         dates_reported = []
         bu = Bundle('meldedatum', cls.meldedatum)
-        for meldedatum in db.session.query(bu).distinct().order_by(cls.meldedatum.desc()):
+        for meldedatum in db.session.query(bu).distinct():
             item = meldedatum[0][0]
             if item not in dates_reported:
                 dates_reported.append(item)
@@ -75,8 +75,6 @@ class RkiImport(AllImport):
     def get_meldedatum_list(cls):
         return db.session.query(cls.meldedatum)\
             .distinct()\
-            .order_by(cls.meldedatum.desc())\
-            .group_by(cls.meldedatum)\
             .all()
 
     @classmethod
@@ -94,7 +92,7 @@ class RkiImport(AllImport):
     def get_bundesland_list(cls):
         bundesland_list = []
         bu = Bundle('bundesland', cls.bundesland, cls.id_bundesland)
-        for bundesland_row in db.session.query(bu).distinct().order_by(cls.bundesland.asc()):
+        for bundesland_row in db.session.query(bu).distinct():
             item = bundesland_row[0]
             if item not in bundesland_list:
                 bundesland_list.append(item)
