@@ -34,7 +34,7 @@ def run_mq():
         # cache.clear()
         web_service.prepare_run_mq(db)
         app.logger.info(os.getcwd())
-        my_cmds = [' --app mq.celery celery worker --pool=eventlet --loglevel=INFO']
+        my_cmds = ['celery --app mq.celery worker --pool eventlet --loglevel INFO']
         for my_cmd in my_cmds:
             app.logger.info(my_cmd)
             subprocess.call(my_cmd, shell=True)
