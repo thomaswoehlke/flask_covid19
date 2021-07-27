@@ -1,12 +1,12 @@
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 from app_config.database import db, items_per_page
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_data import AllFactTable
 from data_ecdc.ecdc_model import EcdcDateReported
 from data_ecdc.ecdc_model_location import EcdcCountry
 
 
-class EcdcData(BlueprintFactTable):
+class EcdcData(AllFactTable):
     __tablename__ = 'ecdc'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -133,3 +133,19 @@ class EcdcData(BlueprintFactTable):
         db.session.delete(date_reported)
         db.session.commit()
 
+
+class EcdcDataFactory:
+
+    @classmethod
+    def create_new(cls, my_deaths: int, my_cases: int, my_cumulative_number: float,
+                   date_reported: EcdcDateReported, location: EcdcCountry):
+        o = EcdcData(
+            location=location,
+            date_reported=date_reported,
+            deaths=int(my_deaths),
+            cases=int(my_cases),
+            cumulative_number_for_14_days_of_covid19_cases_per_100000=0.0 if '' == my_cumulative_number else float(my_cumulative_number),
+            processed_update=False,
+            processed_full_update=False,
+        )
+        return o

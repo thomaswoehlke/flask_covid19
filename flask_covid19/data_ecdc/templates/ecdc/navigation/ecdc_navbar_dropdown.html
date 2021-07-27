@@ -1,8 +1,9 @@
-                <li class="dropdown">
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
-                        ECDC<i class="glyphicon glyphicon-chevron-down small"></i>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownMenuLinkDataEcdc" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ECDC
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataEcdc">
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'ecdc.url_ecdc_info') }}">ECDC Info</a>
                         </li>

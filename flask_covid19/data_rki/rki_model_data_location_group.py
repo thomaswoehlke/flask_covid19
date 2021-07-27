@@ -9,3 +9,16 @@ class RkiBundesland(AllLocationGroup):
     }
 
     id_bundesland = db.Column(db.String(255))
+
+
+class RkiBundeslandFactory:
+
+    @classmethod
+    def create_new(cls, bundesland_of_import):
+        o = RkiBundesland(
+            location_group=bundesland_of_import[0],
+            id_bundesland=bundesland_of_import[1],
+            processed_update=False,
+            processed_full_update=False,
+        )
+        return o

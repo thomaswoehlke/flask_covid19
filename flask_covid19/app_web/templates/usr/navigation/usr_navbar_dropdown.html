@@ -1,8 +1,10 @@
-                <li class="dropdown">
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownMenuLinkDataUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         User<i class="glyphicon glyphicon-chevron-down small"></i>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataUser">
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.url_user_info') }}">

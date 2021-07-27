@@ -72,7 +72,7 @@ clean_linux:
 	find . -name '__pycache__' -exec rm -rf {} +
 
 clean_windows:
-	@echo "clean_linux"
+	@echo "clean_windows"
 	@echo "TBD"
 
 # -----------------------------------------------------------------------------------------------------
@@ -108,6 +108,16 @@ pip_compile_windows: pip_compile
 pip_install_windows: pip_install
 	@echo "pip_install_windows"
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows.txt
+	$(PIP) freeze > etc/requirements.txt
+	$(PIP) check
+
+pip_compile_linux: pip_compile
+	@echo "pip_compile"
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/linux.in
+
+pip_install_linux: pip_install
+	@echo "pip_install_windows"
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux.txt
 	$(PIP) freeze > etc/requirements.txt
 	$(PIP) check
 
@@ -238,13 +248,15 @@ love:
 #
 # -----------------------------------------------------------------------------------------------------
 
-clean: clean_linux
-
-distclean: clean venv_clean renv_clean
+distclean: venv_clean renv_clean
 
 start: pip_setuptools pip_install setup_frontend
 
 pip: pip_compile pip_install pip_check setup_frontend
+
+windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
+
+linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend
 
 setup: clean setup_development setup_build
 

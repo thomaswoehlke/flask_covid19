@@ -1,42 +1,8 @@
-class AllServiceMixinUpdate:
-
-    def update_dimension_tables(self):
-        return self
-
-    def update_fact_table(self):
-        return self
-
-    def update(self):
-        return self
-
-    def delete_last_day(self):
-        return self
-
-
-class AllServiceMixinUpdateFull:
-
-    def full_update_dimension_tables(self):
-        return self
-
-    def full_update_fact_table(self):
-        return self
-
-    def full_update(self):
-        return self
-
-
-class AllServiceMixinDownload:
-
-    def download(self):
-        return self
-
-
-class AllServiceMixinImport:
-
-    def import_file(self):
-        return self
+from data_all.all_service_download_mixins import AllServiceMixinDownload
+from data_all.all_service_import_mixins import AllServiceMixinImport
+from data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
+from data_all.all_service_update_mixins import AllServiceMixinUpdate
 
 
 class AllServiceMixin(AllServiceMixinUpdateFull, AllServiceMixinUpdate, AllServiceMixinDownload, AllServiceMixinImport):
     pass
-

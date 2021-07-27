@@ -5,7 +5,7 @@ import subprocess
 
 from setuptools import find_packages, setup
 
-version = '0.0.62'
+version = '0.0.64'
 
 scripts_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'scripts'+os.sep
 pip_requirements_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'requirements'
@@ -179,5 +179,5 @@ setup(
         scripts_dir + 'script_setup_requirements.py',
         scripts_dir + 'script_npm_install.py'
     ],
-    python_requires=">= 3.9"
+    python_requires=">= 3.8"
 )

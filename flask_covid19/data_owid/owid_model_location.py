@@ -2,6 +2,7 @@
 from sqlalchemy import and_
 from app_config.database import db, items_per_page
 from data_all.all_model_location import AllLocation
+from data_owid.owid_model_import import OwidImport
 from data_owid.owid_model_location_group import OwidContinent
 
 
@@ -56,3 +57,32 @@ class OwidCountry(AllLocation):
     @classmethod
     def get_by_iso_code_and_location(cls, iso_code, location):
         return db.session.query(cls).filter(and_((cls.location_code == iso_code), (cls.location == location))).one()
+
+
+class OwidCountryFactory:
+
+    @classmethod
+    def create_new(cls, oi: OwidImport, location_group: OwidContinent):
+        o = OwidCountry(
+            location_group=location_group,
+            location=oi.location,
+            location_code=oi.iso_code,
+            population=0.0 if '' == oi.population else float(oi.population),
+            population_density=0.0 if '' == oi.population_density else float(oi.population_density),
+            median_age=0.0 if '' == oi.median_age else float(oi.median_age),
+            aged_65_older=0.0 if '' == oi.aged_65_older else float(oi.aged_65_older),
+            aged_70_older=0.0 if '' == oi.aged_70_older else float(oi.aged_70_older),
+            gdp_per_capita=0.0 if '' == oi.gdp_per_capita else float(oi.gdp_per_capita),
+            extreme_poverty=0.0 if '' == oi.extreme_poverty else float(oi.extreme_poverty),
+            cardiovasc_death_rate=0.0 if '' == oi.cardiovasc_death_rate else float(oi.cardiovasc_death_rate),
+            diabetes_prevalence=0.0 if '' == oi.diabetes_prevalence else float(oi.diabetes_prevalence),
+            female_smokers=0.0 if '' == oi.female_smokers else float(oi.female_smokers),
+            male_smokers=0.0 if '' == oi.male_smokers else float(oi.male_smokers),
+            handwashing_facilities=0.0 if '' == oi.handwashing_facilities else float(oi.handwashing_facilities),
+            hospital_beds_per_thousand=0.0 if '' == oi.hospital_beds_per_thousand else float(oi.hospital_beds_per_thousand),
+            life_expectancy=0.0 if '' == oi.life_expectancy else float(oi.life_expectancy),
+            human_development_index=0.0 if '' == oi.human_development_index else float(oi.human_development_index),
+            processed_update=False,
+            processed_full_update=False,
+        )
+        return o

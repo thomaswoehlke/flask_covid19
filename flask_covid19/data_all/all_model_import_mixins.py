@@ -20,7 +20,3 @@ class AllImportMixin(AllEntityMixin):
     @classmethod
     def get_datum_list(cls):
         pass
-
-
-class AllImportFlatMixin(AllImportMixin):
-    pass

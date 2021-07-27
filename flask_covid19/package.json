@@ -1,6 +1,6 @@
 {
     "name": "flask-covid19-static",
-    "version": "0.0.62",
+    "version": "0.0.64",
     "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
     "main": "/static/index.js",
     "repository": {
@@ -31,7 +31,7 @@
     },
     "private": true,
     "dependencies": {
-        "@fortawesome/fontawesome-free": "5.15.2",
+        "@fortawesome/fontawesome-free": "^5.15.2",
         "bootstrap": "4.6.0",
         "bootswatch": "4.6.0",
         "jquery": "3.5.1",
@@ -56,6 +56,6 @@
         "merge-stream": "^2.0.0"
     },
     "engines": {
-        "node": ">=v12.18.2"
+        "npm": "^7.20.1"
     }
 }

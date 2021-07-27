@@ -1,8 +1,11 @@
 {% extends 'app_application/layout/page_layout.html' %}
 
+{% block navtabs %}
+    {% include 'usr/navigation/usr_navtabs.html' %}
+{% endblock %}
+
 {% block content %}
     {{super()}}
-    {% include 'usr/navigation/usr_navtabs.html' %}
 
     <div class="container">
         <div class="row">
@@ -11,6 +14,7 @@
             </div>
          </div>
      </div>
+
 {% endblock %}
 
 

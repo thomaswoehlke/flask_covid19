@@ -3,7 +3,7 @@ import wget
 import subprocess
 from app_config.database import app
 from data_all.all_config import BlueprintConfig
-from data_all.all_service_mixins import AllServiceMixinDownload
+from data_all.all_service_download_mixins import AllServiceMixinDownload
 
 
 class AllDownloadService(AllServiceMixinDownload):

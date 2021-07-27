@@ -2,6 +2,7 @@ from app_config.database import app
 
 
 class WebService:
+
     def __init__(self, database, user_service):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [app_web] Web Service [init]")
@@ -36,4 +37,3 @@ class WebService:
         app.logger.info("-------------------------------------------------------------")
         app.logger.info("#                start REDIS-Server                         #")
         app.logger.info("-------------------------------------------------------------")
-

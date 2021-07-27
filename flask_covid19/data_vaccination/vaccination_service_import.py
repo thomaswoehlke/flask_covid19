@@ -2,14 +2,12 @@ import csv
 
 from app_config.database import db, app
 
-from data_all.all_service_mixins import AllServiceMixinImport
+from data_all.all_service_import_mixins import AllServiceMixinImport
 from data_all.all_config import BlueprintConfig
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 
-from data_vaccination.vaccination_model_import import VaccinationImport
-from data_vaccination.vaccination_model_flat import VaccinationFlat
-from data_vaccination.vaccination_model_import_factories import VaccinationImportFactory
-from data_vaccination.vaccination_model_flat_factories import VaccinationFlatFactory
+from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationImportFactory
+from data_vaccination.vaccination_model_flat import VaccinationFlat, VaccinationFlatFactory
 
 
 class VaccinationServiceImport(AllServiceMixinImport):

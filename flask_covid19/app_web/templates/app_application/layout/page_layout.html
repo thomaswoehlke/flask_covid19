@@ -17,23 +17,39 @@
 
 {% block html_attribs %} lang="en"{% endblock %}
 
-
 {% block navbar %}
-  {% include 'app_application/navigation/navbar.html' %}
+    {% include 'app_application/navigation/navbar.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-3">{{page_info.title}} | <small class="display-4">{{page_info.subtitle}}</small></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'app_application/fragments/fragment_flashed_messages.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav>
+                    {% include 'app_application/navigation/navtabs.html' %}
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <nav>
+                    {% block navtabs %}
+
+                    {% endblock %}
+                </nav>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
     {{super()}}
-    <div class="container main-content app-main">
-            <div class="row-cols-1">
-                <h1 class="display-3">{{page_info.title}} | <small class="display-4">{{page_info.subtitle}}</small></h1>
-            </div>
-            <div class="row-cols-1">
-                {% include 'app_application/fragments/fragment_flashed_messages.html' %}
-            </div>
-            <div class="row-cols-1">
-                {% include 'app_application/navigation/navtabs.html' %}
-            </div>
-    </div>
 {% endblock %}
 

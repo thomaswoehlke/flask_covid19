@@ -1,15 +1,13 @@
 from app_config.database import db, app
 
-from data_all.all_service_mixins import AllServiceMixinUpdate, AllServiceMixinUpdateFull
-from app_web.web_model_factory import BlueprintDateReportedFactory
+from data_all.all_service_update_mixins import AllServiceMixinUpdate
+from data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from data_rki.rki_model_date_reported import RkiMeldedatum
-from data_rki.rki_model_data_location_group import RkiBundesland
-from data_rki.rki_model_data_location import RkiLandkreis
-from data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from data_rki.rki_model_data import RkiData
-from data_rki.rki_model_factories import RkiBundeslandFactory
-from data_rki.rki_model_factories import RkiLandkreisFactory
-from data_rki.rki_model_factories import RkiDataFactory
+from data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
+from data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory
+from data_rki.rki_model_altersgruppe import RkiAltersgruppe, RkiAltersgruppeFactory
+from data_rki.rki_model_data import RkiData, RkiDataFactory
 from data_rki.rki_model_import import RkiImport
 from data_rki.rki_service_update import RkiServiceUpdateBase
 
@@ -23,13 +21,12 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         RkiMeldedatum.remove_all()
         i = 0
         output_lines = []
-        for meldedatum_from_import in RkiImport.get_meldedatum_list():
+        for meldedatum_from_import in RkiImport.get_datum_of_all_import():
             # app.logger.info(datum_of_import)
             # app.logger.info(datum_of_import[0])
             i += 1
-            my_meldedatum_from_import = meldedatum_from_import[0]
             o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
-                my_meldedatum=my_meldedatum_from_import)
+                my_meldedatum=meldedatum_from_import)
             db.session.add(o)
             output = " [RKI] meldedatum [ " + str(i) + " ] full update ... " + str(o)
             output_lines.append(output)
@@ -52,9 +49,8 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         output_lines = []
         for altersgruppe_of_import in RkiImport.get_altersgruppe_list():
             i += 1
-            my_altersgruppe = altersgruppe_of_import[0]
-            o = RkiAltersgruppe.RkiAltersgruppe(
-                altersgruppe=my_altersgruppe
+            o = RkiAltersgruppeFactory.create_new(
+                altersgruppe=altersgruppe_of_import
             )
             db.session.add(o)
             output = " [RKI] altersgruppe [ " + str(i) + " ] full update ... " + str(o)

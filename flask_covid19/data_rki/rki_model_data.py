@@ -3,12 +3,14 @@ from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
 
 from app_config.database import db, items_per_page
-from data_all.all_model_data import BlueprintFactTable
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from data_all.all_model_data import AllFactTable
 from data_rki.rki_model_date_reported import RkiMeldedatum
 from data_rki.rki_model_data_location import RkiLandkreis
+from data_rki.rki_model_import import RkiImport
 
 
-class RkiData(BlueprintFactTable):
+class RkiData(AllFactTable):
     __tablename__ = 'rki'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -137,3 +139,71 @@ class RkiData(BlueprintFactTable):
     @classmethod
     def get_by_date_reported(cls, date_reported: RkiMeldedatum, page: int):
         return cls.__query_by_date_reported(date_reported).paginate(page, per_page=items_per_page)
+
+
+class RkiDataFactory:
+
+    @classmethod
+    def row_str_to_date_fields(cls, o_import: RkiImport):
+        my_datum = {
+            'meldedatum_str': o_import.meldedatum,
+            'ref_datum_str': o_import.ref_datum,
+            'datenstand_str': o_import.datenstand,
+        }
+        my_datum['meldedatum'] = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+            my_meldedatum=my_datum['meldedatum_str'])
+        my_datum['ref_datum'] = BlueprintDateReportedFactory.create_new_object_for_rki_ref_datum(
+            my_ref_datum=my_datum['ref_datum_str']).datum
+        my_datum['datenstand'] = BlueprintDateReportedFactory.create_new_object_for_rki_date_datenstand(
+            my_date_datenstand=my_datum['datenstand_str']).datum
+        return my_datum
+
+    @classmethod
+    def get_rki_data(cls, dict_altersgruppen, my_datum, my_meldedatum, my_landkreis, o_import: RkiImport):
+        rki_data = {
+            'date_reported': my_meldedatum,
+            'datenstand_date_reported_import_str': o_import.datenstand,
+            'datenstand_datum': my_datum['datenstand'],
+            'location': my_landkreis,
+            'ref_datum_date_reported_import_str': o_import.ref_datum,
+            'ref_datum_datum': my_datum['ref_datum'],
+            'altersgruppe': dict_altersgruppen[o_import.altersgruppe],
+            'fid': o_import.fid,
+            'geschlecht': o_import.geschlecht,
+            #
+            'anzahl_fall': int(o_import.anzahl_fall),
+            'anzahl_todesfall': int(o_import.anzahl_todesfall),
+            'neuer_fall': int(o_import.neuer_fall),
+            'neuer_todesfall': int(o_import.neuer_todesfall),
+            'neu_genesen': int(o_import.neu_genesen),
+            'anzahl_genesen': int(o_import.anzahl_genesen),
+            'ist_erkrankungsbeginn': int(o_import.ist_erkrankungsbeginn),
+            'altersgruppe2': o_import.altersgruppe2,
+        }
+        return rki_data
+
+    @classmethod
+    def create_new(cls, rki_data):
+        o = RkiData(
+            date_reported=rki_data['date_reported'],
+            datenstand_date_reported_import_str=rki_data['datenstand_date_reported_import_str'],
+            datenstand_datum=rki_data['datenstand_datum'],
+            location=rki_data['location'],
+            ref_datum_date_reported_import_str=rki_data['ref_datum_date_reported_import_str'],
+            ref_datum_datum=rki_data['ref_datum_datum'],
+            altersgruppe=rki_data['altersgruppe'],
+            fid=rki_data['fid'],
+            geschlecht=rki_data['geschlecht'],
+            #
+            anzahl_fall=rki_data['anzahl_fall'],
+            anzahl_todesfall=rki_data['anzahl_todesfall'],
+            neuer_fall=rki_data['neuer_fall'],
+            neuer_todesfall=rki_data['neuer_todesfall'],
+            neu_genesen=rki_data['neu_genesen'],
+            anzahl_genesen=rki_data['anzahl_genesen'],
+            ist_erkrankungsbeginn=rki_data['ist_erkrankungsbeginn'],
+            altersgruppe2=rki_data['altersgruppe2'],
+            processed_update=False,
+            processed_full_update=True,
+        )
+        return o

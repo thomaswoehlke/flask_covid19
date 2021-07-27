@@ -2,7 +2,7 @@ from datetime import date
 from app_config.database import db, app, celery, items_per_page
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
-from data_all.all_model_mixins import AllLocationMixin
+from data_all.all_model_location_mixins import AllLocationMixin
 from data_all.all_model_location_group import AllLocationGroup
 from data_all.all_model import AllEntity
 

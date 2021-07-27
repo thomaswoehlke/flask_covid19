@@ -1,6 +1,6 @@
 from app_config.database import db
 from data_all.all_model_flat import AllFlat
-from data_all.all_model_import_mixins import AllImportFlatMixin
+from data_all.all_model_flat_mixins import AllImportFlatMixin
 
 
 class WhoFlat(AllFlat, AllImportFlatMixin):
@@ -44,3 +44,37 @@ class WhoFlat(AllFlat, AllImportFlatMixin):
     country = db.Column(db.String(255), nullable=False)
     who_region = db.Column(db.String(255), nullable=False)
     date_reported = db.Column(db.String(255), nullable=False)
+
+
+class WhoFlatFactory:
+
+    @classmethod
+    def create_new(cls, date_reported, d, row, my_data):
+        oo = WhoFlat(
+            datum=d.datum,
+            year=d.year,
+            month=d.month,
+            day_of_month=d.day_of_month,
+            day_of_week=d.day_of_week,
+            week_of_year=d.week_of_year,
+            day_of_year=d.day_of_year,
+            year_week=d.year_week,
+            year_day_of_year=d.year_day_of_year,
+            date_reported_import_str=d.date_reported_import_str,
+            year_month=d.year_month,
+            location_code=row['Country_code'],
+            location=row['Country'],
+            location_group=row['WHO_region'],
+            processed_update=False,
+            processed_full_update=False,
+            #
+            new_cases=my_data['new_cases'],
+            cumulative_cases=my_data['cumulative_cases'],
+            new_deaths=my_data['new_deaths'],
+            cumulative_deaths=my_data['cumulative_deaths'],
+            country_code=row['Country_code'],
+            country=row['Country'],
+            who_region=row['WHO_region'],
+            date_reported=date_reported,
+        )
+        return oo

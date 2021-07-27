@@ -1,11 +1,21 @@
-                <li class="dropdown">
-                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="javascript:void(0)">
-                        Vaccination<i class="glyphicon glyphicon-chevron-down small"></i>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                       id="navbarDropdownMenuLinkDataVaccination" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Vaccination
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataVaccination">
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_info') }}">
-                                Vaccination (Timeline Germany) :: Info
+                                Vaccination :: Info
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
+                                Vaccination:: imported
                             </a>
                         </li>
                         <li>
@@ -13,12 +23,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_data') }}">
-                                Vaccination (Timeline Germany) :: Data
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
-                                Vaccination (Timeline Germany) :: imported
+                                Vaccination :: Data
                             </a>
                         </li>
                     </ul>

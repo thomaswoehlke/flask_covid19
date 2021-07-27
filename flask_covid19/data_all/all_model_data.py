@@ -2,8 +2,7 @@
 from datetime import date
 from app_config.database import db, app, celery, items_per_page
 from sqlalchemy.orm import subqueryload
-from data_all.all_model_mixins import AllFactTableTimeSeriesMixin
-from data_all.all_model_mixins import AllFactTableMixin
+from data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
 from data_all.all_model import AllEntity
 
 
@@ -57,7 +56,7 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
             return None
 
 
-class BlueprintFactTable(AllFactTableTimeSeries, AllFactTableMixin):
+class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     __tablename__ = 'all_data'
     __mapper_args__ = {'concrete': True}
     __table_args__ = (
@@ -84,5 +83,3 @@ class BlueprintFactTable(AllFactTableTimeSeries, AllFactTableMixin):
         cascade='all',
         enable_typechecks=False,
         order_by='asc(AllLocation.location)')
-
-

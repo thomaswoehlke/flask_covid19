@@ -504,5 +504,15 @@ class RkiTestUrls:
         flash(" [RKI] url_rki_test_rki_test_service_full_update_dimension_tables - DONE: rki_test_service.full_update_dimension_tables()")
         return redirect(url_for('rki.url_rki_info'))
 
+    @staticmethod
+    @app_rki.route('/test/rki_test_service/get_altersgruppe_list')
+    @login_required
+    def url_rki_test_rki_test_service_full_update_get_altersgruppe_list():
+        app.logger.info(" [RKI] url_rki_test_rki_test_service_full_update_get_altersgruppe_list - START: rki_test_service.full_update_dimension_tables()")
+        flash(" [RKI] url_rki_test_rki_test_service_full_update_get_altersgruppe_list - START: rki_test_service.full_update_dimension_tables()")
+        rki_test_service.get_altersgruppe_list()
+        app.logger.info(" [RKI] url_rki_test_rki_test_service_full_update_get_altersgruppe_list - DONE: rki_test_service.full_update_dimension_tables()")
+        flash(" [RKI] url_rki_test_rki_test_service_full_update_get_altersgruppe_list - DONE: rki_test_service.full_update_dimension_tables()")
+        return redirect(url_for('rki.url_rki_info'))
 
 rki_test_urls = RkiTestUrls()

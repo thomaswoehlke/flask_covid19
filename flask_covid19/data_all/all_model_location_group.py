@@ -1,7 +1,7 @@
 
 from datetime import date
 from app_config.database import db, app, celery, items_per_page
-from data_all.all_model_mixins import AllLocationGroupMixin
+from data_all.all_model_location_group_mixins import AllLocationGroupMixin
 from data_all.all_model import AllEntity
 
 

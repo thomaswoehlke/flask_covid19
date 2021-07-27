@@ -2,6 +2,7 @@ from datetime import date
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
 from app_config.database import db, items_per_page
+from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from data_all.all_model_import import AllImport
 
 
@@ -64,7 +65,7 @@ class RkiImport(AllImport):
     def get_datum_of_all_import(cls):
         dates_reported = []
         bu = Bundle('meldedatum', cls.meldedatum)
-        for meldedatum in db.session.query(bu).distinct().order_by(cls.meldedatum.desc()):
+        for meldedatum in db.session.query(bu).distinct():
             item = meldedatum[0][0]
             if item not in dates_reported:
                 dates_reported.append(item)
@@ -74,8 +75,6 @@ class RkiImport(AllImport):
     def get_meldedatum_list(cls):
         return db.session.query(cls.meldedatum)\
             .distinct()\
-            .order_by(cls.meldedatum.desc())\
-            .group_by(cls.meldedatum)\
             .all()
 
     @classmethod
@@ -93,7 +92,7 @@ class RkiImport(AllImport):
     def get_bundesland_list(cls):
         bundesland_list = []
         bu = Bundle('bundesland', cls.bundesland, cls.id_bundesland)
-        for bundesland_row in db.session.query(bu).distinct().order_by(cls.bundesland.asc()):
+        for bundesland_row in db.session.query(bu).distinct():
             item = bundesland_row[0]
             if item not in bundesland_list:
                 bundesland_list.append(item)
@@ -103,8 +102,8 @@ class RkiImport(AllImport):
     def get_altersgruppe_list(cls):
         altersgruppe_list = []
         bu = Bundle('altersgruppe', cls.altersgruppe)
-        for altersgruppe_row in db.session.query(bu).distinct().order_by(cls.altersgruppe.asc()):
-            item = altersgruppe_row[0]
+        for altersgruppe_row in db.session.query(bu).distinct():
+            item = altersgruppe_row[0][0]
             if item not in altersgruppe_list:
                 altersgruppe_list.append(item)
         return altersgruppe_list
@@ -135,3 +134,70 @@ class RkiImport(AllImport):
             )\
             .order_by(cls.landkreis.asc()) \
             .all()
+
+
+class RkiServiceImportFactory:
+
+    @classmethod
+    def row_str_to_date_fields(cls, row):
+        my_datum = {
+            'd_meldedatum_str': row['Meldedatum'],
+            'd_ref_datum_str': row['Refdatum'],
+            'd_datenstand_str': row['Datenstand'],
+        }
+        my_datum['d_meldedatum'] = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+            my_meldedatum=my_datum['d_meldedatum_str'])
+        my_datum['d_ref_datum'] = BlueprintDateReportedFactory.create_new_object_for_rki_ref_datum(
+            my_ref_datum=my_datum['d_ref_datum_str'])
+        my_datum['d_datenstand'] = BlueprintDateReportedFactory.create_new_object_for_rki_date_datenstand(
+            my_date_datenstand=my_datum['d_datenstand_str'])
+        return my_datum
+
+    @classmethod
+    def row_str_to_int_fields(cls, row):
+        my_str_to_int_data_keys = [
+            'AnzahlFall',
+            'NeuerFall',
+            'AnzahlTodesfall',
+            'NeuerTodesfall',
+            'AnzahlGenesen',
+            'NeuGenesen',
+            'IstErkrankungsbeginn'
+        ]
+        my_str_to_int_data = {}
+        for my_str_to_int_data_key in my_str_to_int_data_keys:
+            my_data_str = row[my_str_to_int_data_key]
+            int_data = int(my_data_str)
+            my_str_to_int_data[my_str_to_int_data_key] = int_data
+        return my_str_to_int_data
+
+
+class RkiImportFactory:
+
+    @classmethod
+    def create_new(cls, row, my_datum):
+        o = RkiImport(
+            date_reported_import_str=my_datum['d_meldedatum'].date_reported_import_str,
+            datum=my_datum['d_meldedatum'].datum,
+            fid=row['FID'],
+            id_bundesland=row['IdBundesland'],
+            bundesland=row['Bundesland'],
+            landkreis=row['Landkreis'],
+            altersgruppe=row['Altersgruppe'],
+            geschlecht=row['Geschlecht'],
+            anzahl_fall=row['AnzahlFall'],
+            anzahl_todesfall=row['AnzahlTodesfall'],
+            meldedatum=row['Meldedatum'],
+            id_landkreis=row['IdLandkreis'],
+            datenstand=row['Datenstand'],
+            neuer_fall=row['NeuerFall'],
+            neuer_todesfall=row['NeuerTodesfall'],
+            ref_datum=row['Refdatum'],
+            neu_genesen=row['NeuGenesen'],
+            anzahl_genesen=row['AnzahlGenesen'],
+            ist_erkrankungsbeginn=row['IstErkrankungsbeginn'],
+            altersgruppe2=row['Altersgruppe2'],
+            processed_update=False,
+            processed_full_update=False,
+        )
+        return o
