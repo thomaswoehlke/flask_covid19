@@ -17,6 +17,11 @@ blueprint_app_all = Blueprint('app_all', __name__, template_folder='templates', 
 
 class AllUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] AllUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @blueprint_app_all.route('/info')
     def url_all_info():
@@ -44,6 +49,11 @@ all_urls = AllUrls()
 
 
 class AllTasks:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] AllTasks ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -178,6 +188,11 @@ all_tasks = AllTasks()
 
 
 class AllTaskUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] AllTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @blueprint_app_all.route('/task/download')

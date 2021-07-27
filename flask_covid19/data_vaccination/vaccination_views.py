@@ -28,6 +28,11 @@ admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 
 class VaccinationUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [Vaccination] VaccinationUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app_vaccination.route('')
     @app_vaccination.route('/')
@@ -83,6 +88,11 @@ vaccination_urls = VaccinationUrls()
 
 
 class VaccinationTasks:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [Vaccination] VaccinationTasks ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -184,6 +194,11 @@ vaccination_tasks = VaccinationTasks()
 
 
 class VaccinationTaskUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [Vaccination] VaccinationTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_vaccination.route('/task/download')

@@ -37,6 +37,11 @@ admin.add_view(ModelView(WhoData, db.session, category="WHO"))
 
 class WhoUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [WHO] WhoUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app_who.route('')
     @app_who.route('/')
@@ -395,6 +400,11 @@ who_urls = WhoUrls()
 
 class WhoTasks:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [WHO] WhoTasks ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @celery.task(bind=True)
     def task_who_import_files(self):
@@ -495,6 +505,11 @@ who_tasks = WhoTasks()
 
 
 class WhoTaskUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [WHO] WhoTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_who.route('/files/download')
@@ -603,6 +618,11 @@ who_task_urls = WhoTaskUrls()
 
 
 class WhoTestUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [WHO] WhoTestUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_who.route('/test/who_import/countries')

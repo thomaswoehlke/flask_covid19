@@ -37,6 +37,11 @@ app.register_blueprint(app_rki, url_prefix='/rki/')
 
 class BlueprintApplicationUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [WEB] BlueprintApplicationUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app.route('/home')
     def url_home():

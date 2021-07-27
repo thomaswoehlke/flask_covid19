@@ -6,7 +6,7 @@ from flask_login import current_user, login_user
 import flask
 
 
-from app_config.database import admin, db, login_manager
+from app_config.database import app, admin, db, login_manager
 
 
 from app_web.web_model_transient import WebPageContent
@@ -24,6 +24,11 @@ admin.add_view(ModelView(User, db.session, category="USR"))
 
 
 class AppUserUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [USR] AppUserUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @blueprint_app_user.route('/login', methods=['GET'])

@@ -38,6 +38,11 @@ admin.add_view(ModelView(RkiData, db.session, category="RKI"))
 
 class RkiUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [RKI] RkiUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app_rki.route('')
     @app_rki.route('/')
@@ -215,6 +220,11 @@ rki_urls = RkiUrls()
 
 class RkiTasks:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [RKI] RkiTasks ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @celery.task(bind=True)
     def task_rki_import(self):
@@ -294,6 +304,11 @@ rki_tasks = RkiTasks()
 
 
 class RkiTaskUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [RKI] RkiTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_rki.route('/task/download')
@@ -394,6 +409,11 @@ rki_test_service = RkiTestService(db, rki_service)
 
 
 class RkiTestUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [RKI] RkiTestUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_rki.route('/test/full_update_dimension_tables')

@@ -34,6 +34,11 @@ owid_test_service = OwidTestService(db, owid_service)
 
 class OwidUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] OwidUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app_owid.route('')
     @app_owid.route('/')
@@ -325,6 +330,11 @@ owid_urls = OwidUrls()
 
 class OwidTasks:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] OwidTasks ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @celery.task(bind=True)
     def task_owid_import(self):
@@ -425,6 +435,11 @@ owid_tasks = OwidTasks()
 
 class OwidTaskUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] OwidTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @app_owid.route('/task/download/only')
     def url_task_owid_download():
@@ -520,6 +535,11 @@ owid_task_urls = OwidTaskUrls()
 
 
 class OwidTestUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [OWID] OwidTestUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route('/test/update_dimension_tables_only')

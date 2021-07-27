@@ -17,6 +17,11 @@ blueprint_app_admin = Blueprint('app_admin', __name__, template_folder='template
 
 class AppAdminUrls:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [app_admin] AppAdminUrls ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @blueprint_app_admin.route('/tasks')
     def url_admin_tasks():
@@ -43,6 +48,11 @@ app_admin_urls = AppAdminUrls()
 
 class AppAdminTasks:
 
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [app_admin] AppAdminTasks ")
+        app.logger.debug("------------------------------------------------------------")
+
     @staticmethod
     @celery.task(bind=True)
     def task_admin_alive_message(self):
@@ -63,6 +73,11 @@ app_admin_tasks = AppAdminTasks()
 
 
 class AppAdminTaskUrls:
+
+    def __init__(self):
+        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" Ready: [app_admin] AppAdminTaskUrls ")
+        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @blueprint_app_admin.route('/task/alive_message')
