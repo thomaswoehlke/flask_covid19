@@ -16,7 +16,7 @@ class OwidServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [OWID] Service Import [ready]")
+        app.logger.info(" ready: [OWID] Service Import ")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):

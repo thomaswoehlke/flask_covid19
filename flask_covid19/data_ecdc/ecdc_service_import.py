@@ -16,7 +16,7 @@ class EcdcServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [ECDC] Service Import [ready] ")
+        app.logger.info(" ready: [ECDC] Service Import")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):

@@ -39,7 +39,7 @@ class WhoUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [WHO] WhoUrls ")
+        app.logger.info(" ready: [WHO] WhoUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -402,7 +402,7 @@ class WhoTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [WHO] WhoTasks ")
+        app.logger.info(" ready: [WHO] WhoTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -508,7 +508,7 @@ class WhoTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [WHO] WhoTaskUrls ")
+        app.logger.info(" ready: [WHO] WhoTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -621,7 +621,7 @@ class WhoTestUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [WHO] WhoTestUrls ")
+        app.logger.info(" ready: [WHO] WhoTestUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

@@ -19,7 +19,7 @@ class RkiTestService:
         self.__rki_service = rki_service
         self.cfg = BlueprintConfig.create_config_for_owid()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [RKI] Test Service [ready]")
+        app.logger.info(" ready: [RKI] Test Service ")
         app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):

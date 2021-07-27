@@ -17,7 +17,7 @@ class EcdcServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [ECDC] Service Update [ready] ")
+        app.logger.debug(" ready: [ECDC] Service Update")
         app.logger.debug("------------------------------------------------------------")
 
 

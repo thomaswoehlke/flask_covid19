@@ -36,7 +36,7 @@ class EcdcUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] EcdcUrls ")
+        app.logger.info(" ready: [OWID] EcdcUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -215,7 +215,7 @@ class EcdcTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] EcdcTasks ")
+        app.logger.info(" ready: [OWID] EcdcTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -334,7 +334,7 @@ class EcdcTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] EcdcTaskUrls ")
+        app.logger.info(" ready: [OWID] EcdcTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -434,7 +434,7 @@ class EcdcTestUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] EcdcTestUrls ")
+        app.logger.info(" ready: [OWID] EcdcTestUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

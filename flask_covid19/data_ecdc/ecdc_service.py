@@ -21,7 +21,7 @@ class EcdcService(AllServiceMixin):
         self.service_update = EcdcServiceUpdate(database, self.cfg)
         self.service_update_full = EcdcServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [ECDC] Service [ready] ")
+        app.logger.info(" ready: [ECDC] Service")
         app.logger.debug("------------------------------------------------------------")
 
     def download(self):

@@ -15,7 +15,7 @@ class RkiServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [RKI] Service Import [ready]")
+        app.logger.info(" ready: [RKI] Service Import ")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):

@@ -27,7 +27,7 @@ class AppUserUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [USR] AppUserUrls ")
+        app.logger.info(" ready: [USR] AppUserUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

@@ -9,7 +9,7 @@ class UserService:
         app.logger.debug("------------------------------------------------------------")
         self.__database = database
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [app_web] User Service [ready]")
+        app.logger.info(" ready: [app_web] User Service ")
         app.logger.debug("------------------------------------------------------------")
 
     def set_database(self, database):

@@ -51,7 +51,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
             ],
         }
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [ALL] Dispachter Matrix Service [ready] ")
+        app.logger.info(" ready: [ALL] Dispachter Matrix Service")
         app.logger.debug("------------------------------------------------------------")
 
     def download(self):

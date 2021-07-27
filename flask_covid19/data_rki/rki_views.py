@@ -40,7 +40,7 @@ class RkiUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [RKI] RkiUrls ")
+        app.logger.info(" ready: [RKI] RkiUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -222,7 +222,7 @@ class RkiTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [RKI] RkiTasks ")
+        app.logger.info(" ready: [RKI] RkiTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -307,7 +307,7 @@ class RkiTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [RKI] RkiTaskUrls ")
+        app.logger.info(" ready: [RKI] RkiTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -412,7 +412,7 @@ class RkiTestUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [RKI] RkiTestUrls ")
+        app.logger.info(" ready: [RKI] RkiTestUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

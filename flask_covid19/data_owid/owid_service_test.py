@@ -15,7 +15,7 @@ class OwidTestService:
         self.__owid_service = owid_service
         self.cfg = BlueprintConfig.create_config_for_owid()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [OWID] Test Service [ready]")
+        app.logger.info(" ready: [OWID] Test Service ")
         app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):

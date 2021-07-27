@@ -15,7 +15,7 @@ class VaccinationServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] Service Update [ready] ")
+        app.logger.info(" ready: [Vaccination] Service Update")
         app.logger.debug("------------------------------------------------------------")
 
 

@@ -30,7 +30,7 @@ class VaccinationUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [Vaccination] VaccinationUrls ")
+        app.logger.info(" ready: [Vaccination] VaccinationUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -91,7 +91,7 @@ class VaccinationTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [Vaccination] VaccinationTasks ")
+        app.logger.info(" ready: [Vaccination] VaccinationTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -197,7 +197,7 @@ class VaccinationTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [Vaccination] VaccinationTaskUrls ")
+        app.logger.info(" ready: [Vaccination] VaccinationTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

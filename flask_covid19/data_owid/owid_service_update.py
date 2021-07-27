@@ -17,7 +17,7 @@ class OwidServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [OWID] Service Update [ready]")
+        app.logger.debug(" ready: [OWID] Service Update ")
         app.logger.debug("------------------------------------------------------------")
 
 

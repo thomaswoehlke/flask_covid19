@@ -19,7 +19,7 @@ class AppAdminUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [app_admin] AppAdminUrls ")
+        app.logger.info(" ready: [WEB] AppAdminUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -50,7 +50,7 @@ class AppAdminTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [app_admin] AppAdminTasks ")
+        app.logger.info(" ready: [WEB] AppAdminTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -76,7 +76,7 @@ class AppAdminTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [app_admin] AppAdminTaskUrls ")
+        app.logger.info(" ready: [WEB] AppAdminTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

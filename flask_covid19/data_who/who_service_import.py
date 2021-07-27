@@ -19,7 +19,7 @@ class WhoServiceImport(AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [WHO] Service Import [ready]")
+        app.logger.debug(" ready: [WHO] Service Import ")
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):

@@ -14,7 +14,7 @@ class AdminService:
         self.file_path_parent = 'data'+os.sep+'db'
         self.file_path = self.file_path_parent + os.sep + 'covid19data.sql'
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [app_web] Admin Service [ready]")
+        app.logger.info(" ready: [app_web] Admin Service ")
 
     def database_dump(self):
         app.logger.info(" AdminService.database_dump() [begin]")

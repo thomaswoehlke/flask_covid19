@@ -36,7 +36,7 @@ class OwidUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] OwidUrls ")
+        app.logger.info(" ready: [OWID] OwidUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -332,7 +332,7 @@ class OwidTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] OwidTasks ")
+        app.logger.info(" ready: [OWID] OwidTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -437,7 +437,7 @@ class OwidTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] OwidTaskUrls ")
+        app.logger.info(" ready: [OWID] OwidTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -538,7 +538,7 @@ class OwidTestUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] OwidTestUrls ")
+        app.logger.info(" ready: [OWID] OwidTestUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

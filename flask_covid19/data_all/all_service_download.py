@@ -14,7 +14,7 @@ class AllDownloadService(AllServiceMixinDownload):
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [" + self.cfg.category + "] Download Service [ready]")
+        app.logger.info(" ready: [" + self.cfg.category + "] Download Service")
         app.logger.debug("------------------------------------------------------------")
 
     def __prepare_download(self):

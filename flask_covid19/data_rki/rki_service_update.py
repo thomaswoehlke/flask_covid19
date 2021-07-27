@@ -19,7 +19,7 @@ class RkiServiceUpdateBase:
         self.__database = database
         self.cfg = config
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [RKI] Service Update [ready]")
+        app.logger.info(" ready: [RKI] Service Update ")
         app.logger.debug("------------------------------------------------------------")
 
 

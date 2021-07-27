@@ -19,7 +19,7 @@ class AllUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] AllUrls ")
+        app.logger.info(" ready: [OWID] AllUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -52,7 +52,7 @@ class AllTasks:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] AllTasks ")
+        app.logger.info(" ready: [OWID] AllTasks ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
@@ -191,7 +191,7 @@ class AllTaskUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" Ready: [OWID] AllTaskUrls ")
+        app.logger.info(" ready: [OWID] AllTaskUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod

@@ -10,7 +10,7 @@ class WebService:
         self.__database = database
         self.__user_service = user_service
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [app_web] Web Service [ready]")
+        app.logger.info(" ready: [app_web] Web Service ")
         app.logger.debug("------------------------------------------------------------")
 
     def prepare_run_web(self, database):

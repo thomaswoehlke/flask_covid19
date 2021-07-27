@@ -21,7 +21,7 @@ class WhoService(AllServiceMixin):
         self.service_update = WhoServiceUpdate(database, self.cfg)
         self.service_update_full = WhoServiceUpdateFull(database, self.cfg)
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" [WHO] Service [ready]")
+        app.logger.info(" ready: [WHO] Service")
         app.logger.debug("------------------------------------------------------------")
 
     def download(self):
