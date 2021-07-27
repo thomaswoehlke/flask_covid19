@@ -12,7 +12,9 @@ alembic==1.6.5
     #   flask-migrate
     #   pangres
 amqp==5.0.6
-    # via kombu
+    # via
+    #   kombu
+    #   librabbitmq
 argparse==1.4.0
     # via pytoolbox
 attrs==21.2.0
@@ -25,11 +27,7 @@ banal==1.0.6
     # via dataset
 billiard==3.6.4.0
     # via celery
-bleach==3.3.1
-    # via flask-sqlalchemy-booster
-boto==2.49.0
-    # via toolspy
-celery[redis]==5.1.2
+celery[auth,eventlet,librabbitmq,msgpack,redis,sqlalchemy]==5.1.2
     # via -r flask_covid19/app_build/requirements/dev.in
 certifi==2021.5.30
     # via
@@ -54,7 +52,9 @@ click==7.1.2
     #   flask
     #   pip-tools
 cryptography==3.4.7
-    # via mysqldb-wrapper
+    # via
+    #   celery
+    #   mysqldb-wrapper
 cycler==0.10.0
     # via matplotlib
 dataframetodb==1.0
@@ -74,7 +74,7 @@ dominate==2.6.0
 email-validator==1.1.3
     # via -r flask_covid19/app_build/requirements/dev.in
 eventlet==0.31.1
-    # via -r flask_covid19/app_build/requirements/dev.in
+    # via celery
 filelock==3.0.12
     # via virtualenv
 flask-admin==1.5.8
@@ -93,13 +93,10 @@ flask-login==0.5.0
     #   flask-login-dictabase-blueprint
 flask-migrate==3.0.1
     # via -r flask_covid19/app_build/requirements/dev.in
-flask-sqlalchemy-booster==0.6.31
-    # via -r flask_covid19/app_build/requirements/dev.in
 flask-sqlalchemy==2.5.1
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
     #   flask-migrate
-    #   flask-sqlalchemy-booster
     #   pytest-flask-sqlalchemy
 flask-wtf==0.15.1
     # via flask-bs4
@@ -114,15 +111,8 @@ flask==2.0.1
     #   flask-login-dictabase-blueprint
     #   flask-migrate
     #   flask-sqlalchemy
-    #   flask-sqlalchemy-booster
     #   flask-wtf
     #   pytest-flask
-future==0.18.2
-    # via flask-sqlalchemy-booster
-gitdb==4.0.7
-    # via gitpython
-gitpython==3.1.18
-    # via toolspy
 greenlet==1.1.0
     # via
     #   eventlet
@@ -147,6 +137,8 @@ kiwisolver==1.3.1
     # via matplotlib
 kombu==5.1.0
     # via celery
+librabbitmq==2.0.0
+    # via celery
 mako==1.1.4
     # via alembic
 mariadb==1.0.7
@@ -158,6 +150,8 @@ markupsafe==2.0.1
     #   wtforms
 matplotlib==3.4.2
     # via -r flask_covid19/app_build/requirements/dev.in
+msgpack==1.0.2
+    # via celery
 mysql-connector-python==8.0.26
     # via -r flask_covid19/app_build/requirements/dev.in
 mysqlclient==2.0.3
@@ -174,7 +168,6 @@ numpy==1.21.1
     #   statsmodels
 packaging==21.0
     # via
-    #   bleach
     #   pallets-sphinx-themes
     #   pytest
     #   pytest-flask-sqlalchemy
@@ -194,9 +187,7 @@ patsy==0.5.1
 pep517==0.11.0
     # via pip-tools
 pillow==8.3.1
-    # via
-    #   matplotlib
-    #   toolspy
+    # via matplotlib
 pip-tools==6.2.0
     # via -r flask_covid19/app_build/requirements/build.in
 pipenv==2021.5.29
@@ -241,7 +232,6 @@ python-dateutil==2.8.2
     #   dataframetodb
     #   matplotlib
     #   pandas
-    #   schemalite
 python-dotenv==0.19.0
     # via -r flask_covid19/app_build/requirements/build.in
 python-editor==1.0.4
@@ -264,27 +254,22 @@ requests==2.26.0
     # via
     #   pytoolbox
     #   sphinx
-    #   toolspy
-schemalite==0.2.1
-    # via flask-sqlalchemy-booster
 scipy==1.7.0
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
     #   statsmodels
 six==1.16.0
     # via
-    #   bleach
     #   click-repl
     #   cycler
     #   eventlet
     #   flask-cors
+    #   librabbitmq
     #   patsy
     #   protobuf
     #   python-dateutil
     #   sqlalchemy-mixins
     #   virtualenv
-smmap==4.0.0
-    # via gitdb
 snowballstemmer==2.1.0
     # via sphinx
 sphinx==4.1.1
@@ -309,10 +294,10 @@ sqlalchemy==1.4.22
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
     #   alembic
+    #   celery
     #   dataframetodb
     #   dataset
     #   flask-sqlalchemy
-    #   flask-sqlalchemy-booster
     #   pangres
     #   pytest-flask-sqlalchemy
     #   sqlalchemy-mixins
@@ -322,10 +307,6 @@ toml==0.10.2
     # via pytest
 tomli==1.1.0
     # via pep517
-toolspy==0.4.1
-    # via
-    #   flask-sqlalchemy-booster
-    #   schemalite
 urllib3==1.26.6
     # via
     #   -r flask_covid19/app_build/requirements/build.in
@@ -346,8 +327,6 @@ visitor==0.1.3
     # via flask-bs4
 wcwidth==0.2.5
     # via prompt-toolkit
-webencodings==0.5.1
-    # via bleach
 werkzeug==2.0.1
     # via
     #   flask
@@ -363,8 +342,6 @@ wtforms==2.3.3
     #   flask-admin
     #   flask-bs4
     #   flask-wtf
-xlsxwriter==1.4.4
-    # via toolspy
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
