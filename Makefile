@@ -75,6 +75,10 @@ clean_windows:
 	@echo "clean_windows"
 	@echo "TBD"
 
+clean_mac: clean_linux
+	@echo "clean_mac"
+	@echo "TBD"
+
 # -----------------------------------------------------------------------------------------------------
 #
 #    pip
@@ -102,7 +106,7 @@ pip_install:
 	$(PIP) check
 
 pip_compile_windows: pip_compile
-	@echo "pip_compile"
+	@echo "pip_compile_windows"
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
 
 pip_install_windows: pip_install
@@ -112,12 +116,22 @@ pip_install_windows: pip_install
 	$(PIP) check
 
 pip_compile_linux: pip_compile
-	@echo "pip_compile"
+	@echo "pip_compile_linux"
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/linux.in
 
 pip_install_linux: pip_install
 	@echo "pip_install_windows"
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux.txt
+	$(PIP) freeze > etc/requirements.txt
+	$(PIP) check
+
+pip_compile_mac: pip_compile
+	@echo "pip_compile_mac"
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/mac.in
+
+pip_install_mac: pip_install
+	@echo "pip_install_windows"
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/mac.txt
 	$(PIP) freeze > etc/requirements.txt
 	$(PIP) check
 
@@ -257,6 +271,8 @@ pip: pip_compile pip_install pip_check setup_frontend
 windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
 
 linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend
+
+mac: clean_mac pip_compile_mac pip_install_mac pip_check setup_frontend
 
 setup: clean setup_development setup_build
 
