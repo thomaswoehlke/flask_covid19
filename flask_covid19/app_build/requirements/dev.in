@@ -16,7 +16,7 @@ mariadb
 urllib3>=1.26.5
 wget
 email_validator
-celery[redis,sqlalchemy,librabbitmq,redis,auth,msgpack,eventlet]>=5.1
+celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1
 dataframetodb
 pangres
 scipy
