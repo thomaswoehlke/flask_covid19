@@ -1135,7 +1135,9 @@ dump.rdb
 /flask_covid19/static/vendor/
 /flask_covid19/static/vendor/*
 /flask_covid19/static/vendor
+/flask_covid19/broker/
+/flask_covid19/broker/*
+/flask_covid19/broker
 /RKI.csv
 /flask_covid19_client/nohup.out
-/flask_covid19/static/vendor/
-/flask_covid19/broker/
+
