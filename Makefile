@@ -166,6 +166,10 @@ setup_frontend:
 	$(NPM) -v
 	$(NPM) install
 
+setup_npm:
+	@echo "setup_npm"
+	sudo npm install -g npm
+
 # -----------------------------------------------------------------------------------------------------
 #
 #    venv + renv
