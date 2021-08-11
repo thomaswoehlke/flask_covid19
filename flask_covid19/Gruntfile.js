@@ -12,14 +12,6 @@ module.exports = function(grunt) {
                 dest: 'build/<%= pkg.name %>.min.js'
             }
         },
-        versioning: {
-            doc: 'index.html',
-            files: {
-                css: [],
-                js: [],
-                hastype : 'date'
-            }
-        },
         sass: {
             dist: {
                 files: {
