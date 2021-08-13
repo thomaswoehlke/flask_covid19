@@ -39,7 +39,7 @@ class BlueprintApplicationUrls:
 
     def __init__(self):
         app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ready: [WEB] BloodmoneyApplicationUrls ")
+        app.logger.info(" ready: [WEB] ApplicationUrls ")
         app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
