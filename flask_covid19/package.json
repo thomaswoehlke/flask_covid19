@@ -31,23 +31,24 @@
     },
     "private": true,
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.2",
-        "bootstrap": "4.6.0",
-        "bootswatch": "4.6.0",
-        "jquery": "3.5.1",
-        "popper.js": "1.16.1",
-        "path-parse": ">=1.0.7"
+        "@fortawesome/fontawesome-free": "5.15.4",
+        "bootstrap": "5.0.2",
+        "bootswatch": "5.0.2",
+        "@popperjs/core": "2.9.2"
     },
     "devDependencies": {
         "grunt": "^1.4.1",
         "grunt-cli": "^1.4.3",
+        "grunt-contrib-clean": "^2.0.0",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-contrib-cssmin": "^4.0.0",
         "grunt-contrib-jshint": "^3.0.0",
         "grunt-contrib-less": "^3.0.0",
         "grunt-contrib-sass": "^2.0.0",
         "grunt-contrib-uglify": "^5.0.1",
-        "grunt-run-grunt": "^1.0.1"
+        "grunt-contrib-versioning2": "^1.0.7",
+        "grunt-run-grunt": "^1.0.1",
+        "path-parse": ">=1.0.7"
     },
     "engines": {
         "npm": "^7.20.5"
