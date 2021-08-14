@@ -35,7 +35,8 @@
         "bootstrap": "4.6.0",
         "bootswatch": "4.6.0",
         "jquery": "3.5.1",
-        "popper.js": "1.16.1"
+        "popper.js": "1.16.1",
+        "path-parse": ">=1.0.7"
     },
     "devDependencies": {
         "grunt": "^1.4.1",
