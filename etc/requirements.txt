@@ -4,14 +4,12 @@ amqp==5.0.6
 appdirs==1.4.4
 attrs==21.2.0
 Babel==2.9.1
-backports.entry-points-selectable==1.1.0
 banal==1.0.6
 billiard==3.6.4.0
 celery==5.1.2
 certifi==2020.12.5
 cffi==1.14.5
 chardet==4.0.0
-charset-normalizer==2.0.3
 click==7.1.2
 click-didyoumean==0.0.3
 click-plugins==1.1.1
@@ -63,7 +61,7 @@ pep517==0.10.0
 Pillow==8.2.0
 pip-tools==6.1.0
 pipenv==2021.5.29
-platformdirs==2.1.0
+pkg_resources==0.0.0
 pluggy==0.13.1
 prompt-toolkit==3.0.19
 protobuf==3.17.2
@@ -100,7 +98,6 @@ SQLAlchemy==1.4.15
 sqlalchemy-mixins==1.4
 statsmodels==0.12.2
 toml==0.10.2
-tomli==1.1.0
 urllib3==1.26.5
 vine==5.0.0
 virtualenv==20.4.7
