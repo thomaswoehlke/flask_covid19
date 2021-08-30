@@ -44,40 +44,44 @@ class OwidCountry(AllLocation):
 
     @classmethod
     def get_usa(cls):
-        iso_code = 'DEU'
-        location = 'Germany'
+        iso_code = 'USA'
+        location = 'United States'
+        return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
+
+    @classmethod
+    def get_israel(cls):
+        iso_code = 'ISR'
+        location = 'Israel'
         return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
 
     @classmethod
     def get_china(cls):
-        iso_code = 'DEU'
-        location = 'Germany'
+        iso_code = 'CHN'
+        location = 'China'
         return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
 
     @classmethod
     def get_india(cls):
-        iso_code = 'DEU'
-        location = 'Germany'
+        iso_code = 'IND'
+        location = 'India'
         return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
 
     @classmethod
     def get_brasil(cls):
-        iso_code = 'DEU'
-        location = 'Germany'
+        iso_code = 'BRA'
+        location = 'Brazil'
         return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
 
     @classmethod
     def find_all_for_data_explorer(cls):
-        germany = cls.get_germany()
-        usa = cls.get_usa()
-        india = cls.get_india()
-        china = cls.get_china()
-        all = cls.find_all()
-        all.insert(0, germany)
-        all.insert(0, usa)
-        all.insert(0, china)
-        all.insert(0, india)
-        return all
+        all_for_data_explorer = cls.find_all()
+        all_for_data_explorer.insert(0, cls.get_china())
+        all_for_data_explorer.insert(0, cls.get_india())
+        all_for_data_explorer.insert(0, cls.get_brasil())
+        all_for_data_explorer.insert(0, cls.get_usa())
+        all_for_data_explorer.insert(0, cls.get_israel())
+        all_for_data_explorer.insert(0, cls.get_germany())
+        return all_for_data_explorer
 
     @classmethod
     def get_countries_for_continent(cls, owid_continent_one: OwidContinent, page: int):
