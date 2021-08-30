@@ -329,8 +329,7 @@ class OwidUrls:
             'OWID', 'all'
         )
         try:
-            page = 1
-            page_countries = OwidCountry.get_all(page)
+            page_countries = OwidCountry.find_all_for_data_explorer()
             page_data = None
         except OperationalError:
             flash("No data in the database.")

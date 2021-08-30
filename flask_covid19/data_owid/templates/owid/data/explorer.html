@@ -8,18 +8,34 @@
     {{super()}}
     <div class="container">
         <div class="row">
-            <div class="col">
-               A
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-               B
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
+            <div class="col-12">
                C
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+               <div class="table-responsive">
+                    <table class="table table-hover table-striped table-dark">
+                        <thead class="table-secondary">
+                            table head
+                        </thead>
+                        <tbody>
+                        {% for owid_country in page_countries %}
+                            <tr>
+                                <td>
+                                    {{ owid_country.location }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot class="table-secondary">
+                            table foot
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="col-8">
+               B
             </div>
         </div>
     </div>

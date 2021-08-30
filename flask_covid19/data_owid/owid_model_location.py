@@ -43,6 +43,43 @@ class OwidCountry(AllLocation):
         return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
 
     @classmethod
+    def get_usa(cls):
+        iso_code = 'DEU'
+        location = 'Germany'
+        return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
+
+    @classmethod
+    def get_china(cls):
+        iso_code = 'DEU'
+        location = 'Germany'
+        return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
+
+    @classmethod
+    def get_india(cls):
+        iso_code = 'DEU'
+        location = 'Germany'
+        return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
+
+    @classmethod
+    def get_brasil(cls):
+        iso_code = 'DEU'
+        location = 'Germany'
+        return cls.find_by_location_code_and_location(location_code=iso_code, location=location)
+
+    @classmethod
+    def find_all_for_data_explorer(cls):
+        germany = cls.get_germany()
+        usa = cls.get_usa()
+        india = cls.get_india()
+        china = cls.get_china()
+        all = cls.find_all()
+        all.insert(0, germany)
+        all.insert(0, usa)
+        all.insert(0, china)
+        all.insert(0, india)
+        return all
+
+    @classmethod
     def get_countries_for_continent(cls, owid_continent_one: OwidContinent, page: int):
         return db.session.query(cls).filter(cls.location_group == owid_continent_one).paginate(page, per_page=items_per_page)
 
