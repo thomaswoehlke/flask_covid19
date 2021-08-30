@@ -320,6 +320,28 @@ class OwidUrls:
         app.logger.info("url_owid_delete_last_day [done]")
         return redirect(url_for('owid.url_owid_date_reported_all'))
 
+    @staticmethod
+    @app_owid.route('/data/explorer')
+    def url_owid_data_explorer():
+        app.logger.info("url_owid_data_explorer [start]")
+        page_info = WebPageContent(
+            "Data Explorer "
+            'OWID', 'all'
+        )
+        try:
+            page = 1
+            page_countries = OwidCountry.get_all(page)
+            page_data = None
+        except OperationalError:
+            flash("No data in the database.")
+            page_data = None
+        app.logger.info("url_owid_data_explorer [done]")
+        return render_template(
+            'owid/data/explorer.html',
+            page_data=page_data,
+            page_countries=page_countries,
+            page_info=page_info)
+
 
 owid_urls = OwidUrls()
 
