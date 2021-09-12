@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
 import os
-import pandas
+import numpy as np
+import pandas as pd
+import matplotlib as mpl
+import scipy as sp
+import statsmodels as sm
 
 from flask_covid19.data_all.all_config import BlueprintConfig
 
@@ -20,12 +24,17 @@ class Runner:
 
     def daten_einlesen(self):
         # csv-Datei direkt in einen DataFrame einlesen
-        self.data = pandas.read_csv(self.config.cvsfile_path, sep=self.config.separator)
+        self.data = pd.read_csv(
+            self.config.cvsfile_path,
+            sep=self.config.separator,
+            index_col=0,
+            parse_dates=True
+        )
         # grundlegende Informationen über den Datensatz
-        self.data.info()
-        list(self.data.keys())
-        self.data.value_counts()
-        self.data.index
-        self.data.head()
-        self.data
+        print(self.data.info())
+        print(list(self.data.keys()))
+        print(self.data.value_counts())
+        print(self.data.index)
+        print(self.data.head())
+        print(self.data)
         return self
