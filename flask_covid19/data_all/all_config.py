@@ -16,6 +16,7 @@ class BlueprintConfig:
                  tablename: str,
                  cvsfile_name: str,
                  cvsfile_backup_name: str,
+                 separator: str,
                  url_src: str,
                  limit_import_for_testing: bool,
                  limit_import_for_testing_threshold: int):
@@ -29,6 +30,7 @@ class BlueprintConfig:
         self.tablename = tablename
         self.cvsfile_name = cvsfile_name
         self.cvsfile_backup_name = cvsfile_backup_name
+        self.separator = separator
         self.url_src = url_src
         self.download_path = self.data_path_tmp + os.sep + self.cvsfile_name
         self.cvsfile_backup_path = self.data_path + os.sep + self.cvsfile_subpath + os.sep + self.cvsfile_backup_name
@@ -57,6 +59,7 @@ class BlueprintConfig:
             tablename=WhoImport.__tablename__,
             cvsfile_name="WHO.csv",
             cvsfile_backup_name='WHO_backup.csv',
+            separator=',',
             url_src="https://covid19.who.int/WHO-COVID-19-global-data.csv",
             limit_import_for_testing=app.config['TEST_IMPORT_WHO'],
             limit_import_for_testing_threshold=app.config['TEST_IMPORT_WHO_THRESHOLD']
@@ -72,6 +75,7 @@ class BlueprintConfig:
             tablename=VaccinationImport.__tablename__,
             cvsfile_name="Vaccination.tsv",
             cvsfile_backup_name='Vaccination_backup.tsv',
+            separator='\t',
             url_src="https://impfdashboard.de/static/data/germany_vaccinations_timeseries_v2.tsv",
             limit_import_for_testing=False,
             limit_import_for_testing_threshold=0
@@ -87,6 +91,7 @@ class BlueprintConfig:
             tablename=OwidImport.__tablename__,
             cvsfile_name="OWID.csv",
             cvsfile_backup_name='OWID_backup.csv',
+            separator=',',
             url_src="https://covid.ourworldindata.org/data/owid-covid-data.csv",
             limit_import_for_testing=app.config['TEST_IMPORT_OWID'],
             limit_import_for_testing_threshold=app.config['TEST_IMPORT_OWID_THRESHOLD']
@@ -102,6 +107,7 @@ class BlueprintConfig:
             tablename=EcdcImport.__tablename__,
             cvsfile_name="ECDC.csv",
             cvsfile_backup_name='ECDC_backup.csv',
+            separator=',',
             url_src="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/",
             limit_import_for_testing=app.config['TEST_IMPORT_ECDC'],
             limit_import_for_testing_threshold=app.config['TEST_IMPORT_ECDC_THRESHOLD']
@@ -117,6 +123,7 @@ class BlueprintConfig:
             tablename=RkiImport.__tablename__,
             cvsfile_name="RKI.csv",
             cvsfile_backup_name='RKI_backup.csv',
+            separator=',',
             url_src="https://www.arcgis.com/sharing/rest/content/items/f10774f1c63e40168479a1feb6c7ca74/data",
             limit_import_for_testing=app.config['TEST_IMPORT_RKI'],
             limit_import_for_testing_threshold=app.config['TEST_IMPORT_RKI_THRESHOLD']
