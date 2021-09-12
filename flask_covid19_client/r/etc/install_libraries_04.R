@@ -1,0 +1,5 @@
+install.packages("maptools")
+install.packages("mapview")
+install.packages("pheatmap")
+install.packages("rgdal")
+install.packages("survival")

@@ -1,1 +1,9 @@
 /renv/
+/venv/
+/data/
+/src/data/ecdc/
+/src/data/owid/
+/src/data/rki/
+/src/data/vaccination/
+/src/data/who/
+/src/data/RKI.csv
