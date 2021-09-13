@@ -306,7 +306,6 @@ toml==0.10.2
 urllib3==1.26.5
     # via
     #   -r flask_covid19/app_build/requirements/build.in
-    #   -r flask_covid19/app_build/requirements/dev.in
     #   requests
 vine==5.0.0
     # via
