@@ -24,7 +24,7 @@
     "python",
     "flask",
     "sqlalchemy",
-    "postgresql"
+    "mariadb"
   ],
   "author": "Thomas Woehlke",
   "license": "GPL-3.0-or-later",
