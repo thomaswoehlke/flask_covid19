@@ -44,6 +44,8 @@ requires_build = [
     "pytoolbox",
     "python-dotenv",
     "Flask",
+    "urllib3>=1.26.5",
+    "pillow>=8.3.2",
 ]
 
 requires_test = [
@@ -72,18 +74,26 @@ requires_extras = {
 
 requires_dev = [
     "Flask-SQLAlchemy",
+    "Flask-Migrate",
     "Flask-Cors",
     "Flask-BS4",
     "Flask-Admin",
     "Flask-Login",
     "flask-login-dictabase-blueprint",
     "SQLAlchemy",
+    "sqlalchemy-mixins",
     "mysql-connector-python",
     "mysqldb-wrapper",
+    "mariadb",
     "wget",
     "email_validator",
-    "celery<5.0",
-    "eventlet"
+    "celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1",
+    "dataframetodb",
+    "pangres",
+    "scipy",
+    "matplotlib",
+    "statsmodels",
+    "pandas",
 ] + pytest_runner
 
 
@@ -153,7 +163,7 @@ setup(
         "Operating System :: Microsoft :: Windows :: Windows 10",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Development Status :: 3 - Alpha",
         "Natural Language :: German",
         "Natural Language :: English",
@@ -179,5 +189,5 @@ setup(
         scripts_dir + 'script_setup_requirements.py',
         scripts_dir + 'script_npm_install.py'
     ],
-    python_requires=">= 3.8"
+    python_requires=">= 3.9"
 )
