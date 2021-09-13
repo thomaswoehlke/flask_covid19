@@ -182,8 +182,10 @@ patsy==0.5.1
     # via statsmodels
 pep517==0.11.0
     # via pip-tools
-pillow==8.3.1
-    # via matplotlib
+pillow==8.3.2
+    # via
+    #   -r flask_covid19/app_build/requirements/build.in
+    #   matplotlib
 pip-tools==6.2.0
     # via -r flask_covid19/app_build/requirements/build.in
 pipenv==2021.5.29

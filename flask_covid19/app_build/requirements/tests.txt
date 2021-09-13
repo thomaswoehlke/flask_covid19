@@ -49,6 +49,8 @@ packaging==20.9
     #   pytest-flask-sqlalchemy
 pep517==0.10.0
     # via pip-tools
+pillow==8.3.2
+    # via -r flask_covid19/app_build/requirements/build.in
 pip-tools==6.1.0
     # via -r flask_covid19/app_build/requirements/build.in
 pipenv==2021.5.29
