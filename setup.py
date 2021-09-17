@@ -66,6 +66,7 @@ requires_docs = [
 	"sphinxcontrib-gravizo",
 	"sphinxcontrib-needs",
 	"sphinxcontrib-markdown",
+    "sphinxcontrib-srclinks",
 	"sphinx-tabs",
 	"myst-parser",
 ]
