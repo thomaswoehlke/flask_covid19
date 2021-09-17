@@ -268,6 +268,10 @@ love:
 #
 # -----------------------------------------------------------------------------------------------------
 
+flask_covid19: 
+	@echo "flask_covid19"
+	$(PIP) install -e .
+
 download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
 
 distclean: venv_clean renv_clean
@@ -278,7 +282,7 @@ pip: pip_compile pip_install pip_check setup_frontend
 
 windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
 
-linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend
+linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend flask_covid19
 
 mac: clean_mac pip_compile_mac pip_install_mac pip_check setup_frontend
 

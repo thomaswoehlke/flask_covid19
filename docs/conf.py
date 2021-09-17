@@ -15,10 +15,11 @@ master_doc = "index"
 
 extensions = [    
     "myst_parser",
-    #"sphinx.ext.autodoc",
+    "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
-    #"sphinxcontrib.gravizo",
+    "sphinxcontrib.gravizo",
+    "sphinxcontrib.srclinks",
     "pallets_sphinx_themes",
     "sphinx_issues",
     "sphinx_tabs.tabs",
@@ -47,13 +48,12 @@ html_theme = "flask"
 html_theme_options = {"index_sidebar_logo": False}
 html_context = {
     "project_links": [
-        ProjectLink("Donate", "https://palletsprojects.com/donate"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask/"),
-        ProjectLink("Source Code", "https://github.com/pallets/flask/"),
-        ProjectLink("Issue Tracker", "https://github.com/pallets/flask/issues/"),
-        ProjectLink("Website", "https://palletsprojects.com/p/flask/"),
-        ProjectLink("Twitter", "https://twitter.com/PalletsTeam"),
-        ProjectLink("Chat", "https://discord.gg/pallets"),
+        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
+        ProjectLink("PyPI Releases", "https://pypi.org/project/flask_covid19/"),
+        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
+        ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
+        ProjectLink("Website", "https://woehlke.org/p/flask_covid19/"),
+        ProjectLink("Twitter", "https://twitter.com/SearchSquirrel"),
     ]
 }
 html_sidebars = {
@@ -64,8 +64,8 @@ singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.ht
 html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
-html_title = f"Flask Documentation ({version})"
-html_show_sourcelink = False
+html_title = f"flask_covid19 Documentation ({version})"
+html_show_sourcelink = True
 
 # LaTeX ----------------------------------------------------------------
 
