@@ -57,6 +57,7 @@ requires_test = [
 
 requires_docs = [
     "Pallets-Sphinx-Themes",
+    "sphinx_bootstrap_theme",
     "sphinx",
     "sphinx-issues",
 	"sphinxcontrib-log-cabinet",

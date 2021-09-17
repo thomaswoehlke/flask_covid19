@@ -1,6 +1,7 @@
 -r build.in
 Pallets-Sphinx-Themes
 Sphinx
+sphinx_bootstrap_theme
 sphinx-issues
 sphinxcontrib-log-cabinet
 sphinxcontrib-plantuml
