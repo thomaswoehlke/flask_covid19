@@ -75,10 +75,7 @@ dnspython==1.16.0
 docutils==0.16
     # via
     #   myst-parser
-    #   pybtex-docutils
     #   sphinx
-    #   sphinx-tabs
-    #   sphinxcontrib-bibtex
 dominate==2.6.0
     # via flask-bs4
 email-validator==1.1.2
@@ -152,14 +149,10 @@ kiwisolver==1.3.1
     # via matplotlib
 kombu==5.1.0
     # via celery
-latexcodec==2.0.1
-    # via pybtex
 mako==1.1.4
     # via alembic
 mariadb==1.0.6
     # via -r flask_covid19/app_build/requirements/dev.in
-markdown==3.3.4
-    # via sphinxcontrib-markdown
 markdown-it-py==1.1.0
     # via
     #   mdit-py-plugins
@@ -170,9 +163,7 @@ markupsafe==1.1.1
     #   mako
     #   wtforms
 matplotlib==3.4.2
-    # via
-    #   -r flask_covid19/app_build/requirements/dev.in
-    #   sphinxcontrib-needs
+    # via -r flask_covid19/app_build/requirements/dev.in
 mdit-py-plugins==0.2.8
     # via myst-parser
 msgpack==1.0.2
@@ -202,13 +193,10 @@ numpy==1.20.3
 packaging==20.9
     # via
     #   build
-    #   pallets-sphinx-themes
     #   pytest
     #   pytest-flask-sqlalchemy
     #   sphinx
     #   tox
-pallets-sphinx-themes==1.2.3
-    # via -r flask_covid19/app_build/requirements/docs.in
 pandas==1.2.4
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
@@ -219,8 +207,6 @@ pangres==2.3
     # via -r flask_covid19/app_build/requirements/dev.in
 patsy==0.5.1
     # via statsmodels
-pbr==5.6.0
-    # via sphinxcontrib-gravizo
 pep517==0.10.0
     # via
     #   build
@@ -249,18 +235,10 @@ py==1.10.0
     #   tox
 pyaml==20.4.0
     # via pytoolbox
-pybtex==0.24.0
-    # via
-    #   pybtex-docutils
-    #   sphinxcontrib-bibtex
-pybtex-docutils==1.0.1
-    # via sphinxcontrib-bibtex
 pycparser==2.20
     # via cffi
 pygments==2.9.0
-    # via
-    #   sphinx
-    #   sphinx-tabs
+    # via sphinx
 pyparsing==2.4.7
     # via
     #   matplotlib
@@ -304,18 +282,12 @@ pyyaml==5.4.1
     #   myst-parser
     #   pre-commit
     #   pyaml
-    #   pybtex
 redis==3.5.3
     # via celery
 requests==2.25.1
     # via
     #   pytoolbox
-    #   requests-file
     #   sphinx
-    #   sphinxcontrib-images
-    #   sphinxcontrib-needs
-requests-file==1.5.1
-    # via sphinxcontrib-needs
 scipy==1.6.3
     # via
     #   -r flask_covid19/app_build/requirements/dev.in
@@ -327,12 +299,9 @@ six==1.16.0
     #   cycler
     #   eventlet
     #   flask-cors
-    #   latexcodec
     #   patsy
     #   protobuf
-    #   pybtex
     #   python-dateutil
-    #   requests-file
     #   sqlalchemy-mixins
     #   tox
     #   virtualenv
@@ -342,46 +311,16 @@ sphinx==3.4.3
     # via
     #   -r flask_covid19/app_build/requirements/docs.in
     #   myst-parser
-    #   pallets-sphinx-themes
-    #   sphinx-copybutton
-    #   sphinx-issues
-    #   sphinx-tabs
-    #   sphinxcontrib-bibtex
-    #   sphinxcontrib-images
-    #   sphinxcontrib-log-cabinet
-    #   sphinxcontrib-markdown
-    #   sphinxcontrib-needs
-    #   sphinxcontrib-plantuml
-sphinx-copybutton==0.3.3
-    # via sphinxcontrib-needs
-sphinx-issues==1.2.0
-    # via -r flask_covid19/app_build/requirements/docs.in
-sphinx-tabs==3.2.0
+sphinx-bootstrap-theme==0.8.0
     # via -r flask_covid19/app_build/requirements/docs.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
-sphinxcontrib-bibtex==2.4.1
-    # via -r flask_covid19/app_build/requirements/docs.in
 sphinxcontrib-devhelp==1.0.2
     # via sphinx
-sphinxcontrib-gravizo==0.0.4
-    # via -r flask_covid19/app_build/requirements/docs.in
 sphinxcontrib-htmlhelp==1.0.3
     # via sphinx
-sphinxcontrib-images==0.9.4
-    # via -r flask_covid19/app_build/requirements/docs.in
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
-sphinxcontrib-log-cabinet==1.0.1
-    # via -r flask_covid19/app_build/requirements/docs.in
-sphinxcontrib-markdown==0.1.0
-    # via -r flask_covid19/app_build/requirements/docs.in
-sphinxcontrib-needs==0.7.1
-    # via -r flask_covid19/app_build/requirements/docs.in
-sphinxcontrib-plantuml==0.21
-    # via
-    #   -r flask_covid19/app_build/requirements/docs.in
-    #   sphinxcontrib-needs
 sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.4
@@ -403,6 +342,7 @@ statsmodels==0.12.2
     # via -r flask_covid19/app_build/requirements/dev.in
 toml==0.10.2
     # via
+    #   -r flask_covid19/app_build/requirements/build.in
     #   mypy
     #   pep517
     #   pre-commit
