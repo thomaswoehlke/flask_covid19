@@ -1,15 +1,15 @@
 -r build.in
-Pallets-Sphinx-Themes
+#Pallets-Sphinx-Themes
 Sphinx
 sphinx_bootstrap_theme
-sphinx-issues
-sphinxcontrib-log-cabinet
-sphinxcontrib-plantuml
-sphinxcontrib-bibtex
-sphinxcontrib-images 
-sphinxcontrib-gravizo
-sphinxcontrib-needs
-sphinxcontrib-markdown
-sphinxcontrib-srclinks
-sphinx-tabs
 myst-parser
+#sphinx-issues
+#sphinxcontrib-log-cabinet
+#sphinxcontrib-plantuml
+#sphinxcontrib-bibtex
+#sphinxcontrib-images 
+#sphinxcontrib-gravizo
+#sphinxcontrib-needs
+#sphinxcontrib-markdown
+#sphinxcontrib-srclinks
+#sphinx-tabs

@@ -3,6 +3,7 @@ build
 pip-tools
 pre-commit
 tox
+toml
 pipenv
 virtualenv
 pytoolbox

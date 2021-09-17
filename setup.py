@@ -43,6 +43,8 @@ requires_build = [
     "virtualenv",
     "pytoolbox",
     "python-dotenv",
+    "tox",
+    "toml",
     "Flask",
     "urllib3>=1.26.5",
     "pillow>=8.3.2",
@@ -56,20 +58,20 @@ requires_test = [
 ]
 
 requires_docs = [
-    "Pallets-Sphinx-Themes",
+    #"Pallets-Sphinx-Themes",
     "sphinx_bootstrap_theme",
     "sphinx",
-    "sphinx-issues",
-	"sphinxcontrib-log-cabinet",
-	"sphinxcontrib-plantuml",
-	"sphinxcontrib-bibtex",
-	"sphinxcontrib-images",
-	"sphinxcontrib-gravizo",
-	"sphinxcontrib-needs",
-	"sphinxcontrib-markdown",
-    "sphinxcontrib-srclinks",
-	"sphinx-tabs",
 	"myst-parser",
+    #"sphinx-issues",
+	#"sphinxcontrib-log-cabinet",
+	#"sphinxcontrib-plantuml",
+	#"sphinxcontrib-bibtex",
+	#"sphinxcontrib-images",
+	#"sphinxcontrib-gravizo",
+	#"sphinxcontrib-needs",
+	#"sphinxcontrib-markdown",
+    #"sphinxcontrib-srclinks",
+	#"sphinx-tabs",
 ]
 
 dotenv_require = [
