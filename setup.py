@@ -5,7 +5,7 @@ import subprocess
 
 from setuptools import find_packages, setup
 
-version = '0.0.68'
+version = '0.0.69'
 
 scripts_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'scripts'+os.sep
 pip_requirements_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'requirements'
@@ -57,7 +57,17 @@ requires_test = [
 
 requires_docs = [
     "Pallets-Sphinx-Themes",
-    "sphinx"
+    "sphinx",
+    "sphinx-issues",
+	"sphinxcontrib-log-cabinet",
+	"sphinxcontrib-plantuml",
+	"sphinxcontrib-bibtex",
+	"sphinxcontrib-images",
+	"sphinxcontrib-gravizo",
+	"sphinxcontrib-needs",
+	"sphinxcontrib-markdown",
+	"sphinx-tabs",
+	"myst-parser",
 ]
 
 dotenv_require = [
@@ -76,7 +86,7 @@ requires_dev = [
     "Flask-SQLAlchemy",
     "Flask-Migrate",
     "Flask-Cors",
-    "Flask-BS4",
+    "Flask-BS4>=5.0.0.1",
     "Flask-Admin",
     "Flask-Login",
     "flask-login-dictabase-blueprint",

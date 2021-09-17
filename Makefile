@@ -94,6 +94,7 @@ pip_compile:
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/typing.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
 
 pip_install:
@@ -101,6 +102,7 @@ pip_install:
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/typing.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
 	$(PIP) freeze > etc/requirements.txt
 	$(PIP) check
@@ -266,6 +268,8 @@ love:
 #
 # -----------------------------------------------------------------------------------------------------
 
+download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
+
 distclean: venv_clean renv_clean
 
 start: pip_setuptools pip_install setup_frontend
@@ -280,4 +284,4 @@ mac: clean_mac pip_compile_mac pip_install_mac pip_check setup_frontend
 
 setup: clean setup_development setup_build
 
-download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
+update: linux

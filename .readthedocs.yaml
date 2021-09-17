@@ -1,7 +1,7 @@
 version: 2
 python:
   install:
-    - requirements: requirements/dev.txt
+    - requirements: flask_covid19/app_build/requirements/linux.txt
     - method: pip
       path: .
 sphinx:

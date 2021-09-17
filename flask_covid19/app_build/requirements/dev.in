@@ -1,10 +1,11 @@
 -r build.in
 -r docs.in
 -r tests.in
+-r typing.in
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-Cors
-Flask-BS4
+Flask-BS4>=5.0.0.1
 Flask-Admin
 Flask-Login
 flask-login-dictabase-blueprint

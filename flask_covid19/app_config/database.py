@@ -31,7 +31,7 @@ class Covid19Application:
         self.app.config['BOOTSTRAP_CUSTOM_CSS'] = True
         self.app.config['SQLALCHEMY_DATABASE_URI'] = self.db_uri
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # silence the deprecation warning
-        self.app.config['FLASK_ADMIN_SWATCH'] = 'superhero'
+        self.app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
         self.items_per_page = self.app.config['SQLALCHEMY_ITEMS_PER_PAGE']
         self.app_bootstrap = Bootstrap(self.app)
         oo_list = [
@@ -80,7 +80,7 @@ class Covid19Application:
         self.admin = Admin(
             self.app,
             name='covid19 | admin',
-            template_mode='bootstrap4')
+            template_mode='bootstrap5')
         self.root_dir = os.getcwd()
         self.__create_celery_broker_paths()
         self.create_celery()

@@ -1,3 +1,13 @@
 -r build.in
 Pallets-Sphinx-Themes
-sphinx
+Sphinx
+sphinx-issues
+sphinxcontrib-log-cabinet
+sphinxcontrib-plantuml
+sphinxcontrib-bibtex
+sphinxcontrib-images 
+sphinxcontrib-gravizo
+sphinxcontrib-needs
+sphinxcontrib-markdown
+sphinx-tabs
+myst-parser

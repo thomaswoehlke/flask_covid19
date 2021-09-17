@@ -1,5 +1,8 @@
 wheel
+build
 pip-tools
+pre-commit
+tox
 pipenv
 virtualenv
 pytoolbox

@@ -2,7 +2,7 @@ import data_all
 import app_config
 import app_web
 
-from app_web import run_web
+from app_web import run_web, celery
 
 # ---------------------------------------------------------------------------------
 #  MAIN
