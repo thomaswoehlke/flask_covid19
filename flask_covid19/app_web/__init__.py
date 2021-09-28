@@ -1,3 +1,4 @@
+from operator import eq
 import os
 import socket
 import subprocess
@@ -17,7 +18,9 @@ def run_web():
         app.logger.info(os.getcwd())
         debug = app.config['FLASK_APP_DEBUGGER_ACTIVE']
         port = app.config['PORT']
-        host = socket.gethostname()
+        host = app.config['HOST']
+        if host == None or host == '':
+            host = socket.gethostname()
         app.logger.info(host)
         load_dotenv = True
         app.run(

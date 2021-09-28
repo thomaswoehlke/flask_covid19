@@ -9,6 +9,7 @@ PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
+GIT := git
 PIP_REQUIREMENTS_DIR := flask_covid19/app_build/requirements
 
 
@@ -78,6 +79,10 @@ clean_windows:
 clean_mac: clean_linux
 	@echo "clean_mac"
 	@echo "TBD"
+
+clean:	clean_linux
+
+
 
 # -----------------------------------------------------------------------------------------------------
 #
@@ -261,6 +266,25 @@ download_divi:
 love:
 	@echo "not war!"
 
+# -----------------------------------------------------------------------------------------------------
+#
+#   main targets
+#
+# -----------------------------------------------------------------------------------------------------
+
+git:
+	@echo "git"
+	$(GIT) fetch
+	$(GIT) status
+	$(GIT) add -u
+	$(GIT) commit -m "work"
+	$(GIT) status
+	@$(GIT) push
+	$(GIT) fetch
+	$(GIT) status
+	@echo "--------"
+	@echo "git DONE"
+	@echo "--------"
 
 # -----------------------------------------------------------------------------------------------------
 #
@@ -268,15 +292,16 @@ love:
 #
 # -----------------------------------------------------------------------------------------------------
 
-flask_covid19: 
+flask_covid19:
 	@echo "flask_covid19"
 	$(PIP) install -e .
+	@echo "------------------"
+	@echo "flask_covid19 DONE"
+	@echo "------------------"
 
 download: download_who download_owid download_rki download_rki_vaccination download_divi download_ecdc
 
 distclean: venv_clean renv_clean
-
-start: pip_setuptools pip_install setup_frontend
 
 pip: pip_compile pip_install pip_check setup_frontend
 
@@ -287,5 +312,7 @@ linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend 
 mac: clean_mac pip_compile_mac pip_install_mac pip_check setup_frontend
 
 setup: clean setup_development setup_build
+
+start: pip_setuptools pip_install setup_frontend
 
 update: linux
