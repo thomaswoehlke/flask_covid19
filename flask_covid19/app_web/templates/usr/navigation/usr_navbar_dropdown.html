@@ -1,4 +1,3 @@
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
                        id="navbarDropdownMenuLinkDataUser"
@@ -13,7 +12,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.url_user_info') }}">
-                                User
+                                User Info
                             </a>
                         </li>
                         <li>
@@ -21,26 +20,25 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="{{ url_for( 'usr.url_user_info') }}">
-                                User Info
+                               href="{{ url_for( 'usr.login') }}">
+                              Login
                             </a>
                         </li>
                         {% if current_user.is_authenticated %}
                         <li>
+                          <a class="dropdown-item"
+                             href="{{ url_for( 'usr.profile') }}">
+                            Profile
+                          </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
                             <a class="dropdown-item"
-                               href="{{ url_for( 'usr.url_user_tasks') }}">
-                                User Tasks
+                               href="{{ url_for( 'usr.logout') }}">
+                              Logout
                             </a>
-                        </li>
-                        {% endif %}
-                        <li>
-                            <a class="dropdown-item"
-                               href="{{ url_for( 'usr.login') }}">Login</a>
-                        </li>
-                        {% if current_user.is_authenticated %}
-                        <li>
-                            <a class="dropdown-item"
-                               href="{{ url_for( 'usr.logout') }}">Logout</a>
                         </li>
                         {% endif %}
 
