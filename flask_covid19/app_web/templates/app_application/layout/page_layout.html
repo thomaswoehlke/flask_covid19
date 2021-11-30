@@ -20,9 +20,11 @@
 {% block navbar %}
     {% include 'app_application/navigation/navbar.html' %}
     <div class="container">
-        <div class="row">
+        <div class="row pb-2 pt-2">
             <div class="col">
-                <h1 class="display-3">{{page_info.title}} | <small class="display-4">{{page_info.subtitle}}</small></h1>
+                <h1 class="display-3">{{page_info.title}} |
+                  <small class="display-4">{{page_info.subtitle}}</small>
+                </h1>
             </div>
         </div>
         <div class="row">
@@ -30,14 +32,7 @@
                 {% include 'app_application/fragments/fragment_flashed_messages.html' %}
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <nav>
-                    {% include 'app_application/navigation/navtabs.html' %}
-                </nav>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row pb-2">
             <div class="col">
                 <nav>
                     {% block navtabs %}
