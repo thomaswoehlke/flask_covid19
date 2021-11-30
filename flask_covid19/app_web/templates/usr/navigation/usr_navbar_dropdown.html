@@ -1,10 +1,15 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
-                       id="navbarDropdownMenuLinkDataUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        User<i class="glyphicon glyphicon-chevron-down small"></i>
+                       id="navbarDropdownMenuLinkDataUser"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                      <i class="fas fa-user"></i>
+                      <i class="glyphicon glyphicon-chevron-down small"></i>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDataUser">
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLinkDataUser">
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.url_user_info') }}">
