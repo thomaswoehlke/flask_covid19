@@ -2,36 +2,46 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_info') }}">OWID Info</a>
+                           href="{{ url_for( 'owid.url_owid_info') }}">OWID</a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_imported') }}">OWID imported</a>
+                           href="{{ url_for( 'owid.url_owid_imported') }}">imported</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'owid.url_owid_flat') }}">flat</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_flat') }}">OWID flat</a>
+                           href="{{ url_for( 'owid.url_owid_date_reported_all') }}">
+                          Date Reported
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_date_reported_all') }}">OWID Date Reported</a>
+                           href="{{ url_for( 'owid.url_owid_continent_all') }}">
+                          Continents
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_continent_all') }}">OWID Continents</a>
+                           href="{{ url_for( 'owid.url_owid_country_all') }}">
+                          Countries
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_country_all') }}">OWID Countries</a>
+                           href="{{ url_for( 'owid.url_owid_country_one_germany') }}">
+                          Germany
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_country_one_germany') }}">OWID Germany</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_data_explorer') }}">OWID Data Explorer</a>
+                           href="{{ url_for( 'owid.url_owid_data_explorer') }}">
+                          Data Explorer
+                        </a>
                     </li>
                 </ul>

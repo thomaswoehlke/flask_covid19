@@ -1,32 +1,46 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_info') }}">ECDC Info</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_info') }}">
+                          ECDC
+                        </a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_imported') }}">ECDC imported</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_imported') }}">
+                          imported
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'ecdc.url_ecdc_flat') }}">
+                          flat
+                        </a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_flat') }}">ECDC flat</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_date_reported_all') }}">
+                          date_reported
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_date_reported_all') }}">ECDC date_reported</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_continent_all') }}">
+                          continent
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_continent_all') }}">ECDC continent</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_country_all') }}">
+                          country
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_country_all') }}">ECDC country</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'ecdc.url_ecdc_country_germany') }}">ECDC Germany</a>
+                           href="{{ url_for( 'ecdc.url_ecdc_country_germany') }}">
+                          Germany
+                        </a>
                     </li>
                 </ul>
