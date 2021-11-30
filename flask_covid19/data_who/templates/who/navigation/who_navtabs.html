@@ -1,20 +1,6 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'who.url_who_info') }}">WHO</a>
-                    </li>
-                    {% if current_user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'who.url_who_imported') }}">imported</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'who.url_who_flat') }}">flat</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
                            href="{{ url_for( 'who.url_who_date_reported_all') }}">
                           Date Reported
                         </a>
@@ -31,5 +17,18 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'who.url_who_germany') }}">Germany</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'who.url_who_imported') }}">imported</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'who.url_who_flat') }}">flat</a>
+                    </li>
+                    {% endif %}<li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'who.url_who_info') }}">WHO</a>
                     </li>
                 </ul>

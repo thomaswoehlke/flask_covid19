@@ -1,8 +1,20 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for('rki.url_rki_info') }}">
-                            RKI
+                           href="{{ url_for( 'rki.url_rki_date_reported_all') }}">
+                            Date Reported
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_bundesland_all') }}">
+                            Bundesland
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_altersgruppe_all') }}">
+                            Altersgruppe
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
@@ -20,20 +32,8 @@
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'rki.url_rki_date_reported_all') }}">
-                            Date Reported
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'rki.url_rki_bundesland_all') }}">
-                            Bundesland
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'rki.url_rki_altersgruppe_all') }}">
-                            Altersgruppe
+                           href="{{ url_for('rki.url_rki_info') }}">
+                            RKI
                         </a>
                     </li>
                 </ul>

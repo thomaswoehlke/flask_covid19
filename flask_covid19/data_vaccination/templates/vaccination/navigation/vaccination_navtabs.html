@@ -2,8 +2,8 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'vaccination.url_vaccination_info') }}">
-                            Vaccination
+                           href="{{ url_for( 'vaccination.url_vaccination_data') }}">
+                            Data
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
@@ -16,8 +16,8 @@
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'vaccination.url_vaccination_data') }}">
-                            Data
+                           href="{{ url_for( 'vaccination.url_vaccination_info') }}">
+                            Vaccination
                         </a>
                     </li>
                 </ul>
