@@ -12,7 +12,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.url_user_info') }}">
-                                User Info
+                               <i class="fas fa-user"></i> User Info
                             </a>
                         </li>
                         <li>
@@ -21,7 +21,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.login') }}">
-                              Login
+                             Login
                             </a>
                         </li>
                         {% if current_user.is_authenticated %}
@@ -37,7 +37,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="{{ url_for( 'usr.logout') }}">
-                              Logout
+                              <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
                         {% endif %}
