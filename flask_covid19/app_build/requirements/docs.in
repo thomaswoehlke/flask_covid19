@@ -3,6 +3,7 @@
 Sphinx
 sphinx_bootstrap_theme
 myst-parser
+babel>=2.9.1
 #sphinx-issues
 #sphinxcontrib-log-cabinet
 #sphinxcontrib-plantuml
