@@ -2,34 +2,38 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for('rki.url_rki_info') }}">
-                            RKI Info
+                            RKI
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('rki.url_rki_imported') }}">
-                            RKI imported
+                        <a class="nav-link"
+                           href="{{ url_for('rki.url_rki_imported') }}">
+                            imported
                         </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('rki.url_rki_flat') }}">
+                          flat
+                      </a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('rki.url_rki_flat') }}">
-                            RKI flat
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_date_reported_all') }}">
+                            Date Reported
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for( 'rki.url_rki_date_reported_all') }}">
-                            RKI Date Reported
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_bundesland_all') }}">
+                            Bundesland
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for( 'rki.url_rki_bundesland_all') }}">
-                            RKI Bundesland
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for( 'rki.url_rki_altersgruppe_all') }}">
-                            RKI Altersgruppe
+                        <a class="nav-link"
+                           href="{{ url_for( 'rki.url_rki_altersgruppe_all') }}">
+                            Altersgruppe
                         </a>
                     </li>
                 </ul>

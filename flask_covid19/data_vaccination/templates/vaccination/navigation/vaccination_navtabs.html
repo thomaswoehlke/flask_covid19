@@ -3,21 +3,21 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'vaccination.url_vaccination_info') }}">
-                            Vaccination :: Info
+                            Vaccination
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
-                            Vaccination :: imported
+                            imported
                         </a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'vaccination.url_vaccination_data') }}">
-                            Vaccination :: Data
+                            Data
                         </a>
                     </li>
                 </ul>

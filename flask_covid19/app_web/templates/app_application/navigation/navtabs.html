@@ -1,15 +1,8 @@
-
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link active"
                            href="{{ url_for( 'url_home') }}">
                             Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'app_all.url_all_info') }}">
-                            All
                         </a>
                     </li>
                     <li class="nav-item">
@@ -42,20 +35,20 @@
                             ECDC
                         </a>
                     </li>
-                    {#
+                    {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'divi.url_divi_info') }}">
-                            DIVI
+                           href="{{ url_for( 'app_all.url_all_info') }}">
+                            All
                         </a>
                     </li>
-                    #}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'app_admin.url_admin_info') }}">
                             Admin
                         </a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'usr.url_user_info') }}">
