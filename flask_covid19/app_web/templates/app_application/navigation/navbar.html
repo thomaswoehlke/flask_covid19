@@ -1,30 +1,29 @@
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ url_for( 'url_home') }}">Covid19 | Data</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand"
+                   href="{{ url_for( 'url_home') }}">Covid19 | Data
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-
-                        {% include 'who/navigation/who_navbar_dropdown.html' %}
-
-                        {% include 'owid/navigation/owid_navbar_dropdown.html' %}
-
-                        {% include 'rki/navigation/rki_navbar_dropdown.html' %}
-
-                        {% include 'vaccination/navigation/vaccination_navbar_dropdown.html' %}
-
-                        {% include 'ecdc/navigation/ecdc_navbar_dropdown.html' %}
-
-                        {% include 'app_all/navigation/app_all_navbar_dropdown.html' %}
-
-                        {% include 'app_admin/navigation/app_admin_navbar_dropdown.html' %}
-
-                        {% include 'usr/navigation/usr_navbar_dropdown.html' %}
-
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{% include 'who/navigation/who_navbar_dropdown.html' %}
+{% include 'owid/navigation/owid_navbar_dropdown.html' %}
+{% include 'rki/navigation/rki_navbar_dropdown.html' %}
+{% include 'vaccination/navigation/vaccination_navbar_dropdown.html' %}
+{% include 'ecdc/navigation/ecdc_navbar_dropdown.html' %}
+                    </ul>
+                    <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+{% include 'app_all/navigation/app_all_navbar_dropdown.html' %}
+{% include 'app_admin/navigation/app_admin_navbar_dropdown.html' %}
+{% include 'usr/navigation/usr_navbar_dropdown.html' %}
                     </ul>
                 </div>
             </div>
