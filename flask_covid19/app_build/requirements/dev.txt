@@ -17,6 +17,8 @@ appdirs==1.4.4
     # via virtualenv
 argparse==1.4.0
     # via pytoolbox
+atomicwrites==1.4.0
+    # via pytest
 attrs==21.2.0
     # via
     #   markdown-it-py
@@ -28,7 +30,7 @@ banal==1.0.6
 billiard==3.6.4.0
     # via celery
 build==0.7.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 celery[auth,eventlet,msgpack,redis,sqlalchemy]==5.1.2
     # via -r flask_covid19/app_build/requirements/dev.in
 certifi==2020.12.5
@@ -55,9 +57,15 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.2.0
     # via celery
+colorama==0.4.4
+    # via
+    #   build
+    #   pytest
+    #   sphinx
+    #   tox
 cryptography==3.3.2
     # via
-    #   -r flask_covid19/app_build/requirements/typing.in
+    #   -r flask_covid19/app_build/requirements\typing.in
     #   celery
     #   mysqldb-wrapper
 cycler==0.10.0
@@ -88,7 +96,7 @@ filelock==3.0.12
     #   virtualenv
 flask==1.1.4
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   flask-admin
     #   flask-bs4
     #   flask-cors
@@ -169,7 +177,7 @@ mdit-py-plugins==0.2.8
 msgpack==1.0.2
     # via celery
 mypy==0.910
-    # via -r flask_covid19/app_build/requirements/typing.in
+    # via -r flask_covid19/app_build/requirements\typing.in
 mypy-extensions==0.4.3
     # via mypy
 mysql-connector-python==8.0.25
@@ -179,7 +187,7 @@ mysqlclient==2.0.3
 mysqldb-wrapper==0.9.0
     # via -r flask_covid19/app_build/requirements/dev.in
 myst-parser==0.15.2
-    # via -r flask_covid19/app_build/requirements/docs.in
+    # via -r flask_covid19/app_build/requirements\docs.in
 nodeenv==1.6.0
     # via pre-commit
 numpy==1.20.3
@@ -213,18 +221,18 @@ pep517==0.10.0
     #   pip-tools
 pillow==8.3.2
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   matplotlib
 pip-tools==6.1.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pipenv==2021.5.29
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pluggy==0.13.1
     # via
     #   pytest
     #   tox
 pre-commit==2.15.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 prompt-toolkit==3.0.19
     # via click-repl
 protobuf==3.17.2
@@ -245,18 +253,18 @@ pyparsing==2.4.7
     #   packaging
 pytest==6.2.4
     # via
-    #   -r flask_covid19/app_build/requirements/tests.in
+    #   -r flask_covid19/app_build/requirements\tests.in
     #   pytest-flask
     #   pytest-flask-sqlalchemy
     #   pytest-mock
 pytest-flask==1.2.0
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 pytest-flask-sqlalchemy==1.0.2
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 pytest-mock==3.6.1
     # via pytest-flask-sqlalchemy
 pytest-runner==5.3.0
-    # via -r flask_covid19/app_build/requirements/tests.in
+    # via -r flask_covid19/app_build/requirements\tests.in
 python-dateutil==2.8.1
     # via
     #   alembic
@@ -264,13 +272,13 @@ python-dateutil==2.8.1
     #   matplotlib
     #   pandas
 python-dotenv==0.17.1
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 python-editor==1.0.4
     # via alembic
 python-magic==0.4.22
     # via pytoolbox
 pytoolbox==14.0.0
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 pytz==2021.1
     # via
     #   babel
@@ -309,10 +317,10 @@ snowballstemmer==2.1.0
     # via sphinx
 sphinx==3.4.3
     # via
-    #   -r flask_covid19/app_build/requirements/docs.in
+    #   -r flask_covid19/app_build/requirements\docs.in
     #   myst-parser
 sphinx-bootstrap-theme==0.8.0
-    # via -r flask_covid19/app_build/requirements/docs.in
+    # via -r flask_covid19/app_build/requirements\docs.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
 sphinxcontrib-devhelp==1.0.2
@@ -342,7 +350,7 @@ statsmodels==0.12.2
     # via -r flask_covid19/app_build/requirements/dev.in
 toml==0.10.2
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   mypy
     #   pep517
     #   pre-commit
@@ -351,18 +359,18 @@ toml==0.10.2
 tomli==1.2.1
     # via build
 tox==3.24.4
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 types-contextvars==0.1.4
-    # via -r flask_covid19/app_build/requirements/typing.in
+    # via -r flask_covid19/app_build/requirements\typing.in
 types-dataclasses==0.1.7
-    # via -r flask_covid19/app_build/requirements/typing.in
+    # via -r flask_covid19/app_build/requirements\typing.in
 types-setuptools==57.0.2
-    # via -r flask_covid19/app_build/requirements/typing.in
+    # via -r flask_covid19/app_build/requirements\typing.in
 typing-extensions==3.10.0.2
     # via mypy
 urllib3==1.26.5
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   requests
 vine==5.0.0
     # via
@@ -371,7 +379,7 @@ vine==5.0.0
     #   kombu
 virtualenv==20.4.7
     # via
-    #   -r flask_covid19/app_build/requirements/build.in
+    #   -r flask_covid19/app_build/requirements\build.in
     #   pipenv
     #   pre-commit
     #   tox
@@ -388,7 +396,7 @@ werkzeug==1.0.1
 wget==3.2
     # via -r flask_covid19/app_build/requirements/dev.in
 wheel==0.36.2
-    # via -r flask_covid19/app_build/requirements/build.in
+    # via -r flask_covid19/app_build/requirements\build.in
 wtforms==2.3.3
     # via
     #   flask-admin
