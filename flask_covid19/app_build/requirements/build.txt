@@ -22,10 +22,6 @@ click==7.1.2
     # via
     #   flask
     #   pip-tools
-colorama==0.4.4
-    # via
-    #   build
-    #   tox
 distlib==0.3.1
     # via virtualenv
 filelock==3.0.12
