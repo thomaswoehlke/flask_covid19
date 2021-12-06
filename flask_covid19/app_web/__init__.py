@@ -2,12 +2,12 @@ from operator import eq
 import os
 import socket
 import subprocess
-import data_all
-import app_config
-import app_web
+import flask_covid19.data_all
+import flask_covid19.app_config
+import flask_covid19.app_web
 
-from app_web.web_dispachter_matrix_service import web_service
-from app_web.web_views import app, celery, db   # , cache
+from flask_covid19.app_web.web_dispachter_matrix_service import web_service
+from flask_covid19.app_web.web_views import app, celery, db   # , cache
 
 
 def run_web():

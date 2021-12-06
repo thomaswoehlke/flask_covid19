@@ -17,30 +17,36 @@ from flask_covid19.app_config import config
 class Covid19Application:
 
     def __init__(self):
-        self.app = Flask('covid19')
+        self.app = Flask('flask_covid19')
         self.app_cors = CORS()
-        self.login_manager = LoginManager()
-        # self.cache = Cache()
         self.app.config.from_object(config)
-        self.login_manager.login_view = 'usr.login'
-        self.db = SQLAlchemy()
-        self.database_type = self.app.config['SQLALCHEMY_DATABASE_TYPE']
-        self.db_uri = self.__create_db_uri(self.database_type)
-        self.app.config['BOOTSTRAP_SERVE_LOCAL'] = True
-        self.app.config['BOOTSTRAP_USE_CDN'] = False
-        self.app.config['BOOTSTRAP_CUSTOM_CSS'] = True
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = self.db_uri
-        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # silence the deprecation warning
-        self.app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
-        self.items_per_page = self.app.config['SQLALCHEMY_ITEMS_PER_PAGE']
-        self.app_bootstrap = Bootstrap(self.app)
+        self.__init_db()
+        self.__init_login()
+        self.__init_bootstrap()
+        self.__init_admin()
+        self.__init_loging()
         oo_list = [
             self.db,
             self.app_cors,
-            self.login_manager
+            self.login_manager,
+            self.app_bootstrap
         ]
         for oo in oo_list:
             oo.init_app(self.app)
+        self.root_dir = os.getcwd()
+        self.create_celery()
+
+    def __init_db(self):
+        self.db = SQLAlchemy()
+        self.database_type = self.app.config['SQLALCHEMY_DATABASE_TYPE']
+        self.db_uri = self.__create_db_uri(self.database_type)
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = self.db_uri
+        self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # silence the deprecation warning
+        self.items_per_page = self.app.config['SQLALCHEMY_ITEMS_PER_PAGE']
+        return self
+
+    def __int_cache(self):
+        #self.cache = Cache()
         self.config_cache_simple = {
             "DEBUG": True,
             "CACHE_TYPE": "SimpleCache",
@@ -54,9 +60,32 @@ class Covid19Application:
             "CACHE_DEFAULT_TIMEOUT": 120,
             "CACHE_KEY_PREFIX": 'flask_covid19_'
         }
-        # self.cache.init_app(self.app, config=self.config_cache_memcached)
-        # with self.app.app_context():
-        #    cache.clear()
+        #self.cache.init_app(self.app, config=self.config_cache_memcached)
+        #with self.app.app_context():
+        #    self.cache.clear()
+        return self
+
+    def __init_bootstrap(self):
+        self.app_bootstrap = Bootstrap()
+        self.app.config['BOOTSTRAP_SERVE_LOCAL'] = True
+        self.app.config['BOOTSTRAP_USE_CDN'] = False
+        self.app.config['BOOTSTRAP_CUSTOM_CSS'] = True
+        return self
+
+    def __init_login(self):
+        self.login_manager = LoginManager()
+        self.login_manager.login_view = 'usr.login'
+        return self
+
+    def __init_admin(self):
+        self.app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
+        self.admin = Admin(
+            self.app,
+            name='covid19 | admin',
+            template_mode='bootstrap5')
+        return self
+
+    def __init_loging(self):
         self.logging_config = {
             'version': 1,
             'formatters': {
@@ -77,13 +106,7 @@ class Covid19Application:
             }
         }
         dictConfig(self.logging_config)
-        self.admin = Admin(
-            self.app,
-            name='covid19 | admin',
-            template_mode='bootstrap5')
-        self.root_dir = os.getcwd()
-        self.__create_celery_broker_paths()
-        self.create_celery()
+        return self
 
     def __create_db_uri(self, database_type: str):
         if database_type == 'mariadb':
@@ -106,6 +129,10 @@ class Covid19Application:
                 db=self.app.config['SQLALCHEMY_DATABASE_DB'])
         return None
 
+    def get_db(self):
+        self.__init_db()
+        return self.db
+
     def create_db(self):
         self.db.create_all()
         return self
@@ -119,7 +146,8 @@ class Covid19Application:
                 os.makedirs(f)
         return self
 
-    def create_celery(self):
+    def __init_celery(self):
+        self.__create_celery_broker_paths()
         if sys.platform == 'linux':
             if self.root_dir.endswith("flask_covid19"):
                 self.root_dir.replace(os.sep + 'flask_covid19', '')
@@ -156,6 +184,9 @@ class Covid19Application:
             celery.conf.update(self.conf_update)
         return celery
 
+    def create_celery(self):
+        return self.__init_celery()
+
 
 covid19_application = Covid19Application()
 app = covid19_application.app
@@ -165,14 +196,4 @@ root_dir = covid19_application.root_dir
 login_manager = covid19_application.login_manager
 items_per_page = covid19_application.items_per_page
 celery = covid19_application.create_celery()
-
-
-def create_app():
-    my_covid19_application = Covid19Application()
-    return my_covid19_application.app
-
-
-def init_db():
-    my_covid19_application = Covid19Application()
-    return my_covid19_application.db
 

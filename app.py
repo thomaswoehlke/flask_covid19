@@ -1,8 +1,8 @@
-import data_all
-import app_config
-import app_web
+import flask_covid19.data_all
+import flask_covid19.app_config
+import flask_covid19.app_web
 
-from app_web import run_web, celery
+from flask_covid19.app_web import run_web, celery
 
 # ---------------------------------------------------------------------------------
 #  MAIN
