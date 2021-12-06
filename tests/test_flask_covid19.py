@@ -1,5 +1,4 @@
 import pytest
-
 from flask_covid19.app_config.database import Covid19Application
 
 
@@ -10,7 +9,7 @@ def app():
     """
     covid19_application = Covid19Application()
     app = covid19_application.app
-    app.config['TESTING'] = True
+    app.config["TESTING"] = True
     app.testing = True
     yield app
 
@@ -22,9 +21,8 @@ def client():
     """
     covid19_application = Covid19Application()
     app = covid19_application.app
-    app.config['TESTING'] = True
+    app.config["TESTING"] = True
     app.testing = True
-    #yield app
     with app.test_client() as client:
         with app.app_context():
             db = covid19_application.get_db()

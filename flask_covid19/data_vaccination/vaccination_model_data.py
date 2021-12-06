@@ -1,27 +1,29 @@
-
 from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_model_data import AllFactTableTimeSeries
-from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_vaccination.vaccination_model_date_reported import (
+    VaccinationDateReported,
+)
 from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
 
 
 class VaccinationData(AllFactTableTimeSeries):
-    __tablename__ = 'vaccination'
-    __mapper_args__ = {'concrete': True}
-    __table_args__ = (
-        db.UniqueConstraint('date_reported_id', name="uix_vaccination"),
-    )
+    __tablename__ = "vaccination"
+    __mapper_args__ = {"concrete": True}
+    __table_args__ = (db.UniqueConstraint("date_reported_id", name="uix_vaccination"),)
 
     def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__, self.date_reported.__repr__())
+        return f"{self.__class__.__name__}({self.date_reported.__repr__()})"
 
     id = db.Column(db.Integer, primary_key=True)
-    date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
+    date_reported_id = db.Column(
+        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+    )
     date_reported = db.relationship(
-        'VaccinationDateReported',
-        lazy='joined',
-        cascade='save-update',
-        order_by='desc(VaccinationDateReported.datum)')
+        "VaccinationDateReported",
+        lazy="joined",
+        cascade="save-update",
+        order_by="desc(VaccinationDateReported.datum)",
+    )
     processed_update = db.Column(db.Boolean, nullable=False, index=True)
     processed_full_update = db.Column(db.Boolean, nullable=False, index=True)
     #
@@ -48,9 +50,11 @@ class VaccinationData(AllFactTableTimeSeries):
 
     @classmethod
     def find_by_date_reported(cls, date_reported: VaccinationDateReported):
-        return db.session.query(cls) \
-            .filter(cls.date_reported_id == date_reported.id) \
+        return (
+            db.session.query(cls)
+            .filter(cls.date_reported_id == date_reported.id)
             .one_or_none()
+        )
 
     @classmethod
     def delete_data_for_one_day(cls, date_reported: VaccinationDateReported):
@@ -61,9 +65,10 @@ class VaccinationData(AllFactTableTimeSeries):
 
 
 class VaccinationDataFactory:
-
     @classmethod
-    def create_new(cls, date_reported: VaccinationDateReported, item_data_import: VaccinationImport):
+    def create_new(
+        cls, date_reported: VaccinationDateReported, item_data_import: VaccinationImport
+    ):
         o = VaccinationData(
             date_reported=date_reported,
             dosen_kumulativ=item_data_import.dosen_kumulativ,

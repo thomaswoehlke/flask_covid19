@@ -1,17 +1,24 @@
-from flask_covid19.app_config.database import db, app
-from flask_covid19.data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_update_full_mixins import (
+    AllServiceMixinUpdateFull,
+)
 from flask_covid19.data_ecdc.ecdc_model import EcdcDateReported
-from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent, EcdcContinentFactory
-from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountry, EcdcCountryFactory
-from flask_covid19.data_ecdc.ecdc_model_data import EcdcData, EcdcDataFactory
+from flask_covid19.data_ecdc.ecdc_model_data import EcdcData
+from flask_covid19.data_ecdc.ecdc_model_data import EcdcDataFactory
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
+from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountry
+from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountryFactory
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinentFactory
 from flask_covid19.data_ecdc.ecdc_service_update import EcdcServiceUpdateBase
 
 
 class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
-
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update date_reported [begin]")
@@ -22,11 +29,15 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         for result_item in result_date_rep:
             k += 1
             my_date_rep = result_item[0]
-            o = BlueprintDateReportedFactory.create_new_object_for_ecdc(my_date_reported=my_date_rep)
+            o = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+                my_date_reported=my_date_rep
+            )
             db.session.add(o)
             a = str(o)
             b = str(k)
-            app.logger.info(" [ECDC] full update date_reported ... " + b + " rows ... (" + a + ")")
+            app.logger.info(
+                " [ECDC] full update date_reported ... " + b + " rows ... (" + a + ")"
+            )
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update date_reported [done]")
@@ -46,7 +57,9 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
             o = EcdcContinentFactory.create_new(location_group_str=my_continent_exp)
             a = str(o)
             b = str(k)
-            app.logger.info(" [ECDC] full update continent ... " + b + " rows ... (" + a + ")")
+            app.logger.info(
+                " [ECDC] full update continent ... " + b + " rows ... (" + a + ")"
+            )
             db.session.add(o)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
@@ -64,13 +77,17 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         all_continents = EcdcContinent.find_all()
         k = 0
         for my_continent in all_continents:
-            result_countries_of_continent = EcdcImport.get_countries_of_continent(my_continent)
+            result_countries_of_continent = EcdcImport.get_countries_of_continent(
+                my_continent
+            )
             for c in result_countries_of_continent:
                 k += 1
                 o = EcdcCountryFactory.create_new(c, my_continent)
                 a = str(o)
                 b = str(k)
-                app.logger.info(" [ECDC] full update country  ... " + b + " rows ... (" + a + ")")
+                app.logger.info(
+                    " [ECDC] full update country  ... " + b + " rows ... (" + a + ")"
+                )
                 db.session.add(o)
         db.session.commit()
         app.logger.info("------------------------------------------------------------")
@@ -84,8 +101,10 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         for item_date_str_from_ecdc_import in result_date_str_from_ecdc_import:
             item_date_str_from_ecdc_import_str = str(item_date_str_from_ecdc_import[0])
             app.logger.info(item_date_str_from_ecdc_import_str)
-            my_date_reported_search_str = EcdcDateReported.get_date_format_from_ecdc_import_format(
-                date_reported_ecdc_import_fomat=item_date_str_from_ecdc_import_str
+            my_date_reported_search_str = (
+                EcdcDateReported.get_date_format_from_ecdc_import_format(
+                    date_reported_ecdc_import_fomat=item_date_str_from_ecdc_import_str
+                )
             )
             app.logger.debug(my_date_reported_search_str)
             my_ecdc_date_reported_obj = EcdcDateReported.find_by_date_reported(
@@ -100,12 +119,16 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
             my_ecdc_date_reported_obj = EcdcDateReported.get_by_date_reported(
                 date_reported_import_str=my_date_reported_search_str
             )
-            dict_date_reported_from_import[item_date_str_from_ecdc_import_str] = my_ecdc_date_reported_obj
+            dict_date_reported_from_import[
+                item_date_str_from_ecdc_import_str
+            ] = my_ecdc_date_reported_obj
         return dict_date_reported_from_import
 
     def __get_continent_from_import(self, ecdc_import: EcdcImport):
         my_a = ecdc_import.continent_exp
-        ecdc_continent = EcdcContinent.find_by_region(s_location_group=ecdc_import.continent_exp)
+        ecdc_continent = EcdcContinent.find_by_region(
+            s_location_group=ecdc_import.continent_exp
+        )
         if ecdc_continent in None:
             ecdc_continent = EcdcContinent(region=my_a)
             db.session.add(ecdc_continent)
@@ -131,17 +154,21 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
                 )
                 my_deaths = int(ecdc_import.deaths)
                 my_cases = int(ecdc_import.cases)
-                if ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000 == '':
+                if (
+                    ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
+                    == ""
+                ):
                     my_cumulative_number = 0.0
                 else:
-                    my_cumulative_number = \
-                        float(ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000)
+                    my_cumulative_number = float(
+                        ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
+                    )
                 o = EcdcDataFactory.create_new(
                     date_reported=ecdc_datereported,
                     location=ecdc_country,
                     my_deaths=my_deaths,
                     my_cases=my_cases,
-                    my_cumulative_number=my_cumulative_number
+                    my_cumulative_number=my_cumulative_number,
                 )
                 db.session.add(o)
                 d += 1
@@ -151,7 +178,15 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
                 s1 = str(i)
                 s2 = str(ecdc_datereported)
                 s3 = str(k)
-                app.logger.info(" [ECDC] full update data  ... " + s1 + " rows ... " + s2 + " (" + s3 + ")")
+                app.logger.info(
+                    " [ECDC] full update data  ... "
+                    + s1
+                    + " rows ... "
+                    + s2
+                    + " ("
+                    + s3
+                    + ")"
+                )
                 k = 0
                 db.session.commit()
         db.session.commit()

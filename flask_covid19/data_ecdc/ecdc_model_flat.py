@@ -1,18 +1,19 @@
-
 from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_model_flat import AllFlat
 
 
 class EcdcFlat(AllFlat):
-    __tablename__ = 'ecdc_import_flat'
-    __mapper_args__ = {'concrete': True}
+    __tablename__ = "ecdc_import_flat"
+    __mapper_args__ = {"concrete": True}
 
     def __repr__(self):
-        return "%s(%s %s %s %s)" % (self.__class__.__name__,
-                                    self.date_reported_import_str,
-                                    self.datum.isoformat(),
-                                    self.location,
-                                    self.location_group.__repr__())
+        return "{}({} {} {} {})".format(
+            self.__class__.__name__,
+            self.date_reported_import_str,
+            self.datum.isoformat(),
+            self.location,
+            self.location_group.__repr__(),
+        )
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -38,11 +39,12 @@ class EcdcFlat(AllFlat):
     pop_data_2019 = db.Column(db.String(255), nullable=False)
     cases = db.Column(db.Integer, nullable=False)
     deaths = db.Column(db.Integer, nullable=False)
-    cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(db.Float, nullable=False)
+    cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(
+        db.Float, nullable=False
+    )
 
 
 class EcdcFlatFactory:
-
     @classmethod
     def create_new(cls, d, row):
         oo = EcdcFlat(
@@ -57,17 +59,20 @@ class EcdcFlatFactory:
             year_week=d.year_week,
             year_day_of_year=d.year_day_of_year,
             year_month=d.year_month,
-            location=row['countriesAndTerritories'],
-            location_group=row['continentExp'],
-            location_code=row['countryterritoryCode'],
+            location=row["countriesAndTerritories"],
+            location_group=row["continentExp"],
+            location_code=row["countryterritoryCode"],
             processed_update=False,
             processed_full_update=False,
             #
-            cases=int(row['cases']),
-            deaths=int(row['deaths']),
-            geo_id=row['geoId'],
-            pop_data_2019=row['popData2019'],
-            cumulative_number_for_14_days_of_covid19_cases_per_100000
-            =0.0 if '' == row['Cumulative_number_for_14_days_of_COVID-19_cases_per_100000'] else float(row['Cumulative_number_for_14_days_of_COVID-19_cases_per_100000']),
+            cases=int(row["cases"]),
+            deaths=int(row["deaths"]),
+            geo_id=row["geoId"],
+            pop_data_2019=row["popData2019"],
+            cumulative_number_for_14_days_of_covid19_cases_per_100000=0.0
+            if "" == row["Cumulative_number_for_14_days_of_COVID-19_cases_per_100000"]
+            else float(
+                row["Cumulative_number_for_14_days_of_COVID-19_cases_per_100000"]
+            ),
         )
         return oo

@@ -3,7 +3,6 @@ from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllLocationMixin(AllEntityMixin):
-
     @classmethod
     def find_by_location_code(cls, location_code: str):
         pass
@@ -29,13 +28,15 @@ class AllLocationMixin(AllEntityMixin):
         pass
 
     @classmethod
-    def find_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                              location_group: AllLocationGroupMixin):
+    def find_by_location_code_and_location_and_location_group(
+        cls, location_code: str, location: str, location_group: AllLocationGroupMixin
+    ):
         pass
 
     @classmethod
-    def get_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                             location_group: AllLocationGroupMixin):
+    def get_by_location_code_and_location_and_location_group(
+        cls, location_code: str, location: str, location_group: AllLocationGroupMixin
+    ):
         pass
 
     @classmethod

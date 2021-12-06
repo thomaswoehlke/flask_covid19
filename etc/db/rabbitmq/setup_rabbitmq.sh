@@ -12,4 +12,3 @@ sudo rabbitmqctl set_user_tags flask_covid19 flask_covid19_celery
 sudo rabbitmqctl set_permissions -p tw-thinkpad flask_covid19 ".*" ".*" ".*"
 
 sudo rabbitmqctl status
-

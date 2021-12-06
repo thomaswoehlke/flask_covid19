@@ -4,7 +4,6 @@ from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllFactTableTimeSeriesMixin(AllEntityMixin):
-
     @classmethod
     def get_datum_list(cls):
         pass
@@ -31,7 +30,6 @@ class AllFactTableTimeSeriesMixin(AllEntityMixin):
 
 
 class AllFactTableMixin(AllFactTableTimeSeriesMixin):
-
     @classmethod
     def get_by_location(cls, location: AllLocationMixin, page: int):
         pass
@@ -41,10 +39,13 @@ class AllFactTableMixin(AllFactTableTimeSeriesMixin):
         pass
 
     @classmethod
-    def find_by_date_reported_and_location(cls, date_reported: AllDateReportedMixin, location: AllLocationMixin):
+    def find_by_date_reported_and_location(
+        cls, date_reported: AllDateReportedMixin, location: AllLocationMixin
+    ):
         pass
 
     @classmethod
-    def get_by_date_reported_and_location(cls, date_reported: AllDateReportedMixin,
-                                          location: AllLocationMixin, page: int):
+    def get_by_date_reported_and_location(
+        cls, date_reported: AllDateReportedMixin, location: AllLocationMixin, page: int
+    ):
         pass

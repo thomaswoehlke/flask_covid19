@@ -85,7 +85,7 @@
 * https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 ````bash
-        git submodule init 
+        git submodule init
         git submodule update
         git config --global diff.submodule log
 

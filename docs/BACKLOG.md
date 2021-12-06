@@ -49,7 +49,7 @@
 
 * Fixed #13 /who/imported/
 * Fixed #14 /europe/imported/
-* Fixed #15 /who/update: Download  
+* Fixed #15 /who/update: Download
 * Fixed #16 /who/update: Import File to DB
 * Fixed #17 /who/update: Update DB
 * Fixed #21 better templates for who_global_data tables
@@ -108,7 +108,7 @@
 * Fixed #47 major refactoring: Routes from app.py to org...who,europe,... (Doublette von #65)
 * Fixed #48 major refactoring: Tasks from server_mq.py to org...who,europe,... (Doublette von #65)
 * Fixed #64 major refactoring: create two packages: for web app and for celery worker
-* Fixed #68 TODO: move Queries from Services to Model-Classes 
+* Fixed #68 TODO: move Queries from Services to Model-Classes
 * Fixed #65 major refactoring: add flask-blueprints for admin, common, europe, rki, vaccination, who
 
 ### 0.0.14 Release
@@ -173,7 +173,7 @@
 * -------------------------------------
 * Fixed #87 change to: Vaccination.datum many to one VaccinationDateReported
 * Fixed #106 add Tasks and URLs for starting Tasks to vaccination_views
-* -------------------------------------  
+* -------------------------------------
 
 ### 0.0.16 Release
 
@@ -239,7 +239,7 @@
 * -------------------------------------
 * Fixed #131 change to ORM ClassHierarchy in: RkiGermanyDataImportTable.get_new_dates_as_array
 * Fixed #129 change to ORM ClassHierarchy in: RkiLandkreiseImport.get_new_dates_as_array
-* Fixed #146 add Tasks and URLs for starting Tasks to rki_views  
+* Fixed #146 add Tasks and URLs for starting Tasks to rki_views
 * Fixed #127 implement RkiBundeslaenderImport.get_dates_reported
 * -------------------------------------
 * Fixed #141 implement RkiBundeslaenderServiceUpdate.update_dimension_tables_only
@@ -258,7 +258,7 @@
 
 ### 0.0.21 Release
 
-* -------------------------------------  
+* -------------------------------------
 
 ### 0.0.22 Release
 
@@ -274,7 +274,7 @@
 * Fixed #28 /admin/database/import
 * Fixed #66 frontend: migrate to Bootstrap Theme sb-admin-angular
 * Fixed #158 load Bootstrap-Template sb-admin-angular into static
-* Fixed #191 setup plantuml for engineering and docs 
+* Fixed #191 setup plantuml for engineering and docs
 * Fixed #156 run_web.sh
 * Fixed #157 run_worker.sh
 * Fixed #62 frontend: better design for pages
@@ -282,7 +282,7 @@
 
 ### 0.0.25 Release
 
-* -------------------------------------  
+* -------------------------------------
 
 ### 0.0.26 Release
 
@@ -292,7 +292,7 @@
 
 * Fixed #60 frontend: better design for tables
 * Fixed #62 frontend: better design for pages
-* Fixed #197 UML use cases for OWID reports and Visual Data  
+* Fixed #197 UML use cases for OWID reports and Visual Data
 
 ### 0.0.28 Release
 
@@ -324,7 +324,7 @@
 
 ### 0.0.32 Release
 
-* Fixed #212 implement OwidService.task_database_drop_create()  
+* Fixed #212 implement OwidService.task_database_drop_create()
 * Fixed #214 implement OwidServiceUpdate.update_dimension_tables_only()
 * Fixed #215 implement OwidServiceUpdate.update_fact_table_incremental_only()
 * Fixed #216 implement OwidServiceUpdate.update_fact_table_initial_only()
@@ -336,7 +336,7 @@
 
 * Fixed #165 implement url_ecdc_task_download_only in europe_views.py
 * Fixed #166 implement url_ecdc_task_import_only in europe_views.py
-* Fixed #167 implement url_ecdc_task_update_dimensiontables_only in europe_views.py 
+* Fixed #167 implement url_ecdc_task_update_dimensiontables_only in europe_views.py
 * Fixed #168 implement url_ecdc_task_update_facttable_incremental_only in europe_views.py
 * Fixed #169 implement url_ecdc_task_update_facttable_initial_only in europe_views.py
 * Fixed #163 implement url_ecdc_task_update_star_schema_initial in europe_views.py
@@ -353,11 +353,11 @@
 * Fixed #179 add Flask-Caching
 * Issue #313 Update Flask to 2.0.0
 * Issue #312 Update bootstrap to 5.0.1 and Flask-BS4 to 5.0.0.1
-  
+
 ### 0.0.35 Release
 
 * Fixed #314 RKI Data Import and full update
-* Fixed #315 Data Import into Flat-Table for OWID, RKI, ECDC, WHO  
+* Fixed #315 Data Import into Flat-Table for OWID, RKI, ECDC, WHO
 * Fixed #316 Refactoring to simplify structure
 
 ### 0.0.36 Release
@@ -379,7 +379,7 @@
 * Issue #328 FE BUG: [http://127.0.0.1:9090/rki/test/tests](http://127.0.0.1:9090/rki/test/tests)
 * Issue #329 FE NEU: [http://127.0.0.1:9090/rki/bundesland/all](http://127.0.0.1:9090/rki/bundesland/all)
 * Issue #330 FE NEU: [http://127.0.0.1:9090/rki/landkreis/all](http://127.0.0.1:9090/rki/landkreis/all)
-  
+
 * Issue #999 FE NEU: a
 * Issue #999 FE NEU: a
 * Issue #999 FE NEU: a
@@ -421,7 +421,7 @@
 * Issue #249 OWID: Development: update Fact Table
 * Issue #250 OWID: Development: Navigation and Pages for Imported Table
 * Issue #251 OWID: Development: Navigation and Pages for Dimension Tables
-* Issue #252 OWID: Development: Navigation and Pages for Fact Table  
+* Issue #252 OWID: Development: Navigation and Pages for Fact Table
 * Issue #253 OWID: Documentation: Update UML Diagrams for Domain Model
 * Issue #254 OWID: Documentation: Update UML Diagrams for Use Cases
 * Issue #255 OWID: QA: add Selenium Tests for all Frontend Urls and Pages without any Access to Database

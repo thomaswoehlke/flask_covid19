@@ -1,6 +1,7 @@
 import os
-import wget
 import subprocess
+
+import wget
 from flask_covid19.app_config.database import app
 from flask_covid19.data_all.all_config import BlueprintConfig
 from flask_covid19.data_all.all_service_download_mixins import AllServiceMixinDownload
@@ -32,18 +33,32 @@ class AllDownloadService(AllServiceMixinDownload):
         orig_workdir = os.getcwd()
         os.chdir(self.cfg.data_path)
         my_cmds = [
-            'wget ' + self.cfg.url_src + ' -O ' + self.cfg.download_path + ' -o ' + self.cfg.download_path + '.log',
-            'touch ' + self.cfg.cvsfile_path,
-            'cp -f ' + self.cfg.cvsfile_path + ' ' + self.cfg.cvsfile_backup_path,
-            'mv -f ' + self.cfg.download_path + ' ' + self.cfg.cvsfile_path,
-            'mv -f ' + self.cfg.download_path + '.log ' + self.cfg.cvsfile_path + '.log'
+            "wget "
+            + self.cfg.url_src
+            + " -O "
+            + self.cfg.download_path
+            + " -o "
+            + self.cfg.download_path
+            + ".log",
+            "touch " + self.cfg.cvsfile_path,
+            "cp -f " + self.cfg.cvsfile_path + " " + self.cfg.cvsfile_backup_path,
+            "mv -f " + self.cfg.download_path + " " + self.cfg.cvsfile_path,
+            "mv -f "
+            + self.cfg.download_path
+            + ".log "
+            + self.cfg.cvsfile_path
+            + ".log",
         ]
         for my_cmd in my_cmds:
             retcode = subprocess.call(my_cmd, shell=True)
             if retcode == 0:
-                app.logger.info(' [' + self.cfg.category + '] download result: OK ' + my_cmd)
+                app.logger.info(
+                    " [" + self.cfg.category + "] download result: OK " + my_cmd
+                )
             else:
-                app.logger.warn(' [' + self.cfg.category + '] download result: NOT OK: ' + my_cmd)
+                app.logger.warn(
+                    " [" + self.cfg.category + "] download result: NOT OK: " + my_cmd
+                )
         os.chdir(orig_workdir)
         return self
 
@@ -51,10 +66,10 @@ class AllDownloadService(AllServiceMixinDownload):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [" + self.cfg.category + "] download - [begin] ")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" "+self.cfg.msg_job)
+        app.logger.info(" " + self.cfg.msg_job)
         app.logger.info("------------------------------------------------------------")
         self.__prepare_download()
-        if self.cfg.slug[0] in ['who', 'ecdc', 'divi', 'vaccination', 'owid', 'rki']:
+        if self.cfg.slug[0] in ["who", "ecdc", "divi", "vaccination", "owid", "rki"]:
             self.__download_with_subprocess_and_os_native_wget()
         else:
             self.__download_with_wget()

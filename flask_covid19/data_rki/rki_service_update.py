@@ -1,13 +1,18 @@
-from flask_covid19.app_config.database import db, app
-
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
 from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
-from flask_covid19.data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
-from flask_covid19.data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory
 from flask_covid19.data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from flask_covid19.data_rki.rki_model_data import RkiData, RkiDataFactory
+from flask_covid19.data_rki.rki_model_data import RkiData
+from flask_covid19.data_rki.rki_model_data import RkiDataFactory
+from flask_covid19.data_rki.rki_model_data_location import RkiLandkreis
+from flask_covid19.data_rki.rki_model_data_location import RkiLandkreisFactory
+from flask_covid19.data_rki.rki_model_data_location_group import RkiBundesland
+from flask_covid19.data_rki.rki_model_data_location_group import RkiBundeslandFactory
+from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
 from flask_covid19.data_rki.rki_model_import import RkiImport
 
 
@@ -24,7 +29,6 @@ class RkiServiceUpdateBase:
 
 
 class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
-
     def __get_new_dates(self):
         todo = []
         odr_list = RkiMeldedatum.find_all_as_str()
@@ -53,11 +57,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                 item = oi.landkreis
                 # app.logger.info(" [RKI] location: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
-                    new_location = (
-                        oi.landkreis,
-                        oi.id_landkreis,
-                        my_bundesland
-                    )
+                    new_location = (oi.landkreis, oi.id_landkreis, my_bundesland)
                     todo.append(new_location)
         return todo
 
@@ -79,10 +79,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiMeldedatum.set_all_processed_update()
         for new_meldedatum in self.__get_new_dates():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(my_meldedatum=new_meldedatum)
+            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+                my_meldedatum=new_meldedatum
+            )
             db.session.add(o)
             db.session.commit()
-            output = " [RKI] update date_reported [ " + str(i) + " ] " + str(o) + " added"
+            output = (
+                " [RKI] update date_reported [ " + str(i) + " ] " + str(o) + " added"
+            )
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
@@ -102,7 +106,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             o = RkiBundeslandFactory.create_new(bundesland_of_import=new_location_group)
             db.session.add(o)
             db.session.commit()
-            output = " [RKI] update location_group [ " + str(i) + " ] " + str(o) + " added"
+            output = (
+                " [RKI] update location_group [ " + str(i) + " ] " + str(o) + " added"
+            )
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
@@ -123,8 +129,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             i += 1
             bundesland_str = new_location[2]
             bundesland = location_group_dict[bundesland_str]
-            my_landkreis = RkiLandkreisFactory.get_my_landkreis(landkreis_from_import=new_location)
-            o = RkiLandkreisFactory.create_new(my_landkreis=my_landkreis, bundesland=bundesland)
+            my_landkreis = RkiLandkreisFactory.get_my_landkreis(
+                landkreis_from_import=new_location
+            )
+            o = RkiLandkreisFactory.create_new(
+                my_landkreis=my_landkreis, bundesland=bundesland
+            )
             db.session.add(o)
             db.session.commit()
             output = " [RKI] update location [ " + str(i) + " ] " + str(o) + " added"
@@ -143,11 +153,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         RkiAltersgruppe.set_all_processed_update()
         for new_altersgruppe in self.__get_new_altersgruppen():
-            app.logger.info(" [RKI] new altersgruppe: "+str(new_altersgruppe))
+            app.logger.info(" [RKI] new altersgruppe: " + str(new_altersgruppe))
             i += 1
-            o = RkiAltersgruppe.RkiAltersgruppe(
-                altersgruppe=new_altersgruppe
-            )
+            o = RkiAltersgruppe.RkiAltersgruppe(altersgruppe=new_altersgruppe)
             db.session.add(o)
             db.session.commit()
             output = " [RKI] altersgruppe [ " + str(i) + " ] " + str(o) + " added"
@@ -172,26 +180,33 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                 # app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
                 # app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
-                    my_datum=my_meldedatum_datum,
-                    my_landkreis=my_landkreis_key)
+                    my_datum=my_meldedatum_datum, my_landkreis=my_landkreis_key
+                )
                 if list_imports is None:
                     app.logger.info(" [RKI] list_imports is None ")
                 else:
                     nr = len(list_imports)
                     app.logger.info(" [RKI] len(list_imports): " + str(nr))
-                app.logger.info("------------------------------------------------------------")
+                app.logger.info(
+                    "------------------------------------------------------------"
+                )
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)
                     rki_data = RkiDataFactory.get_rki_data(
-                        dict_altersgruppen, my_datum, my_meldedatum, my_landkreis, o_import)
+                        dict_altersgruppen,
+                        my_datum,
+                        my_meldedatum,
+                        my_landkreis,
+                        o_import,
+                    )
                     o = RkiDataFactory.create_new(rki_data)
                     db.session.add(o)
                     i += 1
                     if i % 500 == 0:
-                        app.logger.info(" [RKI] update data ... "+str(i)+" rows")
+                        app.logger.info(" [RKI] update data ... " + str(i) + " rows")
                         db.session.commit()
             db.session.commit()
-        app.logger.info(" [RKI] update data :  "+str(i)+" total rows")
+        app.logger.info(" [RKI] update data :  " + str(i) + " total rows")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update data [done]")
         app.logger.info("------------------------------------------------------------")

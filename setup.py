@@ -1,17 +1,18 @@
-import os
-import sys
 import logging
+import os
 import subprocess
+import sys
 
-from setuptools import find_packages, setup
+from setuptools import find_packages
+from setuptools import setup
 
-version = '0.0.72'
+version = "0.0.72"
 
-scripts_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'scripts'+os.sep
-pip_requirements_dir = 'flask_covid19'+os.sep+'app_build'+os.sep+'requirements'
+scripts_dir = "flask_covid19" + os.sep + "app_build" + os.sep + "scripts" + os.sep
+pip_requirements_dir = "flask_covid19" + os.sep + "app_build" + os.sep + "requirements"
 
-needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
-pytest_runner = ['pytest-runner'] if needs_pytest else []
+needs_pytest = {"pytest", "test", "ptr"}.intersection(sys.argv)
+pytest_runner = ["pytest-runner"] if needs_pytest else []
 
 readme = open("README.md").read()
 history = open("docs" + os.sep + "BACKLOG.md").read()
@@ -33,7 +34,7 @@ keywords_list = [
     "flask",
     "celery",
     "sqlalchemy",
-    "mysql"
+    "mysql",
 ]
 
 requires_build = [
@@ -58,32 +59,29 @@ requires_test = [
 ]
 
 requires_docs = [
-    #"Pallets-Sphinx-Themes",
-    "sphinx_bootstrap_theme",
+    "Pallets-Sphinx-Themes",
+    #"sphinx_bootstrap_theme",
     "sphinx",
-	"myst-parser",
-    #"sphinx-issues",
-	#"sphinxcontrib-log-cabinet",
-	#"sphinxcontrib-plantuml",
-	#"sphinxcontrib-bibtex",
-	#"sphinxcontrib-images",
-	#"sphinxcontrib-gravizo",
-	#"sphinxcontrib-needs",
-	#"sphinxcontrib-markdown",
-    #"sphinxcontrib-srclinks",
-	#"sphinx-tabs",
+    "myst-parser",
+    # "sphinx-issues",
+    # "sphinxcontrib-log-cabinet",
+    # "sphinxcontrib-plantuml",
+    # "sphinxcontrib-bibtex",
+    # "sphinxcontrib-images",
+    # "sphinxcontrib-gravizo",
+    # "sphinxcontrib-needs",
+    # "sphinxcontrib-markdown",
+    # "sphinxcontrib-srclinks",
+    # "sphinx-tabs",
 ]
 
-dotenv_require = [
-    "python-dotenv",
-	"tqdm"
-]
+dotenv_require = ["python-dotenv", "tqdm"]
 
 requires_extras = {
     "docs": requires_docs,
     "tests": requires_test,
     "dotenv": dotenv_require,
-    "all": []
+    "all": [],
 }
 
 requires_dev = [
@@ -123,52 +121,52 @@ packages = find_packages()
 
 def run_compile_requirements():
     my_cmd_list = [
-        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'build.in'],
-        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'docs.in'],
-        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'tests.in'],
-        ['pip-compile', '-r', pip_requirements_dir + os.sep + 'dev.in'],
-        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'build.in'],
-        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'docs.in'],
-        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'tests.in'],
-        ['pip', 'install', '-r', pip_requirements_dir + os.sep + 'dev.in'],
+        ["pip-compile", "-r", pip_requirements_dir + os.sep + "build.in"],
+        ["pip-compile", "-r", pip_requirements_dir + os.sep + "docs.in"],
+        ["pip-compile", "-r", pip_requirements_dir + os.sep + "tests.in"],
+        ["pip-compile", "-r", pip_requirements_dir + os.sep + "dev.in"],
+        ["pip", "install", "-r", pip_requirements_dir + os.sep + "build.in"],
+        ["pip", "install", "-r", pip_requirements_dir + os.sep + "docs.in"],
+        ["pip", "install", "-r", pip_requirements_dir + os.sep + "tests.in"],
+        ["pip", "install", "-r", pip_requirements_dir + os.sep + "dev.in"],
     ]
     for my_cmd in my_cmd_list:
         returncode = subprocess.call(my_cmd, shell=True)
         if returncode == 0:
-            logging.info("retcode: "+str(returncode))
+            logging.info("retcode: " + str(returncode))
         else:
             logging.error("retcode: " + str(returncode))
     return None
 
 
 def run_npm_install():
-    my_cmd = ['npm', 'install']
+    my_cmd = ["npm", "install"]
     returncode = subprocess.call(my_cmd, shell=True)
     if returncode == 0:
-        logging.info("retcode: "+str(returncode))
+        logging.info("retcode: " + str(returncode))
     else:
         logging.error("retcode: " + str(returncode))
     return None
 
 
 def get_python_requirements_from_txt():
-    my_cmd = ['bash', 'scripts'+os.sep+'script_get_python_requirements_from_txt.sh']
+    my_cmd = ["bash", "scripts" + os.sep + "script_get_python_requirements_from_txt.sh"]
     returncode = subprocess.call(my_cmd, shell=True)
     if returncode == 0:
-        logging.info("retcode: "+str(returncode))
+        logging.info("retcode: " + str(returncode))
     else:
         logging.error("retcode: " + str(returncode))
     return None
 
 
 setup(
-    name='flask-covid19',
+    name="flask-covid19",
     version=version,
-    url='https://github.com/thomaswoehlke/covid19python.git',
-    license='GNU General Public License v3 (GPLv3)',
-    author='Thomas Woehlke',
-    author_email='thomas.woehlke@gmail.com',
-    description='Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.',
+    url="https://github.com/thomaswoehlke/covid19python.git",
+    license="GNU General Public License v3 (GPLv3)",
+    author="Thomas Woehlke",
+    author_email="thomas.woehlke@gmail.com",
+    description="Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
@@ -201,8 +199,8 @@ setup(
     setup_requires=requires_build,
     tests_require=requires_test,
     scripts=[
-        scripts_dir + 'script_setup_requirements.py',
-        scripts_dir + 'script_npm_install.py'
+        scripts_dir + "script_setup_requirements.py",
+        scripts_dir + "script_npm_install.py",
     ],
-    python_requires=">= 3.9"
+    python_requires=">= 3.9",
 )

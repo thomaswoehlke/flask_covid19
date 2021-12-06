@@ -1,17 +1,23 @@
-
-from flask_covid19.app_config.database import db, app
-from flask_covid19.data_all.all_service_update_full_mixins import AllServiceMixinUpdateFull
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_update_full_mixins import (
+    AllServiceMixinUpdateFull,
+)
+from flask_covid19.data_who.who_model_data import WhoData
+from flask_covid19.data_who.who_model_data import WhoDataFactory
 from flask_covid19.data_who.who_model_date_reported import WhoDateReported
-from flask_covid19.data_who.who_model_data import WhoData, WhoDataFactory
-from flask_covid19.data_who.who_model_location_group import WhoCountryRegion, WhoCountryRegionFactory
-from flask_covid19.data_who.who_model_location import WhoCountry, WhoCountryFactory
 from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_who.who_model_location import WhoCountry
+from flask_covid19.data_who.who_model_location import WhoCountryFactory
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegion
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegionFactory
 from flask_covid19.data_who.who_service_update import WhoServiceUpdateBase
 
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
-
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update date_reported [begin]")
@@ -33,9 +39,17 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         #    app.logger.info(str(b))
         for s_date_reported in WhoImport.get_dates_reported_as_string_array():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=s_date_reported)
+            o = BlueprintDateReportedFactory.create_new_object_for_who(
+                my_date_reported=s_date_reported
+            )
             db.session.add(o)
-            output = " [WHO] full update date_reported ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = (
+                " [WHO] full update date_reported ... "
+                + str(i)
+                + " rows ... ("
+                + str(o)
+                + ")"
+            )
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -53,11 +67,13 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         WhoCountryRegion.remove_all()
         log_lines = []
         i = 0
-        for region_str, in WhoImport.get_regions():
+        for (region_str,) in WhoImport.get_regions():
             i += 1
             o = WhoCountryRegionFactory.create_new(location_group_str=region_str)
             db.session.add(o)
-            output = " [WHO] full update region ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = (
+                " [WHO] full update region ... " + str(i) + " rows ... (" + str(o) + ")"
+            )
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -83,12 +99,22 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             str_country_code = country_item.countries.country_code
             str_country = country_item.countries.country
             str_who_region = country_item.countries.who_region
-            location_group = WhoCountryRegion.find_by_location_group(location_group=str_who_region)
+            location_group = WhoCountryRegion.find_by_location_group(
+                location_group=str_who_region
+            )
             o = WhoCountryFactory.create_new(
-                location=str_country, location_code=str_country_code, location_group=location_group
+                location=str_country,
+                location_code=str_country_code,
+                location_group=location_group,
             )
             db.session.add(o)
-            output = " [WHO] full update country ... " + str(i) + " rows ... (" + str(o) + ")"
+            output = (
+                " [WHO] full update country ... "
+                + str(i)
+                + " rows ... ("
+                + str(o)
+                + ")"
+            )
             log_lines.append(output)
         db.session.commit()
         for log_line in log_lines:
@@ -120,7 +146,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
                 o = WhoDataFactory.create_new(
                     my_who_import=who_import,
                     my_date=who_date_reported,
-                    my_country=who_country
+                    my_country=who_country,
                 )
                 db.session.add(o)
                 i += 1
@@ -131,7 +157,15 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
             if d % 7 == 0:
                 db.session.commit()
                 s2 = str(who_date_reported)
-                app.logger.info(" [WHO] full update data ... " + str(i) + " rows ... " + s2 + " (" + str(k) + ")")
+                app.logger.info(
+                    " [WHO] full update data ... "
+                    + str(i)
+                    + " rows ... "
+                    + s2
+                    + " ("
+                    + str(k)
+                    + ")"
+                )
                 k = 0
         db.session.commit()
         app.logger.info(" [WHO] full update data:  " + str(i) + " total rows")

@@ -1,24 +1,26 @@
-from sqlalchemy.orm import Bundle
-from sqlalchemy import and_
 from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_model_import import AllImport
 from flask_covid19.data_all.all_model_import_mixins import AllImportMixin
+from sqlalchemy import and_
+from sqlalchemy.orm import Bundle
 
 
 class WhoImport(AllImport, AllImportMixin):
-    __tablename__ = 'who_import'
-    __mapper_args__ = {'concrete': True}
+    __tablename__ = "who_import"
+    __mapper_args__ = {"concrete": True}
 
     def __repr__(self):
-        return "%s(%s %s %s %s %s)" % (self.__class__.__name__,
-                                       self.datum.isoformat(),
-                                       self.date_reported,
-                                       self.country_code,
-                                       self.country,
-                                       self.who_region)
+        return "{}({} {} {} {} {})".format(
+            self.__class__.__name__,
+            self.datum.isoformat(),
+            self.date_reported,
+            self.country_code,
+            self.country,
+            self.who_region,
+        )
 
     def __str__(self):
-        return "%s %s %s %s" % (self.datum.isoformat, self.country_code, self.country, str(self.row_imported))
+        return f"{self.datum.isoformat} {self.country_code} {self.country} {str(self.row_imported)}"
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -37,37 +39,42 @@ class WhoImport(AllImport, AllImportMixin):
 
     @classmethod
     def get_regions(cls):
-        return db.session.query(cls.who_region)\
-            .order_by(cls.who_region)\
-            .distinct().all()
+        return (
+            db.session.query(cls.who_region).order_by(cls.who_region).distinct().all()
+        )
 
     @classmethod
     def get_all_countries(cls):
-        return db.session.query(cls.country) \
-            .order_by(cls.country) \
-            .distinct().all()
+        return db.session.query(cls.country).order_by(cls.country).distinct().all()
 
     @classmethod
     def get_dates_reported(cls):
-        return db.session.query(cls.date_reported)\
-            .order_by(cls.date_reported.desc())\
-            .distinct().all()
+        return (
+            db.session.query(cls.date_reported)
+            .order_by(cls.date_reported.desc())
+            .distinct()
+            .all()
+        )
 
     @classmethod
     def get_for_one_day(cls, day: str):
-        return db.session.query(cls)\
-            .filter(cls.date_reported == day)\
-            .order_by(cls.country.asc())\
+        return (
+            db.session.query(cls)
+            .filter(cls.date_reported == day)
+            .order_by(cls.country.asc())
             .all()
+        )
 
     @classmethod
     def get_dates_reported_as_string_array(cls):
         myresultarray = []
-        myresultset = db.session.query(cls.date_reported)\
-            .order_by(cls.date_reported.desc())\
-            .group_by(cls.date_reported)\
-            .distinct()\
+        myresultset = (
+            db.session.query(cls.date_reported)
+            .order_by(cls.date_reported.desc())
+            .group_by(cls.date_reported)
+            .distinct()
             .all()
+        )
         for my_datum_item in myresultset:
             my_datum = my_datum_item.date_reported
             if my_datum not in myresultarray:
@@ -76,13 +83,15 @@ class WhoImport(AllImport, AllImportMixin):
 
     @classmethod
     def countries(cls):
-        bu = Bundle('countries', cls.country_code, cls.country, cls.who_region)
+        bu = Bundle("countries", cls.country_code, cls.country, cls.who_region)
         return db.session.query(bu).distinct()
 
     @classmethod
     def get_datum_of_all_who_import(cls):
         dates_reported = []
-        for datum_item in db.session.query(cls.datum).distinct().order_by(cls.datum.desc()):
+        for datum_item in (
+            db.session.query(cls.datum).distinct().order_by(cls.datum.desc())
+        ):
             item = datum_item[0]
             if item not in dates_reported:
                 dates_reported.append(item)
@@ -90,31 +99,28 @@ class WhoImport(AllImport, AllImportMixin):
 
     @classmethod
     def find_by_datum_and_country(cls, date_reported: str, country: str):
-        db.session.query(cls)\
-            .filter(and_(cls.date_reported == date_reported, cls.country == country))\
-            .order_by(cls.date_reported.desc())\
-            .one_or_none()
+        db.session.query(cls).filter(
+            and_(cls.date_reported == date_reported, cls.country == country)
+        ).order_by(cls.date_reported.desc()).one_or_none()
 
     @classmethod
     def get_by_datum_and_country(cls, date_reported: str, country: str):
-        db.session.query(cls)\
-            .filter(and_(cls.date_reported == date_reported, cls.country == country))\
-            .order_by(cls.date_reported.desc())\
-            .one()
+        db.session.query(cls).filter(
+            and_(cls.date_reported == date_reported, cls.country == country)
+        ).order_by(cls.date_reported.desc()).one()
 
 
 class WhoImportFactory:
-
     @classmethod
     def create_new(cls, date_reported, d, row):
         o = WhoImport(
-            new_cases=row['New_cases'],
-            cumulative_cases=row['Cumulative_cases'],
-            new_deaths=row['New_deaths'],
-            cumulative_deaths=row['Cumulative_deaths'],
-            country_code=row['Country_code'],
-            country=row['Country'],
-            who_region=row['WHO_region'],
+            new_cases=row["New_cases"],
+            cumulative_cases=row["Cumulative_cases"],
+            new_deaths=row["New_deaths"],
+            cumulative_deaths=row["Cumulative_deaths"],
+            country_code=row["Country_code"],
+            country=row["Country"],
+            who_region=row["WHO_region"],
             date_reported=date_reported,
             datum=d.datum,
             date_reported_import_str=date_reported,

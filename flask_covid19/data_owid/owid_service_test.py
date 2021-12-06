@@ -1,9 +1,10 @@
-from flask_covid19.app_config.database import db, app
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_owid.owid_model_location_group import OwidContinent
-from flask_covid19.data_owid.owid_model_location import OwidCountry
 from flask_covid19.data_owid.owid_model_data import OwidData
 from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_location import OwidCountry
+from flask_covid19.data_owid.owid_model_location_group import OwidContinent
 
 
 class OwidTestService:
@@ -28,7 +29,12 @@ class OwidTestService:
         for continent in OwidContinent.get_all():
             app.logger.info("continent.region: " + continent.region)
             for oi in OwidImport.get_countries_for_continent(continent.region):
-                app.logger.info("continent.region: " + continent.region +" - oi.location: " + oi.location)
+                app.logger.info(
+                    "continent.region: "
+                    + continent.region
+                    + " - oi.location: "
+                    + oi.location
+                )
                 o = OwidCountry(
                     continent_id=continent.id,
                     continent=continent,
@@ -48,7 +54,7 @@ class OwidTestService:
                     handwashing_facilities=oi.handwashing_facilities,
                     hospital_beds_per_thousand=oi.hospital_beds_per_thousand,
                     life_expectancy=oi.life_expectancy,
-                    human_development_index=oi.human_development_index
+                    human_development_index=oi.human_development_index,
                 )
                 db.session.add(o)
         db.session.commit()

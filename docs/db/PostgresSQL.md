@@ -21,7 +21,7 @@
     CREATE TABLESPACE tablespace_flask_covid19
       OWNER flask_covid19
       LOCATION '/opt/postgresql/tablespace_flask_covid19';
-    
+
     ALTER TABLESPACE tablespace_flask_covid19
       OWNER TO flask_covid19;
 ````
@@ -111,7 +111,7 @@ flask_covid19_dev_frontend
         LC_CTYPE = 'de_DE.UTF-8'
         TABLESPACE = tablespace_flask_covid19
         CONNECTION LIMIT = -1;
-    
+
 ````
 
 flask_covid19_master

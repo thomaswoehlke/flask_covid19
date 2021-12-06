@@ -1,13 +1,19 @@
-from flask_covid19.app_config.database import db, items_per_page
-from flask_login import UserMixin, AnonymousUserMixin
-from wtforms import validators
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
+from flask_login import AnonymousUserMixin
+from flask_login import UserMixin
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash
+from wtforms import BooleanField
+from wtforms import PasswordField
+from wtforms import StringField
+from wtforms import SubmitField
+from wtforms import validators
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'usr'
+    __tablename__ = "usr"
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Unicode(512), nullable=False, unique=True)
@@ -16,10 +22,7 @@ class User(UserMixin, db.Model):
 
     @classmethod
     def create_new(cls, email, name: str, password_hash: str):
-        return User(
-            email=email,
-            name=name,
-            password_hash=password_hash)
+        return User(email=email, name=name, password_hash=password_hash)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -57,11 +60,20 @@ class AnonymousUserValueObject(AnonymousUserMixin):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email Address', [validators.Length(min=6, max=35), validators.Email(), validators.InputRequired()])
-    password = PasswordField('Password', [validators.Length(min=6, max=35), validators.InputRequired()])
-    accept_rules = BooleanField('I accept the site rules', [validators.InputRequired()])
-    remember_me = BooleanField('Remember me')
-    submit = SubmitField('Login')
+    email = StringField(
+        "Email Address",
+        [
+            validators.Length(min=6, max=35),
+            validators.Email(),
+            validators.InputRequired(),
+        ],
+    )
+    password = PasswordField(
+        "Password", [validators.Length(min=6, max=35), validators.InputRequired()]
+    )
+    accept_rules = BooleanField("I accept the site rules", [validators.InputRequired()])
+    remember_me = BooleanField("Remember me")
+    submit = SubmitField("Login")
 
     def validate_on_submit(self):
         if self.email is None:
@@ -71,4 +83,3 @@ class LoginForm(FlaskForm):
         if self.accept_rules is None:
             return False
         return True
-

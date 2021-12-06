@@ -1,13 +1,18 @@
 import csv
 
-from flask_covid19.app_config.database import db, app
-
-from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-
-from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport, VaccinationImportFactory
-from flask_covid19.data_vaccination.vaccination_model_flat import VaccinationFlat, VaccinationFlatFactory
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_vaccination.vaccination_model_flat import VaccinationFlat
+from flask_covid19.data_vaccination.vaccination_model_flat import VaccinationFlatFactory
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
+from flask_covid19.data_vaccination.vaccination_model_import import (
+    VaccinationImportFactory,
+)
 
 
 class VaccinationServiceImport(AllServiceMixinImport):
@@ -25,19 +30,30 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [Vaccination] import into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         VaccinationImport.remove_all()
         VaccinationFlat.remove_all()
         k = 0
-        with open(self.cfg.cvsfile_path, newline='\n') as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter='\t', quotechar='"')
+        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+            file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
             for row in file_reader:
-                date_reported = row['date']
-                d = BlueprintDateReportedFactory.create_new_object_for_vaccination(my_date_reported=date_reported)
-                o = VaccinationImportFactory.create_new(date_reported=date_reported, d=d, row=row)
+                date_reported = row["date"]
+                d = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+                    my_date_reported=date_reported
+                )
+                o = VaccinationImportFactory.create_new(
+                    date_reported=date_reported, d=d, row=row
+                )
                 db.session.add(o)
-                oo = VaccinationFlatFactory.create_new(date_reported=date_reported, d=d, row=row)
+                oo = VaccinationFlatFactory.create_new(
+                    date_reported=date_reported, d=d, row=row
+                )
                 db.session.add(oo)
                 k += 1
                 if (k % 100) == 0:
@@ -47,7 +63,12 @@ class VaccinationServiceImport(AllServiceMixinImport):
             app.logger.info(" [Vaccination] import  ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [Vaccination] imported into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [done]")
         app.logger.info("------------------------------------------------------------")

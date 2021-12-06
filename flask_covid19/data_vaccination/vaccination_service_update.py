@@ -1,10 +1,16 @@
-from flask_covid19.app_config.database import db, app
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
 from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_vaccination.vaccination_model_data import VaccinationData
+from flask_covid19.data_vaccination.vaccination_model_data import VaccinationDataFactory
+from flask_covid19.data_vaccination.vaccination_model_date_reported import (
+    VaccinationDateReported,
+)
 from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
-from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
-from flask_covid19.data_vaccination.vaccination_model_data import VaccinationData, VaccinationDataFactory
 
 
 class VaccinationServiceUpdateBase:
@@ -20,7 +26,6 @@ class VaccinationServiceUpdateBase:
 
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
-
     def __get_new_dates(self):
         todo = []
         odr_list = VaccinationDateReported.find_all_as_str()
@@ -40,8 +45,16 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         i = 0
         for one_date_reported in date_reported_list:
             i += 1
-            output = " [Vaccination] date_reported [ " + str(i) + " ] " + str(one_date_reported) + " added"
-            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(one_date_reported)
+            output = (
+                " [Vaccination] date_reported [ "
+                + str(i)
+                + " ] "
+                + str(one_date_reported)
+                + " added"
+            )
+            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+                one_date_reported
+            )
             db.session.add(o)
             app.logger.info(output)
         db.session.commit()
@@ -64,10 +77,14 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 db.session.add(o)
                 i += 1
                 if i % 500 == 0:
-                    app.logger.info(" [Vaccination] update fact_table ... " + str(i) + " rows")
+                    app.logger.info(
+                        " [Vaccination] update fact_table ... " + str(i) + " rows"
+                    )
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" [Vaccination] update fact_table ... " + str(i) + " rows total")
+        app.logger.info(
+            " [Vaccination] update fact_table ... " + str(i) + " rows total"
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")

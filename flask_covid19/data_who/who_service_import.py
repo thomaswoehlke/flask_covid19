@@ -1,11 +1,16 @@
-import sys
 import csv
+import sys
+
 from flask_covid19.app_config.database import covid19_application
-from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from flask_covid19.data_who.who_model_import import WhoImport, WhoImportFactory
-from flask_covid19.data_who.who_model_flat import WhoFlat, WhoFlatFactory
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_who.who_model_flat import WhoFlat
+from flask_covid19.data_who.who_model_flat import WhoFlatFactory
+from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_who.who_model_import import WhoImportFactory
 
 app = covid19_application.app
 db = covid19_application.db
@@ -26,29 +31,40 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [WHO] import into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
-        if sys.platform == 'linux':
-            keyDate_reported ='\ufeffDate_reported'
+        if sys.platform == "linux":
+            keyDate_reported = "\ufeffDate_reported"
         else:
-            keyDate_reported = 'ï»¿Date_reported'
+            keyDate_reported = "ï»¿Date_reported"
         WhoImport.remove_all()
         WhoFlat.remove_all()
-        with open(self.cfg.cvsfile_path, newline='\n') as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=',', quotechar='"')
+        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             k = 0
             for row in file_reader:
                 date_reported = row[keyDate_reported]
-                d = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=date_reported)
-                o = WhoImportFactory.create_new(date_reported=date_reported, d=d, row=row)
+                d = BlueprintDateReportedFactory.create_new_object_for_who(
+                    my_date_reported=date_reported
+                )
+                o = WhoImportFactory.create_new(
+                    date_reported=date_reported, d=d, row=row
+                )
                 db.session.add(o)
                 my_data = {
-                    'new_cases': int(row['New_cases']),
-                    'cumulative_cases': int(row['Cumulative_cases']),
-                    'new_deaths': int(row['New_deaths']),
-                    'cumulative_deaths': int(row['Cumulative_deaths']),
+                    "new_cases": int(row["New_cases"]),
+                    "cumulative_cases": int(row["Cumulative_cases"]),
+                    "new_deaths": int(row["New_deaths"]),
+                    "cumulative_deaths": int(row["Cumulative_deaths"]),
                 }
-                oo = WhoFlatFactory.create_new(date_reported=date_reported, d=d, row=row, my_data=my_data)
+                oo = WhoFlatFactory.create_new(
+                    date_reported=date_reported, d=d, row=row, my_data=my_data
+                )
                 db.session.add(oo)
                 k += 1
                 if (k % 2000) == 0:
@@ -60,7 +76,12 @@ class WhoServiceImport(AllServiceMixinImport):
             app.logger.info(" [WHO] import  ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [WHO] imported into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [done]")
         app.logger.info("------------------------------------------------------------")

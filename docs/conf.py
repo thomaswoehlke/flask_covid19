@@ -15,21 +15,21 @@ release, version = get_version("flask_covid19")
 master_doc = "index"
 
 extensions = [
-    "myst_parser"#,
-    #"sphinx.ext.autodoc",
-    #"sphinx.ext.intersphinx",
-    #"sphinx_bootstrap_theme",
-    #"sphinxcontrib.log_cabinet",
-    #"sphinxcontrib.gravizo",
-    #"sphinxcontrib.srclinks",
-    #"pallets_sphinx_themes",
-    #"sphinx_issues",
-    #"sphinx_tabs.tabs",
+    "myst_parser"  # ,
+    # "sphinx.ext.autodoc",
+    # "sphinx.ext.intersphinx",
+    # "sphinx_bootstrap_theme",
+    # "sphinxcontrib.log_cabinet",
+    # "sphinxcontrib.gravizo",
+    # "sphinxcontrib.srclinks",
+    # "pallets_sphinx_themes",
+    # "sphinx_issues",
+    # "sphinx_tabs.tabs",
 ]
 source_suffix = {
     #'.rst': 'restructuredtext',
-    '.txt': 'markdown',
-    '.md': 'markdown',
+    ".txt": "markdown",
+    ".md": "markdown",
 }
 autodoc_typehints = "description"
 intersphinx_mapping = {
@@ -46,19 +46,21 @@ issues_github_path = "thomaswoehlke/flask_covid19"
 
 # HTML -----------------------------------------------------------------
 
-html_theme = 'bootstrap'
+html_theme = "bootstrap"
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 html_theme_options = {"index_sidebar_logo": False}
 html_context = {
-   "project_links": [
+    "project_links": [
         ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
         ProjectLink("PyPI Releases", "https://pypi.org/project/flask_covid19/"),
         ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
-        ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
+        ProjectLink(
+            "Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"
+        ),
         ProjectLink("Website", "https://woehlke.org/p/flask_covid19/"),
         ProjectLink("Twitter", "https://twitter.com/SearchSquirrel"),
-   ]
+    ]
 }
 html_sidebars = {
     "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html"],
@@ -69,7 +71,7 @@ html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
 html_title = f"flask_covid19 Documentation ({version})"
-#html_title = f"flask_covid19 Documentation"
+# html_title = f"flask_covid19 Documentation"
 html_show_sourcelink = False
 
 # LaTeX ----------------------------------------------------------------

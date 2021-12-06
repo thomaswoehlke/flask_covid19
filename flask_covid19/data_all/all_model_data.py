@@ -1,16 +1,20 @@
-
 from datetime import date
-from flask_covid19.app_config.database import db, app, celery, items_per_page
-from sqlalchemy.orm import subqueryload
-from flask_covid19.data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
+
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import celery
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_data_mixins import AllFactTableMixin
+from flask_covid19.data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin
+from sqlalchemy.orm import subqueryload
 
 
 class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
-    __tablename__ = 'all_data_timeline'
-    __mapper_args__ = {'concrete': True}
+    __tablename__ = "all_data_timeline"
+    __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint('date_reported_id', name='uix_all_data_timeline'),
+        db.UniqueConstraint("date_reported_id", name="uix_all_data_timeline"),
     )
 
     def __str__(self):
@@ -19,18 +23,23 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
+    date_reported_id = db.Column(
+        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+    )
     date_reported = db.relationship(
-        'AllDateReported',
-        lazy='joined',
-        cascade='all',
+        "AllDateReported",
+        lazy="joined",
+        cascade="all",
         enable_typechecks=False,
-        order_by='desc(AllDateReported.datum)')
+        order_by="desc(AllDateReported.datum)",
+    )
 
     @classmethod
     def get_datum_list(cls):
         datum_list = []
-        for data in db.session.query(cls).options(subqueryload("date_reported").load_only("datum")):
+        for data in db.session.query(cls).options(
+            subqueryload("date_reported").load_only("datum")
+        ):
             datum = data.date_reported.datum.isoformat()
             if not datum in datum_list:
                 datum_list.append(datum)
@@ -40,7 +49,9 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
     @classmethod
     def get_date_reported_list(cls):
         date_reported_list = []
-        for data in db.session.query(cls).options(subqueryload("date_reported").load_only("datum")):
+        for data in db.session.query(cls).options(
+            subqueryload("date_reported").load_only("datum")
+        ):
             datum = data.date_reported.datum.isoformat()
             if not datum in date_reported_list:
                 date_reported_list.append(datum)
@@ -57,10 +68,10 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
 
 
 class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
-    __tablename__ = 'all_data'
-    __mapper_args__ = {'concrete': True}
+    __tablename__ = "all_data"
+    __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint('location_id', 'date_reported_id', name='uix_all_data'),
+        db.UniqueConstraint("location_id", "date_reported_id", name="uix_all_data"),
     )
 
     def __str__(self):
@@ -69,17 +80,23 @@ class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    date_reported_id = db.Column(db.Integer, db.ForeignKey('all_date_reported.id'), nullable=False)
+    date_reported_id = db.Column(
+        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+    )
     date_reported = db.relationship(
-        'AllDateReported',
-        lazy='joined',
-        cascade='all',
+        "AllDateReported",
+        lazy="joined",
+        cascade="all",
         enable_typechecks=False,
-        order_by='desc(AllDateReported.datum)')
-    location_id = db.Column(db.Integer, db.ForeignKey('all_location.id'), nullable=False)
+        order_by="desc(AllDateReported.datum)",
+    )
+    location_id = db.Column(
+        db.Integer, db.ForeignKey("all_location.id"), nullable=False
+    )
     location = db.relationship(
-        'AllLocation',
-        lazy='joined',
-        cascade='all',
+        "AllLocation",
+        lazy="joined",
+        cascade="all",
         enable_typechecks=False,
-        order_by='asc(AllLocation.location)')
+        order_by="asc(AllLocation.location)",
+    )

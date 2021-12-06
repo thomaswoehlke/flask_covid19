@@ -1,23 +1,29 @@
 from datetime import date
-from flask_covid19.app_config.database import db, app, celery, items_per_page
-from sqlalchemy.orm import subqueryload
-from sqlalchemy import not_, and_
-from flask_covid19.data_all.all_model_location_mixins import AllLocationMixin
-from flask_covid19.data_all.all_model_location_group import AllLocationGroup
+
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import celery
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_location_group import AllLocationGroup
+from flask_covid19.data_all.all_model_location_mixins import AllLocationMixin
+from sqlalchemy import and_
+from sqlalchemy import not_
+from sqlalchemy.orm import subqueryload
 
 
 class AllLocation(AllEntity, AllLocationMixin):
-    __tablename__ = 'all_location'
-    __table_args__ = (
-        db.UniqueConstraint(
-            'location',
-            'type',
-            name='uix_all_location'),
-    )
+    __tablename__ = "all_location"
+    __table_args__ = (db.UniqueConstraint("location", "type", name="uix_all_location"),)
 
     def __str__(self):
-        return self.location_group.__str__() + " : " + self.location_code + " | " + self.location
+        return (
+            self.location_group.__str__()
+            + " : "
+            + self.location_code
+            + " | "
+            + self.location
+        )
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(50))
@@ -25,18 +31,18 @@ class AllLocation(AllEntity, AllLocationMixin):
     processed_full_update = db.Column(db.Boolean, nullable=False)
     location_code = db.Column(db.String(255), index=True, nullable=True)
     location = db.Column(db.String(255), nullable=False, index=True)
-    location_group_id = db.Column(db.Integer, db.ForeignKey('all_location_group.id'), nullable=False)
+    location_group_id = db.Column(
+        db.Integer, db.ForeignKey("all_location_group.id"), nullable=False
+    )
     location_group = db.relationship(
-        'AllLocationGroup',
-        lazy='joined',
-        cascade='all',
+        "AllLocationGroup",
+        lazy="joined",
+        cascade="all",
         enable_typechecks=False,
-        order_by='AllLocationGroup.location_group')
+        order_by="AllLocationGroup.location_group",
+    )
 
-    __mapper_args__ = {
-        'polymorphic_on': type,
-        'polymorphic_identity': 'all_location'
-    }
+    __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "all_location"}
 
     @classmethod
     def __query_all(cls):
@@ -44,70 +50,90 @@ class AllLocation(AllEntity, AllLocationMixin):
 
     @classmethod
     def find_by_location_code(cls, location_code: str):
-        return db.session.query(cls).filter(cls.location_code == location_code)\
+        return (
+            db.session.query(cls)
+            .filter(cls.location_code == location_code)
             .one_or_none()
+        )
 
     @classmethod
     def get_by_location_code(cls, location_code: str):
-        return db.session.query(cls).filter(cls.location_code == location_code)\
-            .one()
+        return db.session.query(cls).filter(cls.location_code == location_code).one()
 
     @classmethod
     def find_by_location(cls, location: str):
-        return db.session.query(cls).filter(cls.location == location)\
-            .one_or_none()
+        return db.session.query(cls).filter(cls.location == location).one_or_none()
 
     @classmethod
     def get_by_location(cls, location: str):
-        return db.session.query(cls).filter(cls.location == location)\
-            .one()
+        return db.session.query(cls).filter(cls.location == location).one()
 
     @classmethod
     def find_by_location_group(cls, location_group: AllLocationGroup):
-        return db.session.query(cls).filter(cls.location_group == location_group)\
-            .order_by(cls.location)\
+        return (
+            db.session.query(cls)
+            .filter(cls.location_group == location_group)
+            .order_by(cls.location)
             .all()
+        )
 
     @classmethod
     def get_by_location_group(cls, location_group: AllLocationGroup, page: int):
-        return db.session.query(cls).filter(cls.location_group == location_group)\
-            .order_by(cls.location)\
+        return (
+            db.session.query(cls)
+            .filter(cls.location_group == location_group)
+            .order_by(cls.location)
             .paginate(page, per_page=items_per_page)
+        )
 
     @classmethod
-    def find_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                              location_group: AllLocationGroup):
-        return db.session.query(cls).filter(
-            and_(
-                cls.location_code == location_code,
-                cls.location == location,
-                cls.location_group_id == location_group.id
+    def find_by_location_code_and_location_and_location_group(
+        cls, location_code: str, location: str, location_group: AllLocationGroup
+    ):
+        return (
+            db.session.query(cls)
+            .filter(
+                and_(
+                    cls.location_code == location_code,
+                    cls.location == location,
+                    cls.location_group_id == location_group.id,
+                )
             )
-        ).one_or_none()
+            .one_or_none()
+        )
 
     @classmethod
-    def get_by_location_code_and_location_and_location_group(cls, location_code: str, location: str,
-                                                             location_group: AllLocationGroup):
-        return db.session.query(cls).filter(
-            and_(
-                cls.location_code == location_code,
-                cls.location == location,
-                cls.location_group_id == location_group.id
+    def get_by_location_code_and_location_and_location_group(
+        cls, location_code: str, location: str, location_group: AllLocationGroup
+    ):
+        return (
+            db.session.query(cls)
+            .filter(
+                and_(
+                    cls.location_code == location_code,
+                    cls.location == location,
+                    cls.location_group_id == location_group.id,
+                )
             )
-        ).one()
+            .one()
+        )
 
     @classmethod
     def find_by_location_code_and_location(cls, location_code: str, location: str):
-        return db.session.query(cls)\
-            .filter(and_(cls.location_code == location_code, cls.location == location))\
-            .order_by(cls.location)\
+        return (
+            db.session.query(cls)
+            .filter(and_(cls.location_code == location_code, cls.location == location))
+            .order_by(cls.location)
             .one_or_none()
+        )
 
     @classmethod
     def get_by_location_code_and_location(cls, location_code: str, location: str):
-        return db.session.query(cls)\
-            .filter(and_(cls.location_code == location_code, cls.location == location)) \
+        return (
+            db.session.query(cls)
+            .filter(and_(cls.location_code == location_code, cls.location == location))
             .one()
+        )
 
     @classmethod
     def __query_all(cls):
@@ -133,6 +159,8 @@ class AllLocation(AllEntity, AllLocationMixin):
 
     @classmethod
     def get_all(cls, page: int):
-        return db.session.query(cls)\
-            .order_by(cls.location)\
+        return (
+            db.session.query(cls)
+            .order_by(cls.location)
             .paginate(page, per_page=items_per_page)
+        )

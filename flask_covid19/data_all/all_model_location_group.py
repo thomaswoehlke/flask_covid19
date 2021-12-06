@@ -1,17 +1,17 @@
-
 from datetime import date
-from flask_covid19.app_config.database import db, app, celery, items_per_page
-from flask_covid19.data_all.all_model_location_group_mixins import AllLocationGroupMixin
+
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import celery
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_location_group_mixins import AllLocationGroupMixin
 
 
 class AllLocationGroup(AllEntity, AllLocationGroupMixin):
-    __tablename__ = 'all_location_group'
+    __tablename__ = "all_location_group"
     __table_args__ = (
-        db.UniqueConstraint(
-            'location_group',
-            'type',
-            name='uix_all_location_group'),
+        db.UniqueConstraint("location_group", "type", name="uix_all_location_group"),
     )
 
     def __str__(self):
@@ -25,8 +25,8 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
     location_group = db.Column(db.String(255), nullable=False, index=True)
 
     __mapper_args__ = {
-        'polymorphic_on': type,
-        'polymorphic_identity': 'all_location_group'
+        "polymorphic_on": type,
+        "polymorphic_identity": "all_location_group",
     }
 
     @classmethod
@@ -39,21 +39,23 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
 
     @classmethod
     def get_by_location_group(cls, location_group: str):
-        return db.session.query(cls)\
-            .filter(cls.location_group == location_group)\
-            .one()
+        return db.session.query(cls).filter(cls.location_group == location_group).one()
 
     @classmethod
     def find_by_location_group(cls, location_group: str):
-        return db.session.query(cls) \
-            .filter(cls.location_group == location_group) \
+        return (
+            db.session.query(cls)
+            .filter(cls.location_group == location_group)
             .one_or_none()
+        )
 
     @classmethod
     def get_all(cls, page: int):
-        return db.session.query(cls)\
-            .order_by(cls.location_group)\
+        return (
+            db.session.query(cls)
+            .order_by(cls.location_group)
             .paginate(page, per_page=items_per_page)
+        )
 
     @classmethod
     def find_all(cls):

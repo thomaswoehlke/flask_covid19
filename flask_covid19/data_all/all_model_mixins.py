@@ -1,5 +1,4 @@
 class AllEntityMixinBase:
-
     @classmethod
     def get_by_id(cls, other_id: int):
         pass
@@ -34,7 +33,6 @@ class AllEntityMixinBase:
 
 
 class AllEntityWorkerProgressMixin:
-
     def set_processed_update(self):
         pass
 
@@ -66,5 +64,3 @@ class AllEntityWorkerProgressMixin:
 
 class AllEntityMixin(AllEntityMixinBase, AllEntityWorkerProgressMixin):
     pass
-
-

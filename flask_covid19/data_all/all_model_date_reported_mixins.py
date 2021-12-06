@@ -4,7 +4,6 @@ from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllDateReportedMixin(AllEntityMixin):
-
     def get_name_for_weekday(self):
         pass
 

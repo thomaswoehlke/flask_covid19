@@ -1,5 +1,6 @@
 from flask_covid19.app_config.database import app
-from flask_covid19.app_web.user_model import User, LoginForm
+from flask_covid19.app_web.user_model import LoginForm
+from flask_covid19.app_web.user_model import User
 
 
 class UserService:
@@ -26,9 +27,9 @@ class UserService:
         self.__database = database
         if User.count() == 0:
             app.logger.info("User.count() == 0")
-            login = app.config['USER_ADMIN_LOGIN']
-            name = app.config['USER_ADMIN_USERNAME']
-            pw = app.config['USER_ADMIN_PASSWORD']
+            login = app.config["USER_ADMIN_LOGIN"]
+            name = app.config["USER_ADMIN_USERNAME"]
+            pw = app.config["USER_ADMIN_PASSWORD"]
             user = User.create_new(email=login, name=name, password_hash=pw)
             self.__database.session.add(user)
             self.__database.session.commit()

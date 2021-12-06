@@ -1,18 +1,16 @@
-
 from datetime import date
-from flask_covid19.app_config.database import db, items_per_page
-from flask_covid19.data_all.all_model_date_reported_mixins import AllDateReportedMixin
+
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_date_reported_mixins import AllDateReportedMixin
 
 
 class AllDateReported(AllEntity, AllDateReportedMixin):
-    __tablename__ = 'all_date_reported'
+    __tablename__ = "all_date_reported"
     __table_args__ = (
         db.UniqueConstraint(
-            'date_reported_import_str',
-            'datum',
-            'type',
-            name="uix_all_date_reported"
+            "date_reported_import_str", "datum", "type", name="uix_all_date_reported"
         ),
     )
 
@@ -37,8 +35,8 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
     week_of_year = db.Column(db.Integer, nullable=False)
 
     __mapper_args__ = {
-        'polymorphic_on': type,
-        'polymorphic_identity': 'all_date_reported'
+        "polymorphic_on": type,
+        "polymorphic_identity": "all_date_reported",
     }
 
     def __str__(self):
@@ -61,16 +59,35 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
 
     @classmethod
     def get_names_for_weekday(cls):
-        return {1: "Montag", 2: "Dienstag", 3: "Mittwoch", 4: "Donnerstag",
-                5: "Freitag", 6: "Samstag", 7: "Sonntag"}
+        return {
+            1: "Montag",
+            2: "Dienstag",
+            3: "Mittwoch",
+            4: "Donnerstag",
+            5: "Freitag",
+            6: "Samstag",
+            7: "Sonntag",
+        }
 
     def get_name_for_month(self):
         return self.get_names_for_months()[self.month]
 
     @classmethod
     def get_names_for_months(cls):
-        return {1: "Januar", 2: "Februar", 3: "März", 4: "April", 5: "Mai", 6: "Juni",
-                7: "Juli", 8: "August", 9: "September", 10: "Oktober", 11: "November", 12: "Dezember"}
+        return {
+            1: "Januar",
+            2: "Februar",
+            3: "März",
+            4: "April",
+            5: "Mai",
+            6: "Juni",
+            7: "Juli",
+            8: "August",
+            9: "September",
+            10: "Oktober",
+            11: "November",
+            12: "Dezember",
+        }
 
     @classmethod
     def get_by_datum(cls, datum: date):
@@ -78,27 +95,27 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
 
     @classmethod
     def get_by_date_reported(cls, date_reported_import_str: str):
-        return db.session.query(cls)\
-            .filter(cls.date_reported_import_str == date_reported_import_str)\
+        return (
+            db.session.query(cls)
+            .filter(cls.date_reported_import_str == date_reported_import_str)
             .one()
+        )
 
     @classmethod
     def find_by_date_reported(cls, date_reported_import_str: str):
-        return db.session.query(cls)\
-            .filter(cls.date_reported_import_str == date_reported_import_str)\
+        return (
+            db.session.query(cls)
+            .filter(cls.date_reported_import_str == date_reported_import_str)
             .one_or_none()
+        )
 
     @classmethod
     def find_by_year_week(cls, year_week: str):
-        return db.session.query(cls)\
-            .filter(cls.year_week == year_week)\
-            .all()
+        return db.session.query(cls).filter(cls.year_week == year_week).all()
 
     @classmethod
     def get_joungest_datum(cls):
-        return db.session.query(cls)\
-            .order_by(cls.datum.desc())\
-            .first()
+        return db.session.query(cls).order_by(cls.datum.desc()).first()
 
     @classmethod
     def set_all_processed_update(cls):

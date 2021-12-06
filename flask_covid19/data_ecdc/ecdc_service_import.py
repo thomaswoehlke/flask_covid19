@@ -1,11 +1,16 @@
 import csv
 
-from flask_covid19.app_config.database import db, app
-from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport, EcdcImportFactory
-from flask_covid19.data_ecdc.ecdc_model_flat import EcdcFlat, EcdcFlatFactory
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_ecdc.ecdc_model_flat import EcdcFlat
+from flask_covid19.data_ecdc.ecdc_model_flat import EcdcFlatFactory
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImportFactory
 
 
 class EcdcServiceImport(AllServiceMixinImport):
@@ -23,16 +28,23 @@ class EcdcServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [ECDC] import into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         k = 0
         EcdcImport.remove_all()
         EcdcFlat.remove_all()
-        with open(self.cfg.cvsfile_path, newline='') as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=',', quotechar='"')
+        with open(self.cfg.cvsfile_path, newline="") as csv_file:
+            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             for row in file_reader:
-                date_rep = row['dateRep']
-                d = BlueprintDateReportedFactory.create_new_object_for_ecdc(my_date_reported=date_rep)
+                date_rep = row["dateRep"]
+                d = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+                    my_date_reported=date_rep
+                )
                 o = EcdcImportFactory.create_new(date_reported=date_rep, d=d, row=row)
                 db.session.add(o)
                 oo = EcdcFlatFactory.create_new(d=d, row=row)
@@ -47,7 +59,12 @@ class EcdcServiceImport(AllServiceMixinImport):
             app.logger.info(" [ECDC] import  ...  " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [ECDC] imported into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] import [done]")
         app.logger.info("------------------------------------------------------------")

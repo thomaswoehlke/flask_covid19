@@ -1,17 +1,15 @@
-
-from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model import AllEntity
 
 
 class RkiAltersgruppe(AllEntity):
-    __tablename__ = 'rki_altersgruppe'
-    __mapper_args__ = {'concrete': True}
-    __table_args__ = (
-        db.UniqueConstraint('altersgruppe', name="uix_rki_altersgruppe"),
-    )
+    __tablename__ = "rki_altersgruppe"
+    __mapper_args__ = {"concrete": True}
+    __table_args__ = (db.UniqueConstraint("altersgruppe", name="uix_rki_altersgruppe"),)
 
     def __repr__(self):
-        return "%s ( %s )" % (self.__class__.__name__, self.altersgruppe)
+        return f"{self.__class__.__name__} ( {self.altersgruppe} )"
 
     def __str__(self):
         return " " + self.altersgruppe + " "
@@ -46,12 +44,11 @@ class RkiAltersgruppe(AllEntity):
 
 
 class RkiAltersgruppeFactory:
-
     @classmethod
     def create_new(cls, altersgruppe: str):
         o = RkiAltersgruppe(
             altersgruppe=altersgruppe,
             processed_update=False,
-            processed_full_update=False
+            processed_full_update=False,
         )
         return o

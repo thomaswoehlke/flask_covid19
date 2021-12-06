@@ -4,12 +4,13 @@ from flask_covid19.data_all.all_model_date_reported import AllDateReported
 from flask_covid19.data_ecdc.ecdc_model import EcdcDateReported
 from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
 from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
-from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_vaccination.vaccination_model_date_reported import (
+    VaccinationDateReported,
+)
 from flask_covid19.data_who.who_model_date_reported import WhoDateReported
 
 
 class BlueprintDateReportedFactory:
-
     @classmethod
     def __create_new_object_factory(cls, date_reported_import_str: str, my_datum: date):
         (my_iso_year, week_number, weekday) = my_datum.isocalendar()
@@ -37,12 +38,12 @@ class BlueprintDateReportedFactory:
     def __create_new_object_factory_for_isoformat(cls, my_date_rep: str):
         my_datum = date.fromisoformat(my_date_rep)
         return cls.__create_new_object_factory(
-            date_reported_import_str=my_date_rep,
-            my_datum=my_datum)
+            date_reported_import_str=my_date_rep, my_datum=my_datum
+        )
 
     @classmethod
     def __get_datetime_parts_for_ecdc(cls, my_datetime: str):
-        my_date_parts = my_datetime.split('/')
+        my_date_parts = my_datetime.split("/")
         my_day = int(my_date_parts[0])
         my_month = int(my_date_parts[1])
         my_year = int(my_date_parts[2])
@@ -53,7 +54,7 @@ class BlueprintDateReportedFactory:
     def __get_datetime_parts(cls, my_datetime: str):
         my_datetime_parts = my_datetime.split(" ")
         my_date_rep = my_datetime_parts[0]
-        my_date_parts = my_date_rep.split('/')
+        my_date_parts = my_date_rep.split("/")
         my_year = int(my_date_parts[0])
         my_month = int(my_date_parts[1])
         my_day = int(my_date_parts[2])
@@ -64,7 +65,7 @@ class BlueprintDateReportedFactory:
     def __get_datetime_german_parts(cls, my_datetime: str):
         my_datetime_parts = my_datetime.split(",")
         my_date_rep = my_datetime_parts[0]
-        my_date_parts = my_date_rep.split('.')
+        my_date_parts = my_date_rep.split(".")
         my_day = int(my_date_parts[0])
         my_month = int(my_date_parts[1])
         my_year = int(my_date_parts[2])
@@ -82,22 +83,22 @@ class BlueprintDateReportedFactory:
 
     @classmethod
     def __get_year_week_as_str(cls, my_iso_year: int, week_number: int):
-        my_year_week = '' + str(my_iso_year)
+        my_year_week = "" + str(my_iso_year)
         if week_number < 10:
-            my_year_week += '-0'
+            my_year_week += "-0"
         else:
-            my_year_week += '-'
+            my_year_week += "-"
         my_year_week += str(week_number)
         return my_year_week
 
     @classmethod
     def __get_year_month_as_str(cls, my_datum: date):
-        year_month = '' + str(my_datum.year)
+        year_month = "" + str(my_datum.year)
         my_month = my_datum.month
         if my_month < 10:
-            year_month += '-0'
+            year_month += "-0"
         else:
-            year_month += '-'
+            year_month += "-"
         year_month += str(my_month)
         return year_month
 
@@ -110,11 +111,11 @@ class BlueprintDateReportedFactory:
         year = str(my_datum.year)
         if day_of_year < 100:
             if day_of_year < 10:
-                return year + '-00' + str(day_of_year)
+                return year + "-00" + str(day_of_year)
             else:
-                return year + '-0' + str(day_of_year)
+                return year + "-0" + str(day_of_year)
         else:
-            return year + '-' + str(day_of_year)
+            return year + "-" + str(day_of_year)
 
     @classmethod
     def __get_ecdc(cls, o: AllDateReported):
@@ -213,9 +214,13 @@ class BlueprintDateReportedFactory:
 
     @classmethod
     def create_new_object_for_ecdc(cls, my_date_reported: str):
-        (my_year, my_month, my_day) = cls.__get_datetime_parts_for_ecdc(my_date_reported)
+        (my_year, my_month, my_day) = cls.__get_datetime_parts_for_ecdc(
+            my_date_reported
+        )
         my_datum = date(my_year, my_month, my_day)
-        o = cls.__create_new_object_factory(date_reported_import_str=my_date_reported, my_datum=my_datum)
+        o = cls.__create_new_object_factory(
+            date_reported_import_str=my_date_reported, my_datum=my_datum
+        )
         return cls.__get_ecdc(o)
 
     @classmethod
@@ -227,21 +232,29 @@ class BlueprintDateReportedFactory:
     def create_new_object_for_rki_meldedatum(cls, my_meldedatum: str):
         (my_year, my_month, my_day) = cls.__get_datetime_parts(my_meldedatum)
         my_datum = date(my_year, my_month, my_day)
-        o = cls.__create_new_object_factory(date_reported_import_str=my_meldedatum, my_datum=my_datum)
+        o = cls.__create_new_object_factory(
+            date_reported_import_str=my_meldedatum, my_datum=my_datum
+        )
         return cls.__get_rki(o)
 
     @classmethod
     def create_new_object_for_rki_date_datenstand(cls, my_date_datenstand: str):
-        (my_year, my_month, my_day) = cls.__get_datetime_german_parts(my_datetime=my_date_datenstand)
+        (my_year, my_month, my_day) = cls.__get_datetime_german_parts(
+            my_datetime=my_date_datenstand
+        )
         my_datum = date(my_year, my_month, my_day)
-        o = cls.__create_new_object_factory(date_reported_import_str=my_date_datenstand, my_datum=my_datum)
+        o = cls.__create_new_object_factory(
+            date_reported_import_str=my_date_datenstand, my_datum=my_datum
+        )
         return cls.__get_rki(o)
 
     @classmethod
     def create_new_object_for_rki_ref_datum(cls, my_ref_datum: str):
         (my_year, my_month, my_day) = cls.__get_datetime_parts(my_ref_datum)
         my_datum = date(my_year, my_month, my_day)
-        o = cls.__create_new_object_factory(date_reported_import_str=my_ref_datum, my_datum=my_datum)
+        o = cls.__create_new_object_factory(
+            date_reported_import_str=my_ref_datum, my_datum=my_datum
+        )
         return cls.__get_rki(o)
 
     @classmethod

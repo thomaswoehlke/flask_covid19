@@ -4,7 +4,6 @@ from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllImportMixin(AllEntityMixin):
-
     @classmethod
     def find_by_datum(cls, datum: date):
         pass

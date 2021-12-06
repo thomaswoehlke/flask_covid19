@@ -2,7 +2,6 @@ from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllLocationGroupMixin(AllEntityMixin):
-
     @classmethod
     def get_last(cls):
         pass

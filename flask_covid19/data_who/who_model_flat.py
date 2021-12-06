@@ -4,16 +4,29 @@ from flask_covid19.data_all.all_model_flat_mixins import AllImportFlatMixin
 
 
 class WhoFlat(AllFlat, AllImportFlatMixin):
-    __tablename__ = 'who_import_flat'
-    __mapper_args__ = {'concrete': True}
+    __tablename__ = "who_import_flat"
+    __mapper_args__ = {"concrete": True}
 
     def __repr__(self):
-        return "%s(%s %s %s %s %s)" % (self.__class__.__name__,
-                                       self.datum.isoformat(), self.date_reported_import_str,
-                                       self.location_code, self.location, self.location_group)
+        return "{}({} {} {} {} {})".format(
+            self.__class__.__name__,
+            self.datum.isoformat(),
+            self.date_reported_import_str,
+            self.location_code,
+            self.location,
+            self.location_group,
+        )
 
     def __str__(self):
-        return self.datum.isoformat() + " " + self.location_code + " " + self.location + " " + str(self.location_group)
+        return (
+            self.datum.isoformat()
+            + " "
+            + self.location_code
+            + " "
+            + self.location
+            + " "
+            + str(self.location_group)
+        )
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -47,7 +60,6 @@ class WhoFlat(AllFlat, AllImportFlatMixin):
 
 
 class WhoFlatFactory:
-
     @classmethod
     def create_new(cls, date_reported, d, row, my_data):
         oo = WhoFlat(
@@ -62,19 +74,19 @@ class WhoFlatFactory:
             year_day_of_year=d.year_day_of_year,
             date_reported_import_str=d.date_reported_import_str,
             year_month=d.year_month,
-            location_code=row['Country_code'],
-            location=row['Country'],
-            location_group=row['WHO_region'],
+            location_code=row["Country_code"],
+            location=row["Country"],
+            location_group=row["WHO_region"],
             processed_update=False,
             processed_full_update=False,
             #
-            new_cases=my_data['new_cases'],
-            cumulative_cases=my_data['cumulative_cases'],
-            new_deaths=my_data['new_deaths'],
-            cumulative_deaths=my_data['cumulative_deaths'],
-            country_code=row['Country_code'],
-            country=row['Country'],
-            who_region=row['WHO_region'],
+            new_cases=my_data["new_cases"],
+            cumulative_cases=my_data["cumulative_cases"],
+            new_deaths=my_data["new_deaths"],
+            cumulative_deaths=my_data["cumulative_deaths"],
+            country_code=row["Country_code"],
+            country=row["Country"],
+            who_region=row["WHO_region"],
             date_reported=date_reported,
         )
         return oo

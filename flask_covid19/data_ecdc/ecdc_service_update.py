@@ -1,12 +1,18 @@
-from flask_covid19.app_config.database import db, app
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
 from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 from flask_covid19.data_ecdc.ecdc_model import EcdcDateReported
-from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent, EcdcContinentFactory
-from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountry, EcdcCountryFactory
-from flask_covid19.data_ecdc.ecdc_model_data import EcdcData, EcdcDataFactory
+from flask_covid19.data_ecdc.ecdc_model_data import EcdcData
+from flask_covid19.data_ecdc.ecdc_model_data import EcdcDataFactory
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
+from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountry
+from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountryFactory
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinentFactory
 
 
 class EcdcServiceUpdateBase:
@@ -22,7 +28,6 @@ class EcdcServiceUpdateBase:
 
 
 class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
-
     def __get_new_dates(self):
         todo = []
         odr_list = EcdcDateReported.find_all_as_str()
@@ -51,11 +56,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
                 item = oi.landkreis
                 app.logger.info("l: " + str(item) + " -- " + str(my_continent))
                 if item not in country_all:
-                    new_location = (
-                        oi.landkreis,
-                        oi.id_landkreis,
-                        my_continent
-                    )
+                    new_location = (oi.landkreis, oi.id_landkreis, my_continent)
                     todo.append(new_location)
         return todo
 
@@ -75,7 +76,13 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
                 )
                 db.session.add(o)
                 db.session.commit()
-            app.logger.info(" [ECDC] update date_reported " + my_date_rep + " ... " + str(k) + " rows ")
+            app.logger.info(
+                " [ECDC] update date_reported "
+                + my_date_rep
+                + " ... "
+                + str(k)
+                + " rows "
+            )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] update date_reported  [done]")
         app.logger.info("------------------------------------------------------------")
@@ -103,7 +110,9 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         all_continents = EcdcContinent.find_all()
         for my_continent in all_continents:
-            result_countries_of_continent = EcdcImport.get_countries_of_continent(my_continent)
+            result_countries_of_continent = EcdcImport.get_countries_of_continent(
+                my_continent
+            )
             for c in result_countries_of_continent:
                 o = EcdcCountryFactory.create_new(c, my_continent)
                 app.logger.info(" [ECDC] update country " + str(o) + " ")
@@ -132,24 +141,24 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         ecdc_country = EcdcCountry.find_by(
             location=my_countries_and_territories,
             geo_id=my_geo_id,
-            location_code=my_country_territory_code
+            location_code=my_country_territory_code,
         )
         if ecdc_country is None:
             my_continent = self.__get_continent_from_import(ecdc_import)
-            app.logger.info(my_continent.id + " "+my_continent.region)
+            app.logger.info(my_continent.id + " " + my_continent.region)
             o = EcdcCountry(
                 countries_and_territories=my_countries_and_territories,
                 pop_data_2019=my_pop_data_2019,
                 geo_id=my_geo_id,
                 country_territory_code=my_country_territory_code,
-                continent=my_continent
+                continent=my_continent,
             )
             db.session.add(o)
             db.session.commit()
             ecdc_country = EcdcCountry.get_by(
                 location=my_countries_and_territories,
                 geo_id=my_geo_id,
-                location_code=my_country_territory_code
+                location_code=my_country_territory_code,
             )
         return ecdc_country
 
@@ -159,8 +168,10 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         for item_date_str_from_ecdc_import in result_date_str_from_ecdc_import:
             item_date_str_from_ecdc_import_str = str(item_date_str_from_ecdc_import[0])
             app.logger.info(item_date_str_from_ecdc_import_str)
-            my_date_reported_search_str = EcdcDateReported.get_date_format_from_ecdc_import_format(
-                date_reported_ecdc_import_fomat=item_date_str_from_ecdc_import_str
+            my_date_reported_search_str = (
+                EcdcDateReported.get_date_format_from_ecdc_import_format(
+                    date_reported_ecdc_import_fomat=item_date_str_from_ecdc_import_str
+                )
             )
             app.logger.debug(my_date_reported_search_str)
             my_ecdc_date_reported_obj = EcdcDateReported.find_by_date_reported(
@@ -175,7 +186,9 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
             my_ecdc_date_reported_obj = EcdcDateReported.get_by_date_reported(
                 date_reported_import_str=my_date_reported_search_str
             )
-            dict_date_reported_from_import[item_date_str_from_ecdc_import_str] = my_ecdc_date_reported_obj
+            dict_date_reported_from_import[
+                item_date_str_from_ecdc_import_str
+            ] = my_ecdc_date_reported_obj
         return dict_date_reported_from_import
 
     def update_dimension_tables(self):
@@ -192,21 +205,27 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         dict_date_reported_from_import = self.__get_date_reported_from_import()
         for my_date_reported in dict_date_reported_from_import.keys():
             my_ecdc_datereported = dict_date_reported_from_import[my_date_reported]
-            for item_ecdc_data_import in EcdcImport.find_by_date_reported(my_date_reported):
+            for item_ecdc_data_import in EcdcImport.find_by_date_reported(
+                my_date_reported
+            ):
                 my_ecdc_country = self.__get_country_from_import(item_ecdc_data_import)
                 my_deaths = int(item_ecdc_data_import.deaths)
                 my_cases = int(item_ecdc_data_import.cases)
-                if item_ecdc_data_import.cumulative_number_for_14_days_of_covid19_cases_per_100000 == '':
+                if (
+                    item_ecdc_data_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
+                    == ""
+                ):
                     my_cumulative_number = 0.0
                 else:
-                    my_cumulative_number = \
-                        float(item_ecdc_data_import.cumulative_number_for_14_days_of_covid19_cases_per_100000)
+                    my_cumulative_number = float(
+                        item_ecdc_data_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
+                    )
                 o = EcdcDataFactory.create_new(
                     date_reported=my_ecdc_datereported,
                     location=my_ecdc_country,
                     my_deaths=my_deaths,
                     my_cases=my_cases,
-                    my_cumulative_number=my_cumulative_number
+                    my_cumulative_number=my_cumulative_number,
                 )
                 db.session.add(o)
                 i += 1
@@ -236,7 +255,15 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         for data in EcdcData.get_data_for_one_day(joungest_datum):
             i += 1
-            line = " [ECDC] delete last_day [ " + str(i) + " ] " + str(data.date_reported) + " | " + str(data.country) + " | to be deleted"
+            line = (
+                " [ECDC] delete last_day [ "
+                + str(i)
+                + " ] "
+                + str(data.date_reported)
+                + " | "
+                + str(data.country)
+                + " | to be deleted"
+            )
             app.logger.info(line)
         app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         EcdcData.delete_data_for_one_day(joungest_datum)
@@ -244,4 +271,3 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug(" [ECDC] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
         return self
-

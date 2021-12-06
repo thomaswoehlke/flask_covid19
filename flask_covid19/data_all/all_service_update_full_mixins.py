@@ -1,5 +1,4 @@
 class AllServiceMixinUpdateFull:
-
     def full_update_dimension_tables(self):
         return self
 

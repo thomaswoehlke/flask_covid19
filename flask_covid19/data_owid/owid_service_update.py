@@ -1,12 +1,18 @@
-from flask_covid19.app_config.database import db, app
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
 from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_owid.owid_model_data import OwidData
+from flask_covid19.data_owid.owid_model_data import OwidDataFactory
 from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
-from flask_covid19.data_owid.owid_model_location_group import OwidContinent, OwidContinentFactory
-from flask_covid19.data_owid.owid_model_location import OwidCountry, OwidCountryFactory
-from flask_covid19.data_owid.owid_model_data import OwidData, OwidDataFactory
 from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_location import OwidCountry
+from flask_covid19.data_owid.owid_model_location import OwidCountryFactory
+from flask_covid19.data_owid.owid_model_location_group import OwidContinent
+from flask_covid19.data_owid.owid_model_location_group import OwidContinentFactory
 
 
 class OwidServiceUpdateBase:
@@ -22,12 +28,11 @@ class OwidServiceUpdateBase:
 
 
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
-
     def __owid_import_get_new_dates(self):
         todo = []
         odr_list = OwidDateReported.find_all_as_str()
         for datum_list in OwidImport.get_datum_list():
-            o = datum_list['date_reported_import_str']
+            o = datum_list["date_reported_import_str"]
             # app.logger.info("o: " + str(o))
             if o not in odr_list:
                 todo.append(o)
@@ -46,18 +51,10 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         todo = []
         owid_countries = []
         for oc in OwidCountry.find_all():
-            oc_key = (
-                oc.location_code,
-                oc.location,
-                oc.location_group.location_group
-            )
+            oc_key = (oc.location_code, oc.location, oc.location_group.location_group)
             owid_countries.append(oc_key)
         for oi in OwidImport.get_all_countries():
-            country = (
-                oi.iso_code,
-                oi.location,
-                oi.continent
-            )
+            country = (oi.iso_code, oi.location, oi.continent)
             if country not in owid_countries:
                 todo.append(country)
         return todo
@@ -72,7 +69,9 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         for i_date_reported in self.__owid_import_get_new_dates():
             # app.logger.info(i_date_reported)
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=i_date_reported)
+            o = BlueprintDateReportedFactory.create_new_object_for_owid(
+                my_date_reported=i_date_reported
+            )
             db.session.add(o)
             output = " [OWID] date_reported [ " + str(i) + " ] " + str(o) + " added"
             log_lines.append(output)
@@ -118,7 +117,9 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             continent = ci[2]
             # app.logger.info("iso_code: " + iso_code + " - location: " + location + " - continent: " + continent)
             oi = OwidImport.get_country_for(iso_code=iso_code, location=location)
-            owid_continent = OwidContinent.find_by_location_group(location_group=continent)
+            owid_continent = OwidContinent.find_by_location_group(
+                location_group=continent
+            )
             o = OwidCountryFactory.create_new(oi=oi, location_group=owid_continent)
             db.session.add(o)
             app.logger.info(" [OWID] added country: " + str(o) + " ")
@@ -135,18 +136,24 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
-        for unprocessed_owid_date_reported in OwidDateReported.find_by_not_processed_update():
+        for (
+            unprocessed_owid_date_reported
+        ) in OwidDateReported.find_by_not_processed_update():
             unprocessed_owid_date_reported.set_processed_update()
-            app.logger.info(" [OWID] unprocessed_date: " + str(unprocessed_owid_date_reported))
-            for oi in OwidImport.get_for_one_day(unprocessed_owid_date_reported.date_reported_import_str):
+            app.logger.info(
+                " [OWID] unprocessed_date: " + str(unprocessed_owid_date_reported)
+            )
+            for oi in OwidImport.get_for_one_day(
+                unprocessed_owid_date_reported.date_reported_import_str
+            ):
                 owid_country = OwidCountry.find_by_iso_code_and_location(
-                    iso_code=oi.iso_code,
-                    location=oi.location
+                    iso_code=oi.iso_code, location=oi.location
                 )
                 o = OwidDataFactory.create_new(
                     oi=oi,
                     date_reported=unprocessed_owid_date_reported,
-                    location=owid_country)
+                    location=owid_country,
+                )
                 db.session.add(o)
                 anzahl_db_zeilen_persistent += 1
                 anzahl_db_zeilen_transient += 1
@@ -154,15 +161,23 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             if lfd_nr_tage % 7 == 0:
                 db.session.commit()
                 app.logger.info(
-                    " [OWID] update  :  added data " + str(unprocessed_owid_date_reported)
-                    + " ... " + str(anzahl_db_zeilen_persistent)
-                    + " rows ( " + str(anzahl_db_zeilen_transient)
-                    + " )")
+                    " [OWID] update  :  added data "
+                    + str(unprocessed_owid_date_reported)
+                    + " ... "
+                    + str(anzahl_db_zeilen_persistent)
+                    + " rows ( "
+                    + str(anzahl_db_zeilen_transient)
+                    + " )"
+                )
                 anzahl_db_zeilen_transient = 0
         db.session.commit()
-        app.logger.info(" [OWID] update  :  added data "
-                        + str(anzahl_db_zeilen_persistent)
-                        + " rows total - for "+str(lfd_nr_tage)+" days")
+        app.logger.info(
+            " [OWID] update  :  added data "
+            + str(anzahl_db_zeilen_persistent)
+            + " rows total - for "
+            + str(lfd_nr_tage)
+            + " days"
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")

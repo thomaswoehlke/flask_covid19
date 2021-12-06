@@ -1,11 +1,16 @@
 import csv
-from flask_covid19.app_config.database import db, app
 
-from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from flask_covid19.data_owid.owid_model_import import OwidImport, OwidImportFactory
-from flask_covid19.data_owid.owid_model_flat import OwidFlat, OwidFlatFactory
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_owid.owid_model_flat import OwidFlat
+from flask_covid19.data_owid.owid_model_flat import OwidFlatFactory
+from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_import import OwidImportFactory
 
 
 class OwidServiceImport(AllServiceMixinImport):
@@ -23,17 +28,26 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [begin]")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] import into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [OWID] import into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         OwidImport.remove_all()
         OwidFlat.remove_all()
-        with open(self.cfg.cvsfile_path, newline='\n') as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=',', quotechar='"')
+        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             k = 0
             for row in file_reader:
-                date_reported = row['date']
-                d = BlueprintDateReportedFactory.create_new_object_for_owid(my_date_reported=date_reported)
-                o = OwidImportFactory.create_new(date_reported=date_reported, d=d, row=row)
+                date_reported = row["date"]
+                d = BlueprintDateReportedFactory.create_new_object_for_owid(
+                    my_date_reported=date_reported
+                )
+                o = OwidImportFactory.create_new(
+                    date_reported=date_reported, d=d, row=row
+                )
                 db.session.add(o)
                 f = OwidFlatFactory.create_new(d=d, row=row)
                 db.session.add(f)
@@ -47,7 +61,12 @@ class OwidServiceImport(AllServiceMixinImport):
             app.logger.info(" [OWID] import ... " + str(k) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] imported into TABLE: "+self.cfg.tablename+" <--- from FILE "+self.cfg.cvsfile_path)
+        app.logger.info(
+            " [OWID] imported into TABLE: "
+            + self.cfg.tablename
+            + " <--- from FILE "
+            + self.cfg.cvsfile_path
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [done]")
         app.logger.info("------------------------------------------------------------")

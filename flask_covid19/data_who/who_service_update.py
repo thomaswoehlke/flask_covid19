@@ -1,12 +1,18 @@
-from flask_covid19.app_config.database import db, app
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import db
 from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import (
+    BlueprintDateReportedFactory,
+)
 from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_who.who_model_data import WhoData
+from flask_covid19.data_who.who_model_data import WhoDataFactory
 from flask_covid19.data_who.who_model_date_reported import WhoDateReported
-from flask_covid19.data_who.who_model_data import WhoData, WhoDataFactory
-from flask_covid19.data_who.who_model_location_group import WhoCountryRegion, WhoCountryRegionFactory
-from flask_covid19.data_who.who_model_location import WhoCountry, WhoCountryFactory
 from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_who.who_model_location import WhoCountry
+from flask_covid19.data_who.who_model_location import WhoCountryFactory
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegion
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegionFactory
 
 
 class WhoServiceUpdateBase:
@@ -22,12 +28,11 @@ class WhoServiceUpdateBase:
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
-
     def __who_import_get_new_dates(self):
         todo = []
         odr_list = WhoDateReported.find_all_as_str()
         for datum_list in WhoImport.get_datum_list():
-            o = datum_list['date_reported_import_str']
+            o = datum_list["date_reported_import_str"]
             # app.logger.info("o: " + str(o))
             if o not in odr_list:
                 todo.append(o)
@@ -47,16 +52,16 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         who_countries = []
         for oc in WhoCountry.find_all():
             oc_key = {
-                'location_code': oc.location_code,
-                'location': oc.location,
-                'location_group': oc.location_group.location_group
+                "location_code": oc.location_code,
+                "location": oc.location,
+                "location_group": oc.location_group.location_group,
             }
             who_countries.append(oc_key)
         for oi in WhoImport.countries():
             country = {
-                'location_code': oi.countries.country_code,
-                'location': oi.countries.country,
-                'location_group': oi.countries.who_region
+                "location_code": oi.countries.country_code,
+                "location": oi.countries.country,
+                "location_group": oi.countries.who_region,
             }
             if country not in who_countries:
                 todo.append(country)
@@ -71,7 +76,9 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         for new_date_reported in self.__who_import_get_new_dates():
             i += 1
             output = " [WHO] date_reported [ " + str(i) + " ] " + str(new_date_reported)
-            o = BlueprintDateReportedFactory.create_new_object_for_who(my_date_reported=new_date_reported)
+            o = BlueprintDateReportedFactory.create_new_object_for_who(
+                my_date_reported=new_date_reported
+            )
             db.session.add(o)
             db.session.commit()
             output += "   added " + str(o)
@@ -91,9 +98,13 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         for new_location_group in self.__get_new_location_groups():
             i += 1
             output = " [WHO] location_group [ " + str(i) + " ] " + new_location_group
-            c = WhoCountryRegion.find_by_location_group(location_group=new_location_group)
+            c = WhoCountryRegion.find_by_location_group(
+                location_group=new_location_group
+            )
             if c is None:
-                o = WhoCountryRegionFactory.create_new(location_group_str=new_location_group)
+                o = WhoCountryRegionFactory.create_new(
+                    location_group_str=new_location_group
+                )
                 db.session.add(o)
                 db.session.commit()
                 output += "   added"
@@ -115,13 +126,25 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         i = 0
         for new_location in self.__get_new_locations():
             i += 1
-            i_country_code = new_location['location_code']
-            i_country = new_location['location']
-            i_who_region = new_location['location_group']
-            output = "[WHO] location [ " + str(i) + " ] " + i_country_code + " | " + i_country + " | " + i_who_region + " | "
+            i_country_code = new_location["location_code"]
+            i_country = new_location["location"]
+            i_who_region = new_location["location_group"]
+            output = (
+                "[WHO] location [ "
+                + str(i)
+                + " ] "
+                + i_country_code
+                + " | "
+                + i_country
+                + " | "
+                + i_who_region
+                + " | "
+            )
             my_region = WhoCountryRegion.find_by_location_group(i_who_region)
             o = WhoCountryFactory.create_new(
-                location=i_country, location_code=i_country_code, location_group=my_region
+                location=i_country,
+                location_code=i_country_code,
+                location_group=my_region,
             )
             db.session.add(o)
             db.session.commit()
@@ -147,18 +170,29 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
                 if who_import.country_code == "":
                     my_country = WhoCountry.find_by_location(who_import.country)
                 else:
-                    my_country = WhoCountry.find_by_location_code(who_import.country_code)
+                    my_country = WhoCountry.find_by_location_code(
+                        who_import.country_code
+                    )
                 o = WhoDataFactory.create_new(
                     my_who_import=who_import,
                     my_date=my_date_reported,
-                    my_country=my_country)
+                    my_country=my_country,
+                )
                 db.session.add(o)
                 i += 1
                 k += 1
             d += 1
             if d % 7 == 0:
                 db.session.commit()
-                app.logger.info(" [WHO] update data  " + str(my_date_reported) + " ... " + str(i) + " rows ( " + str(k) + " )")
+                app.logger.info(
+                    " [WHO] update data  "
+                    + str(my_date_reported)
+                    + " ... "
+                    + str(i)
+                    + " rows ( "
+                    + str(k)
+                    + " )"
+                )
                 k = 0
         db.session.commit()
         app.logger.info(" [WHO] update data :  " + str(i) + " rows total")

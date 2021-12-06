@@ -4,7 +4,6 @@
 # def task_owid_update_fact_table_incremental_only(self):
 # def task_owid_update_fact_table_initial_only(self):
 # def task_owid_update_fact_table_initial_only(self):
-
 #
 # https://ourworldindata.org/grapher/covid-stringency-index?time=2020-01-26
 # https://ourworldindata.org/grapher/biweekly-confirmed-covid-19-cases
@@ -165,4 +164,3 @@
 # Which countries do COVID-19 contact tracing?
 # Workplace closures during the COVID-19 pandemic
 # Workplaces: How did the number of visitors change since the beginning of the pandemic?
-

@@ -13,4 +13,3 @@ class EcdcTestService:
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ECDC] Test Service ")
         app.logger.debug("------------------------------------------------------------")
-

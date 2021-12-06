@@ -1,8 +1,11 @@
-
 from datetime import date
-from flask_covid19.app_config.database import db, app, celery, items_per_page
-from sqlalchemy import not_
+
+from flask_covid19.app_config.database import app
+from flask_covid19.app_config.database import celery
+from flask_covid19.app_config.database import db
+from flask_covid19.app_config.database import items_per_page
 from flask_covid19.data_all.all_model_mixins import AllEntityMixin
+from sqlalchemy import not_
 
 
 class AllEntity(db.Model, AllEntityMixin):

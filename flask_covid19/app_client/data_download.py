@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 from flask_covid19.data_all.all_config import BlueprintConfig
 from flask_covid19.data_all.all_service_download import AllDownloadService
 from flask_covid19.data_all.all_service_download_mixins import AllServiceMixinDownload
@@ -10,13 +9,13 @@ class DownloadFilesService(AllServiceMixinDownload):
         print("------------------------------------------------------------")
         print(" WHO Service [init]")
         print("------------------------------------------------------------")
-        
+
         who_cfg = BlueprintConfig.create_config_for_who()
         vaccination_cfg = BlueprintConfig.create_config_for_rki_vaccination()
         owid_cfg = BlueprintConfig.create_config_for_owid()
         ecdc_cfg = BlueprintConfig.create_config_for_ecdc()
         rki_cfg = BlueprintConfig.create_config_for_rki()
-        
+
         self.who_download = AllDownloadService(who_cfg)
         self.vaccination_download = AllDownloadService(vaccination_cfg)
         self.owid_download = AllDownloadService(owid_cfg)
@@ -24,13 +23,13 @@ class DownloadFilesService(AllServiceMixinDownload):
         self.rki_download = AllDownloadService(rki_cfg)
 
         self.download_services = [
-          self.who_download, 
-          self.vaccination_download, 
-          self.owid_download, 
-          self.ecdc_download, 
-          self.rki_download
+            self.who_download,
+            self.vaccination_download,
+            self.owid_download,
+            self.ecdc_download,
+            self.rki_download,
         ]
-      
+
         print("------------------------------------------------------------")
         print(" ready: [WHO] Service")
         print("------------------------------------------------------------")
@@ -49,4 +48,3 @@ class DownloadFilesService(AllServiceMixinDownload):
 
 files_downloader = DownloadFilesService()
 files_downloader.download()
-

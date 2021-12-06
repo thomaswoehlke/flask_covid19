@@ -1,12 +1,11 @@
 #!/usr/bin/env python
-
 import os
+
+import matplotlib as mpl
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
 import scipy as sp
 import statsmodels as sm
-
 from flask_covid19.data_all.all_config import BlueprintConfig
 
 
@@ -28,7 +27,7 @@ class Runner:
             self.config.cvsfile_path,
             sep=self.config.separator,
             index_col=0,
-            parse_dates=True
+            parse_dates=True,
         )
         # grundlegende Informationen über den Datensatz
         print(self.data.info())
