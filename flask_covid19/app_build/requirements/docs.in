@@ -8,7 +8,7 @@ babel>=2.9.1
 #sphinxcontrib-log-cabinet
 #sphinxcontrib-plantuml
 #sphinxcontrib-bibtex
-#sphinxcontrib-images 
+sphinxcontrib-images
 #sphinxcontrib-gravizo
 #sphinxcontrib-needs
 #sphinxcontrib-markdown

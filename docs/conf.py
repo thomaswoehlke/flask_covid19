@@ -14,11 +14,11 @@ author = "thomaswoehlke"
 
 master_doc = "index"
 
-extensions = [    
+extensions = [
     "myst_parser",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.intersphinx",
-    "sphinx_bootstrap_theme",
+    #"sphinx.ext.autodoc",
+    #"sphinx.ext.intersphinx",
+    #"sphinx_bootstrap_theme",
     #"sphinxcontrib.log_cabinet",
     #"sphinxcontrib.gravizo",
     #"sphinxcontrib.srclinks",
