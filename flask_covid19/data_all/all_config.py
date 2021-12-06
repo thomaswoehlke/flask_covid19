@@ -1,11 +1,11 @@
 import os
 
-from app_config.database import root_dir, app
-from data_ecdc.ecdc_model_import import EcdcImport
-from data_who.who_model_import import WhoImport
-from data_vaccination.vaccination_model_import import VaccinationImport
-from data_owid.owid_model_import import OwidImport
-from data_rki.rki_model_import import RkiImport
+from flask_covid19.app_config.database import root_dir, app
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
+from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
+from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_rki.rki_model_import import RkiImport
 
 
 class BlueprintConfig:
@@ -31,6 +31,7 @@ class BlueprintConfig:
         self.cvsfile_name = cvsfile_name
         self.cvsfile_backup_name = cvsfile_backup_name
         self.separator = separator
+
         self.url_src = url_src
         self.download_path = self.data_path_tmp + os.sep + self.cvsfile_name
         self.cvsfile_backup_path = self.data_path + os.sep + self.cvsfile_subpath + os.sep + self.cvsfile_backup_name

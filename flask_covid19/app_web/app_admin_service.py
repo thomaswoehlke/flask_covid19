@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from app_config.database import app
+from flask_covid19.app_config.database import app
 
 
 class AdminService:

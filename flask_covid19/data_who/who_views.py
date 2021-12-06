@@ -5,18 +5,18 @@ from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
-from app_config.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import who_service
-from app_web.web_model_transient import WebPageContent
+from flask_covid19.app_config.database import app, admin, db, celery
+from flask_covid19.app_web.web_dispachter_matrix_service import who_service
+from flask_covid19.app_web.web_model_transient import WebPageContent
 
 
-from data_who.who_model_import import WhoImport
-from data_who.who_model_flat import WhoFlat
-from data_who.who_model_date_reported import WhoDateReported
-from data_who.who_model_data import WhoData
-from data_who.who_model_location_group import WhoCountryRegion
-from data_who.who_model_location import WhoCountry
-from data_who.who_service_test import WhoTestService
+from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_who.who_model_flat import WhoFlat
+from flask_covid19.data_who.who_model_date_reported import WhoDateReported
+from flask_covid19.data_who.who_model_data import WhoData
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegion
+from flask_covid19.data_who.who_model_location import WhoCountry
+from flask_covid19.data_who.who_service_test import WhoTestService
 
 who_test_service = WhoTestService(db, who_service)
 

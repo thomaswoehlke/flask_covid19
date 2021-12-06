@@ -1,8 +1,8 @@
 
 from datetime import date
-from app_config.database import db, items_per_page
-from data_all.all_model_date_reported_mixins import AllDateReportedMixin
-from data_all.all_model import AllEntity
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_date_reported_mixins import AllDateReportedMixin
+from flask_covid19.data_all.all_model import AllEntity
 
 
 class AllDateReported(AllEntity, AllDateReportedMixin):

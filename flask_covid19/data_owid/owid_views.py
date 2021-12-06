@@ -5,16 +5,16 @@ from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
-from app_config.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import owid_service
-from app_web.web_model_transient import WebPageContent
-from data_owid.owid_model_date_reported import OwidDateReported
-from data_owid.owid_model_location_group import OwidContinent
-from data_owid.owid_model_location import OwidCountry
-from data_owid.owid_model_data import OwidData
-from data_owid.owid_model_import import OwidImport
-from data_owid.owid_model_flat import OwidFlat
-from data_owid.owid_service_test import OwidTestService
+from flask_covid19.app_config.database import app, admin, db, celery
+from flask_covid19.app_web.web_dispachter_matrix_service import owid_service
+from flask_covid19.app_web.web_model_transient import WebPageContent
+from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
+from flask_covid19.data_owid.owid_model_location_group import OwidContinent
+from flask_covid19.data_owid.owid_model_location import OwidCountry
+from flask_covid19.data_owid.owid_model_data import OwidData
+from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_flat import OwidFlat
+from flask_covid19.data_owid.owid_service_test import OwidTestService
 
 app_owid = Blueprint('owid', __name__, template_folder='templates', url_prefix='/owid ')
 

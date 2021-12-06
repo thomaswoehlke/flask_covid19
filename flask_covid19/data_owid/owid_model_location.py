@@ -1,9 +1,9 @@
 
 from sqlalchemy import and_
-from app_config.database import db, items_per_page
-from data_all.all_model_location import AllLocation
-from data_owid.owid_model_import import OwidImport
-from data_owid.owid_model_location_group import OwidContinent
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_location import AllLocation
+from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_location_group import OwidContinent
 
 
 class OwidCountry(AllLocation):

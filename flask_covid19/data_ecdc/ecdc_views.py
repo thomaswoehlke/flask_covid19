@@ -4,17 +4,17 @@ from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
 
-from app_config.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import ecdc_service
-from data_ecdc.ecdc_service_test import EcdcTestService
+from flask_covid19.app_config.database import app, admin, db, celery
+from flask_covid19.app_web.web_dispachter_matrix_service import ecdc_service
+from flask_covid19.data_ecdc.ecdc_service_test import EcdcTestService
 
-from data_ecdc.ecdc_model_import import EcdcImport
-from data_ecdc.ecdc_model_flat import EcdcFlat
-from data_ecdc.ecdc_model import EcdcDateReported
-from data_ecdc.ecdc_model_location_group import EcdcContinent
-from data_ecdc.ecdc_model_location import EcdcCountry
-from data_ecdc.ecdc_model_data import EcdcData
-from app_web.web_model_transient import WebPageContent
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport
+from flask_covid19.data_ecdc.ecdc_model_flat import EcdcFlat
+from flask_covid19.data_ecdc.ecdc_model import EcdcDateReported
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent
+from flask_covid19.data_ecdc.ecdc_model_location import EcdcCountry
+from flask_covid19.data_ecdc.ecdc_model_data import EcdcData
+from flask_covid19.app_web.web_model_transient import WebPageContent
 
 
 app_ecdc = Blueprint('ecdc', __name__, template_folder='templates', url_prefix='/ecdc')

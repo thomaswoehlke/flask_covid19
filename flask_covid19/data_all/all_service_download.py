@@ -1,9 +1,9 @@
 import os
 import wget
 import subprocess
-from app_config.database import app
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_download_mixins import AllServiceMixinDownload
+from flask_covid19.app_config.database import app
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_download_mixins import AllServiceMixinDownload
 
 
 class AllDownloadService(AllServiceMixinDownload):

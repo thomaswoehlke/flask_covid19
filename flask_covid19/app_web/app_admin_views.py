@@ -2,9 +2,9 @@ from flask import render_template, redirect, url_for, flash, Blueprint
 from celery import states
 from celery.utils.log import get_task_logger
 
-from app_config.database import app, celery
-from app_web.web_dispachter_matrix_service import app_admin_service
-from app_web.web_model_transient import WebPageContent
+from flask_covid19.app_config.database import app, celery
+from flask_covid19.app_web.web_dispachter_matrix_service import app_admin_service
+from flask_covid19.app_web.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True
 

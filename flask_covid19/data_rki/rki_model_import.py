@@ -1,9 +1,9 @@
 from datetime import date
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
-from app_config.database import db, items_per_page
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_all.all_model_import import AllImport
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_all.all_model_import import AllImport
 
 
 class RkiImport(AllImport):

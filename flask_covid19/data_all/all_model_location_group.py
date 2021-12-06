@@ -1,8 +1,8 @@
 
 from datetime import date
-from app_config.database import db, app, celery, items_per_page
-from data_all.all_model_location_group_mixins import AllLocationGroupMixin
-from data_all.all_model import AllEntity
+from flask_covid19.app_config.database import db, app, celery, items_per_page
+from flask_covid19.data_all.all_model_location_group_mixins import AllLocationGroupMixin
+from flask_covid19.data_all.all_model import AllEntity
 
 
 class AllLocationGroup(AllEntity, AllLocationGroupMixin):

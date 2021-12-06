@@ -1,6 +1,6 @@
-from data_all.all_model_date_reported_mixins import AllDateReportedMixin
-from data_all.all_model_location_mixins import AllLocationMixin
-from data_all.all_model_mixins import AllEntityMixin
+from flask_covid19.data_all.all_model_date_reported_mixins import AllDateReportedMixin
+from flask_covid19.data_all.all_model_location_mixins import AllLocationMixin
+from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllFactTableTimeSeriesMixin(AllEntityMixin):

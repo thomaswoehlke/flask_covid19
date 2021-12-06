@@ -1,11 +1,11 @@
 
 from sqlalchemy import and_
 from sqlalchemy.orm import joinedload
-from app_config.database import db, items_per_page
-from data_all.all_model_data import AllFactTable
-from data_who.who_model_import import WhoImport
-from data_who.who_model_location import WhoCountry
-from data_who.who_model_date_reported import WhoDateReported
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_data import AllFactTable
+from flask_covid19.data_who.who_model_import import WhoImport
+from flask_covid19.data_who.who_model_location import WhoCountry
+from flask_covid19.data_who.who_model_date_reported import WhoDateReported
 
 
 class WhoData(AllFactTable):

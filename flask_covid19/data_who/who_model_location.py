@@ -1,6 +1,6 @@
 
-from data_all.all_model_location import AllLocation
-from data_who.who_model_location_group import WhoCountryRegion
+from flask_covid19.data_all.all_model_location import AllLocation
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegion
 
 
 class WhoCountry(AllLocation):

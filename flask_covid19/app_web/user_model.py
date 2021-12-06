@@ -1,4 +1,4 @@
-from app_config.database import db, items_per_page
+from flask_covid19.app_config.database import db, items_per_page
 from flask_login import UserMixin, AnonymousUserMixin
 from wtforms import validators
 from werkzeug.security import generate_password_hash, check_password_hash

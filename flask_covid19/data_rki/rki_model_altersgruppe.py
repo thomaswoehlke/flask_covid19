@@ -1,6 +1,6 @@
 
-from app_config.database import db, items_per_page
-from data_all.all_model import AllEntity
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model import AllEntity
 
 
 class RkiAltersgruppe(AllEntity):

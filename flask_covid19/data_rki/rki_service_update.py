@@ -1,14 +1,14 @@
-from app_config.database import db, app
+from flask_covid19.app_config.database import db, app
 
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_rki.rki_model_date_reported import RkiMeldedatum
-from data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
-from data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory
-from data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from data_rki.rki_model_data import RkiData, RkiDataFactory
-from data_rki.rki_model_import import RkiImport
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
+from flask_covid19.data_rki.rki_model_data_location_group import RkiBundesland, RkiBundeslandFactory
+from flask_covid19.data_rki.rki_model_data_location import RkiLandkreis, RkiLandkreisFactory
+from flask_covid19.data_rki.rki_model_altersgruppe import RkiAltersgruppe
+from flask_covid19.data_rki.rki_model_data import RkiData, RkiDataFactory
+from flask_covid19.data_rki.rki_model_import import RkiImport
 
 
 class RkiServiceUpdateBase:

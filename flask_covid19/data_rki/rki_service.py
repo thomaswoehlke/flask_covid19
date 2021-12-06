@@ -1,10 +1,10 @@
-from app_config.database import app
-from data_all.all_service_mixins import AllServiceMixin
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_download import AllDownloadService
-from data_rki.rki_service_import import RkiServiceImport
-from data_rki.rki_service_update import RkiServiceUpdate
-from data_rki.rki_service_update_full import RkiServiceUpdateFull
+from flask_covid19.app_config.database import app
+from flask_covid19.data_all.all_service_mixins import AllServiceMixin
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_download import AllDownloadService
+from flask_covid19.data_rki.rki_service_import import RkiServiceImport
+from flask_covid19.data_rki.rki_service_update import RkiServiceUpdate
+from flask_covid19.data_rki.rki_service_update_full import RkiServiceUpdateFull
 
 
 class RkiService(AllServiceMixin):

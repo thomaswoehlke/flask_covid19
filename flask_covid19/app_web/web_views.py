@@ -1,18 +1,18 @@
 from flask import render_template, redirect, url_for, Blueprint
 
-from app_config.database import app, celery, db
+from flask_covid19.app_config.database import app, celery, db
 
-from app_web.web_model_transient import WebPageContent
+from flask_covid19.app_web.web_model_transient import WebPageContent
 
-from app_web.user_views import blueprint_app_user
-from app_web.app_admin_views import blueprint_app_admin
-from data_all.all_views import blueprint_app_all
+from flask_covid19.app_web.user_views import blueprint_app_user
+from flask_covid19.app_web.app_admin_views import blueprint_app_admin
+from flask_covid19.data_all.all_views import blueprint_app_all
 
-from data_who.who_views import app_who
-from data_owid.owid_views import app_owid
-from data_ecdc.ecdc_views import app_ecdc
-from data_vaccination.vaccination_views import app_vaccination
-from data_rki.rki_views import app_rki
+from flask_covid19.data_who.who_views import app_who
+from flask_covid19.data_owid.owid_views import app_owid
+from flask_covid19.data_ecdc.ecdc_views import app_ecdc
+from flask_covid19.data_vaccination.vaccination_views import app_vaccination
+from flask_covid19.data_rki.rki_views import app_rki
 
 blueprint_application = Blueprint('app_web', __name__, template_folder='templates', url_prefix='/')
 

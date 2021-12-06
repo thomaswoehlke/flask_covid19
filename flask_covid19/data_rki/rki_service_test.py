@@ -1,13 +1,13 @@
 from sqlalchemy.orm import Bundle
 
-from app_config.database import db, app
-from data_all.all_config import BlueprintConfig
-from data_rki.rki_model_date_reported import RkiMeldedatum
-from data_rki.rki_model_data_location_group import RkiBundesland
-from data_rki.rki_model_data_location import RkiLandkreis
-from data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from data_rki.rki_model_data import RkiData
-from data_rki.rki_model_import import RkiImport
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
+from flask_covid19.data_rki.rki_model_data_location_group import RkiBundesland
+from flask_covid19.data_rki.rki_model_data_location import RkiLandkreis
+from flask_covid19.data_rki.rki_model_altersgruppe import RkiAltersgruppe
+from flask_covid19.data_rki.rki_model_data import RkiData
+from flask_covid19.data_rki.rki_model_import import RkiImport
 
 
 class RkiTestService:

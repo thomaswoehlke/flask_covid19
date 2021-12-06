@@ -1,12 +1,12 @@
-from app_config.database import db, app
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_owid.owid_model_date_reported import OwidDateReported
-from data_owid.owid_model_location_group import OwidContinent, OwidContinentFactory
-from data_owid.owid_model_location import OwidCountry, OwidCountryFactory
-from data_owid.owid_model_data import OwidData, OwidDataFactory
-from data_owid.owid_model_import import OwidImport
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
+from flask_covid19.data_owid.owid_model_location_group import OwidContinent, OwidContinentFactory
+from flask_covid19.data_owid.owid_model_location import OwidCountry, OwidCountryFactory
+from flask_covid19.data_owid.owid_model_data import OwidData, OwidDataFactory
+from flask_covid19.data_owid.owid_model_import import OwidImport
 
 
 class OwidServiceUpdateBase:

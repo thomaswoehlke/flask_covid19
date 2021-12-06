@@ -1,11 +1,11 @@
 from datetime import date
 
-from data_all.all_model_date_reported import AllDateReported
-from data_ecdc.ecdc_model import EcdcDateReported
-from data_owid.owid_model_date_reported import OwidDateReported
-from data_rki.rki_model_date_reported import RkiMeldedatum
-from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
-from data_who.who_model_date_reported import WhoDateReported
+from flask_covid19.data_all.all_model_date_reported import AllDateReported
+from flask_covid19.data_ecdc.ecdc_model import EcdcDateReported
+from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
+from flask_covid19.data_rki.rki_model_date_reported import RkiMeldedatum
+from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_who.who_model_date_reported import WhoDateReported
 
 
 class BlueprintDateReportedFactory:

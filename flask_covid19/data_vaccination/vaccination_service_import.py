@@ -1,13 +1,13 @@
 import csv
 
-from app_config.database import db, app
+from flask_covid19.app_config.database import db, app
 
-from data_all.all_service_import_mixins import AllServiceMixinImport
-from data_all.all_config import BlueprintConfig
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
 
-from data_vaccination.vaccination_model_import import VaccinationImport, VaccinationImportFactory
-from data_vaccination.vaccination_model_flat import VaccinationFlat, VaccinationFlatFactory
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport, VaccinationImportFactory
+from flask_covid19.data_vaccination.vaccination_model_flat import VaccinationFlat, VaccinationFlatFactory
 
 
 class VaccinationServiceImport(AllServiceMixinImport):

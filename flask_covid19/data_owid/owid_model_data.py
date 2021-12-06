@@ -1,11 +1,11 @@
 
 from sqlalchemy.orm import joinedload
 
-from app_config.database import db, items_per_page
-from data_all.all_model_data import AllFactTable
-from data_owid.owid_model_import import OwidImport
-from data_owid.owid_model_location import OwidCountry
-from data_owid.owid_model_date_reported import OwidDateReported
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_data import AllFactTable
+from flask_covid19.data_owid.owid_model_import import OwidImport
+from flask_covid19.data_owid.owid_model_location import OwidCountry
+from flask_covid19.data_owid.owid_model_date_reported import OwidDateReported
 
 
 class OwidData(AllFactTable):

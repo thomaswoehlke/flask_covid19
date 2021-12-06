@@ -1,8 +1,8 @@
 
-from app_config.database import db
-from data_all.all_model_data import AllFactTableTimeSeries
-from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
-from data_vaccination.vaccination_model_import import VaccinationImport
+from flask_covid19.app_config.database import db
+from flask_covid19.data_all.all_model_data import AllFactTableTimeSeries
+from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
 
 
 class VaccinationData(AllFactTableTimeSeries):

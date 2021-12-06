@@ -1,7 +1,7 @@
 
-from app_config.database import db, items_per_page
-from data_all.all_model_location import AllLocation
-from data_rki.rki_model_data_location_group import RkiBundesland
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_location import AllLocation
+from flask_covid19.data_rki.rki_model_data_location_group import RkiBundesland
 
 
 class RkiLandkreis(AllLocation):

@@ -1,8 +1,8 @@
 
 from sqlalchemy import and_
-from app_config.database import db, items_per_page
-from data_all.all_model_location import AllLocation
-from data_ecdc.ecdc_model_location_group import EcdcContinent
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_location import AllLocation
+from flask_covid19.data_ecdc.ecdc_model_location_group import EcdcContinent
 
 
 class EcdcCountry(AllLocation):

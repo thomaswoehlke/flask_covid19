@@ -11,7 +11,7 @@ from logging.config import dictConfig
 from flask_admin import Admin
 from celery import Celery
 
-from app_config import config
+from flask_covid19.app_config import config
 
 
 class Covid19Application:
@@ -165,3 +165,14 @@ root_dir = covid19_application.root_dir
 login_manager = covid19_application.login_manager
 items_per_page = covid19_application.items_per_page
 celery = covid19_application.create_celery()
+
+
+def create_app():
+    my_covid19_application = Covid19Application()
+    return my_covid19_application.app
+
+
+def init_db():
+    my_covid19_application = Covid19Application()
+    return my_covid19_application.db
+

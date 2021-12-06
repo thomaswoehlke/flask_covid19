@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Bundle
 from sqlalchemy import and_
-from app_config.database import db
-from data_all.all_model_import import AllImport
-from data_all.all_model_import_mixins import AllImportMixin
+from flask_covid19.app_config.database import db
+from flask_covid19.data_all.all_model_import import AllImport
+from flask_covid19.data_all.all_model_import_mixins import AllImportMixin
 
 
 class WhoImport(AllImport, AllImportMixin):

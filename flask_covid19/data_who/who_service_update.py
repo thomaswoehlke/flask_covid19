@@ -1,12 +1,12 @@
-from app_config.database import db, app
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_who.who_model_date_reported import WhoDateReported
-from data_who.who_model_data import WhoData, WhoDataFactory
-from data_who.who_model_location_group import WhoCountryRegion, WhoCountryRegionFactory
-from data_who.who_model_location import WhoCountry, WhoCountryFactory
-from data_who.who_model_import import WhoImport
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_who.who_model_date_reported import WhoDateReported
+from flask_covid19.data_who.who_model_data import WhoData, WhoDataFactory
+from flask_covid19.data_who.who_model_location_group import WhoCountryRegion, WhoCountryRegionFactory
+from flask_covid19.data_who.who_model_location import WhoCountry, WhoCountryFactory
+from flask_covid19.data_who.who_model_import import WhoImport
 
 
 class WhoServiceUpdateBase:

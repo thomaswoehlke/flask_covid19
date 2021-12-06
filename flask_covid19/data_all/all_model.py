@@ -1,8 +1,8 @@
 
 from datetime import date
-from app_config.database import db, app, celery, items_per_page
+from flask_covid19.app_config.database import db, app, celery, items_per_page
 from sqlalchemy import not_
-from data_all.all_model_mixins import AllEntityMixin
+from flask_covid19.data_all.all_model_mixins import AllEntityMixin
 
 
 class AllEntity(db.Model, AllEntityMixin):

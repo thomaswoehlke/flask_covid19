@@ -1,11 +1,11 @@
 import csv
 
-from app_config.database import db, app
-from data_all.all_service_import_mixins import AllServiceMixinImport
-from data_all.all_config import BlueprintConfig
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_ecdc.ecdc_model_import import EcdcImport, EcdcImportFactory
-from data_ecdc.ecdc_model_flat import EcdcFlat, EcdcFlatFactory
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_ecdc.ecdc_model_import import EcdcImport, EcdcImportFactory
+from flask_covid19.data_ecdc.ecdc_model_flat import EcdcFlat, EcdcFlatFactory
 
 
 class EcdcServiceImport(AllServiceMixinImport):

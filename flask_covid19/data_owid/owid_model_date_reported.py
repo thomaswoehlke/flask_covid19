@@ -1,5 +1,5 @@
 
-from data_all.all_model_date_reported import AllDateReported
+from flask_covid19.data_all.all_model_date_reported import AllDateReported
 
 
 class OwidDateReported(AllDateReported):

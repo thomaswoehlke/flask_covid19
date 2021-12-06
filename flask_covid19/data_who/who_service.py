@@ -1,12 +1,12 @@
 
-from app_config.database import app
+from flask_covid19.app_config.database import app
 
-from data_all.all_service_mixins import AllServiceMixin
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_download import AllDownloadService
-from data_who.who_service_import import WhoServiceImport
-from data_who.who_service_update import WhoServiceUpdate
-from data_who.who_service_update_full import WhoServiceUpdateFull
+from flask_covid19.data_all.all_service_mixins import AllServiceMixin
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_download import AllDownloadService
+from flask_covid19.data_who.who_service_import import WhoServiceImport
+from flask_covid19.data_who.who_service_update import WhoServiceUpdate
+from flask_covid19.data_who.who_service_update_full import WhoServiceUpdateFull
 
 
 class WhoService(AllServiceMixin):

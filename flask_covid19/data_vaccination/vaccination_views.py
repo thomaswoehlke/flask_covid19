@@ -3,14 +3,14 @@ from celery import states
 from celery.utils.log import get_task_logger
 from flask_admin.contrib.sqla import ModelView
 
-from app_config.database import app, admin, db, celery
-from app_web.web_dispachter_matrix_service import vaccination_service
+from flask_covid19.app_config.database import app, admin, db, celery
+from flask_covid19.app_web.web_dispachter_matrix_service import vaccination_service
 
-from data_vaccination.vaccination_model_data import VaccinationData
-from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
-from data_vaccination.vaccination_model_import import VaccinationImport
-from data_vaccination.vaccination_model_flat import VaccinationFlat
-from app_web.web_model_transient import WebPageContent
+from flask_covid19.data_vaccination.vaccination_model_data import VaccinationData
+from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
+from flask_covid19.data_vaccination.vaccination_model_flat import VaccinationFlat
+from flask_covid19.app_web.web_model_transient import WebPageContent
 
 
 app_vaccination = Blueprint('vaccination', __name__, template_folder='templates', url_prefix='/vaccination')

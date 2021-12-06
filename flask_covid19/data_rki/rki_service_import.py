@@ -1,10 +1,10 @@
 import csv
 
-from app_config.database import db, app
-from data_all.all_service_import_mixins import AllServiceMixinImport
-from data_all.all_config import BlueprintConfig
-from data_rki.rki_model_import import RkiImport, RkiServiceImportFactory, RkiImportFactory
-from data_rki.rki_model_flat import RkiFlat, RkiFlatFactory
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_rki.rki_model_import import RkiImport, RkiServiceImportFactory, RkiImportFactory
+from flask_covid19.data_rki.rki_model_flat import RkiFlat, RkiFlatFactory
 
 
 class RkiServiceImport(AllServiceMixinImport):

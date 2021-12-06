@@ -1,11 +1,11 @@
-from app_config.database import app
-from data_all.all_service_mixins import AllServiceMixin
+from flask_covid19.app_config.database import app
+from flask_covid19.data_all.all_service_mixins import AllServiceMixin
 
-from data_ecdc.ecdc_service import EcdcService
-from data_owid.owid_service import OwidService
-from data_vaccination.vaccination_service import VaccinationService
-from data_who.who_service import WhoService
-from data_rki.rki_service import RkiService
+from flask_covid19.data_ecdc.ecdc_service import EcdcService
+from flask_covid19.data_owid.owid_service import OwidService
+from flask_covid19.data_vaccination.vaccination_service import VaccinationService
+from flask_covid19.data_who.who_service import WhoService
+from flask_covid19.data_rki.rki_service import RkiService
 
 
 class AllDataServiceDispachterMatrix(AllServiceMixin):

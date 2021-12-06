@@ -1,4 +1,4 @@
-from data_all.all_model_import_mixins import AllImportMixin
+from flask_covid19.data_all.all_model_import_mixins import AllImportMixin
 
 
 class AllImportFlatMixin(AllImportMixin):

@@ -1,10 +1,10 @@
-from app_config.database import db, app
-from data_all.all_config import BlueprintConfig
-from data_all.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_vaccination.vaccination_model_import import VaccinationImport
-from data_vaccination.vaccination_model_date_reported import VaccinationDateReported
-from data_vaccination.vaccination_model_data import VaccinationData, VaccinationDataFactory
+from flask_covid19.app_config.database import db, app
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_vaccination.vaccination_model_import import VaccinationImport
+from flask_covid19.data_vaccination.vaccination_model_date_reported import VaccinationDateReported
+from flask_covid19.data_vaccination.vaccination_model_data import VaccinationData, VaccinationDataFactory
 
 
 class VaccinationServiceUpdateBase:

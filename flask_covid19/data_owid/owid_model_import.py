@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Bundle
-from app_config.database import db, items_per_page
 from sqlalchemy import and_
-from data_all.all_model_import import AllImport
+
+from flask_covid19.app_config.database import db, items_per_page
+from flask_covid19.data_all.all_model_import import AllImport
 
 
 class OwidImport(AllImport):

@@ -1,10 +1,10 @@
 from datetime import date
-from app_config.database import db, app, celery, items_per_page
+from flask_covid19.app_config.database import db, app, celery, items_per_page
 from sqlalchemy.orm import subqueryload
 from sqlalchemy import not_, and_
-from data_all.all_model_location_mixins import AllLocationMixin
-from data_all.all_model_location_group import AllLocationGroup
-from data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_location_mixins import AllLocationMixin
+from flask_covid19.data_all.all_model_location_group import AllLocationGroup
+from flask_covid19.data_all.all_model import AllEntity
 
 
 class AllLocation(AllEntity, AllLocationMixin):

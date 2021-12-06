@@ -1,11 +1,11 @@
 import sys
 import csv
-from app_config.database import covid19_application
-from data_all.all_service_import_mixins import AllServiceMixinImport
-from data_all.all_config import BlueprintConfig
-from data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
-from data_who.who_model_import import WhoImport, WhoImportFactory
-from data_who.who_model_flat import WhoFlat, WhoFlatFactory
+from flask_covid19.app_config.database import covid19_application
+from flask_covid19.data_all.all_service_import_mixins import AllServiceMixinImport
+from flask_covid19.data_all.all_config import BlueprintConfig
+from flask_covid19.data_all.all_model_date_reported_factory import BlueprintDateReportedFactory
+from flask_covid19.data_who.who_model_import import WhoImport, WhoImportFactory
+from flask_covid19.data_who.who_model_flat import WhoFlat, WhoFlatFactory
 
 app = covid19_application.app
 db = covid19_application.db

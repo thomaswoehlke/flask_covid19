@@ -1,9 +1,9 @@
 
 from datetime import date
-from app_config.database import db, app, celery, items_per_page
+from flask_covid19.app_config.database import db, app, celery, items_per_page
 from sqlalchemy.orm import subqueryload
-from data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
-from data_all.all_model import AllEntity
+from flask_covid19.data_all.all_model_data_mixins import AllFactTableTimeSeriesMixin, AllFactTableMixin
+from flask_covid19.data_all.all_model import AllEntity
 
 
 class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):

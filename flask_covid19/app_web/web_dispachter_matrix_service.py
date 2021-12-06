@@ -1,15 +1,15 @@
-from app_config.database import db, app
+from flask_covid19.app_config.database import db, app
 
 
-from app_web.app_admin_service import AdminService
-from app_web.user_service import UserService
-from app_web.web_service import WebService
-from data_ecdc.ecdc_service import EcdcService
-from data_owid.owid_service import OwidService
-from data_vaccination.vaccination_service import VaccinationService
-from data_who.who_service import WhoService
-from data_rki.rki_service import RkiService
-from data_all.all_service import AllDataServiceDispachterMatrix
+from flask_covid19.app_web.app_admin_service import AdminService
+from flask_covid19.app_web.user_service import UserService
+from flask_covid19.app_web.web_service import WebService
+from flask_covid19.data_ecdc.ecdc_service import EcdcService
+from flask_covid19.data_owid.owid_service import OwidService
+from flask_covid19.data_vaccination.vaccination_service import VaccinationService
+from flask_covid19.data_who.who_service import WhoService
+from flask_covid19.data_rki.rki_service import RkiService
+from flask_covid19.data_all.all_service import AllDataServiceDispachterMatrix
 
 ############################################################################################
 #
