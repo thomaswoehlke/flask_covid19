@@ -1,21 +1,21 @@
 import packaging.version
 import sphinx_bootstrap_theme
-#from pallets_sphinx_themes import get_version
-#from pallets_sphinx_themes import ProjectLink
+from pallets_sphinx_themes import get_version
+from pallets_sphinx_themes import ProjectLink
 
 # Project --------------------------------------------------------------
 
 project = "flask_covid19"
 copyright = "2020 Thomas Wöhlke"
 author = "thomaswoehlke"
-#release, version = get_version("flask_covid19")
+release, version = get_version("flask_covid19")
 
 # General --------------------------------------------------------------
 
 master_doc = "index"
 
 extensions = [
-    "myst_parser",
+    "myst_parser"#,
     #"sphinx.ext.autodoc",
     #"sphinx.ext.intersphinx",
     #"sphinx_bootstrap_theme",
@@ -49,27 +49,27 @@ issues_github_path = "thomaswoehlke/flask_covid19"
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
-#html_theme_options = {"index_sidebar_logo": False}
-#html_context = {
-   # "project_links": [
-   #     ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
-   #     ProjectLink("PyPI Releases", "https://pypi.org/project/flask_covid19/"),
-   #     ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
-   #     ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
-   #     ProjectLink("Website", "https://woehlke.org/p/flask_covid19/"),
-   #     ProjectLink("Twitter", "https://twitter.com/SearchSquirrel"),
-   # ]
-#}
-#html_sidebars = {
-#    "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html"],
-#    "**": ["localtoc.html", "relations.html", "searchbox.html", "ethicalads.html"],
-#}
-#singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
+html_theme_options = {"index_sidebar_logo": False}
+html_context = {
+   "project_links": [
+        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
+        ProjectLink("PyPI Releases", "https://pypi.org/project/flask_covid19/"),
+        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
+        ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
+        ProjectLink("Website", "https://woehlke.org/p/flask_covid19/"),
+        ProjectLink("Twitter", "https://twitter.com/SearchSquirrel"),
+   ]
+}
+html_sidebars = {
+    "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html"],
+    "**": ["localtoc.html", "relations.html", "searchbox.html", "ethicalads.html"],
+}
+singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
 html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
-#html_title = f"flask_covid19 Documentation ({version})"
-html_title = f"flask_covid19 Documentation"
+html_title = f"flask_covid19 Documentation ({version})"
+#html_title = f"flask_covid19 Documentation"
 html_show_sourcelink = False
 
 # LaTeX ----------------------------------------------------------------

@@ -1,14 +1,14 @@
 -r build.in
-#Pallets-Sphinx-Themes
+Pallets-Sphinx-Themes
 Sphinx
-sphinx_bootstrap_theme
+#sphinx_bootstrap_theme
 myst-parser
 babel>=2.9.1
 #sphinx-issues
 #sphinxcontrib-log-cabinet
 #sphinxcontrib-plantuml
 #sphinxcontrib-bibtex
-sphinxcontrib-images
+#sphinxcontrib-images
 #sphinxcontrib-gravizo
 #sphinxcontrib-needs
 #sphinxcontrib-markdown
