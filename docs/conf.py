@@ -1,5 +1,5 @@
 import packaging.version
-import sphinx_bootstrap_theme
+#import sphinx_bootstrap_theme
 from pallets_sphinx_themes import get_version
 from pallets_sphinx_themes import ProjectLink
 
@@ -19,15 +19,15 @@ extensions = [
     # "sphinx.ext.autodoc",
     # "sphinx.ext.intersphinx",
     # "sphinx_bootstrap_theme",
-    # "sphinxcontrib.log_cabinet",
+    "sphinxcontrib.log_cabinet",
     # "sphinxcontrib.gravizo",
-    # "sphinxcontrib.srclinks",
+    "sphinxcontrib.srclinks",
     # "pallets_sphinx_themes",
     # "sphinx_issues",
     # "sphinx_tabs.tabs",
 ]
 source_suffix = {
-    #'.rst': 'restructuredtext',
+    '.rst': 'restructuredtext',
     ".txt": "markdown",
     ".md": "markdown",
 }
@@ -46,8 +46,8 @@ issues_github_path = "thomaswoehlke/flask_covid19"
 
 # HTML -----------------------------------------------------------------
 
-html_theme = "bootstrap"
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme = "pallets_sphinx_themes"
+#html_theme_path = pallets_sphinx_themes.get_html_theme_path()
 
 html_theme_options = {"index_sidebar_logo": False}
 html_context = {
@@ -70,9 +70,15 @@ singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.ht
 html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
-html_title = f"flask_covid19 Documentation ({version})"
-# html_title = f"flask_covid19 Documentation"
-html_show_sourcelink = False
+# html_title = f"flask_covid19 Documentation ({version})"
+html_title = f"flask_covid19 Documentation"
+html_show_sourcelink = True
+
+
+
+
+
+  
 
 # LaTeX ----------------------------------------------------------------
 
