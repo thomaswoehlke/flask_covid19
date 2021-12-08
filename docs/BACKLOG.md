@@ -135,16 +135,16 @@
 * Fixed #124 rename RkiXXZBundeslaender to RkiBundeslaender
 * Fixed #162 rename table vaccination_germany_timeline into vaccination_data
 * Fixed #130 remove RkiGermanyDataImportTable
-* -------------------------------------
+
 
 ### 0.0.15 Release
 
-* -------------------------------------
+
 * Fixed #88 rename VaccinationImport to VaccinationImport
 * Fixed #89 change tablename from vaccination_germany_timeline_import to vaccination_import
 * Fixed #86 rename VaccinationData to VaccinationData
 * Fixed #162 rename table vaccination_germany_timeline into vaccination_data
-* -------------------------------------
+
 * Fixed #170 implement url_vaccination_task_update_star_schema_initial in vaccination_views.py
 * Fixed #171 implement url_vaccination_task_update_starschema_incremental in vaccination_views.py
 * Fixed #172 implement url_vaccination_task_import_only in vaccination_views.py
@@ -152,7 +152,7 @@
 * Fixed #174 implement url_vaccination_task_update_dimensiontables_only in vaccination_views.py
 * Fixed #175 implement url_vaccination_task_update_facttable_incremental_only in vaccination_views.py
 * Fixed #176 implement url_vaccination_task_update_facttable_initial_only in vaccination_views.py
-* -------------------------------------
+
 * Fixed #91 implement VaccinationService.run_download_only
 * Fixed #92 implement VaccinationService.run_import_only
 * Fixed #93 implement VaccinationService.run_update_dimension_tables_only
@@ -165,15 +165,15 @@
 * Fixed #103 implement VaccinationServiceUpdate.update_fact_table_initial_only
 * Fixed #104 implement VaccinationServiceUpdate.update_star_schema_incremental
 * Fixed #105 implement VaccinationServiceUpdate.update_star_schema_initial
-* -------------------------------------
+
 * Fixed #90 refactor VaccinationService to new method scheme introduced 07.02.2021
 * Fixed #98 refactor RkiVaccinationServiceDownload to new method scheme introduced 07.02.2021
 * Fixed #99 refactor VaccinationServiceImport to new method scheme introduced 07.02.2021
 * Fixed #100 refactor VaccinationServiceUpdate to new method scheme introduced 07.02.2021
-* -------------------------------------
+
 * Fixed #87 change to: Vaccination.datum many to one VaccinationDateReported
 * Fixed #106 add Tasks and URLs for starting Tasks to vaccination_views
-* -------------------------------------
+
 
 ### 0.0.16 Release
 
@@ -189,7 +189,7 @@
 * Fixed #120 implement EcdcServiceUpdate.update_fact_table_initial_only
 * Fixed #121 implement EcdcServiceUpdate.update_star_schema_incremental
 * Fixed #122 implement EcdcServiceUpdate.update_star_schema_initial
-* -------------------------------------
+
 * Fixed #163 implement url_europe_task_update_star_schema_initial in europe_views.py
 * Fixed #164 implement url_europe_task_update_starschema_incremental in europe_views.py
 * Fixed #165 implement url_europe_task_download_only in europe_views.py
@@ -226,7 +226,7 @@
 * Fixed #137 implement RkiBundeslaenderService.run_update_star_schema_incremental
 * Fixed #138 implement RkiBundeslaenderService.run_update_star_schema_initial
 * Fixed #132 refactor RkiBundeslaenderService to new method scheme introduced 07.02.2021
-* -------------------------------------
+
 * Fixed #147 refactor RkiBundeslaenderServiceUpdate.__update_who_date_reported
 * Fixed #148 refactor RkiBundeslaenderServiceUpdate.__update_who_region
 * Fixed #149 refactor RkiBundeslaenderServiceUpdate.__update_who_country
@@ -236,12 +236,12 @@
 * Fixed #153 refactor RkiBundeslaenderServiceUpdate.update_db
 * Fixed #154 refactor RkiBundeslaenderServiceUpdate.update_db_short
 * Fixed #155 refactor RkiBundeslaenderServiceUpdate.update_db_initial
-* -------------------------------------
+
 * Fixed #131 change to ORM ClassHierarchy in: RkiGermanyDataImportTable.get_new_dates_as_array
 * Fixed #129 change to ORM ClassHierarchy in: RkiLandkreiseImport.get_new_dates_as_array
 * Fixed #146 add Tasks and URLs for starting Tasks to rki_views
 * Fixed #127 implement RkiBundeslaenderImport.get_dates_reported
-* -------------------------------------
+
 * Fixed #141 implement RkiBundeslaenderServiceUpdate.update_dimension_tables_only
 * Fixed #142 implement RkiBundeslaenderServiceUpdate.update_fact_table_incremental_only
 * Fixed #143 implement RkiBundeslaenderServiceUpdate.update_fact_table_initial_only
@@ -250,27 +250,27 @@
 
 ### 0.0.19 Release
 
-* -------------------------------------
+
 
 ### 0.0.20 Release
 
-* -------------------------------------
+
 
 ### 0.0.21 Release
 
-* -------------------------------------
+
 
 ### 0.0.22 Release
 
-* -------------------------------------
+
 
 ### 0.0.23 Release
 
-* -------------------------------------
+
 
 ### 0.0.24 Release
 
-* -------------------------------------
+
 * Fixed #28 /admin/database/import
 * Fixed #66 frontend: migrate to Bootstrap Theme sb-admin-angular
 * Fixed #158 load Bootstrap-Template sb-admin-angular into static
@@ -282,7 +282,7 @@
 
 ### 0.0.25 Release
 
-* -------------------------------------
+
 
 ### 0.0.26 Release
 
@@ -313,13 +313,13 @@
 
 ### 0.0.31 Release
 
-* -------------------------------------
+
 * Fixed #211 ECDC-templates: change URL to for_url()
 * Fixed #213 WHO-template: change URL to for_url()
-* -------------------------------------
+
 * Fixed #83  WhoImport.get_new_dates_as_array() SQLalchemy instead of SQL
 * Fixed #219 WhoImport.countries() SQLalchemy instead of SQL
-* -------------------------------------
+
 * Fixed #196 OwidImport.get_new_dates_reported_as_array() needs implementation
 
 ### 0.0.32 Release
@@ -362,9 +362,9 @@
 
 ### 0.0.36 Release
 
-* -------------------------------------
+
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 * Issue #317 BUG: Vaccination Data Import and full update
 * Issue #318 Data Import into Flat-Table for Vaccination,
 * Issue #319 FE BUG: [http://127.0.0.1:9090/who/date_reported/2029](http://127.0.0.1:9090/who/date_reported/2029) from: [http://127.0.0.1:9090/who/date_reported/all](http://127.0.0.1:9090/who/date_reported/all)
@@ -389,7 +389,7 @@
 
 ### WHO
 
-* -------------------------------------
+
 * Issue #226 WHO: Development: Navigation and Pages for Info, Tasks and Tests
 * Issue #227 WHO: Development: Download Data File
 * Issue #228 WHO: Development: import
@@ -410,7 +410,7 @@
 
 ### OWID
 
-* -------------------------------------
+
 * Issue #243 OWID: Development: Navigation and Pages for Info, Tasks and Tests
 * Issue #244 OWID: Development: Download Data File
 * Issue #245 OWID: Development: import
@@ -431,7 +431,7 @@
 
 ### ECDC
 
-* -------------------------------------
+
 * Issue #259 ECDC: Development: Navigation and Pages for Info, Tasks and Tests
 * Issue #260 ECDC: Development: Download Data File
 * Issue #261 ECDC: Development: import
@@ -452,7 +452,7 @@
 
 ### RKI Vaccination
 
-* -------------------------------------
+
 * Issue #274 RKI Vaccination: Development: Navigation and Pages for Info, Tasks and Tests
 * Issue #275 RKI Vaccination: Development: Download Data File
 * Issue #276 RKI Vaccination: Development: import
@@ -464,9 +464,9 @@
 * Issue #282 RKI Vaccination: Development: Navigation and Pages for Imported Table
 * Issue #283 RKI Vaccination: Development: Navigation and Pages for Dimension Tables
 * Issue #284 RKI### 0.0.37 Release
-* -------------------------------------
+
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 
 ### Vaccination: Development: Navigation and Pages for Fact Table
 
@@ -479,7 +479,7 @@
 
 ### RKI
 
-* -------------------------------------
+
 * Issue #291 RKI: Development: Navigation and Pages for Info, Tasks and Tests
 * Issue #292 RKI: Development: Download Data File
 * Issue #293 RKI: Development: import
@@ -500,60 +500,60 @@
 
 ### 0.0.39 Release
 
-* -------------------------------------
+
 * Issue #220 add Selenium Tests for all Frontend Urls and Pages without any Access to Database
 * Issue #221 add Selenium Tests for all Frontend Urls and Pages with Read Access to Database
 
 ### 0.0.38 Release
 
-* -------------------------------------
+
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 * Issue #207 remove deprecated: database.port
 * Issue #208 remove deprecated: database.run_run_with_debug
 * Issue #209 remove deprecated: database.ITEMS_PER_PAGE
 
 ### 0.0.37 Release
 
-* -------------------------------------
+
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 
 ### 00 Inbox
 
-* -------------------------------------
+
 * Issue add Selenium Tests for all Frontend Urls and Pages without any Access to Database
 * Issue add Selenium Tests for all Frontend Urls and Pages with Read Access to Database
 
 ### 01 Next
 
-* -------------------------------------
+
 * Issue #198 UML: WHO Visual Graphs for Data per Countries order by Date
 * Issue #5 WHO Visual Graphs for Data per Countries order by Date
-* -------------------------------------
+
 
 ### 02 Soon
 
-* -------------------------------------
+
 * Issue #189 setup unit tests
 * Issue #190 setup docs with sphinx
 
 ### 03 Nice to Have
 
-* -------------------------------------
+
 * Issue #59 frontend: add correct breadcrumb to every page
 * Issue #61 frontend: better design for navtabs
 * Issue #63 frontend: add footer design
 
 ### 04 Dropped
 
-* -------------------------------------
+
 * Issue #185 add Flask-Redisboard
 * Issue #186 add Flask-Monitoring
 
 ### 05 Later maybe
 
-* -------------------------------------
+
 * Issue #180 add build.cmd script
 * Issue #181 add flask-filealchemy
 * Issue #182 add flask-whooshalchemy3
@@ -566,4 +566,4 @@
 
 ### 06 BUGS Frontend
 
-* -------------------------------------
+
