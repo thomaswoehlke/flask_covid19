@@ -1,31 +1,27 @@
 import packaging.version
-#import sphinx_bootstrap_theme
 from pallets_sphinx_themes import get_version
 from pallets_sphinx_themes import ProjectLink
 
 # Project --------------------------------------------------------------
 
-project = "flask_covid19"
-copyright = "2020 Thomas Wöhlke"
-author = "thomaswoehlke"
-release, version = get_version("flask_covid19")
+project = "Flask"
+copyright = "2010 Pallets"
+author = "Pallets"
+release, version = get_version("Flask")
 
 # General --------------------------------------------------------------
 
 master_doc = "index"
-
 extensions = [
-    "myst_parser"  # ,
-    # "sphinx.ext.autodoc",
-    # "sphinx.ext.intersphinx",
-    # "sphinx_bootstrap_theme",
+    "myst_parser",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
-    # "sphinxcontrib.gravizo",
-    "sphinxcontrib.srclinks",
-    # "pallets_sphinx_themes",
-    # "sphinx_issues",
-    # "sphinx_tabs.tabs",
+    "pallets_sphinx_themes",
+    "sphinx_issues",
+    "sphinx_tabs.tabs",
 ]
+
 source_suffix = {
     '.rst': 'restructuredtext',
     ".txt": "markdown",
@@ -42,24 +38,21 @@ intersphinx_mapping = {
     "wtforms": ("https://wtforms.readthedocs.io/", None),
     "blinker": ("https://pythonhosted.org/blinker/", None),
 }
-issues_github_path = "thomaswoehlke/flask_covid19"
+issues_github_path = "pallets/flask"
 
 # HTML -----------------------------------------------------------------
 
-html_theme = "pallets_sphinx_themes"
-#html_theme_path = pallets_sphinx_themes.get_html_theme_path()
-
+html_theme = "flask"
 html_theme_options = {"index_sidebar_logo": False}
 html_context = {
     "project_links": [
-        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/flask_covid19/"),
-        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
-        ProjectLink(
-            "Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"
-        ),
-        ProjectLink("Website", "https://woehlke.org/p/flask_covid19/"),
-        ProjectLink("Twitter", "https://twitter.com/SearchSquirrel"),
+        ProjectLink("Donate", "https://palletsprojects.com/donate"),
+        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask/"),
+        ProjectLink("Source Code", "https://github.com/pallets/flask/"),
+        ProjectLink("Issue Tracker", "https://github.com/pallets/flask/issues/"),
+        ProjectLink("Website", "https://palletsprojects.com/p/flask/"),
+        ProjectLink("Twitter", "https://twitter.com/PalletsTeam"),
+        ProjectLink("Chat", "https://discord.gg/pallets"),
     ]
 }
 html_sidebars = {
@@ -70,19 +63,12 @@ singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.ht
 html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
-# html_title = f"flask_covid19 Documentation ({version})"
-html_title = f"flask_covid19 Documentation"
-html_show_sourcelink = True
-
-
-
-
-
-  
+html_title = f"Flask Documentation ({version})"
+html_show_sourcelink = False
 
 # LaTeX ----------------------------------------------------------------
 
-latex_documents = [(master_doc, f"Flask.tex", html_title, author, "manual")]
+latex_documents = [(master_doc, f"Flask-{version}.tex", html_title, author, "manual")]
 
 # Local Extensions -----------------------------------------------------
 
@@ -90,7 +76,7 @@ latex_documents = [(master_doc, f"Flask.tex", html_title, author, "manual")]
 def github_link(name, rawtext, text, lineno, inliner, options=None, content=None):
     app = inliner.document.settings.env.app
     release = app.config.release
-    base_url = "https://github.com/thomaswoehlke/flask_covid19/tree/"
+    base_url = "https://github.com/pallets/flask/tree/"
 
     if text.endswith(">"):
         words, text = text[:-1].rsplit("<", 1)

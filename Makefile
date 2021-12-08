@@ -294,6 +294,12 @@ download_rki_vaccination \
 download_divi \
 download_ecdc
 
+doc:
+	sphinx-build -W -b html -d doctrees docs html
+
+tests:
+	pytest -v
+
 distclean: venv_clean renv_clean
 
 pip_windows: pip_compile_windows pip_install_windows pip_check setup_frontend

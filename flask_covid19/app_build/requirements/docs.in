@@ -4,13 +4,13 @@ Sphinx
 #sphinx_bootstrap_theme
 myst-parser
 babel>=2.9.1
-#sphinx-issues
+sphinx-issues
 sphinxcontrib-log-cabinet
 sphinxcontrib-plantuml
 #sphinxcontrib-bibtex
 sphinxcontrib-images
-#sphinxcontrib-gravizo
+sphinxcontrib-gravizo
 sphinxcontrib-needs
 sphinxcontrib-markdown
 sphinxcontrib-srclinks
-#sphinx-tabs
+sphinx-tabs
