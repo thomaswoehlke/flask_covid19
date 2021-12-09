@@ -1,0 +1,238 @@
+@startuml
+left to right direction
+
+
+package flask_covid19.data_all.model_import {
+
+	interface AllImportFull {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+	}
+
+	interface AllImportIncrement {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface AllImport {
+	    datum_reported: Date
+		location: String
+		location_group: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface AllFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): AllFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+	}
+}
+
+package flask_covid19.data_vaccination.model_import {
+
+	entity RkiVaccinationImport {
+	    id: Integer
+	    dosen_kumulativ: Integer
+	    dosen_differenz_zum_vortag: Integer
+	    dosen_biontech_kumulativ: Integer
+	    dosen_moderna_kumulativ: Integer
+	    personen_erst_kumulativ: Integer
+	    personen_voll_kumulativ: Integer
+	    impf_quote_erst: Float
+	    impf_quote_voll: Float
+	    indikation_alter_dosen: Integer
+	    indikation_beruf_dosen: Integer
+	    indikation_medizinisch_dosen: Integer
+	    indikation_pflegeheim_dosen: Integer
+	    indikation_alter_erst: Integer
+	    indikation_beruf_erst: Integer
+	    indikation_medizinisch_erst: Integer
+	    indikation_pflegeheim_erst: Integer
+	    indikation_alter_voll: Integer
+	    indikation_beruf_voll: Integer
+	    indikation_medizinisch_voll: Integer
+	    indikation_pflegeheim_voll: Integer
+	    date_reported: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity RkiVaccinationFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+	    dosen_kumulativ: Integer
+	    dosen_differenz_zum_vortag: Integer
+	    dosen_biontech_kumulativ: Integer
+	    dosen_moderna_kumulativ: Integer
+	    personen_erst_kumulativ: Integer
+	    personen_voll_kumulativ: Integer
+	    impf_quote_erst: Float
+	    impf_quote_voll: Float
+	    indikation_alter_dosen: Integer
+	    indikation_beruf_dosen: Integer
+	    indikation_medizinisch_dosen: Integer
+	    indikation_pflegeheim_dosen: Integer
+	    indikation_alter_erst: Integer
+	    indikation_beruf_erst: Integer
+	    indikation_medizinisch_erst: Integer
+	    indikation_pflegeheim_erst: Integer
+	    indikation_alter_voll: Integer
+	    indikation_beruf_voll: Integer
+	    indikation_medizinisch_voll: Integer
+	    indikation_pflegeheim_voll: Integer
+	    date_reported: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): RkiVaccinationFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): RkiVaccinationFlat[]
+	}
+}
+
+AllImportFull <|-- AllImport
+AllImportIncrement <|-- AllImport
+AllImport <|-- AllFlat
+AllImport <|-- RkiVaccinationImport
+AllFlat <|-- RkiVaccinationFlat
+RkiVaccinationImport <|-- RkiVaccinationFlat
+
+
+package flask_covid19.data_all.model {
+
+	entity AllDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+		day_of_year: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+
+	interface AllData {
+	    id: Integer
+	}
+}
+
+package flask_covid19.data_vaccination.model {
+
+	entity RkiVaccinationDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+
+	entity RkiVaccinationData {
+	    id: Integer
+	    dosen_kumulativ: Integer
+	    dosen_differenz_zum_vortag: Integer
+	    dosen_biontech_kumulativ: Integer
+	    dosen_moderna_kumulativ: Integer
+	    personen_erst_kumulativ: Integer
+	    personen_voll_kumulativ: Integer
+	    impf_quote_erst: Float
+	    impf_quote_voll: Float
+	    indikation_alter_dosen: Integer
+	    indikation_beruf_dosen: Integer
+	    indikation_medizinisch_dosen: Integer
+	    indikation_pflegeheim_dosen: Integer
+	    indikation_alter_erst: Integer
+	    indikation_beruf_erst: Integer
+	    indikation_medizinisch_erst: Integer
+	    indikation_pflegeheim_erst: Integer
+	    indikation_alter_voll: Integer
+	    indikation_beruf_voll: Integer
+	    indikation_medizinisch_voll: Integer
+	    indikation_pflegeheim_voll: Integer
+	    get_absolute_path()
+	    get_relative_path()
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	    {classifier} get_kurse_all()
+	}
+}
+
+AllDateReported <|-- RkiVaccinationDateReported
+AllData <|-- RkiVaccinationData
+
+RkiVaccinationData "1" *--> "*" RkiVaccinationDateReported : date_reported
+
+@enduml

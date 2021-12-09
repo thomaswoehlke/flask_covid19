@@ -1,0 +1,227 @@
+@startuml
+left to right direction
+
+package flask_covid19.data_all.model_import {
+
+	interface AllImportFull {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+	}
+
+	interface AllImportIncrement {
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface DataImport {
+	    datum_reported: Date
+		location: String
+		location_group: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	interface AllFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): AllFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+	}
+
+}
+
+package covid19.blueprints.owid.model_import {
+
+	entity OwidImport {
+	    id: Integer
+		iso_code:  String
+	    continent:  String
+	    location:  String
+	    date:  String
+	    total_cases:  String
+	    new_cases:  String
+	    new_cases_smoothed:  String
+	    total_deaths:  String
+	    new_deaths:  String
+	    new_deaths_smoothed:  String
+	    total_cases_per_million:  String
+	    new_cases_per_million:  String
+	    new_cases_smoothed_per_million:  String
+	    total_deaths_per_million:  String
+	    new_deaths_per_million:  String
+	    new_deaths_smoothed_per_million:  String
+	    reproduction_rate:  String
+	    icu_patients:  String
+	    icu_patients_per_million:  String
+	    hosp_patients:  String
+	    hosp_patients_per_million:  String
+	    weekly_icu_admissions:  String
+	    weekly_icu_admissions_per_million:  String
+	    weekly_hosp_admissions:  String
+	    weekly_hosp_admissions_per_million:  String
+	    new_tests:  String
+	    total_tests:  String
+	    total_tests_per_thousand:  String
+	    new_tests_per_thousand:  String
+	    new_tests_smoothed:  String
+	    new_tests_smoothed_per_thousand:  String
+	    positive_rate:  String
+	    tests_per_case:  String
+	    tests_units:  String
+	    total_vaccinations:  String
+	    people_vaccinated:  String
+	    people_fully_vaccinated:  String
+	    new_vaccinations:  String
+	    new_vaccinations_smoothed:  String
+	    total_vaccinations_per_hundred:  String
+	    people_vaccinated_per_hundred:  String
+	    people_fully_vaccinated_per_hundred:  String
+	    new_vaccinations_smoothed_per_million:  String
+	    stringency_index:  String
+	    population:  String
+	    population_density:  String
+	    median_age:  String
+	    aged_65_older:  String
+	    aged_70_older:  String
+	    gdp_per_capita:  String
+	    extreme_poverty:  String
+	    cardiovasc_death_rate:  String
+	    diabetes_prevalence:  String
+	    female_smokers:  String
+	    male_smokers:  String
+	    handwashing_facilities:  String
+	    hospital_beds_per_thousand:  String
+	    life_expectancy:  String
+	    human_development_index:  String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity OwidFlat {
+	    id: Integer
+	    datum_reported: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+		day_of_year: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    year_week:  String
+	    day_of_week_str: String
+		month_str: String
+		location: String
+		location_group: String
+		iso_code:  String
+	    continent:  String
+	    location:  String
+	    date:  String
+	    total_cases:  String
+	    new_cases:  String
+	    new_cases_smoothed:  String
+	    total_deaths:  String
+	    new_deaths:  String
+	    new_deaths_smoothed:  String
+	    total_cases_per_million:  String
+	    new_cases_per_million:  String
+	    new_cases_smoothed_per_million:  String
+	    total_deaths_per_million:  String
+	    new_deaths_per_million:  String
+	    new_deaths_smoothed_per_million:  String
+	    reproduction_rate:  String
+	    icu_patients:  String
+	    icu_patients_per_million:  String
+	    hosp_patients:  String
+	    hosp_patients_per_million:  String
+	    weekly_icu_admissions:  String
+	    weekly_icu_admissions_per_million:  String
+	    weekly_hosp_admissions:  String
+	    weekly_hosp_admissions_per_million:  String
+	    new_tests:  String
+	    total_tests:  String
+	    total_tests_per_thousand:  String
+	    new_tests_per_thousand:  String
+	    new_tests_smoothed:  String
+	    new_tests_smoothed_per_thousand:  String
+	    positive_rate:  String
+	    tests_per_case:  String
+	    tests_units:  String
+	    total_vaccinations:  String
+	    people_vaccinated:  String
+	    people_fully_vaccinated:  String
+	    new_vaccinations:  String
+	    new_vaccinations_smoothed:  String
+	    total_vaccinations_per_hundred:  String
+	    people_vaccinated_per_hundred:  String
+	    people_fully_vaccinated_per_hundred:  String
+	    new_vaccinations_smoothed_per_million:  String
+	    stringency_index:  String
+	    population:  String
+	    population_density:  String
+	    median_age:  String
+	    aged_65_older:  String
+	    aged_70_older:  String
+	    gdp_per_capita:  String
+	    extreme_poverty:  String
+	    cardiovasc_death_rate:  String
+	    diabetes_prevalence:  String
+	    female_smokers:  String
+	    male_smokers:  String
+	    handwashing_facilities:  String
+	    hospital_beds_per_thousand:  String
+	    life_expectancy:  String
+	    human_development_index:  String
+		{classifier} import_file_flat()
+		{classifier} get_years(): Integer[]
+		{classifier} get_days(): Date[]
+		{classifier} get_days_for_year(year: Integer): Date[]
+		{classifier} get_location_groups(): String[]
+		{classifier} get_locations_for_location_group(location_group: String): String[]
+		{classifier} get_data_for_location(location: String): OwidFlat[]
+		{classifier} get_data_for_day(datum_reported: Date): OwidFlat[]
+	}
+
+}
+
+AllImportFull <|-- DataImport
+AllImportIncrement <|-- DataImport
+DataImport <|-- AllFlat
+DataImport <|-- OwidImport
+AllFlat <|-- OwidFlat
+OwidImport <|-- OwidFlat
+
+@enduml

@@ -18,8 +18,8 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
     "pallets_sphinx_themes",
-    "sphinx_issues",
-    "sphinx_tabs.tabs",
+    #"sphinx_issues",
+    #"sphinx_tabs.tabs",
 ]
 
 source_suffix = {

@@ -1,0 +1,155 @@
+@startuml
+class AdminService << (S,red) Service >> {
+    database: String
+    limit_nr: Integer
+    task_database_drop_create()
+    run_admin_database_dump()
+    {classifier} -run_ome_shell_command(cmd)
+    {classifier} run_admin_database_dump_reimport()
+    {classifier} run_admin_database_drop()
+}
+class ApplicationPage << (T,#FF7700) Transient >> {
+	title: String
+	subtitle: String
+	subtitle_info: String
+}
+class ApplicationServiceConfig << (T,#FF7700) Transient >> {
+	limit_nr: Integer
+    data_path: String
+    slug: String
+    category: String
+    sub_category: String
+    tablename: String
+    cvsfile_name: String
+    url_src: String
+    cvsfile_path: String
+    msg_job: String
+    msg_ok: String
+    msg_error: String
+	create_config_for_who()
+	create_config_for_rki_vaccination()
+	create_config_for_owid()
+	create_config_for_ecdc()
+	create_config_for_rki_bundeslaender()
+	create_config_for_rki_landkreise()
+}
+class ApplicationServiceDownload << (S,red) Service >> {
+	-log_error()
+	-log_success()
+	-prepare_download()
+	-download_with_wget()
+	-download_with_subprocess_and_os_native_wget()
+	download_file()
+}
+class database << (S,#FF7700) Singleton >> {
+	{static} int port
+	{static} bool run_run_with_debug
+	{static} int ITEMS_PER_PAGE
+	app: Flask
+	db: SQLAlchemy
+	admin: Admin
+	app_cors: CORS
+	app_bootstrap: Bootstrap
+	create_app()
+	create_db(my_app)
+	create_db_test(my_app)
+	create_celery(my_app)
+	create_admin(my_app)
+}
+class admin_views_frontend << (B,orchid) Boundary >> {
+	url_admin_index()
+    url_admin_tasks()
+    url_admin_info()
+}
+class admin_celery_tasks << (B,orchid) Boundary >> {
+    task_admin_alive_message()
+    task_admin_database_drop_create()
+    task_admin_import_all_files()
+    task_admin_update_dimension_tables_only()
+    task_admin_update_fact_table_initial_only()
+    task_admin_update_fact_table_incremental_only()
+    task_admin_update_star_schema_initial()
+    task_admin_update_star_schema_incremental()
+}
+class admin_views_for_tasks << (B,orchid) Boundary >> {
+    url_alive_message_start()
+    url_admin_database_dump()
+    url_admin_database_dump_reimport()
+    url_admin_database_dropcreate_only()
+    url_admin_database_drop()
+    url_admin_download_all_files()
+    url_admin_import_all_files()
+    url_admin_update_dimension_tables_only()
+    url_admin_update_fact_table_initial_only()
+    url_admin_update_fact_table_incremental_only()
+    url_admin_update_star_schema_initial()
+    run_update_star_schema_incremental()
+}
+class application_workers << (B,orchid) Boundary >> {
+	run_mq(my_app, my_celery)
+	run_app(my_app)
+}
+class application_services << (P,yellow) Proxy >> {
+
+}
+class ApplicationService << (S,red) Service >> {
+
+}
+class WhoService << (S,red) Service >> {
+
+}
+class EcdcService << (S,red) Service >> {
+
+}
+class RkiVaccinationService << (S,red) Service >> {
+
+}
+class RkiBundeslaenderService << (S,red) Service >> {
+
+}
+class RkiLandkreiseService << (S,red) Service >> {
+
+}
+class OwidService << (S,red) Service >> {
+
+}
+class UserService << (S,red) Service >> {
+
+}
+ApplicationServiceDownload "*" --> "1"  ApplicationServiceConfig: cfg
+application_workers "1" --> "1" application_services: application_services
+admin_views_frontend "1" --> "1" application_services: application_services
+admin_views_frontend "*" --> "1" ApplicationPage: page_info
+admin_celery_tasks "1" --> "1" application_services: application_services
+admin_views_for_tasks "1" --> "1" application_services: application_services
+admin_views_for_tasks "*" --> "1" ApplicationPage: page_info
+application_services "*" --> "1" ApplicationService: application_service
+application_services "*" --> "1" AdminService: admin_service
+application_services "*" --> "1" WhoService: who_service
+application_services "*" --> "1" EcdcService: ecdc_service
+application_services "*" --> "1" RkiVaccinationService: rki_vaccination_service
+application_services "*" --> "1" RkiBundeslaenderService: rki_service_bundeslaender
+application_services "*" --> "1" RkiLandkreiseService: rki_service_landkreise
+application_services "*" --> "1" OwidService: owid_service
+application_services "*" --> "1" UserService: user_service
+ApplicationService "*" --> "1" database
+ApplicationServiceDownload "*" --> "1" database
+AdminService "*" --> "1" database
+WhoService "*" --> "1" database
+EcdcService "*" --> "1" database
+RkiBundeslaenderService "*" --> "1" database
+RkiLandkreiseService "*" --> "1" database
+RkiVaccinationService "*" --> "1" database
+OwidService "*" --> "1" database
+UserService "*" --> "1" database
+ApplicationService : SQLAlchemy database
+ApplicationServiceDownload : SQLAlchemy database
+AdminService : SQLAlchemy database
+WhoService : SQLAlchemy database
+EcdcService : SQLAlchemy database
+RkiBundeslaenderService : SQLAlchemy database
+RkiLandkreiseService : SQLAlchemy database
+RkiVaccinationService : SQLAlchemy database
+OwidService : SQLAlchemy database
+UserService : SQLAlchemy database
+@enduml

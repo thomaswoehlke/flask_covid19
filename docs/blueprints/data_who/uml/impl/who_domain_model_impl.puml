@@ -1,0 +1,250 @@
+@startuml
+left to right direction
+entity ApplicationDateReported {
+    id: Integer
+	date_reported:  String
+    year_week:  String
+    datum: Date
+    year: Integer
+    month: Integer
+    day_of_month: Integer
+    day_of_week: Integer
+    week_of_year: Integer
+	get_name_for_weekday()
+	{classifier} get_names_for_weekday()
+	{classifier} get_datum_parts(my_date_rep: String)
+	{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+	{classifier} create_new_object_factory(my_date_rep: String)
+}
+entity WhoDateReported {
+    id: Integer
+	date_reported: String
+    year_week: String
+    datum: Date
+    year: Integer
+    month: Integer
+    day_of_month: Integer
+    day_of_week: Integer
+    week_of_year: Integer
+    {classifier} create_new_object_factory(my_date_rep)
+}
+entity WhoCountryRegion {
+    id: Integer
+    region: String
+}
+entity WhoCountry {
+    id: Integer
+	country_code: String
+    country: String
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_all_as_dict()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} get_germany()
+    {classifier} find_by_country_code_and_country_and_who_region_id(i_country_code, i_country, my_region)
+    {classifier} find_by_country_code(i_country_code)
+    {classifier} find_by_country(i_country)
+    {classifier} get_by_country_code(i_country_code)
+    {classifier} get_by_country(i_country)
+    {classifier} get_who_countries_for_region(region, page)
+}
+entity WhoData {
+    id: Integer
+	cases_new: Integer
+    cases_cumulative: Integer
+    deaths_new: Integer
+    deaths_cumulative: Integer
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} find_one_or_none_by_date_and_country(my_date_reported, my_country)
+    {classifier} get_data_for_country(who_country, page)
+    {classifier} get_data_for_day(date_reported, page)
+    {classifier} get_data_for_day_order_by_cases_new(date_reported, page)
+    {classifier} get_data_for_day_order_by_cases_cumulative(date_reported, page)
+    {classifier} get_data_for_day_order_by_deaths_new(date_reported, page)
+    {classifier} get_data_for_day_order_by_deaths_cumulative(date_reported, page)
+    {classifier} get_data_for_country_order_by_cases_new(who_country, page)
+    {classifier} get_data_for_country_order_by_cases_cumulative(who_country, page)
+    {classifier} get_data_for_country_order_by_deaths_new(who_country, page)
+    {classifier} get_data_for_country_order_by_deaths_cumulative(who_country, page)
+}
+entity WhoImport {
+    id: Integer
+    date_reported: String
+    country_code: String
+    country: String
+    who_region: String
+    new_cases: String
+    cumulative_cases: String
+    new_deaths: String
+    cumulative_deaths: String
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} get_regions()
+    {classifier} get_dates_reported()
+    {classifier} get_for_one_day(day: String)
+    {classifier} get_dates_reported_as_array()
+    {classifier} get_new_dates_as_array()
+    {classifier} countries()
+}
+class WhoService << (S,red) Service >> {
+	database_drop_create_pretask()
+	database_drop_create_posttask()
+	download_files()
+	import_files()
+	update_star_schema()
+	full_update_star_schema()
+}
+class WhoServiceImport << (S,red) Service >> {
+    import_file()
+}
+class WhoServiceUpdateBase << (S,red) Service >> {
+}
+class WhoServiceUpdateFull << (S,red) Service >> {
+	-full_update_date_reported()
+	-full_update_region()
+	-full_update_country()
+	-full_update_data()
+	full_update_dimension_tables()
+	full_update_fact_table()
+	full_update_star_schema()
+}
+class WhoServiceUpdate << (S,red) Service >> {
+    -update_date_reported()
+    -update_region()
+    -update_country()
+    -update_data()
+    update_dimension_tables()
+    update_fact_table()
+    update_star_schema()
+	-who_import_get_new_dates_as_array()
+}
+entity ApplicationDateReported {
+    id: Integer
+	date_reported:  String
+    year_week:  String
+    datum: Date
+    year: Integer
+    month: Integer
+    day_of_month: Integer
+    day_of_week: Integer
+    week_of_year: Integer
+	get_name_for_weekday()
+	{classifier} get_names_for_weekday()
+	{classifier} get_datum_parts(my_date_rep: String)
+	{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+	{classifier} create_new_object_factory(my_date_rep: String)
+}
+entity ApplicationRegion {
+    id: Integer
+    continent:  String
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_all_as_dict()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} find_by_id(other_id: Integer)
+}
+class ApplicationServiceDownload << (S,red) Service >> {
+	-log_error()
+	-log_success()
+	-prepare_download()
+	-download_with_wget()
+	-download_with_subprocess_and_os_native_wget()
+	download_file()
+}
+class ApplicationServiceConfig << (T,#FF7700) Transient >> {
+	limit_nr: Integer
+    data_path: String
+    slug: String
+    category: String
+    sub_category: String
+    tablename: String
+    cvsfile_name: String
+    url_src: String
+    cvsfile_path: String
+    msg_job: String
+    msg_ok: String
+    msg_error: String
+	create_config_for_who()
+	create_config_for_rki_vaccination()
+	create_config_for_owid()
+	create_config_for_ecdc()
+	create_config_for_rki_bundeslaender()
+	create_config_for_rki_landkreise()
+}
+class who_views_frontend << (B,orchid) Boundary >> {
+    url_root()
+    url_home()
+    url_update_data()
+    url_rename()
+    url_kurse_all()
+    url_kurse_workflow_lektionen(workflow_id: Integer)
+    url_kurse_workflow_lektion_folien(lektion_id: Integer)
+    url_abbbildung_id(abbildung_id: Integer)
+    url_db_dump()
+    url_db_reimport()
+    task_data_update()
+    task_rename_src_files()
+}
+class who_celery_tasks << (B,orchid) Boundary >> {
+    url_root()
+    url_home()
+    url_update_data()
+    url_rename()
+    url_kurse_all()
+    url_kurse_workflow_lektionen(workflow_id: Integer)
+    url_kurse_workflow_lektion_folien(lektion_id: Integer)
+    url_abbbildung_id(abbildung_id: Integer)
+    url_db_dump()
+    url_db_reimport()
+    task_data_update()
+    task_rename_src_files()
+}
+class who_views_for_tasks << (B,orchid) Boundary >> {
+    url_root()
+    url_home()
+    url_update_data()
+    url_rename()
+    url_kurse_all()
+    url_kurse_workflow_lektionen(workflow_id: Integer)
+    url_kurse_workflow_lektion_folien(lektion_id: Integer)
+    url_abbbildung_id(abbildung_id: Integer)
+    url_db_dump()
+    url_db_reimport()
+    task_data_update()
+    task_rename_src_files()
+}
+WhoServiceImport : SQLAlchemy database
+WhoServiceUpdateBase : SQLAlchemy database
+WhoServiceUpdateFull <|-- WhoServiceUpdateBase
+WhoServiceUpdate <|-- WhoServiceUpdateBase
+WhoService : SQLAlchemy database
+ApplicationServiceDownload : SQLAlchemy database
+ApplicationDateReported <|-- WhoDateReported
+ApplicationRegion <|-- WhoCountryRegion
+WhoCountry "1" *--> "*" WhoCountryRegion : region
+WhoData "1" *--> "*" WhoCountry : country
+WhoData "1" *--> "*" WhoDateReported : date_reported
+WhoService "*" *--> "1"  ApplicationServiceConfig : cfg
+WhoServiceImport "*" --> "1"  ApplicationServiceConfig : cfg
+WhoServiceUpdate "*" --> "1"  ApplicationServiceConfig : cfg
+WhoServiceUpdateFull "*" --> "1"  ApplicationServiceConfig : cfg
+ApplicationServiceDownload "*" --> "1"  ApplicationServiceConfig : cfg
+WhoService "1" *--> "1" WhoServiceImport : service_import
+WhoService "1" *--> "1" WhoServiceUpdate : service_update
+WhoService "1" *--> "1" WhoServiceUpdateFull : service_update_full
+WhoService "1" *--> "1" ApplicationServiceDownload : service_download
+who_views_frontend "1" --> "1" WhoService : who_service
+who_views_for_tasks "1" --> "1" WhoService : who_service
+who_celery_tasks "1" --> "1" WhoService : who_service
+@enduml

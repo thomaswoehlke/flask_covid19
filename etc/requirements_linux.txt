@@ -1,7 +1,6 @@
 alabaster==0.7.12
 alembic==1.7.5
 amqp==5.0.6
-appdirs==1.4.4
 attrs==21.2.0
 Babel==2.9.1
 backports.entry-points-selectable==1.1.1
@@ -12,7 +11,6 @@ celery==5.2.1
 certifi==2021.10.8
 cffi==1.15.0
 cfgv==3.3.1
-chardet==4.0.0
 charset-normalizer==2.0.9
 click==8.0.3
 click-didyoumean==0.3.0
@@ -33,7 +31,6 @@ Flask==2.0.2
 Flask-Admin==1.5.8
 Flask-BS4==5.0.0.1
 Flask-Cors==3.0.10
--e git+ssh://git@github.com/thomaswoehlke/flask_covid19.git@25d86d471f46fa138acacd49f89266f28045f594#egg=flask_covid19
 flask-dictabase==1.1.4
 Flask-Login==0.5.0
 flask-login-dictabase-blueprint==1.1.4
@@ -52,7 +49,6 @@ Jinja2==3.0.3
 jsonschema==3.2.0
 kiwisolver==1.3.2
 kombu==5.2.2
-linkify-it-py==1.0.2
 Mako==1.1.6
 mariadb==1.0.8
 Markdown==3.3.6
@@ -97,7 +93,6 @@ pytest-mock==3.6.1
 pytest-runner==5.3.1
 python-dateutil==2.8.2
 python-dotenv==0.19.2
-python-editor==1.0.4
 python-magic==0.4.24
 pytoolbox==14.1.0
 pytz==2021.3
@@ -110,12 +105,9 @@ setuptools-scm==6.3.2
 six==1.16.0
 snowballstemmer==2.2.0
 Sphinx==4.3.1
-sphinx-bootstrap-theme==0.8.0
 sphinx-copybutton==0.3.3
 sphinx-data-viewer==0.1.2
-sphinx-issues==1.2.0
 sphinx-panels==0.6.0
-sphinx-tabs==3.2.0
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
 sphinxcontrib-htmlhelp==2.0.0
@@ -139,7 +131,6 @@ types-contextvars==2.4.0
 types-dataclasses==0.6.1
 types-setuptools==57.4.4
 typing_extensions==4.0.1
-uc-micro-py==1.0.1
 urllib3==1.26.7
 vine==5.0.0
 virtualenv==20.10.0

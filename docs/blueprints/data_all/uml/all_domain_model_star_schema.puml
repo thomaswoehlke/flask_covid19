@@ -1,0 +1,122 @@
+@startuml
+left to right direction
+
+
+package flask_covid19.data_all.model {
+
+	interface AllDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+
+	interface AllLocationGroup {
+	    id: Integer
+	    continent:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	interface AllLocation {
+	    id: Integer
+    }
+	interface AllData {
+	    id: Integer
+	}
+}
+
+
+package flask_covid19.data_ecdc.model {
+	entity EcdcContinent {}
+	entity EcdcCountry {}
+	entity EcdcData {}
+	entity EcdcDateReported {}
+}
+
+AllDateReported <|-- EcdcDateReported
+AllLocationGroup <|-- EcdcContinent
+AllLocation <|-- EcdcCountry
+
+EcdcCountry "1" *--> "*" EcdcContinent: continent
+EcdcData "1" *--> "*" EcdcCountry: country
+EcdcData "1" *--> "*" EcdcDateReported: date_reported
+
+
+package flask_covid19.data_owid.model {
+	entity OwidContinent {}
+	entity OwidCountry {}
+	entity OwidData {}
+	entity OwidDateReported {}
+}
+
+AllDateReported <|-- OwidDateReported
+AllLocationGroup <|-- OwidContinent
+AllLocation <|--  OwidCountry
+AllData <|-- OwidData
+
+OwidCountry "1" *--> "*" OwidContinent : region
+OwidData "1" *--> "*" OwidCountry : country
+OwidData "1" *--> "*" OwidDateReported : date_reported
+
+
+package flask_covid19.data_rki.model {
+	entity RkiBundesland {}
+	entity RkiLandkreis {}
+	entity RkiData {}
+	entity RkiMeldedatum {}
+}
+
+AllDateReported <|-- RkiMeldedatum
+AllLocationGroup <|-- RkiBundesland
+AllLocation <|-- RkiLandkreis
+AllData <|-- RkiData
+
+RkiLandkreis "1" *--> "*" RkiBundesland : bundesland
+RkiData "1" *--> "*" RkiLandkreis : landkreis
+RkiData "1" *--> "*" RkiMeldedatum : meldedatum
+
+
+package flask_covid19.data_vaccination.model {
+	entity RkiVaccinationDateReported {}
+	entity RkiVaccinationData {}
+}
+
+AllDateReported <|-- RkiVaccinationDateReported
+AllData <|-- RkiVaccinationData
+
+RkiVaccinationData "1" *--> "*" RkiVaccinationDateReported : date_reported
+
+
+package flask_covid19.data_who.model {
+	entity WhoRegion {}
+	entity WhoCountry {}
+	entity WhoData {}
+	entity WhoDateReported {}
+}
+
+AllDateReported <|-- WhoDateReported
+AllLocationGroup <|-- WhoRegion
+AllLocation <|-- WhoCountry
+AllData <|-- WhoData
+
+WhoCountry "1" *--> "*" WhoRegion : region
+WhoData "1" *--> "*" WhoCountry : country
+WhoData "1" *--> "*" WhoDateReported : date_reported
+
+@enduml
