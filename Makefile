@@ -87,52 +87,44 @@ pip_check:
 	@echo "pip_check"
 	$(PYTHON) -m pip check
 
-pip_compile:
-	@echo "pip_compile"
+pip_compile_windows:
+	@echo "pip_compile_windows"
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/typing.in
 	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
 
-pip_install:
+pip_compile_linux:
+	@echo "pip_compile_linux"
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/typing.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
+	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/linux.in
+
+pip_install_windows:
 	@echo "pip_install"
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/typing.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
-	$(PIP) freeze > etc/requirements.txt
-	$(PIP) check
-
-pip_compile_windows: pip_compile
-	@echo "pip_compile_windows"
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
-
-pip_install_windows: pip_install
-	@echo "pip_install_windows"
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows.txt
-	$(PIP) freeze > etc/requirements.txt
+	$(PIP) freeze > etc/requirements_windows.txt
 	$(PIP) check
 
-pip_compile_linux: pip_compile
-	@echo "pip_compile_linux"
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/linux.in
-
-pip_install_linux: pip_install
-	@echo "pip_install_windows"
+pip_install_linux:
+	@echo "pip_install"
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux.txt
-	$(PIP) freeze > etc/requirements.txt
-	$(PIP) check
-
-pip_compile_mac: pip_compile
-	@echo "pip_compile_mac"
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/mac.in
-
-pip_install_mac: pip_install
-	@echo "pip_install_windows"
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/mac.txt
-	$(PIP) freeze > etc/requirements.txt
+	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 
 pip_setuptools:
@@ -305,12 +297,21 @@ distclean: venv_clean renv_clean
 
 pip: pip_compile pip_install pip_check setup_frontend
 
-windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
+windows: clean_windows \
+pip_compile_windows \
+pip_install_windows \
+pip_check \
+setup_frontend \
+flask_covid19
 
-linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend flask_covid19
+linux: clean_linux \
+pip_compile_linux \
+pip_install_linux \
+pip_check \
+setup_frontend \
+flask_covid19
 
 setup: clean setup_development setup_build
 
 start: pip_setuptools pip_install setup_frontend
 
-update: linux
