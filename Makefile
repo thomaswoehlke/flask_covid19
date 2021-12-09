@@ -312,5 +312,7 @@ flask_covid19
 
 setup: clean setup_development setup_build
 
-start: pip_setuptools pip_install setup_frontend
+start_windows: pip_setuptools pip_install_windows setup_frontend
+
+start_linux: pip_setuptools pip_install_linux setup_frontend
 
