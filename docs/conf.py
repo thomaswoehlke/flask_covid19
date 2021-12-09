@@ -68,13 +68,13 @@ html_theme = "flask"
 html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
-        ProjectLink("Donate", "https://palletsprojects.com/donate"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask/"),
-        ProjectLink("Source Code", "https://github.com/pallets/flask/"),
-        ProjectLink("Issue Tracker", "https://github.com/pallets/flask/issues/"),
-        ProjectLink("Website", "https://palletsprojects.com/p/flask/"),
-        ProjectLink("Twitter", "https://twitter.com/PalletsTeam"),
-        ProjectLink("Chat", "https://discord.gg/pallets"),
+        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
+        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask_covid19/"),
+        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
+        ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
+        ProjectLink("Website", "https://palletsprojects.com/p/flask_covid19/"),
+        ProjectLink("Twitter", "https://twitter.com/ThomasWoehlke"),
+        ProjectLink("Chat", "https://discord.gg/ThomasWoehlke"),
     ]
 }
 html_sidebars = {
@@ -121,7 +121,7 @@ latex_documents = [(master_doc, f"Flask-{version}.tex", html_title, author, "man
 def github_link(name, rawtext, text, lineno, inliner, options=None, content=None):
     app = inliner.document.settings.env.app
     release = app.config.release
-    base_url = "https://github.com/pallets/flask/tree/"
+    base_url = "https://github.com/thomaswoehlke/flask_covid19/tree/"
 
     if text.endswith(">"):
         words, text = text[:-1].rsplit("<", 1)
