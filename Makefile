@@ -89,41 +89,41 @@ pip_check:
 
 pip_compile_windows:
 	@echo "pip_compile_windows"
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/typing.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/windows.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_build.txt $(PIP_REQUIREMENTS_DIR)/build.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_docs.txt $(PIP_REQUIREMENTS_DIR)/docs.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_tests.txt $(PIP_REQUIREMENTS_DIR)/tests.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_typing.txt $(PIP_REQUIREMENTS_DIR)/typing.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_dev.txt $(PIP_REQUIREMENTS_DIR)/dev.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_windows.txt $(PIP_REQUIREMENTS_DIR)/windows.in
 
 pip_compile_linux:
 	@echo "pip_compile_linux"
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/build.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/docs.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/tests.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/typing.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/dev.in
-	$(PIP_COMPILE) -r $(PIP_REQUIREMENTS_DIR)/linux.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_build.txt $(PIP_REQUIREMENTS_DIR)/build.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_docs.txt $(PIP_REQUIREMENTS_DIR)/docs.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_tests.txt $(PIP_REQUIREMENTS_DIR)/tests.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_typing.txt $(PIP_REQUIREMENTS_DIR)/typing.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_dev.txt $(PIP_REQUIREMENTS_DIR)/dev.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_linux.txt $(PIP_REQUIREMENTS_DIR)/linux.in
 
 pip_install_windows:
 	@echo "pip_install"
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/typing.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_windows.txt
 	$(PIP) freeze > etc/requirements_windows.txt
 	$(PIP) check
 
 pip_install_linux:
 	@echo "pip_install"
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/build.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/docs.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/tests.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/typing.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/dev.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_linux.txt
 	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 
