@@ -11,7 +11,9 @@ PIP := pip
 NPM := npm
 GIT := git
 PIP_REQUIREMENTS_DIR := flask_covid19/app_build/requirements
-
+PIP_REQUIREMENTS_IN_DIR := flask_covid19/app_build/requirements_in
+PIP_REQUIREMENTS_WINDOWS_DIR := flask_covid19/app_build/requirements_windows
+PIP_REQUIREMENTS_LINUX_DIR := flask_covid19/app_build/requirements_linux
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
 WHO_FILE_BACKUP := WHO-$(HEUTE).csv
@@ -89,41 +91,41 @@ pip_check:
 
 pip_compile_windows:
 	@echo "pip_compile_windows"
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_build.txt $(PIP_REQUIREMENTS_DIR)/build.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_docs.txt $(PIP_REQUIREMENTS_DIR)/docs.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_tests.txt $(PIP_REQUIREMENTS_DIR)/tests.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_typing.txt $(PIP_REQUIREMENTS_DIR)/typing.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_dev.txt $(PIP_REQUIREMENTS_DIR)/dev.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/windows_windows.txt $(PIP_REQUIREMENTS_DIR)/windows.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/tests.txt $(PIP_REQUIREMENTS_IN_DIR)/tests.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/typing.txt $(PIP_REQUIREMENTS_IN_DIR)/typing.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/dev.txt $(PIP_REQUIREMENTS_IN_DIR)/dev.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/windows.txt $(PIP_REQUIREMENTS_IN_DIR)/windows.in
 
 pip_compile_linux:
 	@echo "pip_compile_linux"
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_build.txt $(PIP_REQUIREMENTS_DIR)/build.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_docs.txt $(PIP_REQUIREMENTS_DIR)/docs.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_tests.txt $(PIP_REQUIREMENTS_DIR)/tests.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_typing.txt $(PIP_REQUIREMENTS_DIR)/typing.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_dev.txt $(PIP_REQUIREMENTS_DIR)/dev.in
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_DIR)/linux_linux.txt $(PIP_REQUIREMENTS_DIR)/linux.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/tests.txt $(PIP_REQUIREMENTS_IN_DIR)/tests.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/typing.txt $(PIP_REQUIREMENTS_IN_DIR)/typing.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/dev.txt $(PIP_REQUIREMENTS_IN_DIR)/dev.in
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt $(PIP_REQUIREMENTS_IN_DIR)/linux.in
 
 pip_install_windows:
 	@echo "pip_install"
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_build.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_docs.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_tests.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_typing.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_dev.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/windows_windows.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/windows.txt
 	$(PIP) freeze > etc/requirements_windows.txt
 	$(PIP) check
 
 pip_install_linux:
 	@echo "pip_install"
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_build.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_docs.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_tests.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_typing.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_dev.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_DIR)/linux_linux.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_linux.txt
 	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 
