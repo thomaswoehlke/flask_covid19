@@ -10,10 +10,12 @@ PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
 GIT := git
+MAKE := make
 PIP_REQUIREMENTS_DIR := flask_covid19/app_build/requirements
 PIP_REQUIREMENTS_IN_DIR := flask_covid19/app_build/requirements_in
 PIP_REQUIREMENTS_WINDOWS_DIR := flask_covid19/app_build/requirements_windows
 PIP_REQUIREMENTS_LINUX_DIR := flask_covid19/app_build/requirements_linux
+DOCS_DIR := docs
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
 WHO_FILE_BACKUP := WHO-$(HEUTE).csv
@@ -273,6 +275,16 @@ git:
 	@echo "--------"
 	@echo "git DONE"
 	@echo "--------"
+
+
+# -------------------------------------------------------------------------------------
+#
+#   docs targets
+#
+# -------------------------------------------------------------------------------------
+
+html:
+	$(MAKE) -C $(DOCS_DIR) html
 
 # -------------------------------------------------------------------------------------
 #
