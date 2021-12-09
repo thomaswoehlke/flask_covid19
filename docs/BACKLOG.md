@@ -565,5 +565,3 @@
 * Issue #193 add Flask-Moment
 
 ### 06 BUGS Frontend
-
-
