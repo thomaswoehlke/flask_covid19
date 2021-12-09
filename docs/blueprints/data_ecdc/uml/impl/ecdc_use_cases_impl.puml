@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+package covid19.blueprints.app_user {
+	actor AnonymousVisitor as vu
+	actor AppManager as au
+	actor SysAdmin as su
+	actor AppDevTester as du
+}
+package covid19.blueprints.app_user {
+	vu <|-- au
+	vu <|-- su
+	su <|-- du
+	au <|-- du
+}
+left to right direction
+package who_views_frontend {
+	usecase download_file as UC1
+	usecase import_file as UC2
+	usecase update_dimension_tables as UC3
+	usecase update_fact_table as UC4
+	usecase update_star_schema as UC5
+	usecase full_update_dimension_tables as UC6
+	usecase full_update_fact_table as UC7
+	usecase full_update_star_schema as UC8
+}
+au --> UC1
+au --> UC2
+au --> UC3
+au --> UC4
+au --> UC5
+au --> UC6
+au --> UC7
+au --> UC8
+@enduml

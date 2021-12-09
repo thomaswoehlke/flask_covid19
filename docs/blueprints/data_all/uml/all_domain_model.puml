@@ -1,0 +1,358 @@
+@startuml
+left to right direction
+package flask_covid19.data_all.model {
+	entity BlueprintDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+	entity BlueprintLocationGroup {
+	    id: Integer
+	    location_group:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	entity BlueprintLocation {
+	    id: Integer
+	    location:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+	entity BlueprintFactTable {
+	    id: Integer
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
+	}
+}
+package flask_covid19.data_all.model {
+	class WebPageContent << (T,#FF7700) Transient >> {
+		title: String
+		subtitle: String
+		subtitle_info: String
+	}
+	class BlueprintConfig << (T,#FF7700) Transient >> {
+		limit_nr: Integer
+	    data_path: String
+	    slug: String
+	    category: String
+	    sub_category: String
+	    tablename: String
+	    cvsfile_name: String
+	    url_src: String
+	    cvsfile_path: String
+	    msg_job: String
+	    msg_ok: String
+	    msg_error: String
+		create_config_for_who()
+		create_config_for_rki_vaccination()
+		create_config_for_owid()
+		create_config_for_ecdc()
+		create_config_for_rki_bundeslaender()
+		create_config_for_rki_landkreise()
+	}
+}
+package flask_covid19.data_all.service {
+	class BlueprintDownloadService << (S,red) Service >> {
+		-log_error()
+		-log_success()
+		-prepare_download()
+		-download_with_wget()
+		-download_with_subprocess_and_os_native_wget()
+		download()
+	}
+	class AllDataServiceDispachterMatrix << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_all.views {
+	class all_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_config {
+	class database_py << (S,#FF7700) Singleton >> {
+		{static} int port
+		{static} bool run_run_with_debug
+		{static} int ITEMS_PER_PAGE
+		app: Flask
+		db: SQLAlchemy
+		admin: Admin
+		app_cors: CORS
+		app_bootstrap: Bootstrap
+		create_app()
+		create_db(my_app)
+		create_db_test(my_app)
+		create_celery(my_app)
+		create_admin(my_app)
+	}
+	class application_workers << (B,orchid) Boundary >> {
+		run_mq(my_app, my_celery)
+		run_app(my_app)
+	}
+}
+package blueprints.app_admin.service {
+	class AdminService << (S,red) Service >> {
+
+	}
+}
+package blueprints.app_admin.views {
+	class admin_views << (B,orchid) Boundary >>  {
+	}
+}
+package blueprints.app_admin.service {
+	class AdminService << (S,red) Service >> {
+
+	}
+}
+package blueprints.app_web.service {
+	class WebService << (S,red) Service >> {
+	}
+	class web_services {
+	}
+}
+package flask_covid19.data_web.views {
+	class web_views << (B,orchid) Boundary >> {
+		url_home()
+		url_root()
+	}
+}
+package flask_covid19.data_who.service {
+	class WhoService << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_who.views {
+	class who_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_who.model {
+	entity WhoDateReported {
+	}
+	entity WhoCountryRegion {
+	}
+	entity WhoCountry {
+	}
+	entity WhoData {
+	}
+}
+package flask_covid19.data_ecdc.views {
+	class ecdc_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_ecdc.service {
+	class EcdcService << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_ecdc.model {
+	entity EcdcDateReported {
+	}
+	entity EcdcContinent {
+	}
+	entity EcdcCountry {
+	}
+	entity EcdcData {
+	}
+}
+package flask_covid19.data_vaccination.views {
+	class vaccination_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_vaccination.service {
+	class VaccinationService << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_vaccination.model {
+	entity VaccinationDateReported {
+	}
+	entity VaccinationData {
+	}
+}
+package flask_covid19.data_rki.views {
+	class rki_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_rki.service {
+	class RkiService << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_rki.model {
+	entity RkiMeldedatum {
+	}
+	entity RkiBundesland {
+	}
+	entity RkiLandkreis {
+	}
+	entity RkiData {
+	}
+}
+package flask_covid19.data_owid.views {
+	class owid_views << (B,orchid) Boundary >>  {
+	}
+}
+package flask_covid19.data_owid.service {
+	class OwidService << (S,red) Service >> {
+		download()
+		import_file()
+		full_update_dimension_tables()
+		update_dimension_tables()
+		full_update_fact_table()
+		update_fact_table()
+		full_update_star_schema()
+		update_star_schema()
+		full_update()
+		update()
+	}
+}
+package flask_covid19.data_owid.model {
+	entity OwidDateReported {
+	}
+	entity OwidContinent {
+	}
+	entity OwidCountry {
+	}
+	entity OwidData {
+	}
+}
+
+BlueprintDateReported <|-- WhoDateReported
+BlueprintDateReported <|-- OwidDateReported
+BlueprintDateReported <|-- RkiMeldedatum
+BlueprintDateReported <|-- EcdcDateReported
+BlueprintDateReported <|-- VaccinationDateReported
+
+BlueprintLocationGroup <|-- WhoCountryRegion
+BlueprintLocationGroup <|-- OwidContinent
+BlueprintLocationGroup <|-- RkiBundesland
+BlueprintLocationGroup <|-- EcdcContinent
+
+BlueprintLocation <|-- WhoCountry
+BlueprintLocation <|-- OwidCountry
+BlueprintLocation <|-- RkiLandkreis
+BlueprintLocation <|-- EcdcCountry
+
+BlueprintFactTable <|-- WhoData
+BlueprintFactTable <|-- VaccinationData
+BlueprintFactTable <|-- OwidData
+BlueprintFactTable <|-- RkiData
+BlueprintFactTable <|-- EcdcData
+
+BlueprintDownloadService "*" --> "1"  BlueprintConfig: cfg
+application_workers "1" --> "1" WebService: web_services
+web_views "1" --> "1" WebService: web_services
+web_views "*" --> "1" WebPageContent: page_info
+web_services "*" --> "1" WebService: web_service
+web_services "*" --> "1" AdminService: admin_service
+web_services "*" --> "1" WhoService: who_service
+web_services "*" --> "1" EcdcService: ecdc_service
+web_services "*" --> "1" VaccinationService: vaccination_service
+web_services "*" --> "1" RkiService: rki_service
+web_services "*" --> "1" OwidService: owid_service
+
+all_views "*" --> "1" AllDataServiceDispachterMatrix
+
+AllDataServiceDispachterMatrix "*" --> "1" WebService: web_service
+AllDataServiceDispachterMatrix "*" --> "1" AdminService: admin_service
+AllDataServiceDispachterMatrix "*" --> "1" WhoService: who_service
+AllDataServiceDispachterMatrix "*" --> "1" EcdcService: ecdc_service
+AllDataServiceDispachterMatrix "*" --> "1" VaccinationService: vaccination_service
+AllDataServiceDispachterMatrix "*" --> "1" RkiService: rki_service
+AllDataServiceDispachterMatrix "*" --> "1" OwidService: owid_service
+
+who_views "*" --> "1" WhoService
+owid_views "*" --> "1" OwidService
+rki_views "*" --> "1" RkiService
+vaccination_views  "*" --> "1" VaccinationService
+ecdc_views "*" --> "1" EcdcService
+admin_views "*" --> "1"  AdminService
+web_views "*" --> "1" WebService
+
+WebService "*" --> "1" database_py
+BlueprintDownloadService "*" --> "1" database_py
+AdminService "*" --> "1" database_py
+WhoService "*" --> "1" database_py
+EcdcService "*" --> "1" database_py
+RkiService "*" --> "1" database_py
+VaccinationService "*" --> "1" database_py
+OwidService "*" --> "1" database_py
+
+WebService : SQLAlchemy database
+BlueprintDownloadService : SQLAlchemy database
+AdminService : SQLAlchemy database
+WhoService : SQLAlchemy database
+EcdcService : SQLAlchemy database
+RkiService : SQLAlchemy database
+VaccinationService : SQLAlchemy database
+OwidService : SQLAlchemy database
+@enduml

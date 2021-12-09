@@ -1,0 +1,70 @@
+@startuml
+
+left to right direction
+
+package covid19.blueprints.app_user {
+	actor AnonymousVisitor as vu
+	actor AppManager as au
+	actor SysAdmin as su
+	actor AppDevTester as du
+}
+package covid19.blueprints.app_user {
+	vu <|-- au
+	vu <|-- su
+	su <|-- du
+	au <|-- du
+}
+
+package flask_covid19.data_all.who_views_task {
+	usecase download_file as UC1
+	usecase import_file as UC2
+	usecase import_file_flat as UC3
+	usecase full_update_dimension_tables as UC10
+	usecase full_update_fact_table as UC11
+	usecase full_update_star_schema as UC12
+	usecase update_dimension_tables as UC20
+	usecase update_fact_table as UC21
+	usecase update_star_schema as UC22
+}
+
+au --> UC1
+au --> UC2
+au --> UC3
+au --> UC10
+au --> UC11
+au --> UC12
+au --> UC20
+au --> UC21
+au --> UC22
+
+package flask_covid19.data_all.who_views_frontend {
+	usecase get_import as UC30
+	usecase get_flat as UC31
+	usecase get_years as UC40
+	usecase get_days as UC41
+	usecase get_days_for_year as UC42
+	usecase get_location_groups as UC43
+	usecase get_locations_for_location_group as UC44
+	usecase get_data_for_location as UC45
+	usecase get_data_for_day as UC46
+    usecase page_info as UC80
+}
+
+vu --> UC30
+vu --> UC31
+vu --> UC40
+vu --> UC41
+vu --> UC42
+vu --> UC43
+vu --> UC44
+vu --> UC45
+vu --> UC46
+vu --> UC80
+
+package flask_covid19.data_all.who_views_frontend__au {
+    usecase page_tasks as UC81
+}
+
+au --> UC81
+
+@enduml

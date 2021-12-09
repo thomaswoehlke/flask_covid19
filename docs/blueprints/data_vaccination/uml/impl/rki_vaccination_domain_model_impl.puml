@@ -1,0 +1,205 @@
+@startuml
+left to right direction
+
+entity RkiVaccinationDateReported {
+    id: Integer
+	date_reported:  String
+    year_week:  String
+    datum: Date
+    year: Integer
+    month: Integer
+    day_of_month: Integer
+    day_of_week: Integer
+    week_of_year: Integer
+	get_name_for_weekday()
+	{classifier} get_names_for_weekday()
+	{classifier} get_datum_parts(my_date_rep: String)
+	{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+	{classifier} create_new_object_factory(my_date_rep: String)
+}
+entity RkiVaccinationData {
+    id: Integer
+    dosen_kumulativ: Integer
+    dosen_differenz_zum_vortag: Integer
+    dosen_biontech_kumulativ: Integer
+    dosen_moderna_kumulativ: Integer
+    personen_erst_kumulativ: Integer
+    personen_voll_kumulativ: Integer
+    impf_quote_erst: Float
+    impf_quote_voll: Float
+    indikation_alter_dosen: Integer
+    indikation_beruf_dosen: Integer
+    indikation_medizinisch_dosen: Integer
+    indikation_pflegeheim_dosen: Integer
+    indikation_alter_erst: Integer
+    indikation_beruf_erst: Integer
+    indikation_medizinisch_erst: Integer
+    indikation_pflegeheim_erst: Integer
+    indikation_alter_voll: Integer
+    indikation_beruf_voll: Integer
+    indikation_medizinisch_voll: Integer
+    indikation_pflegeheim_voll: Integer
+    get_absolute_path()
+    get_relative_path()
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_all_as_dict()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} find_by_id(other_id: Integer)
+    {classifier} get_kurse_all()
+}
+entity RkiVaccinationImport {
+    datum:  String
+    dosen_kumulativ: Integer
+    dosen_differenz_zum_vortag: Integer
+    dosen_biontech_kumulativ: Integer
+    dosen_moderna_kumulativ: Integer
+    personen_erst_kumulativ: Integer
+    personen_voll_kumulativ: Integer
+    impf_quote_erst: Float
+    impf_quote_voll: Float
+    indikation_alter_dosen: Integer
+    indikation_beruf_dosen: Integer
+    indikation_medizinisch_dosen: Integer
+    indikation_pflegeheim_dosen: Integer
+    indikation_alter_erst: Integer
+    indikation_beruf_erst: Integer
+    indikation_medizinisch_erst: Integer
+    indikation_pflegeheim_erst: Integer
+    indikation_alter_voll: Integer
+    indikation_beruf_voll: Integer
+    indikation_medizinisch_voll: Integer
+    indikation_pflegeheim_voll: Integer
+
+    {classifier} remove_all()
+    {classifier} get_all_as_page(page: Integer)
+    {classifier} get_all()
+    {classifier} get_by_id(other_id: Integer)
+    {classifier} find_by_id(other_id: Integer)
+    {classifier} find_by_datum(other_datum: String)
+    {classifier} get_date_rep()
+    {classifier} get_date_reported_as_array()
+    {classifier} get_daterep_missing_in_vaccination_data()
+}
+entity ApplicationDateReported {
+    id: Integer
+	date_reported:  String
+    year_week:  String
+    datum: Date
+    year: Integer
+    month: Integer
+    day_of_month: Integer
+    day_of_week: Integer
+    week_of_year: Integer
+	get_name_for_weekday()
+	{classifier} get_names_for_weekday()
+	{classifier} get_datum_parts(my_date_rep: String)
+	{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+	{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+	{classifier} create_new_object_factory(my_date_rep: String)
+}
+class ApplicationServiceDownload << (S,red) Service >> {
+	-log_error()
+	-log_success()
+	-prepare_download()
+	-download_with_wget()
+	-download_with_subprocess_and_os_native_wget()
+	download_file()
+}
+class ApplicationServiceConfig << (T,#FF7700) Transient >> {
+	limit_nr: Integer
+    data_path: String
+    slug: String
+    category: String
+    sub_category: String
+    tablename: String
+    cvsfile_name: String
+    url_src: String
+    cvsfile_path: String
+    msg_job: String
+    msg_ok: String
+    msg_error: String
+	create_config_for_who()
+	create_config_for_rki_vaccination()
+	create_config_for_owid()
+	create_config_for_ecdc()
+	create_config_for_rki_bundeslaender()
+	create_config_for_rki_landkreise()
+}
+class RkiVaccinationService << (S,red) Service >> {
+    pretask_database_drop_create()
+    task_database_drop_create()
+    run_download_only()
+    run_import_only()
+    run_update_dimension_tables_only()
+    run_update_fact_table_incremental_only()
+    run_update_fact_table_initial_only()
+    run_update_star_schema_incremental()
+    run_update_star_schema_initial()
+    download_all_files()
+    task_import_all_files()
+    update_dimension_tables_only()
+    update_fact_table_initial_only()
+    update_fact_table_incremental_only()
+}
+class RkiVaccinationServiceImport << (S,red) Service >> {
+    import_file()
+}
+class RkiVaccinationServiceUpdate << (S,red) Service >> {
+    -update_date_reported()
+    -update_region()
+    -update_country()
+    -update_data_incremental()
+    -update_data_initial()
+    -update_dimension_tables()
+    update_dimension_tables_only()
+    update_fact_table_incremental_only()
+    update_fact_table_initial_only()
+    update_star_schema_incremental()
+    update_star_schema_initial()
+}
+class rki_vaccination_views_frontend << (B,orchid) Boundary >> {
+	url_vaccination_info()
+	url_vaccination_tasks()
+	url_vaccination_imported()
+	url_vaccination_data()
+}
+class rki_vaccination_views_for_tasks << (B,orchid) Boundary >> {
+	task_who_download_only()
+	task_who_import_only()
+	task_who_update_dimension_tables_only()
+	task_who_update_fact_table_initial_only()
+	task_who_update_fact_table_incremental_only()
+	task_who_update_star_schema_initial()
+	task_who_update_star_schema_incremental()
+}
+class rki_vaccination_celery_tasks << (B,orchid) Boundary >> {
+	url_vaccination_task_download_only()
+	url_vaccination_task_import_only()
+	url_vaccination_task_update_dimensiontables_only()
+	url_vaccination_task_update_facttable_incremental_only()
+	url_vaccination_task_update_facttable_initial_only()
+	url_vaccination_task_update_starschema_initial()
+	url_vaccination_task_update_starschema_incremental()
+}
+RkiVaccinationServiceImport : SQLAlchemy database
+RkiVaccinationServiceUpdate : SQLAlchemy database
+RkiVaccinationService : SQLAlchemy database
+ApplicationServiceDownload : SQLAlchemy database
+ApplicationDateReported <|-- RkiVaccinationDateReported
+RkiVaccinationData "1" *--> "*" RkiVaccinationDateReported : date_reported
+RkiVaccinationService "*" *--> "1"  ApplicationServiceConfig : cfg
+RkiVaccinationServiceImport "*" --> "1"  ApplicationServiceConfig : cfg
+RkiVaccinationServiceUpdate "*" --> "1"  ApplicationServiceConfig : cfg
+ApplicationServiceDownload "*" --> "1"  ApplicationServiceConfig : cfg
+RkiVaccinationService "1" *--> "1" RkiVaccinationServiceImport : rki_vaccination_service_import
+RkiVaccinationService "1" *--> "1" RkiVaccinationServiceUpdate : rki_vaccination_service_update
+RkiVaccinationService "1" *--> "1" ApplicationServiceDownload : service_download
+rki_vaccination_views_frontend "1" --> "1" RkiVaccinationService : rki_vaccination_service
+rki_vaccination_views_for_tasks "1" --> "1" RkiVaccinationService : rki_vaccination_service
+rki_vaccination_celery_tasks "1" --> "1" RkiVaccinationService : rki_vaccination_service
+@enduml
