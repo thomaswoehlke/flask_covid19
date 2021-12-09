@@ -294,7 +294,9 @@ download_ecdc
 
 distclean: venv_clean renv_clean
 
-pip: pip_compile pip_install pip_check setup_frontend
+pip_windows: pip_compile_windows pip_install_windows pip_check setup_frontend
+
+pip_linux: pip_compile_linux pip_install_linux pip_check setup_frontend
 
 windows: clean_windows \
 pip_compile_windows \
