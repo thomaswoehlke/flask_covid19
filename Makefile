@@ -120,12 +120,12 @@ pip_install_windows:
 
 pip_install_linux:
 	@echo "pip_install"
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_build.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_docs.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_tests.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_typing.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_dev.txt
-	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux_linux.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/tests.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/typing.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/dev.txt
+	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt
 	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
 
