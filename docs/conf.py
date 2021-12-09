@@ -38,6 +38,9 @@ master_doc = "index"
 extensions = [
     "myst_parser",
     "pallets_sphinx_themes",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "sphinxcontrib.log_cabinet",
 ]
 
 source_suffix = {
@@ -58,12 +61,12 @@ intersphinx_mapping = {
     "blinker": ("https://pythonhosted.org/blinker/", None),
 }
 
-issues_github_path = "pallets/flask"
+issues_github_path = "thomaswoehlke/flask_covid19"
 
 # HTML -----------------------------------------------------------------
 
 html_theme = "flask"
-html_theme_options = {"index_sidebar_logo": False}
+html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
         ProjectLink("Donate", "https://palletsprojects.com/donate"),
@@ -84,7 +87,7 @@ html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
 html_title = f"Flask Documentation ({version})"
-html_show_sourcelink = False
+html_show_sourcelink = True
 
 
 
