@@ -10,14 +10,12 @@ Welcome to flask_covid19's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   README.md
    BACKLOG.md
-   TODO.md
    db/PostgresSQL.md
    db/MariadDB.md
    Software_Architecture.md
-   README.md
-
-
+   TODO.md
 
 Indices and tables
 ==================
