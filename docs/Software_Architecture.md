@@ -1,6 +1,8 @@
-# Blueprints
+# Software Architecture
 
-## App Blueprints
+## Blueprints
+
+### App Blueprints
 
 ### app_admin
 
