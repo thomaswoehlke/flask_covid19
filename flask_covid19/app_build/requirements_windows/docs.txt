@@ -42,11 +42,14 @@ cycler==0.11.0
     # via matplotlib
 distlib==0.3.4
     # via virtualenv
-docutils==0.17.1
+docutils==0.16
     # via
     #   myst-parser
+    #   pybtex-docutils
     #   sphinx
     #   sphinx-panels
+    #   sphinx-tabs
+    #   sphinxcontrib-bibtex
 filelock==3.4.0
     # via
     #   tox
@@ -74,6 +77,8 @@ jsonschema==3.2.0
     # via sphinxcontrib-needs
 kiwisolver==1.3.2
     # via matplotlib
+latexcodec==2.0.1
+    # via pybtex
 markdown==3.3.6
     # via sphinxcontrib-markdown
 markdown-it-py==1.1.0
@@ -102,6 +107,8 @@ packaging==21.3
     #   tox
 pallets-sphinx-themes==2.0.2
     # via -r flask_covid19/app_build/requirements_in/docs.in
+pbr==5.8.0
+    # via sphinxcontrib-gravizo
 pep517==0.12.0
     # via
     #   build
@@ -124,8 +131,16 @@ py==1.11.0
     # via tox
 pyaml==21.10.1
     # via pytoolbox
+pybtex==0.24.0
+    # via
+    #   pybtex-docutils
+    #   sphinxcontrib-bibtex
+pybtex-docutils==1.0.1
+    # via sphinxcontrib-bibtex
 pygments==2.10.0
-    # via sphinx
+    # via
+    #   sphinx
+    #   sphinx-tabs
 pyparsing==3.0.6
     # via
     #   matplotlib
@@ -149,6 +164,7 @@ pyyaml==6.0
     #   myst-parser
     #   pre-commit
     #   pyaml
+    #   pybtex
 requests==2.26.0
     # via
     #   pytoolbox
@@ -163,6 +179,8 @@ setuptools-scm==6.3.2
 six==1.16.0
     # via
     #   jsonschema
+    #   latexcodec
+    #   pybtex
     #   python-dateutil
     #   requests-file
     #   tox
@@ -175,7 +193,10 @@ sphinx==4.3.1
     #   myst-parser
     #   pallets-sphinx-themes
     #   sphinx-copybutton
+    #   sphinx-issues
     #   sphinx-panels
+    #   sphinx-tabs
+    #   sphinxcontrib-bibtex
     #   sphinxcontrib-images
     #   sphinxcontrib-log-cabinet
     #   sphinxcontrib-markdown
@@ -187,12 +208,20 @@ sphinx-copybutton==0.3.3
     # via sphinxcontrib-needs
 sphinx-data-viewer==0.1.2
     # via sphinxcontrib-needs
+sphinx-issues==1.2.0
+    # via -r flask_covid19/app_build/requirements_in/docs.in
 sphinx-panels==0.6.0
     # via sphinxcontrib-needs
+sphinx-tabs==3.2.0
+    # via -r flask_covid19/app_build/requirements_in/docs.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
+sphinxcontrib-bibtex==2.4.1
+    # via -r flask_covid19/app_build/requirements_in/docs.in
 sphinxcontrib-devhelp==1.0.2
     # via sphinx
+sphinxcontrib-gravizo==0.0.4
+    # via -r flask_covid19/app_build/requirements_in/docs.in
 sphinxcontrib-htmlhelp==2.0.0
     # via sphinx
 sphinxcontrib-images==0.9.4
