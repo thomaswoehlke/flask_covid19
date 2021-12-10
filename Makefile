@@ -286,6 +286,9 @@ git:
 doc:
 	$(MAKE) -w -C $(DOCS_DIR) html
 
+test:
+	pytest -v
+
 # -------------------------------------------------------------------------------------
 #
 #   main targets
@@ -305,12 +308,6 @@ download_rki \
 download_rki_vaccination \
 download_divi \
 download_ecdc
-
-doc:
-	sphinx-build -W -b html -d doctrees docs html
-
-tests:
-	pytest -v
 
 distclean: venv_clean renv_clean
 
