@@ -4,96 +4,96 @@
 
 ### Matrix Blueprints for config
 
-| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label         | config                                         |
-|-------|-------|-------|-------------|-------|------------------|---------|---------------|------------------------------------------------|
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Info, Tasks and Tests |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Download Data File |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | import |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Imported Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Domain Model   |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Use Cases  |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Tast-Plan for manual Testing |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Checklist for manual Testing |
+| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label         | config                                                                            |
+|-------|-------|-------|-------------|-------|------------------|---------|---------------|-----------------------------------------------------------------------------------|
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Info, Tasks and Tests                                    |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Download Data File                                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | import                                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Dimension Tables                                                      |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Fact Table                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Dimension Tables                                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Fact Table                                                                 |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Imported Table                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Dimension Tables                                         |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Fact Table                                               |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Domain Model                                              |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Use Cases                                                 |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Test-Plan for manual Testing                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Checklist for manual Testing                                                |
 | Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages without any Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database   |
 
 
 ## Use Cases
 
 ### Matrix Data Blueprints for Use Cases
 
-| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label    | Use Case                                       |
-|-------|-------|-------|-------------|-------|------------------|---------|----------|------------------------------------------------|
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Info, Tasks and Tests |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Download Data File |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | import |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | full update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | full update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Imported Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Update UML Diagrams for Domain Model   |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Update UML Diagrams for Use Cases  |
+| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label    | Use Case                                                                          |
+|-------|-------|-------|-------------|-------|------------------|---------|----------|-----------------------------------------------------------------------------------|
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Info, Tasks and Tests                                    |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Download Data File                                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | import                                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | full update Dimension Tables                                                      |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | full update Fact Table                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | update Dimension Tables                                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | update Fact Table                                                                 |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Imported Table                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Dimension Tables                                         |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Navigation and Pages for Fact Table                                               |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Update UML Diagrams for Domain Model                                              |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | Update UML Diagrams for Use Cases                                                 |
 | Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | add Selenium Tests for all Frontend Urls and Pages without any Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | write Tast-Plan for manual Testing |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | write Checklist for manual Testing |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database   |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | write Tast-Plan for manual Testing                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Use Case | write Checklist for manual Testing                                                |
 
 
 ## Test Cases
 
-## Matrix Data Blueprints for Test Cases
+### Matrix Data Blueprints for Test Cases
 
-| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label     | Test Case                                      |
-|-------|-------|-------|-------------|-------|------------------|---------|-----------|------------------------------------------------|
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Info, Tasks and Tests |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Download Data File |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | import |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | full update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | full update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Imported Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Update UML Diagrams for Domain Model   |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Update UML Diagrams for Use Cases  |
+| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label     | Test Case                                                                         |
+|-------|-------|-------|-------------|-------|------------------|---------|-----------|-----------------------------------------------------------------------------------|
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Info, Tasks and Tests                                    |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Download Data File                                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | import                                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | full update Dimension Tables                                                      |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | full update Fact Table                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | update Dimension Tables                                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | update Fact Table                                                                 |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Imported Table                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Dimension Tables                                         |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Navigation and Pages for Fact Table                                               |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Update UML Diagrams for Domain Model                                              |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | Update UML Diagrams for Use Cases                                                 |
 | Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | add Selenium Tests for all Frontend Urls and Pages without any Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | write Tast-Plan for manual Testing |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | write Checklist for manual Testing |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database   |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | write Test-Plan for manual Testing                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Test Case | write Checklist for manual Testing                                                |
 
 
 ## Milestones and their Issues
 
 ### Matrix Blueprints for Milestones and their Issues
 
-| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label         | config                                         |
-|-------|-------|-------|-------------|-------|------------------|---------|---------------|------------------------------------------------|
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Info, Tasks and Tests |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Download Data File |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | import |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Imported Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Dimension Tables |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Fact Table |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Domain Model   |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Use Cases  |
+| WHO   | OWID  | ECDC  | Vaccination | RKI   | Intensivregister | All     | Label         | config                                                                            |
+|-------|-------|-------|-------------|-------|------------------|---------|---------------|-----------------------------------------------------------------------------------|
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Info, Tasks and Tests                                    |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Download Data File                                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | import                                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Dimension Tables                                                      |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | full update Fact Table                                                            |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Dimension Tables                                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | update Fact Table                                                                 |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Imported Table                                           |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Dimension Tables                                         |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Development   | Navigation and Pages for Fact Table                                               |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Domain Model                                              |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | Update UML Diagrams for Use Cases                                                 |
 | Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages without any Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Tast-Plan for manual Testing |
-| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Checklist for manual Testing |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | QA            | add Selenium Tests for all Frontend Urls and Pages with Read Access to Database   |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Test-Plan for manual Testing                                                |
+| Issue | Issue | Issue | Issue       | Issue | Issue            | Issue   | Documentation | write Checklist for manual Testing                                                |
 
 
 ## Releases via Milestones and their Issues
@@ -586,60 +586,51 @@
 
 ### 0.0.39 Release
 
-* -------------------------------------
 * Issue #220 add Selenium Tests for all Frontend Urls and Pages without any Access to Database
 * Issue #221 add Selenium Tests for all Frontend Urls and Pages with Read Access to Database
 
 ### 0.0.38 Release
 
-* -------------------------------------
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 * Issue #207 remove deprecated: database.port
 * Issue #208 remove deprecated: database.run_run_with_debug
 * Issue #209 remove deprecated: database.ITEMS_PER_PAGE
 
 ### 0.0.37 Release
 
-* -------------------------------------
 * Issue #195 VaccinationImport.get_daterep_missing_in_vaccination_data(): native SQL to SQLalechemy Query
-* -------------------------------------
+
 
 ### 00 Inbox
 
-* -------------------------------------
 * Issue add Selenium Tests for all Frontend Urls and Pages without any Access to Database
 * Issue add Selenium Tests for all Frontend Urls and Pages with Read Access to Database
 
 ### 01 Next
 
-* -------------------------------------
 * Issue #198 UML: WHO Visual Graphs for Data per Countries order by Date
 * Issue #5 WHO Visual Graphs for Data per Countries order by Date
-* -------------------------------------
+
 
 ### 02 Soon
 
-* -------------------------------------
 * Issue #189 setup unit tests
 * Issue #190 setup docs with sphinx
 
 ### 03 Nice to Have
 
-* -------------------------------------
 * Issue #59 frontend: add correct breadcrumb to every page
 * Issue #61 frontend: better design for navtabs
 * Issue #63 frontend: add footer design
 
 ### 04 Dropped
 
-* -------------------------------------
 * Issue #185 add Flask-Redisboard
 * Issue #186 add Flask-Monitoring
 
 ### 05 Later maybe
 
-* -------------------------------------
 * Issue #180 add build.cmd script
 * Issue #181 add flask-filealchemy
 * Issue #182 add flask-whooshalchemy3
@@ -652,4 +643,3 @@
 
 ### 06 BUGS Frontend
 
-* -------------------------------------
