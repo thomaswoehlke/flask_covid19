@@ -1173,3 +1173,4 @@ dump.rdb
 flask_covid19.egg-info
 /html/
 /doctrees/
+/data/
