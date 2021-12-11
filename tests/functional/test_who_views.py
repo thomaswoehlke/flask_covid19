@@ -1,12 +1,4 @@
-import urllib3
 import pytest
-import socket
-
-from flask import url_for
-
-from tests.test_flask_covid19 import app
-from tests.test_flask_covid19 import client
-from flask_covid19.app_config import pytestconfig
 
 
 @pytest.mark.usefixtures('live_server')
