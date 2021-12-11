@@ -9,6 +9,7 @@ from flask_admin import Admin
 from flask_bs4 import Bootstrap
 from flask_cors import CORS
 from flask_covid19.app_config import config
+from flask_covid19.app_config import pytestconfig
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
@@ -16,10 +17,13 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 class Covid19Application:
-    def __init__(self):
+    def __init__(self, testing=False):
         self.app = Flask("flask_covid19")
         self.app_cors = CORS()
-        self.app.config.from_object(config)
+        if testing:
+            self.app.config.from_object(config)
+        else:
+            self.app.config.from_object(pytestconfig)
         self.__init_db()
         self.__init_login()
         self.__init_bootstrap()
