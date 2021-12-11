@@ -3,6 +3,7 @@ import flask_covid19.app_web
 import flask_covid19.data_all
 from flask_covid19.app_web import celery
 from flask_covid19.app_web import run_web
+from flask_covid19.app_web import app
 
 # ---------------------------------------------------------------------------------
 #  MAIN
