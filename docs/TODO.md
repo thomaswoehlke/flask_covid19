@@ -99,3 +99,6 @@
 
 ## Testing
 * https://testdriven.io/blog/flask-pytest/
+* https://docs.pytest.org/en/latest/
+* https://flask.palletsprojects.com/en/2.0.x/testing/
+* https://pytest-flask.readthedocs.io/en/latest/index.html
