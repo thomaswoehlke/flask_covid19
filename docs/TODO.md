@@ -96,3 +96,6 @@
 
 * https://flask-caching.readthedocs.io/en/latest/
 * https://www.howtoforge.de/anleitung/wie-installiere-ich-memcached-auf-ubuntu-2004-lts/
+
+## Testing
+* https://testdriven.io/blog/flask-pytest/
