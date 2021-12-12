@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import redirect
 from flask import render_template
 from flask import url_for
-from project.app_bootstrap.database import app
+from project.app_bootstrap.database import app, celery, db
 from project.app_web.app_admin_views import blueprint_app_admin
 from project.app_web.user_views import blueprint_app_user
 from project.app_web.web_model_transient import WebPageContent
