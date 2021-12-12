@@ -195,3 +195,4 @@ and in another termninal:
 #### app_web_use_cases
 
 ![app_application_use_cases](uml_blueprints/app_web/uml/img/app_application_use_cases.png)
+
