@@ -1,12 +1,11 @@
 from celery import states
-from celery.utils.log import get_task_logger
 from flask import Blueprint
 from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import url_for
-from project.app_config.database import app
-from project.app_config.database import celery
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import celery
 from project.app_web.web_dispachter_matrix_service import app_admin_service
 from project.app_web.web_model_transient import WebPageContent
 

@@ -1,0 +1,15 @@
+-r build.in
+Pallets-Sphinx-Themes
+Sphinx
+myst-parser
+babel>=2.9.1
+sphinx-issues
+sphinxcontrib-log-cabinet
+sphinxcontrib-plantuml
+sphinxcontrib-bibtex
+sphinxcontrib-images
+sphinxcontrib-gravizo
+sphinxcontrib-needs
+sphinxcontrib-markdown
+sphinxcontrib-srclinks
+sphinx-tabs

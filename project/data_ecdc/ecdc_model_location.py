@@ -1,5 +1,4 @@
-from project.app_config.database import db
-from project.app_config.database import items_per_page
+from project.app_bootstrap.database import db
 from project.data_all.all_model_location import AllLocation
 from project.data_ecdc.ecdc_model_location_group import EcdcContinent
 from sqlalchemy import and_

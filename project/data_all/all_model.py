@@ -1,9 +1,5 @@
-from datetime import date
-
-from project.app_config.database import app
-from project.app_config.database import celery
-from project.app_config.database import db
-from project.app_config.database import items_per_page
+from project.app_bootstrap.database import db
+from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model_mixins import AllEntityMixin
 from sqlalchemy import not_
 

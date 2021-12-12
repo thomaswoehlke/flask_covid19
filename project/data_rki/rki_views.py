@@ -5,10 +5,10 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
-from project.app_config.database import admin
-from project.app_config.database import app
-from project.app_config.database import celery
-from project.app_config.database import db
+from project.app_bootstrap.database import admin
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import celery
+from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import rki_service
 from project.app_web.web_model_transient import WebPageContent
 from project.data_rki.rki_model_altersgruppe import RkiAltersgruppe

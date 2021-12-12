@@ -1,4 +1,4 @@
-from project.app_config.database import app
+from project.app_bootstrap.database import app
 
 
 class WebService:

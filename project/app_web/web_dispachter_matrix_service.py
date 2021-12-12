@@ -1,5 +1,5 @@
-from project.app_config.database import app
-from project.app_config.database import db
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import db
 from project.app_web.app_admin_service import AdminService
 from project.app_web.user_service import UserService
 from project.app_web.web_service import WebService

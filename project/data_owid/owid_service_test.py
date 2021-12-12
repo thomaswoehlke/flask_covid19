@@ -1,5 +1,5 @@
-from project.app_config.database import app
-from project.app_config.database import db
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_owid.owid_model_data import OwidData
 from project.data_owid.owid_model_import import OwidImport

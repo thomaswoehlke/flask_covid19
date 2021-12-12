@@ -1,4 +1,4 @@
-from project.app_config.database import db
+from project.app_bootstrap.database import db
 from project.data_all.all_model_data import AllFactTableTimeSeries
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,

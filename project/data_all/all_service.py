@@ -1,4 +1,4 @@
-from project.app_config.database import app
+from project.app_bootstrap.database import app
 from project.data_all.all_service_mixins import AllServiceMixin
 from project.data_ecdc.ecdc_service import EcdcService
 from project.data_owid.owid_service import OwidService

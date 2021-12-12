@@ -1,4 +1,3 @@
-from project.app_config.database import db
 from project.data_all.all_model_date_reported import AllDateReported
 
 

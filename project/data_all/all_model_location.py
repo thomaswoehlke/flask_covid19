@@ -1,15 +1,9 @@
-from datetime import date
-
-from project.app_config.database import app
-from project.app_config.database import celery
-from project.app_config.database import db
-from project.app_config.database import items_per_page
+from project.app_bootstrap.database import db
+from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model import AllEntity
 from project.data_all.all_model_location_group import AllLocationGroup
 from project.data_all.all_model_location_mixins import AllLocationMixin
 from sqlalchemy import and_
-from sqlalchemy import not_
-from sqlalchemy.orm import subqueryload
 
 
 class AllLocation(AllEntity, AllLocationMixin):

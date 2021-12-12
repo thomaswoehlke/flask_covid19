@@ -1,5 +1,5 @@
-from project.app_config.database import db
-from project.app_config.database import items_per_page
+from project.app_bootstrap.database import db
+from project.app_bootstrap.database import items_per_page
 from flask_login import AnonymousUserMixin
 from flask_login import UserMixin
 from flask_wtf import FlaskForm

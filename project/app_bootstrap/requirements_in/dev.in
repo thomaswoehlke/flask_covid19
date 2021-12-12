@@ -1,0 +1,25 @@
+-r build.in
+-r docs.in
+-r tests.in
+-r typing.in
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Cors
+Flask-BS4>=5.0.0.1
+Flask-Admin
+Flask-Login
+flask-login-dictabase-blueprint
+SQLAlchemy
+sqlalchemy-mixins
+mysql-connector-python
+mysqldb-wrapper
+mariadb
+wget
+email_validator
+celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1
+dataframetodb
+pangres
+scipy
+matplotlib
+statsmodels
+pandas

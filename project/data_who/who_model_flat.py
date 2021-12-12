@@ -1,4 +1,4 @@
-from project.app_config.database import db
+from project.app_bootstrap.database import db
 from project.data_all.all_model_flat import AllFlat
 from project.data_all.all_model_flat_mixins import AllImportFlatMixin
 

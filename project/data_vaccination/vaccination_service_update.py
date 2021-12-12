@@ -1,11 +1,10 @@
-from project.app_config.database import app
-from project.app_config.database import db
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_update_mixins import AllServiceMixinUpdate
-from project.data_vaccination.vaccination_model_data import VaccinationData
 from project.data_vaccination.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,

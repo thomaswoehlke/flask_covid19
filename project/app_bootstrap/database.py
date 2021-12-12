@@ -3,13 +3,11 @@ import sys
 from logging.config import dictConfig
 
 from celery import Celery
-from flask import Blueprint
 from flask import Flask
 from flask_admin import Admin
 from flask_bs4 import Bootstrap
 from flask_cors import CORS
-from project.app_config import config
-from project.app_config import pytestconfig
+from project.app_bootstrap import config, pytestconfig
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 

@@ -1,5 +1,5 @@
-from project.app_config.database import db
-from project.app_config.database import items_per_page
+from project.app_bootstrap.database import db
+from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model_import import AllImport
 from sqlalchemy import and_
 from sqlalchemy.orm import Bundle

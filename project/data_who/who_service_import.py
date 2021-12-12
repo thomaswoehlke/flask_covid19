@@ -1,7 +1,7 @@
 import csv
 import sys
 
-from project.app_config.database import covid19_application
+from project.app_bootstrap.database import covid19_application
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,

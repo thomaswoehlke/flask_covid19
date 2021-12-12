@@ -1,7 +1,7 @@
 import os
 
-from project.app_config.database import app
-from project.app_config.database import root_dir
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import root_dir
 from project.data_ecdc.ecdc_model_import import EcdcImport
 from project.data_owid.owid_model_import import OwidImport
 from project.data_rki.rki_model_import import RkiImport

@@ -1,11 +1,9 @@
-from project.app_config.database import app
-from project.app_config.database import db
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
-from project.data_rki.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.rki_model_data import RkiData
 from project.data_rki.rki_model_data_location import RkiLandkreis
 from project.data_rki.rki_model_data_location_group import RkiBundesland
-from project.data_rki.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.rki_model_import import RkiImport
 from sqlalchemy.orm import Bundle
 

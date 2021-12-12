@@ -1,5 +1,5 @@
-from project.app_config.database import app
-from project.app_config.database import db
+from project.app_bootstrap.database import app
+from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )

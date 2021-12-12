@@ -1,4 +1,4 @@
-from project.app_config.database import db
+from project.app_bootstrap.database import db
 from project.data_all.all_model_import import AllImport
 from project.data_all.all_model_import_mixins import AllImportMixin
 from sqlalchemy import and_
