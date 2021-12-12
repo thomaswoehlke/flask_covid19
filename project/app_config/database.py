@@ -21,9 +21,9 @@ class Covid19Application:
         self.app = Flask("flask_covid19")
         self.app_cors = CORS()
         if testing:
-            self.app.config.from_object(config)
-        else:
             self.app.config.from_object(pytestconfig)
+        else:
+            self.app.config.from_object(config)
         self.__init_db()
         self.__init_login()
         self.__init_bootstrap()

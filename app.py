@@ -7,6 +7,7 @@ from project.app_web import app
 
 
 def create_app():
+    run_web()
     return app
 
 
