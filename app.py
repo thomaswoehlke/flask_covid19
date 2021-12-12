@@ -122,6 +122,13 @@ def owid_download():
         owid_service.download()
 
 
+@app.cli.command("owid-import")
+def owid_import_file():
+    """[OWID] import file"""
+    with app.app_context():
+        owid_service.import_file()
+
+
 @app.cli.command("owid-update-full")
 def owid_full_update():
     """[OWID] full update"""
