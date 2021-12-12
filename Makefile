@@ -3,18 +3,18 @@ HEUTE := backup
 HEUTE_todo := "date '+%Y_%m_%d'"
 
 APP_MYSELF := flask_covid19
-DATA_DIR := flask_covid19/data
-DB_DIR := flask_covid19/db
+DATA_DIR := project/data
+DB_DIR := project/db
 PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
 GIT := git
 MAKE := make
-PIP_REQUIREMENTS_DIR := flask_covid19/app_build/requirements
-PIP_REQUIREMENTS_IN_DIR := flask_covid19/app_build/requirements_in
-PIP_REQUIREMENTS_WINDOWS_DIR := flask_covid19/app_build/requirements_windows
-PIP_REQUIREMENTS_LINUX_DIR := flask_covid19/app_build/requirements_linux
+PIP_REQUIREMENTS_DIR := project/app_build/requirements
+PIP_REQUIREMENTS_IN_DIR := project/app_build/requirements_in
+PIP_REQUIREMENTS_WINDOWS_DIR := project/app_build/requirements_windows
+PIP_REQUIREMENTS_LINUX_DIR := project/app_build/requirements_linux
 DOCS_DIR := docs
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
@@ -66,7 +66,7 @@ all: start
 clean_linux:
 	@echo "clean_linux"
 	rm -rf .eggs
-	rm -rf artefact_content.egg-info
+	rm -rf project.egg-info
 	rm -rf build
 	rm -rf dist
 	rm -rf .checkmate
@@ -320,14 +320,14 @@ pip_compile_windows \
 pip_install_windows \
 pip_check \
 setup_frontend \
-flask_covid19
+project
 
 linux: clean_linux \
 pip_compile_linux \
 pip_install_linux \
 pip_check \
 setup_frontend \
-flask_covid19
+project
 
 setup: clean setup_development setup_build
 

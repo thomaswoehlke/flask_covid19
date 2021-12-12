@@ -7,7 +7,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "test",
-    "postinstall": "cd flask_covid19 && npm install && cd .."
+    "postinstall": "cd project && npm install && cd .."
   },
   "repository": {
     "type": "git",

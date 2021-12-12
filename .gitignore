@@ -1158,15 +1158,15 @@ Debug*/Debug*\ Libs
 dump.rdb
 /renv/*
 /renv
-!flask_covid19/app_build/scripts
+!project/app_build/scripts
 /logfile*.txt
 /.checkmate
-/flask_covid19/static/vendor/
-/flask_covid19/static/vendor/*
-/flask_covid19/static/vendor
-/flask_covid19/broker/
-/flask_covid19/broker/*
-/flask_covid19/broker
+/project/static/vendor/
+/project/static/vendor/*
+/project/static/vendor
+/project/broker/
+/project/broker/*
+/project/broker
 /RKI.csv
 /flask_covid19_client/nohup.out
 

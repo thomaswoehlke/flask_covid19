@@ -1,8 +1,8 @@
 import pytest
 import socket
 
-from flask_covid19.app_config.database import Covid19Application
-from flask_covid19.app_config import pytestconfig
+from project.app_config.database import Covid19Application
+from project.app_config import pytestconfig
 
 
 @pytest.fixture(scope='session')
