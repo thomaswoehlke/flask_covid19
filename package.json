@@ -1,35 +1,56 @@
 {
-  "name": "flask-covid19",
-  "version": "0.0.75",
-  "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "test",
-    "postinstall": "cd project && npm install && cd .."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thomaswoehlke/covid19python.git"
-  },
-  "keywords": [
-    "virus",
-    "pandemic",
-    "covid19",
-    "data",
-    "statistic",
-    "who",
-    "rki",
-    "python",
-    "flask",
-    "sqlalchemy",
-    "mariadb"
-  ],
-  "author": "Thomas Woehlke",
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/thomaswoehlke/covid19python/issues"
-  },
-  "homepage": "https://github.com/thomaswoehlke/covid19python#readme"
+    "name": "flask-covid19-static",
+    "version": "0.0.75",
+    "description": "Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+    "main": "/static/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thomaswoehlke/flask_covid19/tree/main/flask_covid19/"
+    },
+    "keywords": [
+        "virus",
+        "pandemic",
+        "covid19",
+        "data",
+        "statistic",
+        "who",
+        "rki",
+        "python",
+        "flask",
+        "sqlalchemy",
+        "mariadb"
+    ],
+    "author": "thomaswoehlke",
+    "license": "GPL-3.0-or-later",
+    "scripts": {
+        "build": "npm run build:version",
+        "build:version": "node scripts/version.js",
+        "docker:build": "node scripts/docker/docker-build.js",
+        "docker:run": "node scripts/docker/docker-run.js",
+        "postinstall": "grunt"
+    },
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "bootstrap": "^5.1.1",
+        "bootswatch": "^5.1.1",
+        "@popperjs/core": "^2.10.1"
+    },
+    "devDependencies": {
+        "grunt": "^1.4.1",
+        "grunt-cli": "^1.4.3",
+        "grunt-contrib-clean": "^2.0.0",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-cssmin": "^4.0.0",
+        "grunt-contrib-jshint": "^3.0.0",
+        "grunt-contrib-less": "^3.0.0",
+        "grunt-contrib-sass": "^2.0.0",
+        "grunt-contrib-uglify": "^5.0.1",
+        "grunt-contrib-versioning2": "^1.0.7",
+        "grunt-run-grunt": "^1.0.1",
+        "path-parse": ">=1.0.7"
+    },
+    "engines": {
+        "npm": "^8.1.2"
+    }
 }
