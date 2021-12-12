@@ -18,6 +18,7 @@ from project.data_owid.owid_service_update import OwidServiceUpdateBase
 
 
 class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
+
     def __full_update_date_reported(self):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update date_reported [begin]")
@@ -94,7 +95,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update fact_table [begin]")
+        app.logger.info(" [OWID] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
@@ -121,7 +122,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             if lfd_nr_tage % 7 == 0:
                 db.session.commit()
                 app.logger.info(
-                    " [OWID] full update fact_table  "
+                    " [OWID] full update "
                     + str(my_owid_date_reported)
                     + " ... "
                     + str(anzahl_db_zeilen_persistent)
@@ -132,14 +133,14 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 anzahl_db_zeilen_transient = 0
         db.session.commit()
         app.logger.info(
-            " [OWID] full update fact_table  :  "
+            " [OWID] full update :  "
             + str(anzahl_db_zeilen_persistent)
             + " rows total - for "
             + str(lfd_nr_tage)
             + " days"
         )
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update fact_table [done]")
+        app.logger.info(" [OWID] full update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
@@ -151,11 +152,11 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update fact_table [begin]")
+        app.logger.info(" [OWID] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         OwidData.remove_all()
         self.__full_update_fact_table()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update fact_table [done]")
+        app.logger.info(" [OWID] full update [done]")
         app.logger.info("------------------------------------------------------------")
         return self

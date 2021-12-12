@@ -11,10 +11,10 @@ PIP := pip
 NPM := npm
 GIT := git
 MAKE := make
-PIP_REQUIREMENTS_DIR := project/app_build/requirements
-PIP_REQUIREMENTS_IN_DIR := project/app_build/requirements_in
-PIP_REQUIREMENTS_WINDOWS_DIR := project/app_build/requirements_windows
-PIP_REQUIREMENTS_LINUX_DIR := project/app_build/requirements_linux
+PIP_REQUIREMENTS_DIR := project/app_bootstrap/requirements
+PIP_REQUIREMENTS_IN_DIR := project/app_bootstrap/requirements_in
+PIP_REQUIREMENTS_WINDOWS_DIR := project/app_bootstrap/requirements_windows
+PIP_REQUIREMENTS_LINUX_DIR := project/app_bootstrap/requirements_linux
 DOCS_DIR := docs
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv

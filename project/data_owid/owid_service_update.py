@@ -17,14 +17,14 @@ from project.data_owid.owid_model_location_group import OwidContinentFactory
 
 class OwidServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" OWID Service Update [init]")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" ready: [OWID] Service Update ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
 
 
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
@@ -115,7 +115,10 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             iso_code = ci[0]
             location = ci[1]
             continent = ci[2]
-            # app.logger.info("iso_code: " + iso_code + " - location: " + location + " - continent: " + continent)
+            # log_msg = "iso_code: " + iso_code \
+            #          + " - location: " + location \
+            #          + " - continent: " + continent
+            # app.logger.info(log_msg)
             oi = OwidImport.get_country_for(iso_code=iso_code, location=location)
             owid_continent = OwidContinent.find_by_location_group(
                 location_group=continent
@@ -131,7 +134,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] update fact_table [begin]")
+        app.logger.info(" [OWID] update [begin]")
         app.logger.info("------------------------------------------------------------")
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
@@ -179,7 +182,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
             + " days"
         )
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] update fact_table [done]")
+        app.logger.info(" [OWID] update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
