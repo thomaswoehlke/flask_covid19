@@ -5,6 +5,11 @@ from project.app_web import celery
 from project.app_web import run_web
 from project.app_web import app
 
+
+def create_app():
+    return app
+
+
 # ---------------------------------------------------------------------------------
 #  MAIN
 # ---------------------------------------------------------------------------------
