@@ -70,6 +70,8 @@ clean_linux:
 	rm -rf build
 	rm -rf dist
 	rm -rf .checkmate
+	rm -rf node_modules
+	rm -rf .tox
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
