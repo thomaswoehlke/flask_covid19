@@ -147,8 +147,8 @@ class Covid19Application:
     def __init_celery(self):
         self.__create_celery_broker_paths()
         if sys.platform == "linux":
-            if self.root_dir.endswith("flask_covid19"):
-                self.root_dir.replace(os.sep + "flask_covid19", "")
+            if self.root_dir.endswith("project"):
+                self.root_dir.replace(os.sep + "project", "")
             os.chdir(self.root_dir)
         else:
             os.chdir(self.root_dir)
