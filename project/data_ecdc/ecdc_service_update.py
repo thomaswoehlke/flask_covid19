@@ -199,7 +199,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
 
     def __update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] update data [begin]")
+        app.logger.info(" [ECDC] update [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         dict_date_reported_from_import = self.__get_date_reported_from_import()
@@ -230,12 +230,12 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
                 db.session.add(o)
                 i += 1
                 if i % 1000 == 0:
-                    app.logger.info(" [ECDC] update data  ... " + str(i) + " rows")
+                    app.logger.info(" [ECDC] update ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" [ECDC] update data  ... " + str(i) + " rows total")
+        app.logger.info(" [ECDC] update ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] update data [done]")
+        app.logger.info(" [ECDC] update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 

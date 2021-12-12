@@ -137,7 +137,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
 
     def __full_update_data(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] full update data [begin]")
+        app.logger.info(" [ECDC] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         EcdcData.remove_all()
         i = 0
@@ -178,7 +178,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
                 s2 = str(ecdc_datereported)
                 s3 = str(k)
                 app.logger.info(
-                    " [ECDC] full update data  ... "
+                    " [ECDC] full update ... "
                     + s1
                     + " rows ... "
                     + s2
@@ -189,9 +189,9 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
                 k = 0
                 db.session.commit()
         db.session.commit()
-        app.logger.info(" [ECDC] full update data  ... " + str(i) + " rows total")
+        app.logger.info(" [ECDC] full update ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [ECDC] full update data [done]")
+        app.logger.info(" [ECDC] full update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
