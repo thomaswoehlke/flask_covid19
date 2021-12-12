@@ -12,6 +12,15 @@ class WebService:
         app.logger.info(" ready: [app_web] Web Service ")
         app.logger.debug("------------------------------------------------------------")
 
+    def create_user(self, database):
+        app.logger.info(" ")
+        app.logger.info("#############################################################")
+        app.logger.info("#                create-user                                #")
+        app.logger.info("#############################################################")
+        app.logger.info(" ")
+        self.__user_service.prepare_default_user_login(database)
+        app.logger.info(" ")
+
     def prepare_run_web(self, database):
         app.logger.info(" ")
         app.logger.info("#############################################################")
