@@ -1,3 +1,8 @@
+import os
+import socket
+
+WTF_CSRF_ENABLED = True
+DEBUG = True
 SECRET_KEY = "vfdjv423ndf654&%%"
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 MY_CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
@@ -19,7 +24,10 @@ FLASK_APP_DEBUGGER_ACTIVE = True
 USER_ADMIN_LOGIN = "admin@admin.de"
 USER_ADMIN_USERNAME = "appplicationmanager"
 USER_ADMIN_PASSWORD = "pbkdf2:sha256:260000$EsSvYUmcQKtCfMqB$99cdc56efd05a6849b3603260fac575df4c0c5b36d9385465f817b381c4e06c8"
+FLASK_RUN_PORT = 9090
+FLASK_RUN_HOST = socket.gethostname()
 PORT = 9090
+HOST = socket.gethostname()
 TEST_IMPORT_WHO = False
 TEST_IMPORT_RKI = False
 TEST_IMPORT_ECDC = False

@@ -34,6 +34,7 @@ class Covid19Application:
             oo.init_app(self.app)
         self.root_dir = os.getcwd()
         self.create_celery()
+        self.__print_config()
 
     def __init_db(self):
         self.db = SQLAlchemy()
@@ -184,6 +185,12 @@ class Covid19Application:
 
     def create_celery(self):
         return self.__init_celery()
+
+    def __print_config(self):
+        self.app.logger.debug("-------------------------------------------------------")
+        for key in self.app.config.keys():
+            self.app.logger.debug(" " + str(key) + " " + str(self.app.config[key]))
+        self.app.logger.debug("-------------------------------------------------------")
 
 
 covid19_application = Covid19Application()
