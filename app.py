@@ -62,36 +62,30 @@ def all_full_update():
 
 @app.cli.command("all-full-update-dimension-tables")
 def all_full_update_dimension_tables():
-    """[ALL] full update"""
+    """[ALL] full update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.full_update_dimension_tables()
 
 
 @app.cli.command("all-update-dimension-tables")
 def all_update_dimension_tables():
-    """[ALL] full update"""
+    """[ALL] update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.update_dimension_tables()
 
 
 @app.cli.command("all-full-update-fact-table")
 def all_full_update_fact_table():
-    """[ALL] full update"""
+    """[ALL] full update fact table"""
     with app.app_context():
         all_dispachter_matrix_service.full_update_fact_table()
 
 
 @app.cli.command("all-update-fact-table")
 def all_update_fact_table():
-    """[ALL] full update"""
+    """[ALL] full update fact table"""
     with app.app_context():
         all_dispachter_matrix_service.update_fact_table()
-
-
-# full_update_dimension_tables
-# update_dimension_tables
-# full_update_fact_table
-# update_fact_table
 
 @app.cli.command("who-download")
 def who_download():
@@ -266,13 +260,6 @@ def vaccination_full_update():
     """[vaccination] full update"""
     with app.app_context():
         vaccination_service.full_update()
-
-
-@app.cli.command("vaccination-update")
-def vaccination_update():
-    """[vaccination] update"""
-    with app.app_context():
-        vaccination_service.update()
 
 
 @app.cli.command("admin-database-dump")
