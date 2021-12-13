@@ -1,20 +1,47 @@
-import logging
+"""
+flask_covid19
+-------------
+Various utility functions and custom data types for SQLAlchemy.
+"""
+
 import os
-import subprocess
 import sys
+import re
+import logging
+import subprocess
 
 from setuptools import find_packages
 from setuptools import setup
 
-version = "0.0.77"
+HERE = os.path.dirname(os.path.abspath(__file__))
 
-scripts_dir = "flask_covid19" + os.sep + "app_build" + os.sep + "scripts" + os.sep
-pip_requirements_dir = "flask_covid19" + os.sep + "app_build" + os.sep + "requirements"
 
-needs_pytest = {"pytest", "test", "ptr"}.intersection(sys.argv)
-pytest_runner = ["pytest-runner"] if needs_pytest else []
+def get_version():
+    filename = os.path.join(HERE, 'project', '__init__.py')
+    with open(filename) as f:
+        contents = f.read()
+    pattern = r"^__version__ = '(.*?)'$"
+    return re.search(pattern, contents, re.MULTILINE).group(1)
 
-readme = open("README.md").read()
+
+scripts_dir = "project" + os.sep \
+              + "app_bootstrap" + os.sep \
+              + "scripts" + os.sep
+
+pip_requirements_in_dir = "project" + os.sep \
+                          + "app_bootstrap" + os.sep \
+                          + "requirements_in"
+
+pip_requirements_linux_dir = "project" + os.sep \
+                          + "app_bootstrap" + os.sep \
+                          + "requirements_linux"
+
+pip_requirements_windows_dir = "project" + os.sep \
+                          + "app_bootstrap" + os.sep \
+                          + "requirements_windows"
+
+
+readme = open("docs" + os.sep + "README.md").read()
 history = open("docs" + os.sep + "BACKLOG.md").read()
 
 keywords_list = [
@@ -22,9 +49,11 @@ keywords_list = [
     "pandemic",
     "covid19",
     "corona",
-    "who",
-    "rki",
-    "ecdc",
+    "SARS-CoV-2",
+    "WHO",
+    "RKI",
+    "ECDC",
+    "OWID",
     "deaths",
     "cases",
     "vaccination",
@@ -60,20 +89,24 @@ requires_test = [
 
 requires_docs = [
     "Pallets-Sphinx-Themes",
-    # "sphinx_bootstrap_theme",
-    "sphinx",
+    "Sphinx",
     "myst-parser",
-    # "sphinx-issues",
-    # "sphinxcontrib-log-cabinet",
-    # "sphinxcontrib-plantuml",
-    # "sphinxcontrib-bibtex",
-    # "sphinxcontrib-images",
-    # "sphinxcontrib-gravizo",
-    # "sphinxcontrib-needs",
-    # "sphinxcontrib-markdown",
-    # "sphinxcontrib-srclinks",
-    # "sphinx-tabs",
+    "babel>=2.9.1",
+    "sphinx-issues",
+    "sphinxcontrib-log-cabinet",
+    "sphinxcontrib-plantuml",
+    "sphinxcontrib-bibtex",
+    "sphinxcontrib-images",
+    "sphinxcontrib-gravizo",
+    "sphinxcontrib-needs",
+    "sphinxcontrib-markdown",
+    "sphinxcontrib-srclinks",
+    "sphinx-tabs",
 ]
+
+needs_pytest = {"pytest", "test", "ptr"}.intersection(sys.argv)
+
+pytest_runner = ["pytest-runner"] if needs_pytest else []
 
 dotenv_require = ["python-dotenv", "tqdm"]
 
@@ -120,16 +153,35 @@ packages = find_packages()
 
 
 def run_compile_requirements():
-    my_cmd_list = [
-        ["pip-compile", "-r", pip_requirements_dir + os.sep + "build.in"],
-        ["pip-compile", "-r", pip_requirements_dir + os.sep + "docs.in"],
-        ["pip-compile", "-r", pip_requirements_dir + os.sep + "tests.in"],
-        ["pip-compile", "-r", pip_requirements_dir + os.sep + "dev.in"],
-        ["pip", "install", "-r", pip_requirements_dir + os.sep + "build.in"],
-        ["pip", "install", "-r", pip_requirements_dir + os.sep + "docs.in"],
-        ["pip", "install", "-r", pip_requirements_dir + os.sep + "tests.in"],
-        ["pip", "install", "-r", pip_requirements_dir + os.sep + "dev.in"],
-    ]
+    u = os.uname()
+    if u.sysname == 'Linux':
+        pip_requirements_dir = pip_requirements_linux_dir
+        my_cmd_list = [
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "build.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "docs.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "tests.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "dev.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "linux.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "build.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "docs.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "tests.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "dev.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "linux.in"],
+        ]
+    else:
+        pip_requirements_dir = pip_requirements_windows_dir
+        my_cmd_list = [
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "build.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "docs.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "tests.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "dev.in"],
+            ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "windows.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "build.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "docs.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "tests.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "dev.in"],
+            ["pip", "install", "-r", pip_requirements_dir + os.sep + "windows.in"],
+        ]
     for my_cmd in my_cmd_list:
         returncode = subprocess.call(my_cmd, shell=True)
         if returncode == 0:
@@ -160,13 +212,14 @@ def get_python_requirements_from_txt():
 
 
 setup(
-    name="flask-covid19",
-    version=version,
+    name="flask_covid19",
+    description="Covid19 Data Aggregation "
+                + "- also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+    version=get_version(),
     url="https://github.com/thomaswoehlke/covid19python.git",
-    license="GNU General Public License v3 (GPLv3)",
     author="Thomas Woehlke",
     author_email="thomas.woehlke@gmail.com",
-    description="Covid19 Data Aggregation - also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+    license="GNU General Public License v3 (GPLv3)",
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
