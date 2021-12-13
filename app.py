@@ -87,6 +87,13 @@ def who_update():
         who_service.update()
 
 
+@app.cli.command("who-delete-last-day")
+def who_delete_last_day():
+    """[WHO] delete_last_day"""
+    with app.app_context():
+        who_service.delete_last_day()
+
+
 @app.cli.command("ecdc-download")
 def ecdc_download():
     """[ECDC] download"""
@@ -143,6 +150,13 @@ def owid_update():
         owid_service.update()
 
 
+@app.cli.command("owid-delete-last-day")
+def owid_delete_last_day():
+    """[OWID] delete last day"""
+    with app.app_context():
+        owid_service.delete_last_day()
+
+
 @app.cli.command("rki-download")
 def rki_download():
     """[RKI] download"""
@@ -169,6 +183,13 @@ def rki_update():
     """[RKI] update"""
     with app.app_context():
         rki_service.update()
+
+
+@app.cli.command("rki-delete-last-day")
+def rki_delete_last_day():
+    """[RKI] delete last day"""
+    with app.app_context():
+        rki_service.delete_last_day()
 
 
 @app.cli.command("vaccination-download")
