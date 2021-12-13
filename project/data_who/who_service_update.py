@@ -29,6 +29,7 @@ class WhoServiceUpdateBase:
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
+
     def __who_import_get_new_dates(self):
         todo = []
         odr_list = WhoDateReported.find_all_as_str()
@@ -69,6 +70,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
+        task = Task.create(sector="WHO", task_name="__update_date_reported").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -88,9 +90,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_location_group(self):
+        task = Task.create(sector="WHO", task_name="__update_location_group").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location_group [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -116,9 +120,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location_group [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_location(self):
+        task = Task.create(sector="WHO", task_name="__update_location").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -157,9 +163,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_data(self):
+        task = Task.create(sector="WHO", task_name="__update_data").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -201,6 +209,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update data [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
