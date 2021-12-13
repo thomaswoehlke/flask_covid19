@@ -9,7 +9,14 @@ class Task(db.Model, AllEntityMixinBase):
     __tablename__ = "task"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint("datum_started", "datum_finished", name="uix_task"),
+        db.UniqueConstraint(
+            "datum_started",
+            "datum_finished",
+            "sector",
+            "task_name",
+            "new_notification",
+            name="uix_task"
+        ),
     )
 
     def __repr__(self):
