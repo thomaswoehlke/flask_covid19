@@ -204,7 +204,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="WHO", task_name="update_dimension_tables")
+        task = Task.create(sector="WHO", task_name="update_dimension_tables").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -218,7 +218,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="WHO", task_name="update_fact_table")
+        task = Task.create(sector="WHO", task_name="update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -231,7 +231,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="WHO", task_name="delete_last_day")
+        task = Task.create(sector="WHO", task_name="delete_last_day").read()
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [WHO] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")

@@ -26,7 +26,7 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
-        task = Task.create(sector="OWID", task_name="import_file")
+        task = Task.create(sector="OWID", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [begin]")
         app.logger.info("------------------------------------------------------------")

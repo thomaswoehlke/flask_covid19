@@ -91,13 +91,13 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="Vaccination", task_name="update_dimension_tables")
+        task = Task.create(sector="Vaccination", task_name="update_dimension_tables").read()
         self.__update_date_reported()
         Task.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="Vaccination", task_name="update_fact_table")
+        task = Task.create(sector="Vaccination", task_name="update_fact_table").read()
         self.__update_fact_table()
         Task.finish(task_id=task.id)
         return self

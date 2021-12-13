@@ -26,7 +26,7 @@ class EcdcServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
-        task = Task.create(sector="ECDC", task_name="import_file")
+        task = Task.create(sector="ECDC", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] import [begin]")
         app.logger.info("------------------------------------------------------------")

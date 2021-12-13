@@ -46,6 +46,10 @@ class Task(db.Model, AllEntityMixinBase):
     task_name = db.Column(db.String(255), nullable=False, index=True)
     new_notification = db.Column(db.Boolean, nullable=False, index=True)
 
+    def read(self):
+        self.new_notification = False
+        return self
+
     @classmethod
     def create(cls, sector: str, task_name: str):
         new_notification = True

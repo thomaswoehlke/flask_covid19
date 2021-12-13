@@ -28,7 +28,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
-        task = Task.create(sector="Vaccination", task_name="import_file")
+        task = Task.create(sector="Vaccination", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [begin]")
         app.logger.info("------------------------------------------------------------")

@@ -74,14 +74,14 @@ class VaccinationServiceUpdateFull(
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="Vaccination", task_name="full_update_dimension_tables")
+        task = Task.create(sector="Vaccination", task_name="full_update_dimension_tables").read()
         VaccinationData.remove_all()
         self.__full_update_date_reported()
         Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="Vaccination", task_name="full_update_fact_table")
+        task = Task.create(sector="Vaccination", task_name="full_update_fact_table").read()
         self.__full_update_fact_table()
         Task.finish(task_id=task.id)
         return self

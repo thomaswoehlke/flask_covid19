@@ -214,7 +214,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="ECDC", task_name="update_dimension_tables")
+        task = Task.create(sector="ECDC", task_name="update_dimension_tables").read()
         self.__update_date_reported()
         self.__update_locations()
         self.__update_altersgruppen()
@@ -222,13 +222,13 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="ECDC", task_name="update_fact_table")
+        task = Task.create(sector="ECDC", task_name="update_fact_table").read()
         self.__update_data()
         Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="ECDC", task_name="delete_last_day")
+        task = Task.create(sector="ECDC", task_name="delete_last_day").read()
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [RKI] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")

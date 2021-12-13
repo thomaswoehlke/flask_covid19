@@ -29,7 +29,7 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
-        task = Task.create(sector="WHO", task_name="import_file")
+        task = Task.create(sector="WHO", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")

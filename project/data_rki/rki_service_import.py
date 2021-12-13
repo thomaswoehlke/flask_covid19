@@ -24,7 +24,7 @@ class RkiServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
-        task = Task.create(sector="RKI", task_name="import_file")
+        task = Task.create(sector="RKI", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import_file  [begin]")
         app.logger.info("------------------------------------------------------------")
