@@ -23,6 +23,7 @@ from project.data_rki.rki_service_update import RkiServiceUpdateBase
 
 class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_meldedatum(self):
+        task = Task.create(sector="RKI", task_name="__full_update_meldedatum").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update meldedatum [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -46,9 +47,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update meldedatum [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_altersgruppe(self):
+        task = Task.create(sector="RKI", task_name="__full_update_altersgruppe").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update altersgruppe [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -68,9 +71,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update altersgruppe [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_bundesland(self):
+        task = Task.create(sector="RKI", task_name="__full_update_bundesland").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update bundesland [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -90,9 +95,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update bundesland [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_landkreis(self):
+        task = Task.create(sector="RKI", task_name="__full_update_landkreis").read()
         RkiLandkreis.remove_all()
         self.__full_update_bundesland()
         app.logger.info("------------------------------------------------------------")
@@ -122,11 +129,13 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update landkreis [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_data(self):
+        task = Task.create(sector="RKI", task_name="__full_update_data").read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] full update data [begin]")
+        app.logger.info(" [RKI] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         RkiData.remove_all()
         i = 0
@@ -170,7 +179,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             db.session.commit()
             sd = str(my_meldedatum)
             app.logger.info(
-                " [RKI] full update data ... "
+                " [RKI] full update ... "
                 + str(i)
                 + " rows ... "
                 + sd
@@ -180,11 +189,12 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             )
             k = 0
         db.session.commit()
-        app.logger.info(" [RKI] full update data ... " + str(i) + " total rows")
+        app.logger.info(" [RKI] full update ... " + str(i) + " total rows")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] full update data [done]")
+        app.logger.info(" [RKI] full update [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __clean_dimension_tables(self):
@@ -252,6 +262,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
+        task = Task.create(sector="RKI", task_name="__update_date_reported").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -273,9 +284,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_location_groups(self):
+        task = Task.create(sector="RKI", task_name="__update_location_groups").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update location_groups [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -295,9 +308,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update location_groups [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_locations(self):
+        task = Task.create(sector="RKI", task_name="__update_locations").read()
         self.__update_location_groups()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update locations [begin]")
@@ -324,9 +339,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update locations [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_altersgruppen(self):
+        task = Task.create(sector="RKI", task_name="__update_altersgruppen").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update altersgruppen [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -345,9 +362,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update altersgruppen [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_data(self):
+        task = Task.create(sector="RKI", task_name="__update_data").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -390,6 +409,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update data [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):

@@ -183,31 +183,35 @@ def run_compile_requirements():
             ["pip", "install", "-r", pip_requirements_dir + os.sep + "windows.in"],
         ]
     for my_cmd in my_cmd_list:
-        returncode = subprocess.call(my_cmd, shell=True)
-        if returncode == 0:
-            logging.info("retcode: " + str(returncode))
+        return_code = subprocess.call(my_cmd, shell=True)
+        if return_code == 0:
+            logging.info("return_code: " + str(return_code))
         else:
-            logging.error("retcode: " + str(returncode))
+            logging.error("return_code: " + str(return_code))
     return None
 
 
 def run_npm_install():
-    my_cmd = ["npm", "install"]
-    returncode = subprocess.call(my_cmd, shell=True)
-    if returncode == 0:
-        logging.info("retcode: " + str(returncode))
-    else:
-        logging.error("retcode: " + str(returncode))
+    my_cmd_list = [
+        ["npm", "-y"],
+        ["npm", "install"],
+    ]
+    for my_cmd in my_cmd_list:
+        return_code = subprocess.call(my_cmd, shell=True)
+        if return_code == 0:
+            logging.info("return_code: " + str(return_code))
+        else:
+            logging.error("return_code: " + str(return_code))
     return None
 
 
 def get_python_requirements_from_txt():
     my_cmd = ["bash", "scripts" + os.sep + "script_get_python_requirements_from_txt.sh"]
-    returncode = subprocess.call(my_cmd, shell=True)
-    if returncode == 0:
-        logging.info("retcode: " + str(returncode))
+    return_code = subprocess.call(my_cmd, shell=True)
+    if return_code == 0:
+        logging.info("return_code: " + str(return_code))
     else:
-        logging.error("retcode: " + str(returncode))
+        logging.error("return_code: " + str(return_code))
     return None
 
 

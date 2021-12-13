@@ -27,7 +27,6 @@ def create_user():
     """[APP] create user"""
     with app.app_context():
         db.create_all()
-        # cache.clear()
         web_service.create_user(db)
 
 
@@ -58,6 +57,39 @@ def all_full_update():
     with app.app_context():
         all_dispachter_matrix_service.full_update()
 
+
+@app.cli.command("all-full-update-dimension-tables")
+def all_full_update_dimension_tables():
+    """[ALL] full update"""
+    with app.app_context():
+        all_dispachter_matrix_service.full_update_dimension_tables()
+
+
+@app.cli.command("all-update-dimension-tables")
+def all_update_dimension_tables():
+    """[ALL] full update"""
+    with app.app_context():
+        all_dispachter_matrix_service.update_dimension_tables()
+
+
+@app.cli.command("all-full-update-fact-table")
+def all_full_update_fact_table():
+    """[ALL] full update"""
+    with app.app_context():
+        all_dispachter_matrix_service.full_update_fact_table()
+
+
+@app.cli.command("all-update-fact-table")
+def all_update_fact_table():
+    """[ALL] full update"""
+    with app.app_context():
+        all_dispachter_matrix_service.update_fact_table()
+
+
+# full_update_dimension_tables
+# update_dimension_tables
+# full_update_fact_table
+# update_fact_table
 
 @app.cli.command("who-download")
 def who_download():
@@ -113,13 +145,6 @@ def ecdc_full_update():
     """[ECDC] full update"""
     with app.app_context():
         ecdc_service.full_update()
-
-
-@app.cli.command("ecdc-update")
-def ecdc_update():
-    """[ECDC] update"""
-    with app.app_context():
-        ecdc_service.update()
 
 
 @app.cli.command("owid-download")
@@ -190,6 +215,34 @@ def rki_delete_last_day():
     """[RKI] delete last day"""
     with app.app_context():
         rki_service.delete_last_day()
+
+
+@app.cli.command("rki-full-update-dimension-tables")
+def rki_full_update_dimension_tables():
+    """[RKI] full update dimension tables"""
+    with app.app_context():
+        rki_service.full_update_dimension_tables()
+
+
+@app.cli.command("rki-update-dimension-tables")
+def rki_update_dimension_tables():
+    """[RKI] update dimension tables"""
+    with app.app_context():
+        rki_service.update_dimension_tables()
+
+
+@app.cli.command("rki-full-update-fact-table")
+def rki_full_update_fact_table():
+    """[RKI] full update fact table"""
+    with app.app_context():
+        rki_service.full_update_fact_table()
+
+
+@app.cli.command("rki-update-fact-table")
+def rki_update_fact_table():
+    """[RKI] update fact table"""
+    with app.app_context():
+        rki_service.update_fact_table()
 
 
 @app.cli.command("vaccination-download")
