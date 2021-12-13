@@ -49,7 +49,7 @@ class Task(db.Model, AllEntityMixinBase):
     id = db.Column(db.Integer, primary_key=True)
     datum_started = db.Column(db.DateTime, nullable=False, index=True)
     datum_finished = db.Column(db.DateTime, nullable=True, index=True)
-    sector = db.Column(db.String(10), nullable=False, index=True)
+    sector = db.Column(db.String(16), nullable=False, index=True)
     task_name = db.Column(db.String(255), nullable=False, index=True)
     new_notification = db.Column(db.Boolean, nullable=False, index=True)
 
