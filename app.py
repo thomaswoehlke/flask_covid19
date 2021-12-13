@@ -117,7 +117,7 @@ def who_update():
 
 @app.cli.command("who-delete-last-day")
 def who_delete_last_day():
-    """[WHO] delete_last_day"""
+    """[WHO] delete last day"""
     with app.app_context():
         who_service.delete_last_day()
 
