@@ -6,6 +6,8 @@ import project.data_all
 from project.app_web.web_dispachter_matrix_service import web_service
 from project.app_web.web_dispachter_matrix_service import all_dispachter_matrix_service
 
+
+from project.app_web.web_dispachter_matrix_service import app_admin_service
 from project.app_web.web_dispachter_matrix_service import who_service
 from project.app_web.web_dispachter_matrix_service import owid_service
 from project.app_web.web_dispachter_matrix_service import ecdc_service
@@ -271,6 +273,27 @@ def vaccination_update():
     """[vaccination] update"""
     with app.app_context():
         vaccination_service.update()
+
+
+@app.cli.command("admin-database-dump")
+def admin_database_dump():
+    """[Admin] database dump"""
+    with app.app_context():
+        app_admin_service.database_dump()
+
+
+@app.cli.command("admin-database-dump-reimport")
+def admin_database_dump_reimport():
+    """[Admin] database dump reimport"""
+    with app.app_context():
+        app_admin_service.database_dump_reimport()
+
+
+@app.cli.command("admin-database-drop-and-create")
+def admin_database_drop_and_create():
+    """[Admin] database drop and create"""
+    with app.app_context():
+        app_admin_service.database_drop_and_create()
 
 
 # ---------------------------------------------------------------------------------
