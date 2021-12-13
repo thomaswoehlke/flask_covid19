@@ -1,9 +1,7 @@
-graft src/covid19/static
-global-exclude *.pyc
-
-include docs/BACKLOG.md
-include LICENSE.md
-include requirements/*.txt
-graft docs
-graft src/tests
-global-exclude *.pyc
+include CHANGES.rst LICENSE README.rst conftest.py .isort.cfg
+recursive-include tests *
+recursive-exclude tests *.pyc
+recursive-include docs *
+recursive-exclude docs *.pyc
+prune docs/_build
+exclude docs/_themes/.git
