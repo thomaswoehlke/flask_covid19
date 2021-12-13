@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
@@ -175,6 +176,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_dimension_tables(self):
+        task = Task.create(sector="WHO", task_name="update_dimension_tables")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -184,9 +186,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
+        task = Task.create(sector="WHO", task_name="update_dimension_tables")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -194,4 +198,5 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

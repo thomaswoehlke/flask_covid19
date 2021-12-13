@@ -1,6 +1,6 @@
 import click
 
-import project.app_config
+import project.app_bootstrap
 import project.app_web
 import project.data_all
 from project.app_web.web_dispachter_matrix_service import web_service

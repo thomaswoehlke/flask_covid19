@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
@@ -145,12 +146,15 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_dimension_tables(self):
+        task = Task.create(sector="OWID", task_name="full_update_dimension_tables")
         OwidData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()
+        Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
+        task = Task.create(sector="OWID", task_name="full_update_fact_table")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -159,4 +163,5 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
@@ -45,7 +46,7 @@ class VaccinationServiceUpdateFull(
 
     def __full_update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] full update fact_table [begin]")
+        app.logger.info(" [Vaccination] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
@@ -61,22 +62,26 @@ class VaccinationServiceUpdateFull(
                 i += 1
                 if i % 500 == 0:
                     app.logger.info(
-                        " [Vaccination] full update data ... " + str(i) + " rows"
+                        " [Vaccination] full update ... " + str(i) + " rows"
                     )
                     db.session.commit()
         db.session.commit()
-        app.logger.info(" [Vaccination] full update data ... " + str(i) + " rows total")
+        app.logger.info(" [Vaccination] full update ... " + str(i) + " rows total")
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] full update fact_table [done]")
+        app.logger.info(" [Vaccination] full update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def full_update_dimension_tables(self):
+        task = Task.create(sector="Vaccination", task_name="full_update_dimension_tables")
         VaccinationData.remove_all()
         self.__full_update_date_reported()
+        Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
+        task = Task.create(sector="Vaccination", task_name="full_update_fact_table")
         self.__full_update_fact_table()
+        Task.finish(task_id=task.id)
         return self

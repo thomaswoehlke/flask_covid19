@@ -3,6 +3,7 @@ import sys
 
 from project.app_bootstrap.database import covid19_application
 from project.data_all.all_config import BlueprintConfig
+from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
@@ -28,6 +29,7 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
+        task = Task.create(sector="WHO", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -85,4 +87,5 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

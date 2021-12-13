@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
@@ -65,7 +66,7 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
 
     def __update_fact_table(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] update fact_table [begin]")
+        app.logger.info(" [Vaccination] update [begin]")
         app.logger.info("------------------------------------------------------------")
         result_date_rep = VaccinationImport.get_daterep_missing_in_vaccination_data()
         i = 0
@@ -77,24 +78,28 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 i += 1
                 if i % 500 == 0:
                     app.logger.info(
-                        " [Vaccination] update fact_table ... " + str(i) + " rows"
+                        " [Vaccination] update ... " + str(i) + " rows"
                     )
                     db.session.commit()
         db.session.commit()
         app.logger.info(
-            " [Vaccination] update fact_table ... " + str(i) + " rows total"
+            " [Vaccination] update ... " + str(i) + " rows total"
         )
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [Vaccination] update fact_table [done]")
+        app.logger.info(" [Vaccination] update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_dimension_tables(self):
+        task = Task.create(sector="Vaccination", task_name="update_dimension_tables")
         self.__update_date_reported()
+        Task.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
+        task = Task.create(sector="Vaccination", task_name="update_fact_table")
         self.__update_fact_table()
+        Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):

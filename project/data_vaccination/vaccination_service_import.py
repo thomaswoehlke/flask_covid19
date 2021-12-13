@@ -1,6 +1,7 @@
 import csv
 
 from project.app_bootstrap.database import app
+from project.data_all.all_task_model import Task
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
@@ -27,6 +28,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.debug("------------------------------------------------------------")
 
     def import_file(self):
+        task = Task.create(sector="Vaccination", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -72,4 +74,5 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

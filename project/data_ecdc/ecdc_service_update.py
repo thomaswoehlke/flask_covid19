@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
@@ -240,10 +241,13 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
+        task = Task.create(sector="ECDC", task_name="update_fact_table")
         self.__update_data()
+        Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
+        task = Task.create(sector="ECDC", task_name="delete_last_day")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [ECDC] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -270,4 +274,5 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [ECDC] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

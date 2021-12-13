@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
@@ -392,16 +393,21 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
+        task = Task.create(sector="RKI", task_name="update_dimension_tables")
         self.__update_date_reported()
         self.__update_locations()
         self.__update_altersgruppen()
+        Task.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
+        task = Task.create(sector="RKI", task_name="update_fact_table")
         self.__update_data()
+        Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
+        task = Task.create(sector="RKI", task_name="delete_last_day")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [RKI] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -427,4 +433,5 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] delete last_day [DONE]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self

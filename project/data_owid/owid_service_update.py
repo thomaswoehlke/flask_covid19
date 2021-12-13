@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
+from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
@@ -187,6 +188,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
+        task = Task.create(sector="OWID", task_name="update_dimension_tables")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -195,9 +197,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
+        task = Task.create(sector="OWID", task_name="update_fact_table")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -205,9 +209,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
+        task = Task.create(sector="OWID", task_name="delete_last_day")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [OWID] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -224,4 +230,5 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [OWID] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
