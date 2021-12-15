@@ -1,3 +1,8 @@
+
+import pytest
+
+
+@pytest.mark.usefixtures('app', 'client')
 def test_empty_db(client, app):
     """Start with a blank database."""
 
