@@ -1,0 +1,35 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: venv
+      run: make venv
+      
+    - name: activate dependencies
+      run: . ./venv/bin/activate
+      
+    - name: Run start_linux
+      run: make start_linux
+      
+    - name: Run linux
+      run: make linux
+      
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        
+    - name: Install Dependencies
+      run: npm install
