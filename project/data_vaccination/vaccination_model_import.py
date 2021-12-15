@@ -50,7 +50,7 @@ class VaccinationImport(AllImport):
         )
 
     @classmethod
-    def get_all(cls):
+    def find_all(cls):
         return db.session.query(cls).order_by(cls.datum).all()
 
     @classmethod
