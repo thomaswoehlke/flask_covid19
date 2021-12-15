@@ -135,7 +135,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_data(self):
         task = Task.create(sector="WHO", task_name="__full_update_data").read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] full update data [begin]")
+        app.logger.info(" [WHO] full update [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] WhoData.remove_all() [begin]")
         WhoData.remove_all()
@@ -166,7 +166,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
                 db.session.commit()
                 s2 = str(who_date_reported)
                 app.logger.info(
-                    " [WHO] full update data ... "
+                    " [WHO] full update ... "
                     + str(i)
                     + " rows ... "
                     + s2
@@ -176,9 +176,9 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
                 )
                 k = 0
         db.session.commit()
-        app.logger.info(" [WHO] full update data:  " + str(i) + " total rows")
+        app.logger.info(" [WHO] full update:  " + str(i) + " total rows")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] full update data [done]")
+        app.logger.info(" [WHO] full update [done]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self

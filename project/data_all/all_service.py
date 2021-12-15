@@ -80,7 +80,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def import_file(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="import_file")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] import_file [start]")
         app.logger.debug("------------------------------------------------------------")
@@ -94,7 +94,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="full_update_dimension_tables")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update_dimension_tables [start] ")
@@ -111,7 +111,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="update_dimension_tables")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update_dimension_tables [start] ")
@@ -128,7 +128,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="full_update_fact_table")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update_fact_table [start] ")
@@ -145,7 +145,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="update_fact_table")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update_fact_table [start] ")
@@ -162,7 +162,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="full_update")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update [start] ")
@@ -179,7 +179,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="update")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update [start] ")
@@ -198,7 +198,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="ALL", task_name="download")
+        task = Task.create(sector="ALL", task_name="delete_last_day")
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] delete_last_day [start] ")
