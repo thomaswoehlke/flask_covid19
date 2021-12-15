@@ -82,6 +82,10 @@ pluggy==1.0.0
 pre-commit==2.16.0
 prompt-toolkit==3.0.24
 protobuf==3.19.1
+psycopg==3.0.7
+psycopg-binary==3.0.7
+psycopg-pool==3.0.2
+psycopg2==2.9.2
 py==1.11.0
 pyaml==21.10.1
 pybtex==0.24.0
