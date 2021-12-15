@@ -13,23 +13,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: venv
       run: make venv
-      
+
     - name: activate dependencies
       run: . ./venv/bin/activate
-      
-    - name: Run start_linux
-      run: make start_linux
-      
-    - name: Run linux
-      run: make linux
-      
-    - name: Setup Node
+
+    - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-        
-    - name: Install Dependencies
+
+    - name: Install Node.js Dependencies
       run: npm install
+
+    - name: Run start_linux
+      run: make start_linux
+
+    - name: Run linux
+      run: make linux
+
