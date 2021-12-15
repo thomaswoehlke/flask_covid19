@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Install Linux Dependencies
         run: sudo apt-get install -y libpq-dev libmariadb-dev mariadb-client postgresql-client
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -23,23 +25,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r etc/requirements_linux.txt
-    - name: venv
-      run: make venv
 
-    - name: activate dependencies
-      run: . ./venv/bin/activate
+      - name: venv
+        run: make venv
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
+      - name: activate dependencies
+        run: . ./venv/bin/activate
 
-    - name: Install Node.js Dependencies
-      run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
 
-    - name: Run start_linux
-      run: make start_linux
+      - name: Install Node.js Dependencies
+        run: npm install
 
-    - name: Run linux
-      run: make linux
+      - name: Run start_linux
+        run: make start_linux
+
+      - name: Run linux
+        run: make linux
 
