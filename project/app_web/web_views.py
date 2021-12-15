@@ -30,7 +30,7 @@ app.register_blueprint(app_vaccination, url_prefix="/vaccination")
 app.register_blueprint(app_rki, url_prefix="/rki/")
 
 
-############################################################################################
+#######################################################################################
 #
 # WEB
 #
@@ -38,9 +38,9 @@ app.register_blueprint(app_rki, url_prefix="/rki/")
 
 class BlueprintApplicationUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] ApplicationUrls ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @app.route("/home")

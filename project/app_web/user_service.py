@@ -5,13 +5,13 @@ from project.app_web.user_model import User
 
 class UserService:
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" User Service [init]")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [app_web] User Service ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
 
     def set_database(self, database):
         self.__database = database

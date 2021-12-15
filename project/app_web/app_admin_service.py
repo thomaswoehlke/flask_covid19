@@ -37,19 +37,19 @@ from project.data_who.who_model_location_group import WhoCountryRegion
 
 class AdminService:
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" Admin Service [init]")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.limit_nr = 20
         self.file_path_parent = "data" + os.sep + "db"
         self.file_path = self.file_path_parent + os.sep + "covid19data.sql"
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [app_web] Admin Service ")
 
     def database_dump(self):
         app.logger.info(" AdminService.database_dump() [begin]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         app.logger.info(os.getcwd())
         user = app.config["SQLALCHEMY_DATABASE_USER"]
         pwd = app.config["SQLALCHEMY_DATABASE_PW"]
@@ -90,7 +90,7 @@ class AdminService:
         returncode = self.__run_ome_shell_command(cmd)
         app.logger.info(" result: " + str(returncode))
         app.logger.info(" AdminService.database_dump() [done]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         return self
 
     @classmethod
@@ -120,7 +120,7 @@ class AdminService:
 
     def database_dump_reimport(self):
         app.logger.info(" AdminService.database_dump_reimport() [begin]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         user = app.config["SQLALCHEMY_DATABASE_USER"]
         url = app.config["SQLALCHEMY_DATABASE_HOST"]
         db = app.config["SQLALCHEMY_DATABASE_DB"]
@@ -140,24 +140,23 @@ class AdminService:
             msg = "[ returncode: " + str(returncode) + "] " + cmd
             app.logger.info(msg)
         app.logger.info(" AdminService.database_dump_reimport() [done]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         return self
 
     def database_drop_and_create(self):
         app.logger.info(" AdminService.database_drop_and_create() [begin]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         with app.app_context():
-            # cache.clear()
             self.__database.drop_all()
             self.__database.create_all()
         app.logger.info("")
         app.logger.info(" AdminService.database_drop_and_create() [begin]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         return self
 
     def database_table_row_count(self):
         app.logger.info(" AdminService.database_table_row_count() [begin]")
-        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-----------------------------------------------------------")
         table_classes = [
             WhoData, WhoImport, WhoFlat, WhoCountry, WhoCountryRegion,
             OwidData, OwidImport, OwidFlat, OwidCountry,

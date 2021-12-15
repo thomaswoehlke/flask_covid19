@@ -21,8 +21,12 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(512), nullable=False)
 
     @classmethod
-    def create_new(cls, email, name: str, password_hash: str):
-        return User(email=email, name=name, password_hash=password_hash)
+    def create_new(cls, email: str, name: str, password_hash: str):
+        o = User()
+        o.email = email
+        o.name = name
+        o.password_hash = password_hash
+        return o
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
