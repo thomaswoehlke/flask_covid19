@@ -80,3 +80,7 @@ class AllEntity(db.Model, AllEntityMixin):
         for o in cls.find_by_not_processed_update():
             o.set_processed_update()
         db.session.commit()
+
+    @classmethod
+    def count(cls):
+        return cls.__query_all().count()

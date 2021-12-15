@@ -2,6 +2,8 @@ import os
 import subprocess
 
 from project.app_bootstrap.database import app
+from project.data_who.who_model_data import WhoData
+from project.data_who.who_model_import import WhoImport
 
 
 class AdminService:
@@ -121,5 +123,22 @@ class AdminService:
             self.__database.create_all()
         app.logger.info("")
         app.logger.info(" AdminService.database_drop_and_create() [begin]")
+        app.logger.info("------------------------------------------------------------")
+        return self
+
+    def database_table_row_count(self):
+        app.logger.info(" AdminService.database_table_row_count() [begin]")
+        app.logger.info("------------------------------------------------------------")
+        table_classes = [WhoData, WhoImport]
+        tables_and_rows = {}
+        with app.app_context():
+            for table_class in table_classes:
+                tables_and_rows[table_class.__tablename__] = table_class.count()
+        for table_class in table_classes:
+            msg = " | " + table_class.__tablename__ \
+                  + " | " + str(tables_and_rows[table_class.__tablename__]) + " | "
+            app.logger.info(msg)
+        app.logger.info("")
+        app.logger.info(" AdminService.database_table_row_count() [begin]")
         app.logger.info("------------------------------------------------------------")
         return self

@@ -283,6 +283,13 @@ def admin_database_drop_and_create():
         app_admin_service.database_drop_and_create()
 
 
+@app.cli.command("admin-database-table-row-count")
+def admin_database_table_row_count():
+    """[Admin] database table row count"""
+    with app.app_context():
+        app_admin_service.database_table_row_count()
+
+
 # ---------------------------------------------------------------------------------
 #  MAIN
 # ---------------------------------------------------------------------------------

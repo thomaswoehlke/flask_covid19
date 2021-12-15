@@ -31,6 +31,10 @@ class AllEntityMixinBase:
     def find_all_as_str(cls):
         pass
 
+    @classmethod
+    def count(cls):
+        pass
+
 
 class AllEntityWorkerProgressMixin:
     def set_processed_update(self):
