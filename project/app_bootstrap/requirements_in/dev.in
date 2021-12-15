@@ -11,7 +11,7 @@ Flask-Login
 flask-login-dictabase-blueprint
 SQLAlchemy
 sqlalchemy-mixins
-psycopg[binary,pool]
+psycopg2
 mysql-connector-python
 mysqldb-wrapper
 mariadb

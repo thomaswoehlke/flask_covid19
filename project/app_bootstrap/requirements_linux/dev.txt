@@ -257,6 +257,12 @@ prompt-toolkit==3.0.24
     # via click-repl
 protobuf==3.19.1
     # via mysql-connector-python
+psycopg[binary,pool]==3.0.7
+    # via -r project/app_bootstrap/requirements_in/dev.in
+psycopg-binary==3.0.7
+    # via psycopg
+psycopg-pool==3.0.2
+    # via psycopg
 py==1.11.0
     # via
     #   pytest
