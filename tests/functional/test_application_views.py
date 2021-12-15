@@ -1,5 +1,6 @@
 
 import pytest
+from tests.functional.test_flask_covid19 import app, client
 
 
 @pytest.mark.usefixtures('app', 'client')
