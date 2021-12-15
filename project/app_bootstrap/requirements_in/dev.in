@@ -11,6 +11,8 @@ Flask-Login
 flask-login-dictabase-blueprint
 SQLAlchemy
 sqlalchemy-mixins
+ibm_db
+psycopg2
 mysql-connector-python
 mysqldb-wrapper
 mariadb

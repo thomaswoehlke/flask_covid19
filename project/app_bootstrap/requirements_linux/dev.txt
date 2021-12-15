@@ -135,6 +135,8 @@ greenlet==1.1.2
     # via
     #   eventlet
     #   sqlalchemy
+ibm-db==3.1.0
+    # via -r project/app_bootstrap/requirements_in/dev.in
 identify==2.4.0
     # via pre-commit
 idna==3.3
@@ -257,6 +259,8 @@ prompt-toolkit==3.0.24
     # via click-repl
 protobuf==3.19.1
     # via mysql-connector-python
+psycopg2==2.9.2
+    # via -r project/app_bootstrap/requirements_in/dev.in
 py==1.11.0
     # via
     #   pytest
