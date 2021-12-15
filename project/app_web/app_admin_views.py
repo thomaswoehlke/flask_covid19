@@ -34,6 +34,12 @@ class AppAdminUrls:
         return render_template("app_admin/admin_tasks.html", page_info=page_info)
 
     @staticmethod
+    @blueprint_app_admin.route("/status")
+    def url_admin_status():
+        page_info = WebPageContent("Admin", "System Status")
+        return render_template("app_admin/admin_status.html", page_info=page_info)
+
+    @staticmethod
     @blueprint_app_admin.route("/info")
     def url_admin_info():
         page_info = WebPageContent("Admin", "Info")

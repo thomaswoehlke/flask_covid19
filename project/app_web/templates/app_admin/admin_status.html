@@ -1,0 +1,71 @@
+{% extends 'app_application/layout/page_layout.html' %}
+
+{% block navtabs %}
+    {% include 'app_admin/navigation/app_admin_navtabs.html' %}
+{% endblock %}
+
+{% block content %}
+    {{super()}}
+
+    <div class="container">
+        {% if current_user.is_authenticated %}
+        <div class="row">
+            <div class="col">
+                <h4>Database</h4>
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <div class="d-grid gap-2 d-block">
+                        <a class="btn btn-secondary btn-lg btn-block text-left"
+                           href="{{ url_for( 'app_admin.url_task_admin_database_dropcreate') }}"
+                           role="button">Admin :: database :: drop_create :: only</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>Database Import / Export</h4>
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <div class="d-grid gap-2 d-block">
+                        <a class="btn btn-primary btn-lg btn-block text-left"
+                           href="{{ url_for( 'app_admin.url_task_admin_database_dump') }}"
+                           role="button">Admin :: database :: dump</a>
+                        <a class="btn btn-primary btn-lg btn-block text-left"
+                           href="{{ url_for( 'app_admin.url_task_admin_database_dump_reimport') }}"
+                           role="button">Admin :: database :: dump :: reimport</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>System Test</h4>
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <div class="d-grid gap-2 d-block">
+                        <a class="btn btn-warning btn-lg btn-block text-left"
+                           href="{{ url_for( 'app_admin.url_task_admin_alive_message') }}"
+                           role="button">Admin :: alive message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>Test</h4>
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <div class="d-grid gap-2 d-block">
+                        <a class="btn btn-primary btn-lg btn-block text-left"
+                           href="{{ url_for( 'who.url_who_mytest') }}"
+                           role="button">WHO :: url_who_mytest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col">
+                <h1>admin :: Info</h1>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
