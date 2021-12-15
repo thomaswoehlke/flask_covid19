@@ -136,6 +136,7 @@ pip_install_linux:
 pip_setuptools:
 	@echo "pip_setuptools"
 	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install --upgrade setuptools wheel
 	$(PYTHON) -m pip install setuptools wheel
 	$(PYTHON) -m pip uninstall $(APP_MYSELF) -y
 
