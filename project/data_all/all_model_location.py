@@ -23,8 +23,8 @@ class AllLocation(AllEntity, AllLocationMixin):
     type = db.Column(db.String(50))
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    location_code = db.Column(db.String(255), index=True, nullable=True)
-    location = db.Column(db.String(255), nullable=False, index=True)
+    location_code = db.Column(db.String(255), nullable=True)
+    location = db.Column(db.String(255), nullable=False)
     location_group_id = db.Column(
         db.Integer, db.ForeignKey("all_location_group.id"), nullable=False
     )

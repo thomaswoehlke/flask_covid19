@@ -32,8 +32,8 @@ class WhoFlat(AllFlat, AllImportFlatMixin):
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     #
-    date_reported_import_str = db.Column(db.String(255), nullable=False, index=True)
-    datum = db.Column(db.Date, nullable=False, index=True)
+    date_reported_import_str = db.Column(db.String(255), nullable=False)
+    datum = db.Column(db.Date, nullable=False)
     #
     year = db.Column(db.Integer, nullable=False)
     year_month = db.Column(db.String(255), nullable=False)
@@ -45,8 +45,8 @@ class WhoFlat(AllFlat, AllImportFlatMixin):
     day_of_week = db.Column(db.Integer, nullable=False)
     week_of_year = db.Column(db.Integer, nullable=False)
     day_of_year = db.Column(db.Integer, nullable=False)
-    location = db.Column(db.String(255), nullable=False, index=True)
-    location_group = db.Column(db.String(255), nullable=False, index=True)
+    location = db.Column(db.String(255), nullable=False)
+    location_group = db.Column(db.String(255), nullable=False)
     location_code = db.Column(db.String(255), nullable=False)
     #
     new_cases = db.Column(db.Integer, nullable=False)

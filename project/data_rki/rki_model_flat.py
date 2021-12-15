@@ -29,23 +29,23 @@ class RkiFlat(AllFlat):
     location_group = db.Column(db.String(255), nullable=False)
     location_code = db.Column(db.String(255), nullable=False)
     #
-    fall_anzahl = db.Column(db.Integer, nullable=False, index=True)
-    fall_neu = db.Column(db.Integer, nullable=False, index=True)
-    todesfall_anzahl = db.Column(db.Integer, nullable=False, index=True)
-    todesfall_neu = db.Column(db.Integer, nullable=False, index=True)
-    genesen_anzahl = db.Column(db.Integer, nullable=False, index=True)
-    genesen_neu = db.Column(db.Integer, nullable=False, index=True)
-    ist_erkrankungsbeginn = db.Column(db.Integer, nullable=False, index=True)
+    fall_anzahl = db.Column(db.Integer, nullable=False)
+    fall_neu = db.Column(db.Integer, nullable=False)
+    todesfall_anzahl = db.Column(db.Integer, nullable=False)
+    todesfall_neu = db.Column(db.Integer, nullable=False)
+    genesen_anzahl = db.Column(db.Integer, nullable=False)
+    genesen_neu = db.Column(db.Integer, nullable=False)
+    ist_erkrankungsbeginn = db.Column(db.Integer, nullable=False)
     #
-    bundesland = db.Column(db.String(255), nullable=False, index=True)
-    landkreis = db.Column(db.String(255), nullable=False, index=True)
-    landkreis_type = db.Column(db.String(255), nullable=False, index=True)
-    landkreis_name = db.Column(db.String(255), nullable=False, index=True)
-    altersgruppe = db.Column(db.String(255), nullable=False, index=True)
+    bundesland = db.Column(db.String(255), nullable=False)
+    landkreis = db.Column(db.String(255), nullable=False)
+    landkreis_type = db.Column(db.String(255), nullable=False)
+    landkreis_name = db.Column(db.String(255), nullable=False)
+    altersgruppe = db.Column(db.String(255), nullable=False)
     altersgruppe2 = db.Column(db.String(255), nullable=False)
     geschlecht = db.Column(db.String(255), nullable=False)
     #
-    fid = db.Column(db.String(255), nullable=False, index=True)
+    fid = db.Column(db.String(255), nullable=False)
     id_bundesland = db.Column(db.String(255), nullable=False)
     id_landkreis = db.Column(db.String(255), nullable=False)
     #
@@ -53,10 +53,10 @@ class RkiFlat(AllFlat):
     datenstand__datum = db.Column(db.Date, nullable=False)
     #
     meldedatum__date_reported_import_str = db.Column(
-        db.String(255), nullable=False, index=True
+        db.String(255), nullable=False
     )
-    meldedatum__datum = db.Column(db.Date, nullable=False, index=True)
-    meldedatum__year_day_of_year = db.Column(db.String(255), nullable=False, index=True)
+    meldedatum__datum = db.Column(db.Date, nullable=False)
+    meldedatum__year_day_of_year = db.Column(db.String(255), nullable=False)
     meldedatum__year_month = db.Column(db.String(255), nullable=False)
     meldedatum__year_week = db.Column(db.String(255), nullable=False)
     meldedatum__year = db.Column(db.Integer, nullable=False)
@@ -67,10 +67,10 @@ class RkiFlat(AllFlat):
     meldedatum__week_of_year = db.Column(db.Integer, nullable=False)
     #
     ref_datum__date_reported_import_str = db.Column(
-        db.String(255), nullable=False, index=True
+        db.String(255), nullable=False
     )
-    ref_datum__datum = db.Column(db.Date, nullable=False, index=True)
-    ref_datum__year_day_of_year = db.Column(db.String(255), nullable=False, index=True)
+    ref_datum__datum = db.Column(db.Date, nullable=False)
+    ref_datum__year_day_of_year = db.Column(db.String(255), nullable=False)
     ref_datum__year_month = db.Column(db.String(255), nullable=False)
     ref_datum__year_week = db.Column(db.String(255), nullable=False)
     ref_datum__year = db.Column(db.Integer, nullable=False)

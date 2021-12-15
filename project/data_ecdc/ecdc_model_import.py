@@ -19,8 +19,8 @@ class EcdcImport(AllImport):
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    date_reported_import_str = db.Column(db.String(255), nullable=False, index=True)
-    datum = db.Column(db.Date, nullable=False, index=True)
+    date_reported_import_str = db.Column(db.String(255), nullable=False)
+    datum = db.Column(db.Date, nullable=False)
     #
     date_rep = db.Column(db.String(255), nullable=False)
     day = db.Column(db.String(255), nullable=False)
@@ -31,10 +31,10 @@ class EcdcImport(AllImport):
     deaths = db.Column(db.String(255), nullable=False)
     pop_data_2019 = db.Column(db.String(255), nullable=False)
     #
-    countries_and_territories = db.Column(db.String(255), nullable=False, index=True)
+    countries_and_territories = db.Column(db.String(255), nullable=False)
     geo_id = db.Column(db.String(255), nullable=False)
     country_territory_code = db.Column(db.String(255), nullable=False)
-    continent_exp = db.Column(db.String(255), nullable=False, index=True)
+    continent_exp = db.Column(db.String(255), nullable=False)
     #
     cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(
         db.String(255), nullable=False

@@ -115,3 +115,7 @@ class Task(db.Model, AllEntityMixinBase):
     def find_by_id(cls, other_id):
         return cls.__query_all().filter(cls.id == other_id).one_or_none()
 
+    @classmethod
+    def count(cls):
+        return cls.__query_all().count()
+

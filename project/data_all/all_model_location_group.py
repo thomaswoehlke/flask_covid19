@@ -18,7 +18,7 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
     type = db.Column(db.String(50))
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
-    location_group = db.Column(db.String(255), nullable=False, index=True)
+    location_group = db.Column(db.String(255), nullable=False)
 
     __mapper_args__ = {
         "polymorphic_on": type,

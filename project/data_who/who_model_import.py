@@ -20,7 +20,12 @@ class WhoImport(AllImport, AllImportMixin):
         )
 
     def __str__(self):
-        return f"{self.datum.isoformat} {self.country_code} {self.country} {str(self.row_imported)}"
+        return "{} {} {} {}".format(
+            self.datum.isoformat,
+            self.country_code,
+            self.country,
+            str(self.row_imported)
+        )
 
     id = db.Column(db.Integer, primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
