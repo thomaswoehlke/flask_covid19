@@ -5,6 +5,7 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
+from flask_login import login_required
 from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
@@ -19,7 +20,6 @@ from project.data_rki.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.rki_model_flat import RkiFlat
 from project.data_rki.rki_model_import import RkiImport
 from project.data_rki.rki_service_test import RkiTestService
-from flask_login import login_required
 from sqlalchemy.exc import OperationalError
 
 drop_and_create_data_again = True

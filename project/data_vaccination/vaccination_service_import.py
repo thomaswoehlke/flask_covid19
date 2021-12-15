@@ -1,13 +1,13 @@
 import csv
 
 from project.app_bootstrap.database import app
-from project.data_all.all_task_model import Task
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_import_mixins import AllServiceMixinImport
+from project.data_all.all_task_model import Task
 from project.data_vaccination.vaccination_model_flat import VaccinationFlat
 from project.data_vaccination.vaccination_model_flat import VaccinationFlatFactory
 from project.data_vaccination.vaccination_model_import import VaccinationImport

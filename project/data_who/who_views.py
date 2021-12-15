@@ -5,6 +5,7 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
+from flask_login import login_required
 from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
@@ -18,7 +19,6 @@ from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_location import WhoCountry
 from project.data_who.who_model_location_group import WhoCountryRegion
 from project.data_who.who_service_test import WhoTestService
-from flask_login import login_required
 from sqlalchemy.exc import OperationalError
 
 who_test_service = WhoTestService(db, who_service)

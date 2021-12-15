@@ -48,4 +48,3 @@ jobs:
 
       - name: Run linux
         run: make linux
-

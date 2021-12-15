@@ -1,11 +1,11 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from project.data_all.all_task_model import Task
 from project.data_vaccination.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,
@@ -77,21 +77,19 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 db.session.add(o)
                 i += 1
                 if i % 500 == 0:
-                    app.logger.info(
-                        " [Vaccination] update ... " + str(i) + " rows"
-                    )
+                    app.logger.info(" [Vaccination] update ... " + str(i) + " rows")
                     db.session.commit()
         db.session.commit()
-        app.logger.info(
-            " [Vaccination] update ... " + str(i) + " rows total"
-        )
+        app.logger.info(" [Vaccination] update ... " + str(i) + " rows total")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] update [done]")
         app.logger.info("------------------------------------------------------------")
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="Vaccination", task_name="update_dimension_tables").read()
+        task = Task.create(
+            sector="Vaccination", task_name="update_dimension_tables"
+        ).read()
         self.__update_date_reported()
         Task.finish(task_id=task.id)
         return self

@@ -2,12 +2,12 @@ import csv
 
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_import_mixins import AllServiceMixinImport
+from project.data_all.all_task_model import Task
 from project.data_ecdc.ecdc_model_flat import EcdcFlat
 from project.data_ecdc.ecdc_model_flat import EcdcFlatFactory
 from project.data_ecdc.ecdc_model_import import EcdcImport

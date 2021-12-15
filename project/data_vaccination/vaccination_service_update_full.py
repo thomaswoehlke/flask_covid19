@@ -1,12 +1,12 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_task_model import Task
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_update_full_mixins import (
     AllServiceMixinUpdateFull,
 )
+from project.data_all.all_task_model import Task
 from project.data_vaccination.vaccination_model_data import VaccinationData
 from project.data_vaccination.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.vaccination_model_date_reported import (
@@ -74,14 +74,18 @@ class VaccinationServiceUpdateFull(
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="Vaccination", task_name="full_update_dimension_tables").read()
+        task = Task.create(
+            sector="Vaccination", task_name="full_update_dimension_tables"
+        ).read()
         VaccinationData.remove_all()
         self.__full_update_date_reported()
         Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="Vaccination", task_name="full_update_fact_table").read()
+        task = Task.create(
+            sector="Vaccination", task_name="full_update_fact_table"
+        ).read()
         self.__full_update_fact_table()
         Task.finish(task_id=task.id)
         return self

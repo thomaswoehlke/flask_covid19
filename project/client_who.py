@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import matplotlib.pyplot as plt
 from project.app_web.cli.data_runner import Runner
 from project.data_all.all_config import BlueprintConfig

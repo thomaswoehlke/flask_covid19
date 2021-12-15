@@ -5,6 +5,10 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
+from flask_login import login_required
+from flask_login import login_user
+from flask_login import logout_user
 from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
@@ -12,10 +16,6 @@ from project.app_bootstrap.database import login_manager
 from project.app_web.user_model import LoginForm
 from project.app_web.user_model import User
 from project.app_web.web_model_transient import WebPageContent
-from flask_login import current_user
-from flask_login import login_required
-from flask_login import login_user
-from flask_login import logout_user
 from sqlalchemy.exc import OperationalError
 
 

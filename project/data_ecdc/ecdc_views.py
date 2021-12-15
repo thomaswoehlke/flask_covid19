@@ -5,6 +5,7 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
+from flask_login import login_required
 from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
@@ -18,7 +19,6 @@ from project.data_ecdc.ecdc_model_import import EcdcImport
 from project.data_ecdc.ecdc_model_location import EcdcCountry
 from project.data_ecdc.ecdc_model_location_group import EcdcContinent
 from project.data_ecdc.ecdc_service_test import EcdcTestService
-from flask_login import login_required
 
 
 app_ecdc = Blueprint("ecdc", __name__, template_folder="templates", url_prefix="/ecdc")

@@ -1,11 +1,10 @@
-
-import pytest
 import socket
 
+import pytest
 from project.app_bootstrap.database import Covid19Application
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def app():
     """
     HALLO app
@@ -19,7 +18,7 @@ def app():
     return app
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def client():
     """
     HALLO client

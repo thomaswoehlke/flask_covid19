@@ -6,10 +6,8 @@ class WebPageContent:
         self.subtitle = default_subtitle
         self.subtitle_info = default_subtitle_info
         if self.subtitle is None:
-            self.subtitle = (
-                """Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            self.subtitle = """Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                 sed diam."""
-            )
         if self.subtitle_info is None:
             self.subtitle_info = """Lorem ipsum dolor sit amet, consetetur sadipscing
             elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna

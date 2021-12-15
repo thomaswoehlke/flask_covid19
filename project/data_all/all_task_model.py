@@ -1,8 +1,9 @@
-from datetime import datetime, timezone
+from datetime import datetime
+from datetime import timezone
 
-from project.data_all.all_model_mixins import AllEntityMixinBase
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
+from project.data_all.all_model_mixins import AllEntityMixinBase
 
 
 class Task(db.Model, AllEntityMixinBase):
@@ -15,7 +16,7 @@ class Task(db.Model, AllEntityMixinBase):
             "sector",
             "task_name",
             "new_notification",
-            name="uix_task"
+            name="uix_task",
         ),
     )
 
@@ -66,7 +67,7 @@ class Task(db.Model, AllEntityMixinBase):
             datum_started=datum_started,
             sector=sector,
             task_name=task_name,
-            new_notification=new_notification
+            new_notification=new_notification,
         )
         db.session.add(o)
         db.session.commit()
@@ -118,4 +119,3 @@ class Task(db.Model, AllEntityMixinBase):
     @classmethod
     def count(cls):
         return cls.__query_all().count()
-

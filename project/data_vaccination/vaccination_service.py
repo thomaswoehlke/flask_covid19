@@ -1,9 +1,8 @@
-
 from project.app_bootstrap.database import app
-from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_service_download import AllDownloadService
 from project.data_all.all_service_mixins import AllServiceMixin
+from project.data_all.all_task_model import Task
 from project.data_vaccination.vaccination_service_import import (
     VaccinationServiceImport,
 )
@@ -43,7 +42,9 @@ class VaccinationService(AllServiceMixin):
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="Vaccination", task_name="full_update_dimension_tables")
+        task = Task.create(
+            sector="Vaccination", task_name="full_update_dimension_tables"
+        )
         self.service_update_full.full_update_dimension_tables()
         Task.finish(task_id=task.id)
         return self

@@ -71,7 +71,9 @@ html_context = {
         ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
         ProjectLink("PyPI Releases", "https://pypi.org/project/Flask_covid19/"),
         ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
-        ProjectLink("Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"),
+        ProjectLink(
+            "Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"
+        ),
         ProjectLink("Website", "https://palletsprojects.com/p/flask_covid19/"),
         ProjectLink("Twitter", "https://twitter.com/ThomasWoehlke"),
         ProjectLink("Chat", "https://discord.gg/ThomasWoehlke"),

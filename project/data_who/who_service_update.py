@@ -1,11 +1,11 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_task_model import Task
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_update_mixins import AllServiceMixinUpdate
+from project.data_all.all_task_model import Task
 from project.data_who.who_model_data import WhoData
 from project.data_who.who_model_data import WhoDataFactory
 from project.data_who.who_model_date_reported import WhoDateReported
@@ -29,7 +29,6 @@ class WhoServiceUpdateBase:
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
-
     def __who_import_get_new_dates(self):
         todo = []
         odr_list = WhoDateReported.find_all_as_str()

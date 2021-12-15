@@ -7,9 +7,10 @@ from flask import Flask
 from flask_admin import Admin
 from flask_bs4 import Bootstrap
 from flask_cors import CORS
-from project.app_bootstrap import config, pytestconfig
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from project.app_bootstrap import config
+from project.app_bootstrap import pytestconfig
 
 # from flask_caching import Cache
 

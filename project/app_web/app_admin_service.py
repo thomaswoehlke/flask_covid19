@@ -23,8 +23,9 @@ from project.data_rki.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.rki_model_flat import RkiFlat
 from project.data_rki.rki_model_import import RkiImport
 from project.data_vaccination.vaccination_model_data import VaccinationData
-from project.data_vaccination.vaccination_model_date_reported import \
-    VaccinationDateReported
+from project.data_vaccination.vaccination_model_date_reported import (
+    VaccinationDateReported,
+)
 from project.data_vaccination.vaccination_model_flat import VaccinationFlat
 from project.data_vaccination.vaccination_model_import import VaccinationImport
 from project.data_who.who_model_data import WhoData
@@ -158,13 +159,35 @@ class AdminService:
         app.logger.info(" AdminService.database_table_row_count() [begin]")
         app.logger.info("-----------------------------------------------------------")
         table_classes = [
-            WhoData, WhoImport, WhoFlat, WhoCountry, WhoCountryRegion,
-            OwidData, OwidImport, OwidFlat, OwidCountry,
-            OwidContinent, EcdcData, EcdcImport, EcdcFlat,
-            EcdcCountry, EcdcContinent, VaccinationData, VaccinationImport,
-            VaccinationFlat, RkiData, RkiImport, RkiFlat,
-            RkiAltersgruppe, RkiBundesland,  Task, User,
-            WhoDateReported, OwidDateReported, VaccinationDateReported, RkiMeldedatum,
+            WhoData,
+            WhoImport,
+            WhoFlat,
+            WhoCountry,
+            WhoCountryRegion,
+            OwidData,
+            OwidImport,
+            OwidFlat,
+            OwidCountry,
+            OwidContinent,
+            EcdcData,
+            EcdcImport,
+            EcdcFlat,
+            EcdcCountry,
+            EcdcContinent,
+            VaccinationData,
+            VaccinationImport,
+            VaccinationFlat,
+            RkiData,
+            RkiImport,
+            RkiFlat,
+            RkiAltersgruppe,
+            RkiBundesland,
+            Task,
+            User,
+            WhoDateReported,
+            OwidDateReported,
+            VaccinationDateReported,
+            RkiMeldedatum,
             EcdcDateReported,
         ]
         tables_and_rows = {}

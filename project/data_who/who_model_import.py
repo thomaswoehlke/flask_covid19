@@ -24,7 +24,7 @@ class WhoImport(AllImport, AllImportMixin):
             self.datum.isoformat,
             self.country_code,
             self.country,
-            str(self.row_imported)
+            str(self.row_imported),
         )
 
     id = db.Column(db.Integer, primary_key=True)

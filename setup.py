@@ -3,12 +3,11 @@ flask_covid19
 -------------
 Various utility functions and custom data types for SQLAlchemy.
 """
-
-import os
-import sys
-import re
 import logging
+import os
+import re
 import subprocess
+import sys
 
 from setuptools import find_packages
 from setuptools import setup
@@ -17,28 +16,26 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_version():
-    filename = os.path.join(HERE, 'project', '__init__.py')
+    filename = os.path.join(HERE, "project", "__init__.py")
     with open(filename) as f:
         contents = f.read()
     pattern = r"^__version__ = '(.*?)'$"
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
-scripts_dir = "project" + os.sep \
-              + "app_bootstrap" + os.sep \
-              + "scripts" + os.sep
+scripts_dir = "project" + os.sep + "app_bootstrap" + os.sep + "scripts" + os.sep
 
-pip_requirements_in_dir = "project" + os.sep \
-                          + "app_bootstrap" + os.sep \
-                          + "requirements_in"
+pip_requirements_in_dir = (
+    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_in"
+)
 
-pip_requirements_linux_dir = "project" + os.sep \
-                          + "app_bootstrap" + os.sep \
-                          + "requirements_linux"
+pip_requirements_linux_dir = (
+    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_linux"
+)
 
-pip_requirements_windows_dir = "project" + os.sep \
-                          + "app_bootstrap" + os.sep \
-                          + "requirements_windows"
+pip_requirements_windows_dir = (
+    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_windows"
+)
 
 
 readme = open("docs" + os.sep + "README.md").read()
@@ -154,7 +151,7 @@ packages = find_packages()
 
 def run_compile_requirements():
     u = os.uname()
-    if u.sysname == 'Linux':
+    if u.sysname == "Linux":
         pip_requirements_dir = pip_requirements_linux_dir
         my_cmd_list = [
             ["pip-compile", "-r", pip_requirements_in_dir + os.sep + "build.in"],
@@ -218,7 +215,7 @@ def get_python_requirements_from_txt():
 setup(
     name="flask_covid19",
     description="Covid19 Data Aggregation "
-                + "- also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
+    + "- also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
     version=get_version(),
     url="https://github.com/thomaswoehlke/covid19python.git",
     author="Thomas Woehlke",

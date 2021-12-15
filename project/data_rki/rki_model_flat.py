@@ -52,9 +52,7 @@ class RkiFlat(AllFlat):
     datenstand__date_reported_import_str = db.Column(db.String(255), nullable=False)
     datenstand__datum = db.Column(db.Date, nullable=False)
     #
-    meldedatum__date_reported_import_str = db.Column(
-        db.String(255), nullable=False
-    )
+    meldedatum__date_reported_import_str = db.Column(db.String(255), nullable=False)
     meldedatum__datum = db.Column(db.Date, nullable=False)
     meldedatum__year_day_of_year = db.Column(db.String(255), nullable=False)
     meldedatum__year_month = db.Column(db.String(255), nullable=False)
@@ -66,9 +64,7 @@ class RkiFlat(AllFlat):
     meldedatum__day_of_year = db.Column(db.Integer, nullable=True)
     meldedatum__week_of_year = db.Column(db.Integer, nullable=False)
     #
-    ref_datum__date_reported_import_str = db.Column(
-        db.String(255), nullable=False
-    )
+    ref_datum__date_reported_import_str = db.Column(db.String(255), nullable=False)
     ref_datum__datum = db.Column(db.Date, nullable=False)
     ref_datum__year_day_of_year = db.Column(db.String(255), nullable=False)
     ref_datum__year_month = db.Column(db.String(255), nullable=False)
