@@ -14,3 +14,9 @@ class TaskService:
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [Task] Service")
         app.logger.debug("-----------------------------------------------------------")
+
+    def notifications_count(self):
+        return Task.notifications_count()
+
+    def notifications_find(self):
+        return Task.notifications_find()

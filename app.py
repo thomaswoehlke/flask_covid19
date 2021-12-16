@@ -14,6 +14,7 @@ from project.app_web.web_dispachter_matrix_service import rki_service
 from project.app_web.web_dispachter_matrix_service import vaccination_service
 from project.app_web.web_dispachter_matrix_service import web_service
 from project.app_web.web_dispachter_matrix_service import who_service
+from project.app_web.web_dispachter_matrix_service import task_service
 
 
 def create_app():
@@ -286,6 +287,23 @@ def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
         app_admin_service.database_table_row_count()
+
+
+@app.cli.command("all-task-notifications-count")
+def all_task_notifications_count():
+    """[ALL] task notifications count"""
+    with app.app_context():
+        nr = task_service.notifications_count()
+        app.logger.info("task notifications count: " + str(nr))
+
+
+@app.cli.command("all-task-notifications-find")
+def all_task_notifications_find():
+    """[ALL] task notifications find"""
+    app.logger.info("task notifications find: ")
+    with app.app_context():
+        for task in task_service.notifications_find():
+            app.logger.info(str(task))
 
 
 # ---------------------------------------------------------------------------------

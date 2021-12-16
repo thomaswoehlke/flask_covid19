@@ -1,6 +1,8 @@
 from datetime import datetime
 from datetime import timezone
 
+from sqlalchemy import and_
+
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model_mixins import AllEntityMixinBase
@@ -27,11 +29,14 @@ class Task(db.Model, AllEntityMixinBase):
         df = self.datum_finished.isoformat()
         if df is None:
             df = ""
-        return "{}({} {} {})".format(
+        return "{}({} {} {} {} {} {})".format(
             self.__class__.__name__,
             this_id,
             self.datum_started.isoformat(),
             df,
+            self.sector,
+            self.task_name,
+            self.new_notification
         )
 
     def __str__(self):
@@ -41,10 +46,13 @@ class Task(db.Model, AllEntityMixinBase):
         df = self.datum_finished.isoformat()
         if df is None:
             df = ""
-        return "{} {} {}".format(
+        return "{} {} {} {} {} {}".format(
             this_id,
             self.datum_started.isoformat(),
             df,
+            self.sector,
+            self.task_name,
+            self.new_notification
         )
 
     id = db.Column(db.Integer, primary_key=True)
@@ -119,3 +127,16 @@ class Task(db.Model, AllEntityMixinBase):
     @classmethod
     def count(cls):
         return cls.__query_all().count()
+
+    @classmethod
+    def notifications_count(cls):
+        return db.session.query(cls)\
+            .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
+            .count()
+
+    @classmethod
+    def notifications_find(cls):
+        return db.session.query(cls)\
+            .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
+            .order_by(cls.id)
+

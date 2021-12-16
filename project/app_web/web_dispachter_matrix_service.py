@@ -9,6 +9,7 @@ from project.data_owid.owid_service import OwidService
 from project.data_rki.rki_service import RkiService
 from project.data_vaccination.vaccination_service import VaccinationService
 from project.data_who.who_service import WhoService
+from project.data_all.all_task_service import TaskService
 
 #######################################################################################
 #
@@ -23,6 +24,7 @@ owid_service = OwidService(db)
 ecdc_service = EcdcService(db)
 vaccination_service = VaccinationService(db)
 rki_service = RkiService(db)
+task_service = TaskService(db)
 
 all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     who_service=who_service,
