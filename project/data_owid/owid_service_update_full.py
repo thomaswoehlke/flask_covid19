@@ -83,7 +83,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 i += 1
                 o = OwidCountryFactory.create_new(oi=oi, location_group=continent)
                 db.session.add(o)
-                output = " [OWID] country : [ " + str(i) + " ] " + str(o) + " added"
+                output = " [OWID] country : [ " + str(i) + " ] " + str(o) + " "
                 log_lines.append(output)
         for log_line in log_lines:
             app.logger.info(log_line)
