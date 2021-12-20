@@ -1,0 +1,30 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">datum started</th>
+                            <th scope="col">datum finished</th>
+                            <th scope="col">sector</th>
+                            <th scope="col">task name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for all_task in page_data.items %}
+                        <tr>
+                            <td>{{ all_task.datum_started }}</td>
+                            <td>{{ all_task.datum_finished }}</td>
+                            <td>{{ all_task.sector }}</td>
+                            <td>{{ all_task.task_name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        <tr>
+                            <th scope="col">datum started</th>
+                            <th scope="col">datum finished</th>
+                            <th scope="col">sector</th>
+                            <th scope="col">task name</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>

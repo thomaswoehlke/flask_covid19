@@ -140,3 +140,9 @@ class Task(db.Model, AllEntityMixinBase):
             .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
             .order_by(cls.id)
 
+    @classmethod
+    def notifications_get(cls, page: int):
+        return db.session.query(cls)\
+            .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
+            .order_by(cls.id).paginate(page, per_page=items_per_page)
+

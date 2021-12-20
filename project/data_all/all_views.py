@@ -4,12 +4,15 @@ from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import url_for
+from flask_login import login_required
+
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
 from project.app_web.web_dispachter_matrix_service import (
     all_dispachter_matrix_service,
 )
 from project.app_web.web_model_transient import WebPageContent
+from project.data_all.all_task_model import Task
 
 drop_and_create_data_again = True
 
@@ -34,6 +37,17 @@ class AllUrls:
     def url_all_info():
         page_info = WebPageContent("All", "Info")
         return render_template("app_all/app_all_info.html", page_info=page_info)
+
+    @staticmethod
+    @blueprint_app_all.route("/notification/page/<int:page>")
+    @blueprint_app_all.route("/notification")
+    @login_required
+    def url_all_notification(page=1):
+        page_info = WebPageContent("All", "Notifications")
+        page_data = Task.notifications_get(page)
+        return render_template("app_all/notification/app_all_notification.html",
+                               page_data=page_data,
+                               page_info=page_info)
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")
