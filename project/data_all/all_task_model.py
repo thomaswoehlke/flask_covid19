@@ -146,3 +146,9 @@ class Task(db.Model, AllEntityMixinBase):
             .filter(cls.new_notification)\
             .order_by(cls.id).paginate(page, per_page=items_per_page)
 
+    @classmethod
+    def mark_read(cls, page: int):
+        page_data = cls.notifications_get(page)
+        for pd in page_data.items:
+            pass
+

@@ -6,7 +6,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app
+from project.app_bootstrap.database import app, db
 from project.app_bootstrap.database import celery
 from project.app_web.web_dispachter_matrix_service import (
     all_dispachter_matrix_service,
@@ -48,6 +48,18 @@ class AllUrls:
         return render_template("app_all/notification/app_all_notification.html",
                                page_data=page_data,
                                page_info=page_info)
+
+    @staticmethod
+    @blueprint_app_all.route("/notification/read/page/<int:page>")
+    @blueprint_app_all.route("/notification/read")
+    @login_required
+    def url_all_notification_mark_read(page=1):
+        page_data = Task.notifications_get(page)
+        for o in page_data.items:
+            o.read()
+            db.session.add(o)
+        db.session.commit()
+        return redirect(url_for("app_all.url_all_notification"))
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")
