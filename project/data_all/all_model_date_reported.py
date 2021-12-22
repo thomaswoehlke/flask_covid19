@@ -25,8 +25,8 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
     processed_full_update = db.Column(db.Boolean, nullable=False)
     type = db.Column(db.String(50))
     #
-    date_reported_import_str = db.Column(db.String(255), nullable=False, index=True)
-    datum = db.Column(db.Date, nullable=False, index=True)
+    date_reported_import_str = db.Column(db.String(255), nullable=False)
+    datum = db.Column(db.Date, nullable=False)
     #
     year_day_of_year = db.Column(db.String(255), nullable=False)
     #

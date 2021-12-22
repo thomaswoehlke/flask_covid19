@@ -31,8 +31,8 @@ class VaccinationFlat(AllFlat):
     date_reported_import_str = db.Column(db.String(255), nullable=False)
     datum = db.Column(db.Date, nullable=False)
     location = db.Column(db.String(255), nullable=True)
-    location_group = db.Column(db.String(255), nullable=False)
-    location_code = db.Column(db.String(255), nullable=False)
+    location_group = db.Column(db.String(255), nullable=True)
+    location_code = db.Column(db.String(255), nullable=True)
     #
     year = db.Column(db.Integer, nullable=False)
     year_month = db.Column(db.String(255), nullable=False)

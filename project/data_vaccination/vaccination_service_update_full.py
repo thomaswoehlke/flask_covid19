@@ -51,10 +51,10 @@ class VaccinationServiceUpdateFull(
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
         i = 0
-        for (item_date_rep,) in result_date_rep:
+        for item_date_rep in result_date_rep:
             date_reported = VaccinationDateReported.get_by_datum(datum=item_date_rep)
             for item_import in VaccinationImport.find_by_datum(
-                date_reported.date_reported_import_str
+                date_reported.datum
             ):
                 o = VaccinationDataFactory.create_new(date_reported, item_import)
                 item_import.processed_full_update = True

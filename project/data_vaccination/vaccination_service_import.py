@@ -18,14 +18,14 @@ from project.data_vaccination.vaccination_model_import import (
 
 class VaccinationServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" Vaccination Service Import [init]")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] Service Import ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.debug("-----------------------------------------------------------")
 
     def import_file(self):
         task = Task.create(sector="Vaccination", task_name="import_file").read()

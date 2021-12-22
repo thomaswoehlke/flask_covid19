@@ -61,13 +61,17 @@ class VaccinationImport(AllImport):
 
     @classmethod
     def get_date_rep(cls):
-        return (
+        resultarray = []
+        resultset = (
             db.session.query(cls.datum)
             .group_by(cls.datum)
             .distinct()
             .order_by(cls.datum)
             .all()
         )
+        for (resultitem,) in resultset:
+            resultarray.append(resultitem)
+        return resultarray
 
     @classmethod
     def get_date_reported_as_array(cls):
