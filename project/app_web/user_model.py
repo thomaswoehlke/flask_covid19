@@ -1,6 +1,8 @@
 from flask_login import AnonymousUserMixin
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
+from sqlalchemy import Sequence
+
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
 from werkzeug.security import check_password_hash
@@ -18,7 +20,11 @@ class User(UserMixin, db.Model):
         db.UniqueConstraint("email", name="uix_usr"),
     )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     email = db.Column(db.Unicode(512), nullable=False)
     password_hash = db.Column(db.String(2048), nullable=False)
     name = db.Column(db.String(512), nullable=False)

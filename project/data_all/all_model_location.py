@@ -3,7 +3,7 @@ from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model import AllEntity
 from project.data_all.all_model_location_group import AllLocationGroup
 from project.data_all.all_model_location_mixins import AllLocationMixin
-from sqlalchemy import and_
+from sqlalchemy import and_, Sequence
 
 
 class AllLocation(AllEntity, AllLocationMixin):
@@ -19,7 +19,11 @@ class AllLocation(AllEntity, AllLocationMixin):
             + self.location
         )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     type = db.Column(db.String(50))
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)

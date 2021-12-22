@@ -4,7 +4,7 @@ from project.data_all.all_model_data import AllFactTable
 from project.data_who.who_model_date_reported import WhoDateReported
 from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_location import WhoCountry
-from sqlalchemy import and_
+from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import joinedload
 
 
@@ -18,7 +18,11 @@ class WhoData(AllFactTable):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.date_reported_id} {self.location_id})"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     date_reported_id = db.Column(
         db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
     )

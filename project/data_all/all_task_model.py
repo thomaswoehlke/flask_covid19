@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import timezone
 
-from sqlalchemy import and_
+from sqlalchemy import and_, Sequence
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
@@ -55,7 +55,11 @@ class Task(db.Model, AllEntityMixinBase):
             self.new_notification
         )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     datum_started = db.Column(db.DateTime, nullable=False, index=True)
     datum_finished = db.Column(db.DateTime, nullable=True, index=True)
     sector = db.Column(db.String(16), nullable=False, index=True)

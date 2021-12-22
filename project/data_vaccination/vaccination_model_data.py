@@ -1,3 +1,5 @@
+from sqlalchemy import Sequence
+
 from project.app_bootstrap.database import db
 from project.data_all.all_model_data import AllFactTableTimeSeries
 from project.data_vaccination.vaccination_model_date_reported import (
@@ -14,7 +16,11 @@ class VaccinationData(AllFactTableTimeSeries):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.date_reported.__repr__()})"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     date_reported_id = db.Column(
         db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
     )

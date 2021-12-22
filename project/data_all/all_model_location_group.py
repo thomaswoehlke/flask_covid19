@@ -1,3 +1,5 @@
+from sqlalchemy import Sequence
+
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model import AllEntity
@@ -14,7 +16,11 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
         result = " " + self.location_group + " "
         return result
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     type = db.Column(db.String(50))
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)

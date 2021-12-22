@@ -1,7 +1,8 @@
+
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
 from project.data_all.all_model_import import AllImport
-from sqlalchemy import and_
+from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import Bundle
 
 
@@ -29,7 +30,11 @@ class OwidImport(AllImport):
             + str(self.continent)
         )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_import_str = db.Column(db.String(255), nullable=False)

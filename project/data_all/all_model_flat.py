@@ -1,3 +1,5 @@
+from sqlalchemy import Sequence
+
 from project.app_bootstrap.database import db
 from project.data_all.all_model_flat_mixins import AllImportFlatMixin
 from project.data_all.all_model_import import AllImport
@@ -23,7 +25,11 @@ class AllFlat(AllImport, AllImportFlatMixin):
             + str(self.processed_full_update)
         )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     #

@@ -7,7 +7,7 @@ from project.data_all.all_model_date_reported_factory import (
 from project.data_rki.rki_model_data_location import RkiLandkreis
 from project.data_rki.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.rki_model_import import RkiImport
-from sqlalchemy import and_
+from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import joinedload
 
 
@@ -40,7 +40,11 @@ class RkiData(AllFactTable):
             self.fid,
         )
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(

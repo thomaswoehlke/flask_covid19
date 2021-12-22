@@ -1,3 +1,5 @@
+from sqlalchemy import Sequence
+
 from project.app_bootstrap.database import db
 from project.data_all.all_model import AllEntity
 from project.data_all.all_model_data_mixins import AllFactTableMixin
@@ -15,7 +17,11 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
     def __str__(self):
         return self.date_reported.__str__()
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(
@@ -72,7 +78,11 @@ class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     def __str__(self):
         return self.date_reported.__str__() + " " + self.location.__str__()
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_seq = Sequence('id_seq')
+    id = db.Column(db.Integer,
+                   id_seq,
+                   server_default=id_seq.next_value(),
+                   primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(
