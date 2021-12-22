@@ -24,19 +24,17 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(512), nullable=False)
 
     def __repr__(self):
-        return "{} ({} {} {} {})".format(
+        return "{} ({} {} {})".format(
             self.__class__.__name__,
             self.email.__repr__(),
             self.password_hash.__repr__(),
-            self.name.__repr__(),
-            self.fid,
+            self.name.__repr__()
         )
 
     def __str__(self):
-        return "{}, {}, ***, {}".format(
+        return "{}, {}, ***".format(
             self.email.__repr__(),
-            self.name.__repr__(),
-            self.fid,
+            self.name.__repr__()
         )
 
     @classmethod
