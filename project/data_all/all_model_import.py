@@ -22,10 +22,10 @@ class AllImport(AllEntity, AllImportMixin):
             + str(self.processed_full_update)
         )
 
-    id_seq = Sequence('all_import_id_seq')
+    all_import_id_seq = Sequence('all_import_id_seq')
     id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
+                   all_import_id_seq,
+                   server_default=all_import_id_seq.next_value(),
                    primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)

@@ -20,7 +20,7 @@ class User(UserMixin, db.Model):
         db.UniqueConstraint("email", name="uix_usr"),
     )
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('usr_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

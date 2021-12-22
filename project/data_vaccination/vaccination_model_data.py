@@ -16,10 +16,10 @@ class VaccinationData(AllFactTableTimeSeries):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.date_reported.__repr__()})"
 
-    id_seq = Sequence('vaccination_id_seq')
+    vaccination_id_seq = Sequence('vaccination_id_seq')
     id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
+                   vaccination_id_seq,
+                   server_default=vaccination_id_seq.next_value(),
                    primary_key=True)
     date_reported_id = db.Column(
         db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False

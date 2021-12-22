@@ -25,16 +25,16 @@ class AllFlat(AllImport, AllImportFlatMixin):
             + str(self.processed_full_update)
         )
 
-    id_seq = Sequence('all_import_flat_id_seq')
+    all_import_flat_id_seq = Sequence('all_import_flat_id_seq')
     id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
+                   all_import_flat_id_seq,
+                   server_default=all_import_flat_id_seq.next_value(),
                    primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     #
     date_reported_import_str = db.Column(db.String(255), nullable=False)
     datum = db.Column(db.Date, nullable=False)
-    location = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=True)
     location_group = db.Column(db.String(255), nullable=False)
     location_code = db.Column(db.String(255), nullable=False)

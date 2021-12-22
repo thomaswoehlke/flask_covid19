@@ -7,10 +7,10 @@ from sqlalchemy import not_, Sequence
 class AllEntity(db.Model, AllEntityMixin):
     __abstract__ = True
 
-    id_seq = Sequence('all_entity_id_seq')
+    all_entity_id_seq = Sequence('all_entity_id_seq')
     id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
+                   all_entity_id_seq,
+                   server_default=all_entity_id_seq.next_value(),
                    primary_key=True)
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)

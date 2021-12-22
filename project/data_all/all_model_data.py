@@ -78,7 +78,7 @@ class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
     def __str__(self):
         return self.date_reported.__str__() + " " + self.location.__str__()
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('all_data_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),
