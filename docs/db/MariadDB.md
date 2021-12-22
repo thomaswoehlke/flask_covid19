@@ -13,7 +13,7 @@
     mysql -u root
 ````
 
-````mysql
+````sql
     use mysql;
     select Host,User,Password,plugin,authentication_string from user;
     update user set password=PASSWORD("mysql") where User='root';
@@ -35,7 +35,7 @@
     mysql -u root -p mysql
 ````
 
-````mysql
+````sql
     create database tw;
     GRANT ALL PRIVILEGES ON *.* TO 'tw'@'localhost' IDENTIFIED BY 'dsadas' WITH GRANT OPTION;
     GRANT ALL PRIVILEGES ON tw.* TO 'tw'@'localhost' IDENTIFIED BY 'dsadas' WITH GRANT OPTION;
@@ -47,7 +47,7 @@
     mysql -u tw -p tw
 ````
 
-````mysql
+````sql
     show databases;
     SELECT USER(), CURRENT_USER();
     exit
@@ -63,19 +63,19 @@
     mysql -u root -p mysql
 ````
 
-````mysql
-    mysql> create database flask_covid19;
-    mysql> GRANT ALL PRIVILEGES ON *.* TO 'flask_covid19'@'localhost' IDENTIFIED BY 'flask_covid19pwd';
-    mysql> GRANT ALL PRIVILEGES ON covid19data.* TO 'flask_covid19'@'localhost' IDENTIFIED BY 'flask_covid19pwd';
-    mysql> flush privileges;
-    mysql> exit
+````sql
+    create database flask_covid19;
+    GRANT ALL PRIVILEGES ON *.* TO 'flask_covid19'@'localhost' IDENTIFIED BY 'flask_covid19pwd';
+    GRANT ALL PRIVILEGES ON covid19data.* TO 'flask_covid19'@'localhost' IDENTIFIED BY 'flask_covid19pwd';
+    flush privileges;
+    exit
 ````
 
 ````bash
     mysql -u flask_covid19 -p flask_covid19
 ````
 
-````mysql
+````sql
     show databases;
     SELECT USER(), CURRENT_USER();
     exit
