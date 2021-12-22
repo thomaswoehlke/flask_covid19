@@ -20,7 +20,8 @@ from project.data_who.who_service_update import WhoServiceUpdateBase
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_date_reported(self):
-        task = Task.create(sector="WHO", task_name="__full_update_date_reported").read()
+        task = Task.create(sector="WHO", task_name="__full_update_date_reported")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -64,7 +65,8 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __full_update_region(self):
-        task = Task.create(sector="WHO", task_name="__full_update_region").read()
+        task = Task.create(sector="WHO", task_name="__full_update_region")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update region [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -184,7 +186,8 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="WHO", task_name="update_dimension_tables").read()
+        task = Task.create(sector="WHO", task_name="full_update_dimension_tables")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -200,11 +203,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
     def full_update_fact_table(self):
         task = Task.create(sector="WHO", task_name="full_update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] full update dimension_tables [begin]")
+        app.logger.info(" [WHO] full update fact table [begin]")
         app.logger.info("------------------------------------------------------------")
         self.__full_update_data()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [WHO] full update dimension_tables [done]")
+        app.logger.info(" [WHO] full update fact table [done]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
