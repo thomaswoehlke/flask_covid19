@@ -17,7 +17,7 @@ class RkiAltersgruppe(AllEntity):
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     #
-    altersgruppe = db.Column(db.String(255), nullable=False, unique=True)
+    altersgruppe = db.Column(db.String(255), nullable=False)
 
     @classmethod
     def __query_all(cls):

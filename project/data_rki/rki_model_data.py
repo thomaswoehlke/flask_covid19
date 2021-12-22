@@ -62,7 +62,7 @@ class RkiData(AllFactTable):
         cascade="save-update",
         order_by="asc(RkiLandkreis.location)",
     )
-    fid = db.Column(db.String(255), nullable=False, unique=True)
+    fid = db.Column(db.String(255), nullable=False)
     altersgruppe_id = db.Column(
         db.Integer, db.ForeignKey("rki_altersgruppe.id"), nullable=False
     )

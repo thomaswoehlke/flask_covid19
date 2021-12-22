@@ -125,6 +125,13 @@ class Covid19Application:
                 url=self.app.config["SQLALCHEMY_DATABASE_HOST"],
                 db=self.app.config["SQLALCHEMY_DATABASE_DB"],
             )
+        if database_type == "oracle":
+            return 'oracle://{user}:{pw}@{url}:1521/{sid}'.format(
+                user=self.app.config["SQLALCHEMY_DATABASE_USER"],
+                pw=self.app.config["SQLALCHEMY_DATABASE_PW"],
+                url=self.app.config["SQLALCHEMY_DATABASE_HOST"],
+                sid=self.app.config["SQLALCHEMY_DATABASE_SID"],
+            )
         return None
 
     def get_db(self):

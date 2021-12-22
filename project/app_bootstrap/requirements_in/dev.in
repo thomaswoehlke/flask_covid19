@@ -16,6 +16,7 @@ psycopg2
 mysql-connector-python
 mysqldb-wrapper
 mariadb
+cx_Oracle
 wget
 email_validator
 celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1

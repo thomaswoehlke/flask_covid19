@@ -14,11 +14,30 @@ from wtforms import validators
 
 class User(UserMixin, db.Model):
     __tablename__ = "usr"
+    __table_args__ = (
+        db.UniqueConstraint("email", name="uix_usr"),
+    )
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.Unicode(512), nullable=False, unique=True)
+    email = db.Column(db.Unicode(512), nullable=False)
     password_hash = db.Column(db.String(2048), nullable=False)
     name = db.Column(db.String(512), nullable=False)
+
+    def __repr__(self):
+        return "{} ({} {} {} {})".format(
+            self.__class__.__name__,
+            self.email.__repr__(),
+            self.password_hash.__repr__(),
+            self.name.__repr__(),
+            self.fid,
+        )
+
+    def __str__(self):
+        return "{}, {}, ***, {}".format(
+            self.email.__repr__(),
+            self.name.__repr__(),
+            self.fid,
+        )
 
     @classmethod
     def create_new(cls, email: str, name: str, password_hash: str):
