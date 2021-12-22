@@ -19,7 +19,7 @@ class AllLocation(AllEntity, AllLocationMixin):
             + self.location
         )
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('all_location_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

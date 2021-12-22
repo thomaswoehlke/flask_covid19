@@ -7,7 +7,7 @@ from sqlalchemy import not_, Sequence
 class AllEntity(db.Model, AllEntityMixin):
     __abstract__ = True
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('all_entity_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

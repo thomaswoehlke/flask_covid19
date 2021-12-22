@@ -25,7 +25,7 @@ class AllFlat(AllImport, AllImportFlatMixin):
             + str(self.processed_full_update)
         )
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('all_import_flat_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

@@ -30,7 +30,7 @@ class WhoFlat(AllFlat, AllImportFlatMixin):
             + str(self.location_group)
         )
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('who_import_flat_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

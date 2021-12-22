@@ -40,7 +40,7 @@ class RkiData(AllFactTable):
             self.fid,
         )
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('rki_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

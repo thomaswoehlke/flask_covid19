@@ -17,7 +17,7 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
     def __str__(self):
         return self.date_reported.__str__()
 
-    id_seq = Sequence('id_seq')
+    id_seq = Sequence('all_data_timeline_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),

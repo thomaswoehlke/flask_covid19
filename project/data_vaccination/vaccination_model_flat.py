@@ -15,7 +15,13 @@ class VaccinationFlat(AllFlat):
             self.datum.isoformat(),
         )
 
-    id_seq = Sequence('id_seq')
+    def __str__(self):
+        return "{} {}".format(
+            self.date_reported_import_str,
+            self.datum.isoformat(),
+        )
+
+    id_seq = Sequence('vaccination_import_flat_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
                    server_default=id_seq.next_value(),
