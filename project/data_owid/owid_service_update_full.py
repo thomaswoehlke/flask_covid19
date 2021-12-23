@@ -54,7 +54,11 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         OwidContinent.remove_all()
         i = 0
         for oi in OwidImport.get_all_continents():
-            o = OwidContinentFactory.create_new(location_group_str=oi.continent)
+            if oi.continent is None:
+                location_group_str = " "
+            else:
+                location_group_str = oi.continent
+            o = OwidContinentFactory.create_new(location_group_str=location_group_str)
             db.session.add(o)
             i += 1
             output = " [OWID] continent :  [ " + str(i) + " ] " + str(o) + " added"
