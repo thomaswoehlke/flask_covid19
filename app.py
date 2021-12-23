@@ -105,6 +105,10 @@ def who_full_update():
     """[WHO] full update"""
     with app.app_context():
         who_service.full_update()
+    app.logger.info("------------------------------------------------------------")
+    app.logger.info(" [WHO] who-update-full [done]")
+    app.logger.info("------------------------------------------------------------")
+    pass
 
 
 @app.cli.command("who-update")
