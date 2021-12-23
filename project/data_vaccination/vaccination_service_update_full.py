@@ -34,7 +34,7 @@ class VaccinationServiceUpdateFull(
             )
             db.session.add(o)
             output = (
-                "  [Vaccination] full update date_reported [ " + str(i) + " ] " + str(o)
+                " [Vaccination] full update date_reported [ " + str(i) + " ] " + str(o)
             )
             app.logger.info(output)
         db.session.commit()
