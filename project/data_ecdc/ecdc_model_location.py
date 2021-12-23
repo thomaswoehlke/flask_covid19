@@ -21,17 +21,12 @@ class EcdcCountry(AllLocation):
         )
 
     def __str__(self):
-        return (
-            " "
-            + self.location_group.location_group
-            + " : "
-            + self.geo_id
-            + " | "
-            + self.location_code
-            + " | "
-            + self.location
-            + " | "
-            + self.pop_data_2019
+        return " {} : {} | {} | {} | {}".format(
+            self.location_group.location_group,
+            self.geo_id,
+            self.location_code,
+            self.location,
+            self.pop_data_2019
         )
 
     @classmethod

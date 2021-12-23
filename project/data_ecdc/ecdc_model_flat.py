@@ -28,7 +28,7 @@ class EcdcFlat(AllFlat):
     datum = db.Column(db.Date, nullable=False)
     location = db.Column(db.String(255), nullable=False)
     location_group = db.Column(db.String(255), nullable=False)
-    location_code = db.Column(db.String(255), nullable=False)
+    location_code = db.Column(db.String(255), nullable=True)
     #
     year = db.Column(db.Integer, nullable=False)
     year_month = db.Column(db.String(255), nullable=False)
@@ -42,11 +42,11 @@ class EcdcFlat(AllFlat):
     day_of_year = db.Column(db.Integer, nullable=False)
     #
     geo_id = db.Column(db.String(255), nullable=False)
-    pop_data_2019 = db.Column(db.String(255), nullable=False)
+    pop_data_2019 = db.Column(db.String(255), nullable=True)
     cases = db.Column(db.Integer, nullable=False)
     deaths = db.Column(db.Integer, nullable=False)
     cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(
-        db.Float, nullable=False
+        db.Float, nullable=True
     )
 
 

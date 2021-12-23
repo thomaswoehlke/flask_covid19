@@ -35,15 +35,15 @@ class EcdcImport(AllImport):
     #
     cases = db.Column(db.String(255), nullable=False)
     deaths = db.Column(db.String(255), nullable=False)
-    pop_data_2019 = db.Column(db.String(255), nullable=False)
+    pop_data_2019 = db.Column(db.String(255), nullable=True)
     #
     countries_and_territories = db.Column(db.String(255), nullable=False)
     geo_id = db.Column(db.String(255), nullable=False)
-    country_territory_code = db.Column(db.String(255), nullable=False)
+    country_territory_code = db.Column(db.String(255), nullable=True)
     continent_exp = db.Column(db.String(255), nullable=False)
     #
     cumulative_number_for_14_days_of_covid19_cases_per_100000 = db.Column(
-        db.String(255), nullable=False
+        db.String(255), nullable=True
     )
 
     @classmethod

@@ -154,10 +154,8 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
                 )
                 my_deaths = int(ecdc_import.deaths)
                 my_cases = int(ecdc_import.cases)
-                if (
-                    ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
-                    == ""
-                ):
+                a = ecdc_import.cumulative_number_for_14_days_of_covid19_cases_per_100000
+                if (a == "") or (a is None):
                     my_cumulative_number = 0.0
                 else:
                     my_cumulative_number = float(
