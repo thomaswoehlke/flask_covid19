@@ -26,7 +26,8 @@ class UserService:
         app.logger.info(" UserService.prepare_default_user_login()")
         self.__database = database
         if User.count() == 0:
-            app.logger.info("User.count() == 0")
+            app.logger.debug("-------------------------------------------------------")
+            app.logger.info(" User.count() == 0")
             login = app.config["USER_ADMIN_LOGIN"]
             name = app.config["USER_ADMIN_USERNAME"]
             pw = app.config["USER_ADMIN_PASSWORD"]
@@ -34,5 +35,9 @@ class UserService:
             app.logger.info(user)
             self.__database.session.add(user)
             self.__database.session.commit()
+            app.logger.debug("-------------------------------------------------------")
         else:
-            app.logger.info("User.count() > 0")
+            app.logger.debug("-------------------------------------------------------")
+            app.logger.info(" User.count() > 0")
+            app.logger.debug("-------------------------------------------------------")
+
