@@ -24,11 +24,11 @@ class OwidData(AllFactTable):
                    id_seq,
                    server_default=id_seq.next_value(),
                    primary_key=True)
-    processed_update = db.Column(db.Boolean, nullable=False, index=True)
-    processed_full_update = db.Column(db.Boolean, nullable=False, index=True)
+    processed_update = db.Column(db.Boolean, nullable=False)
+    processed_full_update = db.Column(db.Boolean, nullable=False)
     #
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False, index=True
+        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "OwidDateReported",
@@ -37,7 +37,7 @@ class OwidData(AllFactTable):
         order_by="desc(OwidDateReported.datum)",
     )
     location_id = db.Column(
-        db.Integer, db.ForeignKey("all_location.id"), nullable=False, index=True
+        db.Integer, db.ForeignKey("all_location.id"), nullable=False
     )
     location = db.relationship(
         "OwidCountry",
@@ -46,46 +46,46 @@ class OwidData(AllFactTable):
         order_by="asc(OwidCountry.location)",
     )
     #
-    total_cases = db.Column(db.Float, nullable=False, index=True)
-    new_cases = db.Column(db.Float, nullable=False, index=True)
+    total_cases = db.Column(db.Float, nullable=False)
+    new_cases = db.Column(db.Float, nullable=False)
     new_cases_smoothed = db.Column(db.Float, nullable=False)
-    total_deaths = db.Column(db.Float, nullable=False, index=True)
-    new_deaths = db.Column(db.Float, nullable=False, index=True)
+    total_deaths = db.Column(db.Float, nullable=False)
+    new_deaths = db.Column(db.Float, nullable=False)
     new_deaths_smoothed = db.Column(db.Float, nullable=False)
-    total_cases_per_million = db.Column(db.Float, nullable=False, index=True)
-    new_cases_per_million = db.Column(db.Float, nullable=False, index=True)
-    new_cases_smoothed_per_million = db.Column(db.Float, nullable=False, index=True)
-    total_deaths_per_million = db.Column(db.Float, nullable=False, index=True)
-    new_deaths_per_million = db.Column(db.Float, nullable=False, index=True)
-    new_deaths_smoothed_per_million = db.Column(db.Float, nullable=False)
-    reproduction_rate = db.Column(db.Float, nullable=False)
-    icu_patients = db.Column(db.Float, nullable=False)
-    icu_patients_per_million = db.Column(db.Float, nullable=False)
-    hosp_patients = db.Column(db.Float, nullable=False)
-    hosp_patients_per_million = db.Column(db.Float, nullable=False)
-    weekly_icu_admissions = db.Column(db.Float, nullable=False)
-    weekly_icu_admissions_per_million = db.Column(db.Float, nullable=False)
-    weekly_hosp_admissions = db.Column(db.Float, nullable=False)
-    weekly_hosp_admissions_per_million = db.Column(db.Float, nullable=False)
-    new_tests = db.Column(db.Float, nullable=False)
-    total_tests = db.Column(db.Float, nullable=False)
-    total_tests_per_thousand = db.Column(db.Float, nullable=False)
-    new_tests_per_thousand = db.Column(db.Float, nullable=False)
-    new_tests_smoothed = db.Column(db.Float, nullable=False)
-    new_tests_smoothed_per_thousand = db.Column(db.Float, nullable=False)
-    positive_rate = db.Column(db.Float, nullable=False)
-    tests_per_case = db.Column(db.Float, nullable=False)
-    tests_units = db.Column(db.String(255), nullable=False)
-    total_vaccinations = db.Column(db.Float, nullable=False)
-    people_vaccinated = db.Column(db.Float, nullable=False)
-    people_fully_vaccinated = db.Column(db.Float, nullable=False)
-    new_vaccinations = db.Column(db.Float, nullable=False)
-    new_vaccinations_smoothed = db.Column(db.Float, nullable=False)
-    total_vaccinations_per_hundred = db.Column(db.Float, nullable=False)
-    people_vaccinated_per_hundred = db.Column(db.Float, nullable=False)
-    people_fully_vaccinated_per_hundred = db.Column(db.Float, nullable=False)
-    new_vaccinations_smoothed_per_million = db.Column(db.Float, nullable=False)
-    stringency_index = db.Column(db.Float, nullable=False)
+    total_cases_per_million = db.Column(db.Float, nullable=False)
+    new_cases_per_million = db.Column(db.Float, nullable=False)
+    new_cases_smoothed_per_million = db.Column(db.Float, nullable=False)
+    total_deaths_per_million = db.Column(db.Float, nullable=False)
+    new_deaths_per_million = db.Column(db.Float, nullable=False)
+    new_deaths_smoothed_per_million = db.Column(db.Float, nullable=True)
+    reproduction_rate = db.Column(db.Float, nullable=True)
+    icu_patients = db.Column(db.Float, nullable=True)
+    icu_patients_per_million = db.Column(db.Float, nullable=True)
+    hosp_patients = db.Column(db.Float, nullable=True)
+    hosp_patients_per_million = db.Column(db.Float, nullable=True)
+    weekly_icu_admissions = db.Column(db.Float, nullable=True)
+    weekly_icu_admissions_per_million = db.Column(db.Float, nullable=True)
+    weekly_hosp_admissions = db.Column(db.Float, nullable=True)
+    weekly_hosp_admissions_per_million = db.Column(db.Float, nullable=True)
+    new_tests = db.Column(db.Float, nullable=True)
+    total_tests = db.Column(db.Float, nullable=True)
+    total_tests_per_thousand = db.Column(db.Float, nullable=True)
+    new_tests_per_thousand = db.Column(db.Float, nullable=True)
+    new_tests_smoothed = db.Column(db.Float, nullable=True)
+    new_tests_smoothed_per_thousand = db.Column(db.Float, nullable=True)
+    positive_rate = db.Column(db.Float, nullable=True)
+    tests_per_case = db.Column(db.Float, nullable=True)
+    tests_units = db.Column(db.String(255), nullable=True)
+    total_vaccinations = db.Column(db.Float, nullable=True)
+    people_vaccinated = db.Column(db.Float, nullable=True)
+    people_fully_vaccinated = db.Column(db.Float, nullable=True)
+    new_vaccinations = db.Column(db.Float, nullable=True)
+    new_vaccinations_smoothed = db.Column(db.Float, nullable=True)
+    total_vaccinations_per_hundred = db.Column(db.Float, nullable=True)
+    people_vaccinated_per_hundred = db.Column(db.Float, nullable=True)
+    people_fully_vaccinated_per_hundred = db.Column(db.Float, nullable=True)
+    new_vaccinations_smoothed_per_million = db.Column(db.Float, nullable=True)
+    stringency_index = db.Column(db.Float, nullable=True)
 
     @classmethod
     def __query_by_location(cls, location: OwidCountry):
@@ -231,33 +231,41 @@ class OwidDataFactory:
         o = OwidData(
             date_reported=date_reported,
             location=location,
-            total_cases=0.0 if "" == oi.total_cases else float(oi.total_cases),
-            new_cases=0.0 if "" == oi.new_cases else float(oi.new_cases),
+            total_cases=0.0
+            if "" == oi.total_cases or oi.total_cases is None
+            else float(oi.total_cases),
+            new_cases=0.0
+            if "" == oi.new_cases or oi.new_cases is None
+            else float(oi.new_cases),
             new_cases_smoothed=0.0
-            if "" == oi.new_cases_smoothed
+            if "" == oi.new_cases_smoothed or oi.new_cases_smoothed is None
             else float(oi.new_cases_smoothed),
-            total_deaths=0.0 if "" == oi.total_deaths else float(oi.total_deaths),
-            new_deaths=0.0 if "" == oi.new_deaths else float(oi.new_deaths),
+            total_deaths=0.0
+            if "" == oi.total_deaths or oi.total_deaths is None
+            else float(oi.total_deaths),
+            new_deaths=0.0
+            if "" == oi.new_deaths or oi.new_deaths is None
+            else float(oi.new_deaths),
             new_deaths_smoothed=0.0
-            if "" == oi.new_deaths_smoothed
+            if "" == oi.new_deaths_smoothed or oi.new_deaths_smoothed is None
             else float(oi.new_deaths_smoothed),
             total_cases_per_million=0.0
-            if "" == oi.total_cases_per_million
+            if "" == oi.total_cases_per_million or oi.total_cases_per_million is None
             else float(oi.total_cases_per_million),
             new_cases_per_million=0.0
-            if "" == oi.new_cases_per_million
+            if "" == oi.new_cases_per_million or oi.new_cases_per_million is None
             else float(oi.new_cases_per_million),
             new_cases_smoothed_per_million=0.0
-            if "" == oi.new_cases_smoothed_per_million
+            if "" == oi.new_cases_smoothed_per_million or oi.new_cases_smoothed_per_million is None
             else float(oi.new_cases_smoothed_per_million),
             total_deaths_per_million=0.0
-            if "" == oi.total_deaths_per_million
+            if "" == oi.total_deaths_per_million or oi.total_deaths_per_million is None
             else float(oi.total_deaths_per_million),
             new_deaths_per_million=0.0
-            if "" == oi.new_deaths_per_million
+            if "" == oi.new_deaths_per_million or oi.new_deaths_per_million is None
             else float(oi.new_deaths_per_million),
             new_deaths_smoothed_per_million=0.0
-            if "" == oi.new_deaths_smoothed_per_million
+            if "" == oi.new_deaths_smoothed_per_million or oi.new_deaths_smoothed_per_million is None
             else float(oi.new_deaths_smoothed_per_million),
             reproduction_rate=0.0
             if "" == oi.reproduction_rate or oi.reproduction_rate is None

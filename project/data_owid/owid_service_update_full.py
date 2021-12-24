@@ -20,6 +20,7 @@ from project.data_owid.owid_service_update import OwidServiceUpdateBase
 
 class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_date_reported(self):
+        task = Task.create(sector="OWID", task_name="__full_update_date_reported").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -43,9 +44,11 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_continent(self):
+        task = Task.create(sector="OWID", task_name="__full_update_continent").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update continent [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -69,9 +72,11 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update continent [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
+        task = Task.create(sector="OWID", task_name="__full_update_country").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -95,23 +100,48 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update country [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_fact_table(self):
+        task = Task.create(sector="OWID", task_name="__full_update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update [begin]")
+        app.logger.info(" [OWID] __full_update_fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
         OwidData.remove_all()
+        db.session.commit()
         for my_owid_date_reported in OwidDateReported.find_all():
             for oi in OwidImport.get_for_one_day(
                 my_owid_date_reported.date_reported_import_str
             ):
+                # app.logger.debug(" * | iso_code = "+oi.iso_code+" | location = "+oi.location+" | ")
                 pers_owid_country = OwidCountry.find_by_iso_code_and_location(
                     iso_code=oi.iso_code, location=oi.location
                 )
+                if pers_owid_country is None:
+                    pers_owid_country = OwidCountry.find_by_iso_code(
+                        iso_code=oi.iso_code
+                    )
+                    if pers_owid_country is None:
+                        pers_owid_country = OwidCountry.find_by_location(
+                            location=oi.location
+                        )
+                        if pers_owid_country is None:
+                            if oi.continent is None:
+                                location_group = " "
+                            else:
+                                location_group = oi.continent
+                            continent = OwidContinent.find_by_location_group(
+                                location_group=location_group
+                            )
+                            pers_owid_country = OwidCountryFactory.create_new(
+                                oi=oi,
+                                location_group=continent
+                            )
+                # app.logger.debug(pers_owid_country)
                 o = OwidDataFactory.create_new(
                     oi=oi,
                     date_reported=my_owid_date_reported,
@@ -120,11 +150,12 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 db.session.add(o)
                 anzahl_db_zeilen_persistent += 1
                 anzahl_db_zeilen_transient += 1
+            db.session.commit()
             my_owid_date_reported.set_processed_full_update()
             db.session.add(my_owid_date_reported)
             lfd_nr_tage += 1
             if lfd_nr_tage % 7 == 0:
-                db.session.commit()
+                #db.session.commit()
                 app.logger.info(
                     " [OWID] full update "
                     + str(my_owid_date_reported)
@@ -144,8 +175,9 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             + " days"
         )
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [OWID] full update [done]")
+        app.logger.info(" [OWID] __full_update_fact_table [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):

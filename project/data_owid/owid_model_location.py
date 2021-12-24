@@ -106,6 +106,22 @@ class OwidCountry(AllLocation):
         )
 
     @classmethod
+    def find_by_iso_code(cls, iso_code):
+        return (
+            db.session.query(cls)
+            .filter(cls.location_code == iso_code)
+            .one_or_none()
+        )
+
+    @classmethod
+    def find_by_location(cls, location):
+        return (
+            db.session.query(cls)
+            .filter(cls.location == location)
+            .one_or_none()
+        )
+
+    @classmethod
     def find_by_iso_code_and_location(cls, iso_code, location):
         return (
             db.session.query(cls)

@@ -124,15 +124,21 @@ class OwidFlatFactory:
             processed_update=False,
             processed_full_update=False,
             #
-            total_cases=0.0 if "" == row["total_cases"] else float(row["total_cases"]),
-            new_cases=0.0 if "" == row["new_cases"] else float(row["new_cases"]),
+            total_cases=0.0
+            if "" == row["total_cases"]
+            else float(row["total_cases"]),
+            new_cases=0.0
+            if "" == row["new_cases"]
+            else float(row["new_cases"]),
             new_cases_smoothed=0.0
             if "" == row["new_cases_smoothed"]
             else float(row["new_cases_smoothed"]),
             total_deaths=0.0
             if "" == row["total_deaths"]
             else float(row["total_deaths"]),
-            new_deaths=0.0 if "" == row["new_deaths"] else float(row["new_deaths"]),
+            new_deaths=0.0
+            if "" == row["new_deaths"]
+            else float(row["new_deaths"]),
             new_deaths_smoothed=0.0
             if "" == row["new_deaths_smoothed"]
             else float(row["new_deaths_smoothed"]),
@@ -181,8 +187,12 @@ class OwidFlatFactory:
             weekly_hosp_admissions_per_million=0.0
             if "" == row["weekly_hosp_admissions_per_million"]
             else float(row["weekly_hosp_admissions_per_million"]),
-            new_tests=0.0 if "" == row["new_tests"] else float(row["new_tests"]),
-            total_tests=0.0 if "" == row["total_tests"] else float(row["total_tests"]),
+            new_tests=0.0
+            if "" == row["new_tests"]
+            else float(row["new_tests"]),
+            total_tests=0.0
+            if "" == row["total_tests"]
+            else float(row["total_tests"]),
             total_tests_per_thousand=0.0
             if "" == row["total_tests_per_thousand"]
             else float(row["total_tests_per_thousand"]),
@@ -232,11 +242,15 @@ class OwidFlatFactory:
             stringency_index=0.0
             if "" == row["stringency_index"]
             else float(row["stringency_index"]),
-            population=0.0 if "" == row["population"] else float(row["population"]),
+            population=0.0
+            if "" == row["population"]
+            else float(row["population"]),
             population_density=0.0
             if "" == row["population_density"]
             else float(row["population_density"]),
-            median_age=0.0 if "" == row["median_age"] else float(row["median_age"]),
+            median_age=0.0
+            if "" == row["median_age"]
+            else float(row["median_age"]),
             aged_65_older=0.0
             if "" == row["aged_65_older"]
             else float(row["aged_65_older"]),
