@@ -162,8 +162,8 @@ class AdminService:
             WhoData,
             WhoImport,
             WhoFlat,
-            WhoCountry,
             WhoCountryRegion,
+            WhoCountry,
             OwidData,
             OwidImport,
             OwidFlat,
@@ -190,6 +190,7 @@ class AdminService:
             RkiMeldedatum,
             EcdcDateReported,
         ]
+        table_classes.sort(key=str)
         tables_and_rows = {}
         with app.app_context():
             for table_class in table_classes:
