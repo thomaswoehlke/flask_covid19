@@ -4,21 +4,16 @@
     {% include 'app_admin/navigation/app_admin_navtabs.html' %}
 {% endblock %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <nav>
-    {% include 'app_admin/navigation/app_admin_navtabs.html' %}
-                </nav>
-            </div>
-        </div>
-    </div>
+
+{% block content %}
+    {{super()}}
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>Admin :: Status</h3>
     {% include 'app_application/status/status_table_row_count.html' %}
             </div>
         </div>
     </div>
+
+{% endblock %}
