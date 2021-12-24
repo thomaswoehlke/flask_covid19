@@ -67,11 +67,11 @@ class BlueprintApplicationUrls:
     def url_database_table_row_count():
         page_info = WebPageContent("Admin", "Status")
         database_table_row_count = app_admin_service.database_table_row_count()
-        return render_template("app_application/status.html",
-                               page_info=page_info,
-                               database_table_row_count=database_table_row_count
-                               )
-
+        return render_template(
+            "app_application/status/status.html",
+            page_info=page_info,
+            database_table_row_count=database_table_row_count
+        )
 
 
 blueprint_application_urls = BlueprintApplicationUrls()
