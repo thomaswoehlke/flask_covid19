@@ -1,0 +1,36 @@
+{% extends 'app_admin/master.html' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav>
+    {% include 'app_admin/navigation/app_admin_navtabs.html' %}
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Admin :: Tasks</h3>
+                <div class="btn-group-vertical" role="group" aria-label="Views">
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'app_admin.url_alive_message_start') }}"
+                       role="button">Admin :: alive message</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'app_admin.url_admin_database_drop') }}"
+                       role="button">Admin :: database :: drop_create</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'app_admin.url_admin_database_dropcreate_only') }}"
+                       role="button">Admin :: database :: drop_create :: only</a>
+                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                       href="{{ url_for( 'app_admin.url_admin_database_import') }}"
+                       role="button">Admin :: database :: import</a>
+                    <a class="btn btn-primary btn-lg btn-block text-left"
+                       href="{{ url_for( 'app_admin.url_admin_database_dump') }}"
+                       role="button">Admin :: database :: dump</a>
+                </div>
+            </div>
+        </div>
+    </div>

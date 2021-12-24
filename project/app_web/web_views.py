@@ -14,6 +14,7 @@ from project.data_owid.owid_views import app_owid
 from project.data_rki.rki_views import app_rki
 from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
+from project.app_web.web_dispachter_matrix_service import app_admin_service
 
 blueprint_application = Blueprint(
     "app_web", __name__, template_folder="templates", url_prefix="/"
@@ -60,6 +61,17 @@ class BlueprintApplicationUrls:
     def url_admin_index():
         page_info = WebPageContent("Admin", "Covid19 Admin")
         return render_template("app_application/index.html", page_info=page_info)
+
+    @staticmethod
+    @app.route("/status")
+    def url_database_table_row_count():
+        page_info = WebPageContent("Admin", "Status")
+        database_table_row_count = app_admin_service.database_table_row_count()
+        return render_template("app_application/status.html",
+                               page_info=page_info,
+                               database_table_row_count=database_table_row_count
+                               )
+
 
 
 blueprint_application_urls = BlueprintApplicationUrls()
