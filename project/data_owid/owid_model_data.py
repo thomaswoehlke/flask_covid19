@@ -260,74 +260,86 @@ class OwidDataFactory:
             if "" == oi.new_deaths_smoothed_per_million
             else float(oi.new_deaths_smoothed_per_million),
             reproduction_rate=0.0
-            if "" == oi.reproduction_rate
+            if "" == oi.reproduction_rate or oi.reproduction_rate is None
             else float(oi.reproduction_rate),
-            icu_patients=0.0 if "" == oi.icu_patients else float(oi.icu_patients),
+            icu_patients=0.0
+            if "" == oi.icu_patients or oi.icu_patients is None
+            else float(oi.icu_patients),
             icu_patients_per_million=0.0
-            if "" == oi.icu_patients_per_million
+            if "" == oi.icu_patients_per_million or oi.icu_patients_per_million is None
             else float(oi.icu_patients_per_million),
-            hosp_patients=0.0 if "" == oi.hosp_patients else float(oi.hosp_patients),
+            hosp_patients=0.0
+            if "" == oi.hosp_patients or oi.hosp_patients is None
+            else float(oi.hosp_patients),
             hosp_patients_per_million=0.0
-            if "" == oi.hosp_patients_per_million
+            if "" == oi.hosp_patients_per_million or oi.hosp_patients_per_million is None
             else float(oi.hosp_patients_per_million),
             weekly_icu_admissions=0.0
-            if "" == oi.weekly_icu_admissions
+            if "" == oi.weekly_icu_admissions or oi.weekly_icu_admissions is None
             else float(oi.weekly_icu_admissions),
             weekly_icu_admissions_per_million=0.0
-            if "" == oi.weekly_icu_admissions_per_million
+            if "" == oi.weekly_icu_admissions_per_million or oi.weekly_icu_admissions_per_million is None
             else float(oi.weekly_icu_admissions_per_million),
             weekly_hosp_admissions=0.0
-            if "" == oi.weekly_hosp_admissions
+            if "" == oi.weekly_hosp_admissions or oi.weekly_hosp_admissions is None
             else float(oi.weekly_hosp_admissions),
             weekly_hosp_admissions_per_million=0.0
-            if "" == oi.weekly_hosp_admissions_per_million
+            if "" == oi.weekly_hosp_admissions_per_million or oi.weekly_hosp_admissions_per_million is None
             else float(oi.weekly_hosp_admissions_per_million),
-            new_tests=0.0 if "" == oi.new_tests else float(oi.new_tests),
-            total_tests=0.0 if "" == oi.total_tests else float(oi.total_tests),
+            new_tests=0.0
+            if "" == oi.new_tests or oi.new_tests is None
+            else float(oi.new_tests),
+            total_tests=0.0
+            if "" == oi.total_tests or oi.total_tests is None
+            else float(oi.total_tests),
             total_tests_per_thousand=0.0
-            if "" == oi.total_tests_per_thousand
+            if "" == oi.total_tests_per_thousand or oi.total_tests_per_thousand is None
             else float(oi.total_tests_per_thousand),
             new_tests_per_thousand=0.0
-            if "" == oi.new_tests_per_thousand
+            if "" == oi.new_tests_per_thousand or oi.new_tests_per_thousand is None
             else float(oi.new_tests_per_thousand),
             new_tests_smoothed=0.0
-            if "" == oi.new_tests_smoothed
+            if "" == oi.new_tests_smoothed or oi.new_tests_smoothed is None
             else float(oi.new_tests_smoothed),
             new_tests_smoothed_per_thousand=0.0
-            if "" == oi.new_tests_smoothed_per_thousand
+            if "" == oi.new_tests_smoothed_per_thousand or oi.new_tests_smoothed_per_thousand is None
             else float(oi.new_tests_smoothed_per_thousand),
-            positive_rate=0.0 if "" == oi.positive_rate else float(oi.positive_rate),
-            tests_per_case=0.0 if "" == oi.tests_per_case else float(oi.tests_per_case),
+            positive_rate=0.0
+            if "" == oi.positive_rate or oi.positive_rate is None
+            else float(oi.positive_rate),
+            tests_per_case=0.0
+            if "" == oi.tests_per_case or oi.tests_per_case is None
+            else float(oi.tests_per_case),
             tests_units=oi.tests_units,
             total_vaccinations=0.0
-            if "" == oi.total_vaccinations
+            if "" == oi.total_vaccinations or oi.total_vaccinations is None
             else float(oi.total_vaccinations),
             people_vaccinated=0.0
-            if "" == oi.people_vaccinated
+            if "" == oi.people_vaccinated or oi.people_vaccinated is None
             else float(oi.people_vaccinated),
             people_fully_vaccinated=0.0
-            if "" == oi.people_fully_vaccinated
+            if "" == oi.people_fully_vaccinated or oi.people_fully_vaccinated is None
             else float(oi.people_fully_vaccinated),
             new_vaccinations=0.0
-            if "" == oi.new_vaccinations
+            if "" == oi.new_vaccinations or oi.new_vaccinations is None
             else float(oi.new_vaccinations),
             new_vaccinations_smoothed=0.0
-            if "" == oi.new_vaccinations_smoothed
+            if "" == oi.new_vaccinations_smoothed or oi.new_vaccinations_smoothed is None
             else float(oi.new_vaccinations_smoothed),
             total_vaccinations_per_hundred=0.0
-            if "" == oi.total_vaccinations_per_hundred
+            if "" == oi.total_vaccinations_per_hundred or oi.total_vaccinations_per_hundred is None
             else float(oi.total_vaccinations_per_hundred),
             people_vaccinated_per_hundred=0.0
-            if "" == oi.people_vaccinated_per_hundred
+            if "" == oi.people_vaccinated_per_hundred or oi.people_vaccinated_per_hundred is None
             else float(oi.people_vaccinated_per_hundred),
             people_fully_vaccinated_per_hundred=0.0
-            if "" == oi.people_fully_vaccinated_per_hundred
+            if "" == oi.people_fully_vaccinated_per_hundred or oi.people_fully_vaccinated_per_hundred is None
             else float(oi.people_fully_vaccinated_per_hundred),
             new_vaccinations_smoothed_per_million=0.0
-            if "" == oi.new_vaccinations_smoothed_per_million
+            if "" == oi.new_vaccinations_smoothed_per_million or oi.new_vaccinations_smoothed_per_million is None
             else float(oi.new_vaccinations_smoothed_per_million),
             stringency_index=0.0
-            if "" == oi.stringency_index
+            if "" == oi.stringency_index or oi.stringency_index is None
             else float(oi.stringency_index),
             processed_update=False,
             processed_full_update=False,

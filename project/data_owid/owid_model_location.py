@@ -129,36 +129,50 @@ class OwidCountryFactory:
             location_group=location_group,
             location=oi.location,
             location_code=oi.iso_code,
-            population=0.0 if "" == oi.population else float(oi.population),
+            population=0.0
+            if "" == oi.population or oi.population is None
+            else float(oi.population),
             population_density=0.0
-            if "" == oi.population_density
+            if "" == oi.population_density or oi.population_density is None
             else float(oi.population_density),
-            median_age=0.0 if "" == oi.median_age else float(oi.median_age),
-            aged_65_older=0.0 if "" == oi.aged_65_older else float(oi.aged_65_older),
-            aged_70_older=0.0 if "" == oi.aged_70_older else float(oi.aged_70_older),
-            gdp_per_capita=0.0 if "" == oi.gdp_per_capita else float(oi.gdp_per_capita),
+            median_age=0.0
+            if "" == oi.median_age or oi.median_age is None
+            else float(oi.median_age),
+            aged_65_older=0.0
+            if "" == oi.aged_65_older or oi.aged_65_older is None
+            else float(oi.aged_65_older),
+            aged_70_older=0.0
+            if "" == oi.aged_70_older or oi.aged_70_older is None
+            else float(oi.aged_70_older),
+            gdp_per_capita=0.0
+            if "" == oi.gdp_per_capita or oi.gdp_per_capita is None
+            else float(oi.gdp_per_capita),
             extreme_poverty=0.0
-            if "" == oi.extreme_poverty
+            if "" == oi.extreme_poverty or oi.extreme_poverty is None
             else float(oi.extreme_poverty),
             cardiovasc_death_rate=0.0
-            if "" == oi.cardiovasc_death_rate
+            if "" == oi.cardiovasc_death_rate or oi.cardiovasc_death_rate is None
             else float(oi.cardiovasc_death_rate),
             diabetes_prevalence=0.0
-            if "" == oi.diabetes_prevalence
+            if "" == oi.diabetes_prevalence or oi.diabetes_prevalence is None
             else float(oi.diabetes_prevalence),
-            female_smokers=0.0 if "" == oi.female_smokers else float(oi.female_smokers),
-            male_smokers=0.0 if "" == oi.male_smokers else float(oi.male_smokers),
+            female_smokers=0.0
+            if "" == oi.female_smokers or oi.female_smokers is None
+            else float(oi.female_smokers),
+            male_smokers=0.0
+            if "" == oi.male_smokers or oi.male_smokers is None
+            else float(oi.male_smokers),
             handwashing_facilities=0.0
-            if "" == oi.handwashing_facilities
+            if "" == oi.handwashing_facilities or oi.handwashing_facilities is None
             else float(oi.handwashing_facilities),
             hospital_beds_per_thousand=0.0
-            if "" == oi.hospital_beds_per_thousand
+            if "" == oi.hospital_beds_per_thousand or oi.hospital_beds_per_thousand is None
             else float(oi.hospital_beds_per_thousand),
             life_expectancy=0.0
-            if "" == oi.life_expectancy
+            if "" == oi.life_expectancy or oi.life_expectancy is None
             else float(oi.life_expectancy),
             human_development_index=0.0
-            if "" == oi.human_development_index
+            if "" == oi.human_development_index or oi.human_development_index is None
             else float(oi.human_development_index),
             processed_update=False,
             processed_full_update=False,
