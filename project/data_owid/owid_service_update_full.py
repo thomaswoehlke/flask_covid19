@@ -150,12 +150,11 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
                 db.session.add(o)
                 anzahl_db_zeilen_persistent += 1
                 anzahl_db_zeilen_transient += 1
-            db.session.commit()
             my_owid_date_reported.set_processed_full_update()
             db.session.add(my_owid_date_reported)
             lfd_nr_tage += 1
             if lfd_nr_tage % 7 == 0:
-                #db.session.commit()
+                db.session.commit()
                 app.logger.info(
                     " [OWID] full update "
                     + str(my_owid_date_reported)
