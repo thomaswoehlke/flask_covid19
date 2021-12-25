@@ -175,8 +175,8 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                     db.session.add(o)
                     k += 1
                     i += 1
+                db.session.commit()
             d += 1
-            db.session.commit()
             sd = str(my_meldedatum)
             app.logger.info(
                 " [RKI] full update ... "
