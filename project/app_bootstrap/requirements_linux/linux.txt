@@ -63,6 +63,8 @@ cryptography==36.0.0
     #   -r project/app_bootstrap/requirements_in/typing.in
     #   celery
     #   mysqldb-wrapper
+cx-oracle==8.3.0
+    # via -r project/app_bootstrap/requirements_in/dev.in
 cycler==0.11.0
     # via matplotlib
 dataframetodb==1.0
