@@ -302,10 +302,22 @@ git:
 # -------------------------------------------------------------------------------------
 
 doc:
+	@echo "------------------"
+	@echo "doc"
+	@echo "------------------"
 	$(MAKE) -w -C $(DOCS_DIR) html
+	@echo "------------------"
+	@echo "doc DONE"
+	@echo "------------------"
 
 test:
+	@echo "------------------"
+	@echo "test"
+	@echo "------------------"
 	pytest -v
+	@echo "------------------"
+	@echo "test DONE"
+	@echo "------------------"
 
 # -------------------------------------------------------------------------------------
 #
@@ -320,7 +332,15 @@ flask_covid19:
 	@echo "flask_covid19 DONE"
 	@echo "------------------"
 
-download: download_all
+download:
+	@echo "------------------"
+	@echo "download"
+	@echo "------------------"
+	$(MAKE) -w -C $(DATA_DIR) download
+	@echo "------------------"
+	@echo "download DONE"
+	@echo "------------------"
+
 
 distclean: venv_clean renv_clean
 

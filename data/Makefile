@@ -42,6 +42,11 @@ ECDC_FILE := ECDC.csv
 ECDC_LOG := ECDC.csv.log
 ECDC_SUBDIR := $(DATA_DIR)/ecdc
 
+
+.PHONY: all
+
+all: download
+
 # -------------------------------------------------------------------------------------
 #
 #   download
@@ -105,3 +110,4 @@ download_divi \
 download_rki
 
 download: download_all
+
