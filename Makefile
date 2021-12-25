@@ -3,19 +3,19 @@ HEUTE := backup
 HEUTE_todo := "date '+%Y_%m_%d'"
 
 APP_MYSELF := flask_covid19
-DATA_DIR := project/data
-DB_DIR := project/db
 PYTHON := python
 PIP_COMPILE := pip-compile
 PIP := pip
 NPM := npm
 GIT := git
 MAKE := make
-PIP_REQUIREMENTS_DIR := project/app_bootstrap/requirements
+
+DB_DIR := project/db
+DOCS_DIR := docs
+DATA_DIR := data
 PIP_REQUIREMENTS_IN_DIR := project/app_bootstrap/requirements_in
 PIP_REQUIREMENTS_WINDOWS_DIR := project/app_bootstrap/requirements_windows
 PIP_REQUIREMENTS_LINUX_DIR := project/app_bootstrap/requirements_linux
-DOCS_DIR := docs
 
 WHO_URL := https://covid19.who.int/WHO-COVID-19-global-data.csv
 WHO_FILE_BACKUP := WHO-$(HEUTE).csv
@@ -122,9 +122,16 @@ pip_install_windows:
 	$(PIP) freeze > etc/requirements_windows.txt
 	$(PIP) check
 
-pip_install_linux:
-	@echo "pip_install"
+pip_install_linux_build:
+	@echo "pip_install_linux_build"
+	$(PYTHON) -m pip install --upgrade pip
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt
+	$(PIP) freeze > etc/requirements_linux.txt
+	$(PIP) check
+
+pip_install_linux: pip_install_linux_build
+	@echo "pip_install_linux"
+	# $(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/tests.txt
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/typing.txt
@@ -132,13 +139,6 @@ pip_install_linux:
 	$(PIP) install -r $(PIP_REQUIREMENTS_LINUX_DIR)/linux.txt
 	$(PIP) freeze > etc/requirements_linux.txt
 	$(PIP) check
-
-pip_setuptools:
-	@echo "pip_setuptools"
-	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install --upgrade setuptools wheel
-	$(PYTHON) -m pip install setuptools wheel
-	$(PYTHON) -m pip uninstall $(APP_MYSELF) -y
 
 pip_uninstall:
 	@echo "pip_uninstall"
@@ -151,6 +151,14 @@ pip_uninstall:
 #    setup
 #
 # -------------------------------------------------------------------------------------
+
+pip_setuptools:
+	@echo "pip_setuptools"
+	$(PYTHON) -m pip install --upgrade pip
+	# $(PYTHON) -m pip install --upgrade setuptools
+	# $(PYTHON) -m pip install --upgrade wheel
+	# $(PYTHON) -m pip install setuptools wheel
+	# $(PYTHON) -m pip uninstall $(APP_MYSELF) -y
 
 setup_development: pip_setuptools
 	@echo "setup_development"
@@ -250,6 +258,13 @@ download_divi:
 	cp -f $(DIVI_SUBDIR)/$(DIVI_FILE) $(DIVI_SUBDIR)/$(DIVI_FILE_BACKUP)
 
 
+download_all: download_who \
+download_owid \
+download_rki_vaccination \
+download_ecdc \
+download_divi \
+download_rki
+
 # -------------------------------------------------------------------------------------
 #
 #   stay human
@@ -305,12 +320,7 @@ flask_covid19:
 	@echo "flask_covid19 DONE"
 	@echo "------------------"
 
-download: download_who \
-download_owid \
-download_rki \
-download_rki_vaccination \
-download_divi \
-download_ecdc
+download: download_all
 
 distclean: venv_clean renv_clean
 
@@ -318,22 +328,12 @@ pip_windows: pip_compile_windows pip_install_windows pip_check setup_frontend
 
 pip_linux: pip_compile_linux pip_install_linux pip_check setup_frontend
 
-windows: clean_windows \
-pip_compile_windows \
-pip_install_windows \
-pip_check \
-setup_frontend \
-project
+windows: clean_windows pip_windows
 
-linux: clean_linux \
-pip_compile_linux \
-pip_install_linux \
-pip_check \
-setup_frontend \
-project
+linux: clean_linux pip_linux
 
-setup: clean setup_development setup_build
+# setup: clean setup_development setup_build
 
 start_windows: pip_setuptools pip_install_windows setup_frontend
 
-start_linux: pip_setuptools pip_install_linux setup_frontend
+start_linux: pip_setuptools pip_install_linux_build linux
