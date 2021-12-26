@@ -195,11 +195,11 @@
 
 #### who_domain_model_import
 
-![who_domain_model_import](docs/uml/data_who/uml/img/who_domain_model_import.png)
+![who_domain_model_import](docs/uml/data_who/img/who_domain_model_import.png)
 
 #### who_use_cases
 
-![who_use_cases](docs/uml/data_who/uml/img/who_use_cases.png)
+![who_use_cases](docs/uml/data_who/img/who_use_cases.png)
 
 ### app_web
 
