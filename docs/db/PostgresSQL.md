@@ -1,6 +1,8 @@
-# PostgreSQL
+# Database
 
-## create user
+## PostgreSQL
+
+### create user
 
 ````PostgreSQL
     CREATE ROLE flask_covid19 WITH
@@ -15,7 +17,7 @@
     GRANT pg_execute_server_program, pg_monitor, pg_read_all_settings, pg_read_all_stats, pg_read_server_files, pg_signal_backend TO flask_covid19 WITH ADMIN OPTION;
 ````
 
-## create tablespace
+### create tablespace
 
 ````PostgreSQL
     CREATE TABLESPACE tablespace_flask_covid19
@@ -26,9 +28,9 @@
       OWNER TO flask_covid19;
 ````
 
-## create database
+### create database
 
-flask_covid19
+#### flask_covid19
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19
@@ -42,7 +44,7 @@ flask_covid19
         CONNECTION LIMIT = -1;
 ````
 
-flask_covid19_dev_branch_01
+#### flask_covid19_dev_branch_01
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_dev_branch_01
@@ -56,7 +58,7 @@ flask_covid19_dev_branch_01
         CONNECTION LIMIT = -1;
 ````
 
-flask_covid19_dev_branch_02
+#### flask_covid19_dev_branch_02
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_dev_branch_02
@@ -70,7 +72,7 @@ flask_covid19_dev_branch_02
         CONNECTION LIMIT = -1;
 ````
 
-flask_covid19_db_refactoring
+#### flask_covid19_db_refactoring
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_db_refactoring
@@ -84,7 +86,7 @@ flask_covid19_db_refactoring
         CONNECTION LIMIT = -1;
 ````
 
-flask_covid19_dev_data_import
+#### flask_covid19_dev_data_import
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_dev_data_import
@@ -99,7 +101,7 @@ flask_covid19_dev_data_import
 
 ````
 
-flask_covid19_dev_frontend
+#### flask_covid19_dev_frontend
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_dev_frontend
@@ -114,7 +116,7 @@ flask_covid19_dev_frontend
 
 ````
 
-flask_covid19_master
+#### flask_covid19_master
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_master
@@ -129,10 +131,25 @@ flask_covid19_master
 
 ````
 
-flask_covid19_qa
+#### flask_covid19_qa
 
 ````PostgreSQL
     CREATE DATABASE flask_covid19_qa
+        WITH
+        OWNER = flask_covid19
+        TEMPLATE = flask_covid19
+        ENCODING = 'UTF8'
+        LC_COLLATE = 'de_DE.UTF-8'
+        LC_CTYPE = 'de_DE.UTF-8'
+        TABLESPACE = tablespace_flask_covid19
+        CONNECTION LIMIT = -1;
+
+````
+
+#### flask_covid19_testing
+
+````PostgreSQL
+    CREATE DATABASE flask_covid19_testing
         WITH
         OWNER = flask_covid19
         TEMPLATE = flask_covid19

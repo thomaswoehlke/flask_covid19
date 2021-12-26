@@ -1,13 +1,13 @@
-# MariaDB
+## MariaDB
 
-## reset unknown root password
+### reset unknown root password
 
 ````bash
     systemctl stop mariadb.service
     mysqld_safe --skip-grant-tables --skip-networking &
 ````
 
-## MariaDB user and Database
+### MariaDB user and Database
 
 ````bash
     mysql -u root
@@ -22,14 +22,14 @@
     exit
 ````
 
-## MariaDB-Service
+### MariaDB-Service
 
 ````bash
     mysqladmin shutdown -u root -p
     systemctl start mariadb.service
 ````
 
-## add local user
+### add local user
 
 ````bash
     mysql -u root -p mysql
@@ -57,7 +57,7 @@
     sudo systemctl restart mariadb.service
 ````
 
-## add user covid19data
+### add database flask_covid19
 
 ````bash
     mysql -u root -p mysql

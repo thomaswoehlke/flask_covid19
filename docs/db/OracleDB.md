@@ -1,10 +1,10 @@
-# Oracle DB
+## Oracle DB
 
-## Ducumentation
+### Ducumentation
 * https://docs.oracle.com/en/database/oracle/oracle-database/19/administration.html
 * https://localhost:5500/em
 
-## create user
+### create user
 
 ```sql
 -- sqlplus '/ as sysdba'
