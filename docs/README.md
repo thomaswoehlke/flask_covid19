@@ -143,35 +143,35 @@
 
 #### owid_domain_model
 
-![owid_domain_model](uml/data_owid/uml/img/owid_domain_model.png)
+![owid_domain_model](uml/data_owid/img/owid_domain_model.png)
 
 #### owid_domain_model_import
 
-![owid_domain_model](uml/data_owid/uml/img/owid_domain_model_import.png)
+![owid_domain_model](uml/data_owid/img/owid_domain_model_import.png)
 
 #### owid_use_cases
 
-![owid_use_cases](uml/data_owid/uml/img/owid_use_cases.png)
+![owid_use_cases](uml/data_owid/img/owid_use_cases.png)
 
 #### owid_use_cases_visual_data_1
 
-![owid_use_cases_visual_data_1](uml/data_owid/uml/use_cases__visual_data/img/owid_use_cases_visual_data_1.png)
+![owid_use_cases_visual_data_1](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_1.png)
 
 #### owid_use_cases_visual_data_2
 
-![owid_use_cases_visual_data_2](uml/data_owid/uml/use_cases__visual_data/img/owid_use_cases_visual_data_2.png)
+![owid_use_cases_visual_data_2](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_2.png)
 
 #### owid_use_cases_visual_data_3
 
-![owid_use_cases_visual_data_3](uml/data_owid/uml/use_cases__visual_data/img/owid_use_cases_visual_data_3.png)
+![owid_use_cases_visual_data_3](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_3.png)
 
 #### owid_use_cases_visual_data_4
 
-![owid_use_cases_visual_data_4](uml/data_owid/uml/use_cases__visual_data/img/owid_use_cases_visual_data_4.png)
+![owid_use_cases_visual_data_4](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_4.png)
 
 #### owid_use_cases_visual_data_5
 
-![owid_use_cases_visual_data_5](uml/data_owid/uml/use_cases__visual_data/img/owid_use_cases_visual_data_5.png)
+![owid_use_cases_visual_data_5](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_5.png)
 
 ### rki_vaccination
 
