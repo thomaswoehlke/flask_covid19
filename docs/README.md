@@ -40,7 +40,7 @@
 
 ````bash
     . ./venv/bin/activate
-    export FLASK_APP=app.py
+    export FLASK_APP=app
     export FLASK_ENV=development
     flask --help
 ````
@@ -52,6 +52,7 @@
 ````bash
     vim project/app_bootstrap/config.py
     vim project/app_bootstrap/database.py
+    vim project/app_bootstrap/pytestconfig.py
     vim project/app_bootstrap/requirements_in/build.in
 ````
 

@@ -1,6 +1,8 @@
+# Database
+
 ## Oracle DB
 
-### Ducumentation
+### Documentation
 * https://docs.oracle.com/en/database/oracle/oracle-database/19/administration.html
 * https://localhost:5500/em
 
