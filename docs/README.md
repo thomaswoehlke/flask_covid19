@@ -129,15 +129,15 @@
 
 #### ecdc_domain_model
 
-![ecdc_domain_model](uml/data_ecdc/uml/img/ecdc_domain_model.png)
+![ecdc_domain_model](uml/data_ecdc/img/ecdc_domain_model.png)
 
 #### ecdc_domain_model_import
 
-![ecdc_domain_model_import](uml/data_ecdc/uml/img/ecdc_domain_model_import.png)
+![ecdc_domain_model_import](uml/data_ecdc/img/ecdc_domain_model_import.png)
 
 #### ecdc_use_cases
 
-![ecdc_use_cases](uml/data_ecdc/uml/img/ecdc_use_cases.png)
+![ecdc_use_cases](uml/data_ecdc/img/ecdc_use_cases.png)
 
 ### owid
 
