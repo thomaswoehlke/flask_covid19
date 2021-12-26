@@ -111,19 +111,19 @@
 
 #### all_domain_model
 
-![all_domain_model](docs/uml/data_all/uml/img/all_domain_model.png)
+![all_domain_model](docs/uml/data_all/img/all_domain_model.png)
 
 #### all_domain_model_import
 
-![all_domain_model_import](docs/uml/data_all/uml/img/all_domain_model_import.png)
+![all_domain_model_import](docs/uml/data_all/img/all_domain_model_import.png)
 
 #### all_domain_model_star_schema
 
-![all_domain_model_star_schema](docs/uml/data_all/uml/img/all_domain_model_star_schema.png)
+![all_domain_model_star_schema](docs/uml/data_all/img/all_domain_model_star_schema.png)
 
 #### all_use_cases
 
-![all_use_cases](docs/uml/data_all/uml/img/all_use_cases.png)
+![all_use_cases](docs/uml/data_all/img/all_use_cases.png)
 
 ### ecdc
 
