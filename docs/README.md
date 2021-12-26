@@ -105,7 +105,7 @@
 * [OWID: covid-vaccinations](https://ourworldindata.org/covid-vaccinations)
 * [OWID: coronavirus-data-explorer](https://ourworldindata.org/explorers/coronavirus-data-explorer)
 
-## UML Blueprints
+## UML
 
 ### all
 
