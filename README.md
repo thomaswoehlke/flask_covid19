@@ -177,21 +177,21 @@
 
 #### rki_vaccination_domain_model
 
-![rki_vaccination_domain_model](docs/uml/data_vaccination/uml/img/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](docs/uml/data_vaccination/img/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_domain_model_import
 
-![rki_vaccination_domain_model](docs/uml/data_vaccination/uml/img/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](docs/uml/data_vaccination/img/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_use_cases
 
-![rki_vaccination_use_cases](docs/uml/data_vaccination/uml/img/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](docs/uml/data_vaccination/img/rki_vaccination_use_cases.png)
 
 ### who
 
 #### who_domain_model
 
-![rki_vaccination_use_cases](docs/uml/data_vaccination/uml/img/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](docs/uml/data_vaccination/img/rki_vaccination_use_cases.png)
 
 #### who_domain_model_import
 
