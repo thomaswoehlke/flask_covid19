@@ -8,66 +8,71 @@
 
 ````bash
     git clone git@github.com:thomaswoehlke/flask_covid19.git
+    cd flask_covid19
 ````
 
-## setup and run
+## venv
+
+### prepare venv
 
 ````bash
     make venv
     . ./venv/bin/activate
     make start
-    cd flask_covid
-    ./mq.sh
 ````
 
-and in another termninal:
-
-````bash
-    . ./venv/bin/activate
-    cd flask_covid
-    python app.py
-````
-
-## update dependencies
+### update dependencies
 
 ````bash
     . ./venv/bin/activate
     make update
  ````
 
-## change configuration
+## run
+
+### run services web and celery
 
 ````bash
-    vim flask_covid19/app_config/config.py
-    vim flask_covid19/app_config/database.py
-    vim flask_covid19/app_build/requirements/build.in
+    ./mq.sh
 ````
 
-## change dependencies
+### run cli tasks
+
+````bash
+    . ./venv/bin/activate
+    export FLASK_APP=app.py
+    export FLASK_ENV=development
+    flask --help
+````
+
+## configuration
+
+### change configuration
+
+````bash
+    vim project/app_bootstrap/config.py
+    vim project/app_bootstrap/database.py
+    vim project/app_bootstrap/requirements_in/build.in
+````
+
+### change dependencies
 
 ````bash
     . ./venv/bin/activate
     make update
-    vim flask_covid19/app_build/requirements/build.in
-    vim flask_covid19/app_build/requirements/docs.in
-    vim flask_covid19/app_build/requirements/tests.in
-    vim flask_covid19/app_build/requirements/typing.in
-    vim flask_covid19/app_build/requirements/dev.in
-    vim flask_covid19/app_build/requirements/linux.in
-    vim flask_covid19/app_build/requirements/windows.in
+    vim project/app_bootstrap/requirements_in/build.in
+    vim project/app_bootstrap/requirements_in/docs.in
+    vim project/app_bootstrap/requirements_in/tests.in
+    vim project/app_bootstrap/requirements_in/typing.in
+    vim project/app_bootstrap/requirements_in/dev.in
+    vim project/app_bootstrap/requirements_in/linux.in
+    vim project/app_bootstrap/requirements_in/windows.in
     make update
 ````
 
-## Data Sources
+## Software Technology
 
-* [WHO](https://covid19.who.int/WHO-COVID-19-global-data.csv)
-* [ecdc.europa](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)
-* [ecdc.europa - Information](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
-* [OWID: covid-19-data](https://github.com/owid/covid-19-data)
-* [OWID: covid-vaccinations](https://ourworldindata.org/covid-vaccinations)
-* [OWID: coronavirus-data-explorer](https://ourworldindata.org/explorers/coronavirus-data-explorer)
-
-## Python
+### Python
 
 * [flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [flask: pypi](https://pypi.org/project/Flask/)
@@ -89,6 +94,15 @@ and in another termninal:
 ### Dependencies
 
 * [fixing-conflicting-dependencies](https://pip.pypa.io/en/latest/user_guide/#fixing-conflicting-dependencies)
+
+## Statistical Data and their Sources
+
+* [WHO](https://covid19.who.int/WHO-COVID-19-global-data.csv)
+* [ecdc.europa](https://opendata.ecdc.europa.eu/covid19/casedistribution/csv)
+* [ecdc.europa - Information](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
+* [OWID: covid-19-data](https://github.com/owid/covid-19-data)
+* [OWID: covid-vaccinations](https://ourworldindata.org/covid-vaccinations)
+* [OWID: coronavirus-data-explorer](https://ourworldindata.org/explorers/coronavirus-data-explorer)
 
 ## UML Blueprints
 

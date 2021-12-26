@@ -371,8 +371,12 @@ windows: clean_windows pip_windows
 
 linux: clean_linux pip_linux
 
-# setup: clean setup_development setup_build
-
 start_windows: pip_setuptools pip_install_windows setup_frontend
 
 start_linux: pip_install_linux_build linux
+
+update: linux
+# update: windows
+
+start: start_linux
+# start: start_windows
