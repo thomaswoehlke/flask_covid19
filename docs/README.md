@@ -205,8 +205,8 @@
 
 #### app_web_domain_model
 
-![app_application_domain_model](uml/app_web/uml/img/app_application_domain_model.png)
+![app_application_domain_model](uml/app_web/img/app_application_domain_model.png)
 
 #### app_web_use_cases
 
-![app_application_use_cases](uml/app_web/uml/img/app_application_use_cases.png)
+![app_application_use_cases](uml/app_web/img/app_application_use_cases.png)
