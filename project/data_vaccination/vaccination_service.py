@@ -1,8 +1,8 @@
 from project.app_bootstrap.database import app
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_service_download import AllDownloadService
-from project.data_all.all_service_mixins import AllServiceMixin
-from project.data_all.all_task_model import Task
+from data_all.all_config import BlueprintConfig
+from data_all.services.all_service_download import AllDownloadService
+from data_all.framework.services.all_service_mixins import AllServiceMixin
+from data_all.model.all_task_model import Task
 from project.data_vaccination.vaccination_service_import import (
     VaccinationServiceImport,
 )

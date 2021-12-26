@@ -1,8 +1,5 @@
-import datetime
-
 from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_task_model import Task
+from data_all.model.all_task_model import Task
 
 
 class TaskService:

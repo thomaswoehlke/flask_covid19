@@ -3,13 +3,13 @@ from project.app_bootstrap.database import db
 from project.app_web.app_admin_service import AdminService
 from project.app_web.user_service import UserService
 from project.app_web.web_service import WebService
-from project.data_all.all_service import AllDataServiceDispachterMatrix
+from data_all.services.all_service import AllDataServiceDispachterMatrix
 from project.data_ecdc.ecdc_service import EcdcService
 from project.data_owid.owid_service import OwidService
 from project.data_rki.rki_service import RkiService
 from project.data_vaccination.vaccination_service import VaccinationService
 from project.data_who.who_service import WhoService
-from project.data_all.all_task_service import TaskService
+from data_all.services.all_task_service import TaskService
 
 #######################################################################################
 #

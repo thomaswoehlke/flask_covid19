@@ -1,4 +1,4 @@
-from project.data_all.all_model_date_reported import AllDateReported
+from data_all.framework.model.all_model_date_reported import AllDateReported
 
 
 class RkiMeldedatum(AllDateReported):

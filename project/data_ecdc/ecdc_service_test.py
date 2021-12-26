@@ -1,5 +1,5 @@
 from project.app_bootstrap.database import app
-from project.data_all.all_config import BlueprintConfig
+from data_all.all_config import BlueprintConfig
 
 
 class EcdcTestService:

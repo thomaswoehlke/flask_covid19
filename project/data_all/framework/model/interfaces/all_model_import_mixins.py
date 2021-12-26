@@ -1,6 +1,6 @@
 from datetime import date
 
-from project.data_all.all_model_mixins import AllEntityMixin
+from data_all.framework.model.interfaces.all_model_mixins import AllEntityMixin
 
 
 class AllImportMixin(AllEntityMixin):

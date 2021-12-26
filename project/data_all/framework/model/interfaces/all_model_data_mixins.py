@@ -1,6 +1,6 @@
-from project.data_all.all_model_date_reported_mixins import AllDateReportedMixin
-from project.data_all.all_model_location_mixins import AllLocationMixin
-from project.data_all.all_model_mixins import AllEntityMixin
+from data_all.framework.model.interfaces.all_model_date_reported_mixins import AllDateReportedMixin
+from data_all.framework.model.interfaces.all_model_location_mixins import AllLocationMixin
+from data_all.framework.model.interfaces.all_model_mixins import AllEntityMixin
 
 
 class AllFactTableTimeSeriesMixin(AllEntityMixin):

@@ -1,12 +1,12 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import (
+from data_all.model.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
-from project.data_all.all_service_update_full_mixins import (
+from data_all.framework.services.all_service_update_full_mixins import (
     AllServiceMixinUpdateFull,
 )
-from project.data_all.all_task_model import Task
+from data_all.model.all_task_model import Task
 from project.data_owid.owid_model_data import OwidData
 from project.data_owid.owid_model_data import OwidDataFactory
 from project.data_owid.owid_model_date_reported import OwidDateReported

@@ -1,7 +1,7 @@
 from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
-from project.data_all.all_model_flat import AllFlat
+from data_all.framework.model.all_model_flat import AllFlat
 
 
 class VaccinationFlat(AllFlat):

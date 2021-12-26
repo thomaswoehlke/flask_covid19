@@ -1,12 +1,8 @@
 #!/usr/bin/env python
 import os
 
-import matplotlib as mpl
-import numpy as np
 import pandas as pd
-import scipy as sp
-import statsmodels as sm
-from project.data_all.all_config import BlueprintConfig
+from data_all.all_config import BlueprintConfig
 
 
 class Runner:

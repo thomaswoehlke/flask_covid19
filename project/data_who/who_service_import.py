@@ -2,12 +2,12 @@ import csv
 import sys
 
 from project.app_bootstrap.database import covid19_application
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_model_date_reported_factory import (
+from data_all.all_config import BlueprintConfig
+from data_all.model.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
-from project.data_all.all_service_import_mixins import AllServiceMixinImport
-from project.data_all.all_task_model import Task
+from data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
+from data_all.model.all_task_model import Task
 from project.data_who.who_model_flat import WhoFlat
 from project.data_who.who_model_flat import WhoFlatFactory
 from project.data_who.who_model_import import WhoImport

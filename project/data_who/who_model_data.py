@@ -1,6 +1,6 @@
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model_data import AllFactTable
+from data_all.framework.model.all_model_data import AllFactTable
 from project.data_who.who_model_date_reported import WhoDateReported
 from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_location import WhoCountry

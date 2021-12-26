@@ -1,8 +1,8 @@
 from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
-from project.data_all.all_model_flat_mixins import AllImportFlatMixin
-from project.data_all.all_model_import import AllImport
+from data_all.framework.model.interfaces.all_model_flat_mixins import AllImportFlatMixin
+from data_all.framework.model.all_model_import import AllImport
 
 
 class AllFlat(AllImport, AllImportFlatMixin):
