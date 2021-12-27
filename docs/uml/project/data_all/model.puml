@@ -1,27 +1,40 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
 
-class ArrayList {
-Object[] elementData
-size()
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+package data_all {
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllImport {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
 
 @enduml

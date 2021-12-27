@@ -1,27 +1,41 @@
 @startuml
+left to right direction
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+package data_all {
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllImport {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+package data_who {
+    entity WhoData {}
+    entity WhoDateReported {}
+    entity WhoImport {}
+    entity WhoCountry {}
+    entity WhoCountryRegion {}
+
+    AllImport <|- WhoImport
+    AllDateReported <|- WhoDateReported
+    AllLocation <|- WhoCountry
+    AllLocationGroup <|- WhoCountryRegion
+    AllFactTable <|- WhoData
+
+    WhoCountry "1" *--> "*" WhoCountryRegion : region
+    WhoData "1" *--> "*" WhoCountry : country
+    WhoData "1" *--> "*" WhoDateReported : date_reported
+
 }
 
 @enduml
