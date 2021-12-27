@@ -180,7 +180,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                     k += 1
                     i += 1
                     c += 1
-                    if (c % 500) == 0:
+                    if (c % 1000) == 0:
                         db.session.commit()
                 db.session.commit()
             d += 1
