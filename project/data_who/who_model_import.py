@@ -1,6 +1,6 @@
 from project.app_bootstrap.database import db
-from data_all.framework.model.all_model_import import AllImport
-from data_all.framework.model.interfaces.all_model_import_mixins import AllImportMixin
+from project.data_all.framework.model.all_model_import import AllImport
+from project.data_all.framework.model.interfaces.all_model_import_mixins import AllImportMixin
 from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import Bundle
 

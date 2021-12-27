@@ -1,5 +1,5 @@
-from data_all.framework.model.interfaces.all_model_location_group_mixins import AllLocationGroupMixin
-from data_all.framework.model.interfaces.all_model_mixins import AllEntityMixin
+from project.data_all.framework.model.interfaces.all_model_location_group_mixins import AllLocationGroupMixin
+from project.data_all.framework.model.interfaces.all_model_mixins import AllEntityMixin
 
 
 class AllLocationMixin(AllEntityMixin):

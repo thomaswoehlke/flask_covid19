@@ -1,7 +1,7 @@
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from data_all.framework.model.all_model_import import AllImport
+from project.data_all.framework.model.all_model_import import AllImport
 from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import Bundle
 

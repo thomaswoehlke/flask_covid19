@@ -1,5 +1,5 @@
 from project.app_bootstrap.database import db
-from data_all.framework.model.all_model_location import AllLocation
+from project.data_all.framework.model.all_model_location import AllLocation
 from project.data_rki.rki_model_data_location_group import RkiBundesland
 
 

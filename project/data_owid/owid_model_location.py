@@ -1,6 +1,6 @@
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from data_all.framework.model.all_model_location import AllLocation
+from project.data_all.framework.model.all_model_location import AllLocation
 from project.data_owid.owid_model_import import OwidImport
 from project.data_owid.owid_model_location_group import OwidContinent
 from sqlalchemy import and_

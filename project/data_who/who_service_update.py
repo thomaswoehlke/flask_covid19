@@ -1,11 +1,11 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from data_all.all_config import BlueprintConfig
-from data_all.model.all_model_date_reported_factory import (
+from project.data_all.all_config import BlueprintConfig
+from project.data_all.model.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
-from data_all.framework.services.all_service_update_mixins import AllServiceMixinUpdate
-from data_all.model.all_task_model import Task
+from project.data_all.framework.services.all_service_update_mixins import AllServiceMixinUpdate
+from project.data_all.model.all_task_model import Task
 from project.data_who.who_model_data import WhoData
 from project.data_who.who_model_data import WhoDataFactory
 from project.data_who.who_model_date_reported import WhoDateReported

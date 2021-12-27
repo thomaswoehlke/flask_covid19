@@ -2,8 +2,8 @@ from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from data_all.framework.model.all_model import AllEntity
-from data_all.framework.model.interfaces.all_model_location_group_mixins import AllLocationGroupMixin
+from project.data_all.framework.model.all_model import AllEntity
+from project.data_all.framework.model.interfaces.all_model_location_group_mixins import AllLocationGroupMixin
 
 
 class AllLocationGroup(AllEntity, AllLocationGroupMixin):

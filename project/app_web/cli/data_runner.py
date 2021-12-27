@@ -2,7 +2,7 @@
 import os
 
 import pandas as pd
-from data_all.all_config import BlueprintConfig
+from project.data_all.all_config import BlueprintConfig
 
 
 class Runner:

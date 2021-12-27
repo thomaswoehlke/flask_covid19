@@ -3,8 +3,8 @@ from datetime import date
 from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
-from data_all.framework.model.all_model import AllEntity
-from data_all.framework.model.interfaces.all_model_import_mixins import AllImportMixin
+from project.data_all.framework.model.all_model import AllEntity
+from project.data_all.framework.model.interfaces.all_model_import_mixins import AllImportMixin
 
 
 class AllImport(AllEntity, AllImportMixin):
