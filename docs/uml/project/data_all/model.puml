@@ -24,7 +24,11 @@
 'MINUTES
 '}
 
-package data_all {
+package data_all.model {
+    entity Task {}
+}
+
+package data_all.framework {
     abstract class AllFactTable {}
     abstract class AllDateReported {}
     abstract class AllImport {}

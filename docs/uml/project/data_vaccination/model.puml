@@ -7,7 +7,7 @@ left to right direction
 'interface List
 'interface Collection
 
-package data_all {
+package data_all.framework {
     abstract class AllImport {}
     abstract class AllFactTable {}
     abstract class AllDateReported {}
