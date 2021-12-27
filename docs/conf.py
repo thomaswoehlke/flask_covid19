@@ -40,7 +40,11 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
-    "sphinxcontrib.plantuml"
+    "sphinxcontrib.images",
+    "sphinxcontrib.srclinks",
+    "sphinxcontrib.gravizo",
+    "sphinxcontrib.needs",
+    "sphinxcontrib.plantuml",
 ]
 
 source_suffix = {
@@ -62,6 +66,8 @@ intersphinx_mapping = {
 }
 
 issues_github_path = "thomaswoehlke/flask_covid19"
+
+plantuml = 'java -jar plantuml.jar'
 
 # HTML -----------------------------------------------------------------
 
@@ -152,5 +158,3 @@ def github_link(name, rawtext, text, lineno, inliner, options=None, content=None
 def setup(app):
     app.add_role("gh", github_link)
 
-
-plantuml = 'java -jar plantuml.jar '
