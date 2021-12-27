@@ -36,9 +36,9 @@ class EcdcServiceImport(AllServiceMixinImport):
         )
         k = 0
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoImport.remove_all() START")
+        app.logger.info(" EcdcImport.remove_all() START")
         EcdcImport.remove_all()
-        app.logger.info(" WhoImport.remove_all() DONE")
+        app.logger.info(" EcdcImport.remove_all() DONE")
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')

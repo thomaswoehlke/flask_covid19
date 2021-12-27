@@ -137,10 +137,14 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update [begin]")
         app.logger.info("------------------------------------------------------------")
+        app.logger.info("START: RkiData.remove_all()")
         RkiData.remove_all()
+        app.logger.info("DONE: RkiData.remove_all()")
+        app.logger.info("------------------------------------------------------------")
         i = 0
         d = 0
         k = 0
+        c = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
         # for l_key in locations.keys():
         #     app.logger.info(" location: " + str(l_key) + " -> " + str(locations[l_key]))
@@ -175,6 +179,9 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                     db.session.add(o)
                     k += 1
                     i += 1
+                    c += 1
+                    if (c % 500) == 0:
+                        db.session.commit()
                 db.session.commit()
             d += 1
             sd = str(my_meldedatum)
