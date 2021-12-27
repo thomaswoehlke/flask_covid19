@@ -8,8 +8,6 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_owid.owid_model_flat import OwidFlat
-from project.data_owid.owid_model_flat import OwidFlatFactory
 from project.data_owid.owid_model_import import OwidImport
 from project.data_owid.owid_model_import import OwidImportFactory
 
@@ -41,9 +39,6 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info(" WhoImport.remove_all() START")
         OwidImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
-        app.logger.info(" WhoFlat.remove_all()   START")
-        OwidFlat.remove_all()
-        app.logger.info(" WhoFlat.remove_all()   DONE")
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
@@ -57,8 +52,6 @@ class OwidServiceImport(AllServiceMixinImport):
                     date_reported=date_reported, d=d, row=row
                 )
                 db.session.add(o)
-                # f = OwidFlatFactory.create_new(d=d, row=row)
-                # db.session.add(f)
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()

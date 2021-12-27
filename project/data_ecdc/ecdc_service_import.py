@@ -8,8 +8,6 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_ecdc.ecdc_model_flat import EcdcFlat
-from project.data_ecdc.ecdc_model_flat import EcdcFlatFactory
 from project.data_ecdc.ecdc_model_import import EcdcImport
 from project.data_ecdc.ecdc_model_import import EcdcImportFactory
 
@@ -41,9 +39,6 @@ class EcdcServiceImport(AllServiceMixinImport):
         app.logger.info(" WhoImport.remove_all() START")
         EcdcImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
-        app.logger.info(" WhoFlat.remove_all()   START")
-        EcdcFlat.remove_all()
-        app.logger.info(" WhoFlat.remove_all()   DONE")
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
@@ -54,8 +49,6 @@ class EcdcServiceImport(AllServiceMixinImport):
                 )
                 o = EcdcImportFactory.create_new(date_reported=date_rep, d=d, row=row)
                 db.session.add(o)
-                # oo = EcdcFlatFactory.create_new(d=d, row=row)
-                # db.session.add(oo)
                 k = k + 1
                 if (k % 1000) == 0:
                     db.session.commit()

@@ -8,8 +8,6 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_who.who_model_flat import WhoFlat
-from project.data_who.who_model_flat import WhoFlatFactory
 from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_import import WhoImportFactory
 
@@ -47,9 +45,6 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info(" WhoImport.remove_all() START")
         WhoImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
-        app.logger.info(" WhoFlat.remove_all()   START")
-        WhoFlat.remove_all()
-        app.logger.info(" WhoFlat.remove_all()   DONE")
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
@@ -63,16 +58,6 @@ class WhoServiceImport(AllServiceMixinImport):
                     date_reported=date_reported, d=d, row=row
                 )
                 db.session.add(o)
-                # my_data = {
-                #     "new_cases": int(row["New_cases"]),
-                #     "cumulative_cases": int(row["Cumulative_cases"]),
-                #     "new_deaths": int(row["New_deaths"]),
-                #     "cumulative_deaths": int(row["Cumulative_deaths"]),
-                # }
-                # oo = WhoFlatFactory.create_new(
-                #     date_reported=date_reported, d=d, row=row, my_data=my_data
-                # )
-                # db.session.add(oo)
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()

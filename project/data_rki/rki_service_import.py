@@ -5,8 +5,6 @@ from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_rki.rki_model_flat import RkiFlat
-from project.data_rki.rki_model_flat import RkiFlatFactory
 from project.data_rki.rki_model_import import RkiImport
 from project.data_rki.rki_model_import import RkiImportFactory
 from project.data_rki.rki_model_import import RkiServiceImportFactory
@@ -39,10 +37,6 @@ class RkiServiceImport(AllServiceMixinImport):
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("START: RkiFlat.remove_all()")
-        RkiFlat.remove_all()
-        app.logger.info("DONE: RkiFlat.remove_all()")
-        app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(
                 csv_file,
@@ -55,11 +49,6 @@ class RkiServiceImport(AllServiceMixinImport):
                 my_datum = RkiServiceImportFactory.row_str_to_date_fields(row)
                 o = RkiImportFactory.create_new(row=row, my_datum=my_datum)
                 db.session.add(o)
-                # my_int_data = RkiServiceImportFactory.row_str_to_int_fields(row)
-                # oo = RkiFlatFactory.create_new(
-                #    row=row, my_int_data=my_int_data, my_datum=my_datum
-                # )
-                # db.session.add(oo)
                 if (k % 500) == 0:
                     db.session.commit()
                 if (k % 10000) == 0:

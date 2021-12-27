@@ -8,8 +8,6 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_vaccination.vaccination_model_flat import VaccinationFlat
-from project.data_vaccination.vaccination_model_flat import VaccinationFlatFactory
 from project.data_vaccination.vaccination_model_import import VaccinationImport
 from project.data_vaccination.vaccination_model_import import (
     VaccinationImportFactory,
@@ -40,7 +38,6 @@ class VaccinationServiceImport(AllServiceMixinImport):
         )
         app.logger.info("------------------------------------------------------------")
         VaccinationImport.remove_all()
-        VaccinationFlat.remove_all()
         k = 0
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
@@ -53,10 +50,6 @@ class VaccinationServiceImport(AllServiceMixinImport):
                     date_reported=date_reported, d=d, row=row
                 )
                 db.session.add(o)
-                oo = VaccinationFlatFactory.create_new(
-                    date_reported=date_reported, d=d, row=row
-                )
-                db.session.add(oo)
                 k += 1
                 if (k % 100) == 0:
                     db.session.commit()
