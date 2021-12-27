@@ -1,6 +1,6 @@
 # flask_covid19
 
-* Version 0.0.80
+* Version 0.0.82
 
 ## git
 
