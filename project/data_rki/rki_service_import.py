@@ -45,12 +45,12 @@ class RkiServiceImport(AllServiceMixinImport):
                 my_datum = RkiServiceImportFactory.row_str_to_date_fields(row)
                 o = RkiImportFactory.create_new(row=row, my_datum=my_datum)
                 db.session.add(o)
-                my_int_data = RkiServiceImportFactory.row_str_to_int_fields(row)
-                oo = RkiFlatFactory.create_new(
-                    row=row, my_int_data=my_int_data, my_datum=my_datum
-                )
-                db.session.add(oo)
-                if (k % 2000) == 0:
+                #my_int_data = RkiServiceImportFactory.row_str_to_int_fields(row)
+                #oo = RkiFlatFactory.create_new(
+                #    row=row, my_int_data=my_int_data, my_datum=my_datum
+                #)
+                #db.session.add(oo)
+                if (k % 200) == 0:
                     db.session.commit()
                     app.logger.info(" [RKI] import ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
