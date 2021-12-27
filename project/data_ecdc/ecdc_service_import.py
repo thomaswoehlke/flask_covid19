@@ -36,10 +36,15 @@ class EcdcServiceImport(AllServiceMixinImport):
             + " <--- from FILE "
             + self.cfg.cvsfile_path
         )
-        app.logger.info("------------------------------------------------------------")
         k = 0
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" WhoImport.remove_all() START")
         EcdcImport.remove_all()
+        app.logger.info(" WhoImport.remove_all() DONE")
+        app.logger.info(" WhoFlat.remove_all()   START")
         EcdcFlat.remove_all()
+        app.logger.info(" WhoFlat.remove_all()   DONE")
+        app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             for row in file_reader:
@@ -54,6 +59,7 @@ class EcdcServiceImport(AllServiceMixinImport):
                 k = k + 1
                 if (k % 1000) == 0:
                     db.session.commit()
+                if (k % 10000) == 0:
                     app.logger.info(" [ECDC] import  ...  " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break

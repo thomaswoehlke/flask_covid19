@@ -39,13 +39,18 @@ class WhoServiceImport(AllServiceMixinImport):
             + " <--- from FILE "
             + self.cfg.cvsfile_path
         )
-        app.logger.info("------------------------------------------------------------")
         if sys.platform == "linux":
             keyDate_reported = "\ufeffDate_reported"
         else:
             keyDate_reported = "ï»¿Date_reported"
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info(" WhoImport.remove_all() START")
         WhoImport.remove_all()
+        app.logger.info(" WhoImport.remove_all() DONE")
+        app.logger.info(" WhoFlat.remove_all()   START")
         WhoFlat.remove_all()
+        app.logger.info(" WhoFlat.remove_all()   DONE")
+        app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             k = 0
@@ -71,6 +76,7 @@ class WhoServiceImport(AllServiceMixinImport):
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()
+                if (k % 10000) == 0:
                     app.logger.info(" [WHO] import  ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break
