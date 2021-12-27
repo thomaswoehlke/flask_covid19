@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+package data_all.framework {
+    abstract class AllImport {}
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
+}
+
+package data_vaccination {
+    entity VaccinationImport {}
+    entity VaccinationData {}
+    entity VaccinationDateReported {}
+
+    AllImport <|- VaccinationImport
+    AllDateReported <|- VaccinationDateReported
+    AllFactTable <|- VaccinationData
+
+    VaccinationData "1" *--> "*" VaccinationDateReported : date_reported
+}
+
+@enduml

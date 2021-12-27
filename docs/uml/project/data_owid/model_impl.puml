@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+package data_all.framework {
+    abstract class AllImport {}
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
+}
+
+package data_owid {
+    entity OwidImport {}
+    entity OwidData {}
+    entity OwidDateReported {}
+    entity OwidCountry {}
+    entity OwidContinent {}
+
+    AllImport <|- OwidImport
+    AllDateReported <|- OwidDateReported
+    AllLocation <|- OwidCountry
+    AllLocationGroup <|- OwidContinent
+    AllFactTable <|- OwidData
+
+    OwidCountry "1" *--> "*" OwidContinent : region
+    OwidData "1" *--> "*" OwidCountry : country
+    OwidData "1" *--> "*" OwidDateReported : date_reported
+}
+
+@enduml

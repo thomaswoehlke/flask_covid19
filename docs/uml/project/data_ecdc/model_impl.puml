@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+package data_all.framework {
+    abstract class AllImport {}
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
+}
+
+package data_ecdc {
+    entity EcdcImport {}
+    entity EcdcData {}
+    entity EcdcDateReported {}
+    entity EcdcCountry {}
+    entity EcdcContinent {}
+
+    AllImport <|- EcdcImport
+    AllDateReported <|- EcdcDateReported
+    AllLocation <|- EcdcCountry
+    AllLocationGroup <|- EcdcContinent
+    AllFactTable <|- EcdcData
+
+    EcdcCountry "1" *--> "*" EcdcContinent : region
+    EcdcData "1" *--> "*" EcdcCountry : country
+    EcdcData "1" *--> "*" EcdcDateReported : date_reported
+}
+
+@enduml

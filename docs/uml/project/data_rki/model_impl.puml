@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+package data_all.framework {
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllImport {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
+}
+
+package data_rki {
+    entity RkiData {}
+    entity RkiMeldedatum {}
+    entity RkiImport {}
+    entity RkiLandkreis {}
+    entity RkiBundesland {}
+    entity RkiAltersgruppe {}
+
+    AllImport <|- RkiImport
+    AllDateReported <|- RkiMeldedatum
+    AllLocation <|- RkiLandkreis
+    AllLocationGroup <|- RkiBundesland
+    AllFactTable <|- RkiData
+
+    RkiLandkreis "1" *--> "*" RkiBundesland : region
+    RkiData "1" *--> "*" RkiLandkreis : country
+    RkiData "1" *--> "*" RkiMeldedatum : date_reported
+    RkiData "1" *--> "*" RkiAltersgruppe : altersgruppe
+}
+
+@enduml
