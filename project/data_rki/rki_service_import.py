@@ -38,19 +38,23 @@ class RkiServiceImport(AllServiceMixinImport):
         RkiImport.remove_all()
         RkiFlat.remove_all()
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
+            file_reader = csv.DictReader(
+                csv_file,
+                delimiter=",",
+                quotechar='"'
+            )
             k = 0
             for row in file_reader:
                 k += 1
                 my_datum = RkiServiceImportFactory.row_str_to_date_fields(row)
                 o = RkiImportFactory.create_new(row=row, my_datum=my_datum)
                 db.session.add(o)
-                #my_int_data = RkiServiceImportFactory.row_str_to_int_fields(row)
-                #oo = RkiFlatFactory.create_new(
+                # my_int_data = RkiServiceImportFactory.row_str_to_int_fields(row)
+                # oo = RkiFlatFactory.create_new(
                 #    row=row, my_int_data=my_int_data, my_datum=my_datum
-                #)
-                #db.session.add(oo)
-                if (k % 200) == 0:
+                # )
+                # db.session.add(oo)
+                if (k % 100) == 0:
                     db.session.commit()
                     app.logger.info(" [RKI] import ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
