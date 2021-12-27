@@ -35,8 +35,14 @@ class RkiServiceImport(AllServiceMixinImport):
             + self.cfg.cvsfile_path
         )
         app.logger.info("------------------------------------------------------------")
+        app.logger.info("START: RkiImport.remove_all()")
         RkiImport.remove_all()
+        app.logger.info("DONE: RkiImport.remove_all()")
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("START: RkiFlat.remove_all()")
         RkiFlat.remove_all()
+        app.logger.info("DONE: RkiFlat.remove_all()")
+        app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(
                 csv_file,
@@ -54,7 +60,7 @@ class RkiServiceImport(AllServiceMixinImport):
                 #    row=row, my_int_data=my_int_data, my_datum=my_datum
                 # )
                 # db.session.add(oo)
-                if (k % 100) == 0:
+                if (k % 500) == 0:
                     db.session.commit()
                     app.logger.info(" [RKI] import ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
