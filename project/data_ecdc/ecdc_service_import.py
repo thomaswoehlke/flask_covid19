@@ -49,8 +49,8 @@ class EcdcServiceImport(AllServiceMixinImport):
                 )
                 o = EcdcImportFactory.create_new(date_reported=date_rep, d=d, row=row)
                 db.session.add(o)
-                oo = EcdcFlatFactory.create_new(d=d, row=row)
-                db.session.add(oo)
+                # oo = EcdcFlatFactory.create_new(d=d, row=row)
+                # db.session.add(oo)
                 k = k + 1
                 if (k % 1000) == 0:
                     db.session.commit()

@@ -58,16 +58,16 @@ class WhoServiceImport(AllServiceMixinImport):
                     date_reported=date_reported, d=d, row=row
                 )
                 db.session.add(o)
-                my_data = {
-                    "new_cases": int(row["New_cases"]),
-                    "cumulative_cases": int(row["Cumulative_cases"]),
-                    "new_deaths": int(row["New_deaths"]),
-                    "cumulative_deaths": int(row["Cumulative_deaths"]),
-                }
-                oo = WhoFlatFactory.create_new(
-                    date_reported=date_reported, d=d, row=row, my_data=my_data
-                )
-                db.session.add(oo)
+                # my_data = {
+                #     "new_cases": int(row["New_cases"]),
+                #     "cumulative_cases": int(row["Cumulative_cases"]),
+                #     "new_deaths": int(row["New_deaths"]),
+                #     "cumulative_deaths": int(row["Cumulative_deaths"]),
+                # }
+                # oo = WhoFlatFactory.create_new(
+                #     date_reported=date_reported, d=d, row=row, my_data=my_data
+                # )
+                # db.session.add(oo)
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()

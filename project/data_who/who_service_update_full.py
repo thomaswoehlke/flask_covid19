@@ -144,6 +144,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         # with app.app_context():
         #     cache.clear()
         app.logger.info(" [WHO] WhoData.remove_all() [done]")
+        app.logger.info("------------------------------------------------------------")
         i = 0
         d = 0
         k = 0

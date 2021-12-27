@@ -51,8 +51,8 @@ class OwidServiceImport(AllServiceMixinImport):
                     date_reported=date_reported, d=d, row=row
                 )
                 db.session.add(o)
-                f = OwidFlatFactory.create_new(d=d, row=row)
-                db.session.add(f)
+                # f = OwidFlatFactory.create_new(d=d, row=row)
+                # db.session.add(f)
                 k += 1
                 if (k % 2000) == 0:
                     db.session.commit()
