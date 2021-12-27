@@ -6,13 +6,11 @@ from project.app_web.user_model import User
 from project.data_all.model.all_task_model import Task
 from project.data_ecdc.ecdc_model import EcdcDateReported
 from project.data_ecdc.ecdc_model_data import EcdcData
-from project.data_ecdc.ecdc_model_flat import EcdcFlat
 from project.data_ecdc.ecdc_model_import import EcdcImport
 from project.data_ecdc.ecdc_model_location import EcdcCountry
 from project.data_ecdc.ecdc_model_location_group import EcdcContinent
 from project.data_owid.owid_model_data import OwidData
 from project.data_owid.owid_model_date_reported import OwidDateReported
-from project.data_owid.owid_model_flat import OwidFlat
 from project.data_owid.owid_model_import import OwidImport
 from project.data_owid.owid_model_location import OwidCountry
 from project.data_owid.owid_model_location_group import OwidContinent
@@ -20,17 +18,14 @@ from project.data_rki.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.rki_model_data import RkiData
 from project.data_rki.rki_model_data_location_group import RkiBundesland
 from project.data_rki.rki_model_date_reported import RkiMeldedatum
-from project.data_rki.rki_model_flat import RkiFlat
 from project.data_rki.rki_model_import import RkiImport
 from project.data_vaccination.vaccination_model_data import VaccinationData
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaccination.vaccination_model_flat import VaccinationFlat
 from project.data_vaccination.vaccination_model_import import VaccinationImport
 from project.data_who.who_model_data import WhoData
 from project.data_who.who_model_date_reported import WhoDateReported
-from project.data_who.who_model_flat import WhoFlat
 from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_location import WhoCountry
 from project.data_who.who_model_location_group import WhoCountryRegion
@@ -161,25 +156,20 @@ class AdminService:
         table_classes = [
             WhoData,
             WhoImport,
-            WhoFlat,
             WhoCountryRegion,
             WhoCountry,
             OwidData,
             OwidImport,
-            OwidFlat,
             OwidCountry,
             OwidContinent,
             EcdcData,
             EcdcImport,
-            EcdcFlat,
             EcdcCountry,
             EcdcContinent,
             VaccinationData,
             VaccinationImport,
-            VaccinationFlat,
             RkiData,
             RkiImport,
-            RkiFlat,
             RkiAltersgruppe,
             RkiBundesland,
             Task,
