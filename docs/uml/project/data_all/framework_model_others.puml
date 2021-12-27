@@ -1,0 +1,137 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+
+package data_all.framework.model {
+
+    abstract class AllEntity {}
+    abstract class AllFactTableTimeSeries {}
+    abstract class AllFactTable {}
+    abstract class AllDateReported {}
+    abstract class AllImport {}
+    abstract class AllLocation {}
+    abstract class AllLocationGroup {}
+
+    AllEntity <|- AllFactTableTimeSeries
+    AllFactTableTimeSeries <|- AllFactTable
+    AllEntity <|- AllDateReported
+    AllEntity <|- AllImport
+    AllEntity <|- AllLocation
+    AllEntity <|- AllLocationGroup
+
+    AllLocation "1" *--> "*" AllLocationGroup : region
+    AllFactTable "1" *--> "*" AllLocation : country
+    AllFactTable "1" *--> "*" AllDateReported : date_reported
+}
+
+package data_ecdc {
+    entity EcdcImport {}
+    entity EcdcData {}
+    entity EcdcDateReported {}
+    entity EcdcCountry {}
+    entity EcdcContinent {}
+
+    AllImport <|- EcdcImport
+    AllDateReported <|- EcdcDateReported
+    AllLocation <|- EcdcCountry
+    AllLocationGroup <|- EcdcContinent
+    AllFactTable <|- EcdcData
+
+    EcdcCountry "1" *--> "*" EcdcContinent : region
+    EcdcData "1" *--> "*" EcdcCountry : country
+    EcdcData "1" *--> "*" EcdcDateReported : date_reported
+}
+
+package data_owid {
+    entity OwidImport {}
+    entity OwidData {}
+    entity OwidDateReported {}
+    entity OwidCountry {}
+    entity OwidContinent {}
+
+    AllImport <|- OwidImport
+    AllDateReported <|- OwidDateReported
+    AllLocation <|- OwidCountry
+    AllLocationGroup <|- OwidContinent
+    AllFactTable <|- OwidData
+
+    OwidCountry "1" *--> "*" OwidContinent : region
+    OwidData "1" *--> "*" OwidCountry : country
+    OwidData "1" *--> "*" OwidDateReported : date_reported
+}
+
+package data_rki {
+    entity RkiData {}
+    entity RkiMeldedatum {}
+    entity RkiImport {}
+    entity RkiLandkreis {}
+    entity RkiBundesland {}
+    entity RkiAltersgruppe {}
+
+    AllImport <|- RkiImport
+    AllDateReported <|- RkiMeldedatum
+    AllLocation <|- RkiLandkreis
+    AllLocationGroup <|- RkiBundesland
+    AllFactTable <|- RkiData
+
+    RkiLandkreis "1" *--> "*" RkiBundesland : region
+    RkiData "1" *--> "*" RkiLandkreis : country
+    RkiData "1" *--> "*" RkiMeldedatum : date_reported
+    RkiData "1" *--> "*" RkiAltersgruppe : altersgruppe
+}
+
+package data_vaccination {
+    entity VaccinationImport {}
+    entity VaccinationData {}
+    entity VaccinationDateReported {}
+
+    AllImport <|- VaccinationImport
+    AllDateReported <|- VaccinationDateReported
+    AllFactTable <|- VaccinationData
+
+    VaccinationData "1" *--> "*" VaccinationDateReported : date_reported
+}
+
+package data_who {
+    entity WhoData {}
+    entity WhoDateReported {}
+    entity WhoImport {}
+    entity WhoCountry {}
+    entity WhoCountryRegion {}
+
+    AllImport <|- WhoImport
+    AllDateReported <|- WhoDateReported
+    AllLocation <|- WhoCountry
+    AllLocationGroup <|- WhoCountryRegion
+    AllFactTable <|- WhoData
+
+    WhoCountry "1" *--> "*" WhoCountryRegion : region
+    WhoData "1" *--> "*" WhoCountry : country
+    WhoData "1" *--> "*" WhoDateReported : date_reported
+
+}
+
+@enduml
