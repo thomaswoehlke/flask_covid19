@@ -62,6 +62,7 @@ class RkiServiceImport(AllServiceMixinImport):
                 # db.session.add(oo)
                 if (k % 500) == 0:
                     db.session.commit()
+                if (k % 10000) == 0:
                     app.logger.info(" [RKI] import ... " + str(k) + " rows")
                 if self.cfg.reached_limit_import_for_testing(row_number=k):
                     break
