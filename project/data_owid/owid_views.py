@@ -23,7 +23,6 @@ from sqlalchemy.exc import OperationalError
 app_owid = Blueprint("owid", __name__, template_folder="templates", url_prefix="/owid ")
 
 admin.add_view(ModelView(OwidImport, db.session, category="OWID"))
-admin.add_view(ModelView(OwidFlat, db.session, category="OWID"))
 admin.add_view(ModelView(OwidDateReported, db.session, category="OWID"))
 admin.add_view(ModelView(OwidContinent, db.session, category="OWID"))
 admin.add_view(ModelView(OwidCountry, db.session, category="OWID"))
