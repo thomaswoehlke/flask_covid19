@@ -14,7 +14,6 @@ from project.app_web.web_dispachter_matrix_service import who_service
 from project.app_web.web_model_transient import WebPageContent
 from project.data_who.who_model_data import WhoData
 from project.data_who.who_model_date_reported import WhoDateReported
-from project.data_who.who_model_flat import WhoFlat
 from project.data_who.who_model_import import WhoImport
 from project.data_who.who_model_location import WhoCountry
 from project.data_who.who_model_location_group import WhoCountryRegion
@@ -26,7 +25,6 @@ who_test_service = WhoTestService(db, who_service)
 app_who = Blueprint("who", __name__, template_folder="templates", url_prefix="/who")
 
 admin.add_view(ModelView(WhoImport, db.session, category="WHO"))
-admin.add_view(ModelView(WhoFlat, db.session, category="WHO"))
 admin.add_view(ModelView(WhoDateReported, db.session, category="WHO"))
 admin.add_view(ModelView(WhoCountryRegion, db.session, category="WHO"))
 admin.add_view(ModelView(WhoCountry, db.session, category="WHO"))
@@ -69,21 +67,6 @@ class WhoUrls:
             page_data = None
         return render_template(
             "who/imported/who_imported.html", page_data=page_data, page_info=page_info
-        )
-
-    @staticmethod
-    @app_who.route("/flat/page/<int:page>")
-    @app_who.route("/flat")
-    @login_required
-    def url_who_flat(page=1):
-        page_info = WebPageContent("WHO", "Flat")
-        try:
-            page_data = WhoFlat.get_all(page)
-        except OperationalError:
-            flash("No data in the database.")
-            page_data = None
-        return render_template(
-            "who/flat/who_flat.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod

@@ -14,7 +14,6 @@ from project.app_web.web_dispachter_matrix_service import ecdc_service
 from project.app_web.web_model_transient import WebPageContent
 from project.data_ecdc.ecdc_model import EcdcDateReported
 from project.data_ecdc.ecdc_model_data import EcdcData
-from project.data_ecdc.ecdc_model_flat import EcdcFlat
 from project.data_ecdc.ecdc_model_import import EcdcImport
 from project.data_ecdc.ecdc_model_location import EcdcCountry
 from project.data_ecdc.ecdc_model_location_group import EcdcContinent
@@ -24,7 +23,6 @@ from project.data_ecdc.ecdc_service_test import EcdcTestService
 app_ecdc = Blueprint("ecdc", __name__, template_folder="templates", url_prefix="/ecdc")
 
 admin.add_view(ModelView(EcdcImport, db.session, category="ECDC"))
-admin.add_view(ModelView(EcdcFlat, db.session, category="ECDC"))
 admin.add_view(ModelView(EcdcDateReported, db.session, category="ECDC"))
 admin.add_view(ModelView(EcdcContinent, db.session, category="ECDC"))
 admin.add_view(ModelView(EcdcCountry, db.session, category="ECDC"))
@@ -64,16 +62,6 @@ class EcdcUrls:
         page_data = EcdcImport.get_all(page)
         return render_template(
             "ecdc/imported/ecdc_imported.html", page_data=page_data, page_info=page_info
-        )
-
-    @staticmethod
-    @app_ecdc.route("/flat/page/<int:page>")
-    @app_ecdc.route("/flat")
-    def url_ecdc_flat(page=1):
-        page_info = WebPageContent("ECDC", "flat")
-        page_data = EcdcFlat.get_all(page)
-        return render_template(
-            "ecdc/flat/ecdc_flat.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod

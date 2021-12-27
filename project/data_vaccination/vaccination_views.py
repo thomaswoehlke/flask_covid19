@@ -15,7 +15,6 @@ from project.data_vaccination.vaccination_model_data import VaccinationData
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaccination.vaccination_model_flat import VaccinationFlat
 from project.data_vaccination.vaccination_model_import import VaccinationImport
 
 
@@ -24,7 +23,6 @@ app_vaccination = Blueprint(
 )
 
 admin.add_view(ModelView(VaccinationImport, db.session, category="Vaccination"))
-admin.add_view(ModelView(VaccinationFlat, db.session, category="Vaccination"))
 admin.add_view(ModelView(VaccinationDateReported, db.session, category="Vaccination"))
 admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 

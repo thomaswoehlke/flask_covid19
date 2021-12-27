@@ -17,7 +17,6 @@ from project.data_rki.rki_model_data import RkiData
 from project.data_rki.rki_model_data_location import RkiLandkreis
 from project.data_rki.rki_model_data_location_group import RkiBundesland
 from project.data_rki.rki_model_date_reported import RkiMeldedatum
-from project.data_rki.rki_model_flat import RkiFlat
 from project.data_rki.rki_model_import import RkiImport
 from project.data_rki.rki_service_test import RkiTestService
 from sqlalchemy.exc import OperationalError
@@ -28,7 +27,6 @@ app_rki = Blueprint("rki", __name__, template_folder="templates", url_prefix="/r
 
 
 admin.add_view(ModelView(RkiImport, db.session, category="RKI"))
-admin.add_view(ModelView(RkiFlat, db.session, category="RKI"))
 admin.add_view(ModelView(RkiMeldedatum, db.session, category="RKI"))
 admin.add_view(ModelView(RkiBundesland, db.session, category="RKI"))
 admin.add_view(ModelView(RkiLandkreis, db.session, category="RKI"))
@@ -71,20 +69,6 @@ class RkiUrls:
             page_data = None
         return render_template(
             "rki/imported/rki_imported.html", page_data=page_data, page_info=page_info
-        )
-
-    @staticmethod
-    @app_rki.route("/flat/page/<int:page>")
-    @app_rki.route("/flat")
-    def url_rki_flat(page=1):
-        page_info = WebPageContent("RKI", "flat")
-        try:
-            page_data = RkiFlat.get_all(page)
-        except OperationalError:
-            flash("No data in the database.")
-            page_data = None
-        return render_template(
-            "rki/flat/rki_flat.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod
