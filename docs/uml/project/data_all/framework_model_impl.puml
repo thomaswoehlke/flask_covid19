@@ -30,8 +30,9 @@ package data_all.framework.model {
         id: Integer
         processed_update: Boolean
         processed_full_update: Boolean
-        {classifier} set_processed_update()
-        {classifier} set_processed_full_update()
+
+        set_processed_update()
+        set_processed_full_update()
         unset_processed_update()
         unset_processed_full_update()
         {classifier} remove_all()
@@ -44,54 +45,85 @@ package data_all.framework.model {
         {classifier} find_by_id()
         {classifier} find_by_not_processed_update()
         {classifier} find_by_not_processed_full_update()
-        set_all_processed_full_update()
-        set_all_processed_update()
+        {classifier} set_all_processed_full_update()
+        {classifier} set_all_processed_update()
         {classifier} count()
     }
     abstract class AllImport {
+        id: Integer
         datum_reported: Date
+        date_reported_import_str: String
 		location: String
 		location_group: String
-		{classifier} download_file()
-		{classifier} import_file()
-		{classifier} full_update_dimension_tables()
-		{classifier} full_update_fact_table()
-		{classifier} full_update_star_schema()
-		{classifier} update_dimension_tables()
-		{classifier} update_fact_table()
-		{classifier} update_star_schema()
+
+		{classifier} find_by_datum(datum: date)
+		{classifier} find_by_datum_str(datum: date)
+		{classifier} find_by_datum_reported(datum: date)
+		{classifier} get_datum_list()
 	}
     abstract class AllDateReported {
         id: Integer
-		date_reported:  String
-	    year_week:  String
+	    processed_update: Boolean
+        processed_full_update: Boolean
+	    date_reported_import_str: String
 	    datum: Date
+        year_day_of_year: String
+        year_week:  String
+        year_week:  String
 	    year: Integer
 	    month: Integer
 	    day_of_month: Integer
 	    day_of_week: Integer
 	    week_of_year: Integer
+
+        {classifier} __query_all()
+        {classifier} get_all(page: int)
+        {classifier} find_all()
 		get_name_for_weekday()
 		{classifier} get_names_for_weekday()
-		{classifier} get_datum_parts(my_date_rep: String)
-		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
-		{classifier} create_new_object_factory(my_date_rep: String)
+		get_names_for_month()
+		{classifier} get_by_datum()
+		{classifier} get_by_date_reported()
+		{classifier} find_by_date_reported()
+		{classifier} find_by_year_week()
+		{classifier} get_joungest_datum()
+		{classifier} set_all_processed_update()
+		{classifier} find_all_as_str()
     }
     abstract class AllLocation {
         id: Integer
-	    location:  String
-	    {classifier} remove_all()
-	    {classifier} get_all_as_page(page: Integer)
-	    {classifier} get_all()
-	    {classifier} get_all_as_dict()
-	    {classifier} get_by_id(other_id: Integer)
-	    {classifier} find_by_id(other_id: Integer)
+	    processed_update: Boolean
+        processed_full_update: Boolean
+        location_code: String
+	    location: String
+	    location_group: AllLocationGroup
+
+        {classifier} __query_all()
+        {classifier} get_all(page: int)
+        {classifier} find_all()
+
+	    {classifier} find_by_location_code(location_code: str)
+	    {classifier} get_by_location_code(location_code: str)
+	    {classifier} find_by_location(location: str)
+	    {classifier} get_by_location(location: str)
+	    {classifier} find_by_location_group(location_group: AllLocationGroup)
+	    {classifier} get_by_location_group( location_group: AllLocationGroup, page: int)
+	    {classifier} find_by_location_code_and_location_and_location_group(location_code: str, location: str, location_group: AllLocationGroup)
+	    {classifier} get_by_location_code_and_location_and_location_group(location_code: str, location: str, location_group: AllLocationGroup)
+	    {classifier} find_by_location_code_and_location(location_code: str, location: str)
+	    {classifier} get_by_location_code_and_location(location_code: str, location: str)
+	    {classifier} __query_all()
+	    {classifier} find_all()
+	    {classifier} find_all_as_str()
+	    {classifier} find_all_as_dict()
+	    {classifier} get_all(page: int)
     }
     abstract class AllLocationGroup {
         id: Integer
+	    processed_update: Boolean
+        processed_full_update: Boolean
 	    location_group:  String
+
 	    {classifier} remove_all()
 	    {classifier} get_all_as_page(page: Integer)
 	    {classifier} get_all()

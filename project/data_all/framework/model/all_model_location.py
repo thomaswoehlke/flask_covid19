@@ -43,10 +43,6 @@ class AllLocation(AllEntity, AllLocationMixin):
     __mapper_args__ = {"polymorphic_on": type, "polymorphic_identity": "all_location"}
 
     @classmethod
-    def __query_all(cls):
-        return db.session.query(cls).order_by(cls.location)
-
-    @classmethod
     def find_by_location_code(cls, location_code: str):
         return (
             db.session.query(cls)

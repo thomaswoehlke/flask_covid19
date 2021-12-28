@@ -8,11 +8,11 @@ left to right direction
 'interface Collection
 
 package data_all.framework {
-    abstract class AllFactTable {}
-    abstract class AllDateReported {}
     abstract class AllImport {}
+    abstract class AllDateReported {}
     abstract class AllLocation {}
     abstract class AllLocationGroup {}
+    abstract class AllFactTable {}
 
     AllLocation "1" *--> "*" AllLocationGroup : region
     AllFactTable "1" *--> "*" AllLocation : country

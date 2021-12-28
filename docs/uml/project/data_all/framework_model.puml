@@ -29,11 +29,11 @@ package data_all.framework.model {
 
     abstract class AllEntity {}
     abstract class AllFactTableTimeSeries {}
-    abstract class AllFactTable {}
-    abstract class AllDateReported {}
     abstract class AllImport {}
+    abstract class AllDateReported {}
     abstract class AllLocation {}
     abstract class AllLocationGroup {}
+    abstract class AllFactTable {}
 
     AllEntity <|- AllFactTableTimeSeries
     AllFactTableTimeSeries <|- AllFactTable
