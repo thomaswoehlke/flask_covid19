@@ -154,7 +154,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
             task_meldedatum = Task.create(
                 sector="RKI",
                 task_name="__full_update_data: "\
-                          +my_meldedatum_datum.date_reported_import_str).read()
+                          +str(my_meldedatum_datum)).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 # app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " " + d.isoformat())

@@ -13,10 +13,9 @@ class Task(db.Model, AllEntityMixinBase):
     __table_args__ = (
         db.UniqueConstraint(
             "datum_started",
-            "datum_finished",
             "sector",
             "task_name",
-            "new_notification",
+            "notification",
             name="uix_task",
         ),
     )
@@ -66,11 +65,11 @@ class Task(db.Model, AllEntityMixinBase):
     notification = db.Column(db.Boolean, nullable=False)
     result_code = db.Column(db.Integer, nullable=False)
     data1_code = db.Column(db.Integer, nullable=False)
-    data1_txt = db.Column(db.Integer, nullable=False)
+    data1_txt = db.Column(db.String(255), nullable=False)
     data2_code = db.Column(db.Integer, nullable=False)
-    data2_txt = db.Column(db.Integer, nullable=False)
+    data2_txt = db.Column(db.String(255), nullable=False)
     data3_code = db.Column(db.Integer, nullable=False)
-    data3_txt = db.Column(db.Integer, nullable=False)
+    data3_txt = db.Column(db.String(255), nullable=False)
 
     def read(self):
         self.notification = False
@@ -89,9 +88,9 @@ class Task(db.Model, AllEntityMixinBase):
             data1_code=0,
             data2_code=0,
             data3_code=0,
-            data1_txt="",
-            data2_txt="",
-            data3_txt="",
+            data1_txt="default",
+            data2_txt="default",
+            data3_txt="default",
         )
         db.session.add(o)
         db.session.commit()
