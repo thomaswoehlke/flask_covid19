@@ -141,6 +141,13 @@ package data_all.framework.model {
 	    {classifier} find_by_id(other_id: Integer)
     }
 
+    AllEntity <|- AllFactTableTimeSeries
+    AllFactTableTimeSeries <|- AllFactTable
+    AllEntity <|- AllDateReported
+    AllEntity <|- AllImport
+    AllEntity <|- AllLocation
+    AllEntity <|- AllLocationGroup
+
     AllLocation "1" *--> "*" AllLocationGroup : region
     AllFactTable "1" *--> "*" AllLocation : country
     AllFactTable "1" *--> "*" AllDateReported : date_reported

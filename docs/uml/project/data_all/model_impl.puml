@@ -26,7 +26,29 @@
 
 package data_all.framework.model {
 
-    abstract class AllEntity {}
+    abstract class AllEntity {
+        id: Integer
+        processed_update: Boolean
+        processed_full_update: Boolean
+
+        set_processed_update()
+        set_processed_full_update()
+        unset_processed_update()
+        unset_processed_full_update()
+        {classifier} remove_all()
+        {classifier} __query_all()
+        {classifier} get_all(page:Integer)
+        {classifier} find_all()
+        {classifier} find_all_as_dict()
+        {classifier} find_all_as_str()
+        {classifier} get_by_id()
+        {classifier} find_by_id()
+        {classifier} find_by_not_processed_update()
+        {classifier} find_by_not_processed_full_update()
+        {classifier} set_all_processed_full_update()
+        {classifier} set_all_processed_update()
+        {classifier} count()
+    }
 }
 
 package data_all.model {
