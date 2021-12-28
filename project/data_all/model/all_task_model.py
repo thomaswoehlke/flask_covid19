@@ -59,26 +59,39 @@ class Task(db.Model, AllEntityMixinBase):
                    id_seq,
                    server_default=id_seq.next_value(),
                    primary_key=True)
-    datum_started = db.Column(db.DateTime, nullable=False, index=True)
-    datum_finished = db.Column(db.DateTime, nullable=True, index=True)
-    sector = db.Column(db.String(16), nullable=False, index=True)
-    task_name = db.Column(db.String(255), nullable=False, index=True)
-    new_notification = db.Column(db.Boolean, nullable=False, index=True)
+    datum_started = db.Column(db.DateTime, nullable=False)
+    datum_finished = db.Column(db.DateTime, nullable=True)
+    sector = db.Column(db.String(16), nullable=False)
+    task_name = db.Column(db.String(255), nullable=False)
+    notification = db.Column(db.Boolean, nullable=False)
+    result_code = db.Column(db.Integer, nullable=False)
+    data1_code = db.Column(db.Integer, nullable=False)
+    data1_txt = db.Column(db.Integer, nullable=False)
+    data2_code = db.Column(db.Integer, nullable=False)
+    data2_txt = db.Column(db.Integer, nullable=False)
+    data3_code = db.Column(db.Integer, nullable=False)
+    data3_txt = db.Column(db.Integer, nullable=False)
 
     def read(self):
-        self.new_notification = False
+        self.notification = False
         return self
 
     @classmethod
     def create(cls, sector: str, task_name: str):
-        new_notification = True
         # tz = timezone(offset=+1, name="CEST")
         datum_started = datetime.now()
         o = Task(
             datum_started=datum_started,
             sector=sector,
             task_name=task_name,
-            new_notification=new_notification,
+            notification=True,
+            result_code=0,
+            data1_code=0,
+            data2_code=0,
+            data3_code=0,
+            data1_txt="",
+            data2_txt="",
+            data3_txt="",
         )
         db.session.add(o)
         db.session.commit()
@@ -134,20 +147,21 @@ class Task(db.Model, AllEntityMixinBase):
     @classmethod
     def notifications_count(cls):
         return db.session.query(cls)\
-            .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
+            .filter(and_(cls.datum_finished.is_not(None), cls.notification))\
             .count()
 
     @classmethod
     def notifications_find(cls):
         return db.session.query(cls)\
-            .filter(and_(cls.datum_finished.is_not(None), cls.new_notification))\
+            .filter(and_(cls.datum_finished.is_not(None), cls.notification))\
             .order_by(cls.id)
 
     @classmethod
     def notifications_get(cls, page: int):
         return db.session.query(cls)\
-            .filter(cls.new_notification)\
-            .order_by(cls.id).paginate(page, per_page=items_per_page)
+            .filter(cls.notification)\
+            .order_by(cls.id)\
+            .paginate(page, per_page=items_per_page)
 
     @classmethod
     def mark_read(cls, page: int):

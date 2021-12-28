@@ -151,6 +151,10 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         # app.logger.info("------------------------------------------------------------")
         for my_meldedatum in RkiMeldedatum.find_all():
             my_meldedatum_datum = my_meldedatum.datum
+            task_meldedatum = Task.create(
+                sector="RKI",
+                task_name="__full_update_data: "\
+                          +my_meldedatum_datum.date_reported_import_str).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 # app.logger.info(" my_meldedatum: " + str(my_meldedatum) + " " + d.isoformat())
@@ -180,11 +184,12 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                     k += 1
                     i += 1
                     c += 1
-                    if (c % 500) == 0:
+                    if (c % 1000) == 0:
                         db.session.commit()
                 db.session.commit()
             d += 1
             sd = str(my_meldedatum)
+            Task.finish(task_id=task_meldedatum.id)
             app.logger.info(
                 " [RKI] full update ... "
                 + str(i)
@@ -381,6 +386,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update():
             my_meldedatum_datum = my_meldedatum.datum
+            task_meldedatum = Task.create(
+                sector="RKI",
+                task_name="__update_data: " \
+                          + my_meldedatum_datum.date_reported_import_str).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 # app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
@@ -409,9 +418,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     db.session.add(o)
                     i += 1
                     if i % 500 == 0:
+                        db.session.commit()
+                    if i % 1000 == 0:
                         app.logger.info(" [RKI] update data ... " + str(i) + " rows")
                         db.session.commit()
             db.session.commit()
+            Task.finish(task_id=task_meldedatum.id)
         app.logger.info(" [RKI] update data :  " + str(i) + " total rows")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update data [done]")
@@ -460,5 +472,20 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] delete last_day [DONE]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
+        return self
+
+    def delete_all_unifinished_update_full_days(self):
+        task = Task.create(
+            sector="RKI",
+            task_name="delete_all_unifinished_update_full_days"
+        ).read()
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" [RKI] delete_all_unifinished_update_full_days [START]")
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.info(" TBD ")
+        app.logger.debug("-----------------------------------------------------------")
+        app.logger.debug(" [RKI] delete_all_unifinished_update_full_days [DONE]")
+        app.logger.debug("-----------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
