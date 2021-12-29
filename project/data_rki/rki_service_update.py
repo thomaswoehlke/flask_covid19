@@ -220,7 +220,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     o = RkiDataFactory.create_new(rki_data)
                     db.session.add(o)
                     i += 1
-                    if i % 2000 == 0:
+                    if i % 5000 == 0:
                         db.session.commit()
                     if i % 1000 == 0:
                         app.logger.info(" [RKI] update data ... " + str(i) + " rows")
