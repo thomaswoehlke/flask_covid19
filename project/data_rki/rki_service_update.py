@@ -177,7 +177,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_data(self):
-        task = Task.create(sector="RKI", task_name="__update_data").read()
+        task = Task.create(
+            sector="RKI",
+            task_name="__update_data"
+        ).read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -187,23 +190,24 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             my_meldedatum_datum = my_meldedatum.datum
             task_meldedatum = Task.create(
                 sector="RKI",
-                task_name="__update_data: "\
-                          +my_meldedatum_datum.date_reported_import_str).read()
+                task_name="__update_data: "+str(my_meldedatum_datum)
+            ).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 # app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
                 # app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
-                    my_datum=my_meldedatum_datum, my_landkreis=my_landkreis_key
+                    my_datum=my_meldedatum_datum,
+                    my_landkreis=my_landkreis_key
                 )
-                if list_imports is None:
-                    app.logger.info(" [RKI] list_imports is None ")
-                else:
-                    nr = len(list_imports)
-                    app.logger.info(" [RKI] len(list_imports): " + str(nr))
-                app.logger.info(
-                    "------------------------------------------------------------"
-                )
+                # if list_imports is None:
+                #     app.logger.info(" [RKI] list_imports is None ")
+                # else:
+                #     nr = len(list_imports)
+                #     app.logger.info(" [RKI] len(list_imports): " + str(nr))
+                # app.logger.info(
+                #     "------------------------------------------------------------"
+                # )
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)
                     rki_data = RkiDataFactory.get_rki_data(
@@ -216,7 +220,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     o = RkiDataFactory.create_new(rki_data)
                     db.session.add(o)
                     i += 1
-                    if i % 500 == 0:
+                    if i % 2000 == 0:
                         db.session.commit()
                     if i % 1000 == 0:
                         app.logger.info(" [RKI] update data ... " + str(i) + " rows")
@@ -230,7 +234,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="RKI", task_name="update_dimension_tables").read()
+        task = Task.create(
+            sector="RKI",
+            task_name="update_dimension_tables"
+        ).read()
         self.__update_date_reported()
         self.__update_locations()
         self.__update_altersgruppen()
@@ -238,13 +245,19 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="RKI", task_name="update_fact_table").read()
+        task = Task.create(
+            sector="RKI",
+            task_name="update_fact_table"
+        ).read()
         self.__update_data()
         Task.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="RKI", task_name="delete_last_day").read()
+        task = Task.create(
+            sector="RKI",
+            task_name="delete_last_day"
+        ).read()
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [RKI] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -274,7 +287,10 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def delete_all_unifinished_update_days(self):
-        task = Task.create(sector="RKI", task_name="delete_all_unifinished_update_days").read()
+        task = Task.create(
+            sector="RKI",
+            task_name="delete_all_unifinished_update_days"
+        ).read()
         app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" [RKI] delete_all_unifinished_update_days [START]")
         app.logger.debug("-----------------------------------------------------------")
