@@ -2,11 +2,6 @@
 left to right direction
 'https://plantuml.com/class-diagram
 
-'abstract class AbstractList
-'abstract AbstractCollection
-'interface List
-'interface Collection
-
 package data_all.framework {
     abstract class AllImport {}
     abstract class AllDateReported {}
@@ -19,7 +14,7 @@ package data_all.framework {
     AllFactTable "1" *--> "*" AllDateReported : date_reported
 }
 
-package data_who {
+package data_who.model {
     entity WhoData {}
     entity WhoDateReported {}
     entity WhoImport {}
@@ -35,7 +30,6 @@ package data_who {
     WhoCountry "1" *--> "*" WhoCountryRegion : region
     WhoData "1" *--> "*" WhoCountry : country
     WhoData "1" *--> "*" WhoDateReported : date_reported
-
 }
 
 @enduml

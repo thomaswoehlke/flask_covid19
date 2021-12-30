@@ -19,7 +19,7 @@ package data_all.framework {
     AllFactTable "1" *--> "*" AllDateReported : date_reported
 }
 
-package data_vaccination {
+package data_vaccination.model {
     entity VaccinationImport {}
     entity VaccinationData {}
     entity VaccinationDateReported {}
