@@ -215,13 +215,9 @@ package covid19.blueprints.owid.model_import {
 		{classifier} get_data_for_day(datum_reported: Date): OwidFlat[]
 	}
 
+    AllImportFull <|-- DataImport
+    AllImportIncrement <|-- DataImport
+    DataImport <|-- OwidImport
 }
-
-AllImportFull <|-- DataImport
-AllImportIncrement <|-- DataImport
-DataImport <|-- AllFlat
-DataImport <|-- OwidImport
-AllFlat <|-- OwidFlat
-OwidImport <|-- OwidFlat
 
 @enduml
