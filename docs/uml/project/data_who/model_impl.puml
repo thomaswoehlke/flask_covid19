@@ -3,6 +3,7 @@ left to right direction
 'https://plantuml.com/class-diagram
 
 package data_all.framework {
+
     abstract class AllImport {}
     abstract class AllDateReported {}
     abstract class AllLocation {}
@@ -15,11 +16,85 @@ package data_all.framework {
 }
 
 package data_who.model {
-    entity WhoData {}
-    entity WhoDateReported {}
-    entity WhoImport {}
-    entity WhoCountry {}
-    entity WhoCountryRegion {}
+
+    entity WhoImport {
+	    id: Integer
+	    date_reported: String
+	    country_code: String
+	    country: String
+	    who_region: String
+	    new_cases: String
+	    cumulative_cases: String
+	    new_deaths: String
+	    cumulative_deaths: String
+		{classifier} download_file()
+		{classifier} import_file()
+		{classifier} full_update_dimension_tables()
+		{classifier} full_update_fact_table()
+		{classifier} full_update_star_schema()
+		{classifier} update_dimension_tables()
+		{classifier} update_fact_table()
+		{classifier} update_star_schema()
+	}
+
+	entity WhoDateReported {
+	    id: Integer
+		date_reported: String
+	    year_week: String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+	    {classifier} create_new_object_factory(my_date_rep)
+	}
+
+	entity WhoCountry {
+	    id: Integer
+		country_code: String
+	    country: String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} get_germany()
+	    {classifier} find_by_country_code_and_country_and_who_region_id(i_country_code, i_country, my_region)
+	    {classifier} find_by_country_code(i_country_code)
+	    {classifier} find_by_country(i_country)
+	    {classifier} get_by_country_code(i_country_code)
+	    {classifier} get_by_country(i_country)
+	    {classifier} get_who_countries_for_region(region, page)
+	}
+
+	entity WhoCountryRegion {
+	    id: Integer
+	    region: String
+	}
+
+	entity WhoData {
+	    id: Integer
+		cases_new: Integer
+	    cases_cumulative: Integer
+	    deaths_new: Integer
+	    deaths_cumulative: Integer
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_one_or_none_by_date_and_country(my_date_reported, my_country)
+	    {classifier} get_data_for_country(who_country, page)
+	    {classifier} get_data_for_day(date_reported, page)
+	    {classifier} get_data_for_day_order_by_cases_new(date_reported, page)
+	    {classifier} get_data_for_day_order_by_cases_cumulative(date_reported, page)
+	    {classifier} get_data_for_day_order_by_deaths_new(date_reported, page)
+	    {classifier} get_data_for_day_order_by_deaths_cumulative(date_reported, page)
+	    {classifier} get_data_for_country_order_by_cases_new(who_country, page)
+	    {classifier} get_data_for_country_order_by_cases_cumulative(who_country, page)
+	    {classifier} get_data_for_country_order_by_deaths_new(who_country, page)
+	    {classifier} get_data_for_country_order_by_deaths_cumulative(who_country, page)
+	}
 
     AllImport <|- WhoImport
     AllDateReported <|- WhoDateReported

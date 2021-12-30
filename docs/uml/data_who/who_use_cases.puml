@@ -1,5 +1,4 @@
 @startuml
-
 left to right direction
 
 package covid19.blueprints.app_user {

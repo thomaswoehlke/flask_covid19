@@ -1,5 +1,6 @@
 @startuml
 left to right direction
+
 entity ApplicationDateReported {
     id: Integer
 	date_reported:  String

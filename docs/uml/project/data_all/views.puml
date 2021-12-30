@@ -1,5 +1,4 @@
 @startuml
-left to right direction
 'https://plantuml.com/use-case-diagram
 
 :Main Admin: as Admin

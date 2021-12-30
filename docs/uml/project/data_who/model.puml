@@ -17,11 +17,11 @@ package data_all.framework {
 
 package data_who.model {
 
-    entity WhoData {}
-    entity WhoDateReported {}
     entity WhoImport {}
+    entity WhoDateReported {}
     entity WhoCountry {}
     entity WhoCountryRegion {}
+    entity WhoData {}
 
     AllImport <|- WhoImport
     AllDateReported <|- WhoDateReported
@@ -32,7 +32,6 @@ package data_who.model {
     WhoCountry "1" *--> "*" WhoCountryRegion : region
     WhoData "1" *--> "*" WhoCountry : country
     WhoData "1" *--> "*" WhoDateReported : date_reported
-
 }
 
 @enduml
