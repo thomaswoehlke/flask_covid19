@@ -2,7 +2,7 @@
 left to right direction
 
 
-package flask_covid19.data_all.model {
+package project.data_all.model {
 
 	interface AllDateReported {
 	    id: Integer

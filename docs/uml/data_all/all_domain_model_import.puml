@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package flask_covid19.data_all.service_import {
+package project.data_all.service_import {
 
 	interface AllUpdateFull {
 		{classifier} download()
@@ -20,7 +20,7 @@ package flask_covid19.data_all.service_import {
 	}
 }
 
-package flask_covid19.data_all.model_import {
+package project.data_all.model_import {
 	interface AllImport {
 	    datum_reported: Date
 		location: String

@@ -2,7 +2,7 @@
 left to right direction
 
 
-package flask_covid19.data_all.model_import {
+package project.data_all.model_import {
 
 	interface AllImportFull {
 		{classifier} download_file()
@@ -148,7 +148,7 @@ AllFlat <|-- RkiVaccinationFlat
 RkiVaccinationImport <|-- RkiVaccinationFlat
 
 
-package flask_covid19.data_all.model {
+package project.data_all.model {
 
 	entity AllDateReported {
 	    id: Integer

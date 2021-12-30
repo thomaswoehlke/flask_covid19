@@ -1,10 +1,14 @@
 @startuml
 left to right direction
 
+package project.data_all {
 
-package flask_covid19.data_all {
+    package project.data_all.framework.model.interfaces {
 
-    package framework {
+        interface AllEntityMixinBase {}
+        interface AllEntityWorkerProgressMixin {}
+        interface AllEntityMixin {}
+        interface AllImportMixin {}
 
         interface AllImportFull {
             {classifier} download_file()
@@ -21,8 +25,13 @@ package flask_covid19.data_all {
             {classifier} update_fact_table()
             {classifier} update_star_schema()
         }
+    }
 
-        interface AllImport {
+    package project.data_all.framework.model {
+
+        abstract class AllEntity {}
+
+        abstract class AllImport {
             datum_reported: Date
             location: String
             location_group: String
@@ -36,59 +45,54 @@ package flask_covid19.data_all {
             {classifier} update_star_schema()
         }
 
-        interface AllFlat {
+        abstract class AllDateReported {
             id: Integer
-            datum_reported: Date
+            date_reported:  String
+            year_week:  String
+            datum: Date
             year: Integer
             month: Integer
             day_of_month: Integer
-            day_of_year: Integer
             day_of_week: Integer
             week_of_year: Integer
-            year_week:  String
-            day_of_week_str: String
-            month_str: String
-            location: String
-            location_group: String
-            {classifier} import_file_flat()
-            {classifier} get_years(): Integer[]
-            {classifier} get_days(): Date[]
-            {classifier} get_days_for_year(year: Integer): Date[]
-            {classifier} get_location_groups(): String[]
-            {classifier} get_locations_for_location_group(location_group: String): String[]
-            {classifier} get_data_for_location(location: String): AllFlat[]
-            {classifier} get_data_for_day(datum_reported: Date): AllFlat[]
+            get_name_for_weekday()
+            {classifier} get_names_for_weekday()
+            {classifier} get_datum_parts(my_date_rep: String)
+            {classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+            {classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+            {classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+            {classifier} create_new_object_factory(my_date_rep: String)
         }
-        interface AllImportMixin {}
-        interface AllImportFlatMixin {}
+
+        abstract class AllLocationGroup {
+            id: Integer
+            continent:  String
+            {classifier} remove_all()
+            {classifier} get_all_as_page(page: Integer)
+            {classifier} get_all()
+            {classifier} get_all_as_dict()
+            {classifier} get_by_id(other_id: Integer)
+            {classifier} find_by_id(other_id: Integer)
+        }
+
+        abstract class AllLocation {
+            id: Integer
+        }
+
+        abstract class AllData {
+            id: Integer
+        }
     }
 
-    interface AllEntityMixin {}
-    interface AllEntityMixinBase {}
-    interface AllEntityWorkerProgressMixin {}
-
-
-    package model {
-        entity AllEntity {}
-    }
+    AllEntityMixinBase  <|-- AllEntityMixin
+    AllEntityWorkerProgressMixin  <|-- AllEntityMixin
+    AllEntityMixin <|-- AllImportMixin
+    AllEntityMixin <|-- AllImport
+    AllEntity <|-- AllImport
 }
 
-AllEntityMixin <|-- AllImportMixin
-AllEntityMixinBase  <|-- AllEntityMixin
-AllEntityWorkerProgressMixin  <|-- AllEntityMixin
-AllImportMixin <|-- AllImportFlatMixin
+package project.data_who.model {
 
-AllEntity <|-- AllImport
-AllImport <|-- AllFlat
-
-
-
-
-AllEntityMixin <|-- AllImport
-
-
-
-package project.data_who.who_model_import {
 	entity WhoImport {
 	    id: Integer
 	    date_reported: String
@@ -108,90 +112,7 @@ package project.data_who.who_model_import {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-}
-package project.data_all.all_model_flat {
-	entity WhoFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-	    date_reported: String
-	    country_code: String
-	    country: String
-	    who_region: String
-	    new_cases: String
-	    cumulative_cases: String
-	    new_deaths: String
-	    cumulative_deaths: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): WhoFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): WhoFlat[]
-	}
 
-}
-AllImport <|-- WhoImport
-AllImportMixin <|-- WhoImport
-AllFlat <|-- WhoFlat
-AllImportFlatMixin <|-- WhoFlat
-
-
-package flask_covid19.data_all.model {
-
-	interface AllDateReported {
-	    id: Integer
-		date_reported:  String
-	    year_week:  String
-	    datum: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-		get_name_for_weekday()
-		{classifier} get_names_for_weekday()
-		{classifier} get_datum_parts(my_date_rep: String)
-		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
-		{classifier} create_new_object_factory(my_date_rep: String)
-	}
-
-	interface AllLocationGroup {
-	    id: Integer
-	    continent:  String
-	    {classifier} remove_all()
-	    {classifier} get_all_as_page(page: Integer)
-	    {classifier} get_all()
-	    {classifier} get_all_as_dict()
-	    {classifier} get_by_id(other_id: Integer)
-	    {classifier} find_by_id(other_id: Integer)
-	}
-
-	interface AllLocation {
-	    id: Integer
-    }
-
-	interface AllData {
-	    id: Integer
-	}
-
-}
-
-package project.data_who.who_model_date_reported {
 	entity WhoDateReported {
 	    id: Integer
 		date_reported: String
@@ -204,14 +125,12 @@ package project.data_who.who_model_date_reported {
 	    week_of_year: Integer
 	    {classifier} create_new_object_factory(my_date_rep)
 	}
-}
-package project.data_who.who_model_location_group {
+
 	entity WhoCountryRegion {
 	    id: Integer
 	    region: String
 	}
-}
-package project.data_who.who_model_location {
+
 	entity WhoCountry {
 	    id: Integer
 		country_code: String
@@ -229,8 +148,7 @@ package project.data_who.who_model_location {
 	    {classifier} get_by_country(i_country)
 	    {classifier} get_who_countries_for_region(region, page)
 	}
-}
-package project.data_who.who_model_data {
+
 	entity WhoData {
 	    id: Integer
 		cases_new: Integer
@@ -253,15 +171,17 @@ package project.data_who.who_model_data {
 	    {classifier} get_data_for_country_order_by_deaths_new(who_country, page)
 	    {classifier} get_data_for_country_order_by_deaths_cumulative(who_country, page)
 	}
+
+    AllImport <|-- WhoImport
+    AllImportMixin <|-- WhoImport
+	AllDateReported <|-- WhoDateReported
+    AllLocationGroup <|-- WhoCountryRegion
+    AllLocation <|-- WhoCountry
+    AllData <|-- WhoData
+
+    WhoCountry "1" *--> "*" WhoCountryRegion : region
+    WhoData "1" *--> "*" WhoCountry : country
+    WhoData "1" *--> "*" WhoDateReported : date_reported
 }
-
-AllDateReported <|-- WhoDateReported
-AllLocationGroup <|-- WhoCountryRegion
-AllLocation <|-- WhoCountry
-AllData <|-- WhoData
-
-WhoCountry "1" *--> "*" WhoCountryRegion : region
-WhoData "1" *--> "*" WhoCountry : country
-WhoData "1" *--> "*" WhoDateReported : date_reported
 
 @enduml

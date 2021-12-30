@@ -1,6 +1,6 @@
 @startuml
 left to right direction
-package flask_covid19.data_all.model {
+package project.data_all.model {
 	entity BlueprintDateReported {
 	    id: Integer
 		date_reported:  String
@@ -49,7 +49,7 @@ package flask_covid19.data_all.model {
 	    {classifier} find_by_id(other_id: Integer)
 	}
 }
-package flask_covid19.data_all.model {
+package project.data_all.model {
 	class WebPageContent << (T,#FF7700) Transient >> {
 		title: String
 		subtitle: String
@@ -76,7 +76,7 @@ package flask_covid19.data_all.model {
 		create_config_for_rki_landkreise()
 	}
 }
-package flask_covid19.data_all.service {
+package project.data_all.service {
 	class BlueprintDownloadService << (S,red) Service >> {
 		-log_error()
 		-log_success()
@@ -98,7 +98,7 @@ package flask_covid19.data_all.service {
 		update()
 	}
 }
-package flask_covid19.data_all.views {
+package project.data_all.views {
 	class all_views << (B,orchid) Boundary >>  {
 	}
 }
