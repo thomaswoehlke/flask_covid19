@@ -19,3 +19,4 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	java -jar plantuml*.jar uml/**/*.puml
+	java -jar plantuml*.jar uml/**/**/*.puml
