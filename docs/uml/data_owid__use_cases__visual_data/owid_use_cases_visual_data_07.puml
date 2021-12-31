@@ -1,0 +1,77 @@
+@startuml
+left to right direction
+
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
+
+	av <|-- am
+	am <|-- cu
+}
+
+package owid_report_07 {
+    usecase Public_information_campaigns_on_the_COVID19_pandemic as UC290
+    usecase Public_transport_closures_during_the_COVID19_pandemic as UC291
+    usecase Residential_areas__How_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic as UC292
+    usecase Restrictions_on_internal_movement_during_the_COVID19_pandemic as UC293
+    usecase Restrictions_on_public_gatherings_in_the_COVID19_pandemic as UC294
+    usecase Retail_and_recreation__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC295
+    usecase School_closures_during_the_COVID19_pandemic as UC296
+    usecase Share_of_COVID19_tests_that_were_positive_Over_time__since_5th_death_was_confirmed as UC297
+    usecase Share_of_people_who_received_at_least_one_dose_of_COVID19_vaccine as UC298
+    usecase Share_of_the_population_fully_vaccinated_against_COVID19 as UC299
+    usecase Share_of_Total_COVID19_tests_that_were_positive as UC300
+    usecase Share_who_would_get_a_COVID19_vaccine_if_it_was_available_to_them_this_week as UC301
+    usecase Stay_at_home_requirements_during_the_COVID19_pandemic as UC302
+    usecase Tests_conducted_per_new_confirmed_case_of_COVID19 as UC303
+    usecase Tests_per_confirmed_case__Total_vs_Case_fatality_rate as UC304
+    usecase Tests_per_thousand_since_the_100th_confirmed_case_of_COVID19 as UC305
+    usecase Tests_per_thousand_since_the_5th_confirmed_death_due_to_COVID19 as UC306
+    usecase The_share_of_COVID19_Tests_that_are_positive as UC307
+    usecase Total_COVID19_testsLine_chart as UC308
+    usecase Total_COVID19_testsMap_chart as UC309
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases as UC310
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_Positive_rate_comparison as UC311
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_per_million as UC312
+    usecase Total_COVID19_Tests_for_each_confirmed_case as UC313
+    usecase Total_COVID19_Tests_for_each_confirmed_case_Bar_chart as UC314
+    usecase Total_COVID19_tests_per_1000_people_Line_chart as UC315
+    usecase Total_COVID19_tests_per_1000_people_Map_chart as UC316
+    usecase Total_COVID19_tests_per_1000_people_Bar_chart as UC317
+    usecase Total_COVID19_tests_per_1000_vs_GDP_per_capita as UC318
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC319
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC320
+}
+vu --> UC290
+vu --> UC291
+vu --> UC292
+vu --> UC293
+vu --> UC294
+vu --> UC295
+vu --> UC296
+vu --> UC297
+vu --> UC298
+vu --> UC299
+vu --> UC300
+vu --> UC301
+vu --> UC302
+vu --> UC303
+vu --> UC304
+vu --> UC305
+vu --> UC306
+vu --> UC307
+vu --> UC308
+vu --> UC309
+vu --> UC310
+vu --> UC311
+vu --> UC312
+vu --> UC313
+vu --> UC314
+vu --> UC315
+vu --> UC316
+vu --> UC317
+vu --> UC318
+vu --> UC319
+vu --> UC320
+@enduml

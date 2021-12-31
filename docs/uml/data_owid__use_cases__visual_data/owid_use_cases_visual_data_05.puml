@@ -1,0 +1,75 @@
+@startuml
+left to right direction
+
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
+
+	av <|-- am
+	am <|-- cu
+}
+
+package owid_report_05 {
+    usecase Daily_new_estimated_COVID19_infections_from_the_ICL_model as UC260
+    usecase Daily_new_estimated_COVID19_infections_from_the_IHME_model as UC261
+    usecase Daily_new_estimated_COVID19_infections_from_the_LSHTM_model as UC262
+    usecase Daily_new_estimated_COVID19_infections_from_the_YYG_model as UC263
+    usecase Daily_new_estimated_infections_of_COVID19 as UC264
+    usecase Daily_tests_per_thousand_people_Since_Total_confirmed_cases_reached_1_per_million as UC265
+    usecase Daily_vs_Total_confirmed_COVID19_cases as UC266
+    usecase Daily_vs_Total_confirmed_COVID19_cases_per_million_people as UC267
+    usecase Daily_vs_Total_confirmed_COVID19_deaths_per_million as UC268
+    usecase Daily_vs_Cumulative_confirmed_deaths_due_to_COVID19 as UC269
+    usecase Debt_or_contract_relief_during_the_COVID19_pandemic as UC270
+    usecase Excess_mortality_during_COVID19__Deaths_from_all_causes_compared_to_previous_years__all_ages_P_scores as UC271
+    usecase Excess_mortality_during_COVID19__Deaths_from_all_causes_compared_to_previous_years__all_age_P_scores as UC272
+    usecase Excess_mortality_during_COVID19__Number_of_deaths_from_all_causes_compared_to_previous_years_Raw_death_counts as UC273
+    usecase Face_covering_policies_during_the_COVID19_pandemic as UC274
+    usecase Government_Response_Stringency_Index_vs_Biweekly_change_in_confirmed_COVID19_cases as UC275
+    usecase Grocery_and_pharmacy_stores__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC276
+    usecase How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC277
+    usecase Income_support_during_the_COVID19_pandemic as UC278
+    usecase International_travel_controls_during_the_COVID19_pandemic as UC279
+    usecase Number_of_COVID19_patients_in_ICU_per_million as UC280
+    usecase Number_of_COVID19_patients_in_hospital as UC281
+    usecase Number_of_COVID19_patients_in_hospital_per_million as UC282
+    usecase Number_of_COVID19_patients_in_intensive_care__ICU as UC283
+    usecase Number_of_people_fully_vaccinated_against_COVID19 as UC284
+    usecase Number_of_people_who_received_at_least_one_dose_of_COVID19_vaccine as UC285
+    usecase Number_of_tests_per_confirmed_case_vs_Total_confirmed_COVID19_cases_per_million_people as UC286
+    usecase Parks_and_outdoor_spaces__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC287
+    usecase Per_capita__COVID19_tests_vs_Confirmed_deaths as UC288
+    usecase Per_capita__tests_for_COVID19_vs_Confirmed_cases as UC289
+}
+vu --> UC260
+vu --> UC261
+vu --> UC262
+vu --> UC263
+vu --> UC264
+vu --> UC265
+vu --> UC266
+vu --> UC267
+vu --> UC268
+vu --> UC269
+vu --> UC270
+vu --> UC271
+vu --> UC272
+vu --> UC273
+vu --> UC274
+vu --> UC275
+vu --> UC276
+vu --> UC277
+vu --> UC278
+vu --> UC279
+vu --> UC280
+vu --> UC281
+vu --> UC282
+vu --> UC283
+vu --> UC284
+vu --> UC285
+vu --> UC286
+vu --> UC287
+vu --> UC288
+vu --> UC289
+@enduml

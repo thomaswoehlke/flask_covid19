@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
+
+	av <|-- am
+	am <|-- cu
+}
+
+package owid_report_10 {
+    usecase Week_by_week_change_of_confirmed_COVID19_cases_vs_GDP_per_capita as UC341
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths as UC342
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths_vs_GDP_per_capita as UC343
+    usecase Weekly_case_growth_rate_vs_Daily_case_rate as UC344
+    usecase Weekly_confirmed_COVID19_cases as UC345
+    usecase Weekly_confirmed_COVID19_cases_per_million_people as UC346
+    usecase Weekly_confirmed_COVID19_deaths as UC347
+    usecase Weekly_confirmed_COVID19_deaths_per_million_people as UC348
+    usecase Weekly_death_growth_rate_vs_Daily_death_rate as UC349
+    usecase Weekly_new_ICU_admissions_for_COVID19 as UC350
+    usecase Weekly_new_ICU_admissions_for_COVID19_per_million as UC351
+    usecase Weekly_new_hospital_admissions_for_COVID19 as UC352
+    usecase Weekly_new_hospital_admissions_for_COVID19_per_million as UC353
+    usecase Which_countries_do_COVID19_contact_tracing as UC354
+    usecase Workplace_closures_during_the_COVID19_pandemic as UC355
+    usecase Workplaces_How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC356
+}
+vu --> UC341
+vu --> UC342
+vu --> UC343
+vu --> UC344
+vu --> UC345
+vu --> UC346
+vu --> UC347
+vu --> UC348
+vu --> UC349
+vu --> UC350
+vu --> UC351
+vu --> UC352
+vu --> UC353
+vu --> UC354
+vu --> UC355
+vu --> UC356
+@enduml

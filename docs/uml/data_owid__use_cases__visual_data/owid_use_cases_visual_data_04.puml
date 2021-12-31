@@ -1,0 +1,71 @@
+@startuml
+left to right direction
+
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
+
+	av <|-- am
+	am <|-- cu
+}
+
+package owid_report_04 {
+    usecase Daily_COVID19_Tests as UC231
+    usecase Daily_COVID19_Tests as UC232
+    usecase Daily_COVID19_tests_per_thousand_people as UC233
+    usecase Daily_COVID19_tests_per_thousand_people_Rolling_7day_average as UC234
+    usecase Daily_COVID19_vaccine_doses_administered as UC235
+    usecase Daily_COVID19_vaccine_doses_administered_per_100_people as UC236
+    usecase Daily_and_Total_confirmed_COVID19_deaths as UC237
+    usecase Daily_and_Total_confirmed_COVID19_deaths_per_million as UC238
+    usecase Daily_confirmed_COVID19_casesMap_and_country_time_series as UC239
+    usecase Daily_confirmed_COVID19_casesStacked_area_chart__by_world_region as UC240
+    usecase Daily_confirmed_COVID19_cases_and_deaths as UC241
+    usecase Daily_confirmed_COVID19_cases_per_million_people as UC242
+    usecase Daily_confirmed_COVID19_cases_per_million__3day_rolling_average as UC244
+    usecase Daily_confirmed_COVID19_cases_per_million__which_countries_are_bending_the_curve__Trajectories as UC245
+    usecase Daily_confirmed_COVID19_cases__rolling_7day_average as UC246
+    usecase Daily_confirmed_COVID19_cases__which_countries_are_bending_the_curve as UC247
+    usecase Daily_confirmed_COVID19_deathsMap_and_time_series as UC248
+    usecase Daily_confirmed_COVID19_deathsBy_Region as UC249
+    usecase Daily_confirmed_COVID19_deaths_per_million_people as UC250
+    usecase Daily_confirmed_COVID19_deaths_per_million__3day_rolling_average as UC251
+    usecase Daily_confirmed_COVID19_deaths_per_million__rolling_7day_average as UC252
+    usecase Daily_confirmed_COVID19_deaths_per_million__which_countries_are_bending_the_curve__Trajectories as UC253
+    usecase Daily_confirmed_COVID19_deaths__rolling_7day_average as UC254
+    usecase Daily_confirmed_COVID19_deaths__which_countries_are_bending_the_curve__Trajectories as UC255
+    usecase Daily_new_confirmed_COVID19_cases_and_deaths as UC256
+    usecase Daily_new_confirmed_cases_of_COVID19 as UC257
+    usecase Daily_new_confirmed_cases_of_COVID19 as UC258
+    usecase Daily_new_confirmed_cases_of_COVID19_per_million_people as UC259
+}
+vu --> UC231
+vu --> UC232
+vu --> UC233
+vu --> UC234
+vu --> UC235
+vu --> UC236
+vu --> UC237
+vu --> UC238
+vu --> UC239
+vu --> UC240
+vu --> UC241
+vu --> UC242
+vu --> UC244
+vu --> UC245
+vu --> UC246
+vu --> UC247
+vu --> UC248
+vu --> UC249
+vu --> UC250
+vu --> UC251
+vu --> UC252
+vu --> UC253
+vu --> UC254
+vu --> UC255
+vu --> UC256
+vu --> UC257
+vu --> UC258
+vu --> UC259
+@enduml

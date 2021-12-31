@@ -1,0 +1,55 @@
+@startuml
+left to right direction
+
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
+
+	av <|-- am
+	am <|-- cu
+}
+
+package owid_report_09 {
+    usecase Total_and_Daily_confirmed_COVID19_cases as UC321
+    usecase Total_and_Daily_confirmed_COVID19_cases_per_million_people as UC322
+    usecase Total_confirmed_COVID19_cases_By_Income_Group as UC323
+    usecase Total_confirmed_COVID19_cases_per_million_people_Map_and_country_time_series as UC324
+    usecase Total_confirmed_COVID19_cases_per_million__how_rapidly_are_they_increasing__Trajectories as UC325
+    usecase Total_confirmed_COVID19_cases_vs_deaths_per_million as UC326
+    usecase Total_confirmed_COVID19_cases__by_source as UC327
+    usecase Total_confirmed_COVID19_cases__how_rapidly_are_they_increasing__Trajectories as UC328
+    usecase Total_confirmed_COVID19_deaths_Map_and_country_time_series as UC329
+    usecase Total_confirmed_COVID19_deaths_By_Income_Group as UC330
+    usecase Total_confirmed_COVID19_deaths_and_cases_per_million_people as UC331
+    usecase Total_confirmed_COVID19_deaths_per_million_people as UC332
+    usecase Total_confirmed_COVID19_deaths_per_million_vs_GDP_per_capita as UC333
+    usecase Total_confirmed_COVID19_deaths_per_million__how_rapidly_are_they_increasing as UC334
+    usecase Total_confirmed_COVID19_deaths__how_rapidly_are_they_increasing__Trajectories as UC335
+    usecase Total_confirmed_deaths_due_to_COVID19_vs_Population as UC336
+    usecase Total_confirmed_deaths_from_COVID19__by_source as UC337
+    usecase Total_Number_of_COVID19_Tests_per_confirmed_case as UC338
+    usecase Transit_stations__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC339
+    usecase Week_by_week_change_in_confirmed_COVID19_cases as UC340
+}
+vu --> UC321
+vu --> UC322
+vu --> UC323
+vu --> UC324
+vu --> UC325
+vu --> UC326
+vu --> UC327
+vu --> UC328
+vu --> UC329
+vu --> UC330
+vu --> UC331
+vu --> UC332
+vu --> UC333
+vu --> UC334
+vu --> UC335
+vu --> UC336
+vu --> UC337
+vu --> UC338
+vu --> UC339
+vu --> UC340
+@enduml
