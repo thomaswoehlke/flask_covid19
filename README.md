@@ -153,25 +153,41 @@
 
 ![owid_use_cases](docs/uml/data_owid/owid_use_cases.png)
 
-#### owid_use_cases_visual_data_1
+#### owid_report_01
 
-![owid_use_cases_visual_data_1](docs/uml/data_owid_reports/owid_use_cases_visual_data_1.png)
+![owid_use_cases_visual_data_1](docs/uml/data_owid_reports/owid_report_01.png)
 
-#### owid_use_cases_visual_data_2
+#### owid_report_02
 
-![owid_use_cases_visual_data_2](docs/uml/data_owid_reports/owid_use_cases_visual_data_2.png)
+![owid_use_cases_visual_data_2](docs/uml/data_owid_reports/owid_report_02.png)
 
-#### owid_use_cases_visual_data_3
+#### owid_report_03
 
-![owid_use_cases_visual_data_3](docs/uml/data_owid_reports/owid_use_cases_visual_data_3.png)
+![owid_use_cases_visual_data_3](docs/uml/data_owid_reports/owid_report_03.png)
 
-#### owid_use_cases_visual_data_4
+#### owid_report_04
 
-![owid_use_cases_visual_data_4](docs/uml/data_owid_reports/owid_use_cases_visual_data_4.png)
+![owid_use_cases_visual_data_4](docs/uml/data_owid_reports/owid_report_04.png)
 
-#### owid_use_cases_visual_data_5
+#### owid_report_05
 
-![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_use_cases_visual_data_5.png)
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_05.png)
+
+#### owid_report_06
+
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_06.png)
+#### owid_report_07
+
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_07.png)
+#### owid_report_08
+
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_08.png)
+#### owid_report_09
+
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_09.png)
+#### owid_report_10
+
+![owid_use_cases_visual_data_5](docs/uml/data_owid_reports/owid_report_10.png)
 
 ### rki_vaccination
 
