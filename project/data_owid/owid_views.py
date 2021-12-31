@@ -1165,6 +1165,217 @@ class OwidReportUrls:
 # -----------------------------------------------------------
 
     @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_casesstacked_area_chart__by_world_region")
+    def url_owid_report_daily_confirmed_covid19_casesstacked_area_chart__by_world_region():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_casesstacked_area_chart__by_world_region"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_casesstacked_area_chart__by_world_region.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases_and_deaths")
+    def url_owid_report_daily_confirmed_covid19_cases_and_deaths():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases_and_deaths"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases_and_deaths.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases_per_million_people")
+    def url_owid_report_daily_confirmed_covid19_cases_per_million_people():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases_per_million_people"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases_per_million_people.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases_per_million__3day_rolling_average")
+    def url_owid_report_daily_confirmed_covid19_cases_per_million__3day_rolling_average():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases_per_million__3day_rolling_average"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases_per_million__3day_rolling_average.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases_per_million__which_countries_are_bending_the_curve__trajectories")
+    def url_owid_report_daily_confirmed_covid19_cases_per_million__which_countries_are_bending_the_curve__trajectories():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases_per_million__which_countries_are_bending_the_curve__trajectories"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases_per_million__which_countries_are_bending_the_curve__trajectories.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases__rolling_7day_average")
+    def url_owid_report_daily_confirmed_covid19_cases__rolling_7day_average():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases__rolling_7day_average"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases__rolling_7day_average.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_cases__which_countries_are_bending_the_curve")
+    def url_owid_report_daily_confirmed_covid19_cases__which_countries_are_bending_the_curve():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_cases__which_countries_are_bending_the_curve"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_cases__which_countries_are_bending_the_curve.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deathsmap_and_time_series")
+    def url_owid_report_daily_confirmed_covid19_deathsmap_and_time_series():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deathsmap_and_time_series"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deathsmap_and_time_series.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deathsby_region")
+    def url_owid_report_daily_confirmed_covid19_deathsby_region():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deathsby_region"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deathsby_region.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths_per_million_people")
+    def url_owid_report_daily_confirmed_covid19_deaths_per_million_people():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths_per_million_people"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths_per_million_people.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths_per_million__3day_rolling_average")
+    def url_owid_report_daily_confirmed_covid19_deaths_per_million__3day_rolling_average():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths_per_million__3day_rolling_average"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths_per_million__3day_rolling_average.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths_per_million__rolling_7day_average")
+    def url_owid_report_daily_confirmed_covid19_deaths_per_million__rolling_7day_average():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths_per_million__rolling_7day_average"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths_per_million__rolling_7day_average.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths_per_million__which_countries_are_bending_the_curve__trajectories")
+    def url_owid_report_daily_confirmed_covid19_deaths_per_million__which_countries_are_bending_the_curve__trajectories():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths_per_million__which_countries_are_bending_the_curve__trajectories"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths_per_million__which_countries_are_bending_the_curve__trajectories.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths__rolling_7day_average")
+    def url_owid_report_daily_confirmed_covid19_deaths__rolling_7day_average():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths__rolling_7day_average"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths__rolling_7day_average.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_deaths__which_countries_are_bending_the_curve__trajectories")
+    def url_owid_report_daily_confirmed_covid19_deaths__which_countries_are_bending_the_curve__trajectories():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_deaths__which_countries_are_bending_the_curve__trajectories"
+        )
+        return render_template(
+            "owid/reports/report03/daily_confirmed_covid19_deaths__which_countries_are_bending_the_curve__trajectories.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_new_confirmed_covid19_cases_and_deaths")
+    def url_owid_report_daily_new_confirmed_covid19_cases_and_deaths():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_new_confirmed_covid19_cases_and_deaths"
+        )
+        return render_template(
+            "owid/reports/report03/daily_new_confirmed_covid19_cases_and_deaths.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_new_confirmed_cases_of_covid19")
+    def url_owid_report_daily_new_confirmed_cases_of_covid19():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_new_confirmed_cases_of_covid19"
+        )
+        return render_template(
+            "owid/reports/report03/daily_new_confirmed_cases_of_covid19.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_new_confirmed_cases_of_covid19_per_million_people")
+    def url_owid_report_daily_new_confirmed_cases_of_covid19_per_million_people():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_new_confirmed_cases_of_covid19_per_million_people"
+        )
+        return render_template(
+            "owid/reports/report03/daily_new_confirmed_cases_of_covid19_per_million_people.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_new_estimated_covid19_infections_from_the_icl_model")
+    def url_owid_report_daily_new_estimated_covid19_infections_from_the_icl_model():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_new_estimated_covid19_infections_from_the_icl_model"
+        )
+        return render_template(
+            "owid/reports/report03/daily_new_estimated_covid19_infections_from_the_icl_model.html",
+            page_info=page_info
+        )
+
+# -----------------------------------------------------------
+
+    @staticmethod
     @app_owid_report.route("/aaaa")
     def url_owid_report_aaaa():
         page_info = WebPageContent(
@@ -1174,5 +1385,6 @@ class OwidReportUrls:
             "owid/reports/report03/aaaa.html",
             page_info=page_info
         )
+
 
 owid_report_urls = OwidReportUrls()
