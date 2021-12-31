@@ -11,19 +11,19 @@ package app_user {
 }
 
 package owid_report_10 {
-    usecase Weekly_new_ICU_admissions_for_COVID19 as UC350
+    usecase Weekly_new_ICU_admissions_for_COVID19 as UC380
     usecase Weekly_new_ICU_admissions_for_COVID19_per_million as UC351
     usecase Weekly_new_hospital_admissions_for_COVID19 as UC352
     usecase Weekly_new_hospital_admissions_for_COVID19_per_million as UC353
     usecase Which_countries_do_COVID19_contact_tracing as UC354
     usecase Workplace_closures_during_the_COVID19_pandemic as UC355
-    usecase Workplaces_How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC356
+    usecase Workplaces_How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC386
 }
-am --> UC350
-am --> UC351
-am --> UC352
-am --> UC353
-am --> UC354
-am --> UC355
-am --> UC356
+am --> UC380
+am --> UC381
+am --> UC382
+am --> UC383
+am --> UC384
+am --> UC385
+am --> UC386
 @enduml

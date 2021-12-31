@@ -11,45 +11,45 @@ package app_user {
 }
 
 package owid_report_08 {
-    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases as UC310
-    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_Positive_rate_comparison as UC311
-    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_per_million as UC312
-    usecase Total_COVID19_Tests_for_each_confirmed_case as UC313
-    usecase Total_COVID19_Tests_for_each_confirmed_case_Bar_chart as UC314
-    usecase Total_COVID19_tests_per_1000_people_Line_chart as UC315
-    usecase Total_COVID19_tests_per_1000_people_Map_chart as UC316
-    usecase Total_COVID19_tests_per_1000_people_Bar_chart as UC317
-    usecase Total_COVID19_tests_per_1000_vs_GDP_per_capita as UC318
-    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC319
-    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC320
-    usecase Total_and_Daily_confirmed_COVID19_cases as UC321
-    usecase Total_and_Daily_confirmed_COVID19_cases_per_million_people as UC322
-    usecase Total_confirmed_COVID19_cases_By_Income_Group as UC323
-    usecase Total_confirmed_COVID19_cases_per_million_people_Map_and_country_time_series as UC324
-    usecase Total_confirmed_COVID19_cases_per_million__how_rapidly_are_they_increasing__Trajectories as UC325
-    usecase Total_confirmed_COVID19_cases_vs_deaths_per_million as UC326
-    usecase Total_confirmed_COVID19_cases__by_source as UC327
-    usecase Total_confirmed_COVID19_cases__how_rapidly_are_they_increasing__Trajectories as UC328
-    usecase Total_confirmed_COVID19_deaths_Map_and_country_time_series as UC329
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases as UC340
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_Positive_rate_comparison as UC341
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_per_million as UC342
+    usecase Total_COVID19_Tests_for_each_confirmed_case as UC343
+    usecase Total_COVID19_Tests_for_each_confirmed_case_Bar_chart as UC344
+    usecase Total_COVID19_tests_per_1000_people_Line_chart as UC345
+    usecase Total_COVID19_tests_per_1000_people_Map_chart as UC346
+    usecase Total_COVID19_tests_per_1000_people_Bar_chart as UC347
+    usecase Total_COVID19_tests_per_1000_vs_GDP_per_capita as UC348
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC349
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC350
+    usecase Total_and_Daily_confirmed_COVID19_cases as UC351
+    usecase Total_and_Daily_confirmed_COVID19_cases_per_million_people as UC352
+    usecase Total_confirmed_COVID19_cases_By_Income_Group as UC353
+    usecase Total_confirmed_COVID19_cases_per_million_people_Map_and_country_time_series as UC354
+    usecase Total_confirmed_COVID19_cases_per_million__how_rapidly_are_they_increasing__Trajectories as UC355
+    usecase Total_confirmed_COVID19_cases_vs_deaths_per_million as UC356
+    usecase Total_confirmed_COVID19_cases__by_source as UC357
+    usecase Total_confirmed_COVID19_cases__how_rapidly_are_they_increasing__Trajectories as UC358
+    usecase Total_confirmed_COVID19_deaths_Map_and_country_time_series as UC359
 }
-am --> UC310
-am --> UC311
-am --> UC312
-am --> UC313
-am --> UC314
-am --> UC315
-am --> UC316
-am --> UC317
-am --> UC318
-am --> UC319
-am --> UC320
-am --> UC321
-am --> UC322
-am --> UC323
-am --> UC324
-am --> UC325
-am --> UC326
-am --> UC327
-am --> UC328
-am --> UC329
+am --> UC340
+am --> UC341
+am --> UC342
+am --> UC343
+am --> UC344
+am --> UC345
+am --> UC346
+am --> UC347
+am --> UC348
+am --> UC349
+am --> UC350
+am --> UC351
+am --> UC352
+am --> UC353
+am --> UC354
+am --> UC355
+am --> UC356
+am --> UC357
+am --> UC358
+am --> UC359
 @enduml

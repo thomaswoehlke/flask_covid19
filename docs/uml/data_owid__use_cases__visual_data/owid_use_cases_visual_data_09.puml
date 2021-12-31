@@ -11,45 +11,45 @@ package app_user {
 }
 
 package owid_report_09 {
-    usecase Total_confirmed_COVID19_deaths_By_Income_Group as UC330
-    usecase Total_confirmed_COVID19_deaths_and_cases_per_million_people as UC331
-    usecase Total_confirmed_COVID19_deaths_per_million_people as UC332
-    usecase Total_confirmed_COVID19_deaths_per_million_vs_GDP_per_capita as UC333
-    usecase Total_confirmed_COVID19_deaths_per_million__how_rapidly_are_they_increasing as UC334
-    usecase Total_confirmed_COVID19_deaths__how_rapidly_are_they_increasing__Trajectories as UC335
-    usecase Total_confirmed_deaths_due_to_COVID19_vs_Population as UC336
-    usecase Total_confirmed_deaths_from_COVID19__by_source as UC337
-    usecase Total_Number_of_COVID19_Tests_per_confirmed_case as UC338
-    usecase Transit_stations__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC339
-    usecase Week_by_week_change_in_confirmed_COVID19_cases as UC340
-    usecase Week_by_week_change_of_confirmed_COVID19_cases_vs_GDP_per_capita as UC341
-    usecase Week_by_week_change_of_confirmed_COVID19_deaths as UC342
-    usecase Week_by_week_change_of_confirmed_COVID19_deaths_vs_GDP_per_capita as UC343
-    usecase Weekly_case_growth_rate_vs_Daily_case_rate as UC344
-    usecase Weekly_confirmed_COVID19_cases as UC345
-    usecase Weekly_confirmed_COVID19_cases_per_million_people as UC346
-    usecase Weekly_confirmed_COVID19_deaths as UC347
-    usecase Weekly_confirmed_COVID19_deaths_per_million_people as UC348
-    usecase Weekly_death_growth_rate_vs_Daily_death_rate as UC349
+    usecase Total_confirmed_COVID19_deaths_By_Income_Group as UC360
+    usecase Total_confirmed_COVID19_deaths_and_cases_per_million_people as UC361
+    usecase Total_confirmed_COVID19_deaths_per_million_people as UC362
+    usecase Total_confirmed_COVID19_deaths_per_million_vs_GDP_per_capita as UC363
+    usecase Total_confirmed_COVID19_deaths_per_million__how_rapidly_are_they_increasing as UC364
+    usecase Total_confirmed_COVID19_deaths__how_rapidly_are_they_increasing__Trajectories as UC365
+    usecase Total_confirmed_deaths_due_to_COVID19_vs_Population as UC366
+    usecase Total_confirmed_deaths_from_COVID19__by_source as UC367
+    usecase Total_Number_of_COVID19_Tests_per_confirmed_case as UC368
+    usecase Transit_stations__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC369
+    usecase Week_by_week_change_in_confirmed_COVID19_cases as UC370
+    usecase Week_by_week_change_of_confirmed_COVID19_cases_vs_GDP_per_capita as UC371
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths as UC372
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths_vs_GDP_per_capita as UC373
+    usecase Weekly_case_growth_rate_vs_Daily_case_rate as UC374
+    usecase Weekly_confirmed_COVID19_cases as UC375
+    usecase Weekly_confirmed_COVID19_cases_per_million_people as UC376
+    usecase Weekly_confirmed_COVID19_deaths as UC377
+    usecase Weekly_confirmed_COVID19_deaths_per_million_people as UC378
+    usecase Weekly_death_growth_rate_vs_Daily_death_rate as UC379
 }
-am --> UC330
-am --> UC331
-am --> UC332
-am --> UC333
-am --> UC334
-am --> UC335
-am --> UC336
-am --> UC337
-am --> UC338
-am --> UC339
-am --> UC340
-am --> UC341
-am --> UC342
-am --> UC343
-am --> UC344
-am --> UC345
-am --> UC346
-am --> UC347
-am --> UC348
-am --> UC349
+am --> UC360
+am --> UC361
+am --> UC362
+am --> UC363
+am --> UC364
+am --> UC365
+am --> UC366
+am --> UC367
+am --> UC368
+am --> UC369
+am --> UC370
+am --> UC371
+am --> UC372
+am --> UC373
+am --> UC374
+am --> UC375
+am --> UC376
+am --> UC377
+am --> UC378
+am --> UC379
 @enduml
