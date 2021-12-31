@@ -13,31 +13,93 @@
                 <div class="accordion" id="accordionCol">
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-light" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                               Task: Update
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                               Reports 01
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionCol">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionCol">
                             <div class="accordion-body">
                                 <div class="d-grid gap-2 d-block">
                                     <a class="btn btn-success btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_task_owid_download') }}"
-                                       role="button">OWID :: download</a>
+                                       role="button">OWID :: download
+                                    </a>
                                     <a class="btn btn-info btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_task_owid_import') }}"
-                                       role="button">OWID :: import</a>
+                                       role="button">OWID :: import
+                                    </a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
-                                       role="button">OWID :: update :: dimension-tables</a>
+                                       role="button">OWID :: update :: dimension-tables
+                                    </a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
-                                       role="button">OWID :: update :: fact-table</a>
+                                       role="button">OWID :: update :: fact-table
+                                    </a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_task_owid_update') }}"
-                                       role="button">OWID :: update</a>
+                                       role="button">OWID :: update
+                                    </a>
                                     <a class="btn btn-danger btn-lg btn-block text-left"
                                        href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
-                                       role="button">OWID :: delete last day</a>
+                                       role="button">OWID :: delete last day
+                                    </a>
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download
+                                    </a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import
+                                    </a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables
+                                    </a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table
+                                    </a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update
+                                    </a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day
+                                    </a>
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download
+                                    </a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import
+                                    </a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables
+                                    </a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table
+                                    </a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update
+                                    </a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day
+                                    </a>
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download
+                                    </a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +107,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-light" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Task: Full Update
+                                Reports 02
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCol">
@@ -76,7 +138,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-light" id="headingThree">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              Tests
+                              Reports 03
                           </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCol">
@@ -107,7 +169,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-light" id="headingFour">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                              Info: Our World in Data
+                              Reports 04
                           </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionCol">
@@ -120,7 +182,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-light" id="headingFive">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                              Info: n.n
+                              Reports 05
                           </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionCol">
@@ -128,6 +190,168 @@
                                 <a class="btn btn-primary" href="https://ourworldindata.org/coronavirus">
                                     n.n
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                               Reports 06
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2 d-block">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import</a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                               Reports 07
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2 d-block">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import</a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                               Reports 08
+                            </button>
+                        </h2>
+                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2 d-block">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import</a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                               Reports 09
+                            </button>
+                        </h2>
+                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2 d-block">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import</a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header bg-light" id="headingTen">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                               Reports 10
+                            </button>
+                        </h2>
+                        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionCol">
+                            <div class="accordion-body">
+                                <div class="d-grid gap-2 d-block">
+                                    <a class="btn btn-success btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_download') }}"
+                                       role="button">OWID :: download</a>
+                                    <a class="btn btn-info btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_import') }}"
+                                       role="button">OWID :: import</a>
+                                    <a class="btn btn-warning btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_dimension_tables') }}"
+                                       role="button">OWID :: update :: dimension-tables</a>
+                                    <a class="btn btn-secondary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update_fact_table') }}"
+                                       role="button">OWID :: update :: fact-table</a>
+                                    <a class="btn btn-primary btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_task_owid_update') }}"
+                                       role="button">OWID :: update</a>
+                                    <a class="btn btn-danger btn-lg btn-block text-left"
+                                       href="{{ url_for( 'owid.url_owid_delete_last_day') }}"
+                                       role="button">OWID :: delete last day</a>
+                                </div>
                             </div>
                         </div>
                     </div>
