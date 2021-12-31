@@ -1,7 +1,42 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.all.model {
+package project.data_all.service {
+
+    class AllServiceDownload << (S,red) Service >> {
+		-log_error()
+		-log_success()
+		-prepare_download()
+		-download_with_wget()
+		-download_with_subprocess_and_os_native_wget()
+		download_file()
+	}
+	class AllServiceConfig << (T,#FF7700) Transient >> {
+		limit_nr: Integer
+	    data_path: String
+	    slug: String
+	    category: String
+	    sub_category: String
+	    tablename: String
+	    cvsfile_name: String
+	    url_src: String
+	    cvsfile_path: String
+	    msg_job: String
+	    msg_ok: String
+	    msg_error: String
+		create_config_for_who()
+		create_config_for_rki_vaccination()
+		create_config_for_owid()
+		create_config_for_ecdc()
+		create_config_for_rki_bundeslaender()
+		create_config_for_rki_landkreise()
+	}
+
+	AllServiceDownload : SQLAlchemy database
+	AllServiceDownload "*" --> "1"  AllServiceConfig : cfg
+}
+
+package project.data_all.model {
 
 	entity AllDateReported {
 	    id: Integer
@@ -31,33 +66,14 @@ package covid19.blueprints.all.model {
 	    {classifier} get_by_id(other_id: Integer)
 	    {classifier} find_by_id(other_id: Integer)
 	}
-	class AllServiceDownload << (S,red) Service >> {
-		-log_error()
-		-log_success()
-		-prepare_download()
-		-download_with_wget()
-		-download_with_subprocess_and_os_native_wget()
-		download_file()
-	}
-	class AllServiceConfig << (T,#FF7700) Transient >> {
-		limit_nr: Integer
-	    data_path: String
-	    slug: String
-	    category: String
-	    sub_category: String
-	    tablename: String
-	    cvsfile_name: String
-	    url_src: String
-	    cvsfile_path: String
-	    msg_job: String
-	    msg_ok: String
-	    msg_error: String
-		create_config_for_who()
-		create_config_for_rki_vaccination()
-		create_config_for_owid()
-		create_config_for_ecdc()
-		create_config_for_rki_bundeslaender()
-		create_config_for_rki_landkreise()
+	entity AllLocation {
+	    id: Integer
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
 	}
 
 	interface AllImportFull {
@@ -89,33 +105,9 @@ package covid19.blueprints.all.model {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	interface AllFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): AllFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
-	}
 }
 
-package covid19.blueprints.owid.model {
+package project.data_owid.model {
 
 	entity OwidImport {
 	    id: Integer
@@ -189,89 +181,6 @@ package covid19.blueprints.owid.model {
 	    {classifier} get_new_dates_reported_as_array()
 	    {classifier} get_continents(page: Integer)
 	    {classifier} get_all_continents()
-	}
-
-	entity OwidFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		iso_code:  String
-	    continent:  String
-	    location:  String
-	    date:  String
-	    total_cases:  String
-	    new_cases:  String
-	    new_cases_smoothed:  String
-	    total_deaths:  String
-	    new_deaths:  String
-	    new_deaths_smoothed:  String
-	    total_cases_per_million:  String
-	    new_cases_per_million:  String
-	    new_cases_smoothed_per_million:  String
-	    total_deaths_per_million:  String
-	    new_deaths_per_million:  String
-	    new_deaths_smoothed_per_million:  String
-	    reproduction_rate:  String
-	    icu_patients:  String
-	    icu_patients_per_million:  String
-	    hosp_patients:  String
-	    hosp_patients_per_million:  String
-	    weekly_icu_admissions:  String
-	    weekly_icu_admissions_per_million:  String
-	    weekly_hosp_admissions:  String
-	    weekly_hosp_admissions_per_million:  String
-	    new_tests:  String
-	    total_tests:  String
-	    total_tests_per_thousand:  String
-	    new_tests_per_thousand:  String
-	    new_tests_smoothed:  String
-	    new_tests_smoothed_per_thousand:  String
-	    positive_rate:  String
-	    tests_per_case:  String
-	    tests_units:  String
-	    total_vaccinations:  String
-	    people_vaccinated:  String
-	    people_fully_vaccinated:  String
-	    new_vaccinations:  String
-	    new_vaccinations_smoothed:  String
-	    total_vaccinations_per_hundred:  String
-	    people_vaccinated_per_hundred:  String
-	    people_fully_vaccinated_per_hundred:  String
-	    new_vaccinations_smoothed_per_million:  String
-	    stringency_index:  String
-	    population:  String
-	    population_density:  String
-	    median_age:  String
-	    aged_65_older:  String
-	    aged_70_older:  String
-	    gdp_per_capita:  String
-	    extreme_poverty:  String
-	    cardiovasc_death_rate:  String
-	    diabetes_prevalence:  String
-	    female_smokers:  String
-	    male_smokers:  String
-	    handwashing_facilities:  String
-	    hospital_beds_per_thousand:  String
-	    life_expectancy:  String
-	    human_development_index:  String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): OwidFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): OwidFlat[]
 	}
 	entity OwidDateReported {
 	    id: Integer
@@ -376,9 +285,20 @@ package covid19.blueprints.owid.model {
 	    {classifier} get_by_id(other_id: Integer)
 	    {classifier} find_by_id(other_id: Integer)
 	}
+
+	AllImportFull <|-- AllImport
+    AllImportIncrement <|-- AllImport
+    AllImport <|-- OwidImport
+    AllDateReported <|-- OwidDateReported
+    AllLocationGroup <|-- OwidContinent
+    AllLocation <|-- OwidCountry
+
+    OwidCountry "1" *--> "*" OwidContinent : region
+    OwidData "1" *--> "*" OwidCountry : country
+    OwidData "1" *--> "*" OwidDateReported : date_reported
 }
 
-package covid19.blueprints.owid.service {
+package project.data_owid.service {
 	class OwidServiceImport << (S,red) Service >> {
 		import_file()
 	}
@@ -421,9 +341,27 @@ package covid19.blueprints.owid.service {
 	    update_fact_table_initial_only()
 	    update_fact_table_incremental_only()
 	}
+
+	OwidServiceUpdateBase <|-- OwidServiceUpdateFull
+    OwidServiceUpdateBase <|-- OwidServiceUpdate
+
+	OwidServiceImport : SQLAlchemy database
+    OwidServiceUpdateBase : SQLAlchemy database
+    OwidServiceUpdateFull : SQLAlchemy database
+    OwidServiceUpdate : SQLAlchemy database
+    OwidService : SQLAlchemy database
+
+    OwidService "*" *--> "1"  AllServiceConfig : cfg
+    OwidServiceImport "*" --> "1"  AllServiceConfig : cfg
+    OwidServiceUpdate "*" --> "1"  AllServiceConfig : cfg
+
+	OwidService "1" *--> "1" OwidServiceImport : owid_service_import
+    OwidService "1" *--> "1" OwidServiceUpdate : owid_service_update
+    OwidService "1" *--> "1" OwidServiceUpdateFull : owid_service_update
+    OwidService "1" *--> "1" AllServiceDownload : service_download
 }
 
-package covid19.blueprints.owid.views {
+package project.data_owid.views {
 	class owid_views_frontend << (B,orchid) Boundary >> {
 	    url_owid_info()
 	    url_owid_tasks()
@@ -454,36 +392,9 @@ package covid19.blueprints.owid.views {
 	    task_owid_update_star_schema_incremental()
 	    task_owid_update_star_schema_initial()
 	}
-
+    owid_views_frontend "1" --> "1" OwidService : owid_service
+    owid_views_for_tasks "1" --> "1" OwidService : owid_service
+    owid_celery_tasks "1" --> "1" OwidService : owid_service
 }
-OwidServiceImport : SQLAlchemy database
-OwidServiceUpdateBase : SQLAlchemy database
-OwidServiceUpdateFull : SQLAlchemy database
-OwidServiceUpdate : SQLAlchemy database
-OwidService : SQLAlchemy database
-AllServiceDownload : SQLAlchemy database
-OwidServiceUpdateFull <|-- OwidServiceUpdateBase
-OwidServiceUpdate <|-- OwidServiceUpdateBase
-AllDateReported <|-- OwidDateReported
-AllLocationGroup <|-- OwidContinent
-OwidCountry "1" *--> "*" OwidContinent : region
-OwidData "1" *--> "*" OwidCountry : country
-OwidData "1" *--> "*" OwidDateReported : date_reported
-OwidService "*" *--> "1"  AllServiceConfig : cfg
-OwidServiceImport "*" --> "1"  AllServiceConfig : cfg
-OwidServiceUpdate "*" --> "1"  AllServiceConfig : cfg
-AllServiceDownload "*" --> "1"  AllServiceConfig : cfg
-OwidService "1" *--> "1" OwidServiceImport : owid_service_import
-OwidService "1" *--> "1" OwidServiceUpdate : owid_service_update
-OwidService "1" *--> "1" OwidServiceUpdateFull : owid_service_update
-OwidService "1" *--> "1" AllServiceDownload : service_download
-owid_views_frontend "1" --> "1" OwidService : owid_service
-owid_views_for_tasks "1" --> "1" OwidService : owid_service
-owid_celery_tasks "1" --> "1" OwidService : owid_service
-AllImportFull <|-- AllImport
-AllImportIncrement <|-- AllImport
-AllImport <|-- AllFlat
-AllImport <|-- OwidImport
-AllFlat <|-- OwidFlat
-OwidImport <|-- OwidFlat
+
 @enduml

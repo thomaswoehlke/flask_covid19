@@ -41,7 +41,7 @@ package project.data_all.model {
 	}
 }
 
-package covid19.blueprints.owid.model {
+package project.data_owid.model {
 	entity OwidDateReported {
 	    id: Integer
 	}
@@ -54,15 +54,15 @@ package covid19.blueprints.owid.model {
 	entity OwidData {
 	    id: Integer
 	}
+
+	AllDateReported <|-- OwidDateReported
+    AllLocationGroup <|-- OwidContinent
+    AllLocation <|--  OwidCountry
+    AllData <|-- OwidData
+
+    OwidCountry "1" *--> "*" OwidContinent : region
+    OwidData "1" *--> "*" OwidCountry : country
+    OwidData "1" *--> "*" OwidDateReported : date_reported
 }
-
-AllDateReported <|-- OwidDateReported
-AllLocationGroup <|-- OwidContinent
-AllLocation <|--  OwidCountry
-AllData <|-- OwidData
-
-OwidCountry "1" *--> "*" OwidContinent : region
-OwidData "1" *--> "*" OwidCountry : country
-OwidData "1" *--> "*" OwidDateReported : date_reported
 
 @enduml
