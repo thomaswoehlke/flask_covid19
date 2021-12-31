@@ -31,47 +31,25 @@ package owid_report_01 {
     usecase Case_fatality_rate_of_COVID19_vs_Median_age_of_the_population as UC217
     usecase Case_fatality_rate_of_the_ongoing_COVID19_pandemic as UC218
     usecase Case_fatality_rate_vs_Tests_per_confirmed_case as UC219
-    usecase Case_fatality_rate_vs_Total_confirmed_COVID19_deaths as UC220
-    usecase Confirmed_COVID19_deaths_per_million_vs_GDP_per_capita as UC221
-    usecase Confirmed_COVID19_deaths_vs_Population_density as UC222
-    usecase Cumulative_COVID19_tests_confirmed_cases_and_deaths as UC223
-    usecase Cumulative_COVID19_tests_confirmed_cases_and_deaths_per_million_people as UC224
-    usecase Cumulative_confirmed_COVID19_casesMap_and_country_time_series as UC225
-    usecase Cumulative_confirmed_COVID19_cases_By_Region as UC226
-    usecase Cumulative_confirmed_COVID19_cases_per_million_vs_GDP_per_capita as UC227
-    usecase Cumulative_confirmed_COVID19_deaths_By_Region as UC228
-    usecase Cumulative_confirmed_COVID19_deaths_and_cases as UC229
-    usecase Cumulative_confirmed_COVID19_deaths_vs_cases as UC230
 }
-vu --> UC200
-vu --> UC201
-vu --> UC202
-vu --> UC203
-vu --> UC204
-vu --> UC205
-vu --> UC206
-vu --> UC207
-vu --> UC208
-vu --> UC209
-vu --> UC210
-vu --> UC211
-vu --> UC212
-vu --> UC213
-vu --> UC214
-vu --> UC215
-vu --> UC216
-vu --> UC217
-vu --> UC218
-vu --> UC219
-vu --> UC220
-vu --> UC221
-vu --> UC222
-vu --> UC223
-vu --> UC224
-vu --> UC225
-vu --> UC226
-vu --> UC227
-vu --> UC228
-vu --> UC229
-vu --> UC230
+am --> UC200
+am --> UC201
+am --> UC202
+am --> UC203
+am --> UC204
+am --> UC205
+am --> UC206
+am --> UC207
+am --> UC208
+am --> UC209
+am --> UC210
+am --> UC211
+am --> UC212
+am --> UC213
+am --> UC214
+am --> UC215
+am --> UC216
+am --> UC217
+am --> UC218
+am --> UC219
 @enduml

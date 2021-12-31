@@ -11,65 +11,46 @@ package app_user {
 }
 
 package owid_report_06 {
-    usecase Daily_new_estimated_COVID19_infections_from_the_ICL_model as UC260
-    usecase Daily_new_estimated_COVID19_infections_from_the_IHME_model as UC261
-    usecase Daily_new_estimated_COVID19_infections_from_the_LSHTM_model as UC262
-    usecase Daily_new_estimated_COVID19_infections_from_the_YYG_model as UC263
-    usecase Daily_new_estimated_infections_of_COVID19 as UC264
-    usecase Daily_tests_per_thousand_people_Since_Total_confirmed_cases_reached_1_per_million as UC265
-    usecase Daily_vs_Total_confirmed_COVID19_cases as UC266
-    usecase Daily_vs_Total_confirmed_COVID19_cases_per_million_people as UC267
-    usecase Daily_vs_Total_confirmed_COVID19_deaths_per_million as UC268
-    usecase Daily_vs_Cumulative_confirmed_deaths_due_to_COVID19 as UC269
-    usecase Debt_or_contract_relief_during_the_COVID19_pandemic as UC270
-    usecase Excess_mortality_during_COVID19__Deaths_from_all_causes_compared_to_previous_years__all_ages_P_scores as UC271
-    usecase Excess_mortality_during_COVID19__Deaths_from_all_causes_compared_to_previous_years__all_age_P_scores as UC272
-    usecase Excess_mortality_during_COVID19__Number_of_deaths_from_all_causes_compared_to_previous_years_Raw_death_counts as UC273
-    usecase Face_covering_policies_during_the_COVID19_pandemic as UC274
-    usecase Government_Response_Stringency_Index_vs_Biweekly_change_in_confirmed_COVID19_cases as UC275
-    usecase Grocery_and_pharmacy_stores__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC276
-    usecase How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC277
-    usecase Income_support_during_the_COVID19_pandemic as UC278
-    usecase International_travel_controls_during_the_COVID19_pandemic as UC279
-    usecase Number_of_COVID19_patients_in_ICU_per_million as UC280
-    usecase Number_of_COVID19_patients_in_hospital as UC281
-    usecase Number_of_COVID19_patients_in_hospital_per_million as UC282
-    usecase Number_of_COVID19_patients_in_intensive_care__ICU as UC283
-    usecase Number_of_people_fully_vaccinated_against_COVID19 as UC284
-    usecase Number_of_people_who_received_at_least_one_dose_of_COVID19_vaccine as UC285
-    usecase Number_of_tests_per_confirmed_case_vs_Total_confirmed_COVID19_cases_per_million_people as UC286
-    usecase Parks_and_outdoor_spaces__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC287
-    usecase Per_capita__COVID19_tests_vs_Confirmed_deaths as UC288
-    usecase Per_capita__tests_for_COVID19_vs_Confirmed_cases as UC289
+    usecase Share_who_would_get_a_COVID19_vaccine_if_it_was_available_to_them_this_week as UC300
+    usecase Stay_at_home_requirements_during_the_COVID19_pandemic as UC301
+    usecase Tests_conducted_per_new_confirmed_case_of_COVID19 as UC302
+    usecase Tests_per_confirmed_case__Total_vs_Case_fatality_rate as UC303
+    usecase Tests_per_thousand_since_the_100th_confirmed_case_of_COVID19 as UC304
+    usecase Tests_per_thousand_since_the_5th_confirmed_death_due_to_COVID19 as UC305
+    usecase The_share_of_COVID19_Tests_that_are_positive as UC306
+    usecase Total_COVID19_testsLine_chart as UC307
+    usecase Total_COVID19_testsMap_chart as UC308
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases as UC309
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_Positive_rate_comparison as UC310
+    usecase Total_COVID19_Tests_conducted_vs_Confirmed_cases_per_million as UC311
+    usecase Total_COVID19_Tests_for_each_confirmed_case as UC312
+    usecase Total_COVID19_Tests_for_each_confirmed_case_Bar_chart as UC313
+    usecase Total_COVID19_tests_per_1000_people_Line_chart as UC314
+    usecase Total_COVID19_tests_per_1000_people_Map_chart as UC315
+    usecase Total_COVID19_tests_per_1000_people_Bar_chart as UC316
+    usecase Total_COVID19_tests_per_1000_vs_GDP_per_capita as UC317
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC318
+    usecase Total_COVID19_tests_per_1000__how_are_testing_rates_changing__Since_Daily_new_confirmed_deaths_due_to_COVID19_reached_0p1_per_million as UC319
 }
-vu --> UC260
-vu --> UC261
-vu --> UC262
-vu --> UC263
-vu --> UC264
-vu --> UC265
-vu --> UC266
-vu --> UC267
-vu --> UC268
-vu --> UC269
-vu --> UC270
-vu --> UC271
-vu --> UC272
-vu --> UC273
-vu --> UC274
-vu --> UC275
-vu --> UC276
-vu --> UC277
-vu --> UC278
-vu --> UC279
-vu --> UC280
-vu --> UC281
-vu --> UC282
-vu --> UC283
-vu --> UC284
-vu --> UC285
-vu --> UC286
-vu --> UC287
-vu --> UC288
-vu --> UC289
+am --> UC300
+am --> UC301
+am --> UC302
+am --> UC303
+am --> UC304
+am --> UC305
+am --> UC306
+am --> UC307
+am --> UC308
+am --> UC309
+am --> UC310
+am --> UC311
+am --> UC312
+am --> UC313
+am --> UC314
+am --> UC315
+am --> UC316
+am --> UC317
+am --> UC318
+am --> UC319
+
 @enduml
