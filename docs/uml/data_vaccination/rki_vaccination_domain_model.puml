@@ -33,30 +33,6 @@ package project.data_all.model_import {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	interface AllFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): AllFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
-	}
 }
 
 package flask_covid19.data_vaccination.model_import {
@@ -93,60 +69,11 @@ package flask_covid19.data_vaccination.model_import {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	entity RkiVaccinationFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-	    dosen_kumulativ: Integer
-	    dosen_differenz_zum_vortag: Integer
-	    dosen_biontech_kumulativ: Integer
-	    dosen_moderna_kumulativ: Integer
-	    personen_erst_kumulativ: Integer
-	    personen_voll_kumulativ: Integer
-	    impf_quote_erst: Float
-	    impf_quote_voll: Float
-	    indikation_alter_dosen: Integer
-	    indikation_beruf_dosen: Integer
-	    indikation_medizinisch_dosen: Integer
-	    indikation_pflegeheim_dosen: Integer
-	    indikation_alter_erst: Integer
-	    indikation_beruf_erst: Integer
-	    indikation_medizinisch_erst: Integer
-	    indikation_pflegeheim_erst: Integer
-	    indikation_alter_voll: Integer
-	    indikation_beruf_voll: Integer
-	    indikation_medizinisch_voll: Integer
-	    indikation_pflegeheim_voll: Integer
-	    date_reported: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): RkiVaccinationFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): RkiVaccinationFlat[]
-	}
 }
 
 AllImportFull <|-- AllImport
 AllImportIncrement <|-- AllImport
-AllImport <|-- AllFlat
 AllImport <|-- RkiVaccinationImport
-AllFlat <|-- RkiVaccinationFlat
-RkiVaccinationImport <|-- RkiVaccinationFlat
-
 
 package project.data_all.model {
 

@@ -19,7 +19,6 @@ package covid19.blueprints.app_user {
 package covid19.blueprints.ecdc.ecdc_views_task {
 	usecase download_file as UC1
 	usecase import_file as UC2
-	usecase import_file_flat as UC3
 	usecase full_update_dimension_tables as UC10
 	usecase full_update_fact_table as UC11
 	usecase full_update_star_schema as UC12
@@ -40,7 +39,6 @@ au --> UC22
 
 package covid19.blueprints.ecdc.ecdc_views_frontend {
 	usecase get_import as UC30
-	usecase get_flat as UC31
 	usecase get_years as UC40
 	usecase get_days as UC41
 	usecase get_days_for_year as UC42

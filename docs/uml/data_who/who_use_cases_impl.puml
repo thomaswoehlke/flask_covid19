@@ -14,7 +14,6 @@ package covid19.blueprints.app_user {
 }
 package covid19.blueprints.who.who_views_frontend {
 	usecase url_get_import as UC30
-	usecase url_get_flat as UC31
 	usecase url_get_years as UC40
 	usecase url_get_days as UC41
 	usecase url_get_days_for_year as UC42
@@ -37,7 +36,6 @@ vu --> UC80
 package covid19.blueprints.who.who_views_for_tasks {
 	usecase url_download_file as UC1
 	usecase url_import_file as UC2
-	usecase url_import_file_flat as UC3
 	usecase url_full_update_dimension_tables as UC10
 	usecase url_full_update_fact_table as UC11
 	usecase url_full_update_star_schema as UC12
@@ -58,7 +56,6 @@ au --> UC22
 au --> UC81
 package covid19.blueprints.who.who_celery_tasks {
 	usecase task_import_file as UC102
-	usecase task_import_file_flat as UC103
 	usecase task_full_update_dimension_tables as UC110
 	usecase task_full_update_fact_table as UC111
 	usecase task_full_update_star_schema as UC112

@@ -84,30 +84,6 @@ package covid19.blueprints.all.model_import {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	interface AllFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): AllFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
-	}
 }
 package covid19.blueprints.all.service {
 
@@ -230,38 +206,6 @@ package covid19.blueprints.who.model_import {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	entity WhoFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-	    date_reported: String
-	    country_code: String
-	    country: String
-	    who_region: String
-	    new_cases: String
-	    cumulative_cases: String
-	    new_deaths: String
-	    cumulative_deaths: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): WhoFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): WhoFlat[]
-	}
 }
 
 package covid19.blueprints.who.service {
@@ -346,11 +290,7 @@ package covid19.blueprints.who.views {
 
 AllImportFull <|-- AllImport
 AllImportIncrement <|-- AllImport
-AllImport <|-- AllFlat
-
 AllImport <|-- WhoImport
-AllFlat <|-- WhoFlat
-WhoImport <|-- WhoFlat
 
 AllDateReported <|-- WhoDateReported
 AllLocationGroup <|-- WhoCountryRegion
@@ -374,6 +314,7 @@ WhoService "1" *--> "1" AllServiceDownload : service_download
 
 WhoServiceUpdateFull <|-- WhoServiceUpdateBase
 WhoServiceUpdate <|-- WhoServiceUpdateBase
+
 WhoServiceUpdateBase : SQLAlchemy database
 WhoServiceImport : SQLAlchemy database
 AllServiceDownload : SQLAlchemy database

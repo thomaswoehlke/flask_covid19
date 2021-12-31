@@ -1,56 +1,8 @@
 @startuml
 left to right direction
 
-package covid19.blueprints.all {
-
-	entity ApplicationDateReported {
-	    id: Integer
-		date_reported:  String
-	    year_week:  String
-	    datum: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-		get_name_for_weekday()
-		{classifier} get_names_for_weekday()
-		{classifier} get_datum_parts(my_date_rep: String)
-		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
-		{classifier} create_new_object_factory(my_date_rep: String)
-	}
-
-	entity ApplicationDateReported {
-	    id: Integer
-		date_reported:  String
-	    year_week:  String
-	    datum: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-		get_name_for_weekday()
-		{classifier} get_names_for_weekday()
-		{classifier} get_datum_parts(my_date_rep: String)
-		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
-		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
-		{classifier} create_new_object_factory(my_date_rep: String)
-	}
-	entity ApplicationRegion {
-	    id: Integer
-	    continent:  String
-	    {classifier} remove_all()
-	    {classifier} get_all_as_page(page: Integer)
-	    {classifier} get_all()
-	    {classifier} get_all_as_dict()
-	    {classifier} get_by_id(other_id: Integer)
-	    {classifier} find_by_id(other_id: Integer)
-	}
-	class ApplicationServiceDownload << (S,red) Service >> {
+package project.data_all.model {
+    class ApplicationServiceDownload << (S,red) Service >> {
 		-log_error()
 		-log_success()
 		-prepare_download()
@@ -77,6 +29,39 @@ package covid19.blueprints.all {
 		create_config_for_ecdc()
 		create_config_for_rki_bundeslaender()
 		create_config_for_rki_landkreise()
+	}
+}
+
+package project.data_all.model {
+
+	entity ApplicationDateReported {
+	    id: Integer
+		date_reported:  String
+	    year_week:  String
+	    datum: Date
+	    year: Integer
+	    month: Integer
+	    day_of_month: Integer
+	    day_of_week: Integer
+	    week_of_year: Integer
+		get_name_for_weekday()
+		{classifier} get_names_for_weekday()
+		{classifier} get_datum_parts(my_date_rep: String)
+		{classifier} get_datum(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} get_datum_as_str(my_year: Integer, my_month: Integer, my_day: Integer)
+		{classifier} my_year_week(my_iso_year: Integer, week_number: Integer)
+		{classifier} create_new_object_factory(my_date_rep: String)
+	}
+
+	entity ApplicationRegion {
+	    id: Integer
+	    continent:  String
+	    {classifier} remove_all()
+	    {classifier} get_all_as_page(page: Integer)
+	    {classifier} get_all()
+	    {classifier} get_all_as_dict()
+	    {classifier} get_by_id(other_id: Integer)
+	    {classifier} find_by_id(other_id: Integer)
 	}
 
 	interface AllImportFull {
@@ -106,34 +91,10 @@ package covid19.blueprints.all {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-	interface AllFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): AllFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): AllFlat[]
-	}
-
 }
 
 
-package covid19.blueprints.ecdc {
+package project.data_ecdc.model {
 
 	entity EcdcImport {
 	    id: Integer
@@ -158,45 +119,6 @@ package covid19.blueprints.ecdc {
 		{classifier} update_fact_table()
 		{classifier} update_star_schema()
 	}
-
-	entity EcdcFlat {
-	    id: Integer
-	    datum_reported: Date
-	    year: Integer
-	    month: Integer
-	    day_of_month: Integer
-		day_of_year: Integer
-	    day_of_week: Integer
-	    week_of_year: Integer
-	    year_week:  String
-	    day_of_week_str: String
-		month_str: String
-		location: String
-		location_group: String
-		date_rep:  String
-	    date_rep_day:  String
-	    date_rep_month:  String
-	    date_rep_year:  String
-	    cases:  String
-	    deaths:  String
-	    pop_data_2019:  String
-	    countries_and_territories:  String
-	    geo_id:  String
-	    country_territory_code:  String
-	    continent_exp:  String
-	    cumulative_number_for_14_days_of_covid19_cases_per_100000:  String
-		{classifier} import_file_flat()
-		{classifier} get_years(): Integer[]
-		{classifier} get_days(): Date[]
-		{classifier} get_days_for_year(year: Integer): Date[]
-		{classifier} get_location_groups(): String[]
-		{classifier} get_locations_for_location_group(location_group: String): String[]
-		{classifier} get_data_for_location(location: String): EcdcFlat[]
-		{classifier} get_data_for_day(datum_reported: Date): EcdcFlat[]
-	}
-
-
-
 	entity EcdcDateReported {
 	    id: Integer
 	    dateiname: String
@@ -267,7 +189,7 @@ package covid19.blueprints.ecdc {
 
 }
 
-package covid19.blueprints.ecdc {
+package project.data_ecdc.service {
 
 	class EcdcService << (S,red) Service >> {
 		pretask_database_drop_create()
@@ -354,8 +276,5 @@ ecdc_views_for_tasks  "1" --> "1" EcdcService: ecdc_service
 ecdc_celery_tasks  "1" --> "1" EcdcService: ecdc_service
 AllImportFull <|-- DataImport
 AllImportIncrement <|-- DataImport
-DataImport <|-- AllFlat
 DataImport <|-- EcdcImport
-AllFlat <|-- EcdcFlat
-EcdcImport <|-- EcdcFlat
 @enduml
