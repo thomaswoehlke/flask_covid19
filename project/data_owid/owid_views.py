@@ -760,7 +760,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_change_in_confirmed_covid19_cases"
         )
         return render_template(
-            "owid/reports/biweekly_change_in_confirmed_covid19_cases.html",
+            "owid/reports/report01/biweekly_change_in_confirmed_covid19_cases.html",
             page_info=page_info
         )
 
@@ -771,7 +771,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_change_in_confirmed_covid19_deaths"
         )
         return render_template(
-            "owid/reports/biweekly_change_in_confirmed_covid19_deaths.html",
+            "owid/reports/report01/biweekly_change_in_confirmed_covid19_deaths.html",
             page_info=page_info
         )
 
@@ -782,7 +782,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_confirmed_covid19_cases"
         )
         return render_template(
-            "owid/reports/biweekly_confirmed_covid19_cases.html",
+            "owid/reports/report01/biweekly_confirmed_covid19_cases.html",
             page_info=page_info
         )
 
@@ -793,7 +793,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_confirmed_covid19_cases_per_million_people"
         )
         return render_template(
-            "owid/reports/biweekly_confirmed_covid19_cases_per_million_people.html",
+            "owid/reports/report01/biweekly_confirmed_covid19_cases_per_million_people.html",
             page_info=page_info
         )
 
@@ -804,7 +804,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_confirmed_covid19_deaths"
         )
         return render_template(
-            "owid/reports/biweekly_confirmed_covid19_deaths.html",
+            "owid/reports/report01/biweekly_confirmed_covid19_deaths.html",
             page_info=page_info
         )
 
@@ -815,7 +815,7 @@ class OwidReportUrls:
             "OWID", "Report", "biweekly_confirmed_covid19_deaths_per_million_people"
         )
         return render_template(
-            "owid/reports/biweekly_confirmed_covid19_deaths_per_million_people.html",
+            "owid/reports/report01/biweekly_confirmed_covid19_deaths_per_million_people.html",
             page_info=page_info
         )
 
@@ -826,7 +826,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19_testing_policies"
         )
         return render_template(
-            "owid/reports/covid19_testing_policies.html",
+            "owid/reports/report01/covid19_testing_policies.html",
             page_info=page_info
         )
 
@@ -837,7 +837,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19_vaccination_policy"
         )
         return render_template(
-            "owid/reports/covid19_vaccination_policy.html",
+            "owid/reports/report01/covid19_vaccination_policy.html",
             page_info=page_info
         )
 
@@ -848,7 +848,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19_death_rate_vs_population_density"
         )
         return render_template(
-            "owid/reports/covid19_death_rate_vs_population_density.html",
+            "owid/reports/report01/covid19_death_rate_vs_population_density.html",
             page_info=page_info
         )
 
@@ -859,7 +859,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19_vaccine_doses_administered"
         )
         return render_template(
-            "owid/reports/covid19_vaccine_doses_administered.html",
+            "owid/reports/report01/covid19_vaccine_doses_administered.html",
             page_info=page_info
         )
 
@@ -870,7 +870,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19_vaccine_doses_administered_per_100_people"
         )
         return render_template(
-            "owid/reports/covid19_vaccine_doses_administered_per_100_people.html",
+            "owid/reports/report01/covid19_vaccine_doses_administered_per_100_people.html",
             page_info=page_info
         )
 
@@ -881,7 +881,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19__daily_tests_vs_daily_new_confirmed_cases"
         )
         return render_template(
-            "owid/reports/covid19__daily_tests_vs_daily_new_confirmed_cases.html",
+            "owid/reports/report01/covid19__daily_tests_vs_daily_new_confirmed_cases.html",
             page_info=page_info
         )
 
@@ -892,7 +892,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19__daily_tests_vs_daily_new_confirmed_cases_per_million"
         )
         return render_template(
-            "owid/reports/covid19__daily_tests_vs_daily_new_confirmed_cases_per_million.html",
+            "owid/reports/report01/covid19__daily_tests_vs_daily_new_confirmed_cases_per_million.html",
             page_info=page_info
         )
 
@@ -903,7 +903,7 @@ class OwidReportUrls:
             "OWID", "Report", "covid19__stringency_index"
         )
         return render_template(
-            "owid/reports/covid19__stringency_index.html",
+            "owid/reports/report01/covid19__stringency_index.html",
             page_info=page_info
         )
 
@@ -914,7 +914,7 @@ class OwidReportUrls:
             "OWID", "Report", "cancellation_of_public_events_during_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/cancellation_of_public_events_during_covid19_pandemic.html",
+            "owid/reports/report01/cancellation_of_public_events_during_covid19_pandemic.html",
             page_info=page_info
         )
 
@@ -925,7 +925,7 @@ class OwidReportUrls:
             "OWID", "Report", "case_fatality_rate_of_covid19_vs_median_age_of_the_population"
         )
         return render_template(
-            "owid/reports/case_fatality_rate_of_covid19_vs_median_age_of_the_population.html",
+            "owid/reports/report01/case_fatality_rate_of_covid19_vs_median_age_of_the_population.html",
             page_info=page_info
         )
 
@@ -936,7 +936,7 @@ class OwidReportUrls:
             "OWID", "Report", "case_fatality_rate_of_the_ongoing_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/case_fatality_rate_of_the_ongoing_covid19_pandemic.html",
+            "owid/reports/report01/case_fatality_rate_of_the_ongoing_covid19_pandemic.html",
             page_info=page_info
         )
 
@@ -947,7 +947,7 @@ class OwidReportUrls:
             "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
         )
         return render_template(
-            "owid/reports/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report01/case_fatality_rate_vs_tests_per_confirmed_case.html",
             page_info=page_info
         )
 
