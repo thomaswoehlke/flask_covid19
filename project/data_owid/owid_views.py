@@ -954,13 +954,46 @@ class OwidReportUrls:
     #--------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/case_fatality_rate_vs_total_confirmed_covid19_deaths")
+    def url_owid_report_case_fatality_rate_vs_total_confirmed_covid19_deaths():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "case_fatality_rate_vs_total_confirmed_covid19_deaths"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/case_fatality_rate_vs_total_confirmed_covid19_deaths.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/biweekly_change_in_confirmed_covid19_deaths")
+    def url_owid_report_biweekly_change_in_confirmed_covid19_deaths():
+        page_info = WebPageContent(
+            "OWID", "Report", "biweekly_change_in_confirmed_covid19_deaths"
+        )
+        return render_template(
+            "owid/reports/report02/biweekly_change_in_confirmed_covid19_deaths.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/confirmed_covid19_deaths_per_million_vs_gdp_per_capita")
+    def url_owid_report_confirmed_covid19_deaths_per_million_vs_gdp_per_capita():
+        page_info = WebPageContent(
+            "OWID", "Report", "confirmed_covid19_deaths_per_million_vs_gdp_per_capita"
+        )
+        return render_template(
+            "owid/reports/report02/confirmed_covid19_deaths_per_million_vs_gdp_per_capita.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/biweekly_confirmed_covid19_cases_per_million_people")
+    def url_owid_report_biweekly_confirmed_covid19_cases_per_million_people():
+        page_info = WebPageContent(
+            "OWID", "Report", "biweekly_confirmed_covid19_cases_per_million_people"
+        )
+        return render_template(
+            "owid/reports/report02/biweekly_confirmed_covid19_cases_per_million_people.html",
             page_info=page_info
         )
 
@@ -976,200 +1009,169 @@ class OwidReportUrls:
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/confirmed_covid19_deaths_vs_population_density")
+    def url_owid_report_confirmed_covid19_deaths_vs_population_density():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "confirmed_covid19_deaths_vs_population_density"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/confirmed_covid19_deaths_vs_population_density.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_covid19_tests_confirmed_cases_and_deaths")
+    def url_owid_report_cumulative_covid19_tests_confirmed_cases_and_deaths():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_covid19_tests_confirmed_cases_and_deaths"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_covid19_tests_confirmed_cases_and_deaths.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_covid19_tests_confirmed_cases_and_deaths_per_million_people")
+    def url_owid_report_cumulative_covid19_tests_confirmed_cases_and_deaths_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_covid19_tests_confirmed_cases_and_deaths_per_million_people"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_covid19_tests_confirmed_cases_and_deaths_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_casesmap_and_country_time_series")
+    def url_owid_report_cumulative_confirmed_covid19_casesmap_and_country_time_series():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_casesmap_and_country_time_series"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_casesmap_and_country_time_series.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_cases_by_region")
+    def url_owid_report_cumulative_confirmed_covid19_cases_by_region():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_cases_by_region"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_cases_by_region.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_cases_per_million_vs_gdp_per_capita")
+    def url_owid_report_cumulative_confirmed_covid19_cases_per_million_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_cases_per_million_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_cases_per_million_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_deaths_by_region")
+    def url_owid_report_cumulative_confirmed_covid19_deaths_by_region():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_deaths_by_region"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_deaths_by_region.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_deaths_and_case")
+    def url_owid_report_cumulative_confirmed_covid19_deaths_and_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_deaths_and_case"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_deaths_and_case.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/cumulative_confirmed_covid19_deaths_vs_cases")
+    def url_owid_report_cumulative_confirmed_covid19_deaths_vs_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "cumulative_confirmed_covid19_deaths_vs_cases"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/cumulative_confirmed_covid19_deaths_vs_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/daily_covid19_tests")
+    def url_owid_report_daily_covid19_tests():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "daily_covid19_tests"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/daily_covid19_tests.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/daily_covid19_tests_per_thousand_people")
+    def url_owid_report_daily_covid19_tests_per_thousand_people():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "daily_covid19_tests_per_thousand_people"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/daily_covid19_tests_per_thousand_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/daily_covid19_tests_per_thousand_people_rolling_7day_average")
+    def url_owid_report_daily_covid19_tests_per_thousand_people_rolling_7day_average():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "daily_covid19_tests_per_thousand_people_rolling_7day_average"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/daily_covid19_tests_per_thousand_people_rolling_7day_average.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/daily_covid19_vaccine_doses_administered")
+    def url_owid_report_daily_covid19_vaccine_doses_administered():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "daily_covid19_vaccine_doses_administered"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/daily_covid19_vaccine_doses_administered.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/daily_covid19_vaccine_doses_administered_per_100_people")
+    def url_owid_report_daily_covid19_vaccine_doses_administered_per_100_people():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "daily_covid19_vaccine_doses_administered_per_100_people"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report02/daily_covid19_vaccine_doses_administered_per_100_people.html",
             page_info=page_info
         )
 
-    @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
-        page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
-        )
-        return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
-            page_info=page_info
-        )
+# -----------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
+    @app_owid_report.route("/aaaa")
+    def url_owid_report_aaaa():
         page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
+            "OWID", "Report", "aaaa"
         )
         return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
-        page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
-        )
-        return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
-    def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
-        page_info = WebPageContent(
-            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
-        )
-        return render_template(
-            "owid/reports/report02/case_fatality_rate_vs_tests_per_confirmed_case.html",
+            "owid/reports/report03/aaaa.html",
             page_info=page_info
         )
 
