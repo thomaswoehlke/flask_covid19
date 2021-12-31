@@ -13,13 +13,13 @@ package app_user {
 package project.data_vaccination.VaccinationTaskUrls {
 
 	usecase url_download_files as UC10
-	usecase url_task_who_import_files as UC11
-	usecase url_task_who_full_update_dimension_tables as UC12
-	usecase url_task_who_update_dimension_tables as UC13
-	usecase url_task_who_full_update_fact_table as UC14
-	usecase url_task_who_update_fact_table as UC15
-	usecase url_task_who_full_update as UC16
-	usecase url_task_who_update as UC17
+	usecase url_task_vaccination_import_files as UC11
+	usecase url_task_vaccination_full_update_dimension_tables as UC12
+	usecase url_task_vaccination_update_dimension_tables as UC13
+	usecase url_task_vaccination_full_update_fact_table as UC14
+	usecase url_task_vaccination_update_fact_table as UC15
+	usecase url_task_vaccination_full_update as UC16
+	usecase url_task_vaccination_update as UC17
 
 	am --> UC10
     am --> UC11
@@ -33,13 +33,13 @@ package project.data_vaccination.VaccinationTaskUrls {
 
 package project.data_vaccination.VaccinationTasks {
 
-	usecase task_who_import_files as UC21
-	usecase task_who_full_update_dimension_tables as UC22
-	usecase task_who_update_dimension_tables as UC23
-	usecase task_who_full_update_fact_table as UC24
-	usecase task_who_update_fact_table as UC25
-	usecase task_who_full_update as UC26
-	usecase task_who_update as UC27
+	usecase task_vaccination_import_files as UC21
+	usecase task_vaccination_full_update_dimension_tables as UC22
+	usecase task_vaccination_update_dimension_tables as UC23
+	usecase task_vaccination_full_update_fact_table as UC24
+	usecase task_vaccination_update_fact_table as UC25
+	usecase task_vaccination_full_update as UC26
+	usecase task_vaccination_update as UC27
 
     UC11 --> UC21
     UC12 --> UC22

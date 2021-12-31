@@ -1,22 +1,102 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+left to right direction
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
 
-User -> (Start)
-User --> (Use)
+	av <|-- am
+	am <|-- cu
+}
 
-Admin ---> (Use)
+package project.data_rki.RkiTaskUrls {
 
-note right of Admin : This is an example.
+	usecase url_download_files as UC10
+	usecase url_task_rki_import_files as UC11
+	usecase url_task_rki_full_update_dimension_tables as UC12
+	usecase url_task_rki_update_dimension_tables as UC13
+	usecase url_task_rki_full_update_fact_table as UC14
+	usecase url_task_rki_update_fact_table as UC15
+	usecase url_task_rki_full_update as UC16
+	usecase url_task_rki_update as UC17
 
-note right of (Use)
-A note can also
-be on several lines
-end note
+	am --> UC10
+    am --> UC11
+    am --> UC12
+    am --> UC13
+    am --> UC14
+    am --> UC15
+    am --> UC16
+    am --> UC17
+}
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+package project.data_rki.RkiTasks {
+
+	usecase task_rki_import_files as UC21
+	usecase task_rki_full_update_dimension_tables as UC22
+	usecase task_rki_update_dimension_tables as UC23
+	usecase task_rki_full_update_fact_table as UC24
+	usecase task_rki_update_fact_table as UC25
+	usecase task_rki_full_update as UC26
+	usecase task_rki_update as UC27
+
+    UC11 --> UC21
+    UC12 --> UC22
+    UC13 --> UC23
+    UC14 --> UC24
+    UC15 --> UC25
+    UC16 --> UC26
+    UC17 --> UC27
+}
+
+package project.data_rki.CliTasks {
+
+    usecase rki_delete_last_day as UC120
+    usecase rki_download as UC121
+	usecase rki_import as UC122
+	usecase rki_update_full as UC123
+	usecase rki_update as UC124
+
+    cu --> UC120
+    cu --> UC121
+    cu --> UC122
+    cu --> UC123
+    cu --> UC124
+}
+
+package project.data_rki.RkiUrls {
+	usecase url_rki_root as UC30
+	usecase url_rki_info as UC31
+	usecase url_rki_imported as UC40
+	usecase url_rki_date_reported_all as UC41
+	usecase url_rki_date_reported as UC42
+	usecase url_rki_date_reported_cases_new as UC43
+	usecase url_rki_date_reported_cases_cumulative as UC44
+	usecase url_rki_date_reported_deaths_new as UC45
+	usecase url_rki_date_reported_deaths_cumulative as UC46
+    usecase url_rki_region_all as UC80
+    usecase url_rki_region as UC80
+    usecase url_rki_country_all as UC80
+    usecase url_rki_country as UC80
+    usecase url_rki_country_cases_new as UC80
+    usecase url_rki_country_cases_cumulative as UC80
+    usecase url_rki_country_deaths_new as UC80
+    usecase url_rki_country_deaths_cumulative as UC80
+    usecase url_rki_germany as UC80
+    usecase url_rki_delete_last_day as UC80
+    usecase url_rki_region as UC80
+
+    av --> UC30
+    av --> UC31
+    av --> UC40
+    av --> UC41
+    av --> UC42
+    av --> UC43
+    av --> UC44
+    av --> UC45
+    av --> UC46
+    av --> UC80
+}
+
 @enduml
