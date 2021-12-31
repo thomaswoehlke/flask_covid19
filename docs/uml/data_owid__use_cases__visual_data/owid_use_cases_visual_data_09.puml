@@ -11,15 +11,6 @@ package app_user {
 }
 
 package owid_report_09 {
-    usecase Total_and_Daily_confirmed_COVID19_cases as UC321
-    usecase Total_and_Daily_confirmed_COVID19_cases_per_million_people as UC322
-    usecase Total_confirmed_COVID19_cases_By_Income_Group as UC323
-    usecase Total_confirmed_COVID19_cases_per_million_people_Map_and_country_time_series as UC324
-    usecase Total_confirmed_COVID19_cases_per_million__how_rapidly_are_they_increasing__Trajectories as UC325
-    usecase Total_confirmed_COVID19_cases_vs_deaths_per_million as UC326
-    usecase Total_confirmed_COVID19_cases__by_source as UC327
-    usecase Total_confirmed_COVID19_cases__how_rapidly_are_they_increasing__Trajectories as UC328
-    usecase Total_confirmed_COVID19_deaths_Map_and_country_time_series as UC329
     usecase Total_confirmed_COVID19_deaths_By_Income_Group as UC330
     usecase Total_confirmed_COVID19_deaths_and_cases_per_million_people as UC331
     usecase Total_confirmed_COVID19_deaths_per_million_people as UC332
@@ -31,25 +22,34 @@ package owid_report_09 {
     usecase Total_Number_of_COVID19_Tests_per_confirmed_case as UC338
     usecase Transit_stations__How_did_the_Number_of_visitors_change_since_the_beginning_of_the_pandemic as UC339
     usecase Week_by_week_change_in_confirmed_COVID19_cases as UC340
+    usecase Week_by_week_change_of_confirmed_COVID19_cases_vs_GDP_per_capita as UC341
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths as UC342
+    usecase Week_by_week_change_of_confirmed_COVID19_deaths_vs_GDP_per_capita as UC343
+    usecase Weekly_case_growth_rate_vs_Daily_case_rate as UC344
+    usecase Weekly_confirmed_COVID19_cases as UC345
+    usecase Weekly_confirmed_COVID19_cases_per_million_people as UC346
+    usecase Weekly_confirmed_COVID19_deaths as UC347
+    usecase Weekly_confirmed_COVID19_deaths_per_million_people as UC348
+    usecase Weekly_death_growth_rate_vs_Daily_death_rate as UC349
 }
-vu --> UC321
-vu --> UC322
-vu --> UC323
-vu --> UC324
-vu --> UC325
-vu --> UC326
-vu --> UC327
-vu --> UC328
-vu --> UC329
-vu --> UC330
-vu --> UC331
-vu --> UC332
-vu --> UC333
-vu --> UC334
-vu --> UC335
-vu --> UC336
-vu --> UC337
-vu --> UC338
-vu --> UC339
-vu --> UC340
+am --> UC330
+am --> UC331
+am --> UC332
+am --> UC333
+am --> UC334
+am --> UC335
+am --> UC336
+am --> UC337
+am --> UC338
+am --> UC339
+am --> UC340
+am --> UC341
+am --> UC342
+am --> UC343
+am --> UC344
+am --> UC345
+am --> UC346
+am --> UC347
+am --> UC348
+am --> UC349
 @enduml
