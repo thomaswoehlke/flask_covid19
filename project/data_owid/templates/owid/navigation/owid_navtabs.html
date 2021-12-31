@@ -29,17 +29,17 @@
                           Data Explorer
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url_for( 'owid.url_owid_reports') }}">
+                          Reports
+                        </a>
+                    </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'owid.url_owid_imported') }}">
                           imported
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_flat') }}">
-                          flat
                         </a>
                     </li>
                     {% endif %}

@@ -368,6 +368,16 @@ class OwidUrls:
             page_info=page_info,
         )
 
+    @staticmethod
+    @app_owid.route("/reports")
+    def url_owid_reports():
+        app.logger.info("url_owid_reports [start]")
+        page_info = WebPageContent("OWID", "Reports", "all")
+        app.logger.info("url_owid_reports [done]")
+        return render_template(
+            "owid/owid_reports.html",
+            page_info=page_info,
+        )
 
 owid_urls = OwidUrls()
 
