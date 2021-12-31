@@ -24,8 +24,8 @@ copyright = "2021, Thomas Woehlke"
 author = "Thomas Woehlke"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.78"
-version = "0.0.78"
+release = "0.0.83"
+version = "0.0.83"
 
 # -- General configuration ---------------------------------------------------
 
