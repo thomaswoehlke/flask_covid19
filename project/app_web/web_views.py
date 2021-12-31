@@ -10,7 +10,7 @@ from project.app_web.user_views import blueprint_app_user
 from project.app_web.web_model_transient import WebPageContent
 from project.data_all.all_views import blueprint_app_all
 from project.data_ecdc.ecdc_views import app_ecdc
-from project.data_owid.owid_views import app_owid
+from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
 from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
@@ -28,6 +28,7 @@ app.register_blueprint(blueprint_app_all, url_prefix="/app/all")
 
 app.register_blueprint(app_who, url_prefix="/who")
 app.register_blueprint(app_owid, url_prefix="/owid")
+app.register_blueprint(app_owid_report, url_prefix="/owid/report")
 app.register_blueprint(app_ecdc, url_prefix="/ecdc")
 app.register_blueprint(app_vaccination, url_prefix="/vaccination")
 app.register_blueprint(app_rki, url_prefix="/rki/")
