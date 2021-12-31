@@ -111,102 +111,102 @@
 
 #### all_domain_model
 
-![all_domain_model](uml/data_all/img/all_domain_model.png)
+![all_domain_model](uml/data_all/all_domain_model.png)
 
 #### all_domain_model_import
 
-![all_domain_model_import](uml/data_all/img/all_domain_model_import.png)
+![all_domain_model_import](uml/data_all/all_domain_model_import.png)
 
 #### all_domain_model_star_schema
 
-![all_domain_model_star_schema](uml/data_all/img/all_domain_model_star_schema.png)
+![all_domain_model_star_schema](uml/data_all/all_domain_model_star_schema.png)
 
 #### all_use_cases
 
-![all_use_cases](uml/data_all/img/all_use_cases.png)
+![all_use_cases](uml/data_all/all_use_cases.png)
 
 ### ecdc
 
 #### ecdc_domain_model
 
-![ecdc_domain_model](uml/data_ecdc/img/ecdc_domain_model.png)
+![ecdc_domain_model](uml/data_ecdc/ecdc_domain_model.png)
 
 #### ecdc_domain_model_import
 
-![ecdc_domain_model_import](uml/data_ecdc/img/ecdc_domain_model_import.png)
+![ecdc_domain_model_import](uml/data_ecdc/ecdc_domain_model_import.png)
 
 #### ecdc_use_cases
 
-![ecdc_use_cases](uml/data_ecdc/img/ecdc_use_cases.png)
+![ecdc_use_cases](uml/data_ecdc/ecdc_use_cases.png)
 
 ### owid
 
 #### owid_domain_model
 
-![owid_domain_model](uml/data_owid/img/owid_domain_model.png)
+![owid_domain_model](uml/data_owid/owid_domain_model.png)
 
 #### owid_domain_model_import
 
-![owid_domain_model](uml/data_owid/img/owid_domain_model_import.png)
+![owid_domain_model](uml/data_owid/owid_domain_model_import.png)
 
 #### owid_use_cases
 
-![owid_use_cases](uml/data_owid/img/owid_use_cases.png)
+![owid_use_cases](uml/data_owid/owid_use_cases.png)
 
 #### owid_use_cases_visual_data_1
 
-![owid_use_cases_visual_data_1](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_1.png)
+![owid_use_cases_visual_data_1](uml/data_owid/use_cases__visual_data/owid_use_cases_visual_data_1.png)
 
 #### owid_use_cases_visual_data_2
 
-![owid_use_cases_visual_data_2](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_2.png)
+![owid_use_cases_visual_data_2](uml/data_owid/use_cases__visual_data/owid_use_cases_visual_data_2.png)
 
 #### owid_use_cases_visual_data_3
 
-![owid_use_cases_visual_data_3](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_3.png)
+![owid_use_cases_visual_data_3](uml/data_owid/use_cases__visual_data/owid_use_cases_visual_data_3.png)
 
 #### owid_use_cases_visual_data_4
 
-![owid_use_cases_visual_data_4](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_4.png)
+![owid_use_cases_visual_data_4](uml/data_owid/use_cases__visual_data/owid_use_cases_visual_data_4.png)
 
 #### owid_use_cases_visual_data_5
 
-![owid_use_cases_visual_data_5](uml/data_owid/use_cases__visual_data/img/owid_use_cases_visual_data_5.png)
+![owid_use_cases_visual_data_5](uml/data_owid/use_cases__visual_data/owid_use_cases_visual_data_5.png)
 
 ### rki_vaccination
 
 #### rki_vaccination_domain_model
 
-![rki_vaccination_domain_model](uml/data_vaccination/img/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](uml/data_vaccination/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_domain_model_import
 
-![rki_vaccination_domain_model](uml/data_vaccination/img/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](uml/data_vaccination/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_use_cases
 
-![rki_vaccination_use_cases](uml/data_vaccination/img/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](uml/data_vaccination/rki_vaccination_use_cases.png)
 
 ### who
 
 #### who_domain_model
 
-![rki_vaccination_use_cases](uml/data_vaccination/img/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](uml/data_vaccination/rki_vaccination_use_cases.png)
 
 #### who_domain_model_import
 
-![who_domain_model_import](uml/data_who/img/who_domain_model_import.png)
+![who_domain_model_import](uml/data_who/who_domain_model_import.png)
 
 #### who_use_cases
 
-![who_use_cases](uml/data_who/img/who_use_cases.png)
+![who_use_cases](uml/data_who/who_use_cases.png)
 
 ### app_web
 
 #### app_web_domain_model
 
-![app_application_domain_model](uml/app_web/img/app_application_domain_model.png)
+![app_application_domain_model](uml/app_web/app_application_domain_model.png)
 
 #### app_web_use_cases
 
-![app_application_use_cases](uml/app_web/img/app_application_use_cases.png)
+![app_application_use_cases](uml/app_web/app_application_use_cases.png)

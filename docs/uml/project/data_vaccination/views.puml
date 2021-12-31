@@ -1,22 +1,82 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+left to right direction
 
-:Main Admin: as Admin
-(Use the application) as (Use)
+package app_user {
+	actor AnonymousVisitor as av
+	actor AppManager as am
+	actor CliUser as cu
 
-User -> (Start)
-User --> (Use)
+	av <|-- am
+	am <|-- cu
+}
 
-Admin ---> (Use)
+package project.data_vaccination.VaccinationTaskUrls {
 
-note right of Admin : This is an example.
+	usecase url_download_files as UC10
+	usecase url_task_who_import_files as UC11
+	usecase url_task_who_full_update_dimension_tables as UC12
+	usecase url_task_who_update_dimension_tables as UC13
+	usecase url_task_who_full_update_fact_table as UC14
+	usecase url_task_who_update_fact_table as UC15
+	usecase url_task_who_full_update as UC16
+	usecase url_task_who_update as UC17
 
-note right of (Use)
-A note can also
-be on several lines
-end note
+	am --> UC10
+    am --> UC11
+    am --> UC12
+    am --> UC13
+    am --> UC14
+    am --> UC15
+    am --> UC16
+    am --> UC17
+}
 
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
+package project.data_vaccination.VaccinationTasks {
+
+	usecase task_who_import_files as UC21
+	usecase task_who_full_update_dimension_tables as UC22
+	usecase task_who_update_dimension_tables as UC23
+	usecase task_who_full_update_fact_table as UC24
+	usecase task_who_update_fact_table as UC25
+	usecase task_who_full_update as UC26
+	usecase task_who_update as UC27
+
+    UC11 --> UC21
+    UC12 --> UC22
+    UC13 --> UC23
+    UC14 --> UC24
+    UC15 --> UC25
+    UC16 --> UC26
+    UC17 --> UC27
+}
+
+package project.data_vaccination.CliTasks {
+
+    'usecase vaccination_delete_last_day as UC120
+    usecase vaccination_download as UC121
+	usecase vaccination_import as UC122
+	usecase vaccination_update_full as UC123
+	'usecase vaccination_update as UC124
+
+    'cu --> UC120
+    cu --> UC121
+    cu --> UC122
+    cu --> UC123
+    'cu --> UC124
+}
+
+package project.data_vaccination.VaccinationUrls {
+	usecase url_vaccination_root as UC30
+	usecase url_vaccination_info as UC31
+	usecase url_vaccination_imported as UC40
+	usecase url_vaccination_data as UC41
+	usecase url_vaccination_delete_last_day as UC42
+
+    av --> UC30
+    av --> UC31
+    av --> UC40
+    av --> UC41
+    av --> UC42
+}
+
 @enduml
