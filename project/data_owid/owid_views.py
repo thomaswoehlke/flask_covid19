@@ -1475,6 +1475,19 @@ class OwidReportUrls:
         )
 
     @staticmethod
+    @app_owid_report.route(
+        "/excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_age_p_scores")
+    def url_owid_report_excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_age_p_scores():
+        page_info = WebPageContent(
+            "OWID", "Report",
+            "excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_age_p_scores"
+        )
+        return render_template(
+            "owid/reports/report04/excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_age_p_scores.html",
+            page_info=page_info
+        )
+
+    @staticmethod
     @app_owid_report.route("/excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_ages_p_scores")
     def url_owid_report_excess_mortality_during_covid19__deaths_from_all_causes_compared_to_previous_years__all_ages_p_scores():
         page_info = WebPageContent(
@@ -2769,13 +2782,46 @@ class OwidReportUrls:
         )
 
     @staticmethod
+    @app_owid_report.route("/daily_and_total_confirmed_covid19_deaths")
+    def url_owid_report_daily_and_total_confirmed_covid19_deaths():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_and_total_confirmed_covid19_deaths"
+        )
+        return render_template(
+            "owid/reports/report10/daily_and_total_confirmed_covid19_deaths.html",
+            page_info=page_info
+        )
+
+    @staticmethod
     @app_owid_report.route("/daily_and_total_confirmed_covid19_deaths_per_million")
-    def url_owid_report_Daily_and_Total_confirmed_COVID19_deaths_per_million():
+    def url_owid_report_daily_and_total_confirmed_covid19_deaths_per_million():
         page_info = WebPageContent(
             "OWID", "Report", "daily_and_total_confirmed_covid19_deaths_per_million"
         )
         return render_template(
             "owid/reports/report10/daily_and_total_confirmed_covid19_deaths_per_million.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_confirmed_covid19_casesmap_and_country_time_series")
+    def url_owid_report_daily_confirmed_covid19_casesmap_and_country_time_series():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_confirmed_covid19_casesmap_and_country_time_series"
+        )
+        return render_template(
+            "owid/reports/report10/daily_confirmed_covid19_casesmap_and_country_time_series.html",
+            page_info=page_info
+        )
+
+    @staticmethod
+    @app_owid_report.route("/daily_new_estimated_infections_of_covid19")
+    def url_owid_report_daily_new_estimated_infections_of_covid19():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_new_estimated_infections_of_covid19"
+        )
+        return render_template(
+            "owid/reports/report10/daily_new_estimated_infections_of_covid19.html",
             page_info=page_info
         )
 
