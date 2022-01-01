@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from project.app_bootstrap.database import app
-from project.app_web.user_model import User
+from project.app_web.user.user_model import User
 from project.data_all.model.all_task_model import Task
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData

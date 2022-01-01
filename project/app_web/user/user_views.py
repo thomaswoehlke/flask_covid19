@@ -13,8 +13,8 @@ from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import login_manager
-from project.app_web.user_model import LoginForm
-from project.app_web.user_model import User
+from project.app_web.user.user_model import LoginForm
+from project.app_web.user.user_model import User
 from project.app_web.web_model_transient import WebPageContent
 from sqlalchemy.exc import OperationalError
 

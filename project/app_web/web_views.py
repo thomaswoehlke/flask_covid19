@@ -3,10 +3,8 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.app_admin_views import blueprint_app_admin
-from project.app_web.user_views import blueprint_app_user
+from project.app_web.admin.app_admin_views import blueprint_app_admin
+from project.app_web.user.user_views import blueprint_app_user
 from project.app_web.web_model_transient import WebPageContent
 from project.data_all.all_views import blueprint_app_all
 from project.data_ecdc.ecdc_views import app_ecdc
