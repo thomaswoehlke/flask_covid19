@@ -4,10 +4,10 @@ from project.app_web.app_admin_service import AdminService
 from project.app_web.user_service import UserService
 from project.app_web.web_service import WebService
 from project.data_all.services.all_service import AllDataServiceDispachterMatrix
-from project.data_ecdc.ecdc_service import EcdcService
-from project.data_owid.owid_service import OwidService
-from project.data_rki.rki_service import RkiService
-from project.data_vaccination.vaccination_service import VaccinationService
+from project.data_ecdc.services.ecdc_service import EcdcService
+from project.data_owid.services.owid_service import OwidService
+from project.data_rki.services.rki_service import RkiService
+from project.data_vaccination.services.vaccination_service import VaccinationService
 from project.data_who.services.who_service import WhoService
 from project.data_all.services.all_task_service import TaskService
 

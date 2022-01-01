@@ -2,8 +2,8 @@ from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
 from project.data_all.framework.model.all_model import AllEntity
-from project.data_all.framework.model.interfaces.all_model_data_mixins import AllFactTableMixin
-from project.data_all.framework.model.interfaces.all_model_data_mixins import AllFactTableTimeSeriesMixin
+from project.data_all.framework.interfaces import AllFactTableMixin
+from project.data_all.framework.interfaces import AllFactTableTimeSeriesMixin
 from sqlalchemy.orm import subqueryload
 
 

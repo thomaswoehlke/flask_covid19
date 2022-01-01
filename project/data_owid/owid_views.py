@@ -12,12 +12,12 @@ from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import owid_service
 from project.app_web.web_model_transient import WebPageContent
-from project.data_owid.owid_model_data import OwidData
-from project.data_owid.owid_model_date_reported import OwidDateReported
-from project.data_owid.owid_model_import import OwidImport
-from project.data_owid.owid_model_location import OwidCountry
-from project.data_owid.owid_model_location_group import OwidContinent
-from project.data_owid.owid_service_test import OwidTestService
+from project.data_owid.model.owid_model_data import OwidData
+from project.data_owid.model.owid_model_date_reported import OwidDateReported
+from project.data_owid.model.owid_model_import import OwidImport
+from project.data_owid.model.owid_model_location import OwidCountry
+from project.data_owid.model.owid_model_location_group import OwidContinent
+from project.data_owid.services.owid_service_test import OwidTestService
 from sqlalchemy.exc import OperationalError
 
 app_owid = Blueprint("owid", __name__, template_folder="templates", url_prefix="/owid")

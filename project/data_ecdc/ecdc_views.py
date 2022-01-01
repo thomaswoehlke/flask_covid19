@@ -12,12 +12,12 @@ from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import ecdc_service
 from project.app_web.web_model_transient import WebPageContent
-from project.data_ecdc.ecdc_model import EcdcDateReported
-from project.data_ecdc.ecdc_model_data import EcdcData
-from project.data_ecdc.ecdc_model_import import EcdcImport
-from project.data_ecdc.ecdc_model_location import EcdcCountry
-from project.data_ecdc.ecdc_model_location_group import EcdcContinent
-from project.data_ecdc.ecdc_service_test import EcdcTestService
+from project.data_ecdc.model.ecdc_model import EcdcDateReported
+from project.data_ecdc.model.ecdc_model_data import EcdcData
+from project.data_ecdc.model.ecdc_model_import import EcdcImport
+from project.data_ecdc.model.ecdc_model_location import EcdcCountry
+from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
+from project.data_ecdc.services.ecdc_service_test import EcdcTestService
 
 
 app_ecdc = Blueprint("ecdc", __name__, template_folder="templates", url_prefix="/ecdc")

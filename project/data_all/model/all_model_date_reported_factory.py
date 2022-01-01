@@ -1,10 +1,10 @@
 from datetime import date
 
 from project.data_all.framework.model.all_model_date_reported import AllDateReported
-from project.data_ecdc.ecdc_model import EcdcDateReported
-from project.data_owid.owid_model_date_reported import OwidDateReported
-from project.data_rki.rki_model_date_reported import RkiMeldedatum
-from project.data_vaccination.vaccination_model_date_reported import (
+from project.data_ecdc.model.ecdc_model import EcdcDateReported
+from project.data_owid.model.owid_model_date_reported import OwidDateReported
+from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
+from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
 from project.data_who.model.who_model_date_reported import WhoDateReported

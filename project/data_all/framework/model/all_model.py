@@ -1,6 +1,6 @@
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.framework.model.interfaces.all_model_mixins import AllEntityMixin
+from project.data_all.framework.interfaces import AllEntityMixin
 from sqlalchemy import not_, Sequence
 
 

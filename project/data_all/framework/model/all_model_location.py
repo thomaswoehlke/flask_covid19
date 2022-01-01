@@ -2,7 +2,7 @@ from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
 from project.data_all.framework.model.all_model import AllEntity
 from project.data_all.framework.model.all_model_location_group import AllLocationGroup
-from project.data_all.framework.model.interfaces.all_model_location_mixins import AllLocationMixin
+from project.data_all.framework.interfaces import AllLocationMixin
 from sqlalchemy import and_, Sequence
 
 

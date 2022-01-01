@@ -1,10 +1,10 @@
 from project.app_bootstrap.database import app
 from project.data_all.framework.services.all_service_mixins import AllServiceMixin
 from project.data_all.model.all_task_model import Task
-from project.data_ecdc.ecdc_service import EcdcService
-from project.data_owid.owid_service import OwidService
-from project.data_rki.rki_service import RkiService
-from project.data_vaccination.vaccination_service import VaccinationService
+from project.data_ecdc.services.ecdc_service import EcdcService
+from project.data_owid.services.owid_service import OwidService
+from project.data_rki.services.rki_service import RkiService
+from project.data_vaccination.services.vaccination_service import VaccinationService
 from project.data_who.services.who_service import WhoService
 
 

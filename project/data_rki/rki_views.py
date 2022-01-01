@@ -12,13 +12,13 @@ from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import rki_service
 from project.app_web.web_model_transient import WebPageContent
-from project.data_rki.rki_model_altersgruppe import RkiAltersgruppe
-from project.data_rki.rki_model_data import RkiData
-from project.data_rki.rki_model_data_location import RkiLandkreis
-from project.data_rki.rki_model_data_location_group import RkiBundesland
-from project.data_rki.rki_model_date_reported import RkiMeldedatum
-from project.data_rki.rki_model_import import RkiImport
-from project.data_rki.rki_service_test import RkiTestService
+from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
+from project.data_rki.model.rki_model_data import RkiData
+from project.data_rki.model.rki_model_data_location import RkiLandkreis
+from project.data_rki.model.rki_model_data_location_group import RkiBundesland
+from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
+from project.data_rki.model.rki_model_import import RkiImport
+from project.data_rki.services.rki_service_test import RkiTestService
 from sqlalchemy.exc import OperationalError
 
 drop_and_create_data_again = True

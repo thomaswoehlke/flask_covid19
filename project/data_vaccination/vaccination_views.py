@@ -11,11 +11,11 @@ from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import vaccination_service
 from project.app_web.web_model_transient import WebPageContent
-from project.data_vaccination.vaccination_model_data import VaccinationData
-from project.data_vaccination.vaccination_model_date_reported import (
+from project.data_vaccination.model.vaccination_model_data import VaccinationData
+from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaccination.vaccination_model_import import VaccinationImport
+from project.data_vaccination.model.vaccination_model_import import VaccinationImport
 
 
 app_vaccination = Blueprint(

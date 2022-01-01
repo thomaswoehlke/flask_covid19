@@ -4,7 +4,7 @@ from sqlalchemy import and_, Sequence
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.framework.model.interfaces.all_model_mixins import AllEntityMixinBase
+from project.data_all.framework.interfaces import AllEntityMixinBase
 
 
 class Task(db.Model, AllEntityMixinBase):
