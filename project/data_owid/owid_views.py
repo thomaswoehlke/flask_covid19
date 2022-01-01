@@ -1576,1218 +1576,1195 @@ class OwidReportUrls:
 # -----------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_covid19_patients_in_hospital")
     def url_owid_report_number_of_covid19_patients_in_hospital():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_covid19_patients_in_hospital"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_covid19_patients_in_hospital.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_covid19_patients_in_hospital_per_million")
     def url_owid_report_number_of_covid19_patients_in_hospital_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_covid19_patients_in_hospital_per_million"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_covid19_patients_in_hospital_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_covid19_patients_in_intensive_care__icu")
     def url_owid_report_number_of_covid19_patients_in_intensive_care__icu():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_covid19_patients_in_intensive_care__icu"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_covid19_patients_in_intensive_care__icu.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_people_fully_vaccinated_against_covid19")
     def url_owid_report_number_of_people_fully_vaccinated_against_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_people_fully_vaccinated_against_covid19"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_people_fully_vaccinated_against_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_people_who_received_at_least_one_dose_of_covid19_vaccine")
     def url_owid_report_number_of_people_who_received_at_least_one_dose_of_covid19_vaccine():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_people_who_received_at_least_one_dose_of_covid19_vaccine"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_people_who_received_at_least_one_dose_of_covid19_vaccine.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
-    def url_owid_report_aaaa():
-        page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
-        )
-        return render_template(
-            "owid/reports/report05/aaaa.html",
-            page_info=page_info
-        )
-
-    @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/number_of_tests_per_confirmed_case_vs_total_confirmed_covid19_cases_per_million_people")
     def url_owid_report_number_of_tests_per_confirmed_case_vs_total_confirmed_covid19_cases_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "number_of_tests_per_confirmed_case_vs_total_confirmed_covid19_cases_per_million_people"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/number_of_tests_per_confirmed_case_vs_total_confirmed_covid19_cases_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/parks_and_outdoor_spaces__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_parks_and_outdoor_spaces__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "parks_and_outdoor_spaces__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/parks_and_outdoor_spaces__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/per_capita__covid19_tests_vs_confirmed_deaths")
     def url_owid_report_per_capita__covid19_tests_vs_confirmed_deaths():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "per_capita__covid19_tests_vs_confirmed_deaths"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/per_capita__covid19_tests_vs_confirmed_deaths.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/per_capita__tests_for_covid19_vs_confirmed_cases")
     def url_owid_report_per_capita__tests_for_covid19_vs_confirmed_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "per_capita__tests_for_covid19_vs_confirmed_cases"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/per_capita__tests_for_covid19_vs_confirmed_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/public_information_campaigns_on_the_covid19_pandemic")
     def url_owid_report_public_information_campaigns_on_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "public_information_campaigns_on_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/public_information_campaigns_on_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/covid19_vaccine_doses_administered_per_100_people")
     def url_owid_report_covid19_vaccine_doses_administered_per_100_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "covid19_vaccine_doses_administered_per_100_people"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/covid19_vaccine_doses_administered_per_100_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/public_transport_closures_during_the_covid19_pandemic")
     def url_owid_report_public_transport_closures_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "covid19_vaccine_doses_administered_per_100_people"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/covid19_vaccine_doses_administered_per_100_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/restrictions_on_public_gatherings_in_the_covid19_pandemic")
     def url_owid_report_restrictions_on_public_gatherings_in_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "restrictions_on_public_gatherings_in_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/restrictions_on_public_gatherings_in_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed")
     def url_owid_report_share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_people_who_received_at_least_one_dose_of_covid19_vaccine")
     def url_owid_report_share_of_people_who_received_at_least_one_dose_of_covid19_vaccine():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_people_who_received_at_least_one_dose_of_covid19_vaccine"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/share_of_people_who_received_at_least_one_dose_of_covid19_vaccine.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_the_population_fully_vaccinated_against_covid19")
     def url_owid_report_share_of_the_population_fully_vaccinated_against_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_the_population_fully_vaccinated_against_covid19"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/share_of_the_population_fully_vaccinated_against_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_total_covid19_tests_that_were_positive")
     def url_owid_report_share_of_total_covid19_tests_that_were_positive():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_total_covid19_tests_that_were_positive"
         )
         return render_template(
-            "owid/reports/report05/aaaa.html",
+            "owid/reports/report05/share_of_total_covid19_tests_that_were_positive.html",
             page_info=page_info
         )
 
     # -------------------------------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week")
     def url_owid_report_share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/stay_at_home_requirements_during_the_covid19_pandemic")
     def url_owid_report_stay_at_home_requirements_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "stay_at_home_requirements_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/stay_at_home_requirements_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_conducted_per_new_confirmed_case_of_covid19")
     def url_owid_report_tests_conducted_per_new_confirmed_case_of_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_conducted_per_new_confirmed_case_of_covid19"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/tests_conducted_per_new_confirmed_case_of_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_confirmed_case__total_vs_case_fatality_rate")
     def url_owid_report_tests_per_confirmed_case__total_vs_case_fatality_rate():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_confirmed_case__total_vs_case_fatality_rate"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/tests_per_confirmed_case__total_vs_case_fatality_rate.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_thousand_since_the_100th_confirmed_case_of_covid19")
     def url_owid_report_tests_per_thousand_since_the_100th_confirmed_case_of_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_thousand_since_the_100th_confirmed_case_of_covid19"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/tests_per_thousand_since_the_100th_confirmed_case_of_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19")
     def url_owid_report_tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/the_share_of_covid19_tests_that_are_positive")
     def url_owid_report_the_share_of_covid19_tests_that_are_positive():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "the_share_of_covid19_tests_that_are_positive"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/the_share_of_covid19_tests_that_are_positive.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_testsline_chart")
     def url_owid_report_total_covid19_testsline_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_testsline_chart"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_testsline_chart.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_testsmap_chart")
     def url_owid_report_total_covid19_testsmap_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_testsmap_chart"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_testsmap_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_conducted_vs_confirmed_cases.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/covid19__daily_new_confirmed_cases_vs_cumulative_cases")
     def url_owid_report_covid19__daily_new_confirmed_cases_vs_cumulative_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "covid19__daily_new_confirmed_cases_vs_cumulative_cases"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
-            page_info=page_info
-        )
-
-
-    @staticmethod
-    @app_owid_report.route("/aaaa")
-    def url_owid_report_aaaa():
-        page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
-        )
-        return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/covid19__daily_new_confirmed_cases_vs_cumulative_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases_per_million")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases_per_million"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_conducted_vs_confirmed_cases_per_million.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/covid19__daily_tests_vs_daily_new_confirmed_cases_per_million")
     def url_owid_report_covid19__daily_tests_vs_daily_new_confirmed_cases_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "covid19__daily_tests_vs_daily_new_confirmed_cases_per_million"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/covid19__daily_tests_vs_daily_new_confirmed_cases_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_for_each_confirmed_case")
     def url_owid_report_total_covid19_tests_for_each_confirmed_case():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_for_each_confirmed_case"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_for_each_confirmed_case.html",
             page_info=page_info
         )
 
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_for_each_confirmed_case_bar_chart")
     def url_owid_report_total_covid19_tests_for_each_confirmed_case_bar_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_for_each_confirmed_case_bar_chart"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_for_each_confirmed_case_bar_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_people_map_chart")
     def url_owid_report_total_covid19_tests_per_1000_people_map_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_people_map_chart"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_per_1000_people_map_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_people_bar_chart")
     def url_owid_report_total_covid19_tests_per_1000_people_bar_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_people_bar_chart"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_per_1000_people_bar_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_vs_gdp_per_capita")
     def url_owid_report_total_covid19_tests_per_1000_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_per_1000_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million")
     def url_owid_report_total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million"
         )
         return render_template(
-            "owid/reports/report06/aaaa.html",
+            "owid/reports/report06/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.htmltotal_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.html",
             page_info=page_info
         )
 
     # ---------------------------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/public_information_campaigns_on_the_covid19_pandemic")
     def url_owid_report_public_information_campaigns_on_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "public_information_campaigns_on_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/public_information_campaigns_on_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/public_transport_closures_during_the_covid19_pandemic")
     def url_owid_report_public_transport_closures_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "public_transport_closures_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/public_transport_closures_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/residential_areas__how_did_the_time_spent_at_home_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/restrictions_on_internal_movement_during_the_covid19_pandemic")
     def url_owid_report_restrictions_on_internal_movement_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "restrictions_on_internal_movement_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/restrictions_on_internal_movement_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/restrictions_on_public_gatherings_in_the_covid19_pandemic")
     def url_owid_report_restrictions_on_public_gatherings_in_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "restrictions_on_public_gatherings_in_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/restrictions_on_public_gatherings_in_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/retail_and_recreation__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/school_closures_during_the_covid19_pandemic")
     def url_owid_report_school_closures_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "school_closures_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/school_closures_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed")
     def url_owid_report_share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/share_of_covid19_tests_that_were_positive_over_time__since_5th_death_was_confirmed.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_people_who_received_at_least_one_dose_of_covid19_vaccine")
     def url_owid_report_share_of_people_who_received_at_least_one_dose_of_covid19_vaccine():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_people_who_received_at_least_one_dose_of_covid19_vaccine"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/share_of_people_who_received_at_least_one_dose_of_covid19_vaccine.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_the_population_fully_vaccinated_against_covid19")
     def url_owid_report_share_of_the_population_fully_vaccinated_against_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_the_population_fully_vaccinated_against_covid19"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/share_of_the_population_fully_vaccinated_against_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_of_total_covid19_tests_that_were_positive")
     def url_owid_report_share_of_total_covid19_tests_that_were_positive():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_of_total_covid19_tests_that_were_positive"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/share_of_total_covid19_tests_that_were_positive.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week")
     def url_owid_report_share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/share_who_would_get_a_covid19_vaccine_if_it_was_available_to_them_this_week.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/stay_at_home_requirements_during_the_covid19_pandemic")
     def url_owid_report_stay_at_home_requirements_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "stay_at_home_requirements_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/stay_at_home_requirements_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_conducted_per_new_confirmed_case_of_covid19")
     def url_owid_report_tests_conducted_per_new_confirmed_case_of_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_conducted_per_new_confirmed_case_of_covid19"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/tests_conducted_per_new_confirmed_case_of_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_confirmed_case__total_vs_case_fatality_rate")
     def url_owid_report_tests_per_confirmed_case__total_vs_case_fatality_rate():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_confirmed_case__total_vs_case_fatality_rate"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/tests_per_confirmed_case__total_vs_case_fatality_rate.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_thousand_since_the_100th_confirmed_case_of_covid19")
     def url_owid_report_tests_per_thousand_since_the_100th_confirmed_case_of_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_thousand_since_the_100th_confirmed_case_of_covid19"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/tests_per_thousand_since_the_100th_confirmed_case_of_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19")
     def url_owid_report_tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/tests_per_thousand_since_the_5th_confirmed_death_due_to_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/the_share_of_covid19_tests_that_are_positive")
     def url_owid_report_the_share_of_covid19_tests_that_are_positive():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "the_share_of_covid19_tests_that_are_positive"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/the_share_of_covid19_tests_that_are_positive.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_line_chart")
     def url_owid_report_total_covid19_tests_line_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_line_chart"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/total_covid19_tests_line_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_map_chart")
     def url_owid_report_total_covid19_tests_map_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_map_chart"
         )
         return render_template(
-            "owid/reports/report07/aaaa.html",
+            "owid/reports/report07/total_covid19_tests_map_chart.html",
             page_info=page_info
         )
 
     # -------------------------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_conducted_vs_confirmed_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_conducted_vs_confirmed_cases_positive_rate_comparison.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_conducted_vs_confirmed_cases_per_million")
     def url_owid_report_total_covid19_tests_conducted_vs_confirmed_cases_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_conducted_vs_confirmed_cases_per_million"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_conducted_vs_confirmed_cases_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_for_each_confirmed_case")
     def url_owid_report_total_covid19_tests_for_each_confirmed_case():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_for_each_confirmed_case"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_for_each_confirmed_case.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_for_each_confirmed_case_bar_chart")
     def url_owid_report_total_covid19_tests_for_each_confirmed_case_bar_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_for_each_confirmed_case_bar_chart"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_for_each_confirmed_case_bar_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_people_line_chart")
     def url_owid_report_total_covid19_tests_per_1000_people_line_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_people_line_chart"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_per_1000_people_line_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_people_map_chart")
     def url_owid_report_total_covid19_tests_per_1000_people_map_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_people_map_chart"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_per_1000_people_map_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_people_bar_chart")
     def url_owid_report_total_covid19_tests_per_1000_people_bar_chart():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_people_bar_chart"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_per_1000_people_bar_chart.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000_vs_gdp_per_capita")
     def url_owid_report_total_covid19_tests_per_1000_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_per_1000_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million")
     def url_owid_report_total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_and_daily_confirmed_covid19_cases")
     def url_owid_report_total_and_daily_confirmed_covid19_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_and_daily_confirmed_covid19_cases"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_and_daily_confirmed_covid19_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_and_daily_confirmed_covid19_cases_per_million_people")
     def url_owid_report_total_and_daily_confirmed_covid19_cases_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_and_daily_confirmed_covid19_cases_per_million_people"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_and_daily_confirmed_covid19_cases_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/covid19__daily_tests_vs_daily_new_confirmed_cases")
     def url_owid_report_covid19__daily_tests_vs_daily_new_confirmed_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "covid19__daily_tests_vs_daily_new_confirmed_cases"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/covid19__daily_tests_vs_daily_new_confirmed_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases_by_income_group")
     def url_owid_report_total_confirmed_covid19_cases_by_income_group():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases_by_income_group"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases_by_income_group.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases_per_million_people_map_and_country_time_series")
     def url_owid_report_total_confirmed_covid19_cases_per_million_people_map_and_country_time_series():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases_per_million_people_map_and_country_time_series"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases_per_million_people_map_and_country_time_series.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases_per_million__how_rapidly_are_they_increasing__trajectories")
     def url_owid_report_total_confirmed_covid19_cases_per_million__how_rapidly_are_they_increasing__trajectories():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases_per_million__how_rapidly_are_they_increasing__trajectories"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases_per_million__how_rapidly_are_they_increasing__trajectories.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases_vs_deaths_per_million")
     def url_owid_report_total_confirmed_covid19_cases_vs_deaths_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases_vs_deaths_per_million"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases_vs_deaths_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases__by_source")
     def url_owid_report_total_confirmed_covid19_cases__by_source():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases__by_source"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases__by_source.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/case_fatality_rate_vs_tests_per_confirmed_case")
     def url_owid_report_case_fatality_rate_vs_tests_per_confirmed_case():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "case_fatality_rate_vs_tests_per_confirmed_case"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/case_fatality_rate_vs_tests_per_confirmed_case.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_cases__how_rapidly_are_they_increasing__trajectories")
     def url_owid_report_total_confirmed_covid19_cases__how_rapidly_are_they_increasing__trajectories():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_cases__how_rapidly_are_they_increasing__trajectories"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_cases__how_rapidly_are_they_increasing__trajectories.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_map_and_country_time_series")
     def url_owid_report_total_confirmed_covid19_deaths_map_and_country_time_series():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_map_and_country_time_series"
         )
         return render_template(
-            "owid/reports/report08/aaaa.html",
+            "owid/reports/report08/total_confirmed_covid19_deaths_map_and_country_time_series.html",
             page_info=page_info
         )
 
     # -------------------------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_by_income_group")
     def url_owid_report_total_confirmed_covid19_deaths_by_income_group():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_by_income_group"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths_by_income_group.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_and_cases_per_million_people")
     def url_owid_report_total_confirmed_covid19_deaths_and_cases_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_and_cases_per_million_people"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths_and_cases_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_per_million_people")
     def url_owid_report_total_confirmed_covid19_deaths_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_per_million_people"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_per_million_vs_gdp_per_capita")
     def url_owid_report_total_confirmed_covid19_deaths_per_million_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_per_million_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths_per_million_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths_per_million__how_rapidly_are_they_increasing")
     def url_owid_report_total_confirmed_covid19_deaths_per_million__how_rapidly_are_they_increasing():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths_per_million__how_rapidly_are_they_increasing"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths_per_million__how_rapidly_are_they_increasing.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_covid19_deaths__how_rapidly_are_they_increasing__trajectories")
     def url_owid_report_total_confirmed_covid19_deaths__how_rapidly_are_they_increasing__trajectories():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_covid19_deaths__how_rapidly_are_they_increasing__trajectories"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_covid19_deaths__how_rapidly_are_they_increasing__trajectories.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_deaths_due_to_covid19_vs_population")
     def url_owid_report_total_confirmed_deaths_due_to_covid19_vs_population():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_deaths_due_to_covid19_vs_population"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_deaths_due_to_covid19_vs_population.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_confirmed_deaths_from_covid19__by_source")
     def url_owid_report_total_confirmed_deaths_from_covid19__by_source():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_confirmed_deaths_from_covid19__by_source"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_confirmed_deaths_from_covid19__by_source.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/total_number_of_covid19_tests_per_confirmed_case")
     def url_owid_report_total_number_of_covid19_tests_per_confirmed_case():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "total_number_of_covid19_tests_per_confirmed_case"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/total_number_of_covid19_tests_per_confirmed_case.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/transit_stations__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_transit_stations__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "transit_stations__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/transit_stations__how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/week_by_week_change_in_confirmed_covid19_cases")
     def url_owid_report_week_by_week_change_in_confirmed_covid19_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "week_by_week_change_in_confirmed_covid19_cases"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/week_by_week_change_in_confirmed_covid19_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/week_by_week_change_of_confirmed_covid19_cases_vs_gdp_per_capita")
     def url_owid_report_week_by_week_change_of_confirmed_covid19_cases_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "week_by_week_change_of_confirmed_covid19_cases_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/week_by_week_change_of_confirmed_covid19_cases_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/week_by_week_change_of_confirmed_covid19_deaths")
     def url_owid_report_week_by_week_change_of_confirmed_covid19_deaths():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "week_by_week_change_of_confirmed_covid19_deaths"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/week_by_week_change_of_confirmed_covid19_deaths.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/week_by_week_change_of_confirmed_covid19_deaths_vs_gdp_per_capita")
     def url_owid_report_week_by_week_change_of_confirmed_covid19_deaths_vs_gdp_per_capita():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "week_by_week_change_of_confirmed_covid19_deaths_vs_gdp_per_capita"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/week_by_week_change_of_confirmed_covid19_deaths_vs_gdp_per_capita.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_case_growth_rate_vs_daily_case_rate")
     def url_owid_report_weekly_case_growth_rate_vs_daily_case_rate():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_case_growth_rate_vs_daily_case_rate"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_case_growth_rate_vs_daily_case_rate.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_confirmed_covid19_cases")
     def url_owid_report_weekly_confirmed_covid19_cases():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_confirmed_covid19_cases"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_confirmed_covid19_cases.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_confirmed_covid19_cases_per_million_people")
     def url_owid_report_weekly_confirmed_covid19_cases_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_confirmed_covid19_cases_per_million_people"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_confirmed_covid19_cases_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_confirmed_covid19_deaths")
     def url_owid_report_weekly_confirmed_covid19_deaths():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_confirmed_covid19_deaths"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_confirmed_covid19_deaths.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_confirmed_covid19_deaths_per_million_people")
     def url_owid_report_weekly_confirmed_covid19_deaths_per_million_people():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_confirmed_covid19_deaths_per_million_people"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_confirmed_covid19_deaths_per_million_people.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_death_growth_rate_vs_daily_death_rate")
     def url_owid_report_weekly_death_growth_rate_vs_daily_death_rate():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_death_growth_rate_vs_daily_death_rate"
         )
         return render_template(
-            "owid/reports/report09/aaaa.html",
+            "owid/reports/report09/weekly_death_growth_rate_vs_daily_death_rate.html",
             page_info=page_info
         )
 
     # ---------------------------------------------------------------------------
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_new_icu_admissions_for_covid19")
     def url_owid_report_weekly_new_icu_admissions_for_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_new_icu_admissions_for_covid19"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/weekly_new_icu_admissions_for_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_new_icu_admissions_for_covid19_per_million")
     def url_owid_report_weekly_new_icu_admissions_for_covid19_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_new_icu_admissions_for_covid19_per_million"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/weekly_new_icu_admissions_for_covid19_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_new_hospital_admissions_for_covid19")
     def url_owid_report_weekly_new_hospital_admissions_for_covid19():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_new_hospital_admissions_for_covid19"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/weekly_new_hospital_admissions_for_covid19.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/weekly_new_hospital_admissions_for_covid19_per_million")
     def url_owid_report_weekly_new_hospital_admissions_for_covid19_per_million():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "weekly_new_hospital_admissions_for_covid19_per_million"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/weekly_new_hospital_admissions_for_covid19_per_million.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/which_countries_do_covid19_contact_tracing")
     def url_owid_report_which_countries_do_covid19_contact_tracing():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "which_countries_do_covid19_contact_tracing"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/which_countries_do_covid19_contact_tracing.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/workplace_closures_during_the_covid19_pandemic")
     def url_owid_report_workplace_closures_during_the_covid19_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "workplace_closures_during_the_covid19_pandemic"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/workplace_closures_during_the_covid19_pandemic.html",
             page_info=page_info
         )
 
     @staticmethod
-    @app_owid_report.route("/aaaa")
+    @app_owid_report.route("/workplaces_how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic")
     def url_owid_report_workplaces_how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic():
         page_info = WebPageContent(
-            "OWID", "Report", "aaaa"
+            "OWID", "Report", "workplaces_how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic"
         )
         return render_template(
-            "owid/reports/report10/aaaa.html",
+            "owid/reports/report10/workplaces_how_did_the_number_of_visitors_change_since_the_beginning_of_the_pandemic.html",
             page_info=page_info
         )
 
