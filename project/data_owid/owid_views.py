@@ -2008,7 +2008,7 @@ class OwidReportUrls:
             "OWID", "Report", "total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million"
         )
         return render_template(
-            "owid/reports/report06/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.htmltotal_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.html",
+            "owid/reports/report06/total_covid19_tests_per_1000__how_are_testing_rates_changing__since_daily_new_confirmed_deaths_due_to_covid19_reached_0p1_per_million.html",
             page_info=page_info
         )
 
