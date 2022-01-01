@@ -1,15 +1,13 @@
-from project.app_web import app
-from project.app_web import db
-from project.app_web import run_web
-from project.app_web.web.web_dispachter_matrix_service import all_dispachter_matrix_service
-from project.app_web.web.web_dispachter_matrix_service import app_admin_service
-from project.app_web.web.web_dispachter_matrix_service import ecdc_service
-from project.app_web.web.web_dispachter_matrix_service import owid_service
-from project.app_web.web.web_dispachter_matrix_service import rki_service
-from project.app_web.web.web_dispachter_matrix_service import vaccination_service
-from project.app_web.web.web_dispachter_matrix_service import web_service
-from project.app_web.web.web_dispachter_matrix_service import who_service
-from project.app_web.web.web_dispachter_matrix_service import task_service
+from project.app_web import app, db, run_web, celery
+from project.app_web.web.web_dispachter_service import all_dispachter_matrix_service
+from project.app_web.web.web_dispachter_service import app_admin_service
+from project.app_web.web.web_dispachter_service import ecdc_service
+from project.app_web.web.web_dispachter_service import owid_service
+from project.app_web.web.web_dispachter_service import rki_service
+from project.app_web.web.web_dispachter_service import vaccination_service
+from project.app_web.web.web_dispachter_service import web_service
+from project.app_web.web.web_dispachter_service import who_service
+from project.app_web.web.web_dispachter_service import task_service
 
 
 def create_app():

@@ -6,7 +6,7 @@ from flask import render_template
 from flask import url_for
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
-from project.app_web.web.web_dispachter_matrix_service import app_admin_service
+from project.app_web.web.web_dispachter_service import app_admin_service
 from project.app_web.web.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True

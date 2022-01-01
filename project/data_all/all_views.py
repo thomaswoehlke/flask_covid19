@@ -8,7 +8,7 @@ from flask_login import login_required
 
 from project.app_bootstrap.database import app, db
 from project.app_bootstrap.database import celery
-from project.app_web.web.web_dispachter_matrix_service import (
+from project.app_web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
 from project.app_web.web.web_model_transient import WebPageContent
