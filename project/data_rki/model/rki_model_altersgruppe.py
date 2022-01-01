@@ -1,7 +1,7 @@
 from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
-from project.data_all.framework.model.all_model import AllEntity
+from project.data_all.all_model import AllEntity
 
 
 class RkiAltersgruppe(AllEntity):

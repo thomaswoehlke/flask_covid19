@@ -1,6 +1,6 @@
 from datetime import date
 
-from project.data_all.framework.model.all_model_date_reported import AllDateReported
+from project.data_all.all_model import AllDateReported
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
@@ -11,6 +11,7 @@ from project.data_who.model.who_model_date_reported import WhoDateReported
 
 
 class BlueprintDateReportedFactory:
+
     @classmethod
     def __create_new_object_factory(cls, date_reported_import_str: str, my_datum: date):
         (my_iso_year, week_number, weekday) = my_datum.isocalendar()

@@ -1,12 +1,12 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.model.all_model_date_reported_factory import (
+from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.framework.services.all_service_update_full_mixins import (
     AllServiceMixinUpdateFull,
 )
-from project.data_all.model.all_task_model import Task
+from project.data_all.task.all_task_model import Task
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_data import EcdcDataFactory
