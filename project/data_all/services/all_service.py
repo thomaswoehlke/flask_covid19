@@ -42,7 +42,11 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 owid_service,
                 rki_service,
             ],
-            "update_dimension_tables": [who_service, owid_service, rki_service],
+            "update_dimension_tables": [
+                who_service,
+                owid_service,
+                rki_service
+            ],
             "full_update_fact_table": [
                 who_service,
                 vaccination_service,
@@ -50,7 +54,11 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 owid_service,
                 rki_service,
             ],
-            "update_fact_table": [who_service, owid_service, rki_service],
+            "update_fact_table": [
+                who_service,
+                owid_service,
+                rki_service
+            ],
             "full_update": [
                 who_service,
                 vaccination_service,

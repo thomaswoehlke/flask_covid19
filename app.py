@@ -265,35 +265,35 @@ def vaccination_full_update():
         vaccination_service.full_update()
 
 
-@app.cli.command("admin-database-dump")
+@app.cli.command("database-dump")
 def admin_database_dump():
     """[Admin] database dump"""
     with app.app_context():
         app_admin_service.database_dump()
 
 
-@app.cli.command("admin-database-dump-reimport")
+@app.cli.command("database-dump-reimport")
 def admin_database_dump_reimport():
     """[Admin] database dump reimport"""
     with app.app_context():
         app_admin_service.database_dump_reimport()
 
 
-@app.cli.command("admin-database-drop-and-create")
+@app.cli.command("database-drop-and-create")
 def admin_database_drop_and_create():
     """[Admin] database drop and create"""
     with app.app_context():
         app_admin_service.database_drop_and_create()
 
 
-@app.cli.command("admin-database-table-row-count")
+@app.cli.command("database-count")
 def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
         app_admin_service.database_table_row_count()
 
 
-@app.cli.command("all-task-notifications-count")
+@app.cli.command("notifications-count")
 def all_task_notifications_count():
     """[ALL] task notifications count"""
     with app.app_context():
@@ -301,7 +301,7 @@ def all_task_notifications_count():
         app.logger.info("task notifications count: " + str(nr))
 
 
-@app.cli.command("all-task-notifications-find")
+@app.cli.command("notifications-list")
 def all_task_notifications_find():
     """[ALL] task notifications find"""
     app.logger.info("task notifications find: ")
