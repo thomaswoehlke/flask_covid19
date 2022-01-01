@@ -10,8 +10,8 @@ from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
-from project.app_web.web_dispachter_matrix_service import ecdc_service
-from project.app_web.web_model_transient import WebPageContent
+from project.app_web.web.web_dispachter_matrix_service import ecdc_service
+from project.app_web.web.web_model_transient import WebPageContent
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport

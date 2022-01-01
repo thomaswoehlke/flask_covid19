@@ -5,14 +5,14 @@ from flask import url_for
 from project.app_bootstrap.database import app
 from project.app_web.admin.app_admin_views import blueprint_app_admin
 from project.app_web.user.user_views import blueprint_app_user
-from project.app_web.web_model_transient import WebPageContent
+from project.app_web.web.web_model_transient import WebPageContent
 from project.data_all.all_views import blueprint_app_all
 from project.data_ecdc.ecdc_views import app_ecdc
 from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
 from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
-from project.app_web.web_dispachter_matrix_service import app_admin_service
+from project.app_web.web.web_dispachter_matrix_service import app_admin_service
 
 blueprint_application = Blueprint(
     "app_web", __name__, template_folder="templates", url_prefix="/"

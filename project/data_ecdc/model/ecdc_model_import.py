@@ -2,7 +2,7 @@ from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.framework.model.all_model_import import AllImport
+from project.data_all.all_model import AllImport
 
 
 class EcdcImport(AllImport):

@@ -1,9 +1,9 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
-)
-from project.data_all.framework.services.all_service_update_full_mixins import (
+from project.data_all.all_model_date_reported_factory import \
+    BlueprintDateReportedFactory
+
+from project.data_all.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
 from project.data_all.task.all_task_model import Task

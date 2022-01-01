@@ -4,7 +4,8 @@ from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
-from project.data_all.framework.services.all_service_update_mixins import AllServiceMixinUpdate
+from project.data_all.all_service_mixins import AllServiceMixinUpdate
+
 from project.data_all.task.all_task_model import Task
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData

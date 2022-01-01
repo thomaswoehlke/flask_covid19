@@ -1,9 +1,8 @@
 import os
 import subprocess
 
-from project.app_web.web_dispachter_matrix_service import web_service
+from project.app_web.web.web_dispachter_matrix_service import web_service
 from project.app_web.web_views import app
-from project.app_web.web_views import celery
 
 
 def run_mq():

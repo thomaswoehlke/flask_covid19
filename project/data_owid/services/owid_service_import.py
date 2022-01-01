@@ -6,7 +6,8 @@ from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
-from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
+from project.data_all.all_service_mixins import AllServiceMixinImport
+
 from project.data_all.task.all_task_model import Task
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_import import OwidImportFactory

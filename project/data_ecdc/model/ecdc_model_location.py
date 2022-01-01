@@ -1,5 +1,6 @@
 from project.app_bootstrap.database import db
-from project.data_all.framework.model.all_model_location import AllLocation
+from project.data_all.all_model import AllLocation
+
 from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
 from sqlalchemy import and_
 

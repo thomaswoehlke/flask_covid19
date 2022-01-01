@@ -2,7 +2,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.app_web.admin.app_admin_service import AdminService
 from project.app_web.user.user_service import UserService
-from project.app_web.web_service import WebService
+from project.app_web.web.web_service import WebService
 from project.data_all.all_service import AllDataServiceDispachterMatrix
 from project.data_ecdc.services.ecdc_service import EcdcService
 from project.data_owid.services.owid_service import OwidService
