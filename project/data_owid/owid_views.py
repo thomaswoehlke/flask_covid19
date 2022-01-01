@@ -2768,5 +2768,15 @@ class OwidReportUrls:
             page_info=page_info
         )
 
+    @staticmethod
+    @app_owid_report.route("/daily_and_total_confirmed_covid19_deaths_per_million")
+    def url_owid_report_Daily_and_Total_confirmed_COVID19_deaths_per_million():
+        page_info = WebPageContent(
+            "OWID", "Report", "daily_and_total_confirmed_covid19_deaths_per_million"
+        )
+        return render_template(
+            "owid/reports/report10/daily_and_total_confirmed_covid19_deaths_per_million.html",
+            page_info=page_info
+        )
 
 owid_report_urls = OwidReportUrls()
