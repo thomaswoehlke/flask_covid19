@@ -1,5 +1,5 @@
 from project.data_all.framework.model.all_model_location import AllLocation
-from project.data_who.who_model_location_group import WhoCountryRegion
+from project.data_who.model.who_model_location_group import WhoCountryRegion
 
 
 class WhoCountry(AllLocation):

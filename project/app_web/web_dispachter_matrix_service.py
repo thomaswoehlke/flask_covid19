@@ -8,7 +8,7 @@ from project.data_ecdc.ecdc_service import EcdcService
 from project.data_owid.owid_service import OwidService
 from project.data_rki.rki_service import RkiService
 from project.data_vaccination.vaccination_service import VaccinationService
-from project.data_who.who_service import WhoService
+from project.data_who.services.who_service import WhoService
 from project.data_all.services.all_task_service import TaskService
 
 #######################################################################################

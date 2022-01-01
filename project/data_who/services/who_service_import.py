@@ -8,8 +8,8 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_import_mixins import AllServiceMixinImport
 from project.data_all.model.all_task_model import Task
-from project.data_who.who_model_import import WhoImport
-from project.data_who.who_model_import import WhoImportFactory
+from project.data_who.model.who_model_import import WhoImport
+from project.data_who.model.who_model_import import WhoImportFactory
 
 app = covid19_application.app
 db = covid19_application.db

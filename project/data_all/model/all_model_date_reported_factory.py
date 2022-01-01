@@ -7,7 +7,7 @@ from project.data_rki.rki_model_date_reported import RkiMeldedatum
 from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_who.who_model_date_reported import WhoDateReported
+from project.data_who.model.who_model_date_reported import WhoDateReported
 
 
 class BlueprintDateReportedFactory:

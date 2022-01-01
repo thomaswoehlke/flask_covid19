@@ -6,14 +6,14 @@ from project.data_all.model.all_model_date_reported_factory import (
 )
 from project.data_all.framework.services.all_service_update_mixins import AllServiceMixinUpdate
 from project.data_all.model.all_task_model import Task
-from project.data_who.who_model_data import WhoData
-from project.data_who.who_model_data import WhoDataFactory
-from project.data_who.who_model_date_reported import WhoDateReported
-from project.data_who.who_model_import import WhoImport
-from project.data_who.who_model_location import WhoCountry
-from project.data_who.who_model_location import WhoCountryFactory
-from project.data_who.who_model_location_group import WhoCountryRegion
-from project.data_who.who_model_location_group import WhoCountryRegionFactory
+from project.data_who.model.who_model_data import WhoData
+from project.data_who.model.who_model_data import WhoDataFactory
+from project.data_who.model.who_model_date_reported import WhoDateReported
+from project.data_who.model.who_model_import import WhoImport
+from project.data_who.model.who_model_location import WhoCountry
+from project.data_who.model.who_model_location import WhoCountryFactory
+from project.data_who.model.who_model_location_group import WhoCountryRegion
+from project.data_who.model.who_model_location_group import WhoCountryRegionFactory
 
 
 class WhoServiceUpdateBase:

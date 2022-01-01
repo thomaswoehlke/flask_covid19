@@ -24,11 +24,11 @@ from project.data_vaccination.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
 from project.data_vaccination.vaccination_model_import import VaccinationImport
-from project.data_who.who_model_data import WhoData
-from project.data_who.who_model_date_reported import WhoDateReported
-from project.data_who.who_model_import import WhoImport
-from project.data_who.who_model_location import WhoCountry
-from project.data_who.who_model_location_group import WhoCountryRegion
+from project.data_who.model.who_model_data import WhoData
+from project.data_who.model.who_model_date_reported import WhoDateReported
+from project.data_who.model.who_model_import import WhoImport
+from project.data_who.model.who_model_location import WhoCountry
+from project.data_who.model.who_model_location_group import WhoCountryRegion
 
 
 class AdminService:

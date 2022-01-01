@@ -12,12 +12,12 @@ from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
 from project.app_web.web_dispachter_matrix_service import who_service
 from project.app_web.web_model_transient import WebPageContent
-from project.data_who.who_model_data import WhoData
-from project.data_who.who_model_date_reported import WhoDateReported
-from project.data_who.who_model_import import WhoImport
-from project.data_who.who_model_location import WhoCountry
-from project.data_who.who_model_location_group import WhoCountryRegion
-from project.data_who.who_service_test import WhoTestService
+from project.data_who.model.who_model_data import WhoData
+from project.data_who.model.who_model_date_reported import WhoDateReported
+from project.data_who.model.who_model_import import WhoImport
+from project.data_who.model.who_model_location import WhoCountry
+from project.data_who.model.who_model_location_group import WhoCountryRegion
+from project.data_who.services.who_service_test import WhoTestService
 from sqlalchemy.exc import OperationalError
 
 who_test_service = WhoTestService(db, who_service)
