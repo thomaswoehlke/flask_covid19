@@ -2825,4 +2825,15 @@ class OwidReportUrls:
             page_info=page_info
         )
 
+    @staticmethod
+    @app_owid_report.route("/government_response_stringency_index_vs_biweekly_change_in_confirmed_covid19_cases")
+    def url_owid_report_government_response_stringency_index_vs_biweekly_change_in_confirmed_covid19_cases():
+        page_info = WebPageContent(
+            "OWID", "Report", "government_response_stringency_index_vs_biweekly_change_in_confirmed_covid19_cases"
+        )
+        return render_template(
+            "owid/reports/report10/government_response_stringency_index_vs_biweekly_change_in_confirmed_covid19_cases.html",
+            page_info=page_info
+        )
+
 owid_report_urls = OwidReportUrls()
