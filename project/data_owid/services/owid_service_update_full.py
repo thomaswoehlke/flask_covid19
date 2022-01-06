@@ -181,7 +181,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
     def full_update_dimension_tables(self):
         task = Task.create(
             sector="OWID", task_name="full_update_dimension_tables"
-        ).read()
+        )
         OwidData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()
@@ -189,7 +189,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="OWID", task_name="full_update_fact_table").read()
+        task = Task.create(sector="OWID", task_name="full_update_fact_table")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update [begin]")
         app.logger.info("------------------------------------------------------------")

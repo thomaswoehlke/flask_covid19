@@ -19,6 +19,8 @@ from project.data_ecdc.services.ecdc_service_update import EcdcServiceUpdateBase
 
 class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_date_reported(self):
+        task = Task.create(sector="ECDC", task_name="__full_update_date_reported")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -41,9 +43,12 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_continent(self):
+        task = Task.create(sector="ECDC", task_name="__full_update_continent")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update continent [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -64,9 +69,12 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update continent [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
+        task = Task.create(sector="ECDC", task_name="__full_update_country")\
+            .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -92,9 +100,12 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update country [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __get_date_reported_from_import(self):
+        task = Task.create(sector="ECDC", task_name="__get_date_reported_from_import")\
+            .read()
         dict_date_reported_from_import = {}
         result_date_str_from_ecdc_import = EcdcImport.get_date_rep()
         for item_date_str_from_ecdc_import in result_date_str_from_ecdc_import:
@@ -121,9 +132,12 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
             dict_date_reported_from_import[
                 item_date_str_from_ecdc_import_str
             ] = my_ecdc_date_reported_obj
+        Task.finish(task_id=task.id)
         return dict_date_reported_from_import
 
     def __get_continent_from_import(self, ecdc_import: EcdcImport):
+        task = Task.create(sector="ECDC", task_name="__get_continent_from_import")\
+            .read()
         my_a = ecdc_import.continent_exp
         ecdc_continent = EcdcContinent.find_by_region(
             s_location_group=ecdc_import.continent_exp
@@ -133,9 +147,11 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
             db.session.add(ecdc_continent)
             db.session.commit()
         ecdc_continent = EcdcContinent.find_by_region(my_a)
+        Task.finish(task_id=task.id)
         return ecdc_continent
 
     def __full_update_data(self):
+        task = Task.create(sector="ECDC", task_name="__full_update_data").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -191,10 +207,11 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] full update [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="ECDC", task_name="full_update_fact_table").read()
+        task = Task.create(sector="ECDC", task_name="full_update_fact_table")
         self.__full_update_data()
         Task.finish(task_id=task.id)
         return self
@@ -202,7 +219,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
     def full_update_dimension_tables(self):
         task = Task.create(
             sector="ECDC", task_name="full_update_dimension_tables"
-        ).read()
+        )
         EcdcData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()

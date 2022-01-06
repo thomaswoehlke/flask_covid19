@@ -62,6 +62,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
+        task = Task.create(sector="OWID", task_name="__update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -84,9 +85,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_continent(self):
+        task = Task.create(sector="OWID", task_name="__update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update continent [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -105,9 +108,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update continent [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_country(self):
+        task = Task.create(sector="OWID", task_name="__update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update country [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -132,9 +137,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update country [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def __update_fact_table(self):
+        task = Task.create(sector="OWID", task_name="__update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -186,10 +193,11 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update [done]")
         app.logger.info("------------------------------------------------------------")
+        Task.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="OWID", task_name="update_dimension_tables").read()
+        task = Task.create(sector="OWID", task_name="update_dimension_tables")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -202,7 +210,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="OWID", task_name="update_fact_table").read()
+        task = Task.create(sector="OWID", task_name="update_fact_table")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -214,7 +222,7 @@ class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="OWID", task_name="delete_last_day").read()
+        task = Task.create(sector="OWID", task_name="delete_last_day")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [OWID] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
