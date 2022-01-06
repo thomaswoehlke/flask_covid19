@@ -26,49 +26,60 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 vaccination_service,
                 ecdc_service,
                 owid_service,
-                rki_service,
+                # rki_service,
             ],
             "import_file": [
                 who_service,
                 vaccination_service,
                 ecdc_service,
                 owid_service,
-                rki_service,
+                # rki_service,
             ],
             "full_update_dimension_tables": [
                 who_service,
                 vaccination_service,
                 ecdc_service,
                 owid_service,
-                rki_service,
+                # rki_service,
             ],
             "update_dimension_tables": [
                 who_service,
                 owid_service,
-                rki_service
+                # rki_service
             ],
             "full_update_fact_table": [
                 who_service,
                 vaccination_service,
                 ecdc_service,
                 owid_service,
-                rki_service,
+                # rki_service,
             ],
             "update_fact_table": [
                 who_service,
                 owid_service,
-                rki_service
+                # rki_service
             ],
             "full_update": [
                 who_service,
                 vaccination_service,
                 ecdc_service,
                 owid_service,
-                rki_service,
+                # rki_service,
             ],
-            "update": [who_service, owid_service, rki_service],
-            "update_but_full_update": [vaccination_service, ecdc_service],
-            "delete_last_day": [who_service, owid_service, rki_service],
+            "update": [
+                who_service,
+                owid_service,
+                # rki_service
+            ],
+            "update_but_full_update": [
+                vaccination_service,
+                ecdc_service
+            ],
+            "delete_last_day": [
+                who_service,
+                owid_service,
+                # rki_service
+            ],
         }
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ALL] Dispachter Matrix Service")

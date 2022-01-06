@@ -37,9 +37,9 @@ class OwidServiceImport(AllServiceMixinImport):
         )
 
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" WhoImport.remove_all() START")
+        app.logger.info(" OwidImport.remove_all() START")
         OwidImport.remove_all()
-        app.logger.info(" WhoImport.remove_all() DONE")
+        app.logger.info(" OwidImport.remove_all() DONE")
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
