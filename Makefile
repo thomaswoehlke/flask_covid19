@@ -375,8 +375,8 @@ start_windows: pip_setuptools pip_install_windows setup_frontend
 
 start_linux: pip_install_linux_build linux
 
-update: linux
-# update: windows
+# update: linux
+update: windows
 
-start: start_linux
-# start: start_windows
+# start: start_linux
+start: start_windows
