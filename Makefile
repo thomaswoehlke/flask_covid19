@@ -100,11 +100,16 @@ pip_compile_linux:
 	@echo "making pip_compile_linux DONE"
 	@echo "------------------"
 
-pip_install_windows:
+pip_install_windows_build:
 	@echo "------------------"
 	@echo "making pip_install"
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt
+	@echo "------------------"
+
+pip_install_windows: pip_install_windows_build
+	@echo "------------------"
+	@echo "making pip_install"
 	@echo "------------------"
 	$(PIP) install -r $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt
 	@echo "------------------"
@@ -360,23 +365,18 @@ setup_npm:
 	@echo "------------------"
 
 
-
 distclean: venv_clean renv_clean
 
-pip_windows: pip_compile_windows pip_install_windows pip_check setup_frontend
+update_windows: clean_windows pip_compile_windows pip_install_windows pip_check setup_frontend
 
-pip_linux: pip_compile_linux pip_install_linux pip_check setup_frontend
+update_linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_frontend
 
-windows: clean_windows pip_windows
+start_windows: pip_install_windows_build update_windows
 
-linux: clean_linux pip_linux
+start_linux: pip_install_linux_build update_linux
 
-start_windows: pip_setuptools pip_install_windows setup_frontend
-
-start_linux: pip_install_linux_build linux
-
-# update: linux
-update: windows
+# update: update_linux
+update: update_windows
 
 # start: start_linux
 start: start_windows
