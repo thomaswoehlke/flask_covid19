@@ -17,6 +17,9 @@ Welcome to flask_covid19's documentation!
    BACKLOG.md
    TODO.md
 
+.. uml:: uml/project/**/*.puml
+
+
 Indices and tables
 ==================
 

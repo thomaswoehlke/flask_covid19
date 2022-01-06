@@ -40,8 +40,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
-    "sphinxcontrib.plantuml",
-    "sphinxcontrib-images"
+    "sphinxcontrib.plantuml"
 ]
 
 source_suffix = {
@@ -152,3 +151,6 @@ def github_link(name, rawtext, text, lineno, inliner, options=None, content=None
 
 def setup(app):
     app.add_role("gh", github_link)
+
+
+plantuml = 'java -jar plantuml.jar '

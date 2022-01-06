@@ -1175,3 +1175,4 @@ flask_covid19.egg-info
 /doctrees/
 /data/
 !/data/Makefile
+/docs/uml/project/**/*.png
