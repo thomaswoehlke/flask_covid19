@@ -12,6 +12,7 @@ class Task(db.Model, AllEntityMixinBase):
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
+            "id",
             "datum_started",
             "sector",
             "task_name",

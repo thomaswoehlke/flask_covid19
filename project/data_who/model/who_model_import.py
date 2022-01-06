@@ -9,6 +9,15 @@ from project.data_all.all_model_mixins import AllImportMixin
 class WhoImport(AllImport, AllImportMixin):
     __tablename__ = "who_import"
     __mapper_args__ = {"concrete": True}
+    __table_args__ = (
+        db.UniqueConstraint(
+            "date_reported_import_str",
+            "country_code",
+            "country",
+            "who_region",
+            name="uix_who_import"
+        ),
+    )
 
     def __repr__(self):
         return "{}({} {} {} {} {})".format(
