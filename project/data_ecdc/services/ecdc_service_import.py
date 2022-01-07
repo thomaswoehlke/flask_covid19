@@ -28,6 +28,7 @@ class EcdcServiceImport(AllServiceMixinImport):
         count = 0
         for line in open(self.cfg.cvsfile_path):
             count += 1
+        count -= 1
         return count
 
     def import_file(self):

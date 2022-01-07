@@ -72,7 +72,7 @@ class WhoService(AllServiceMixin):
 
     def update(self):
         task = Task.create(sector="WHO", task_name="update")
-        self.service_import.import_file()
+        # self.service_import.import_file()
         self.service_update.update_dimension_tables()
         self.service_update.update_fact_table()
         Task.finish(task_id=task.id)

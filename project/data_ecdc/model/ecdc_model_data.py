@@ -12,7 +12,11 @@ class EcdcData(AllFactTable):
     __tablename__ = "ecdc"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint("date_reported_id", "location_id", name="uix_ecdc"),
+        db.UniqueConstraint(
+            "date_reported_id",
+            "location_id",
+            name="uix_ecdc"
+        ),
     )
 
     def __repr__(self):

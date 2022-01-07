@@ -13,7 +13,11 @@ class WhoData(AllFactTable):
     __tablename__ = "who"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint("date_reported_id", "location_id", name="uix_who"),
+        db.UniqueConstraint(
+            "date_reported_id",
+            "location_id",
+            name="uix_who"
+        ),
     )
 
     def __repr__(self):
