@@ -17,7 +17,7 @@ def create_app():
 
 @app.cli.command("db-create-user")
 def create_user():
-    """[APP] create user"""
+    """[Admin] create user"""
     with app.app_context():
         db.create_all()
         web_service.create_user(db)
@@ -51,28 +51,28 @@ def all_full_update():
         all_dispachter_matrix_service.full_update()
 
 
-@app.cli.command("all-update-full-dim-tables")
+@app.cli.command("all-update-full-dimensions")
 def all_full_update_dimension_tables():
     """[ALL] full update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.full_update_dimension_tables()
 
 
-@app.cli.command("all-update-dim-tables")
+@app.cli.command("all-update-dimensions")
 def all_update_dimension_tables():
     """[ALL] update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.update_dimension_tables()
 
 
-@app.cli.command("all-update-full-fact-table")
+@app.cli.command("all-update-full-data")
 def all_full_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
         all_dispachter_matrix_service.full_update_fact_table()
 
 
-@app.cli.command("all-update-fact-table")
+@app.cli.command("all-update-data")
 def all_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
@@ -209,28 +209,28 @@ def rki_delete_last_day():
         rki_service.delete_last_day()
 
 
-@app.cli.command("rki-update-full-dim-tables")
+@app.cli.command("rki-update-full-dimensions")
 def rki_full_update_dimension_tables():
     """[RKI] full update dimension tables"""
     with app.app_context():
         rki_service.full_update_dimension_tables()
 
 
-@app.cli.command("rki-update-dim-tables")
+@app.cli.command("rki-update-dimensions")
 def rki_update_dimension_tables():
     """[RKI] update dimension tables"""
     with app.app_context():
         rki_service.update_dimension_tables()
 
 
-@app.cli.command("rki-update-full-fact-table")
+@app.cli.command("rki-update-full-data")
 def rki_full_update_fact_table():
     """[RKI] full update fact table"""
     with app.app_context():
         rki_service.full_update_fact_table()
 
 
-@app.cli.command("rki-update-fact-table")
+@app.cli.command("rki-update-data")
 def rki_update_fact_table():
     """[RKI] update fact table"""
     with app.app_context():
