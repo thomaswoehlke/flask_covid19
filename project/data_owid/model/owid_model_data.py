@@ -14,7 +14,11 @@ class OwidData(AllFactTable):
     __tablename__ = "owid"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint("date_reported_id", "location_id", name="uix_owid"),
+        db.UniqueConstraint(
+            "date_reported_id",
+            "location_id",
+            name="uix_owid"
+        ),
     )
 
     def __repr__(self):
