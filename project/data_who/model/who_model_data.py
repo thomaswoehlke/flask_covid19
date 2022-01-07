@@ -27,6 +27,16 @@ class WhoData(AllFactTable):
             self.location_id
         )
 
+    def __str__(self):
+        return "{} {} {} {} {} {}".format(
+            self.date_reported_id,
+            self.location_id,
+            self.cases_new,
+            self.cases_cumulative,
+            self.deaths_new,
+            self.deaths_cumulative,
+        )
+
     id_seq = Sequence('who_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
