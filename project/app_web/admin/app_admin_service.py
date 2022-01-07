@@ -68,7 +68,7 @@ class AdminService:
         user = app.config["SQLALCHEMY_DATABASE_USER"]
         pwd = app.config["SQLALCHEMY_DATABASE_PW"]
         url = app.config["SQLALCHEMY_DATABASE_HOST"]
-        db = app.config["SQLALCHEMY_DATABASE_DB"]
+        database = app.config["SQLALCHEMY_DATABASE_DB"]
         db_type = app.config["SQLALCHEMY_DATABASE_TYPE"]
         cmd = "mkdir -p " + self.file_path_parent
         app.logger.info(" start: " + str(cmd))
@@ -78,27 +78,24 @@ class AdminService:
             cmd = (
                 "pg_dump --if-exists --clean --no-tablespaces "
                 + " --on-conflict-do-nothing --rows-per-insert=1000 --column-inserts "
-                + " --quote-all-identifiers --no-privileges -U "
-                + user
-                + " -h "
-                + url
-                + " "
-                + db
-                + " > "
-                + self.file_path
+                + " --quote-all-identifiers --no-privileges"
+                + " -U {} -h {} {} > {}".format(
+                    user,
+                    url,
+                    database,
+                    self.file_path
+                )
             )
+
         if db_type == "mariadb":
             cmd = (
-                "mysqldump -h "
-                + url
-                + " -u "
-                + user
-                + ' --password="'
-                + pwd
-                + '" '
-                + db
-                + " > "
-                + self.file_path
+                'mysqldump -h {} -u {} --password="{}" {} > {}'.format(
+                    url,
+                    user,
+                    pwd,
+                    database,
+                    self.file_path
+                )
             )
         app.logger.info(" start: " + str(cmd))
         returncode = self.__run_ome_shell_command(cmd)
@@ -137,21 +134,34 @@ class AdminService:
         app.logger.info("-----------------------------------------------------------")
         user = app.config["SQLALCHEMY_DATABASE_USER"]
         url = app.config["SQLALCHEMY_DATABASE_HOST"]
-        db = app.config["SQLALCHEMY_DATABASE_DB"]
+        database = app.config["SQLALCHEMY_DATABASE_DB"]
         db_type = app.config["SQLALCHEMY_DATABASE_TYPE"]
         one_cmd = ""
         if db_type == "postgresql":
             one_cmd = (
-                "psql -U " + user + " -h " + url + " " + db + " < " + self.file_path
+                "psql -U {} -h {} {} < {}".format(
+                    user,
+                    url,
+                    database,
+                    self.file_path
+                )
             )
         if db_type == "mariadb":
             one_cmd = (
-                "mysql -h " + url + " -u " + user + " " + db + " < " + self.file_path
+                "mysql -h {} -u {} {} < {}".format(
+                    url,
+                    user,
+                    database,
+                    self.file_path
+                )
             )
         cmd_list = [one_cmd]
         for cmd in cmd_list:
             returncode = self.__run_ome_shell_command(cmd)
-            msg = "[ returncode: " + str(returncode) + "] " + cmd
+            msg = "[ returncode: {} ] {}".format(
+                str(returncode),
+                cmd
+            )
             app.logger.info(msg)
         app.logger.info(" AdminService.database_dump_reimport() [done]")
         app.logger.info("-----------------------------------------------------------")
