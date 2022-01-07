@@ -56,7 +56,7 @@ class AdminService:
         self.__database = database
         self.limit_nr = 20
         self.file_path_parent = "data" + os.sep + "db"
-        self.file_path = self.file_path_parent + os.sep + "covid19data.sql"
+        self.file_path = self.file_path_parent + os.sep + "flask_covid19.sql"
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [app_web] Admin Service ")
 
