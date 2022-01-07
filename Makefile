@@ -375,8 +375,9 @@ start_windows: pip_install_windows_build update_windows
 
 start_linux: pip_install_linux_build update_linux
 
-# update: update_linux
-update: update_windows
+update: update_linux
+# update: update_windows
 
-# start: start_linux
-start: start_windows
+start: start_linux
+# start: start_windows
+
