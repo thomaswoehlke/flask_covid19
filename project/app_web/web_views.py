@@ -55,11 +55,6 @@ class BlueprintApplicationUrls:
     def url_root():
         return redirect(url_for("url_home"))
 
-    @staticmethod
-    @app.route("/admin")
-    def url_admin_index():
-        page_info = WebPageContent("Admin", "flask admin")
-        return render_template("app_application/index.html", page_info=page_info)
 
 
 blueprint_application_urls = BlueprintApplicationUrls()
