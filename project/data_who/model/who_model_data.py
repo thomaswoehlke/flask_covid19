@@ -21,7 +21,11 @@ class WhoData(AllFactTable):
     )
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.date_reported_id} {self.location_id})"
+        return "{}({} {})".format(
+            self.__class__.__name__,
+            self.date_reported_id,
+            self.location_id
+        )
 
     id_seq = Sequence('who_id_seq')
     id = db.Column(db.Integer,
@@ -96,7 +100,8 @@ class WhoData(AllFactTable):
     ):
         return db.session.query(cls).filter(
             and_(
-                cls.date_reported_id == date_reported.id, cls.location_id == location.id
+                cls.date_reported_id == date_reported.id,
+                cls.location_id == location.id
             )
         )
 

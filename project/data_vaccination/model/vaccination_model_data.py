@@ -11,10 +11,18 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 class VaccinationData(AllFactTableTimeSeries):
     __tablename__ = "vaccination"
     __mapper_args__ = {"concrete": True}
-    __table_args__ = (db.UniqueConstraint("date_reported_id", name="uix_vaccination"),)
+    __table_args__ = (
+        db.UniqueConstraint(
+            "date_reported_id",
+            name="uix_vaccination"
+        ),
+    )
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.date_reported.__repr__()})"
+        return "{}({})".format(
+            self.__class__.__name__,
+            self.date_reported.__repr__()
+        )
 
     vaccination_id_seq = Sequence('vaccination_id_seq')
     id = db.Column(db.Integer,

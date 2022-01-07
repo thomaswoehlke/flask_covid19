@@ -20,7 +20,17 @@ class EcdcData(AllFactTable):
     )
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.date_reported.__repr__()} {self.location.__repr__()})"
+        return "{} ({} {})".format(
+            self.__class__.__name__,
+            self.date_reported.__repr__(),
+            self.location.__repr__()
+        )
+
+    def __str__(self):
+        return "{} {}".format(
+            self.date_reported.__repr__(),
+            self.location.__repr__()
+        )
 
     id_seq = Sequence('ecdc_id_seq')
     id = db.Column(db.Integer,
