@@ -111,47 +111,47 @@
 
 #### all_domain_model
 
-![all_domain_model](docs/uml/data_all/all_domain_model.png)
+![all_domain_model](docs/uml/data_all/old/all_domain_model.png)
 
 #### all_domain_model_import
 
-![all_domain_model_import](docs/uml/data_all/all_domain_model_import.png)
+![all_domain_model_import](docs/uml/data_all/old/all_domain_model_import.png)
 
 #### all_domain_model_star_schema
 
-![all_domain_model_star_schema](docs/uml/data_all/all_domain_model_star_schema.png)
+![all_domain_model_star_schema](docs/uml/data_all/old/all_domain_model_star_schema.png)
 
 #### all_use_cases
 
-![all_use_cases](docs/uml/data_all/all_use_cases.png)
+![all_use_cases](docs/uml/data_all/old/all_use_cases.png)
 
 ### ecdc
 
 #### ecdc_domain_model
 
-![ecdc_domain_model](docs/uml/data_ecdc/ecdc_domain_model.png)
+![ecdc_domain_model](docs/uml/data_ecdc/old/ecdc_domain_model.png)
 
 #### ecdc_domain_model_import
 
-![ecdc_domain_model_import](docs/uml/data_ecdc/ecdc_domain_model_import.png)
+![ecdc_domain_model_import](docs/uml/data_ecdc/old/ecdc_domain_model_import.png)
 
 #### ecdc_use_cases
 
-![ecdc_use_cases](docs/uml/data_ecdc/ecdc_use_cases.png)
+![ecdc_use_cases](docs/uml/data_ecdc/old/ecdc_use_cases.png)
 
 ### owid
 
 #### owid_domain_model
 
-![owid_domain_model](docs/uml/data_owid/owid_domain_model.png)
+![owid_domain_model](docs/uml/data_owid/old/owid_domain_model.png)
 
 #### owid_domain_model_import
 
-![owid_domain_model](docs/uml/data_owid/owid_domain_model_import.png)
+![owid_domain_model](docs/uml/data_owid/old/owid_domain_model_import.png)
 
 #### owid_use_cases
 
-![owid_use_cases](docs/uml/data_owid/owid_use_cases.png)
+![owid_use_cases](docs/uml/data_owid/old/owid_use_cases.png)
 
 #### owid_report_01
 
@@ -193,36 +193,36 @@
 
 #### rki_vaccination_domain_model
 
-![rki_vaccination_domain_model](docs/uml/data_vaccination/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](docs/uml/data_vaccination/old/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_domain_model_import
 
-![rki_vaccination_domain_model](docs/uml/data_vaccination/rki_vaccination_domain_model.png)
+![rki_vaccination_domain_model](docs/uml/data_vaccination/old/rki_vaccination_domain_model.png)
 
 #### rki_vaccination_use_cases
 
-![rki_vaccination_use_cases](docs/uml/data_vaccination/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](docs/uml/data_vaccination/old/rki_vaccination_use_cases.png)
 
 ### who
 
 #### who_domain_model
 
-![rki_vaccination_use_cases](docs/uml/data_vaccination/rki_vaccination_use_cases.png)
+![rki_vaccination_use_cases](docs/uml/data_vaccination/old/rki_vaccination_use_cases.png)
 
 #### who_domain_model_import
 
-![who_domain_model_import](docs/uml/data_who/who_domain_model_import.png)
+![who_domain_model_import](docs/uml/data_who/old/who_domain_model_import.png)
 
 #### who_use_cases
 
-![who_use_cases](docs/uml/data_who/who_use_cases.png)
+![who_use_cases](docs/uml/data_who/old/who_use_cases.png)
 
 ### app_web
 
 #### app_web_domain_model
 
-![app_application_domain_model](docs/uml/app_web/app_application_domain_model.png)
+![app_application_domain_model](docs/uml/app_web/old/app_application_domain_model.png)
 
 #### app_web_use_cases
 
-![app_application_use_cases](docs/uml/app_web/app_application_use_cases.png)
+![app_application_use_cases](docs/uml/app_web/old/app_application_use_cases.png)
