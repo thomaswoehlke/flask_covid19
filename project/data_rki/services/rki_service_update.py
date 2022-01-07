@@ -36,7 +36,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         odr_list = RkiMeldedatum.find_all_as_str()
         for oi in RkiImport.get_date_reported_import_str_list():
             item = oi[0]
-            # app.logger.info(" [RKI] date_reported: " + str(item))
             if item not in odr_list:
                 todo.append(item)
         return todo
@@ -46,7 +45,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         bundesland_all = RkiBundesland.find_all_as_str()
         for oi in RkiImport.get_bundesland_list():
             item = oi.bundesland
-            # app.logger.info(" [RKI] location_group: " + str(item))
             if item not in bundesland_all:
                 todo.append(item)
         return todo
@@ -57,7 +55,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_bundesland in RkiBundesland.find_all_as_str():
             for oi in RkiImport.get_landkreis_for_bundesland(my_bundesland):
                 item = oi.landkreis
-                # app.logger.info(" [RKI] location: " + str(item) + " -- " + str(my_bundesland))
                 if item not in landkreis_all:
                     new_location = (oi.landkreis, oi.id_landkreis, my_bundesland)
                     todo.append(new_location)
@@ -68,7 +65,6 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         altersgruppe_all = RkiAltersgruppe.find_all_as_str()
         for altersgruppe in RkiImport.get_altersgruppe_list():
             item = altersgruppe
-            # app.logger.info(str(item))
             if item not in altersgruppe_all:
                 todo.append(item)
         return todo
@@ -88,7 +84,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             db.session.add(o)
             db.session.commit()
             output = (
-                " [RKI] update date_reported [ " + str(i) + " ] " + str(o) + " added"
+                " [RKI] update date_reported [ {} ] {} added".format(str(i), str(o))
             )
             app.logger.info(output)
         db.session.commit()
@@ -112,7 +108,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             db.session.add(o)
             db.session.commit()
             output = (
-                " [RKI] update location_group [ " + str(i) + " ] " + str(o) + " added"
+                " [RKI] update location_group [ {} ] {} added".format(str(i), str(o))
             )
             app.logger.info(output)
         db.session.commit()
@@ -127,7 +123,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(sector="RKI", task_name="__update_locations").read()
         self.__update_location_groups()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update locations [begin]")
+        app.logger.info(" [RKI] __update_locations [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiLandkreis.set_all_processed_update()
@@ -144,12 +140,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             )
             db.session.add(o)
             db.session.commit()
-            output = " [RKI] update location [ " + str(i) + " ] " + str(o) + " added"
+            output = " [RKI] update location [ {} ] {} added".format(str(i), str(o))
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update locations [done]")
+        app.logger.info(" [RKI] __update_locations [done]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
@@ -157,7 +153,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
     def __update_altersgruppen(self):
         task = Task.create(sector="RKI", task_name="__update_altersgruppen").read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update altersgruppen [begin]")
+        app.logger.info(" [RKI] __update_altersgruppen [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         RkiAltersgruppe.set_all_processed_update()
@@ -167,12 +163,12 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             o = RkiAltersgruppe.RkiAltersgruppe(altersgruppe=new_altersgruppe)
             db.session.add(o)
             db.session.commit()
-            output = " [RKI] altersgruppe [ " + str(i) + " ] " + str(o) + " added"
+            output = " [RKI] altersgruppe [ {} ] {} added".format(str(i), str(o))
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update altersgruppen [done]")
+        app.logger.info(" [RKI] __update_altersgruppen [done]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
@@ -183,7 +179,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             task_name="__update_data"
         ).read()
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update data [begin]")
+        app.logger.info(" [RKI] __update_data [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
@@ -191,24 +187,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             my_meldedatum_datum = my_meldedatum.datum
             task_meldedatum = Task.create(
                 sector="RKI",
-                task_name="__update_data: "+str(my_meldedatum_datum)
+                task_name="__update_data: {}".format(str(my_meldedatum_datum))
             ).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
-                # app.logger.info(" [RKI] my_meldedatum: " + str(my_meldedatum) + " -- " + my_meldedatum_datum.isoformat())
-                # app.logger.info("------------------------------------------------------------")
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
                     my_datum=my_meldedatum_datum,
                     my_landkreis=my_landkreis_key
                 )
-                # if list_imports is None:
-                #     app.logger.info(" [RKI] list_imports is None ")
-                # else:
-                #     nr = len(list_imports)
-                #     app.logger.info(" [RKI] len(list_imports): " + str(nr))
-                # app.logger.info(
-                #     "------------------------------------------------------------"
-                # )
                 for o_import in list_imports:
                     my_datum = RkiDataFactory.row_str_to_date_fields(o_import)
                     rki_data = RkiDataFactory.get_rki_data(
@@ -224,12 +210,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     if i % 5000 == 0:
                         db.session.commit()
                     if i % 1000 == 0:
-                        app.logger.info(" [RKI] update data ... " + str(i) + " rows")
+                        app.logger.info(
+                            " [RKI] __update_data ... {} rows".format(str(i))
+                        )
             db.session.commit()
             Task.finish(task_id=task_meldedatum.id)
-        app.logger.info(" [RKI] update data :  " + str(i) + " total rows")
+        app.logger.info(" [RKI] __update_data : {} total rows".format(str(i)))
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] update data [done]")
+        app.logger.info(" [RKI] __update_data [done]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
@@ -260,11 +248,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             task_name="delete_last_day"
         ).read()
         app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [RKI] delete last_day [START]")
+        app.logger.debug(" [RKI] delete_last_day [START]")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info("")
         joungest_datum = RkiMeldedatum.get_joungest_datum()
-        app.logger.info(" [RKI] joungest_datum:" + str(joungest_datum))
+        app.logger.info(" [RKI] joungest_datum: {}".format(str(joungest_datum)))
         app.logger.info("")
         app.logger.info(" [RKI] RkiData.get_data_for_one_day(joungest_datum):")
         app.logger.info("")
@@ -282,7 +270,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")
         app.logger.info("------------------------------------------------------------")
-        app.logger.info(" [RKI] delete last_day [DONE]")
+        app.logger.info(" [RKI] delete_last_day [DONE]")
         app.logger.info("------------------------------------------------------------")
         Task.finish(task_id=task.id)
         return self
