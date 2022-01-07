@@ -286,6 +286,13 @@ def admin_database_table_row_count():
         app_admin_service.database_table_row_count()
 
 
+@app.cli.command("database-import-status")
+def admin_database_import_status():
+    """[Admin] database import-status"""
+    with app.app_context():
+        app_admin_service.database_import_status()
+
+
 @app.cli.command("notifications-count")
 def all_task_notifications_count():
     """[ALL] task notifications count"""

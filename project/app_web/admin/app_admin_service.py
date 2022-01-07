@@ -200,3 +200,58 @@ class AdminService:
         app.logger.info(" AdminService.database_table_row_count() [begin]")
         app.logger.info("------------------------------------------------------------")
         return tables_and_rows
+
+    def database_import_status(self):
+        app.logger.info(" AdminService.database_import_status() [begin]")
+        app.logger.info("-----------------------------------------------------------")
+        t = {
+            'WHO': {
+                'data_class': WhoData,
+                'import_class': WhoImport
+            },
+            'OWID': {
+                'data_class': OwidData,
+                'import_class': OwidImport
+            },
+            'ECDC': {
+                'data_class': EcdcData,
+                'import_class': EcdcImport
+            },
+            'Vaccination': {
+                'data_class': VaccinationData,
+                'import_class': VaccinationImport
+            },
+            'RKI': {
+                'data_class': RkiData,
+                'import_class': RkiImport
+            }
+        }
+        t_count = {}
+        sectors = ['WHO', 'OWID', 'Vaccination', 'RKI']
+        keys1 = ['file', 'import', 'data']
+        keys2 = ['last_date', 'rows']
+        with app.app_context():
+            for sector_key in t.keys():
+                sectors = t[sector_key]
+                for class_key in sectors.keys():
+                    o = sectors[class_key]
+                    class_name = o.__name__
+                    class_count = o.count()
+                    a = {
+                        sector_key: {
+                            class_key: {
+                                class_name: class_count
+                            }
+                        }
+                    }
+                    t_count[sector_key,class_key,class_name] = class_count
+                    msg = str(sector_key) + ", "
+                    msg += str(class_key) + ": "
+                    msg += str(class_name) + ": "
+                    msg += str(class_count)
+                    app.logger.info(msg)
+            app.logger.info(str(t_count))
+        app.logger.info("")
+        app.logger.info(" AdminService.database_import_status() [done]")
+        app.logger.info("------------------------------------------------------------")
+        pass
