@@ -10,16 +10,16 @@ from project.data_all.all_model_mixins import AllEntityMixinBase
 class Task(db.Model, AllEntityMixinBase):
     __tablename__ = "task"
     __mapper_args__ = {"concrete": True}
-   # __table_args__ = (
-   #     db.UniqueConstraint(
-   #         "id",
-   #         "datum_started",
-   #         "sector",
-   #         "task_name",
-   #         "notification",
-   #         name="uix_task",
-   #     ),
-   # )
+    __table_args__ = (
+        db.UniqueConstraint(
+            "id",
+            "datum_started",
+            "sector",
+            "task_name",
+            "notification",
+            name="uix_task",
+        ),
+    )
 
     def __repr__(self):
         this_id = self.id
@@ -54,10 +54,10 @@ class Task(db.Model, AllEntityMixinBase):
             self.new_notification
         )
 
-    id_seq = Sequence('task_id_seq')
+    task_id_seq = Sequence('task_id_seq')
     id = db.Column(db.Integer,
-                   id_seq,
-                   server_default=id_seq.next_value(),
+                   task_id_seq,
+                   server_default=task_id_seq.next_value(),
                    primary_key=True)
     datum_started = db.Column(db.DateTime, nullable=False)
     datum_finished = db.Column(db.DateTime, nullable=True)
