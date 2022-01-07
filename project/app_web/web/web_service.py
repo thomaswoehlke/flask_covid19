@@ -43,5 +43,5 @@ class WebService:
 
     def prepare_start_redis(self):
         app.logger.info("------------------------------------------------------------")
-        app.logger.info("#                start REDIS-Server                        #")
+        app.logger.info("-                start REDIS-Server                        -")
         app.logger.info("------------------------------------------------------------")
