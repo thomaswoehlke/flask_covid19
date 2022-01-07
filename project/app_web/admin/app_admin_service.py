@@ -264,4 +264,4 @@ class AdminService:
         app.logger.info("")
         app.logger.info(" AdminService.database_import_status() [done]")
         app.logger.info("------------------------------------------------------------")
-        pass
+        return t

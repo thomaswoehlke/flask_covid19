@@ -45,6 +45,28 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "Info")
         return render_template("app_admin/admin_info.html", page_info=page_info)
 
+    @staticmethod
+    @blueprint_app_admin.route("/database_table_row_count")
+    def url_admin_database_table_row_count():
+        page_info = WebPageContent("Admin", "Info")
+        db_table_row_count = app_admin_service.database_table_row_count()
+        return render_template(
+            "app_admin/database_table_row_count.html",
+            db_table_row_count=db_table_row_count,
+            page_info=page_info
+        )
+
+    @staticmethod
+    @blueprint_app_admin.route("/database_import_status")
+    def url_admin_database_import_status():
+        page_info = WebPageContent("Admin", "Info")
+        db_import_status = app_admin_service.database_import_status()
+        return render_template(
+            "app_admin/database_import_status.html",
+            db_import_status=db_import_status,
+            page_info=page_info
+        )
+
 
 app_admin_urls = AppAdminUrls()
 
