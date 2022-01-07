@@ -12,7 +12,7 @@ from project.app_web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
 from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.notifications.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 
 drop_and_create_data_again = True
 

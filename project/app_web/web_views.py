@@ -48,13 +48,24 @@ class BlueprintApplicationUrls:
     @app.route("/home")
     def url_home():
         page_info = WebPageContent("Home", "Covid19 Data")
-        return render_template("app_application/page_home.html", page_info=page_info)
+        return render_template(
+            "app_application/page_home.html",
+            page_info=page_info
+        )
 
     @staticmethod
     @app.route("/")
     def url_root():
         return redirect(url_for("url_home"))
 
+    @staticmethod
+    @app.route("/admin")
+    def url_admin_index():
+        page_info = WebPageContent("Admin", "flask admin")
+        return render_template(
+            "app_admin/index.html",
+            page_info=page_info
+        )
 
 
 blueprint_application_urls = BlueprintApplicationUrls()

@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from project.app_web.web.web_dispachter_matrix_service import web_service
+from project.app_web.web.web_dispachter_service import web_service
 from project.app_web.web_views import app
 
 

@@ -3,7 +3,7 @@ from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_service_download import AllDownloadService
 from project.data_all.all_service_mixins import AllServiceMixin
 
-from project.data_all.task.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 from project.data_ecdc.services.ecdc_service_import import EcdcServiceImport
 from project.data_ecdc.services.ecdc_service_update import EcdcServiceUpdate
 from project.data_ecdc.services.ecdc_service_update_full import EcdcServiceUpdateFull

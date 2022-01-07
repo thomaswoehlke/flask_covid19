@@ -6,7 +6,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 
-from project.data_all.task.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data import RkiDataFactory

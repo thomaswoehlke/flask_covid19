@@ -8,7 +8,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 
-from project.data_all.task.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_import import OwidImportFactory
 

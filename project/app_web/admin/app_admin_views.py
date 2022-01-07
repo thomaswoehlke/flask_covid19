@@ -40,12 +40,6 @@ class AppAdminUrls:
         return render_template("app_admin/admin_info.html", page_info=page_info)
 
     @staticmethod
-    @app.route("/flask_admin")
-    def url_admin_index():
-        page_info = WebPageContent("Admin", "flask admin")
-        return render_template("app_admin/index.html", page_info=page_info)
-
-    @staticmethod
     @blueprint_app_admin.route("/database_table_row_count")
     def url_admin_database_table_row_count():
         page_info = WebPageContent("Admin", "DB Row Count")

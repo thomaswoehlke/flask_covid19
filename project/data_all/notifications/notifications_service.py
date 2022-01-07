@@ -1,5 +1,5 @@
 from project.app_bootstrap.database import app
-from project.data_all.notifications.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 
 
 class TaskService:

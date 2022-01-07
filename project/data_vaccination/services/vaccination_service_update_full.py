@@ -6,7 +6,7 @@ from project.data_all.all_model_date_reported_factory import \
 from project.data_all.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
-from project.data_all.task.all_task_model import Task
+from project.data_all.notifications.notifications_model import Task
 from project.data_vaccination.model.vaccination_model_data import VaccinationData
 from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.model.vaccination_model_date_reported import (

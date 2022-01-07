@@ -9,7 +9,7 @@ from project.data_owid.services.owid_service import OwidService
 from project.data_rki.services.rki_service import RkiService
 from project.data_vaccination.services.vaccination_service import VaccinationService
 from project.data_who.services.who_service import WhoService
-from project.data_all.task.all_task_service import TaskService
+from project.data_all.notifications.notifications_service import TaskService
 
 #######################################################################################
 #
