@@ -15,7 +15,7 @@ def create_app():
     return app
 
 
-@app.cli.command("create-user")
+@app.cli.command("db-create-user")
 def create_user():
     """[APP] create user"""
     with app.app_context():
@@ -51,21 +51,21 @@ def all_full_update():
         all_dispachter_matrix_service.full_update()
 
 
-@app.cli.command("all-full-update-dimension-tables")
+@app.cli.command("all-update-full-dim-tables")
 def all_full_update_dimension_tables():
     """[ALL] full update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.full_update_dimension_tables()
 
 
-@app.cli.command("all-update-dimension-tables")
+@app.cli.command("all-update-dim-tables")
 def all_update_dimension_tables():
     """[ALL] update dimension tables"""
     with app.app_context():
         all_dispachter_matrix_service.update_dimension_tables()
 
 
-@app.cli.command("all-full-update-fact-table")
+@app.cli.command("all-update-full-fact-table")
 def all_full_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
@@ -209,21 +209,21 @@ def rki_delete_last_day():
         rki_service.delete_last_day()
 
 
-@app.cli.command("rki-full-update-dimension-tables")
+@app.cli.command("rki-update-full-dim-tables")
 def rki_full_update_dimension_tables():
     """[RKI] full update dimension tables"""
     with app.app_context():
         rki_service.full_update_dimension_tables()
 
 
-@app.cli.command("rki-update-dimension-tables")
+@app.cli.command("rki-update-dim-tables")
 def rki_update_dimension_tables():
     """[RKI] update dimension tables"""
     with app.app_context():
         rki_service.update_dimension_tables()
 
 
-@app.cli.command("rki-full-update-fact-table")
+@app.cli.command("rki-update-full-fact-table")
 def rki_full_update_fact_table():
     """[RKI] full update fact table"""
     with app.app_context():
@@ -258,35 +258,35 @@ def vaccination_full_update():
         vaccination_service.full_update()
 
 
-@app.cli.command("database-dump")
+@app.cli.command("db-dump")
 def admin_database_dump():
     """[Admin] database dump"""
     with app.app_context():
         app_admin_service.database_dump()
 
 
-@app.cli.command("database-dump-reimport")
+@app.cli.command("db-dump-reimport")
 def admin_database_dump_reimport():
     """[Admin] database dump reimport"""
     with app.app_context():
         app_admin_service.database_dump_reimport()
 
 
-@app.cli.command("database-drop-and-create")
+@app.cli.command("db-drop-and-create")
 def admin_database_drop_and_create():
     """[Admin] database drop and create"""
     with app.app_context():
         app_admin_service.database_drop_and_create()
 
 
-@app.cli.command("database-count")
+@app.cli.command("db-count")
 def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
         app_admin_service.database_table_row_count()
 
 
-@app.cli.command("database-import-status")
+@app.cli.command("db-import-status")
 def admin_database_import_status():
     """[Admin] database import-status"""
     with app.app_context():
