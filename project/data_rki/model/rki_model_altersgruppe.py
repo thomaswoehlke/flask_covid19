@@ -7,13 +7,20 @@ from project.data_all.all_model import AllEntity
 class RkiAltersgruppe(AllEntity):
     __tablename__ = "rki_altersgruppe"
     __mapper_args__ = {"concrete": True}
-    __table_args__ = (db.UniqueConstraint("altersgruppe", name="uix_rki_altersgruppe"),)
+    __table_args__ = (
+        db.UniqueConstraint("altersgruppe", name="uix_rki_altersgruppe"),
+    )
 
     def __repr__(self):
-        return f"{self.__class__.__name__} ( {self.altersgruppe} )"
+        return "{} ( {} )".format(
+            self.__class__.__name__,
+            self.altersgruppe
+        )
 
     def __str__(self):
-        return " " + self.altersgruppe + " "
+        return " {} ".format(
+            self.altersgruppe
+        )
 
     id_seq = Sequence('rki_altersgruppe_id_seq')
     id = db.Column(db.Integer,

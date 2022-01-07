@@ -15,7 +15,9 @@ from sqlalchemy.orm import joinedload
 class RkiData(AllFactTable):
     __tablename__ = "rki"
     __mapper_args__ = {"concrete": True}
-    __table_args__ = (db.UniqueConstraint("fid", name="uix_rki"),)
+    __table_args__ = (
+        db.UniqueConstraint("fid", name="uix_rki"),
+    )
 
     def __repr__(self):
         return "{} ({} {} {} {} {} {} {})".format(

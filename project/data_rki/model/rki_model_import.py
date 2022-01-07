@@ -16,7 +16,10 @@ class RkiImport(AllImport):
     __mapper_args__ = {"concrete": True}
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.fid})"
+        return "{}({})".format(
+            self.__class__.__name__,
+            self.fid
+        )
 
     id_seq = Sequence('rki_import_id_seq')
     id = db.Column(db.Integer,
