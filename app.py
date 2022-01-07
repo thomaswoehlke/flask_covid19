@@ -293,7 +293,7 @@ def admin_database_import_status():
         app_admin_service.database_import_status()
 
 
-@app.cli.command("notifications-count")
+@app.cli.command("all-notifications-count")
 def all_task_notifications_count():
     """[ALL] task notifications count"""
     with app.app_context():
@@ -301,7 +301,7 @@ def all_task_notifications_count():
         app.logger.info("task notifications count: " + str(nr))
 
 
-@app.cli.command("notifications-list")
+@app.cli.command("all-notifications-list")
 def all_task_notifications_find():
     """[ALL] task notifications find"""
     app.logger.info("task notifications find: ")
