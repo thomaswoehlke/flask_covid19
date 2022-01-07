@@ -30,6 +30,9 @@ class OwidService(AllServiceMixin):
         Task.finish(task_id=task.id)
         return self
 
+    def count_file_rows(self):
+        return self.service_import.count_file_rows()
+
     def import_file(self):
         task = Task.create(sector="OWID", task_name="import_file")
         self.service_import.import_file()

@@ -25,6 +25,12 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info(" ready: [Vaccination] Service Import ")
         app.logger.debug("-----------------------------------------------------------")
 
+    def count_file_rows(self):
+        count = 0
+        for line in open(self.cfg.cvsfile_path):
+            count += 1
+        return count
+
     def import_file(self):
         task = Task.create(sector="Vaccination", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")

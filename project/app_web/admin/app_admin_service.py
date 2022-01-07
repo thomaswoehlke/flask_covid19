@@ -1,7 +1,10 @@
 import os
+import string
 import subprocess
 
-from project.app_bootstrap.database import app
+from pandas import Index
+
+from project.app_bootstrap.database import app, db
 from project.app_web.user.user_model import User
 from project.data_all.task.all_task_model import Task
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
@@ -30,6 +33,20 @@ from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location_group import WhoCountryRegion
 
+from project.data_owid.services.owid_service import OwidService
+from project.data_rki.services.rki_service import RkiService
+from project.data_ecdc.services.ecdc_service import EcdcService
+from project.data_vaccination.services.vaccination_service import VaccinationService
+from project.data_who.services.who_service import WhoService
+
+import pandas as pd
+
+
+owid_service = OwidService(db)
+rki_service = RkiService(db)
+ecdc_service = EcdcService(db)
+vaccination_service = VaccinationService(db)
+who_service = WhoService(db)
 
 class AdminService:
     def __init__(self, database):
@@ -204,53 +221,46 @@ class AdminService:
     def database_import_status(self):
         app.logger.info(" AdminService.database_import_status() [begin]")
         app.logger.info("-----------------------------------------------------------")
-        t = {
-            'WHO': {
-                'data_class': WhoData,
-                'import_class': WhoImport
-            },
-            'OWID': {
-                'data_class': OwidData,
-                'import_class': OwidImport
-            },
-            'ECDC': {
-                'data_class': EcdcData,
-                'import_class': EcdcImport
-            },
-            'Vaccination': {
-                'data_class': VaccinationData,
-                'import_class': VaccinationImport
-            },
-            'RKI': {
-                'data_class': RkiData,
-                'import_class': RkiImport
-            }
-        }
-        t_count = {}
-        sectors = ['WHO', 'OWID', 'Vaccination', 'RKI']
-        keys1 = ['file', 'import', 'data']
-        keys2 = ['last_date', 'rows']
         with app.app_context():
-            for sector_key in t.keys():
-                sectors = t[sector_key]
-                for class_key in sectors.keys():
-                    o = sectors[class_key]
-                    class_name = o.__name__
-                    class_count = o.count()
-                    a = {
-                        sector_key: {
-                            class_key: {
-                                class_name: class_count
-                            }
-                        }
-                    }
-                    t_count[sector_key,class_key,class_name] = class_count
-                    msg = str(sector_key) + ", "
-                    msg += str(class_key) + ": "
-                    msg += str(class_name) + ": "
-                    msg += str(class_count)
-                    app.logger.info(msg)
-            app.logger.info(str(t_count))
+            t = {
+                'WHO': {
+                    'data_class': WhoData.__name__,
+                    'import_class': WhoImport.__name__,
+                    'data_count': WhoData.count(),
+                    'import_count': WhoImport.count(),
+                    'file_count': who_service.count_file_rows()
+                },
+                'OWID': {
+                    'data_class': OwidData.__name__,
+                    'import_class': OwidImport.__name__,
+                    'data_count': OwidData.count(),
+                    'import_count': OwidImport.count(),
+                    'file_count': owid_service.count_file_rows()
+                },
+                'ECDC': {
+                    'data_class': EcdcData.__name__,
+                    'import_class': EcdcImport.__name__,
+                    'data_count': EcdcData.count(),
+                    'import_count': EcdcImport.count(),
+                    'file_count': ecdc_service.count_file_rows()
+                },
+                'Vaccination': {
+                    'data_class': VaccinationData.__name__,
+                    'import_class': VaccinationImport.__name__,
+                    'data_count': VaccinationData.count(),
+                    'import_count': VaccinationImport.count(),
+                    'file_count': vaccination_service.count_file_rows()
+                },
+                'RKI': {
+                    'data_class': RkiData.__name__,
+                    'import_class': RkiImport.__name__,
+                    'data_count': RkiData.count(),
+                    'import_count': RkiImport.count(),
+                    'file_count': rki_service.count_file_rows()
+                }
+            }
+            df = pd.DataFrame.from_dict(t, orient='index')
+            app.logger.info(df)
         app.logger.info("")
         app.logger.info(" AdminService.database_import_status() [done]")
         app.logger.info("------------------------------------------------------------")

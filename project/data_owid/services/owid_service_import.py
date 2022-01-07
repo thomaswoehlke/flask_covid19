@@ -24,6 +24,12 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info(" ready: [OWID] Service Import ")
         app.logger.debug("------------------------------------------------------------")
 
+    def count_file_rows(self):
+        count = 0
+        for line in open(self.cfg.cvsfile_path):
+            count += 1
+        return count
+
     def import_file(self):
         task = Task.create(sector="OWID", task_name="import_file")
         app.logger.info("------------------------------------------------------------")

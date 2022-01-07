@@ -22,6 +22,12 @@ class RkiServiceImport(AllServiceMixinImport):
         app.logger.info(" ready: [RKI] Service Import ")
         app.logger.debug("------------------------------------------------------------")
 
+    def count_file_rows(self):
+        count = 0
+        for line in open(self.cfg.cvsfile_path):
+            count += 1
+        return count
+
     def import_file(self):
         task = Task.create(sector="RKI", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
