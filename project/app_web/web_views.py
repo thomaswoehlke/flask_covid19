@@ -58,19 +58,8 @@ class BlueprintApplicationUrls:
     @staticmethod
     @app.route("/admin")
     def url_admin_index():
-        page_info = WebPageContent("Admin", "Covid19 Admin")
+        page_info = WebPageContent("Admin", "flask admin")
         return render_template("app_application/index.html", page_info=page_info)
-
-    @staticmethod
-    @app.route("/status")
-    def url_database_table_row_count():
-        page_info = WebPageContent("Admin", "Status")
-        database_table_row_count = app_admin_service.database_table_row_count()
-        return render_template(
-            "app_application/status/status.html",
-            page_info=page_info,
-            database_table_row_count=database_table_row_count
-        )
 
 
 blueprint_application_urls = BlueprintApplicationUrls()

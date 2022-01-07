@@ -28,12 +28,6 @@ class AppAdminUrls:
         app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
-    @blueprint_app_admin.route("/tasks")
-    def url_admin_tasks():
-        page_info = WebPageContent("Admin", "Admin Tasks")
-        return render_template("app_admin/admin_tasks.html", page_info=page_info)
-
-    @staticmethod
     @blueprint_app_admin.route("/status")
     def url_admin_status():
         page_info = WebPageContent("Admin", "System Status")
@@ -48,10 +42,10 @@ class AppAdminUrls:
     @staticmethod
     @blueprint_app_admin.route("/database_table_row_count")
     def url_admin_database_table_row_count():
-        page_info = WebPageContent("Admin", "Info")
+        page_info = WebPageContent("Admin", "DB Row Count")
         db_table_row_count = app_admin_service.database_table_row_count()
         return render_template(
-            "app_admin/database_table_row_count.html",
+            "app_admin/table_row_count/status.html",
             db_table_row_count=db_table_row_count,
             page_info=page_info
         )
@@ -59,7 +53,7 @@ class AppAdminUrls:
     @staticmethod
     @blueprint_app_admin.route("/database_import_status")
     def url_admin_database_import_status():
-        page_info = WebPageContent("Admin", "Info")
+        page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = app_admin_service.database_import_status()
         return render_template(
             "app_admin/database_import_status.html",

@@ -1,0 +1,28 @@
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-dark">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">Table</th>
+                            <th scope="col">Number of rows</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for k in database_table_row_count %}
+                        <tr>
+                            <td>
+                              {{ k }}
+                            </td>
+                            <td>
+                              {{ database_table_row_count[k] }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="table-secondary">
+                        <tr>
+                            <th scope="col">Table</th>
+                            <th scope="col">Number of rows</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>
