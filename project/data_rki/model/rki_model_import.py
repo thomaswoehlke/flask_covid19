@@ -51,7 +51,7 @@ class RkiImport(AllImport):
 
     @classmethod
     def count(cls):
-        return cls.__query_all().count()
+        return db.session.query(cls).count()
 
     @classmethod
     def get_all(cls, page: int):
