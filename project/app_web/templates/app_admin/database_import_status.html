@@ -9,93 +9,110 @@
 
     <div class="container">
       <h4>DB Import Status</h4>
+      <div class="table-responsive">
       <table class="bg-dark">
+        <thead>
+            <th></th>
+            <th class="p-2 bg-secondary text-white">data_class</th>
+            <th class="p-2 bg-secondary text-white">import_class</th>
+            <th class="p-2 bg-secondary text-white">data_count</th>
+            <th class="p-2 bg-secondary text-white">import_count</th>
+            <th class="p-2 bg-secondary text-white">file_count</th>
+        </thead>
+        <tbody>
         <tr>
-          <td colspan="10">
-            <span class="d-flex p-4 justify-content-center">WHO</span>
-          </td>
+            <th class="p-2 bg-secondary text-white">WHO</th>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['WHO']['data_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['WHO']['import_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['WHO']['data_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['WHO']['import_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['WHO']['file_count'] }}
+            </td>
         </tr>
         <tr>
-            <td class="d-inline p-2 bg-secondary text-white">data_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">data_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">file_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
+            <th class="p-2 bg-secondary text-white">OWID</th>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['OWID']['data_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['OWID']['import_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['OWID']['data_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['OWID']['import_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['OWID']['file_count'] }}
+            </td>
         </tr>
         <tr>
-          <td colspan="10">
-            <span class="d-flex p-4 justify-content-center">OWID</span>
-          </td>
+            <th class="p-2 bg-secondary text-white">ECDC</th>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['ECDC']['data_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['ECDC']['import_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['ECDC']['data_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['ECDC']['import_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['ECDC']['file_count'] }}
+            </td>
         </tr>
         <tr>
-            <td class="d-inline p-2 bg-secondary text-white">data_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">data_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">file_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-        </tr>
-        <tr>
-          <td colspan="10">
-            <span class="d-flex p-4 justify-content-center">ECDC</span>
-          </td>
-        </tr>
-        <tr>
-            <td class="d-inline p-2 bg-secondary text-white">data_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">data_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">file_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-        </tr>
-        <tr>
-          <td colspan="10">
-            <span class="d-flex p-4 justify-content-center">Vaccination</span>
-          </td>
-        </tr>
-        <tr>
-            <td class="d-inline p-2 bg-secondary text-white">data_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">data_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">file_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-        </tr>
-        <tr>
-          <td colspan="10">
-            <span class="d-flex p-4 justify-content-center">RKI</span>
-          </td>
+            <th class="p-2 bg-secondary text-white">Vaccination</th>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['Vaccination']['data_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['Vaccination']['import_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['Vaccination']['data_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['Vaccination']['import_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['Vaccination']['file_count'] }}
+            </td>
         </tr>
         <tr class="m-2">
-            <td class="d-inline p-2 bg-secondary text-white">data_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_class</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">data_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">import_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
-            <td class="d-inline p-2 bg-secondary text-white">file_count</td>
-            <td class="d-inline p-2 bg-dark text-white">aaaa</td>
+            <th class="p-2 bg-secondary text-white">RKI</th>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['RKI']['data_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['RKI']['import_class'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['RKI']['data_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['RKI']['import_count'] }}
+            </td>
+            <td class="p-2 bg-dark text-white">
+              {{ db_import_status['RKI']['file_count'] }}
+            </td>
         </tr>
+        </tbody>
       </table>
+      </div>
     </div>
 {% endblock %}
 
