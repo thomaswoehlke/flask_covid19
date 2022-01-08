@@ -50,6 +50,10 @@ class RkiImport(AllImport):
     altersgruppe2 = db.Column(db.String(255), nullable=False)
 
     @classmethod
+    def count(cls):
+        return cls.__query_all().count()
+
+    @classmethod
     def get_all(cls, page: int):
         return db.session.query(cls).paginate(page, per_page=items_per_page)
 
