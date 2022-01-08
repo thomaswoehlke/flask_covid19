@@ -3,32 +3,32 @@
             <div class="col">
                 <nav>
                     <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link"
-                               href="{{ url_for( 'app_admin.url_admin_info') }}">
-                              Admin
-                            </a>
-                        </li>
                         {% if current_user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link"
                                href="{{ url_for( 'app_admin.url_admin_database_table_row_count') }}">
-                              DB Row Count
+                              <i class="fas fa-database"></i> DB Row Count
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
                                href="{{ url_for( 'app_admin.url_admin_database_import_status') }}">
-                              DB Import Status
+                              <i class="fas fa-database"></i> DB Import Status
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
                                href="{{ url_for( 'url_admin_index') }}">
-                                flask admin
+                                <i class="fas fa-database"></i> flask admin
                             </a>
                         </li>
                         {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ url_for( 'app_admin.url_admin_info') }}">
+                              <i class="fas fa-play-circle"></i> Admin
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
