@@ -18,6 +18,9 @@
             <th class="p-2 bg-secondary text-white">data_count</th>
             <th class="p-2 bg-secondary text-white">import_count</th>
             <th class="p-2 bg-secondary text-white">file_count</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </thead>
         <tbody>
         <tr>
@@ -37,6 +40,17 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['WHO']['file_count'] }}
             </td>
+            <td>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> who-download
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> who-import
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> who-update
+              </a>
+            </td>
         </tr>
         <tr>
             <th class="p-2 bg-secondary text-white">OWID</th>
@@ -54,6 +68,17 @@
             </td>
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['OWID']['file_count'] }}
+            </td>
+            <td>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> owid-download
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> owid-import
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> owid-update
+              </a>
             </td>
         </tr>
         <tr>
@@ -73,6 +98,17 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['ECDC']['file_count'] }}
             </td>
+            <td>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> ecdc-download
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> ecdc-import
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> ecdc-update
+              </a>
+            </td>
         </tr>
         <tr>
             <th class="p-2 bg-secondary text-white">Vaccination</th>
@@ -90,6 +126,17 @@
             </td>
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['Vaccination']['file_count'] }}
+            </td>
+            <td>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> vacc-download
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> vacc-import
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> vacc-update
+              </a>
             </td>
         </tr>
         <tr class="m-2">
@@ -109,9 +156,32 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['RKI']['file_count'] }}
             </td>
+            <td>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> rki-download
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> rki-import
+              </a>
+              <a class="btn btn-secondary" href="#" role="button">
+                <i class="fas fa-play-circle"></i> rki-update
+              </a>
+            </td>
         </tr>
         </tbody>
       </table>
+      </div>
+      <p></p>
+      <div>
+        <a class="btn btn-secondary" href="#" role="button">
+          <i class="fas fa-play-circle"></i> all-download
+        </a>
+        <a class="btn btn-secondary" href="#" role="button">
+          <i class="fas fa-play-circle"></i> all-import
+        </a>
+        <a class="btn btn-secondary" href="#" role="button">
+          <i class="fas fa-play-circle"></i> all-update
+        </a>
       </div>
     </div>
 {% endblock %}
