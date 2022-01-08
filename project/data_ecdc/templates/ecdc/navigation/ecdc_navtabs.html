@@ -2,25 +2,25 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'ecdc.url_ecdc_date_reported_all') }}">
-                          date_reported
+                          <i class="far fa-clock"></i> date_reported
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'ecdc.url_ecdc_continent_all') }}">
-                          continent
+                          <i class="fas fa-globe-americas"></i> continent
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'ecdc.url_ecdc_country_all') }}">
-                          country
+                          <i class="fas fa-globe-americas"></i> country
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'ecdc.url_ecdc_country_germany') }}">
-                          Germany
+                          <i class="fas fa-globe-americas"></i> Germany
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}

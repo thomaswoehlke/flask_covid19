@@ -2,19 +2,19 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'rki.url_rki_date_reported_all') }}">
-                            Date Reported
+                            <i class="far fa-clock"></i> Date Reported
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'rki.url_rki_bundesland_all') }}">
-                            Bundesland
+                            <i class="fas fa-globe-americas"></i> Bundesland
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'rki.url_rki_altersgruppe_all') }}">
-                            Altersgruppe
+                            <i class="fas fa-globe-americas"></i> Altersgruppe
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
