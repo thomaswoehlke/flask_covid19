@@ -39,12 +39,14 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="{{ url_for( 'owid.url_owid_imported') }}">
-                          imported
+                         <i class="fas fa-inbox"></i> imported
                         </a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'owid.url_owid_info') }}">OWID</a>
+                           href="{{ url_for( 'owid.url_owid_info') }}">
+                          <i class="fas fa-play-circle"></i> OWID
+                        </a>
                     </li>
                 </ul>

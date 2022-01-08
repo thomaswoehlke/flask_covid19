@@ -21,10 +21,14 @@
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'who.url_who_imported') }}">imported</a>
+                           href="{{ url_for( 'who.url_who_imported') }}">
+                          <i class="fas fa-inbox"></i> imported
+                        </a>
                     </li>
                     {% endif %}<li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'who.url_who_info') }}">WHO</a>
+                           href="{{ url_for( 'who.url_who_info') }}">
+                          <i class="fas fa-play-circle"></i> WHO
+                        </a>
                     </li>
                 </ul>
