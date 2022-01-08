@@ -2,7 +2,7 @@
 
 . ./venv/bin/activate
 
-export FLASK_APP=app
+export FLASK_APP=app.py
 export FLASK_ENV=development
 
 celery --app app.celery worker --pool eventlet --loglevel INFO &
