@@ -368,10 +368,7 @@ class AllTaskUrls:
         flash(message="async task_all_update [start]", category="warning")
         app.logger.warn("async task_all_update [start]")
         app.logger.info("url_task_all_update [done]")
-        if next is not None:
-            return redirect(next)
-        else:
-            return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("app_all.url_all_info"))
 
 
 all_task_urls = AllTaskUrls()
