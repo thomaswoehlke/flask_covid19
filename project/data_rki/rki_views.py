@@ -380,7 +380,7 @@ class RkiTaskUrls:
     def url_task_rki_update():
         app.logger.info(" [RKI] url_task_rki_update [start]")
         flash(" [RKI] url_task_rki_download [start]")
-        rki_service.download()
+        # rki_service.download()
         flash(" [RKI] url_task_rki_download [done]")
         rki_tasks.task_rki_update.apply_async()
         flash(" [RKI] task_rki_update started")
