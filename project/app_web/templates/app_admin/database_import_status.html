@@ -12,15 +12,15 @@
       <div class="table-responsive">
       <table class="bg-dark">
         <thead>
-            <th></th>
+            <th class="p-2 bg-dark text-white">&nbsp;</th>
             <th class="p-2 bg-secondary text-white">data_class</th>
             <th class="p-2 bg-secondary text-white">import_class</th>
             <th class="p-2 bg-secondary text-white">data_count</th>
             <th class="p-2 bg-secondary text-white">import_count</th>
             <th class="p-2 bg-secondary text-white">file_count</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th class="p-2 bg-secondary text-white">&nbsp;</th>
+            <th class="p-2 bg-secondary text-white">&nbsp;</th>
+            <th class="p-2 bg-secondary text-white">&nbsp;</th>
         </thead>
         <tbody>
         <tr>
@@ -40,15 +40,19 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['WHO']['file_count'] }}
             </td>
-            <td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'who.url_task_who_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-update
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'who.url_task_who_import_files') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-import
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'who.url_download_files') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-download
@@ -72,15 +76,19 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['OWID']['file_count'] }}
             </td>
-            <td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'owid.url_task_owid_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-update
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'owid.url_task_owid_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-import
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'owid.url_task_owid_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-download
@@ -104,15 +112,19 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['ECDC']['file_count'] }}
             </td>
-            <td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'ecdc.url_task_ecdc_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-update
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'ecdc.url_ecdc_task_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-import
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'ecdc.url_ecdc_task_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-download
@@ -136,17 +148,21 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['Vaccination']['file_count'] }}
             </td>
-            <td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'vaccination.url_task_vaccination_update') }}"
                  role="button">
                 <i class="fas fa-play-circle"></i> vacc-update
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'vaccination.url_task_vaccination_import') }}"
                  role="button">
                 <i class="fas fa-play-circle"></i> vacc-import
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'vaccination.url_task_vaccination_download') }}"
                  role="button">
@@ -171,38 +187,51 @@
             <td class="p-2 bg-dark text-white">
               {{ db_import_status['RKI']['file_count'] }}
             </td>
-            <td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'rki.url_task_rki_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> rki-update
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'rki.url_task_rki_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> rki-import
               </a>
+            </td>
+            <td class="p-2">
               <a class="btn btn-secondary"
                  href="{{ url_for( 'rki.url_task_rki_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> rki-download
               </a>
             </td>
         </tr>
+        <tr>
+          <td colspan="9" class="p-2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="6" class="p-2">&nbsp;</td>
+          <td class="p-2">
+            <a class="btn btn-secondary"
+               href="{{ url_for( 'app_all.url_task_all_update') }}" role="button">
+              <i class="fas fa-play-circle"></i> all-update
+            </a>
+          </td>
+          <td class="p-2">
+            <a class="btn btn-secondary"
+               href="{{ url_for( 'app_all.url_task_all_import') }}" role="button">
+              <i class="fas fa-play-circle"></i> all-import
+            </a>
+          </td>
+          <td class="p-2">
+            <a class="btn btn-secondary"
+               href="{{ url_for( 'app_all.url_task_all_download') }}" role="button">
+              <i class="fas fa-play-circle"></i> all-download
+            </a>
+          </td>
+        </tr>
         </tbody>
       </table>
-      </div>
-      <p></p>
-      <div>
-        <a class="btn btn-secondary"
-           href="{{ url_for( 'app_all.url_task_all_update') }}" role="button">
-          <i class="fas fa-play-circle"></i> all-update
-        </a>
-        <a class="btn btn-secondary"
-           href="{{ url_for( 'app_all.url_task_all_import') }}" role="button">
-          <i class="fas fa-play-circle"></i> all-import
-        </a>
-        <a class="btn btn-secondary"
-           href="{{ url_for( 'app_all.url_task_all_download') }}" role="button">
-          <i class="fas fa-play-circle"></i> all-download
-        </a>
       </div>
     </div>
 {% endblock %}
