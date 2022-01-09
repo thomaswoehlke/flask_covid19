@@ -45,7 +45,7 @@ class BlueprintApplicationUrls:
         app.logger.info(" ready: [WEB] ApplicationUrls ")
         app.logger.debug("-----------------------------------------------------------")
         with app.app_context():
-            task = Task.create(sector="WEB", task_name="init")
+            task = Task.create(sector="WEB", task_name="init").read()
             Task.finish(task_id=task.id)
 
     @staticmethod

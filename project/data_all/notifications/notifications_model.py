@@ -154,6 +154,13 @@ class Task(db.Model, AllEntityMixinBase):
             .count()
 
     @classmethod
+    def notifications_find_asc(cls, limit: int):
+        return db.session.query(cls)\
+            .filter(cls.notification)\
+            .order_by(cls.datum_started)\
+            .limit(limit)
+
+    @classmethod
     def notifications_find(cls):
         return db.session.query(cls)\
             .filter(and_(cls.datum_finished.is_not(None), cls.notification))\

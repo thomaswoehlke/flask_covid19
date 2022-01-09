@@ -50,23 +50,15 @@ class AllUrls:
                                page_info=page_info)
 
     @staticmethod
-    @blueprint_app_all.route("/notification/read/page/<int:page>")
     @blueprint_app_all.route("/notification/read")
     @login_required
-    def url_all_notification_mark_read(page=1):
-        page_data = Task.notifications_get(page)
-        for o in page_data.items:
+    def url_all_notification_mark_read():
+        data = Task.notifications_find_asc(10)
+        for o in data:
             o.read()
             db.session.add(o)
         db.session.commit()
-        page -= 1
-        if page > 1:
-            return redirect(
-                url_for("app_all.url_all_notification", page=page)
-            )
-        else:
-            return redirect(url_for("app_all.url_all_notification"))
-
+        return redirect(url_for("app_all.url_all_notification"))
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")
