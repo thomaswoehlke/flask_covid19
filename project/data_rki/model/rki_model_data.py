@@ -130,6 +130,8 @@ class RkiData(AllFactTable):
     @classmethod
     def delete_by_date_reported(cls, date_reported: RkiMeldedatum):
         cls.__query_by_date_reported(date_reported).delete()
+        date_reported.processed_update = False
+        db.session.add(date_reported)
         db.session.commit()
 
     @classmethod
