@@ -189,18 +189,17 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update_limited(limit):
             d += 1
             k = 0
-            app.logger.info(
-                "------------------------------------------------------------")
+            app.logger.info(str(my_meldedatum.datum))
             my_meldedatum.processed_update = True
-            my_meldedatum_datum = my_meldedatum.datum
+            # my_meldedatum_datum = my_meldedatum.datum
             task_meldedatum = Task.create(
                 sector="RKI",
-                task_name="__update_data: {}".format(str(my_meldedatum_datum))
+                task_name="__update_data: {}".format(str(my_meldedatum.datum))
             ).read()
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
-                    my_datum=my_meldedatum_datum,
+                    my_datum=my_meldedatum.datum,
                     my_landkreis=my_landkreis_key
                 )
                 for o_import in list_imports:
@@ -226,7 +225,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                         )
             app.logger.info(
                 " [RKI] __update_data ({}) ... {} rows".format(
-                    str(my_meldedatum), str(k)
+                    str(my_meldedatum.datum), str(k)
                 )
             )
             db.session.add(my_meldedatum)
