@@ -6,6 +6,13 @@
                             <th scope="col">datum finished</th>
                             <th scope="col">sector</th>
                             <th scope="col">task name</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -15,6 +22,37 @@
                             <td>{{ all_task.datum_finished }}</td>
                             <td>{{ all_task.sector }}</td>
                             <td>{{ all_task.task_name }}</td>
+                            <td>&nbsp;</td>
+                            <td>
+                              {% if all_task.data1_txt != 'default' %}
+                                {{ all_task.data1_txt }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if all_task.data1_code != 0 %}
+                                {{ all_task.data1_code }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if all_task.data2_txt != 'default' %}
+                                {{ all_task.data2_txt }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if all_task.data2_code != 0 %}
+                                {{ all_task.data2_code }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if all_task.data3_txt != 'default' %}
+                                {{ all_task.data3_txt }}
+                              {% endif %}
+                            </td>
+                            <td>
+                              {% if all_task.data3_code != 0 %}
+                                {{ all_task.data3_code }}
+                              {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -24,6 +62,13 @@
                             <th scope="col">datum finished</th>
                             <th scope="col">sector</th>
                             <th scope="col">task name</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">&nbsp;</th>
                         </tr>
                     </tfoot>
                 </table>
