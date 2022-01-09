@@ -185,7 +185,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         d = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
         app.logger.info("------------------------------------------------------------")
-        limit = 30
+        limit = 10
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update_limited(limit):
             d += 1
             k = 0
