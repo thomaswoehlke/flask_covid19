@@ -91,30 +91,36 @@ class RkiService(AllServiceMixin):
 
     def update_clean_brokenup(self):
         task = Task.create(sector="RKI", task_name="update_clean_brokenup")
-        result = Task.get_rki_update_broken_date()
-        t = task
-        for t1 in result:
-            t2 = Task.get_latest_by(sector=t1.sector, task_name=t1.task_name)
-            if t2 is not None:
-                if t1.is_newer_than(t2):
-                    # app.logger.info("newer:      "+str(t1))
+        result2 = Task.get_rki_update_broken_date()
+        result = Task.get_rki_full_update_broken_date()
+        resultlist = result.all()
+        resultlist.extend(result2.all())
+        if len(resultlist) > 0:
+            t = task
+            for t1 in resultlist:
+                t2 = Task.get_latest_by(sector=t1.sector, task_name=t1.task_name)
+                if t2 is not None:
+                    if t1.is_newer_than(t2):
+                        # app.logger.info("newer:      "+str(t1))
+                        t = t1
+                        break
+                    else:
+                        app.logger.info("older than: "+str(t2))
+                else:
                     t = t1
                     break
-                else:
-                    app.logger.info("older than: "+str(t2))
-            else:
-                t = t1
-                break
-        app.logger.info("result: " + str(t))
-        meldedatum = t.task_name.split(" ")[1]
-        app.logger.info("meldedatum: " + meldedatum)
-        d_meldedatum = date.fromisoformat(meldedatum)
-        o_meldedatum = RkiMeldedatum.get_by_datum(d_meldedatum)
-        app.logger.info("o_meldedatum: " + str(o_meldedatum))
-        app.logger.info("RkiData.count(): " + str(RkiData.count()))
-        RkiData.delete_by_date_reported(o_meldedatum)
-        app.logger.info("RkiData.count(): " + str(RkiData.count()))
-        Task.finish(task_id=t.id)
+            app.logger.info("result: " + str(t))
+            meldedatum = t.task_name.split(" ")[1]
+            app.logger.info("meldedatum: " + meldedatum)
+            d_meldedatum = date.fromisoformat(meldedatum)
+            o_meldedatum = RkiMeldedatum.get_by_datum(d_meldedatum)
+            app.logger.info("o_meldedatum: " + str(o_meldedatum))
+            app.logger.info("RkiData.count(): " + str(RkiData.count()))
+            RkiData.delete_by_date_reported(o_meldedatum)
+            app.logger.info("RkiData.count(): " + str(RkiData.count()))
+            Task.finish(task_id=t.id)
+            for ttt in Task.get_rki_update_broken_date():
+                Task.finish(task_id=ttt.id)
         Task.finish(task_id=task.id)
         return self
 

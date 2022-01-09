@@ -173,7 +173,7 @@ class Task(db.Model, AllEntityMixinBase):
             pass
 
     @classmethod
-    def get_rki_update_broken_date(cls):
+    def get_rki_full_update_broken_date(cls):
         '''select * from task where datum_finished is null and task_name like '__full_update_data: %'; '''
         result = db.session.query(cls) \
             .filter(
@@ -181,6 +181,20 @@ class Task(db.Model, AllEntityMixinBase):
                     cls.datum_finished.is_(None),
                     cls.sector == 'RKI',
                     cls.task_name.like('__full_update_data: %')
+                )
+            )\
+            .order_by(cls.datum_started.desc())
+        return result
+
+    @classmethod
+    def get_rki_update_broken_date(cls):
+        '''select * from task where datum_finished is null and task_name like '__update_data: %'; '''
+        result = db.session.query(cls) \
+            .filter(
+                and_(
+                    cls.datum_finished.is_(None),
+                    cls.sector == 'RKI',
+                    cls.task_name.like('__update_data: %')
                 )
             )\
             .order_by(cls.datum_started.desc())
