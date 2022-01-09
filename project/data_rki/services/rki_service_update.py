@@ -182,9 +182,15 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info(" [RKI] __update_data [begin]")
         app.logger.info("------------------------------------------------------------")
         i = 0
+        d = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
+        app.logger.info("------------------------------------------------------------")
         limit = 30
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update_limited(limit):
+            d += 1
+            k = 0
+            app.logger.info(
+                "------------------------------------------------------------")
             my_meldedatum.processed_update = True
             my_meldedatum_datum = my_meldedatum.datum
             task_meldedatum = Task.create(
@@ -209,16 +215,26 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                     o = RkiDataFactory.create_new(rki_data)
                     db.session.add(o)
                     i += 1
+                    k += 1
                     if i % 5000 == 0:
                         db.session.commit()
                     if i % 1000 == 0:
                         app.logger.info(
-                            " [RKI] __update_data ... {} rows".format(str(i))
+                            " [RKI] __update_data ({}) ... {} rows".format(
+                                str(d), str(i)
+                            )
                         )
             db.session.add(my_meldedatum)
             db.session.commit()
             Task.finish(task_id=task_meldedatum.id)
-        app.logger.info(" [RKI] __update_data : {} total rows".format(str(i)))
+            app.logger.info(
+                " [RKI] __update_data ({}) ... {} rows".format(
+                    str(my_meldedatum), str(k)
+                )
+            )
+        app.logger.info(" [RKI] __update_data : {} total {} rows".format(
+            str(d), str(i)
+        ))
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_data [done]")
         app.logger.info("------------------------------------------------------------")
