@@ -224,14 +224,14 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                                 str(d), str(i)
                             )
                         )
-            db.session.add(my_meldedatum)
-            db.session.commit()
-            Task.finish(task_id=task_meldedatum.id)
             app.logger.info(
                 " [RKI] __update_data ({}) ... {} rows".format(
                     str(my_meldedatum), str(k)
                 )
             )
+            db.session.add(my_meldedatum)
+            db.session.commit()
+            Task.finish(task_id=task_meldedatum.id)
         app.logger.info(" [RKI] __update_data : {} total {} rows".format(
             str(d), str(i)
         ))
