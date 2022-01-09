@@ -41,11 +41,12 @@ app.register_blueprint(app_rki, url_prefix="/rki/")
 
 class BlueprintApplicationUrls:
     def __init__(self):
-        task = Task.create(sector="WEB", task_name="init")
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] ApplicationUrls ")
         app.logger.debug("-----------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        with app.app_context():
+            task = Task.create(sector="WEB", task_name="init")
+            Task.finish(task_id=task.id)
 
     @staticmethod
     @app.route("/home")
