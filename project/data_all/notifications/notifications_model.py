@@ -186,3 +186,12 @@ class Task(db.Model, AllEntityMixinBase):
             .order_by(cls.datum_started)
         return result
 
+    @classmethod
+    def get_latest_by(cls, sector: str, task_name: str):
+        result = db.session.query(cls).filter(and_(
+                cls.datum_finished.is_not(None),
+                cls.sector == sector,
+                cls.task_name == task_name
+            )
+        ).order_by(cls.datum_started.desc()).first()
+        return result

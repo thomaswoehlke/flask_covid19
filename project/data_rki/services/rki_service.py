@@ -88,8 +88,11 @@ class RkiService(AllServiceMixin):
     def update_clean_brokenup(self):
         task = Task.create(sector="RKI", task_name="update_clean_brokenup")
         result = Task.get_rki_update_broken_date()
-        for o in result:
-            app.logger.info(str(o))
+        for t in result:
+            sector = t.sector
+            task_name = t.task_name
+            t2 = Task.get_latest_by(sector=t.sector, task_name=t.task_name)
+            # app.logger.info(str(o))
         Task.finish(task_id=task.id)
         return self
 
