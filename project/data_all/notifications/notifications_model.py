@@ -183,7 +183,7 @@ class Task(db.Model, AllEntityMixinBase):
                     cls.task_name.like('__full_update_data: %')
                 )
             )\
-            .order_by(cls.datum_started)
+            .order_by(cls.datum_started.desc())
         return result
 
     @classmethod
@@ -195,3 +195,9 @@ class Task(db.Model, AllEntityMixinBase):
             )
         ).order_by(cls.datum_started.desc()).first()
         return result
+
+    def is_newer_than(self, other_task):
+        if isinstance(other_task, Task):
+            return self.datum_started > other_task.datum_started
+        else:
+            return False

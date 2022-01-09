@@ -128,6 +128,11 @@ class RkiData(AllFactTable):
         )
 
     @classmethod
+    def delete_by_date_reported(cls, date_reported: RkiMeldedatum):
+        cls.__query_by_date_reported(date_reported).all().delete()
+        db.session.commit()
+
+    @classmethod
     def find_by_date_reported(cls, date_reported: RkiMeldedatum):
         return cls.__query_by_date_reported(date_reported).all()
 
