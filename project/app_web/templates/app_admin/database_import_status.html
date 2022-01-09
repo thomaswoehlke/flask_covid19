@@ -188,10 +188,19 @@
               {{ db_import_status['RKI']['file_count'] }}
             </td>
             <td class="p-2">
+              <p>
               <a class="btn btn-secondary"
-                 href="{{ url_for( 'rki.url_task_rki_update') }}" role="button">
-                <i class="fas fa-play-circle"></i> rki-update
+                 href="{{ url_for( 'rki.url_task_rki_update_dimension_tables') }}"
+                 role="button">
+                <i class="fas fa-play-circle"></i> rki-update-dimensions
               </a>
+              </p><p>
+              <a class="btn btn-secondary"
+                 href="{{ url_for( 'rki.url_task_rki_update_fact_table') }}"
+                 role="button">
+                <i class="fas fa-play-circle"></i> rki-update-data
+              </a>
+              </p>
             </td>
             <td class="p-2">
               <a class="btn btn-secondary"
