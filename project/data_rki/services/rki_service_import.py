@@ -30,7 +30,7 @@ class RkiServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="RKI", task_name="import_file").read()
+        task = Task.create(sector="RKI", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import_file  [begin]")
         app.logger.info("------------------------------------------------------------")

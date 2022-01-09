@@ -117,7 +117,7 @@ class Task(db.Model, AllEntityMixinBase):
 
     @classmethod
     def __query_all(cls):
-        return db.session.query(cls)
+        return db.session.query(cls).order_by(cls.datum_started.desc())
 
     @classmethod
     def get_all(cls, page: int):
@@ -157,13 +157,13 @@ class Task(db.Model, AllEntityMixinBase):
     def notifications_find(cls):
         return db.session.query(cls)\
             .filter(and_(cls.datum_finished.is_not(None), cls.notification))\
-            .order_by(cls.id)
+            .order_by(cls.datum_started.desc())
 
     @classmethod
     def notifications_get(cls, page: int):
         return db.session.query(cls)\
             .filter(cls.notification)\
-            .order_by(cls.id)\
+            .order_by(cls.datum_started.desc())\
             .paginate(page, per_page=items_per_page)
 
     @classmethod

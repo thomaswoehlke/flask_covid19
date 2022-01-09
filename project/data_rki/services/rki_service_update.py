@@ -70,7 +70,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
-        task = Task.create(sector="RKI", task_name="__update_date_reported").read()
+        task = Task.create(sector="RKI", task_name="__update_date_reported")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -96,7 +96,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_location_groups(self):
-        task = Task.create(sector="RKI", task_name="__update_location_groups").read()
+        task = Task.create(sector="RKI", task_name="__update_location_groups")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update location_groups [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -120,7 +120,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_locations(self):
-        task = Task.create(sector="RKI", task_name="__update_locations").read()
+        task = Task.create(sector="RKI", task_name="__update_locations")
         self.__update_location_groups()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_locations [begin]")
@@ -151,7 +151,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_altersgruppen(self):
-        task = Task.create(sector="RKI", task_name="__update_altersgruppen").read()
+        task = Task.create(sector="RKI", task_name="__update_altersgruppen")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_altersgruppen [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -177,7 +177,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(
             sector="RKI",
             task_name="__update_data"
-        ).read()
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -250,7 +250,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(
             sector="RKI",
             task_name="update_dimension_tables"
-        ).read()
+        )
         self.__update_date_reported()
         self.__update_locations()
         self.__update_altersgruppen()
@@ -261,7 +261,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(
             sector="RKI",
             task_name="update_fact_table"
-        ).read()
+        )
         self.__update_data()
         Task.finish(task_id=task.id)
         return self
@@ -270,7 +270,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(
             sector="RKI",
             task_name="delete_last_day"
-        ).read()
+        )
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [RKI] delete_last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -303,7 +303,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         task = Task.create(
             sector="RKI",
             task_name="delete_all_unifinished_update_days"
-        ).read()
+        )
         app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" [RKI] delete_all_unifinished_update_days [START]")
         app.logger.debug("-----------------------------------------------------------")

@@ -21,7 +21,7 @@ from project.data_rki.services.rki_service_update import RkiServiceUpdateBase
 
 class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_meldedatum(self):
-        task = Task.create(sector="RKI", task_name="__full_update_meldedatum").read()
+        task = Task.create(sector="RKI", task_name="__full_update_meldedatum")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update meldedatum [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -49,7 +49,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __full_update_altersgruppe(self):
-        task = Task.create(sector="RKI", task_name="__full_update_altersgruppe").read()
+        task = Task.create(sector="RKI", task_name="__full_update_altersgruppe")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update altersgruppe [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -75,7 +75,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __full_update_bundesland(self):
-        task = Task.create(sector="RKI", task_name="__full_update_bundesland").read()
+        task = Task.create(sector="RKI", task_name="__full_update_bundesland")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update bundesland [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -101,7 +101,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __full_update_landkreis(self):
-        task = Task.create(sector="RKI", task_name="__full_update_landkreis").read()
+        task = Task.create(sector="RKI", task_name="__full_update_landkreis")
         RkiLandkreis.remove_all()
         self.__full_update_bundesland()
         app.logger.info("------------------------------------------------------------")
@@ -137,7 +137,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def __full_update_data(self):
-        task = Task.create(sector="RKI", task_name="__full_update_data").read()
+        task = Task.create(sector="RKI", task_name="__full_update_data")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __full_update_data [begin]")
         app.logger.info("------------------------------------------------------------")
