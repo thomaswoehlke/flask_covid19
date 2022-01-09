@@ -219,17 +219,23 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                         db.session.commit()
                     if i % 1000 == 0:
                         app.logger.info(
-                            " [RKI] __update_data ({}) ... {} rows".format(
-                                str(d), str(i)
+                            " [RKI] __update_data ({}: {}) ... ({}) {} rows".format(
+                                str(d), str(my_meldedatum.datum), str(k), str(i)
                             )
                         )
             app.logger.info(
-                " [RKI] __update_data ({}) ... {} rows".format(
-                    str(my_meldedatum.datum), str(k)
+                " [RKI] __update_data ({}: {}) ... ({}) {} rows".format(
+                    str(d), str(my_meldedatum.datum), str(k), str(i)
                 )
             )
             db.session.add(my_meldedatum)
             db.session.commit()
+            task_meldedatum.data1_txt = "rows per day"
+            task_meldedatum.data1_code = k
+            task_meldedatum.data2_txt = "rows total in this run"
+            task_meldedatum.data2_code = i
+            task_meldedatum.data3_txt = "nr of day in this run"
+            task_meldedatum.data3_code = d
             Task.finish(task_id=task_meldedatum.id)
         app.logger.info(" [RKI] __update_data : {} total {} rows".format(
             str(d), str(i)

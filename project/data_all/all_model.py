@@ -77,10 +77,6 @@ class AllEntity(db.Model, AllEntityMixin):
         return cls.__query_all().filter(not_(cls.processed_update)).all()
 
     @classmethod
-    def find_by_not_processed_update_limited(cls, limit: int):
-        return cls.__query_all().filter(not_(cls.processed_update)).limit(limit)
-
-    @classmethod
     def find_by_not_processed_full_update(cls):
         return cls.__query_all().filter(not_(cls.processed_full_update)).all()
 
@@ -291,6 +287,13 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
             all_str.append(my_date_reported.date_reported_import_str)
         return all_str
 
+    @classmethod
+    def find_by_not_processed_update_limited(cls, limit: int):
+        return cls.__query_all()\
+            .filter(not_(cls.processed_update))\
+            .order_by(cls.datum.desc())\
+            .limit(limit)
+
 
 class AllLocationGroup(AllEntity, AllLocationGroupMixin):
     __tablename__ = "all_location_group"
@@ -362,8 +365,6 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
         for my_location_group in cls.find_all():
             all_str.append(my_location_group.location_group)
         return all_str
-
-
 
 
 class AllLocation(AllEntity, AllLocationMixin):
