@@ -195,7 +195,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             task_meldedatum = Task.create(
                 sector="RKI",
                 task_name="__update_data: {}".format(str(my_meldedatum.datum))
-            ).read()
+            )
             for my_landkreis in RkiLandkreis.find_all():
                 my_landkreis_key = my_landkreis.location
                 list_imports = RkiImport.find_by_meldedatum_and_landkreis(
