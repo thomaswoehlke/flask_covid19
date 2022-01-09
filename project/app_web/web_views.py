@@ -2,6 +2,8 @@ from flask import Blueprint
 from flask import redirect
 from flask import render_template
 from flask import url_for
+from flask_login import login_required
+
 from project.app_bootstrap.database import app, db, celery
 from project.app_web.admin.app_admin_views import blueprint_app_admin
 from project.app_web.user.user_views import blueprint_app_user
@@ -64,6 +66,7 @@ class BlueprintApplicationUrls:
 
     @staticmethod
     @app.route("/admin")
+    @login_required
     def url_admin_index():
         page_info = WebPageContent("Admin", "flask admin")
         return render_template(

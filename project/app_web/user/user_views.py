@@ -110,6 +110,7 @@ class AppUserUrls:
     @staticmethod
     @blueprint_app_user.route("/info/page/<int:page>")
     @blueprint_app_user.route("/info")
+    @login_required
     def url_user_info(page=1):
         page_info = WebPageContent("USR", "Info")
         try:
@@ -123,6 +124,7 @@ class AppUserUrls:
 
     @staticmethod
     @blueprint_app_user.route("/tasks")
+    @login_required
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
         return render_template("usr/user_tasks.html", page_info=page_info)

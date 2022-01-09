@@ -4,6 +4,8 @@ from flask import flash
 from flask import redirect
 from flask import render_template
 from flask import url_for
+from flask_login import login_required
+
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
 from project.app_web.web.web_dispachter_service import app_admin_service
@@ -29,18 +31,21 @@ class AppAdminUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/status")
+    @login_required
     def url_admin_status():
         page_info = WebPageContent("Admin", "System Status")
         return render_template("app_admin/admin_status.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_admin.route("/info")
+    @login_required
     def url_admin_info():
         page_info = WebPageContent("Admin", "Info")
         return render_template("app_admin/admin_info.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_admin.route("/database_table_row_count")
+    @login_required
     def url_admin_database_table_row_count():
         page_info = WebPageContent("Admin", "DB Row Count")
         db_table_row_count = app_admin_service.database_table_row_count()
@@ -52,6 +57,7 @@ class AppAdminUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/database_import_status")
+    @login_required
     def url_admin_database_import_status():
         page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = app_admin_service.database_import_status()
@@ -102,6 +108,7 @@ class AppAdminTaskUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/task/alive_message")
+    @login_required
     def url_task_admin_alive_message():
         app.logger.info("url_task_admin_message_start [start]")
         app_admin_tasks.task_admin_alive_message.apply_async()
@@ -111,6 +118,7 @@ class AppAdminTaskUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/dump")
+    @login_required
     def url_task_admin_database_dump():
         app.logger.info("url_task_admin_database_dump [start]")
         app_admin_service.database_dump()
@@ -120,6 +128,7 @@ class AppAdminTaskUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/reimport")
+    @login_required
     def url_task_admin_database_dump_reimport():
         app.logger.info("url_task_admin_database_dump_reimport [start]")
         app_admin_service.database_dump_reimport()
@@ -129,6 +138,7 @@ class AppAdminTaskUrls:
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/drop_create")
+    @login_required
     def url_task_admin_database_dropcreate():
         app.logger.info("url_task_admin_database_dropcreate [start]")
         app_admin_service.database_drop_and_create()

@@ -34,6 +34,7 @@ class AllUrls:
 
     @staticmethod
     @blueprint_app_all.route("/info")
+    @login_required
     def url_all_info():
         page_info = WebPageContent("All", "Info")
         return render_template("app_all/app_all_info.html", page_info=page_info)
@@ -62,6 +63,7 @@ class AllUrls:
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")
+    @login_required
     def url_all_delete_last_day():
         app.logger.info("url_all_delete_last_day [start]")
         flash("url_all_delete_last_day [start]")
@@ -284,6 +286,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/download")
+    @login_required
     def url_task_all_download():
         app.logger.info("url_task_all_download_all_files [start]")
         all_dispachter_matrix_service.download()
@@ -292,6 +295,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/import")
+    @login_required
     def url_task_all_import():
         app.logger.info("url_task_all_import_all_files [start]")
         all_tasks.task_all_import_file.apply_async()
@@ -302,6 +306,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update/dimension_tables")
+    @login_required
     def url_task_all_full_update_dimension_tables():
         app.logger.info("url_task_all_update_full_dimension_tables [start]")
         all_tasks.task_all_update_full_dimension_tables.apply_async()
@@ -315,6 +320,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/update/dimension_tables")
+    @login_required
     def url_task_all_update_dimension_tables():
         app.logger.info("url_task_all_update_dimension_tables [start]")
         all_tasks.task_all_update_dimension_tables.apply_async()
@@ -327,6 +333,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update/fact_table")
+    @login_required
     def url_task_all_full_update_fact_table():
         app.logger.info("url_task_all_full_update_fact_table [start]")
         all_tasks.task_all_full_update_fact_table.apply_async()
@@ -339,6 +346,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/update/fact_table")
+    @login_required
     def url_task_all_update_fact_table():
         app.logger.info("url_task_all_update_fact_table [start]")
         all_tasks.task_all_update_fact_table.apply_async()
@@ -349,6 +357,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update")
+    @login_required
     def url_task_all_full_update():
         app.logger.info("url_task_all_full_update [start]")
         all_dispachter_matrix_service.download()
@@ -360,6 +369,7 @@ class AllTaskUrls:
 
     @staticmethod
     @blueprint_app_all.route("/task/update")
+    @login_required
     def url_task_all_update(next=None):
         app.logger.info("url_task_all_update [start]")
         all_dispachter_matrix_service.download()
