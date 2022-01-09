@@ -42,16 +42,19 @@ class Task(db.Model, AllEntityMixinBase):
         this_id = self.id
         if this_id is None:
             this_id = ""
-        df = self.datum_finished.isoformat()
+        df = self.datum_finished
         if df is None:
             df = ""
-        return "{} {} {} {} {} {}".format(
+        else:
+            df = self.datum_finished.isoformat()
+        return "{} {} {} {} {} {} {}".format(
             this_id,
             self.datum_started.isoformat(),
             df,
             self.sector,
             self.task_name,
-            self.new_notification
+            self.notification,
+            self.result_code
         )
 
     task_id_seq = Sequence('task_id_seq')
@@ -168,4 +171,18 @@ class Task(db.Model, AllEntityMixinBase):
         page_data = cls.notifications_get(page)
         for pd in page_data.items:
             pass
+
+    @classmethod
+    def get_rki_update_broken_date(cls):
+        '''select * from task where datum_finished is null and task_name like '__full_update_data: %'; '''
+        result = db.session.query(cls) \
+            .filter(
+                and_(
+                    cls.datum_finished.is_(None),
+                    cls.sector == 'RKI',
+                    cls.task_name.like('__full_update_data: %')
+                )
+            )\
+            .order_by(cls.datum_started)
+        return result
 

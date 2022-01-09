@@ -84,3 +84,12 @@ class RkiService(AllServiceMixin):
         self.service_update.delete_last_day()
         Task.finish(task_id=task.id)
         return self
+
+    def update_clean_brokenup(self):
+        task = Task.create(sector="RKI", task_name="update_clean_brokenup")
+        result = Task.get_rki_update_broken_date()
+        for o in result:
+            app.logger.info(str(o))
+        Task.finish(task_id=task.id)
+        return self
+

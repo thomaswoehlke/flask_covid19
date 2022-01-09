@@ -202,6 +202,13 @@ def rki_update():
         rki_service.update()
 
 
+@app.cli.command("rki-update-clean-brokenup")
+def rki_update_clean_brokenup():
+    """[RKI] update clean brokenup"""
+    with app.app_context():
+        rki_service.update_clean_brokenup()
+
+
 @app.cli.command("rki-delete-last-day")
 def rki_delete_last_day():
     """[RKI] delete last day"""
