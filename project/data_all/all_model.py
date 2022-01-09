@@ -77,6 +77,10 @@ class AllEntity(db.Model, AllEntityMixin):
         return cls.__query_all().filter(not_(cls.processed_update)).all()
 
     @classmethod
+    def find_by_not_processed_update_limited(cls, limit: int):
+        return cls.__query_all().filter(not_(cls.processed_update)).limit(limit)
+
+    @classmethod
     def find_by_not_processed_full_update(cls):
         return cls.__query_all().filter(not_(cls.processed_full_update)).all()
 

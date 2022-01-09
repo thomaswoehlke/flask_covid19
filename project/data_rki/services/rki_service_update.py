@@ -183,7 +183,9 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         i = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
-        for my_meldedatum in RkiMeldedatum.find_by_not_processed_update():
+        limit = 30
+        for my_meldedatum in RkiMeldedatum.find_by_not_processed_update_limited(limit):
+            my_meldedatum.processed_update = True
             my_meldedatum_datum = my_meldedatum.datum
             task_meldedatum = Task.create(
                 sector="RKI",
@@ -213,6 +215,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
                         app.logger.info(
                             " [RKI] __update_data ... {} rows".format(str(i))
                         )
+            db.session.add(my_meldedatum)
             db.session.commit()
             Task.finish(task_id=task_meldedatum.id)
         app.logger.info(" [RKI] __update_data : {} total rows".format(str(i)))
