@@ -12,8 +12,6 @@ from flask_sqlalchemy import SQLAlchemy
 from project.app_bootstrap import config
 from project.app_bootstrap import pytestconfig
 
-# from flask_caching import Cache
-
 
 class Covid19Application:
     def __init__(self, testing=False):
@@ -54,16 +52,6 @@ class Covid19Application:
             "CACHE_DEFAULT_TIMEOUT": 120,
             "CACHE_KEY_PREFIX": "flask_covid19_",
         }
-        self.config_cache_memcached = {
-            "DEBUG": True,
-            "CACHE_TYPE": "MemcachedCache",
-            "CACHE_MEMCACHED_SERVERS": "127.0.0.1:11211",
-            "CACHE_DEFAULT_TIMEOUT": 120,
-            "CACHE_KEY_PREFIX": "flask_covid19_",
-        }
-        # self.cache.init_app(self.app, config=self.config_cache_memcached)
-        # with self.app.app_context():
-        #    self.cache.clear()
         return self
 
     def __init_bootstrap(self):
@@ -195,9 +183,12 @@ class Covid19Application:
     def __print_config(self):
         self.app.logger.debug("-------------------------------------------------------")
         for key in self.app.config.keys():
-            self.app.logger.debug(" " + str(key) + " " + str(self.app.config[key]))
+            msg = " {} {} ".format(
+                str(key),
+                str(self.app.config[key])
+            )
+            self.app.logger.debug(msg)
         self.app.logger.debug("-------------------------------------------------------")
-
 
 covid19_application = Covid19Application()
 app = covid19_application.app

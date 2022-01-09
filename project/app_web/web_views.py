@@ -7,6 +7,7 @@ from project.app_web.admin.app_admin_views import blueprint_app_admin
 from project.app_web.user.user_views import blueprint_app_user
 from project.app_web.web.web_model_transient import WebPageContent
 from project.data_all.all_views import blueprint_app_all
+from project.data_all.notifications.notifications_model import Task
 from project.data_ecdc.ecdc_views import app_ecdc
 from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
@@ -40,9 +41,11 @@ app.register_blueprint(app_rki, url_prefix="/rki/")
 
 class BlueprintApplicationUrls:
     def __init__(self):
+        task = Task.create(sector="WEB", task_name="init")
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] ApplicationUrls ")
         app.logger.debug("-----------------------------------------------------------")
+        Task.finish(task_id=task.id)
 
     @staticmethod
     @app.route("/home")

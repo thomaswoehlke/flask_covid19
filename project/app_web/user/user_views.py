@@ -1,4 +1,5 @@
 import flask
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -9,15 +10,13 @@ from flask_login import current_user
 from flask_login import login_required
 from flask_login import login_user
 from flask_login import logout_user
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.app_bootstrap.database import login_manager
+from sqlalchemy.exc import OperationalError
+
+from project.app_bootstrap.database import app, db
+from project.app_bootstrap.database import admin, login_manager
 from project.app_web.user.user_model import LoginForm
 from project.app_web.user.user_model import User
 from project.app_web.web.web_model_transient import WebPageContent
-from sqlalchemy.exc import OperationalError
-
 
 blueprint_app_user = Blueprint(
     "usr", __name__, template_folder="templates", url_prefix="/app/usr"
@@ -36,6 +35,23 @@ class AppUserUrls:
         app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [USR] UserUrls ")
         app.logger.debug("-----------------------------------------------------------")
+        with app.app_context():
+            db.create_all()
+            if User.count() == 0:
+                app.logger.debug("---------------------------------------------------")
+                app.logger.info(" User.count() == 0")
+                login = app.config["USER_ADMIN_LOGIN"]
+                name = app.config["USER_ADMIN_USERNAME"]
+                pw = app.config["USER_ADMIN_PASSWORD"]
+                user = User.create_new(email=login, name=name, password_hash=pw)
+                app.logger.info(user)
+                db.session.add(user)
+                db.session.commit()
+                app.logger.debug("---------------------------------------------------")
+            else:
+                app.logger.debug("---------------------------------------------------")
+                app.logger.info(" User.count() > 0")
+                app.logger.debug("---------------------------------------------------")
 
     @staticmethod
     @blueprint_app_user.route("/login", methods=["GET"])
