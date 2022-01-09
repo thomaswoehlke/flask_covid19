@@ -59,7 +59,14 @@ class AllUrls:
             o.read()
             db.session.add(o)
         db.session.commit()
-        return redirect(url_for("app_all.url_all_notification"))
+        page -= 1
+        if page > 1:
+            return redirect(
+                url_for("app_all.url_all_notification", page=page)
+            )
+        else:
+            return redirect(url_for("app_all.url_all_notification"))
+
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")

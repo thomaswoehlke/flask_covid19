@@ -167,12 +167,6 @@ class Task(db.Model, AllEntityMixinBase):
             .paginate(page, per_page=items_per_page)
 
     @classmethod
-    def mark_read(cls, page: int):
-        page_data = cls.notifications_get(page)
-        for pd in page_data.items:
-            pass
-
-    @classmethod
     def get_rki_full_update_broken_date(cls):
         '''select * from task where datum_finished is null and task_name like '__full_update_data: %'; '''
         result = db.session.query(cls) \
