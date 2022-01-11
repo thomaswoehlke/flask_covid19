@@ -62,7 +62,7 @@ class AppUserUrls:
         if current_user.is_authenticated:
             return redirect(url_for("app_web_user.profile"))
         form = LoginForm()
-        return flask.render_template("../../app_web_user/templates/app_web_user/login.html", form=form,
+        return flask.render_template("app_web_user/login.html", form=form,
                                      page_info=page_info)
 
     @staticmethod
@@ -79,7 +79,7 @@ class AppUserUrls:
                 return redirect(url_for("app_web_user.login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("app_web_user.profile"))
-        return flask.render_template("../../app_web_user/templates/app_web_user/login.html", form=form,
+        return flask.render_template("app_web_user/login.html", form=form,
                                      page_info=page_info)
 
     @staticmethod
@@ -87,7 +87,7 @@ class AppUserUrls:
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
-        return flask.render_template("../../app_web_user/templates/app_web_user/profile.html", page_info=page_info)
+        return flask.render_template("app_web_user/profile.html", page_info=page_info)
 
     @staticmethod
     @app_web_user.route("/logout")
@@ -123,7 +123,7 @@ class AppUserUrls:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "../../app_web_user/templates/app_web_user/user_info.html", page_data=page_data, page_info=page_info
+            "app_web_user/user_info.html", page_data=page_data, page_info=page_info
         )
 
     @staticmethod
@@ -131,7 +131,7 @@ class AppUserUrls:
     @login_required
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
-        return render_template("../../app_web_user/templates/app_web_user/user_tasks.html", page_info=page_info)
+        return render_template("app_web_user/user_tasks.html", page_info=page_info)
 
 
 app_user_urls = AppUserUrls()

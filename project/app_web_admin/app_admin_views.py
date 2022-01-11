@@ -1,4 +1,5 @@
 from celery import states
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -6,8 +7,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
+from project.app_bootstrap.database import app, celery
 from project.app_web.web.web_dispachter_service import admin_service
 from project.app_web.web.web_model_transient import WebPageContent
 
@@ -35,7 +35,7 @@ class AppAdminUrls:
     def url_admin_status():
         page_info = WebPageContent("Admin", "System Status")
         return render_template(
-            "../../app_web_admin/templates/app_web_admin/admin_status.html", page_info=page_info)
+            "app_web_admin/admin_status.html", page_info=page_info)
 
     @staticmethod
     @app_web_admin.route("/info")
@@ -43,7 +43,7 @@ class AppAdminUrls:
     def url_admin_info():
         page_info = WebPageContent("Admin", "Info")
         return render_template(
-            "../../app_web_admin/templates/app_web_admin/admin_info.html", page_info=page_info)
+            "app_web_admin/admin_info.html", page_info=page_info)
 
     @staticmethod
     @app_web_admin.route("/database_table_row_count")
@@ -52,7 +52,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Row Count")
         db_table_row_count = admin_service.database_table_row_count()
         return render_template(
-            "../../app_web_admin/templates/app_web_admin/table_row_count/status.html",
+            "app_web_admin/table_row_count/status.html",
             db_table_row_count=db_table_row_count,
             page_info=page_info
         )
@@ -64,7 +64,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = admin_service.database_import_status()
         return render_template(
-            "../../app_web_admin/templates/app_web_admin/database_import_status.html",
+            "app_web_admin/database_import_status.html",
             db_import_status=db_import_status,
             page_info=page_info
         )

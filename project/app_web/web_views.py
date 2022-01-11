@@ -4,7 +4,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app
+from project.app_bootstrap.database import app, db, celery
 from project.app_web.web.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
 from project.app_web_admin.app_admin_views import app_web_admin
@@ -70,7 +70,7 @@ class WebUrls:
     def url_admin_index():
         page_info = WebPageContent("Admin", "flask admin")
         return render_template(
-            "../app_web_admin/templates/app_web_admin/index.html",
+            "app_web_admin/index.html",
             page_info=page_info
         )
 
