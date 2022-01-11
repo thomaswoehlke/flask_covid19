@@ -17,7 +17,7 @@ from project.data_all.notifications.notifications_model import Task
 drop_and_create_data_again = True
 
 blueprint_app_all = Blueprint(
-    "app_all", __name__, template_folder="templates", url_prefix="/app/all"
+    "data_all", __name__, template_folder="templates", url_prefix="/app/all"
 )
 
 
@@ -37,7 +37,7 @@ class AllUrls:
     @login_required
     def url_all_info():
         page_info = WebPageContent("All", "Info")
-        return render_template("app_all/app_all_info.html", page_info=page_info)
+        return render_template("data_all/app_all_info.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_all.route("/notification/page/<int:page>")
@@ -46,7 +46,7 @@ class AllUrls:
     def url_all_notification(page=1):
         page_info = WebPageContent("All", "Notifications")
         page_data = Task.notifications_get(page)
-        return render_template("app_all/notification/app_all_notification.html",
+        return render_template("data_all/notification/app_all_notification.html",
                                page_data=page_data,
                                page_info=page_info)
 
@@ -59,7 +59,7 @@ class AllUrls:
             o.read()
             db.session.add(o)
         db.session.commit()
-        return redirect(url_for("app_all.url_all_notification"))
+        return redirect(url_for("data_all.url_all_notification"))
 
     @staticmethod
     @blueprint_app_all.route("/delete_last_day")
@@ -70,7 +70,7 @@ class AllUrls:
         all_dispachter_matrix_service.delete_last_day()
         flash("url_all_delete_last_day [done]")
         app.logger.info("url_all_delete_last_day [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
 
 all_urls = AllUrls()
@@ -291,7 +291,7 @@ class AllTaskUrls:
         app.logger.info("url_task_all_download_all_files [start]")
         all_dispachter_matrix_service.download()
         app.logger.info("url_task_all_download_all_files [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/import")
@@ -302,7 +302,7 @@ class AllTaskUrls:
         flash(message="async url_task_all_import_all_files [start]", category="warning")
         app.logger.warn("async url_task_all_import_all_files [start]")
         app.logger.info("url_task_all_import_all_files [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update/dimension_tables")
@@ -316,7 +316,7 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_update_full_dimension_tables [start]")
         app.logger.info("url_task_all_update_full_dimension_tables [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/update/dimension_tables")
@@ -329,7 +329,7 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_update_dimension_tables [start]")
         app.logger.info("url_task_all_update_dimension_tables [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update/fact_table")
@@ -342,7 +342,7 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_full_update_fact_table [start]")
         app.logger.info("url_task_all_full_update_fact_table [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/update/fact_table")
@@ -353,7 +353,7 @@ class AllTaskUrls:
         flash(message="async task_all_update_fact_table [start]", category="warning")
         app.logger.warn("async task_all_update_fact_table [start]")
         app.logger.info("url_task_all_update_fact_table [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/full/update")
@@ -365,7 +365,7 @@ class AllTaskUrls:
         flash(message="async task_all_full_update [start]", category="warning")
         app.logger.warn("async task_all_full_update [start]")
         app.logger.info("url_task_all_full_update [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
     @blueprint_app_all.route("/task/update")
@@ -377,7 +377,7 @@ class AllTaskUrls:
         flash(message="async task_all_update [start]", category="warning")
         app.logger.warn("async task_all_update [start]")
         app.logger.info("url_task_all_update [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
 
 all_task_urls = AllTaskUrls()

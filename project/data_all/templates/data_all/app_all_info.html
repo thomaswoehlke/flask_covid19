@@ -1,7 +1,7 @@
 {% extends 'app_web/layout/page_layout.html' %}
 
 {% block navtabs %}
-    {% include 'app_all/navigation/app_all_navtabs.html' %}
+    {% include 'data_all/navigation/app_all_navtabs.html' %}
 {% endblock %}
 
 {% block content %}
@@ -29,22 +29,22 @@
                             <div class="accordion-body">
                                 <div class="d-grid gap-2 d-block">
                                     <a class="btn btn-success btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_download') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_download') }}"
                                        role="button">All :: files :: download</a>
                                     <a class="btn btn-info btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_import') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_import') }}"
                                        role="button">All :: files :: import</a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_update_dimension_tables') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_update_dimension_tables') }}"
                                        role="button">All :: update :: dimension_tables</a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_update_fact_table') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_update_fact_table') }}"
                                        role="button">All :: update :: fact_table</a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_update') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_update') }}"
                                        role="button">All :: update</a>
                                     <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_all_delete_last_day') }}"
+                                       href="{{ url_for( 'data_all.url_all_delete_last_day') }}"
                                        role="button">All :: delete last day</a>
                                 </div>
                             </div>
@@ -67,32 +67,32 @@
                             <div class="accordion-body">
                                 <div class="d-grid gap-2 d-block">
                                     <a class="btn btn-success btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_download') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_download') }}"
                                        role="button">
                                       All :: files :: download
                                     </a>
                                     <a class="btn btn-info btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_import') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_import') }}"
                                        role="button">
                                       All :: files :: import
                                     </a>
                                     <a class="btn btn-warning btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_full_update_dimension_tables') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_full_update_dimension_tables') }}"
                                        role="button">
                                       All :: full update :: dimension_tables
                                     </a>
                                     <a class="btn btn-secondary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_full_update_fact_table') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_full_update_fact_table') }}"
                                        role="button">
                                       All :: full update :: fact_table
                                     </a>
                                     <a class="btn btn-primary btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_task_all_full_update') }}"
+                                       href="{{ url_for( 'data_all.url_task_all_full_update') }}"
                                        role="button">
                                       All :: full update
                                     </a>
                                     <a class="btn btn-danger btn-lg btn-block text-left"
-                                       href="{{ url_for( 'app_all.url_all_delete_last_day') }}"
+                                       href="{{ url_for( 'data_all.url_all_delete_last_day') }}"
                                        role="button">
                                       All :: delete last day
                                     </a>
