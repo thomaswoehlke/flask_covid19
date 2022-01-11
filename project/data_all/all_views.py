@@ -7,7 +7,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, db, celery
+from project.data.database import app, db, celery
 from project.web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )

@@ -5,10 +5,10 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
 from project.web.web.web_dispachter_service import vaccination_service
 from project.web.web.web_model_transient import WebPageContent
 from project.data_vaccination.model.vaccination_model_data import VaccinationData

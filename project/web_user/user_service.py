@@ -1,4 +1,4 @@
-from project.app_bootstrap.database import app
+from project.data.database import app
 from project.web_user.user_model import LoginForm
 from project.web_user.user_model import User
 

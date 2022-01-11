@@ -1,4 +1,4 @@
-from project.app_bootstrap.database import app, db
+from project.data.database import app, db
 from project.web_admin.app_admin_service import AdminService
 from project.web_user.user_service import UserService
 from project.web.web.web_service import WebService

@@ -4,7 +4,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, db
+from project.data.database import app, db
 from project.web.web.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
 

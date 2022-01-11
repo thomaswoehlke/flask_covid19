@@ -8,7 +8,7 @@ from project.data_all.model.all_model_mixins import AllEntityMixin, AllImportMix
 from project.data_all.model.all_model_mixins import AllDateReportedMixin, AllLocationMixin
 from project.data_all.model.all_model_mixins import AllFactTableTimeSeriesMixin
 from project.data_all.model.all_model_mixins import AllLocationGroupMixin, AllFactTableMixin
-from project.app_bootstrap.database import db, items_per_page
+from project.data.database import db, items_per_page
 
 
 class AllEntity(db.Model, AllEntityMixin):

@@ -12,8 +12,8 @@ from flask_login import login_user
 from flask_login import logout_user
 from sqlalchemy.exc import OperationalError
 
-from project.app_bootstrap.database import app, db
-from project.app_bootstrap.database import admin, login_manager
+from project.data.database import app, db
+from project.data.database import admin, login_manager
 from project.web_user.user_model import LoginForm
 from project.web_user.user_model import User
 from project.web.web.web_model_transient import WebPageContent

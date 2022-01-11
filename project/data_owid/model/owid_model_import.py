@@ -1,6 +1,6 @@
 
-from project.app_bootstrap.database import db
-from project.app_bootstrap.database import items_per_page
+from project.data.database import db
+from project.data.database import items_per_page
 
 from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import Bundle

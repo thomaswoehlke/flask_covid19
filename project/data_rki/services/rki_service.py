@@ -1,6 +1,6 @@
 from datetime import date
 
-from project.app_bootstrap.database import app
+from project.data.database import app
 from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin

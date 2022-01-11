@@ -1,4 +1,4 @@
-from project.app_bootstrap.database import db
+from project.data.database import db
 from project.data_all.model.all_model import AllLocation
 
 from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent

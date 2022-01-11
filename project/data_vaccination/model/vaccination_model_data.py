@@ -1,6 +1,6 @@
 from sqlalchemy import Sequence
 
-from project.app_bootstrap.database import db
+from project.data.database import db
 from project.data_all.model.all_model import AllFactTableTimeSeries
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,

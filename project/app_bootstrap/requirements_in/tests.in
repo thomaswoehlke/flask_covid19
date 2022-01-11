@@ -1,5 +1,0 @@
--r build.in
-pytest
-pytest-runner
-pytest-flask
-pytest-flask-sqlalchemy

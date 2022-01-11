@@ -7,7 +7,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, celery
+from project.data.database import app, celery
 from project.web.web.web_dispachter_service import admin_service
 from project.web.web.web_model_transient import WebPageContent
 

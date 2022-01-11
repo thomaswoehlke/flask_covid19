@@ -1,4 +1,4 @@
-from project.app_bootstrap.database import app
+from project.data.database import app
 from project.data_all.services.all_config import BlueprintConfig
 
 

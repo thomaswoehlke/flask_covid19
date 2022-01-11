@@ -1,4 +1,4 @@
-from project.app_bootstrap.database import app
+from project.data.database import app
 from project.data_all.services.all_service_mixins import AllServiceMixin
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.services.ecdc_service import EcdcService

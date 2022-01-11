@@ -1,7 +1,7 @@
 version: 2
 python:
   install:
-    - requirements: project/app_bootstrap/requirements_linux/linux.txt
+    - requirements: project/data/requirements_linux/linux.txt
     - method: pip
       path: .
 sphinx:

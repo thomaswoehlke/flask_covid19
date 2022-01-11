@@ -1,5 +1,5 @@
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
+from project.data.database import app
+from project.data.database import db
 from project.data_all.model.all_model_date_reported_factory import \
     AllDateReportedFactory
 
