@@ -23,7 +23,7 @@ blueprint_application = Blueprint(
 
 app.register_blueprint(blueprint_application, url_prefix="/")
 
-app.register_blueprint(blueprint_app_user, url_prefix="/app/usr")
+app.register_blueprint(blueprint_app_user, url_prefix="/app/app_web_user")
 app.register_blueprint(blueprint_app_admin, url_prefix="/app/admin")
 app.register_blueprint(blueprint_app_all, url_prefix="/app/all")
 
