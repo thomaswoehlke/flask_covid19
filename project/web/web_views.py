@@ -43,9 +43,7 @@ app.register_blueprint(app_rki, url_prefix="/rki/")
 
 class WebUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] WebUrls ")
-        app.logger.debug("-----------------------------------------------------------")
         with app.app_context():
             task = Notification.create(sector="WEB", task_name="init").read()
             Notification.finish(task_id=task.id)

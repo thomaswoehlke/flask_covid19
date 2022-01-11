@@ -25,9 +25,7 @@ app_web_admin = Blueprint(
 
 class AppAdminUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] AppAdminUrls ")
-        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @app_web_admin.route("/status")

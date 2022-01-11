@@ -48,17 +48,14 @@ who_service = WhoService(db)
 
 class AdminService:
     def __init__(self, database):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.debug(" Admin Service [init]")
-        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.limit_nr = 20
         self.file_path_parent = "data" + os.sep + "db"
         self.file_path = self.file_path_parent + os.sep + "flask_covid19.sql"
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [web] Admin Service ")
 
     def database_dump(self):
+        app.logger.info("-----------------------------------------------------------")
         app.logger.info(" AdminService.database_dump() [begin]")
         app.logger.info("-----------------------------------------------------------")
         app.logger.info(os.getcwd())
@@ -97,6 +94,7 @@ class AdminService:
         app.logger.info(" start: " + str(cmd))
         returncode = self.__run_ome_shell_command(cmd)
         app.logger.info(" result: " + str(returncode))
+        app.logger.info("-----------------------------------------------------------")
         app.logger.info(" AdminService.database_dump() [done]")
         app.logger.info("-----------------------------------------------------------")
         return self

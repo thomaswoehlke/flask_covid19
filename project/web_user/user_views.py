@@ -34,9 +34,7 @@ admin.add_view(ModelView(User, db.session, category="USR"))
 
 class AppUserUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [USR] UserUrls ")
-        app.logger.debug("-----------------------------------------------------------")
         with app.app_context():
             db.create_all()
             if User.count() == 0:
