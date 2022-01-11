@@ -1,4 +1,4 @@
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
@@ -21,7 +21,7 @@ class OwidTestService:
         app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="OWID", task_name='full_update_dimension_tables')
+        task = Notification.create(sector="OWID", task_name='full_update_dimension_tables')
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -64,5 +64,5 @@ class OwidTestService:
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [DONE]")
         app.logger.debug("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

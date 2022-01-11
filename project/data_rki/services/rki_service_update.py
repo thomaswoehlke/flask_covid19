@@ -6,7 +6,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data import RkiDataFactory
@@ -70,7 +70,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
-        task = Task.create(sector="RKI", task_name="__update_date_reported")
+        task = Notification.create(sector="RKI", task_name="__update_date_reported")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -92,11 +92,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_location_groups(self):
-        task = Task.create(sector="RKI", task_name="__update_location_groups")
+        task = Notification.create(sector="RKI", task_name="__update_location_groups")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update location_groups [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -116,11 +116,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] update location_groups [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_locations(self):
-        task = Task.create(sector="RKI", task_name="__update_locations")
+        task = Notification.create(sector="RKI", task_name="__update_locations")
         self.__update_location_groups()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_locations [begin]")
@@ -147,11 +147,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_locations [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_altersgruppen(self):
-        task = Task.create(sector="RKI", task_name="__update_altersgruppen")
+        task = Notification.create(sector="RKI", task_name="__update_altersgruppen")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_altersgruppen [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -170,11 +170,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_altersgruppen [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_data(self):
-        task = Task.create(
+        task = Notification.create(
             sector="RKI",
             task_name="__update_data"
         )
@@ -192,7 +192,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             app.logger.info(str(my_meldedatum.datum))
             my_meldedatum.processed_update = True
             # my_meldedatum_datum = my_meldedatum.datum
-            task_meldedatum = Task.create(
+            task_meldedatum = Notification.create(
                 sector="RKI",
                 task_name="__update_data: {}".format(str(my_meldedatum.datum))
             )
@@ -236,38 +236,38 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
             task_meldedatum.data2_code = i
             task_meldedatum.data3_txt = "nr of day in this run"
             task_meldedatum.data3_code = d
-            Task.finish(task_id=task_meldedatum.id)
+            Notification.finish(task_id=task_meldedatum.id)
         app.logger.info(" [RKI] __update_data : {} total {} rows".format(
             str(d), str(i)
         ))
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __update_data [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(
+        task = Notification.create(
             sector="RKI",
             task_name="update_dimension_tables"
         )
         self.__update_date_reported()
         self.__update_locations()
         self.__update_altersgruppen()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(
+        task = Notification.create(
             sector="RKI",
             task_name="update_fact_table"
         )
         self.__update_data()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Task.create(
+        task = Notification.create(
             sector="RKI",
             task_name="delete_last_day"
         )
@@ -296,11 +296,11 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] delete_last_day [DONE]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_all_unifinished_update_days(self):
-        task = Task.create(
+        task = Notification.create(
             sector="RKI",
             task_name="delete_all_unifinished_update_days"
         )
@@ -311,5 +311,5 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" [RKI] delete_all_unifinished_update_days [DONE]")
         app.logger.debug("-----------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

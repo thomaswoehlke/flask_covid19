@@ -5,7 +5,7 @@ from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
@@ -87,17 +87,17 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(
+        task = Notification.create(
             sector="Vaccination", task_name="update_dimension_tables"
         ).read()
         self.__update_date_reported()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="Vaccination", task_name="update_fact_table").read()
+        task = Notification.create(sector="Vaccination", task_name="update_fact_table").read()
         self.__update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):

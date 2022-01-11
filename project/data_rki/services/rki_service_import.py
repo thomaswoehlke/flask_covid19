@@ -5,7 +5,7 @@ from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_service_mixins import AllServiceMixinImport
 
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.model.rki_model_import import RkiImportFactory
 from project.data_rki.model.rki_model_import import RkiServiceImportFactory
@@ -30,7 +30,7 @@ class RkiServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="RKI", task_name="import_file")
+        task = Notification.create(sector="RKI", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import_file  [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -76,5 +76,5 @@ class RkiServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import_file  [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

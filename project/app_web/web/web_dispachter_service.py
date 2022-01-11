@@ -9,7 +9,7 @@ from project.data_owid.services.owid_service import OwidService
 from project.data_rki.services.rki_service import RkiService
 from project.data_vaccination.services.vaccination_service import VaccinationService
 from project.data_who.services.who_service import WhoService
-from project.data_all.data_all_notifications.notifications_service import TaskService
+from project.data_all.data_all_notifications.notifications_service import NotificationService
 
 #######################################################################################
 #
@@ -24,7 +24,7 @@ owid_service = OwidService(db)
 ecdc_service = EcdcService(db)
 vaccination_service = VaccinationService(db)
 rki_service = RkiService(db)
-task_service = TaskService(db)
+task_service = NotificationService(db)
 
 all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     who_service=who_service,

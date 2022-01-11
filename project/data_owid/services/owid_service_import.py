@@ -8,7 +8,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_import import OwidImportFactory
 
@@ -32,7 +32,7 @@ class OwidServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="OWID", task_name="import_file")
+        task = Notification.create(sector="OWID", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -80,5 +80,5 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

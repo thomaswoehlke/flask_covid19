@@ -6,7 +6,7 @@ from pandas import Index
 
 from project.app_bootstrap.database import app, db
 from project.app_web.user.user_model import User
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
@@ -200,7 +200,7 @@ class AdminService:
             RkiImport,
             RkiAltersgruppe,
             RkiBundesland,
-            Task,
+            Notification,
             User,
             WhoDateReported,
             OwidDateReported,

@@ -5,7 +5,7 @@ from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_data import WhoDataFactory
 from project.data_who.model.who_model_date_reported import WhoDateReported
@@ -69,7 +69,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
-        task = Task.create(sector="WHO", task_name="__update_date_reported").read()
+        task = Notification.create(sector="WHO", task_name="__update_date_reported").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -89,11 +89,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_location_group(self):
-        task = Task.create(sector="WHO", task_name="__update_location_group").read()
+        task = Notification.create(sector="WHO", task_name="__update_location_group").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location_group [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -119,11 +119,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location_group [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_location(self):
-        task = Task.create(sector="WHO", task_name="__update_location").read()
+        task = Notification.create(sector="WHO", task_name="__update_location").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -162,11 +162,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __update_data(self):
-        task = Task.create(sector="WHO", task_name="__update_data").read()
+        task = Notification.create(sector="WHO", task_name="__update_data").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -208,11 +208,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update data [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="WHO", task_name="update_dimension_tables").read()
+        task = Notification.create(sector="WHO", task_name="update_dimension_tables").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -222,11 +222,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="WHO", task_name="update_fact_table").read()
+        task = Notification.create(sector="WHO", task_name="update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -235,11 +235,11 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update fact_table [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="WHO", task_name="delete_last_day").read()
+        task = Notification.create(sector="WHO", task_name="delete_last_day").read()
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [WHO] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -257,5 +257,5 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [WHO] delete last_day [DONE]")
         app.logger.debug("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

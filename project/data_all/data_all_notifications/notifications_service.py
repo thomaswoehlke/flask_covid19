@@ -1,19 +1,19 @@
 from project.app_bootstrap.database import app
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 
 
-class TaskService:
+class NotificationService:
     def __init__(self, database):
         app.logger.debug("-----------------------------------------------------------")
-        app.logger.debug(" [Task] Service [init]")
+        app.logger.debug(" [Notification] Service [init]")
         app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" ready: [Task] Service")
+        app.logger.info(" ready: [Notification] Service")
         app.logger.debug("-----------------------------------------------------------")
 
     def notifications_count(self):
-        return Task.notifications_count()
+        return Notification.notifications_count()
 
     def notifications_find(self):
-        return Task.notifications_find()
+        return Notification.notifications_find()

@@ -12,7 +12,7 @@ from project.app_web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
 from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 
 drop_and_create_data_again = True
 
@@ -45,7 +45,7 @@ class AllUrls:
     @login_required
     def url_all_notification(page=1):
         page_info = WebPageContent("All", "Notifications")
-        page_data = Task.notifications_get(page)
+        page_data = Notification.notifications_get(page)
         return render_template(
             "data_all_notification/data_all_notification.html",
             page_data=page_data,
@@ -55,7 +55,7 @@ class AllUrls:
     @blueprint_app_all.route("/notification/read")
     @login_required
     def url_all_notification_mark_read():
-        data = Task.notifications_find_asc(10)
+        data = Notification.notifications_find_asc(10)
         for o in data:
             o.read()
             db.session.add(o)

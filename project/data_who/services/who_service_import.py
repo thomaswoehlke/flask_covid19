@@ -7,7 +7,7 @@ from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
-from project.data_all.data_all_notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_import import WhoImportFactory
 
@@ -34,7 +34,7 @@ class WhoServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="WHO", task_name="import_file").read()
+        task = Notification.create(sector="WHO", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -85,5 +85,5 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
