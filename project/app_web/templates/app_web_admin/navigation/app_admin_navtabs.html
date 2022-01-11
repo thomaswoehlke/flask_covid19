@@ -6,13 +6,13 @@
                         {% if current_user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="{{ url_for( 'app_admin.url_admin_database_table_row_count') }}">
+                               href="{{ url_for( 'app_web_admin.url_admin_database_table_row_count') }}">
                               <i class="fas fa-database"></i> DB Row Count
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="{{ url_for( 'app_admin.url_admin_database_import_status') }}">
+                               href="{{ url_for( 'app_web_admin.url_admin_database_import_status') }}">
                               <i class="fas fa-database"></i> DB Import Status
                             </a>
                         </li>
@@ -25,7 +25,7 @@
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="{{ url_for( 'app_admin.url_admin_info') }}">
+                               href="{{ url_for( 'app_web_admin.url_admin_info') }}">
                               <i class="fas fa-play-circle"></i> Admin
                             </a>
                         </li>

@@ -239,14 +239,14 @@ class VaccinationTaskUrls:
         flash("vaccination_service.download started")
         vaccination_service.download()
         flash("vaccination_service.download done")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_vaccination.route("/task/import")
     def url_task_vaccination_import():
         vaccination_tasks.task_vaccination_import_file.apply_async()
         flash("task_vaccination_import_file started")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_vaccination.route("/task/update/full/dimension-tables")
@@ -292,7 +292,7 @@ class VaccinationTaskUrls:
         flash("vaccination_service.download done")
         vaccination_tasks.task_vaccination_update.apply_async()
         flash("task_vaccination_update started")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
 
 
 vaccination_task_urls = VaccinationTaskUrls()

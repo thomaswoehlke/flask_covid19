@@ -70,7 +70,7 @@ class BlueprintApplicationUrls:
     def url_admin_index():
         page_info = WebPageContent("Admin", "flask admin")
         return render_template(
-            "app_admin/index.html",
+            "app_web_admin/index.html",
             page_info=page_info
         )
 

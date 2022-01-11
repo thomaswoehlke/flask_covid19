@@ -14,7 +14,7 @@ from project.app_web.web.web_model_transient import WebPageContent
 drop_and_create_data_again = True
 
 blueprint_app_admin = Blueprint(
-    "app_admin", __name__, template_folder="templates", url_prefix="/app/admin"
+    "app_web_admin", __name__, template_folder="templates", url_prefix="/app/admin"
 )
 
 
@@ -34,14 +34,14 @@ class AppAdminUrls:
     @login_required
     def url_admin_status():
         page_info = WebPageContent("Admin", "System Status")
-        return render_template("app_admin/admin_status.html", page_info=page_info)
+        return render_template("app_web_admin/admin_status.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_admin.route("/info")
     @login_required
     def url_admin_info():
         page_info = WebPageContent("Admin", "Info")
-        return render_template("app_admin/admin_info.html", page_info=page_info)
+        return render_template("app_web_admin/admin_info.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_admin.route("/database_table_row_count")
@@ -50,7 +50,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Row Count")
         db_table_row_count = app_admin_service.database_table_row_count()
         return render_template(
-            "app_admin/table_row_count/status.html",
+            "app_web_admin/table_row_count/status.html",
             db_table_row_count=db_table_row_count,
             page_info=page_info
         )
@@ -62,7 +62,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = app_admin_service.database_import_status()
         return render_template(
-            "app_admin/database_import_status.html",
+            "app_web_admin/database_import_status.html",
             db_import_status=db_import_status,
             page_info=page_info
         )
@@ -114,7 +114,7 @@ class AppAdminTaskUrls:
         app_admin_tasks.task_admin_alive_message.apply_async()
         flash("alive_message_task started")
         app.logger.info("url_task_admin_message_start [done]")
-        return redirect(url_for("app_admin.url_admin_tasks"))
+        return redirect(url_for("app_web_admin.url_admin_tasks"))
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/dump")
@@ -124,7 +124,7 @@ class AppAdminTaskUrls:
         app_admin_service.database_dump()
         flash("admin_service.run_admin_database_dump started")
         app.logger.info("url_task_admin_database_dump [done]")
-        return redirect(url_for("app_admin.url_admin_tasks"))
+        return redirect(url_for("app_web_admin.url_admin_tasks"))
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/reimport")
@@ -134,7 +134,7 @@ class AppAdminTaskUrls:
         app_admin_service.database_dump_reimport()
         flash("admin_service.run_admin_database_import started")
         app.logger.info("url_task_admin_database_dump_reimport [done]")
-        return redirect(url_for("app_admin.url_admin_tasks"))
+        return redirect(url_for("app_web_admin.url_admin_tasks"))
 
     @staticmethod
     @blueprint_app_admin.route("/task/database/drop_create")
@@ -144,7 +144,7 @@ class AppAdminTaskUrls:
         app_admin_service.database_drop_and_create()
         flash("admin_service.run_admin_database_drop started")
         app.logger.info("url_task_admin_database_dropcreate [done]")
-        return redirect(url_for("app_admin.url_admin_tasks"))
+        return redirect(url_for("app_web_admin.url_admin_tasks"))
 
 
 app_admin_task_urls = AppAdminTaskUrls()
