@@ -309,7 +309,7 @@ class RkiTaskUrls:
         rki_service.download()
         flash(" [RKI] url_task_rki_download [done]")
         app.logger.info(" [RKI] url_task_rki_download [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/import")
@@ -319,7 +319,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_import started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_import [async start]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/dimension-tables")
@@ -339,7 +339,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_dimension_tables started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_dimension_tables [async start]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/fact-table")
@@ -359,7 +359,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_fact_table started")
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_fact_table [async start]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/full/update")
@@ -387,7 +387,7 @@ class RkiTaskUrls:
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_update [async start]")
         app.logger.info(" [RKI] url_task_rki_update [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 rki_task_urls = RkiTaskUrls()

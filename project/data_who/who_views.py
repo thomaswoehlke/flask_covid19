@@ -595,7 +595,7 @@ class WhoTaskUrls:
         who_service.download()
         flash(" [WHO] who_service.download_files() [done]")
         app.logger.info(" [WHO] url_download_files [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_who.route("/task/files/import")
@@ -607,7 +607,7 @@ class WhoTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [WHO] async task_who_import_files [start]")
         app.logger.info(" [WHO] url_task_who_import_files [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_who.route("/task/update/full/dimension_tables")
@@ -683,7 +683,7 @@ class WhoTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [WHO] async task_who_update [start]")
         app.logger.info(" [WHO] url_task_who_update [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 who_task_urls = WhoTaskUrls()

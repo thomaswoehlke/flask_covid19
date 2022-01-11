@@ -7,7 +7,7 @@ from flask_login import login_required
 from project.app_bootstrap.database import app, db, celery
 from project.app_web.web.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
-from project.app_web_admin.app_admin_views import app_web_admin
+from project.web_admin.app_admin_views import app_web_admin
 from project.web_user.user_views import app_web_user
 from project.data_all.all_views import app_all
 from project.data_all_notifications.notifications_view import app_notification

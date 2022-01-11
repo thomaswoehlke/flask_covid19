@@ -14,7 +14,7 @@ from project.app_web.web.web_model_transient import WebPageContent
 drop_and_create_data_again = True
 
 app_web_admin = Blueprint(
-    "app_web_admin", __name__, template_folder="templates", url_prefix="/app/admin"
+    "web_admin", __name__, template_folder="templates", url_prefix="/app/admin"
 )
 
 
@@ -116,7 +116,7 @@ class AppAdminTaskUrls:
         app_admin_tasks.task_admin_alive_message.apply_async()
         flash("alive_message_task started")
         app.logger.info("url_task_admin_message_start [done]")
-        return redirect(url_for("app_web_admin.url_admin_tasks"))
+        return redirect(url_for("web_admin.url_admin_tasks"))
 
     @staticmethod
     @app_web_admin.route("/task/database/dump")
@@ -126,7 +126,7 @@ class AppAdminTaskUrls:
         admin_service.database_dump()
         flash("admin_service.run_admin_database_dump started")
         app.logger.info("url_task_admin_database_dump [done]")
-        return redirect(url_for("app_web_admin.url_admin_tasks"))
+        return redirect(url_for("web_admin.url_admin_tasks"))
 
     @staticmethod
     @app_web_admin.route("/task/database/reimport")
@@ -136,7 +136,7 @@ class AppAdminTaskUrls:
         admin_service.database_dump_reimport()
         flash("admin_service.run_admin_database_import started")
         app.logger.info("url_task_admin_database_dump_reimport [done]")
-        return redirect(url_for("app_web_admin.url_admin_tasks"))
+        return redirect(url_for("web_admin.url_admin_tasks"))
 
     @staticmethod
     @app_web_admin.route("/task/database/drop_create")
@@ -146,7 +146,7 @@ class AppAdminTaskUrls:
         admin_service.database_drop_and_create()
         flash("admin_service.run_admin_database_drop started")
         app.logger.info("url_task_admin_database_dropcreate [done]")
-        return redirect(url_for("app_web_admin.url_admin_tasks"))
+        return redirect(url_for("web_admin.url_admin_tasks"))
 
 
 app_admin_task_urls = AppAdminTaskUrls()

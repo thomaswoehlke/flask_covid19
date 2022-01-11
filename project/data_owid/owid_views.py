@@ -532,7 +532,7 @@ class OwidTaskUrls:
         owid_service.download()
         flash("owid_service.run_download_only [done]")
         app.logger.info("url_owid_task_download_only [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_owid.route("/task/import/only")
@@ -543,7 +543,7 @@ class OwidTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn("started task_owid_import_only")
         app.logger.info("url_task_owid_import_only [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_owid.route("/task/full/update/dimension-tables")
@@ -612,7 +612,7 @@ class OwidTaskUrls:
         flash("task_owid_update started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_task_owid_update [done]")
-        return redirect(url_for("app_web_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 owid_task_urls = OwidTaskUrls()
