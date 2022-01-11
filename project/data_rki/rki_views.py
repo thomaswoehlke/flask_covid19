@@ -309,7 +309,7 @@ class RkiTaskUrls:
         rki_service.download()
         flash(" [RKI] url_task_rki_download [done]")
         app.logger.info(" [RKI] url_task_rki_download [done]")
-        return redirect(url_for("rki.url_rki_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/import")
@@ -319,7 +319,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_import started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_import [async start]")
-        return redirect(url_for("rki.url_rki_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/dimension-tables")
@@ -339,7 +339,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_dimension_tables started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_dimension_tables [async start]")
-        return redirect(url_for("rki.url_rki_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/fact-table")
@@ -359,15 +359,15 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_fact_table started")
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_fact_table [async start]")
-        return redirect(url_for("rki.url_rki_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/full/update")
     def url_task_rki_full_update():
         app.logger.info(" [RKI] url_task_rki_full_update [start]")
-        flash(" [RKI] url_task_rki_download [start]")
+        flash(" [RKI] url_task_rki_full_update [start]")
         rki_service.download()
-        flash(" [RKI] url_task_rki_download [done]")
+        flash(" [RKI] url_task_rki_full_update [done]")
         rki_tasks.task_rki_full_update.apply_async()
         flash(" [RKI] task_rki_full_update started")
         flash(message=" [RKI] long running background task started", category="warning")
@@ -379,15 +379,15 @@ class RkiTaskUrls:
     @app_rki.route("/task/update")
     def url_task_rki_update():
         app.logger.info(" [RKI] url_task_rki_update [start]")
-        flash(" [RKI] url_task_rki_download [start]")
+        flash(" [RKI] url_task_rki_update [start]")
         # rki_service.download()
-        flash(" [RKI] url_task_rki_download [done]")
+        flash(" [RKI] url_task_rki_update [done]")
         rki_tasks.task_rki_update.apply_async()
         flash(" [RKI] task_rki_update started")
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_update [async start]")
         app.logger.info(" [RKI] url_task_rki_update [done]")
-        return redirect(url_for("rki.url_rki_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
 
 rki_task_urls = RkiTaskUrls()

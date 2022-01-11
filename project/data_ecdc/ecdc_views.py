@@ -386,7 +386,7 @@ class EcdcTaskUrls:
         ecdc_service.download()
         flash("ecdc_service.download done")
         app.logger.info("url_ecdc_task_download [done]")
-        return redirect(url_for("ecdc.url_ecdc_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_ecdc.route("/task/import")
@@ -396,7 +396,7 @@ class EcdcTaskUrls:
         flash("task_ecdc_import started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_ecdc_task_import [done]")
-        return redirect(url_for("ecdc.url_ecdc_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_ecdc.route("/task/update/dimension-tables")
@@ -460,7 +460,7 @@ class EcdcTaskUrls:
         flash("task_ecdc_update started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_task_ecdc_update [done]")
-        return redirect(url_for("ecdc.url_ecdc_info"))
+        return redirect(url_for("app_admin.url_admin_database_import_status"))
 
 
 ecdc_task_urls = EcdcTaskUrls()
