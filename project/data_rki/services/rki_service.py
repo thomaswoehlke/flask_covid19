@@ -1,9 +1,9 @@
 from datetime import date
 
 from project.app_bootstrap.database import app
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_service_download import AllDownloadService
-from project.data_all.all_service_mixins import AllServiceMixin
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_download import AllDownloadService
+from project.data_all.services.all_service_mixins import AllServiceMixin
 
 from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_data import RkiData

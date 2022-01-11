@@ -1,8 +1,8 @@
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model import AllFactTable
+from project.data_all.model.all_model import AllFactTable
 
-from project.data_all.all_model_date_reported_factory import (
+from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
 from project.data_rki.model.rki_model_data_location import RkiLandkreis

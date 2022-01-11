@@ -3,8 +3,8 @@ import subprocess
 import wget
 
 from project.app_bootstrap.database import app
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_service_mixins import AllServiceMixinDownload
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_mixins import AllServiceMixinDownload
 
 
 class AllDownloadService(AllServiceMixinDownload):

@@ -2,7 +2,7 @@ from sqlalchemy import Sequence
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model import AllFactTable
+from project.data_all.model.all_model import AllFactTable
 
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
 from project.data_owid.model.owid_model_import import OwidImport

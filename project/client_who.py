@@ -1,7 +1,7 @@
 #!/web_user/bin/env python
 import matplotlib.pyplot as plt
 from project.web.cli.data_runner import Runner
-from project.data_all.all_config import BlueprintConfig
+from project.data_all.services.all_config import BlueprintConfig
 
 
 class WhoRunner(Runner):

@@ -5,8 +5,8 @@ from sqlalchemy.orm import Bundle
 
 from project.app_bootstrap.database import db
 from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model import AllImport
-from project.data_all.all_model_date_reported_factory import (
+from project.data_all.model.all_model import AllImport
+from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
 

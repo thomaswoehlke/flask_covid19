@@ -1,6 +1,6 @@
 from datetime import date
 
-from project.data_all.all_model import AllDateReported
+from project.data_all.model.all_model import AllDateReported
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum

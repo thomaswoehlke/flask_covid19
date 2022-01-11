@@ -3,7 +3,7 @@ from sqlalchemy.orm import Bundle
 
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_config import BlueprintConfig
+from project.data_all.services.all_config import BlueprintConfig
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location import RkiLandkreis
 from project.data_rki.model.rki_model_data_location_group import RkiBundesland

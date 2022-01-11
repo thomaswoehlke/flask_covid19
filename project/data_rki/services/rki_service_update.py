@@ -1,10 +1,10 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_model_date_reported_factory import (
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinUpdate
+from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
 
 from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe

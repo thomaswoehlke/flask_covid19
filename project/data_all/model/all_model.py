@@ -4,10 +4,10 @@ from sqlalchemy.orm import subqueryload
 from datetime import date
 
 
-from project.data_all.all_model_mixins import AllEntityMixin, AllImportMixin
-from project.data_all.all_model_mixins import AllDateReportedMixin, AllLocationMixin
-from project.data_all.all_model_mixins import AllFactTableTimeSeriesMixin
-from project.data_all.all_model_mixins import AllLocationGroupMixin, AllFactTableMixin
+from project.data_all.model.all_model_mixins import AllEntityMixin, AllImportMixin
+from project.data_all.model.all_model_mixins import AllDateReportedMixin, AllLocationMixin
+from project.data_all.model.all_model_mixins import AllFactTableTimeSeriesMixin
+from project.data_all.model.all_model_mixins import AllLocationGroupMixin, AllFactTableMixin
 from project.app_bootstrap.database import db, items_per_page
 
 

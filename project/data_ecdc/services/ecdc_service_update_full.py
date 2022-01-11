@@ -1,9 +1,9 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import (
+from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
+from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
