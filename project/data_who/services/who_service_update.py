@@ -2,7 +2,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 from project.data_all.data_all_notifications.notifications_model import Notification
@@ -78,7 +78,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         for new_date_reported in self.__who_import_get_new_dates():
             i += 1
             output = " [WHO] date_reported [ " + str(i) + " ] " + str(new_date_reported)
-            o = BlueprintDateReportedFactory.create_new_object_for_who(
+            o = AllDateReportedFactory.create_new_object_for_who(
                 my_date_reported=new_date_reported
             )
             db.session.add(o)

@@ -4,7 +4,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 
@@ -52,7 +52,7 @@ class EcdcServiceImport(AllServiceMixinImport):
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
             for row in file_reader:
                 date_rep = row["dateRep"]
-                d = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+                d = AllDateReportedFactory.create_new_object_for_ecdc(
                     my_date_reported=date_rep
                 )
                 o = EcdcImportFactory.create_new(date_reported=date_rep, d=d, row=row)

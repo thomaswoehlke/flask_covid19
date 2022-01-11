@@ -4,7 +4,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 
@@ -53,7 +53,7 @@ class OwidServiceImport(AllServiceMixinImport):
             k = 0
             for row in file_reader:
                 date_reported = row["date"]
-                d = BlueprintDateReportedFactory.create_new_object_for_owid(
+                d = AllDateReportedFactory.create_new_object_for_owid(
                     my_date_reported=date_reported
                 )
                 o = OwidImportFactory.create_new(

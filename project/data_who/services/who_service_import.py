@@ -4,7 +4,7 @@ import sys
 from project.app_bootstrap.database import covid19_application
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 from project.data_all.data_all_notifications.notifications_model import Notification
@@ -58,7 +58,7 @@ class WhoServiceImport(AllServiceMixinImport):
             k = 0
             for row in file_reader:
                 date_reported = row[keyDate_reported]
-                d = BlueprintDateReportedFactory.create_new_object_for_who(
+                d = AllDateReportedFactory.create_new_object_for_who(
                     my_date_reported=date_reported
                 )
                 o = WhoImportFactory.create_new(

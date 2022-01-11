@@ -2,7 +2,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 
@@ -74,7 +74,7 @@ class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
             my_date_rep = result_item[0]
             oo = EcdcDateReported.find_by_date_reported(my_date_rep)
             if oo is None:
-                o = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+                o = AllDateReportedFactory.create_new_object_for_ecdc(
                     my_date_reported=my_date_rep
                 )
                 db.session.add(o)

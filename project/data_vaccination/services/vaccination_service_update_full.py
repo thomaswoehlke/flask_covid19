@@ -1,7 +1,7 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import \
-    BlueprintDateReportedFactory
+    AllDateReportedFactory
 
 from project.data_all.all_service_mixins import (
     AllServiceMixinUpdateFull,
@@ -29,7 +29,7 @@ class VaccinationServiceUpdateFull(
         i = 0
         for one_date_reported in date_reported_list:
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+            o = AllDateReportedFactory.create_new_object_for_vaccination(
                 my_date_reported=one_date_reported
             )
             db.session.add(o)

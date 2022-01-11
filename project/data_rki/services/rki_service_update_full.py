@@ -1,7 +1,7 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
 
@@ -30,7 +30,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         output_lines = []
         for meldedatum_from_import in RkiImport.get_datum_of_all_import():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+            o = AllDateReportedFactory.create_new_object_for_rki_meldedatum(
                 my_meldedatum=meldedatum_from_import
             )
             db.session.add(o)

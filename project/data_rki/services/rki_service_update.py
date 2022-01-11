@@ -2,7 +2,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 
@@ -78,7 +78,7 @@ class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
         RkiMeldedatum.set_all_processed_update()
         for new_meldedatum in self.__get_new_dates():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+            o = AllDateReportedFactory.create_new_object_for_rki_meldedatum(
                 my_meldedatum=new_meldedatum
             )
             db.session.add(o)

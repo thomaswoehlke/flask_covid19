@@ -4,7 +4,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
 from project.data_all.data_all_notifications.notifications_model import Notification
@@ -50,7 +50,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
             file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
             for row in file_reader:
                 date_reported = row["date"]
-                d = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+                d = AllDateReportedFactory.create_new_object_for_vaccination(
                     my_date_reported=date_reported
                 )
                 o = VaccinationImportFactory.create_new(

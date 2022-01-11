@@ -2,7 +2,7 @@ from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 from project.data_all.data_all_notifications.notifications_model import Notification
@@ -52,7 +52,7 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 + str(one_date_reported)
                 + " added"
             )
-            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+            o = AllDateReportedFactory.create_new_object_for_vaccination(
                 one_date_reported
             )
             db.session.add(o)

@@ -1,7 +1,7 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
 
@@ -28,7 +28,7 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         log_lines = []
         for (i_date_reported,) in OwidImport.get_dates():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_owid(
+            o = AllDateReportedFactory.create_new_object_for_owid(
                 my_date_reported=i_date_reported
             )
             db.session.add(o)

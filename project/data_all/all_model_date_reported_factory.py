@@ -10,7 +10,7 @@ from project.data_vaccination.model.vaccination_model_date_reported import (
 from project.data_who.model.who_model_date_reported import WhoDateReported
 
 
-class BlueprintDateReportedFactory:
+class AllDateReportedFactory:
 
     @classmethod
     def __create_new_object_factory(cls, date_reported_import_str: str, my_datum: date):

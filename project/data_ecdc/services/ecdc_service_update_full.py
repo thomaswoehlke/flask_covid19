@@ -1,7 +1,7 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
 
@@ -30,7 +30,7 @@ class EcdcServiceUpdateFull(EcdcServiceUpdateBase, AllServiceMixinUpdateFull):
         for result_item in result_date_rep:
             k += 1
             my_date_rep = result_item[0]
-            o = BlueprintDateReportedFactory.create_new_object_for_ecdc(
+            o = AllDateReportedFactory.create_new_object_for_ecdc(
                 my_date_reported=my_date_rep
             )
             db.session.add(o)

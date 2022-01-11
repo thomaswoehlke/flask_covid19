@@ -1,7 +1,7 @@
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+    AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import (
     AllServiceMixinUpdateFull,
@@ -42,7 +42,7 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         #    app.logger.info(str(b))
         for s_date_reported in WhoImport.get_dates_reported_as_string_array():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_who(
+            o = AllDateReportedFactory.create_new_object_for_who(
                 my_date_reported=s_date_reported
             )
             db.session.add(o)
