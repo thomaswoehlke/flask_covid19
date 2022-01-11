@@ -13,9 +13,9 @@ MAKE := make
 DB_DIR := project/db
 DOCS_DIR := docs
 DATA_DIR := data
-PIP_REQUIREMENTS_IN_DIR := project/app_bootstrap/requirements_in
-PIP_REQUIREMENTS_WINDOWS_DIR := project/app_bootstrap/requirements_windows
-PIP_REQUIREMENTS_LINUX_DIR := project/app_bootstrap/requirements_linux
+PIP_REQUIREMENTS_IN_DIR := project/data/requirements_in
+PIP_REQUIREMENTS_WINDOWS_DIR := project/data/requirements_windows
+PIP_REQUIREMENTS_LINUX_DIR := project/data/requirements_linux
 
 .PHONY: all
 
