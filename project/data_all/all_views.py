@@ -37,7 +37,7 @@ class AllUrls:
     @login_required
     def url_all_info():
         page_info = WebPageContent("All", "Info")
-        return render_template("data_all/app_all_info.html", page_info=page_info)
+        return render_template("data_all/data_all_info.html", page_info=page_info)
 
     @staticmethod
     @blueprint_app_all.route("/notification/page/<int:page>")
