@@ -19,14 +19,9 @@ from project.data_owid.model.owid_model_location_group import OwidContinentFacto
 
 class OwidServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.debug(" OWID Service Update [init]")
-        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.debug(" ready: [OWID] Service Update ")
-        app.logger.debug("-----------------------------------------------------------")
 
 
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):

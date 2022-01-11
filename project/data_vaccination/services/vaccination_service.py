@@ -17,18 +17,13 @@ from project.data_vaccination.services.vaccination_service_update_full import (
 
 class VaccinationService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Vaccination Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_rki_vaccination()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = VaccinationServiceImport(database, self.cfg)
         self.service_update = VaccinationServiceUpdate(database, self.cfg)
         self.service_update_full = VaccinationServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="Vaccination", task_name="download")

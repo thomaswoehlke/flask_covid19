@@ -13,14 +13,9 @@ from project.data_rki.model.rki_model_import import RkiServiceImportFactory
 
 class RkiServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [RKI] Service Import [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] Service Import ")
-        app.logger.debug("------------------------------------------------------------")
 
     def count_file_rows(self):
         count = 0

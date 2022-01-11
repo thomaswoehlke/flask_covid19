@@ -10,15 +10,10 @@ from project.data_owid.model.owid_model_location_group import OwidContinent
 
 class OwidTestService:
     def __init__(self, database, owid_service):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Test Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.__owid_service = owid_service
         self.cfg = BlueprintConfig.create_config_for_owid()
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] Test Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):
         task = Notification.create(sector="OWID", task_name='full_update_dimension_tables')

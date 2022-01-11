@@ -11,18 +11,13 @@ from project.data_ecdc.services.ecdc_service_update_full import EcdcServiceUpdat
 
 class EcdcService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" ECDC Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_ecdc()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = EcdcServiceImport(database, self.cfg)
         self.service_update = EcdcServiceUpdate(database, self.cfg)
         self.service_update_full = EcdcServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ECDC] Service")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="ECDC", task_name="download")

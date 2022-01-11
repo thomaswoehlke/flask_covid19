@@ -16,9 +16,7 @@ app_notification = Blueprint(
 
 class NotificationUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ALL] NotificationUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_notification.route("/notification/page/<int:page>")

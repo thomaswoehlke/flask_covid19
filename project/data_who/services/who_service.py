@@ -10,18 +10,13 @@ from project.data_who.services.who_service_update_full import WhoServiceUpdateFu
 
 class WhoService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WHO Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_who()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = WhoServiceImport(database, self.cfg)
         self.service_update = WhoServiceUpdate(database, self.cfg)
         self.service_update_full = WhoServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [WHO] Service")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="WHO", task_name="download")

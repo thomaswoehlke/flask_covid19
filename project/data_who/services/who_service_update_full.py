@@ -26,20 +26,8 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info(" [WHO] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoDateReported.remove_all()
-        # with app.app_context():
-        #     cache.clear()
         log_lines = []
         i = 0
-        # myresultarray = []
-        # myresultset = WhoImport.get_all_datum()
-        # for my_datum_item in myresultset:
-        #    my_datum = my_datum_item.datum
-        #    if not my_datum in myresultarray:
-        #        myresultarray.append(my_datum)
-        # for a in myresultset:
-        #    app.logger.info(str(a))
-        # for b in WhoImport.get_dates_reported_as_string_array():
-        #    app.logger.info(str(b))
         for s_date_reported in WhoImport.get_dates_reported_as_string_array():
             i += 1
             o = AllDateReportedFactory.create_new_object_for_who(
@@ -98,8 +86,6 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         WhoCountry.remove_all()
         self.__full_update_region()
-        # with app.app_context():
-        #     cache.clear()
         log_lines = []
         i = 0
         for country_item in WhoImport.countries():

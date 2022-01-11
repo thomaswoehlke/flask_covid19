@@ -15,18 +15,13 @@ from project.data_rki.services.rki_service_update_full import RkiServiceUpdateFu
 
 class RkiService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RKI Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_rki()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = RkiServiceImport(database, self.cfg)
         self.service_update = RkiServiceUpdate(database, self.cfg)
         self.service_update_full = RkiServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="RKI", task_name="download")

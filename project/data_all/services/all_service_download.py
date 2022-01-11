@@ -9,14 +9,9 @@ from project.data_all.services.all_service_mixins import AllServiceMixinDownload
 
 class AllDownloadService(AllServiceMixinDownload):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" DownloadService [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [" + self.cfg.category + "] Download Service")
-        app.logger.debug("------------------------------------------------------------")
 
     def __prepare_download(self):
         os.makedirs(self.cfg.data_path, exist_ok=True)

@@ -17,9 +17,6 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
         vaccination_service: VaccinationService,
         ecdc_service: EcdcService,
     ):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [ALL] Dispachter Matrix Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__services_for = {
             "download": [
                 who_service,
@@ -81,9 +78,7 @@ class AllDataServiceDispachterMatrix(AllServiceMixin):
                 # rki_service
             ],
         }
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ALL] Dispachter Matrix Service")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="ALL", task_name="download")

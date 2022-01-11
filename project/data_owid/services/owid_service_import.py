@@ -15,14 +15,9 @@ from project.data_owid.model.owid_model_import import OwidImportFactory
 
 class OwidServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Service Import [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] Service Import ")
-        app.logger.debug("------------------------------------------------------------")
 
     def count_file_rows(self):
         count = 0

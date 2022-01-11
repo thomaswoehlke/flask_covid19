@@ -18,14 +18,9 @@ from project.data_who.model.who_model_location_group import WhoCountryRegionFact
 
 class WhoServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" WhoServiceUpdateBase [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info("  [WHO] Service Update Base ")
-        app.logger.debug("------------------------------------------------------------")
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):

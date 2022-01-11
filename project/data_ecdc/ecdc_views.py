@@ -36,9 +36,7 @@ admin.add_view(ModelView(EcdcData, db.session, category="ECDC"))
 
 class EcdcUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("")
@@ -225,9 +223,7 @@ ecdc_urls = EcdcUrls()
 
 class EcdcTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -375,9 +371,7 @@ ecdc_tasks = EcdcTasks()
 
 class EcdcTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("/task/download")
@@ -475,9 +469,7 @@ ecdc_test_service = EcdcTestService(db, ecdc_service)
 
 class EcdcTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("/test/ecdc_import/countries")

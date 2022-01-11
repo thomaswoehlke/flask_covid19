@@ -15,14 +15,9 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 
 class VaccinationServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Vaccination Service Update [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] Service Update")
-        app.logger.debug("------------------------------------------------------------")
 
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):

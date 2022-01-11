@@ -19,14 +19,9 @@ from project.data_ecdc.model.ecdc_model_location_group import EcdcContinentFacto
 
 class EcdcServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" ECDC Service Update [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" ready: [ECDC] Service Update")
-        app.logger.debug("------------------------------------------------------------")
 
 
 class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):

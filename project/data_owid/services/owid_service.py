@@ -11,18 +11,13 @@ from project.data_owid.services.owid_service_update_full import OwidServiceUpdat
 
 class OwidService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_owid()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = OwidServiceImport(database, self.cfg)
         self.service_update = OwidServiceUpdate(database, self.cfg)
         self.service_update_full = OwidServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
         task = Notification.create(sector="OWID", task_name="download")

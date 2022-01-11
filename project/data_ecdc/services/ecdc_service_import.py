@@ -15,14 +15,9 @@ from project.data_ecdc.model.ecdc_model_import import EcdcImportFactory
 
 class EcdcServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" ECDC Service Import [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [ECDC] Service Import")
-        app.logger.debug("------------------------------------------------------------")
 
     def count_file_rows(self):
         count = 0
