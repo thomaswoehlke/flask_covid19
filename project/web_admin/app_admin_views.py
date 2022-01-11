@@ -77,9 +77,7 @@ app_admin_urls = AppAdminUrls()
 
 class AppAdminTasks:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] AppAdminTasks ")
-        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -102,9 +100,7 @@ app_admin_tasks = AppAdminTasks()
 
 class AppAdminTaskUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [WEB] AppAdminTaskUrls ")
-        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @app_web_admin.route("/task/alive_message")
