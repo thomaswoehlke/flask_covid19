@@ -1,4 +1,5 @@
 from celery import states
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -6,8 +7,7 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, db
-from project.app_bootstrap.database import celery
+from project.app_bootstrap.database import app, db, celery
 from project.app_web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )

@@ -1,5 +1,5 @@
 from project.app_bootstrap.database import app
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 
 
 class NotificationService:

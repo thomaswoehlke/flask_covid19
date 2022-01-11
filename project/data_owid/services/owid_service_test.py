@@ -1,4 +1,4 @@
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import db
 from project.data_all.all_config import BlueprintConfig

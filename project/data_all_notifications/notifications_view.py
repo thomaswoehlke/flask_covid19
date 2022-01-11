@@ -4,9 +4,9 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, db, celery
+from project.app_bootstrap.database import app, db
 from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 
 app_notification = Blueprint(
     "data_all_notifications", __name__,

@@ -7,7 +7,7 @@ from project.data_all.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinImport
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_import import WhoImportFactory
 

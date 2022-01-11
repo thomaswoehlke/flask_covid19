@@ -6,7 +6,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
 
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_data import OwidDataFactory
 from project.data_owid.model.owid_model_date_reported import OwidDateReported

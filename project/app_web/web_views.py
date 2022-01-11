@@ -6,17 +6,16 @@ from flask_login import login_required
 
 from project.app_bootstrap.database import app, db, celery
 from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 from project.app_web.admin.app_admin_views import app_web_admin
 from project.app_web.user.user_views import app_web_user
 from project.data_all.all_views import app_all
-from project.data_all.data_all_notifications.notifications_view import app_notification
+from project.data_all_notifications.notifications_view import app_notification
 from project.data_ecdc.ecdc_views import app_ecdc
 from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
 from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
-from project.app_web.web.web_dispachter_service import admin_service
 
 app_web = Blueprint(
     "app_web", __name__, template_folder="templates", url_prefix="/"

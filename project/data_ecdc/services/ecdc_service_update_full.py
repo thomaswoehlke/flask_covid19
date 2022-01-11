@@ -5,7 +5,7 @@ from project.data_all.all_model_date_reported_factory import (
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
 
-from project.data_all.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_data import EcdcDataFactory
