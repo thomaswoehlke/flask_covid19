@@ -8,10 +8,10 @@ from flask import url_for
 from flask_login import login_required
 
 from project.app_bootstrap.database import app, db, celery
-from project.app_web.web.web_dispachter_service import (
+from project.web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
-from project.app_web.web.web_model_transient import WebPageContent
+from project.web.web.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True
 

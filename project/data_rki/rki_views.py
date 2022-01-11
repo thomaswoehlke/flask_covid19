@@ -10,8 +10,8 @@ from project.app_bootstrap.database import admin
 from project.app_bootstrap.database import app
 from project.app_bootstrap.database import celery
 from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import rki_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.web.web.web_dispachter_service import rki_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location import RkiLandkreis

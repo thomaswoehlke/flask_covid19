@@ -2,9 +2,9 @@ import os
 import socket
 import subprocess
 
-import project.app_web
-from project.app_web.web.web_dispachter_service import web_service
-from project.app_web.web_views import app, db, celery
+import project.web
+from project.web.web.web_dispachter_service import web_service
+from project.web.web_views import app, db, celery
 
 
 def run_web():

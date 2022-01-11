@@ -5,7 +5,7 @@ from flask import url_for
 from flask_login import login_required
 
 from project.app_bootstrap.database import app, db, celery
-from project.app_web.web.web_model_transient import WebPageContent
+from project.web.web.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
 from project.web_admin.app_admin_views import app_web_admin
 from project.web_user.user_views import app_web_user
@@ -18,7 +18,7 @@ from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
 
 app_web = Blueprint(
-    "app_web", __name__, template_folder="templates", url_prefix="/"
+    "web", __name__, template_folder="templates", url_prefix="/"
 )
 
 app.register_blueprint(app_web_user, url_prefix="/app/web_user")

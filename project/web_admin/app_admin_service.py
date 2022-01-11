@@ -56,7 +56,7 @@ class AdminService:
         self.file_path_parent = "data" + os.sep + "db"
         self.file_path = self.file_path_parent + os.sep + "flask_covid19.sql"
         app.logger.debug("-----------------------------------------------------------")
-        app.logger.info(" ready: [app_web] Admin Service ")
+        app.logger.info(" ready: [web] Admin Service ")
 
     def database_dump(self):
         app.logger.info(" AdminService.database_dump() [begin]")
