@@ -14,8 +14,8 @@ from sqlalchemy.exc import OperationalError
 
 from project.app_bootstrap.database import app, db
 from project.app_bootstrap.database import admin, login_manager
-from project.app_web.user.user_model import LoginForm
-from project.app_web.user.user_model import User
+from project.app_web_user.user_model import LoginForm
+from project.app_web_user.user_model import User
 from project.app_web.web.web_model_transient import WebPageContent
 
 app_web_user = Blueprint(
