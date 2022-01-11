@@ -34,14 +34,16 @@ class AppAdminUrls:
     @login_required
     def url_admin_status():
         page_info = WebPageContent("Admin", "System Status")
-        return render_template("app_web_admin/admin_status.html", page_info=page_info)
+        return render_template(
+            "../../app_web_admin/templates/app_web_admin/admin_status.html", page_info=page_info)
 
     @staticmethod
     @app_web_admin.route("/info")
     @login_required
     def url_admin_info():
         page_info = WebPageContent("Admin", "Info")
-        return render_template("app_web_admin/admin_info.html", page_info=page_info)
+        return render_template(
+            "../../app_web_admin/templates/app_web_admin/admin_info.html", page_info=page_info)
 
     @staticmethod
     @app_web_admin.route("/database_table_row_count")
@@ -50,7 +52,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Row Count")
         db_table_row_count = admin_service.database_table_row_count()
         return render_template(
-            "app_web_admin/table_row_count/status.html",
+            "../../app_web_admin/templates/app_web_admin/table_row_count/status.html",
             db_table_row_count=db_table_row_count,
             page_info=page_info
         )
@@ -62,7 +64,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = admin_service.database_import_status()
         return render_template(
-            "app_web_admin/database_import_status.html",
+            "../../app_web_admin/templates/app_web_admin/database_import_status.html",
             db_import_status=db_import_status,
             page_info=page_info
         )

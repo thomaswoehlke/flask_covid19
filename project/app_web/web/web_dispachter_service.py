@@ -1,5 +1,5 @@
 from project.app_bootstrap.database import app, db
-from project.app_web.admin.app_admin_service import AdminService
+from project.app_web_admin.app_admin_service import AdminService
 from project.app_web.user.user_service import UserService
 from project.app_web.web.web_service import WebService
 from project.data_all.all_service import AllDataServiceDispachterMatrix
