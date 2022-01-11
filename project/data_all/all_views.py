@@ -46,7 +46,7 @@ class AllUrls:
     def url_all_notification(page=1):
         page_info = WebPageContent("All", "Notifications")
         page_data = Task.notifications_get(page)
-        return render_template("data_all/notification/app_all_notification.html",
+        return render_template("data_all/notification/data_all_notification.html",
                                page_data=page_data,
                                page_info=page_info)
 
