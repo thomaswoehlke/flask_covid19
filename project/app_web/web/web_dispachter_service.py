@@ -15,16 +15,16 @@ from project.data_all.data_all_notifications.notifications_service import Notifi
 #
 # Services
 #
-app_admin_service = AdminService(db)
-app_user_service = UserService(db)
-web_service = WebService(db, app_user_service)
+admin_service = AdminService(db)
+web_user_service = UserService(db)
+web_service = WebService(db, web_user_service)
+notification_service = NotificationService(db)
 
 who_service = WhoService(db)
 owid_service = OwidService(db)
 ecdc_service = EcdcService(db)
 vaccination_service = VaccinationService(db)
 rki_service = RkiService(db)
-task_service = NotificationService(db)
 
 all_dispachter_matrix_service = AllDataServiceDispachterMatrix(
     who_service=who_service,

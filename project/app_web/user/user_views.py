@@ -18,8 +18,10 @@ from project.app_web.user.user_model import LoginForm
 from project.app_web.user.user_model import User
 from project.app_web.web.web_model_transient import WebPageContent
 
-blueprint_app_user = Blueprint(
-    "app_web_user", __name__, template_folder="templates", url_prefix="/app/app_web_user"
+app_web_user = Blueprint(
+    "app_web_user", __name__,
+    template_folder="templates",
+    url_prefix="/app/app_web_user"
 )
 
 admin.add_view(ModelView(User, db.session, category="USR"))
@@ -54,16 +56,17 @@ class AppUserUrls:
                 app.logger.debug("---------------------------------------------------")
 
     @staticmethod
-    @blueprint_app_user.route("/login", methods=["GET"])
+    @app_web_user.route("/login", methods=["GET"])
     def login_form():
         page_info = WebPageContent("app_web_user", "Login")
         if current_user.is_authenticated:
             return redirect(url_for("app_web_user.profile"))
         form = LoginForm()
-        return flask.render_template("app_web_user/login.html", form=form, page_info=page_info)
+        return flask.render_template("app_web_user/login.html", form=form,
+                                     page_info=page_info)
 
     @staticmethod
-    @blueprint_app_user.route("/login", methods=["POST"])
+    @app_web_user.route("/login", methods=["POST"])
     def login():
         page_info = WebPageContent("USR", "Login")
         if current_user.is_authenticated:
@@ -76,17 +79,18 @@ class AppUserUrls:
                 return redirect(url_for("app_web_user.login"))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for("app_web_user.profile"))
-        return flask.render_template("app_web_user/login.html", form=form, page_info=page_info)
+        return flask.render_template("app_web_user/login.html", form=form,
+                                     page_info=page_info)
 
     @staticmethod
-    @blueprint_app_user.route("/profile")
+    @app_web_user.route("/profile")
     @login_required
     def profile():
         page_info = WebPageContent("USR", "profile")
         return flask.render_template("app_web_user/profile.html", page_info=page_info)
 
     @staticmethod
-    @blueprint_app_user.route("/logout")
+    @app_web_user.route("/logout")
     @login_required
     def logout():
         logout_user()
@@ -108,8 +112,8 @@ class AppUserUrls:
     # ---------------------------------------------------------------------------------
 
     @staticmethod
-    @blueprint_app_user.route("/info/page/<int:page>")
-    @blueprint_app_user.route("/info")
+    @app_web_user.route("/info/page/<int:page>")
+    @app_web_user.route("/info")
     @login_required
     def url_user_info(page=1):
         page_info = WebPageContent("USR", "Info")
@@ -123,7 +127,7 @@ class AppUserUrls:
         )
 
     @staticmethod
-    @blueprint_app_user.route("/tasks")
+    @app_web_user.route("/tasks")
     @login_required
     def url_user_tasks():
         page_info = WebPageContent("USR", "Tasks")
