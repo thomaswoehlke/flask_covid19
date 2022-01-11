@@ -40,9 +40,7 @@ owid_test_service = OwidTestService(db, owid_service)
 
 class OwidUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("")
@@ -391,9 +389,7 @@ owid_urls = OwidUrls()
 
 class OwidTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -514,16 +510,14 @@ class OwidTasks:
 
 owid_tasks = OwidTasks()
 
-# ----------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 #  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 
 class OwidTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("/task/download/only")
@@ -617,16 +611,14 @@ class OwidTaskUrls:
 
 owid_task_urls = OwidTaskUrls()
 
-# ---------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 #  Url Routes Frontend TESTS
-# ---------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 
 class OwidTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("/test/update_dimension_tables_only")
@@ -749,9 +741,7 @@ owid_test_urls = OwidTestUrls()
 
 class OwidReportUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidrReportUrls ")
-        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @app_owid_report.route("/biweekly_change_in_confirmed_covid19_cases")
