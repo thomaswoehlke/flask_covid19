@@ -1,6 +1,6 @@
 from project.app_bootstrap.database import app
 from project.data_all.all_service_mixins import AllServiceMixin
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Task
 from project.data_ecdc.services.ecdc_service import EcdcService
 from project.data_owid.services.owid_service import OwidService
 from project.data_rki.services.rki_service import RkiService

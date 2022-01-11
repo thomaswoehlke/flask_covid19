@@ -5,7 +5,7 @@ from project.data_all.all_model_date_reported_factory import (
     BlueprintDateReportedFactory,
 )
 from project.data_all.all_service_mixins import AllServiceMixinUpdate
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Task
 from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,

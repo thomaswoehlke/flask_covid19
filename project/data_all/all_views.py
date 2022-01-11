@@ -12,7 +12,7 @@ from project.app_web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
 from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.data_all_notifications.notifications_model import Task
 
 drop_and_create_data_again = True
 
@@ -47,7 +47,7 @@ class AllUrls:
         page_info = WebPageContent("All", "Notifications")
         page_data = Task.notifications_get(page)
         return render_template(
-            "data_all/data_all_notification/data_all_notification.html",
+            "data_all/templates/data_all_notification/data_all_notification.html",
             page_data=page_data,
             page_info=page_info)
 
