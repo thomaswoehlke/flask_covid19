@@ -11,7 +11,7 @@
                         aria-labelledby="navbarDropdownMenuLinkDataUser">
                         <li>
                             <a class="dropdown-item"
-                               href="{{ url_for( 'app_web_user.url_user_info') }}">
+                               href="{{ url_for( 'web_user.url_user_info') }}">
                                <i class="fas fa-user"></i> User Info
                             </a>
                         </li>
@@ -20,14 +20,14 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="{{ url_for( 'app_web_user.login') }}">
+                               href="{{ url_for( 'web_user.login') }}">
                              <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         </li>
                         {% if current_user.is_authenticated %}
                         <li>
                           <a class="dropdown-item"
-                             href="{{ url_for( 'app_web_user.profile') }}">
+                             href="{{ url_for( 'web_user.profile') }}">
                             <i class="fas fa-user"></i> Profile
                           </a>
                         </li>
@@ -36,7 +36,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="{{ url_for( 'app_web_user.logout') }}">
+                               href="{{ url_for( 'web_user.logout') }}">
                               <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>

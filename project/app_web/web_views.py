@@ -8,7 +8,7 @@ from project.app_bootstrap.database import app, db, celery
 from project.app_web.web.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
 from project.app_web_admin.app_admin_views import app_web_admin
-from project.app_web_user.user_views import app_web_user
+from project.web_user.user_views import app_web_user
 from project.data_all.all_views import app_all
 from project.data_all_notifications.notifications_view import app_notification
 from project.data_ecdc.ecdc_views import app_ecdc
@@ -21,7 +21,7 @@ app_web = Blueprint(
     "app_web", __name__, template_folder="templates", url_prefix="/"
 )
 
-app.register_blueprint(app_web_user, url_prefix="/app/app_web_user")
+app.register_blueprint(app_web_user, url_prefix="/app/web_user")
 app.register_blueprint(app_web_admin, url_prefix="/app/admin")
 app.register_blueprint(app_web, url_prefix="/")
 app.register_blueprint(app_notification, url_prefix="/app/all_notifications")

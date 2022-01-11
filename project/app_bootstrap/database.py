@@ -63,7 +63,7 @@ class Covid19Application:
 
     def __init_login(self):
         self.login_manager = LoginManager()
-        self.login_manager.login_view = "app_web_user.login"
+        self.login_manager.login_view = "web_user.login"
         return self
 
     def __init_admin(self):

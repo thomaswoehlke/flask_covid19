@@ -1,4 +1,4 @@
-#!/app_web_user/bin/env python
+#!/web_user/bin/env python
 import logging
 import os
 import subprocess
