@@ -64,7 +64,7 @@ class RkiService(AllServiceMixin):
 
     def full_update(self):
         task = Notification.create(sector="RKI", task_name="full_update")
-        # self.service_import.import_file()
+        self.service_import.import_file()
         self.service_update_full.full_update_dimension_tables()
         self.service_update_full.full_update_fact_table()
         Notification.finish(task_id=task.id)
