@@ -1,11 +1,11 @@
 from datetime import date
 
-from project.app_bootstrap.database import app, db
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_service_download import AllDownloadService
-from project.data_all.all_service_mixins import AllServiceMixin
+from project.data.database import app
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_download import AllDownloadService
+from project.data_all.services.all_service_mixins import AllServiceMixin
 
-from project.data_all.notifications.notifications_model import Task
+from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.services.rki_service_import import RkiServiceImport
@@ -15,90 +15,85 @@ from project.data_rki.services.rki_service_update_full import RkiServiceUpdateFu
 
 class RkiService(AllServiceMixin):
     def __init__(self, database):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" RKI Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = BlueprintConfig.create_config_for_rki()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = RkiServiceImport(database, self.cfg)
         self.service_update = RkiServiceUpdate(database, self.cfg)
         self.service_update_full = RkiServiceUpdateFull(database, self.cfg)
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def download(self):
-        task = Task.create(sector="RKI", task_name="download")
+        task = Notification.create(sector="RKI", task_name="download")
         self.service_download.download()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def count_file_rows(self):
         return self.service_import.count_file_rows()
 
     def import_file(self):
-        task = Task.create(sector="RKI", task_name="import_file")
+        task = Notification.create(sector="RKI", task_name="import_file")
         self.service_import.import_file()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="RKI", task_name="full_update_dimension_tables")
+        task = Notification.create(sector="RKI", task_name="full_update_dimension_tables")
         self.service_update_full.full_update_dimension_tables()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(sector="RKI", task_name="update_dimension_tables")
+        task = Notification.create(sector="RKI", task_name="update_dimension_tables")
         self.service_update.update_dimension_tables()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="RKI", task_name="full_update_fact_table")
+        task = Notification.create(sector="RKI", task_name="full_update_fact_table")
         self.service_update_full.full_update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="RKI", task_name="update_fact_table")
+        task = Notification.create(sector="RKI", task_name="update_fact_table")
         self.service_update.update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update(self):
-        task = Task.create(sector="RKI", task_name="full_update")
+        task = Notification.create(sector="RKI", task_name="full_update")
         # self.service_import.import_file()
         self.service_update_full.full_update_dimension_tables()
         self.service_update_full.full_update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update(self):
-        task = Task.create(sector="RKI", task_name="update")
+        task = Notification.create(sector="RKI", task_name="update")
         # self.service_import.import_file()
         self.service_update.update_dimension_tables()
         self.service_update.update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Task.create(sector="RKI", task_name="delete_last_day")
+        task = Notification.create(sector="RKI", task_name="delete_last_day")
         self.service_update.delete_last_day()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_clean_brokenup(self):
-        task = Task.create(sector="RKI", task_name="update_clean_brokenup")
-        result2 = Task.get_rki_update_broken_date()
-        result = Task.get_rki_full_update_broken_date()
+        task = Notification.create(sector="RKI", task_name="update_clean_brokenup")
+        result2 = Notification.get_rki_update_broken_date()
+        result = Notification.get_rki_full_update_broken_date()
         resultlist = result.all()
         resultlist.extend(result2.all())
         if len(resultlist) > 0:
             t = task
             for t1 in resultlist:
-                t2 = Task.get_latest_by(sector=t1.sector, task_name=t1.task_name)
+                t2 = Notification.get_latest_by(sector=t1.sector, task_name=t1.task_name)
                 if t2 is not None:
                     if t1.is_newer_than(t2):
                         # app.logger.info("newer:      "+str(t1))
@@ -118,9 +113,9 @@ class RkiService(AllServiceMixin):
             app.logger.info("RkiData.count(): " + str(RkiData.count()))
             RkiData.delete_by_date_reported(o_meldedatum)
             app.logger.info("RkiData.count(): " + str(RkiData.count()))
-            Task.finish(task_id=t.id)
-            for ttt in Task.get_rki_update_broken_date():
-                Task.finish(task_id=ttt.id)
-        Task.finish(task_id=task.id)
+            Notification.finish(task_id=t.id)
+            for ttt in Notification.get_rki_update_broken_date():
+                Notification.finish(task_id=ttt.id)
+        Notification.finish(task_id=task.id)
         return self
 

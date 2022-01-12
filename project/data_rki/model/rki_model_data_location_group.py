@@ -1,5 +1,5 @@
-from project.app_bootstrap.database import db
-from project.data_all.all_model import AllLocationGroup
+from project.data.database import db
+from project.data_all.model.all_model import AllLocationGroup
 
 
 class RkiBundesland(AllLocationGroup):

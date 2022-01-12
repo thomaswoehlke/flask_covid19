@@ -1,13 +1,13 @@
 import csv
 import sys
 
-from project.app_bootstrap.database import covid19_application
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import covid19_application
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinImport
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.services.all_service_mixins import AllServiceMixinImport
+from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_import import WhoImportFactory
 
@@ -17,14 +17,9 @@ db = covid19_application.db
 
 class WhoServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" [WHO] Service Import [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" ready: [WHO] Service Import ")
-        app.logger.debug("------------------------------------------------------------")
 
     def count_file_rows(self):
         count = 0
@@ -34,7 +29,7 @@ class WhoServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="WHO", task_name="import_file").read()
+        task = Notification.create(sector="WHO", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -58,7 +53,7 @@ class WhoServiceImport(AllServiceMixinImport):
             k = 0
             for row in file_reader:
                 date_reported = row[keyDate_reported]
-                d = BlueprintDateReportedFactory.create_new_object_for_who(
+                d = AllDateReportedFactory.create_new_object_for_who(
                     my_date_reported=date_reported
                 )
                 o = WhoImportFactory.create_new(
@@ -85,5 +80,5 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

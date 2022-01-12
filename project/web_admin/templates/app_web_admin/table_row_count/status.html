@@ -1,0 +1,19 @@
+{% extends 'app_web/layout/page_layout.html' %}
+
+{% block navtabs %}
+    {% include 'app_web_admin/navigation/app_admin_navtabs.html' %}
+{% endblock %}
+
+
+{% block content %}
+    {{super()}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+    {% include 'app_web_admin/table_row_count/status_table_row_count.html' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

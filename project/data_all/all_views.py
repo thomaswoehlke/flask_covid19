@@ -1,4 +1,5 @@
 from celery import states
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -6,63 +7,36 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.app_bootstrap.database import app, db
-from project.app_bootstrap.database import celery
-from project.app_web.web.web_dispachter_service import (
+from project.data.database import app, db, celery
+from project.web.web.web_dispachter_service import (
     all_dispachter_matrix_service,
 )
-from project.app_web.web.web_model_transient import WebPageContent
-from project.data_all.notifications.notifications_model import Task
+from project.web.web.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True
 
-blueprint_app_all = Blueprint(
-    "app_all", __name__, template_folder="templates", url_prefix="/app/all"
+app_all = Blueprint(
+    "data_all", __name__, template_folder="templates", url_prefix="/app/all"
 )
 
-
-# ---------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 #  Url Routes Frontend
-# ---------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 
 
 class AllUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ready: [OWID] AllUrls ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" ready: [ALL] AllUrls ")
 
     @staticmethod
-    @blueprint_app_all.route("/info")
+    @app_all.route("/info")
     @login_required
     def url_all_info():
         page_info = WebPageContent("All", "Info")
-        return render_template("app_all/app_all_info.html", page_info=page_info)
+        return render_template("data_all/data_all_info.html", page_info=page_info)
 
     @staticmethod
-    @blueprint_app_all.route("/notification/page/<int:page>")
-    @blueprint_app_all.route("/notification")
-    @login_required
-    def url_all_notification(page=1):
-        page_info = WebPageContent("All", "Notifications")
-        page_data = Task.notifications_get(page)
-        return render_template("app_all/notification/app_all_notification.html",
-                               page_data=page_data,
-                               page_info=page_info)
-
-    @staticmethod
-    @blueprint_app_all.route("/notification/read")
-    @login_required
-    def url_all_notification_mark_read():
-        data = Task.notifications_find_asc(10)
-        for o in data:
-            o.read()
-            db.session.add(o)
-        db.session.commit()
-        return redirect(url_for("app_all.url_all_notification"))
-
-    @staticmethod
-    @blueprint_app_all.route("/delete_last_day")
+    @app_all.route("/delete_last_day")
     @login_required
     def url_all_delete_last_day():
         app.logger.info("url_all_delete_last_day [start]")
@@ -70,21 +44,20 @@ class AllUrls:
         all_dispachter_matrix_service.delete_last_day()
         flash("url_all_delete_last_day [done]")
         app.logger.info("url_all_delete_last_day [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
 
 all_urls = AllUrls()
 
-# ----------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------
 #  Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 
 class AllTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ready: [OWID] AllTasks ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" ready: [ALL] AllTasks ")
 
     @staticmethod
     @celery.task(bind=True)
@@ -273,28 +246,26 @@ class AllTasks:
 
 all_tasks = AllTasks()
 
-# ----------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 #  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------
 
 
 class AllTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.info(" ready: [OWID] AllTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
+        app.logger.info(" ready: [ALL] AllTaskUrls ")
 
     @staticmethod
-    @blueprint_app_all.route("/task/download")
+    @app_all.route("/task/download")
     @login_required
     def url_task_all_download():
         app.logger.info("url_task_all_download_all_files [start]")
         all_dispachter_matrix_service.download()
         app.logger.info("url_task_all_download_all_files [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/import")
+    @app_all.route("/task/import")
     @login_required
     def url_task_all_import():
         app.logger.info("url_task_all_import_all_files [start]")
@@ -302,10 +273,10 @@ class AllTaskUrls:
         flash(message="async url_task_all_import_all_files [start]", category="warning")
         app.logger.warn("async url_task_all_import_all_files [start]")
         app.logger.info("url_task_all_import_all_files [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/full/update/dimension_tables")
+    @app_all.route("/task/full/update/dimension_tables")
     @login_required
     def url_task_all_full_update_dimension_tables():
         app.logger.info("url_task_all_update_full_dimension_tables [start]")
@@ -316,10 +287,10 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_update_full_dimension_tables [start]")
         app.logger.info("url_task_all_update_full_dimension_tables [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/update/dimension_tables")
+    @app_all.route("/task/update/dimension_tables")
     @login_required
     def url_task_all_update_dimension_tables():
         app.logger.info("url_task_all_update_dimension_tables [start]")
@@ -329,10 +300,10 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_update_dimension_tables [start]")
         app.logger.info("url_task_all_update_dimension_tables [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/full/update/fact_table")
+    @app_all.route("/task/full/update/fact_table")
     @login_required
     def url_task_all_full_update_fact_table():
         app.logger.info("url_task_all_full_update_fact_table [start]")
@@ -342,10 +313,10 @@ class AllTaskUrls:
         )
         app.logger.warn("async task_all_full_update_fact_table [start]")
         app.logger.info("url_task_all_full_update_fact_table [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/update/fact_table")
+    @app_all.route("/task/update/fact_table")
     @login_required
     def url_task_all_update_fact_table():
         app.logger.info("url_task_all_update_fact_table [start]")
@@ -353,10 +324,10 @@ class AllTaskUrls:
         flash(message="async task_all_update_fact_table [start]", category="warning")
         app.logger.warn("async task_all_update_fact_table [start]")
         app.logger.info("url_task_all_update_fact_table [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/full/update")
+    @app_all.route("/task/full/update")
     @login_required
     def url_task_all_full_update():
         app.logger.info("url_task_all_full_update [start]")
@@ -365,10 +336,10 @@ class AllTaskUrls:
         flash(message="async task_all_full_update [start]", category="warning")
         app.logger.warn("async task_all_full_update [start]")
         app.logger.info("url_task_all_full_update [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
     @staticmethod
-    @blueprint_app_all.route("/task/update")
+    @app_all.route("/task/update")
     @login_required
     def url_task_all_update(next=None):
         app.logger.info("url_task_all_update [start]")
@@ -377,7 +348,7 @@ class AllTaskUrls:
         flash(message="async task_all_update [start]", category="warning")
         app.logger.warn("async task_all_update [start]")
         app.logger.info("url_task_all_update [done]")
-        return redirect(url_for("app_all.url_all_info"))
+        return redirect(url_for("data_all.url_all_info"))
 
 
 all_task_urls = AllTaskUrls()

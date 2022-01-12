@@ -1,4 +1,4 @@
-from project.data_all.all_model import AllLocationGroup
+from project.data_all.model.all_model import AllLocationGroup
 
 
 class WhoCountryRegion(AllLocationGroup):

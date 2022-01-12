@@ -1,6 +1,6 @@
 # flask_covid19
 
-* Version 0.0.86
+* Version 0.0.87
 
 ## git
 
@@ -50,10 +50,10 @@
 ### change configuration
 
 ````bash
-    vim project/app_bootstrap/config.py
-    vim project/app_bootstrap/database.py
-    vim project/app_bootstrap/pytestconfig.py
-    vim project/app_bootstrap/requirements_in/build.in
+    vim project/data/config.py
+    vim project/data/database.py
+    vim project/data/pytestconfig.py
+    vim project/data/requirements_in/build.in
 ````
 
 ### change dependencies
@@ -61,13 +61,13 @@
 ````bash
     . ./venv/bin/activate
     make update
-    vim project/app_bootstrap/requirements_in/build.in
-    vim project/app_bootstrap/requirements_in/docs.in
-    vim project/app_bootstrap/requirements_in/tests.in
-    vim project/app_bootstrap/requirements_in/typing.in
-    vim project/app_bootstrap/requirements_in/dev.in
-    vim project/app_bootstrap/requirements_in/linux.in
-    vim project/app_bootstrap/requirements_in/windows.in
+    vim project/data/requirements_in/build.in
+    vim project/data/requirements_in/docs.in
+    vim project/data/requirements_in/tests.in
+    vim project/data/requirements_in/typing.in
+    vim project/data/requirements_in/dev.in
+    vim project/data/requirements_in/linux.in
+    vim project/data/requirements_in/windows.in
     make update
 ````
 

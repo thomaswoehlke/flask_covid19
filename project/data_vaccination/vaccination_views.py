@@ -5,12 +5,12 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import vaccination_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
+from project.web.web.web_dispachter_service import vaccination_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_vaccination.model.vaccination_model_data import VaccinationData
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
@@ -34,9 +34,7 @@ admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 
 class VaccinationUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] VaccinationUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_vaccination.route("")
@@ -94,9 +92,7 @@ vaccination_urls = VaccinationUrls()
 
 class VaccinationTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] VaccinationTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -229,9 +225,7 @@ vaccination_tasks = VaccinationTasks()
 
 class VaccinationTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] VaccinationTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_vaccination.route("/task/download")
@@ -239,14 +233,14 @@ class VaccinationTaskUrls:
         flash("vaccination_service.download started")
         vaccination_service.download()
         flash("vaccination_service.download done")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_vaccination.route("/task/import")
     def url_task_vaccination_import():
         vaccination_tasks.task_vaccination_import_file.apply_async()
         flash("task_vaccination_import_file started")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_vaccination.route("/task/update/full/dimension-tables")
@@ -292,7 +286,7 @@ class VaccinationTaskUrls:
         flash("vaccination_service.download done")
         vaccination_tasks.task_vaccination_update.apply_async()
         flash("task_vaccination_update started")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 vaccination_task_urls = VaccinationTaskUrls()

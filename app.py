@@ -1,13 +1,14 @@
-from project.app_web import app, db, run_web, celery
-from project.app_web.web.web_dispachter_service import all_dispachter_matrix_service
-from project.app_web.web.web_dispachter_service import app_admin_service
-from project.app_web.web.web_dispachter_service import ecdc_service
-from project.app_web.web.web_dispachter_service import owid_service
-from project.app_web.web.web_dispachter_service import rki_service
-from project.app_web.web.web_dispachter_service import vaccination_service
-from project.app_web.web.web_dispachter_service import web_service
-from project.app_web.web.web_dispachter_service import who_service
-from project.app_web.web.web_dispachter_service import task_service
+from project.web import run_web
+from project.web.web_views import app, db, celery
+from project.web.web.web_dispachter_service import all_dispachter_matrix_service
+from project.web.web.web_dispachter_service import admin_service
+from project.web.web.web_dispachter_service import ecdc_service
+from project.web.web.web_dispachter_service import owid_service
+from project.web.web.web_dispachter_service import rki_service
+from project.web.web.web_dispachter_service import vaccination_service
+from project.web.web.web_dispachter_service import web_service
+from project.web.web.web_dispachter_service import who_service
+from project.web.web.web_dispachter_service import notification_service
 
 
 def create_app():
@@ -269,51 +270,51 @@ def vaccination_full_update():
 def admin_database_dump():
     """[Admin] database dump"""
     with app.app_context():
-        app_admin_service.database_dump()
+        admin_service.database_dump()
 
 
 @app.cli.command("db-dump-reimport")
 def admin_database_dump_reimport():
     """[Admin] database dump reimport"""
     with app.app_context():
-        app_admin_service.database_dump_reimport()
+        admin_service.database_dump_reimport()
 
 
 @app.cli.command("db-drop-and-create")
 def admin_database_drop_and_create():
     """[Admin] database drop and create"""
     with app.app_context():
-        app_admin_service.database_drop_and_create()
+        admin_service.database_drop_and_create()
 
 
 @app.cli.command("db-count")
 def admin_database_table_row_count():
     """[Admin] database table row count"""
     with app.app_context():
-        app_admin_service.database_table_row_count()
+        admin_service.database_table_row_count()
 
 
 @app.cli.command("db-import-status")
 def admin_database_import_status():
     """[Admin] database import-status"""
     with app.app_context():
-        app_admin_service.database_import_status()
+        admin_service.database_import_status()
 
 
-@app.cli.command("all-notifications-count")
+@app.cli.command("all-data_all_notifications-count")
 def all_task_notifications_count():
-    """[ALL] task notifications count"""
+    """[ALL] task data_all_notifications count"""
     with app.app_context():
-        nr = task_service.notifications_count()
-        app.logger.info("task notifications count: " + str(nr))
+        nr = notification_service.notifications_count()
+        app.logger.info("task data_all_notifications count: " + str(nr))
 
 
-@app.cli.command("all-notifications-list")
+@app.cli.command("all-data_all_notifications-list")
 def all_task_notifications_find():
-    """[ALL] task notifications find"""
-    app.logger.info("task notifications find: ")
+    """[ALL] task data_all_notifications find"""
+    app.logger.info("task data_all_notifications find: ")
     with app.app_context():
-        for task in task_service.notifications_find():
+        for task in notification_service.notifications_find():
             app.logger.info(str(task))
 
 

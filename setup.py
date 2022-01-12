@@ -23,18 +23,18 @@ def get_version():
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
-scripts_dir = "project" + os.sep + "app_bootstrap" + os.sep + "scripts" + os.sep
+scripts_dir = "project" + os.sep + "data" + os.sep + "scripts" + os.sep
 
 pip_requirements_in_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_in"
+    "project" + os.sep + "data" + os.sep + "requirements_in"
 )
 
 pip_requirements_linux_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_linux"
+    "project" + os.sep + "data" + os.sep + "requirements_linux"
 )
 
 pip_requirements_windows_dir = (
-    "project" + os.sep + "app_bootstrap" + os.sep + "requirements_windows"
+    "project" + os.sep + "data" + os.sep + "requirements_windows"
 )
 
 

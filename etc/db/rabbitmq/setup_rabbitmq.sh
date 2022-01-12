@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/web_user/bin/env bash
 
 ## https://www.rabbitmq.com/admin-guide.html
 #

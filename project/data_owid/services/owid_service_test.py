@@ -1,7 +1,7 @@
-from project.data_all.notifications.notifications_model import Task
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_config import BlueprintConfig
+from project.data_all_notifications.notifications_model import Notification
+from project.data.database import app
+from project.data.database import db
+from project.data_all.services.all_config import BlueprintConfig
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_location import OwidCountry
@@ -10,18 +10,13 @@ from project.data_owid.model.owid_model_location_group import OwidContinent
 
 class OwidTestService:
     def __init__(self, database, owid_service):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" OWID Test Service [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.__owid_service = owid_service
         self.cfg = BlueprintConfig.create_config_for_owid()
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] Test Service ")
-        app.logger.debug("------------------------------------------------------------")
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="OWID", task_name='full_update_dimension_tables')
+        task = Notification.create(sector="OWID", task_name='full_update_dimension_tables')
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [START]")
         app.logger.debug("------------------------------------------------------------")
@@ -64,5 +59,5 @@ class OwidTestService:
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [DONE]")
         app.logger.debug("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

@@ -1,6 +1,6 @@
-from project.app_bootstrap.database import db
-from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model import AllFactTable
+from project.data.database import db
+from project.data.database import items_per_page
+from project.data_all.model.all_model import AllFactTable
 
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_location import EcdcCountry

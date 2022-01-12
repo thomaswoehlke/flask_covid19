@@ -6,12 +6,12 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import who_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
+from project.web.web.web_dispachter_service import who_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_date_reported import WhoDateReported
 from project.data_who.model.who_model_import import WhoImport
@@ -38,9 +38,7 @@ admin.add_view(ModelView(WhoData, db.session, category="WHO"))
 
 class WhoUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [WHO] WhoUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_who.route("")
@@ -448,9 +446,7 @@ who_urls = WhoUrls()
 
 class WhoTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [WHO] WhoTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -583,9 +579,7 @@ who_tasks = WhoTasks()
 
 class WhoTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [WHO] WhoTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_who.route("/files/download")
@@ -595,7 +589,7 @@ class WhoTaskUrls:
         who_service.download()
         flash(" [WHO] who_service.download_files() [done]")
         app.logger.info(" [WHO] url_download_files [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_who.route("/task/files/import")
@@ -607,7 +601,7 @@ class WhoTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [WHO] async task_who_import_files [start]")
         app.logger.info(" [WHO] url_task_who_import_files [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_who.route("/task/update/full/dimension_tables")
@@ -683,7 +677,7 @@ class WhoTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [WHO] async task_who_update [start]")
         app.logger.info(" [WHO] url_task_who_update [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 who_task_urls = WhoTaskUrls()
@@ -695,9 +689,7 @@ who_task_urls = WhoTaskUrls()
 
 class WhoTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [WHO] WhoTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_who.route("/test/who_import/countries")

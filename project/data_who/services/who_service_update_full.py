@@ -1,12 +1,12 @@
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import app
+from project.data.database import db
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import (
+from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
-from project.data_all.notifications.notifications_model import Task
+from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_data import WhoDataFactory
 from project.data_who.model.who_model_date_reported import WhoDateReported
@@ -20,29 +20,17 @@ from project.data_who.services.who_service_update import WhoServiceUpdateBase
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_date_reported(self):
-        task = Task.create(sector="WHO", task_name="__full_update_date_reported")\
+        task = Notification.create(sector="WHO", task_name="__full_update_date_reported")\
             .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoDateReported.remove_all()
-        # with app.app_context():
-        #     cache.clear()
         log_lines = []
         i = 0
-        # myresultarray = []
-        # myresultset = WhoImport.get_all_datum()
-        # for my_datum_item in myresultset:
-        #    my_datum = my_datum_item.datum
-        #    if not my_datum in myresultarray:
-        #        myresultarray.append(my_datum)
-        # for a in myresultset:
-        #    app.logger.info(str(a))
-        # for b in WhoImport.get_dates_reported_as_string_array():
-        #    app.logger.info(str(b))
         for s_date_reported in WhoImport.get_dates_reported_as_string_array():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_who(
+            o = AllDateReportedFactory.create_new_object_for_who(
                 my_date_reported=s_date_reported
             )
             db.session.add(o)
@@ -61,11 +49,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update date_reported [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_region(self):
-        task = Task.create(sector="WHO", task_name="__full_update_region")\
+        task = Notification.create(sector="WHO", task_name="__full_update_region")\
             .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update region [begin]")
@@ -88,18 +76,16 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update region [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
-        task = Task.create(sector="WHO", task_name="__full_update_country").read()
+        task = Notification.create(sector="WHO", task_name="__full_update_country").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update country [begin]")
         app.logger.info("------------------------------------------------------------")
         WhoCountry.remove_all()
         self.__full_update_region()
-        # with app.app_context():
-        #     cache.clear()
         log_lines = []
         i = 0
         for country_item in WhoImport.countries():
@@ -131,11 +117,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update country [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_data(self):
-        task = Task.create(sector="WHO", task_name="__full_update_data").read()
+        task = Notification.create(sector="WHO", task_name="__full_update_data").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -183,11 +169,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(sector="WHO", task_name="full_update_dimension_tables")\
+        task = Notification.create(sector="WHO", task_name="full_update_dimension_tables")\
             .read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [begin]")
@@ -198,11 +184,11 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update dimension_tables [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(sector="WHO", task_name="full_update_fact_table").read()
+        task = Notification.create(sector="WHO", task_name="full_update_fact_table").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update fact table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -210,5 +196,5 @@ class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] full update fact table [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

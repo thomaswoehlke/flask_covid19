@@ -1,11 +1,11 @@
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import app
+from project.data.database import db
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinUpdate
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
+from project.data_all_notifications.notifications_model import Notification
 from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
@@ -15,14 +15,9 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 
 class VaccinationServiceUpdateBase:
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("------------------------------------------------------------")
-        app.logger.debug(" Vaccination Service Update [init]")
-        app.logger.debug("------------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] Service Update")
-        app.logger.debug("------------------------------------------------------------")
 
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
@@ -52,7 +47,7 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
                 + str(one_date_reported)
                 + " added"
             )
-            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+            o = AllDateReportedFactory.create_new_object_for_vaccination(
                 one_date_reported
             )
             db.session.add(o)
@@ -87,17 +82,17 @@ class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpda
         return self
 
     def update_dimension_tables(self):
-        task = Task.create(
+        task = Notification.create(
             sector="Vaccination", task_name="update_dimension_tables"
         ).read()
         self.__update_date_reported()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Task.create(sector="Vaccination", task_name="update_fact_table").read()
+        task = Notification.create(sector="Vaccination", task_name="update_fact_table").read()
         self.__update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/web_user/bin/env bash
 
 deactivate
 rm -rf venv

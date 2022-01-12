@@ -1,13 +1,13 @@
 import csv
 
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_config import BlueprintConfig
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import app
+from project.data.database import db
+from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinImport
-from project.data_all.notifications.notifications_model import Task
+from project.data_all.services.all_service_mixins import AllServiceMixinImport
+from project.data_all_notifications.notifications_model import Notification
 from project.data_vaccination.model.vaccination_model_import import VaccinationImport
 from project.data_vaccination.model.vaccination_model_import import (
     VaccinationImportFactory,
@@ -16,14 +16,9 @@ from project.data_vaccination.model.vaccination_model_import import (
 
 class VaccinationServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: BlueprintConfig):
-        app.logger.debug("-----------------------------------------------------------")
-        app.logger.debug(" Vaccination Service Import [init]")
-        app.logger.debug("-----------------------------------------------------------")
         self.__database = database
         self.cfg = config
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [Vaccination] Service Import ")
-        app.logger.debug("-----------------------------------------------------------")
 
     def count_file_rows(self):
         count = 0
@@ -33,7 +28,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Task.create(sector="Vaccination", task_name="import_file").read()
+        task = Notification.create(sector="Vaccination", task_name="import_file").read()
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -50,7 +45,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
             file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
             for row in file_reader:
                 date_reported = row["date"]
-                d = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+                d = AllDateReportedFactory.create_new_object_for_vaccination(
                     my_date_reported=date_reported
                 )
                 o = VaccinationImportFactory.create_new(
@@ -74,5 +69,5 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

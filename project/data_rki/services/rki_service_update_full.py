@@ -1,11 +1,11 @@
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import app
+from project.data.database import db
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
-from project.data_all.all_service_mixins import AllServiceMixinUpdateFull
+from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
-from project.data_all.notifications.notifications_model import Task
+from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppeFactory
 from project.data_rki.model.rki_model_data import RkiData
@@ -21,7 +21,7 @@ from project.data_rki.services.rki_service_update import RkiServiceUpdateBase
 
 class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
     def __full_update_meldedatum(self):
-        task = Task.create(sector="RKI", task_name="__full_update_meldedatum")
+        task = Notification.create(sector="RKI", task_name="__full_update_meldedatum")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update meldedatum [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -30,7 +30,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         output_lines = []
         for meldedatum_from_import in RkiImport.get_datum_of_all_import():
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+            o = AllDateReportedFactory.create_new_object_for_rki_meldedatum(
                 my_meldedatum=meldedatum_from_import
             )
             db.session.add(o)
@@ -45,11 +45,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update meldedatum [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_altersgruppe(self):
-        task = Task.create(sector="RKI", task_name="__full_update_altersgruppe")
+        task = Notification.create(sector="RKI", task_name="__full_update_altersgruppe")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update altersgruppe [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -71,11 +71,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update altersgruppe [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_bundesland(self):
-        task = Task.create(sector="RKI", task_name="__full_update_bundesland")
+        task = Notification.create(sector="RKI", task_name="__full_update_bundesland")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update bundesland [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -97,11 +97,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] full update bundesland [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_landkreis(self):
-        task = Task.create(sector="RKI", task_name="__full_update_landkreis")
+        task = Notification.create(sector="RKI", task_name="__full_update_landkreis")
         RkiLandkreis.remove_all()
         self.__full_update_bundesland()
         app.logger.info("------------------------------------------------------------")
@@ -133,11 +133,11 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __full_update_landkreis [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __full_update_data(self):
-        task = Task.create(sector="RKI", task_name="__full_update_data")
+        task = Notification.create(sector="RKI", task_name="__full_update_data")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __full_update_data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -152,7 +152,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
         for my_meldedatum in RkiMeldedatum.find_all():
             my_meldedatum_datum = my_meldedatum.datum
-            task_meldedatum = Task.create(
+            task_meldedatum = Notification.create(
                 sector="RKI",
                 task_name="__full_update_data: {} ".format(str(my_meldedatum_datum)))\
                 .read()
@@ -180,7 +180,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
                 db.session.commit()
             d += 1
             sd = str(my_meldedatum)
-            Task.finish(task_id=task_meldedatum.id)
+            Notification.finish(task_id=task_meldedatum.id)
             app.logger.info(
                 " [RKI] __full_update_data ... {} rows ... {} ( {} )".format(
                     str(i), sd, str(k)
@@ -193,7 +193,7 @@ class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] __full_update_data [done]")
         app.logger.info("------------------------------------------------------------")
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def __clean_dimension_tables(self):

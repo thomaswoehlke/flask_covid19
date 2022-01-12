@@ -1,7 +1,7 @@
 import socket
 
 import pytest
-from project.app_bootstrap.database import Covid19Application
+from project.data.database import Covid19Application
 
 
 @pytest.fixture(scope="session")

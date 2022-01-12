@@ -6,12 +6,12 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import ecdc_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
+from project.web.web.web_dispachter_service import ecdc_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
@@ -36,9 +36,7 @@ admin.add_view(ModelView(EcdcData, db.session, category="ECDC"))
 
 class EcdcUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("")
@@ -225,9 +223,7 @@ ecdc_urls = EcdcUrls()
 
 class EcdcTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -375,9 +371,7 @@ ecdc_tasks = EcdcTasks()
 
 class EcdcTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("/task/download")
@@ -386,7 +380,7 @@ class EcdcTaskUrls:
         ecdc_service.download()
         flash("ecdc_service.download done")
         app.logger.info("url_ecdc_task_download [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_ecdc.route("/task/import")
@@ -396,7 +390,7 @@ class EcdcTaskUrls:
         flash("task_ecdc_import started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_ecdc_task_import [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_ecdc.route("/task/update/dimension-tables")
@@ -460,7 +454,7 @@ class EcdcTaskUrls:
         flash("task_ecdc_update started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_task_ecdc_update [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 ecdc_task_urls = EcdcTaskUrls()
@@ -475,9 +469,7 @@ ecdc_test_service = EcdcTestService(db, ecdc_service)
 
 class EcdcTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] EcdcTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_ecdc.route("/test/ecdc_import/countries")

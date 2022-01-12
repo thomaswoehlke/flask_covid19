@@ -1,0 +1,35 @@
+{% extends 'app_web/layout/page_layout.html' %}
+
+{% block navtabs %}
+    {% include 'data_all/navigation/data_all_navtabs.html' %}
+{% endblock %}
+
+{% block content %}
+    {{super()}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% include 'data_all_notification/data_all_notification_pagination.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'data_all_notification/data_all_notification_table.html' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'data_all_notification/data_all_notification_pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_container %}
+    <div>
+        {% for error in errors %}
+            <h4>{{ error }}</h4>
+        {% endfor %}
+    </div>
+{% endblock %}

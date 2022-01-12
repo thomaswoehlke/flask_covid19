@@ -3,11 +3,11 @@ from datetime import date
 from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import Bundle
 
-from project.app_bootstrap.database import db
-from project.app_bootstrap.database import items_per_page
-from project.data_all.all_model import AllImport
-from project.data_all.all_model_date_reported_factory import (
-    BlueprintDateReportedFactory,
+from project.data.database import db
+from project.data.database import items_per_page
+from project.data_all.model.all_model import AllImport
+from project.data_all.model.all_model_date_reported_factory import (
+    AllDateReportedFactory,
 )
 
 
@@ -169,17 +169,17 @@ class RkiServiceImportFactory:
         }
         my_datum[
             "d_meldedatum"
-        ] = BlueprintDateReportedFactory.create_new_object_for_rki_meldedatum(
+        ] = AllDateReportedFactory.create_new_object_for_rki_meldedatum(
             my_meldedatum=my_datum["d_meldedatum_str"]
         )
         my_datum[
             "d_ref_datum"
-        ] = BlueprintDateReportedFactory.create_new_object_for_rki_ref_datum(
+        ] = AllDateReportedFactory.create_new_object_for_rki_ref_datum(
             my_ref_datum=my_datum["d_ref_datum_str"]
         )
         my_datum[
             "d_datenstand"
-        ] = BlueprintDateReportedFactory.create_new_object_for_rki_date_datenstand(
+        ] = AllDateReportedFactory.create_new_object_for_rki_date_datenstand(
             my_date_datenstand=my_datum["d_datenstand_str"]
         )
         return my_datum

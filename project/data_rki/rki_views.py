@@ -6,12 +6,12 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import rki_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
+from project.web.web.web_dispachter_service import rki_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location import RkiLandkreis
@@ -41,9 +41,7 @@ admin.add_view(ModelView(RkiData, db.session, category="RKI"))
 
 class RkiUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] RkiUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_rki.route("")
@@ -213,9 +211,7 @@ rki_urls = RkiUrls()
 
 class RkiTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] RkiTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -297,9 +293,7 @@ rki_tasks = RkiTasks()
 
 class RkiTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] RkiTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_rki.route("/task/download")
@@ -309,7 +303,7 @@ class RkiTaskUrls:
         rki_service.download()
         flash(" [RKI] url_task_rki_download [done]")
         app.logger.info(" [RKI] url_task_rki_download [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/import")
@@ -319,7 +313,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_import started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_import [async start]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/dimension-tables")
@@ -339,7 +333,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_dimension_tables started")
         flash(message="long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_dimension_tables [async start]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/update/full/fact-table")
@@ -359,7 +353,7 @@ class RkiTaskUrls:
         flash(" [RKI] task_rki_update_fact_table started")
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] url_task_rki_update_fact_table [async start]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_rki.route("/task/full/update")
@@ -387,7 +381,7 @@ class RkiTaskUrls:
         flash(message=" [RKI] long running background task started", category="warning")
         app.logger.warn(" [RKI] task_rki_update [async start]")
         app.logger.info(" [RKI] url_task_rki_update [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 rki_task_urls = RkiTaskUrls()
@@ -401,9 +395,7 @@ rki_test_service = RkiTestService(db, rki_service)
 
 class RkiTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [RKI] RkiTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_rki.route("/test/full_update_dimension_tables")

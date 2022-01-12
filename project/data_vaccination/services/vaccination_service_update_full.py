@@ -1,12 +1,12 @@
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import db
-from project.data_all.all_model_date_reported_factory import \
-    BlueprintDateReportedFactory
+from project.data.database import app
+from project.data.database import db
+from project.data_all.model.all_model_date_reported_factory import \
+    AllDateReportedFactory
 
-from project.data_all.all_service_mixins import (
+from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
-from project.data_all.notifications.notifications_model import Task
+from project.data_all_notifications.notifications_model import Notification
 from project.data_vaccination.model.vaccination_model_data import VaccinationData
 from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
 from project.data_vaccination.model.vaccination_model_date_reported import (
@@ -29,7 +29,7 @@ class VaccinationServiceUpdateFull(
         i = 0
         for one_date_reported in date_reported_list:
             i += 1
-            o = BlueprintDateReportedFactory.create_new_object_for_vaccination(
+            o = AllDateReportedFactory.create_new_object_for_vaccination(
                 my_date_reported=one_date_reported
             )
             db.session.add(o)
@@ -74,18 +74,18 @@ class VaccinationServiceUpdateFull(
         return self
 
     def full_update_dimension_tables(self):
-        task = Task.create(
+        task = Notification.create(
             sector="Vaccination", task_name="full_update_dimension_tables"
         ).read()
         VaccinationData.remove_all()
         self.__full_update_date_reported()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Task.create(
+        task = Notification.create(
             sector="Vaccination", task_name="full_update_fact_table"
         ).read()
         self.__full_update_fact_table()
-        Task.finish(task_id=task.id)
+        Notification.finish(task_id=task.id)
         return self

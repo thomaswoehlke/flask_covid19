@@ -6,12 +6,12 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
-from project.app_bootstrap.database import admin
-from project.app_bootstrap.database import app
-from project.app_bootstrap.database import celery
-from project.app_bootstrap.database import db
-from project.app_web.web.web_dispachter_service import owid_service
-from project.app_web.web.web_model_transient import WebPageContent
+from project.data.database import admin
+from project.data.database import app
+from project.data.database import celery
+from project.data.database import db
+from project.web.web.web_dispachter_service import owid_service
+from project.web.web.web_model_transient import WebPageContent
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
 from project.data_owid.model.owid_model_import import OwidImport
@@ -40,9 +40,7 @@ owid_test_service = OwidTestService(db, owid_service)
 
 class OwidUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("")
@@ -391,9 +389,7 @@ owid_urls = OwidUrls()
 
 class OwidTasks:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTasks ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @celery.task(bind=True)
@@ -514,16 +510,14 @@ class OwidTasks:
 
 owid_tasks = OwidTasks()
 
-# ----------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 #  URL Routes for Celery TASKS
-# ----------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 
 class OwidTaskUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTaskUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("/task/download/only")
@@ -532,7 +526,7 @@ class OwidTaskUrls:
         owid_service.download()
         flash("owid_service.run_download_only [done]")
         app.logger.info("url_owid_task_download_only [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_owid.route("/task/import/only")
@@ -543,7 +537,7 @@ class OwidTaskUrls:
         flash(message="long running background task started", category="warning")
         app.logger.warn("started task_owid_import_only")
         app.logger.info("url_task_owid_import_only [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
     @staticmethod
     @app_owid.route("/task/full/update/dimension-tables")
@@ -612,21 +606,19 @@ class OwidTaskUrls:
         flash("task_owid_update started")
         flash(message="long running background task started", category="warning")
         app.logger.info("url_task_owid_update [done]")
-        return redirect(url_for("app_admin.url_admin_database_import_status"))
+        return redirect(url_for("web_admin.url_admin_database_import_status"))
 
 
 owid_task_urls = OwidTaskUrls()
 
-# ---------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 #  Url Routes Frontend TESTS
-# ---------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 
 class OwidTestUrls:
     def __init__(self):
-        app.logger.debug("------------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidTestUrls ")
-        app.logger.debug("------------------------------------------------------------")
 
     @staticmethod
     @app_owid.route("/test/update_dimension_tables_only")
@@ -749,9 +741,7 @@ owid_test_urls = OwidTestUrls()
 
 class OwidReportUrls:
     def __init__(self):
-        app.logger.debug("-----------------------------------------------------------")
         app.logger.info(" ready: [OWID] OwidrReportUrls ")
-        app.logger.debug("-----------------------------------------------------------")
 
     @staticmethod
     @app_owid_report.route("/biweekly_change_in_confirmed_covid19_cases")
