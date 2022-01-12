@@ -79,7 +79,7 @@ pbr==5.8.0
 pep517==0.12.0
 Pillow==8.4.0
 pip-tools==6.4.0
-pipenv==2021.11.23
+pipenv==2022.1.8
 platformdirs==2.4.0
 pluggy==1.0.0
 pre-commit==2.16.0
