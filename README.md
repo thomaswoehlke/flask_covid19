@@ -33,7 +33,7 @@
 ### run services web and celery
 
 ````bash
-    ./mq.sh
+    ./run.sh
 ````
 
 ### run cli tasks
