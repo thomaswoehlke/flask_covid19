@@ -4,7 +4,7 @@ pip-tools
 pre-commit
 tox
 toml
-pipenv
+pipenv>=2022.1.8
 virtualenv
 pytoolbox
 python-dotenv
