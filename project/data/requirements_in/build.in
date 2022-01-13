@@ -10,4 +10,4 @@ pytoolbox
 python-dotenv
 Flask
 urllib3>=1.26.5
-pillow>=8.3.2
+Pillow>=9.0.0
