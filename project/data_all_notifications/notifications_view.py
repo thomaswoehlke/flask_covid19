@@ -31,7 +31,7 @@ class NotificationUrls:
             page_info=page_info)
 
     @staticmethod
-    @app_notification.route("/notification/read")
+    @app_notification.route("/notification/mark_read")
     @login_required
     def url_all_notification_mark_read():
         data = Notification.notifications_find_asc(10)
