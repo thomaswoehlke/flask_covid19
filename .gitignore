@@ -1176,3 +1176,4 @@ flask_covid19.egg-info
 /data/
 !/data/Makefile
 /docs/uml/project/**/*.png
+/broker

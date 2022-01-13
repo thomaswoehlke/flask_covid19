@@ -33,10 +33,12 @@ clean_linux:
 	@echo "------------------"
 	rm -rf .eggs
 	rm -rf project.egg-info
+	rm -rf flask_covid19.egg-info
 	rm -rf build
 	rm -rf dist
 	rm -rf .checkmate
 	rm -rf node_modules
+	rm -rf broker
 	rm -rf .tox
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
