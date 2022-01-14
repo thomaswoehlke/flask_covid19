@@ -1,7 +1,9 @@
 import csv
 
-from project.data.database import app
-from project.data.database import db
+import pandas
+import sqlalchemy
+
+from project.data.database import covid19_application
 from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
@@ -12,6 +14,10 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 from project.data_vaccination.model.vaccination_model_import import (
     VaccinationImportFactory,
 )
+
+db_uri = covid19_application.db_uri
+app = covid19_application.app
+db = covid19_application.db
 
 
 class VaccinationServiceImport(AllServiceMixinImport):
@@ -40,6 +46,11 @@ class VaccinationServiceImport(AllServiceMixinImport):
         )
         app.logger.info("------------------------------------------------------------")
         VaccinationImport.remove_all()
+        app.logger.info("------------------------------------------------------------")
+        engine = sqlalchemy.create_engine(db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql('vaccination_import_pandas', engine)
+        app.logger.info("------------------------------------------------------------")
         k = 0
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')

@@ -1,7 +1,9 @@
 import csv
 
-from project.data.database import app
-from project.data.database import db
+import pandas
+import sqlalchemy
+
+from project.data.database import covid19_application
 from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 
@@ -9,6 +11,10 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.model.rki_model_import import RkiImportFactory
 from project.data_rki.model.rki_model_import import RkiServiceImportFactory
+
+db_uri = covid19_application.db_uri
+app = covid19_application.app
+db = covid19_application.db
 
 
 class RkiServiceImport(AllServiceMixinImport):
@@ -39,6 +45,10 @@ class RkiServiceImport(AllServiceMixinImport):
         app.logger.info("START: RkiImport.remove_all()")
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
+        app.logger.info("------------------------------------------------------------")
+        engine = sqlalchemy.create_engine(db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql('rki_import_pandas', engine)
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(

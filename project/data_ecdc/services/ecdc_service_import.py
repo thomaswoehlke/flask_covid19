@@ -1,7 +1,9 @@
 import csv
 
-from project.data.database import app
-from project.data.database import db
+import pandas
+import sqlalchemy
+
+from project.data.database import covid19_application
 from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
@@ -11,6 +13,10 @@ from project.data_all.services.all_service_mixins import AllServiceMixinImport
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
 from project.data_ecdc.model.ecdc_model_import import EcdcImportFactory
+
+db_uri = covid19_application.db_uri
+app = covid19_application.app
+db = covid19_application.db
 
 
 class EcdcServiceImport(AllServiceMixinImport):
@@ -42,6 +48,10 @@ class EcdcServiceImport(AllServiceMixinImport):
         app.logger.info(" EcdcImport.remove_all() START")
         EcdcImport.remove_all()
         app.logger.info(" EcdcImport.remove_all() DONE")
+        app.logger.info("------------------------------------------------------------")
+        engine = sqlalchemy.create_engine(db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql('ecdc_import_pandas', engine)
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')

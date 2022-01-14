@@ -190,6 +190,7 @@ class Covid19Application:
             self.app.logger.debug(msg)
         self.app.logger.debug("-------------------------------------------------------")
 
+
 covid19_application = Covid19Application()
 app = covid19_application.app
 db = covid19_application.db

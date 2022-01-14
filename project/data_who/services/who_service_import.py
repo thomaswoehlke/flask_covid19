@@ -1,6 +1,9 @@
 import csv
 import sys
 
+import pandas
+import sqlalchemy
+
 from project.data.database import covid19_application
 from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.model.all_model_date_reported_factory import (
@@ -13,6 +16,7 @@ from project.data_who.model.who_model_import import WhoImportFactory
 
 app = covid19_application.app
 db = covid19_application.db
+db_uri = covid19_application.db_uri
 
 
 class WhoServiceImport(AllServiceMixinImport):
@@ -47,6 +51,12 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info(" WhoImport.remove_all() START")
         WhoImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
+        app.logger.info("------------------------------------------------------------")
+
+        engine = sqlalchemy.create_engine(db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql('who_import_pandas', engine)
+
         app.logger.info("------------------------------------------------------------")
         with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
             file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
