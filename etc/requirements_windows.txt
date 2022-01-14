@@ -1,6 +1,6 @@
 alabaster==0.7.12
 alembic==1.7.5
-amqp==5.0.6
+amqp==5.0.9
 atomicwrites==1.4.0
 attrs==21.2.0
 Babel==2.9.1
@@ -52,7 +52,7 @@ itsdangerous==2.0.1
 Jinja2==3.0.3
 jsonschema==3.2.0
 kiwisolver==1.3.2
-kombu==5.2.2
+kombu==5.2.3
 latexcodec==2.0.1
 Mako==1.1.6
 mariadb==1.0.8
