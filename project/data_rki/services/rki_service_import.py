@@ -35,19 +35,19 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def import_file(self):
         task = Notification.create(sector=self.cfg.category, task_name="import_file")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] import_file  [begin]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [{}] import into TABLE: {} <--- from FILE {} [START]".format(
                 self.cfg.category, self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info("START: RkiImport.remove_all()")
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         if covid19_application.use_pandoc_only:
             app.logger.info(" rki_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri)
@@ -60,8 +60,7 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
                 method='multi'
             )
             app.logger.info(" rki_import_pandas DONE")
-            app.logger.info(
-                "------------------------------------------------------------")
+            self.__log_line()
         else:
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(
@@ -92,14 +91,14 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
                     )
                 )
             app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [{}] import into TABLE: {} <--- from FILE {} [DONE]".format(
                 self.cfg.category, self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] import_file  [done]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self

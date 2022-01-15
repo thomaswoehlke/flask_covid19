@@ -68,9 +68,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_date_reported"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] update date_reported [begin]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         RkiMeldedatum.set_all_processed_update()
         for new_meldedatum in self.__get_new_dates():
@@ -88,9 +88,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] update date_reported [done]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -99,11 +99,11 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_location_groups"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [{}] update location_groups [begin]".format(self.cfg.category)
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         RkiBundesland.set_all_processed_update()
         for new_location_group in self.__get_new_locations():
@@ -119,9 +119,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] update location_groups [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -131,9 +131,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             task_name="__update_locations"
         )
         self.__update_location_groups()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] __update_locations [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         RkiLandkreis.set_all_processed_update()
         location_group_dict = RkiBundesland.find_all_as_dict()
@@ -153,9 +153,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [RKI] __update_locations [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -164,9 +164,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_altersgruppen"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [RKI] __update_altersgruppen [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         RkiAltersgruppe.set_all_processed_update()
         for new_altersgruppe in self.__get_new_altersgruppen():
@@ -185,9 +185,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [RKI] __update_altersgruppen [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -196,13 +196,13 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_data"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}}] __update_data [begin]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         d = 0
         dict_altersgruppen = RkiAltersgruppe.find_all_as_dict()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         limit = 10
         for my_meldedatum in RkiMeldedatum.find_by_not_processed_update_limited(limit):
             d += 1
@@ -261,9 +261,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         app.logger.info(" [{}] __update_data : {} total {} rows".format(
             self.cfg.category, str(d), str(i)
         ))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [{}] __update_data [done]".format(self.cfg.category))
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -314,9 +314,9 @@ class RkiServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         app.logger.info("")
         RkiData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [RKI] delete_last_day [DONE]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
