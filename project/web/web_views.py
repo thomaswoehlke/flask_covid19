@@ -40,7 +40,7 @@ app.register_blueprint(app_who, url_prefix="/who")
 app.register_blueprint(app_owid, url_prefix="/owid")
 app.register_blueprint(app_owid_report, url_prefix="/owid/report")
 app.register_blueprint(app_ecdc, url_prefix="/ecdc")
-app.register_blueprint(app_vaccination, url_prefix="/vaccination")
+app.register_blueprint(app_vaccination, url_prefix="/vaxx")
 app.register_blueprint(app_rki, url_prefix="/rki/")
 
 

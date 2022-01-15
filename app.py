@@ -245,23 +245,23 @@ def rki_update_fact_table():
         rki_service.update_fact_table()
 
 
-@app.cli.command("vaccination-download")
+@app.cli.command("vaxx-download")
 def vaccination_download():
-    """[vaccination] download"""
+    """[vaxx] download"""
     with app.app_context():
         vaccination_service.download()
 
 
-@app.cli.command("vaccination-import")
+@app.cli.command("vaxx-import")
 def vaccination_import_file():
-    """[vaccination] import file"""
+    """[vaxx] import file"""
     with app.app_context():
         vaccination_service.import_file()
 
 
-@app.cli.command("vaccination-update-full")
+@app.cli.command("vaxx-update-full")
 def vaccination_full_update():
-    """[vaccination] full update"""
+    """[vaxx] full update"""
     with app.app_context():
         vaccination_service.full_update()
 

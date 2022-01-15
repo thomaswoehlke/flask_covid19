@@ -20,7 +20,7 @@ from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 vaccination_service = VaccinationService(db)
 
 app_vaccination = Blueprint(
-    "vaccination", __name__, template_folder="templates", url_prefix="/vaccination"
+    "vaxx", __name__, template_folder="templates", url_prefix="/vaxx"
 )
 
 admin.add_view(ModelView(VaccinationImport, db.session, category="Vaccination"))
@@ -41,13 +41,13 @@ class VaccinationUrls:
     @app_vaccination.route("")
     @app_vaccination.route("/")
     def url_vaccination_root():
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/info")
     def url_vaccination_info():
         page_info = WebPageContent("Vaccination", "Info")
-        return render_template("vaccination/vaccination_info.html", page_info=page_info)
+        return render_template("vaxx/vaccination_info.html", page_info=page_info)
 
     @staticmethod
     @app_vaccination.route("/imported/page/<int:page>")
@@ -56,7 +56,7 @@ class VaccinationUrls:
         page_info = WebPageContent("Vaccination", "Data: Germany Timeline imported")
         page_data = VaccinationImport.get_all(page)
         return render_template(
-            "vaccination/imported/vaccination_imported.html",
+            "vaxx/imported/vaccination_imported.html",
             page_data=page_data,
             page_info=page_info,
         )
@@ -68,7 +68,7 @@ class VaccinationUrls:
         page_info = WebPageContent("Vaccination", "Data: Germany Timeline")
         page_data = VaccinationData.get_all(page)
         return render_template(
-            "vaccination/data/vaccination_data.html",
+            "vaxx/data/vaccination_data.html",
             page_data=page_data,
             page_info=page_info,
         )
@@ -81,7 +81,7 @@ class VaccinationUrls:
         vaccination_service.delete_last_day()
         flash("url_vaccination_delete_last_day [done]")
         app.logger.info("url_vaccination_delete_last_day [done]")
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
 
 vaccination_urls = VaccinationUrls()
@@ -248,28 +248,28 @@ class VaccinationTaskUrls:
     def url_task_vaccination_full_update_dimension_tables():
         flash("url_vaccination_task_update_dimensiontables_only started")
         vaccination_tasks.task_vaccination_full_update_dimension_tables.apply_async()
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/task/update/dimension-tables")
     def url_task_vaccination_update_dimension_tables():
         flash("url_vaccination_task_update_dimensiontables_only started")
         vaccination_tasks.task_vaccination_update_dimension_tables.apply_async()
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/task/update/fact-table/incremental/only")
     def url_task_vaccination_update_facttable():
         flash("url_vaccination_task_update_facttable_incremental_only started")
         vaccination_tasks.task_vaccination_update_facttable.apply_async()
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/task/update/fact-table/initial/only")
     def url_task_vaccination_full_update_facttable():
         flash("url_vaccination_task_update_facttable_initial_only started")
         vaccination_tasks.task_vaccination_full_update_facttable.apply_async()
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/task/full/update/")
@@ -278,7 +278,7 @@ class VaccinationTaskUrls:
         flash("vaccination_service.download done")
         vaccination_tasks.task_vaccination_full_update.apply_async()
         flash("task_vaccination_full_update started")
-        return redirect(url_for("vaccination.url_vaccination_info"))
+        return redirect(url_for("vaxx.url_vaccination_info"))
 
     @staticmethod
     @app_vaccination.route("/task/update")

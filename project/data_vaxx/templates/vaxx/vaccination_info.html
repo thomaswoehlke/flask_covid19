@@ -1,7 +1,7 @@
 {% extends 'app_web/layout/page_layout.html' %}
 
 {% block navtabs %}
-    {% include 'vaccination/navigation/vaccination_navtabs.html' %}
+    {% include 'vaxx/navigation/vaccination_navtabs.html' %}
 {% endblock %}
 
 {% block content %}
@@ -21,19 +21,19 @@
                             <div class="accordion-body">
                                 <div class="d-grid gap-2 d-block">
                                 <a class="btn btn-success btn-lg btn-block text-left"
-                                   href="{{ url_for( 'vaccination.url_task_vaccination_download') }}"
+                                   href="{{ url_for( 'vaxx.url_task_vaccination_download') }}"
                                    role="button">Vaccination :: download</a>
                                 <a class="btn btn-info btn-lg btn-block text-left"
-                                   href="{{ url_for( 'vaccination.url_task_vaccination_import') }}"
+                                   href="{{ url_for( 'vaxx.url_task_vaccination_import') }}"
                                    role="button">Vaccination :: import</a>
                                 <a class="btn btn-warning btn-lg btn-block text-left"
-                                   href="{{ url_for( 'vaccination.url_task_vaccination_full_update_dimension_tables') }}"
+                                   href="{{ url_for( 'vaxx.url_task_vaccination_full_update_dimension_tables') }}"
                                    role="button">Vaccination :: full update :: dimension-tables</a>
                                 <a class="btn btn-secondary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'vaccination.url_task_vaccination_full_update_facttable') }}"
+                                   href="{{ url_for( 'vaxx.url_task_vaccination_full_update_facttable') }}"
                                    role="button">Vaccination :: full update :: fact-table</a>
                                 <a class="btn btn-primary btn-lg btn-block text-left"
-                                   href="{{ url_for( 'vaccination.url_task_vaccination_full_update') }}"
+                                   href="{{ url_for( 'vaxx.url_task_vaccination_full_update') }}"
                                    role="button">Vaccination :: full update</a>
                                 </div>
                             </div>

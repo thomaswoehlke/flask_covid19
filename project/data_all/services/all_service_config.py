@@ -93,9 +93,9 @@ class AllServiceConfig:
     @classmethod
     def create_config_for_rki_vaccination(cls):
         return AllServiceConfig(
-            slug="vaccination",
+            slug="vaxx",
             category="Vaccination",
-            cvsfile_subpath="vaccination",
+            cvsfile_subpath="vaxx",
             sub_category="Vaccination",
             tablename=VaccinationImport.__tablename__,
             cvsfile_name="Vaccination.tsv",

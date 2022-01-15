@@ -53,7 +53,7 @@ keywords_list = [
     "OWID",
     "deaths",
     "cases",
-    "vaccination",
+    "vaxx",
     "data",
     "statistic",
     "python",

@@ -2,12 +2,12 @@
 <div class="table-responsive">
     <table class="table table-hover table-striped table-sm table-bordered">
         <thead>
-        {% include 'vaccination/data/vaccination_data_table_head.html' %}
+        {% include 'vaxx/data/vaccination_data_table_head.html' %}
         </thead>
         <tbody>
         {% for data_item in page_data.items %}
             <tr>
-                <td class="text-center table-dark" nowrap>{{ data_item.date_reported }}</td>
+                <td class="text-center table-dark" nowrap>{{ data_item.datum }}</td>
 
                 <td class="text-right table-secondary">{{ data_item.dosen_differenz_zum_vortag }}</td>
 
@@ -40,7 +40,7 @@
         {% endfor %}
         </tbody>
         <tfoot>
-        {% include 'vaccination/data/vaccination_data_table_head.html' %}
+        {% include 'vaxx/data/vaccination_data_table_head.html' %}
         </tfoot>
     </table>
 </div>

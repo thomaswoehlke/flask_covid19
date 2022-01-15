@@ -64,7 +64,7 @@ class AllDownloadService(AllServiceMixinDownload):
         app.logger.info(" " + self.cfg.msg_job)
         app.logger.info("------------------------------------------------------------")
         self.__prepare_download()
-        if self.cfg.slug[0] in ["who", "ecdc", "divi", "vaccination", "owid", "rki"]:
+        if self.cfg.slug[0] in ["who", "ecdc", "divi", "vaxx", "owid", "rki"]:
             self.__download_with_subprocess_and_os_native_wget()
         else:
             self.__download_with_wget()

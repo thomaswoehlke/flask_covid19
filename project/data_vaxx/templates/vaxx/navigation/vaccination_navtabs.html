@@ -2,14 +2,14 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'vaccination.url_vaccination_data') }}">
+                           href="{{ url_for( 'vaxx.url_vaccination_data') }}">
                             <i class="fas fa-syringe"></i> Data
                         </a>
                     </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'vaccination.url_vaccination_imported') }}">
+                           href="{{ url_for( 'vaxx.url_vaccination_imported') }}">
                            <i class="fas fa-inbox"></i> imported
                         </a>
                     </li>
@@ -22,7 +22,7 @@
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="{{ url_for( 'vaccination.url_vaccination_info') }}">
+                           href="{{ url_for( 'vaxx.url_vaccination_info') }}">
                             <i class="fas fa-play-circle"></i> Vaccination
                         </a>
                     </li>
