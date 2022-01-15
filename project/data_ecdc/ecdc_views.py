@@ -1,4 +1,5 @@
 from celery import states
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -6,10 +7,12 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
+
 from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
+
 from project.web.web.web_dispachter_service import ecdc_service
 from project.web.web.web_model_transient import WebPageContent
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
