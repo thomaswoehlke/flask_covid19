@@ -11,6 +11,7 @@ from project.data_rki.model.rki_model_import import RkiImport
 
 
 class RkiTestService:
+
     def __init__(self, database, rki_service):
         self.__database = database
         self.__rki_service = rki_service
