@@ -9,7 +9,7 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.data_vaxx.services.vaccination_service import VaccinationService
+from project.data_vaxx.services.vaxx_service import VaccinationService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_vaxx.model.vaccination_model_data import VaccinationData
 from project.data_vaxx.model.vaccination_model_date_reported import (
