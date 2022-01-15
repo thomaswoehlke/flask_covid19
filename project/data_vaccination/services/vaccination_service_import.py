@@ -4,6 +4,7 @@ import pandas
 import sqlalchemy
 
 from project.data.database import covid19_application
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
@@ -17,14 +18,13 @@ app = covid19_application.app
 db = covid19_application.db
 
 
-class VaccinationServiceImport(AllServiceMixinImport):
-    def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
-        app.logger.info(" ready: [Vaccination] Service Import ")
+class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
 
-    def __log_line(self):
-        app.logger.info("------------------------------------------------------------")
+    def __init__(self, database, config: AllServiceConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def count_file_rows(self):
         count = 0

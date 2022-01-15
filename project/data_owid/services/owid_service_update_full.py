@@ -1,6 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model import AllDateReportedFactory
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
 from project.data_all_notifications.notifications_model import Notification
@@ -16,8 +17,19 @@ from project.data_owid.services.owid_service_update import OwidServiceUpdateBase
 
 
 class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
+
+    def __init__(self, database, config: AllServiceConfig):
+        self.__database = database
+        self.cfg = config
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
+
     def __full_update_date_reported(self):
-        task = Notification.create(sector="OWID", task_name="__full_update_date_reported").read()
+        task = Notification.create(
+            sector="OWID",
+            task_name="__full_update_date_reported"
+        )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")

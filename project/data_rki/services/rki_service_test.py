@@ -16,7 +16,9 @@ class RkiTestService:
         self.__database = database
         self.__rki_service = rki_service
         self.cfg = AllServiceConfig.create_config_for_owid()
-        app.logger.info(" ready: [RKI] Test Service ")
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def full_update_dimension_tables(self):
         app.logger.info("------------------------------------------------------------")

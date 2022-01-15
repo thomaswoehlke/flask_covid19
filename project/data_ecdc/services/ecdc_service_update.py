@@ -1,5 +1,6 @@
 from project.data.database import app
 from project.data.database import db
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
@@ -15,14 +16,14 @@ from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
 from project.data_ecdc.model.ecdc_model_location_group import EcdcContinentFactory
 
 
-class EcdcServiceUpdateBase:
+class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
+
     def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
-        app.logger.debug(" ready: [ECDC] Service Update")
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
-
-class EcdcServiceUpdate(EcdcServiceUpdateBase, AllServiceMixinUpdate):
     def __get_new_dates(self):
         todo = []
         odr_list = EcdcDateReported.find_all_as_str()

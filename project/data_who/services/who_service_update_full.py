@@ -1,6 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model import AllDateReportedFactory
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
@@ -14,10 +15,9 @@ from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location import WhoCountryFactory
 from project.data_who.model.who_model_location_group import WhoCountryRegion
 from project.data_who.model.who_model_location_group import WhoCountryRegionFactory
-from project.data_who.services.who_service_update import WhoServiceUpdateBase
 
 
-class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
+class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)

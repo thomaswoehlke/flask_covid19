@@ -20,7 +20,9 @@ class OwidServiceImport(AllServiceMixinImport):
     def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
-        app.logger.info(" ready: [OWID] Service Import ")
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def count_file_rows(self):
         count = 0

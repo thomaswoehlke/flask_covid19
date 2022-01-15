@@ -1,6 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model import AllDateReportedFactory
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 
 from project.data_all.services.all_service_mixins import (
@@ -13,11 +14,9 @@ from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
 from project.data_vaccination.model.vaccination_model_import import VaccinationImport
-from project.data_vaccination.services.vaccination_service_update import (
-    VaccinationServiceUpdateBase,
-)
 
-class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixinUpdateFull):
+
+class VaccinationServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)

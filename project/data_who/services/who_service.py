@@ -16,7 +16,9 @@ class WhoService(AllServiceMixin):
         self.service_import = WhoServiceImport(database, self.cfg)
         self.service_update = WhoServiceUpdate(database, self.cfg)
         self.service_update_full = WhoServiceUpdateFull(database, self.cfg)
-        app.logger.info(" ready: [WHO] Service")
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def download(self):
         task = Notification.create(sector="WHO", task_name="download")

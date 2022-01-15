@@ -13,7 +13,9 @@ class OwidTestService:
         self.__database = database
         self.__owid_service = owid_service
         self.cfg = AllServiceConfig.create_config_for_owid()
-        app.logger.info(" ready: [OWID] Test Service ")
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def full_update_dimension_tables(self):
         task = Notification.create(sector="OWID", task_name='full_update_dimension_tables')

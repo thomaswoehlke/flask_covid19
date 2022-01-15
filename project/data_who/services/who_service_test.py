@@ -7,4 +7,6 @@ class WhoTestService:
         self.__database = database
         self.__who_service = who_service
         self.cfg = AllServiceConfig.create_config_for_who()
-        app.logger.info(" ready: [WHO] Test Service ")
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))

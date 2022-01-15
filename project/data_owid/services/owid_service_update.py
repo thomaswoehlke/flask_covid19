@@ -16,13 +16,22 @@ from project.data_owid.model.owid_model_location_group import OwidContinentFacto
 
 
 class OwidServiceUpdateBase:
+
     def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
-        app.logger.debug(" ready: [OWID] Service Update ")
+
 
 
 class OwidServiceUpdate(OwidServiceUpdateBase, AllServiceMixinUpdate):
+
+    def __init__(self, database, config: AllServiceConfig):
+        self.__database = database
+        self.cfg = config
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
+
     def __owid_import_get_new_dates(self):
         todo = []
         odr_list = OwidDateReported.find_all_as_str()

@@ -4,6 +4,7 @@ import pandas
 import sqlalchemy
 
 from project.data.database import covid19_application
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 
@@ -16,12 +17,14 @@ app = covid19_application.app
 db = covid19_application.db
 
 
-class RkiServiceImport(AllServiceMixinImport):
+class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
-        app.logger.info(" ready: [{}] Service Import ".format(self.cfg.category))
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def count_file_rows(self):
         count = 0

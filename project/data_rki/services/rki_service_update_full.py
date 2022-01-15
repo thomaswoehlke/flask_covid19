@@ -1,6 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model import AllDateReportedFactory
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
@@ -15,10 +16,9 @@ from project.data_rki.model.rki_model_data_location_group import RkiBundesland
 from project.data_rki.model.rki_model_data_location_group import RkiBundeslandFactory
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
-from project.data_rki.services.rki_service_update import RkiServiceUpdateBase
 
 
-class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
+class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
