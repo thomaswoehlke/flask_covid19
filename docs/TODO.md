@@ -106,4 +106,6 @@
 ## Pandas and Flask
 * https://stackoverflow.com/questions/52644035/how-to-show-a-pandas-dataframe-into-a-existing-flask-html-table
 * https://www.geeksforgeeks.org/convert-csv-to-html-table-using-python-pandas-and-flask-framework/
-
+* https://github.com/app-generator/flask-pandas-dataframe
+* https://www.py4u.net/discuss/16578
+* https://sarahleejane.github.io/learning/python/2015/08/09/simple-tables-in-webapps-using-flask-and-pandas-with-python.html
