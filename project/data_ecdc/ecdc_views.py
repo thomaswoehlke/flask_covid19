@@ -15,7 +15,7 @@ from project.data.database import db
 
 from project.web.services.web_dispachter_service import ecdc_service
 from project.web.model.web_model_transient import WebPageContent
-from project.data_ecdc.model.ecdc_model import EcdcDateReported
+from project.data_ecdc.model.ecdc_model_date_reported import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
 from project.data_ecdc.model.ecdc_model_location import EcdcCountry
