@@ -32,9 +32,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category,
             task_name="__full_update_date_reported"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update date_reported [begin]")
-        self.__log_line()
+        super.__log_line()
         OwidDateReported.remove_all()
         i = 0
         log_lines = []
@@ -52,9 +52,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update date_reported [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -63,9 +63,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category,
             task_name="__full_update_continent"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update continent [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info("")
         log_lines = []
         OwidContinent.remove_all()
@@ -83,9 +83,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update continent [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -94,9 +94,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category,
             task_name="__full_update_country"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update country [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info("")
         OwidData.remove_all()
         OwidCountry.remove_all()
@@ -114,9 +114,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update country [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -125,9 +125,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category,
             task_name="__full_update_fact_table"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] __full_update_fact_table [begin]")
-        self.__log_line()
+        super.__log_line()
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
@@ -193,9 +193,9 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             + str(lfd_nr_tage)
             + " days"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] __full_update_fact_table [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -215,13 +215,13 @@ class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category,
             task_name="full_update_fact_table"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update [begin]")
-        self.__log_line()
+        super.__log_line()
         OwidData.remove_all()
         self.__full_update_fact_table()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] full update [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

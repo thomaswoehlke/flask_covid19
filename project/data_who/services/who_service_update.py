@@ -67,9 +67,9 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
 
     def __update_date_reported(self):
         task = Notification.create(sector="WHO", task_name="__update_date_reported")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update date_reported [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoDateReported.set_all_processed_update()
         i = 0
         for new_date_reported in self.__who_import_get_new_dates():
@@ -83,17 +83,17 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             output += "   added " + str(o)
             app.logger.info(output)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update date_reported [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __update_location_group(self):
         task = Notification.create(sector="WHO", task_name="__update_location_group")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update location_group [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoCountryRegion.set_all_processed_full_update()
         i = 0
         for new_location_group in self.__get_new_location_groups():
@@ -113,17 +113,17 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 output += "   NOT added ( " + str(c.id) + " ) "
             app.logger.info(output)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update location_group [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __update_location(self):
         task = Notification.create(sector="WHO", task_name="__update_location")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update location [begin]")
-        self.__log_line()
+        super.__log_line()
         self.__update_location_group()
         WhoCountry.set_all_processed_update()
         i = 0
@@ -156,17 +156,17 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update location [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __update_data(self):
         task = Notification.create(sector="WHO", task_name="__update_data")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update data [begin]")
-        self.__log_line()
+        super.__log_line()
         i = 0
         d = 0
         k = 0
@@ -202,44 +202,44 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         db.session.commit()
         app.logger.info(" [WHO] update data :  " + str(i) + " rows total")
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update data [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def update_dimension_tables(self):
         task = Notification.create(sector="WHO", task_name="update_dimension_tables")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update dimension_tables [begin]")
-        self.__log_line()
+        super.__log_line()
         self.__update_date_reported()
         self.__update_location()
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update dimension_tables [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
         task = Notification.create(sector="WHO", task_name="update_fact_table")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update fact_table [begin]")
-        self.__log_line()
+        super.__log_line()
         self.__update_data()
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] update fact_table [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
         task = Notification.create(sector="WHO", task_name="delete_last_day")
-        self.__log_line()
+        super.__log_line()
         app.logger.debug(" [WHO] delete last_day [START]")
-        self.__log_line()
+        super.__log_line()
         joungest_datum = WhoDateReported.get_joungest_datum()
         app.logger.info(" [WHO] joungest_datum:" + str(joungest_datum))
         app.logger.info(" [WHO] WhoData.find_by_date_reported(joungest_datum):")
@@ -251,8 +251,8 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         app.logger.info(" [WHO] WhoData.delete_data_for_one_day(joungest_datum)")
         WhoData.delete_data_for_one_day(joungest_datum)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.debug(" [WHO] delete last_day [DONE]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

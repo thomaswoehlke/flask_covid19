@@ -38,18 +38,18 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def import_file(self):
         task = Notification.create(sector="Vaccination", task_name="import_file").read()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [Vaccination] import [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [Vaccination] import into TABLE: "
             + self.cfg.tablename
             + " <--- from FILE "
             + self.cfg.cvsfile_path
         )
-        self.__log_line()
+        super.__log_line()
         VaccinationImport.remove_all()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" vaccination_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(
@@ -62,7 +62,7 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
         )
         app.logger.info(" vaccination_import_pandas DONE")
         if not covid19_application.use_pandoc_only:
-            self.__log_line()
+            super.__log_line()
             k = 0
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
@@ -86,14 +86,14 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
                     str(k))
                 )
             app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [Vaccination] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [Vaccination] import [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

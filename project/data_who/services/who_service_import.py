@@ -40,9 +40,9 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
             self.cfg.category,
             task_name="import_file"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] import [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [WHO] import into TABLE: {} {} <--- from FILE [begin]".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
@@ -52,11 +52,11 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
             keyDate_reported = "\ufeffDate_reported"
         else:
             keyDate_reported = "ï»¿Date_reported"
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" WhoImport.remove_all() START")
         WhoImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" who_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(self.cfg.cvsfile_path)
@@ -66,7 +66,7 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
             con=engine
         )
         app.logger.info(" who_import_pandas DONE")
-        self.__log_line()
+        super.__log_line()
         if not covid19_application.use_pandoc_only:
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
@@ -94,14 +94,14 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
                     str(k))
                 )
             app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [WHO] import into TABLE: {} {} <--- from FILE [DONE]".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] import [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

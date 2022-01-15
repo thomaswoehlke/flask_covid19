@@ -33,9 +33,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_date_reported"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update date_reported [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoDateReported.remove_all()
         log_lines = []
         i = 0
@@ -57,9 +57,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update date_reported [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -68,9 +68,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_region"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update region [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoCountryRegion.remove_all()
         log_lines = []
         i = 0
@@ -86,9 +86,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update region [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -97,9 +97,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_country"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update country [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoCountry.remove_all()
         self.__full_update_region()
         log_lines = []
@@ -130,9 +130,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update country [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -141,15 +141,15 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_data"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] WhoData.remove_all() [begin]")
         WhoData.remove_all()
         # with app.app_context():
         #     cache.clear()
         app.logger.info(" [WHO] WhoData.remove_all() [done]")
-        self.__log_line()
+        super.__log_line()
         i = 0
         d = 0
         k = 0
@@ -185,9 +185,9 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 k = 0
         db.session.commit()
         app.logger.info(" [WHO] full update:  " + str(i) + " total rows")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -196,15 +196,15 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="full_update_dimension_tables"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update dimension_tables [begin]")
-        self.__log_line()
+        super.__log_line()
         WhoData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update dimension_tables [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -213,12 +213,12 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="full_update_fact_table"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update fact table [begin]")
-        self.__log_line()
+        super.__log_line()
         self.__full_update_data()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [WHO] full update fact table [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

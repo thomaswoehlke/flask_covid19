@@ -40,9 +40,9 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
             sector=self.cfg.category,
             task_name="import_file"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] import [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [ECDC] import into TABLE: "
             + self.cfg.tablename
@@ -50,11 +50,11 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
             + self.cfg.cvsfile_path
         )
         k = 0
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" EcdcImport.remove_all() START")
         EcdcImport.remove_all()
         app.logger.info(" EcdcImport.remove_all() DONE")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" ecdc_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
         data = pandas.read_csv(self.cfg.cvsfile_path)
@@ -65,7 +65,7 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
         )
         app.logger.info(" ecdc_import_pandas DONE")
         if not covid19_application.use_pandoc_only:
-            self.__log_line()
+            super.__log_line()
             with open(self.cfg.cvsfile_path, newline="") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
                 for row in file_reader:
@@ -87,14 +87,14 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
                 db.session.commit()
                 app.logger.info(" [ECDC] import  ...  {} rows total".format(str(k)))
             app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [ECDC] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] import [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

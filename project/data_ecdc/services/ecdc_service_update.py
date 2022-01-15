@@ -65,9 +65,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_date_reported"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update date_reported  [begin]")
-        self.__log_line()
+        super.__log_line()
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
         for result_item in result_date_rep:
@@ -87,9 +87,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 + str(k)
                 + " rows "
             )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update date_reported  [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -98,9 +98,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_continent"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update continent [begin]")
-        self.__log_line()
+        super.__log_line()
         result_continent = EcdcImport.get_continent()
         for result_item in result_continent:
             my_continent_exp = result_item[0]
@@ -108,9 +108,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(" [ECDC] update continent ... " + str(o) + " rows ")
             db.session.add(o)
         db.session.commit()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update continent [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -119,9 +119,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_country"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update country [begin]")
-        self.__log_line()
+        super.__log_line()
         all_continents = EcdcContinent.find_all()
         for my_continent in all_continents:
             result_countries_of_continent = EcdcImport.get_countries_of_continent(
@@ -132,9 +132,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 app.logger.info(" [ECDC] update country " + str(o) + " ")
                 db.session.add(o)
             db.session.commit()
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update country [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -222,9 +222,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_data"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update [begin]")
-        self.__log_line()
+        super.__log_line()
         i = 0
         dict_date_reported_from_import = self.__get_date_reported_from_import()
         for my_date_reported in dict_date_reported_from_import.keys():
@@ -258,9 +258,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                     db.session.commit()
         db.session.commit()
         app.logger.info(" [ECDC] update ... " + str(i) + " rows total")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [ECDC] update [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -278,9 +278,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="delete_last_day"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.debug(" [ECDC] delete last_day [START]")
-        self.__log_line()
+        super.__log_line()
         joungest_datum_str = EcdcData.get_joungest_datum()
         joungest_datum = EcdcDateReported.find_by_date_reported(joungest_datum_str)
         app.logger.info(" joungest_datum:")
@@ -301,8 +301,8 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(line)
         app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         EcdcData.delete_data_for_one_day(joungest_datum)
-        self.__log_line()
+        super.__log_line()
         app.logger.debug(" [ECDC] delete last_day [DONE]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self

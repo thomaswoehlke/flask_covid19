@@ -40,19 +40,19 @@ class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
             sector=self.cfg.category,
             task_name="import_file"
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] import [begin]")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [OWID] import into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" OwidImport.remove_all() START")
         OwidImport.remove_all()
         app.logger.info(" OwidImport.remove_all() DONE")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" owid_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
         data = pandas.read_csv(self.cfg.cvsfile_path)
@@ -63,7 +63,7 @@ class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
         )
         app.logger.info(" owid_import_pandas DONE")
         if not covid19_application.use_pandoc_only:
-            self.__log_line()
+            super.__log_line()
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
                 k = 0
@@ -86,14 +86,14 @@ class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
                 db.session.commit()
                 app.logger.info(" [OWID] import ... {} rows total".format(str(k)))
             app.logger.info("")
-        self.__log_line()
+        super.__log_line()
         app.logger.info(
             " [OWID] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        self.__log_line()
+        super.__log_line()
         app.logger.info(" [OWID] import [done]")
-        self.__log_line()
+        super.__log_line()
         Notification.finish(task_id=task.id)
         return self
