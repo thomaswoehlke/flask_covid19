@@ -15,7 +15,6 @@ from project.data_vaccination.model.vaccination_model_import import (
     VaccinationImportFactory,
 )
 
-db_uri = covid19_application.db_uri
 app = covid19_application.app
 db = covid19_application.db
 
@@ -47,29 +46,31 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         VaccinationImport.remove_all()
         app.logger.info("------------------------------------------------------------")
-        engine = sqlalchemy.create_engine(db_uri)
-        data = pandas.read_csv(self.cfg.cvsfile_path)
-        data.to_sql('vaccination_import_pandas', engine)
-        app.logger.info("------------------------------------------------------------")
-        k = 0
-        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
-            for row in file_reader:
-                date_reported = row["date"]
-                d = AllDateReportedFactory.create_new_object_for_vaccination(
-                    my_date_reported=date_reported
-                )
-                o = VaccinationImportFactory.create_new(
-                    date_reported=date_reported, d=d, row=row
-                )
-                db.session.add(o)
-                k += 1
-                if (k % 100) == 0:
-                    db.session.commit()
-                    app.logger.info(" [Vaccination] import  ... " + str(k) + " rows")
-            db.session.commit()
-            app.logger.info(" [Vaccination] import  ... " + str(k) + " rows total")
-        app.logger.info("")
+        if covid19_application.use_pandoc_only:
+            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+            data = pandas.read_csv(self.cfg.cvsfile_path)
+            data.to_sql('vaccination_import_pandas', engine)
+        else:
+            app.logger.info("------------------------------------------------------------")
+            k = 0
+            with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+                file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
+                for row in file_reader:
+                    date_reported = row["date"]
+                    d = AllDateReportedFactory.create_new_object_for_vaccination(
+                        my_date_reported=date_reported
+                    )
+                    o = VaccinationImportFactory.create_new(
+                        date_reported=date_reported, d=d, row=row
+                    )
+                    db.session.add(o)
+                    k += 1
+                    if (k % 100) == 0:
+                        db.session.commit()
+                        app.logger.info(" [Vaccination] import  ... " + str(k) + " rows")
+                db.session.commit()
+                app.logger.info(" [Vaccination] import  ... " + str(k) + " rows total")
+            app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
             " [Vaccination] imported into TABLE: "

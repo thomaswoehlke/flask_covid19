@@ -12,7 +12,6 @@ from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.model.rki_model_import import RkiImportFactory
 from project.data_rki.model.rki_model_import import RkiServiceImportFactory
 
-db_uri = covid19_application.db_uri
 app = covid19_application.app
 db = covid19_application.db
 
@@ -46,31 +45,33 @@ class RkiServiceImport(AllServiceMixinImport):
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
         app.logger.info("------------------------------------------------------------")
-        engine = sqlalchemy.create_engine(db_uri)
-        data = pandas.read_csv(self.cfg.cvsfile_path)
-        data.to_sql('rki_import_pandas', engine)
-        app.logger.info("------------------------------------------------------------")
-        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-            file_reader = csv.DictReader(
-                csv_file,
-                delimiter=",",
-                quotechar='"'
-            )
-            k = 0
-            for row in file_reader:
-                k += 1
-                my_datum = RkiServiceImportFactory.row_str_to_date_fields(row)
-                o = RkiImportFactory.create_new(row=row, my_datum=my_datum)
-                db.session.add(o)
-                if (k % 500) == 0:
-                    db.session.commit()
-                if (k % 10000) == 0:
-                    app.logger.info(" [RKI] import ... " + str(k) + " rows")
-                if self.cfg.reached_limit_import_for_testing(row_number=k):
-                    break
-            db.session.commit()
-            app.logger.info(" [RKI] import ... " + str(k) + " rows total")
-        app.logger.info("")
+        if covid19_application.use_pandoc_only:
+            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+            data = pandas.read_csv(self.cfg.cvsfile_path)
+            data.to_sql('rki_import_pandas', engine)
+            app.logger.info("------------------------------------------------------------")
+        else:
+            with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+                file_reader = csv.DictReader(
+                    csv_file,
+                    delimiter=",",
+                    quotechar='"'
+                )
+                k = 0
+                for row in file_reader:
+                    k += 1
+                    my_datum = RkiServiceImportFactory.row_str_to_date_fields(row)
+                    o = RkiImportFactory.create_new(row=row, my_datum=my_datum)
+                    db.session.add(o)
+                    if (k % 500) == 0:
+                        db.session.commit()
+                    if (k % 10000) == 0:
+                        app.logger.info(" [RKI] import ... " + str(k) + " rows")
+                    if self.cfg.reached_limit_import_for_testing(row_number=k):
+                        break
+                db.session.commit()
+                app.logger.info(" [RKI] import ... " + str(k) + " rows total")
+            app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
             " [RKI] imported into TABLE: "

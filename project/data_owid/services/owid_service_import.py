@@ -14,7 +14,6 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_import import OwidImportFactory
 
-db_uri = covid19_application.db_uri
 app = covid19_application.app
 db = covid19_application.db
 
@@ -49,32 +48,34 @@ class OwidServiceImport(AllServiceMixinImport):
         OwidImport.remove_all()
         app.logger.info(" OwidImport.remove_all() DONE")
         app.logger.info("------------------------------------------------------------")
-        engine = sqlalchemy.create_engine(db_uri)
-        data = pandas.read_csv(self.cfg.cvsfile_path)
-        data.to_sql('owid_import_pandas', engine)
-        app.logger.info("------------------------------------------------------------")
-        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
-            k = 0
-            for row in file_reader:
-                date_reported = row["date"]
-                d = AllDateReportedFactory.create_new_object_for_owid(
-                    my_date_reported=date_reported
-                )
-                o = OwidImportFactory.create_new(
-                    date_reported=date_reported, d=d, row=row
-                )
-                db.session.add(o)
-                k += 1
-                if (k % 2000) == 0:
-                    db.session.commit()
-                if (k % 10000) == 0:
-                    app.logger.info(" [OWID] import ... " + str(k) + " rows")
-                if self.cfg.reached_limit_import_for_testing(row_number=k):
-                    break
-            db.session.commit()
-            app.logger.info(" [OWID] import ... " + str(k) + " rows total")
-        app.logger.info("")
+        if covid19_application.use_pandoc_only:
+            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+            data = pandas.read_csv(self.cfg.cvsfile_path)
+            data.to_sql('owid_import_pandas', engine)
+        else:
+            app.logger.info("------------------------------------------------------------")
+            with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+                file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
+                k = 0
+                for row in file_reader:
+                    date_reported = row["date"]
+                    d = AllDateReportedFactory.create_new_object_for_owid(
+                        my_date_reported=date_reported
+                    )
+                    o = OwidImportFactory.create_new(
+                        date_reported=date_reported, d=d, row=row
+                    )
+                    db.session.add(o)
+                    k += 1
+                    if (k % 2000) == 0:
+                        db.session.commit()
+                    if (k % 10000) == 0:
+                        app.logger.info(" [OWID] import ... " + str(k) + " rows")
+                    if self.cfg.reached_limit_import_for_testing(row_number=k):
+                        break
+                db.session.commit()
+                app.logger.info(" [OWID] import ... " + str(k) + " rows total")
+            app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
             " [OWID] imported into TABLE: "

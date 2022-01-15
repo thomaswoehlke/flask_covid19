@@ -42,6 +42,8 @@ class Covid19Application:
             "SQLALCHEMY_TRACK_MODIFICATIONS"
         ] = False  # silence the deprecation warning
         self.items_per_page = self.app.config["SQLALCHEMY_ITEMS_PER_PAGE"]
+        self.db_uri_pandas = self.db_uri + "_pandas"
+        self.use_pandoc_only = self.app.config["USE_PANDOC_ONLY"]
         return self
 
     def __int_cache(self):

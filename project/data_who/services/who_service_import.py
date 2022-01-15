@@ -16,7 +16,6 @@ from project.data_who.model.who_model_import import WhoImportFactory
 
 app = covid19_application.app
 db = covid19_application.db
-db_uri = covid19_application.db_uri
 
 
 class WhoServiceImport(AllServiceMixinImport):
@@ -33,7 +32,7 @@ class WhoServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Notification.create(sector="WHO", task_name="import_file").read()
+        task = Notification.create(sector="WHO", task_name="import_file")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] import [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -52,34 +51,35 @@ class WhoServiceImport(AllServiceMixinImport):
         WhoImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
         app.logger.info("------------------------------------------------------------")
-
-        engine = sqlalchemy.create_engine(db_uri)
-        data = pandas.read_csv(self.cfg.cvsfile_path)
-        data.to_sql('who_import_pandas', engine)
-
-        app.logger.info("------------------------------------------------------------")
-        with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-            file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
-            k = 0
-            for row in file_reader:
-                date_reported = row[keyDate_reported]
-                d = AllDateReportedFactory.create_new_object_for_who(
-                    my_date_reported=date_reported
-                )
-                o = WhoImportFactory.create_new(
-                    date_reported=date_reported, d=d, row=row
-                )
-                db.session.add(o)
-                k += 1
-                if (k % 2000) == 0:
-                    db.session.commit()
-                if (k % 10000) == 0:
-                    app.logger.info(" [WHO] import  ... " + str(k) + " rows")
-                if self.cfg.reached_limit_import_for_testing(row_number=k):
-                    break
-            db.session.commit()
-            app.logger.info(" [WHO] import  ... " + str(k) + " rows total")
-        app.logger.info("")
+        if covid19_application.use_pandoc_only:
+            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+            data = pandas.read_csv(self.cfg.cvsfile_path)
+            data.to_sql('who_import_pandas', engine)
+            app.logger.info(
+                "------------------------------------------------------------")
+        else:
+            with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
+                file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
+                k = 0
+                for row in file_reader:
+                    date_reported = row[keyDate_reported]
+                    d = AllDateReportedFactory.create_new_object_for_who(
+                        my_date_reported=date_reported
+                    )
+                    o = WhoImportFactory.create_new(
+                        date_reported=date_reported, d=d, row=row
+                    )
+                    db.session.add(o)
+                    k += 1
+                    if (k % 2000) == 0:
+                        db.session.commit()
+                    if (k % 10000) == 0:
+                        app.logger.info(" [WHO] import  ... " + str(k) + " rows")
+                    if self.cfg.reached_limit_import_for_testing(row_number=k):
+                        break
+                db.session.commit()
+                app.logger.info(" [WHO] import  ... " + str(k) + " rows total")
+            app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
             " [WHO] imported into TABLE: "
