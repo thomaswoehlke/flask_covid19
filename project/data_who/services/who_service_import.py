@@ -33,7 +33,10 @@ class WhoServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Notification.create(sector="WHO", task_name="import_file")
+        task = Notification.create(
+            sector="WHO",
+            task_name="import_file"
+        )
         self.__log_line()
         app.logger.info(" [WHO] import [begin]")
         self.__log_line()
