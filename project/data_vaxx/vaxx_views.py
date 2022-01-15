@@ -20,7 +20,9 @@ from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 vaccination_service = VaccinationService(db)
 
 app_vaccination = Blueprint(
-    "vaxx", __name__, template_folder="templates", url_prefix="/vaxx"
+    "vaxx", __name__,
+    template_folder="templates",
+    url_prefix="/vaxx"
 )
 
 admin.add_view(ModelView(VaccinationImport, db.session, category="Vaccination"))
@@ -47,7 +49,10 @@ class VaccinationUrls:
     @app_vaccination.route("/info")
     def url_vaccination_info():
         page_info = WebPageContent("Vaccination", "Info")
-        return render_template("vaxx/vaccination_info.html", page_info=page_info)
+        return render_template(
+            "vaxx/vaccination_info.html",
+            page_info=page_info
+        )
 
     @staticmethod
     @app_vaccination.route("/imported/page/<int:page>")
