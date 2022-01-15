@@ -47,6 +47,7 @@ who_service = WhoService(db)
 
 
 class AdminService:
+
     def __init__(self, database):
         self.__database = database
         self.limit_nr = 20
