@@ -9,8 +9,8 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.web.web.web_dispachter_service import vaccination_service
-from project.web.web.web_model_transient import WebPageContent
+from project.web.services.web_dispachter_service import vaccination_service
+from project.web.model.web_model_transient import WebPageContent
 from project.data_vaccination.model.vaccination_model_data import VaccinationData
 from project.data_vaccination.model.vaccination_model_date_reported import (
     VaccinationDateReported,

@@ -1,14 +1,14 @@
 from project.web import run_web
-from project.web.web_views import app, db, celery
-from project.web.web.web_dispachter_service import all_service_dispachter_matrix
-from project.web.web.web_dispachter_service import admin_service
-from project.web.web.web_dispachter_service import ecdc_service
-from project.web.web.web_dispachter_service import owid_service
-from project.web.web.web_dispachter_service import rki_service
-from project.web.web.web_dispachter_service import vaccination_service
-from project.web.web.web_dispachter_service import web_service
-from project.web.web.web_dispachter_service import who_service
-from project.web.web.web_dispachter_service import notification_service
+from project.web.web_views import app, db
+from project.web.services.web_dispachter_service import all_service_dispachter_matrix
+from project.web.services.web_dispachter_service import admin_service
+from project.web.services.web_dispachter_service import ecdc_service
+from project.web.services.web_dispachter_service import owid_service
+from project.web.services.web_dispachter_service import rki_service
+from project.web.services.web_dispachter_service import vaccination_service
+from project.web.services.web_dispachter_service import web_service
+from project.web.services.web_dispachter_service import who_service
+from project.web.services.web_dispachter_service import notification_service
 
 
 def create_app():

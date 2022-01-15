@@ -10,8 +10,8 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.web.web.web_dispachter_service import rki_service
-from project.web.web.web_model_transient import WebPageContent
+from project.web.services.web_dispachter_service import rki_service
+from project.web.model.web_model_transient import WebPageContent
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location import RkiLandkreis

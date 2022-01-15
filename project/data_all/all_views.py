@@ -7,11 +7,11 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.data.database import app, db, celery
-from project.web.web.web_dispachter_service import (
+from project.data.database import app, celery
+from project.web.services.web_dispachter_service import (
     all_service_dispachter_matrix,
 )
-from project.web.web.web_model_transient import WebPageContent
+from project.web.model.web_model_transient import WebPageContent
 
 drop_and_create_data_again = True
 
