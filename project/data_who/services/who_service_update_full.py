@@ -3,6 +3,7 @@ from project.data.database import db
 from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
+from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
@@ -19,6 +20,12 @@ from project.data_who.services.who_service_update import WhoServiceUpdateBase
 
 
 class WhoServiceUpdateFull(WhoServiceUpdateBase, AllServiceMixinUpdateFull):
+
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def __full_update_date_reported(self):
         task = Notification.create(sector="WHO", task_name="__full_update_date_reported")

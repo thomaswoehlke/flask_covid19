@@ -2,6 +2,7 @@ from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model_date_reported_factory import \
     AllDateReportedFactory
+from project.data_all.services.all_config import BlueprintConfig
 
 from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
@@ -17,10 +18,14 @@ from project.data_vaccination.services.vaccination_service_update import (
     VaccinationServiceUpdateBase,
 )
 
+class VaccinationServiceUpdateFull(VaccinationServiceUpdateBase, AllServiceMixinUpdateFull):
 
-class VaccinationServiceUpdateFull(
-    VaccinationServiceUpdateBase, AllServiceMixinUpdateFull
-):
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
+
     def __full_update_date_reported(self):
         app.logger.info(" [Vaccination] full update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")

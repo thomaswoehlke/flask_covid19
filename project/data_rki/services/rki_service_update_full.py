@@ -3,6 +3,7 @@ from project.data.database import db
 from project.data_all.model.all_model_date_reported_factory import (
     AllDateReportedFactory,
 )
+from project.data_all.services.all_config import BlueprintConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
 from project.data_all_notifications.notifications_model import Notification
@@ -20,6 +21,12 @@ from project.data_rki.services.rki_service_update import RkiServiceUpdateBase
 
 
 class RkiServiceUpdateFull(RkiServiceUpdateBase, AllServiceMixinUpdateFull):
+
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def __full_update_meldedatum(self):
         task = Notification.create(

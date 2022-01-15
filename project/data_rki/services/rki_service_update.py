@@ -19,13 +19,19 @@ from project.data_rki.model.rki_model_import import RkiImport
 
 
 class RkiServiceUpdateBase:
+
     def __init__(self, database, config: BlueprintConfig):
         self.__database = database
         self.cfg = config
-        app.logger.info(" ready: [{}] Service Update ".format(self.cfg.category))
 
 
 class RkiServiceUpdate(RkiServiceUpdateBase, AllServiceMixinUpdate):
+
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def __get_new_dates(self):
         todo = []

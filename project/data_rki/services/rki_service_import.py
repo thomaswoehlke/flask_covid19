@@ -17,6 +17,7 @@ db = covid19_application.db
 
 
 class RkiServiceImport(AllServiceMixinImport):
+
     def __init__(self, database, config: BlueprintConfig):
         self.__database = database
         self.cfg = config

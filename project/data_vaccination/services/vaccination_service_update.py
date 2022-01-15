@@ -14,13 +14,20 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 
 
 class VaccinationServiceUpdateBase:
+
     def __init__(self, database, config: BlueprintConfig):
         self.__database = database
         self.cfg = config
-        app.logger.info(" ready: [Vaccination] Service Update")
 
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
+
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
+
     def __get_new_dates(self):
         todo = []
         odr_list = VaccinationDateReported.find_all_as_str()

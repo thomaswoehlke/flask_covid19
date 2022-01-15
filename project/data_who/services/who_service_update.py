@@ -17,13 +17,19 @@ from project.data_who.model.who_model_location_group import WhoCountryRegionFact
 
 
 class WhoServiceUpdateBase:
+
     def __init__(self, database, config: BlueprintConfig):
         self.__database = database
         self.cfg = config
-        app.logger.info("  [WHO] Service Update Base ")
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
+
+    def __init__(self, database, config: BlueprintConfig):
+        super().__init__(database, config)
+        app.logger.info(" ready [{}] {} ".format(
+            self.cfg, self.__class__.__name__
+        ))
 
     def __who_import_get_new_dates(self):
         todo = []
