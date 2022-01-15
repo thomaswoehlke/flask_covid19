@@ -11,9 +11,9 @@ from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
 from project.data_ecdc.model.ecdc_model_location import EcdcCountry
 from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
-from project.data_ecdc import EcdcDataFactory
-from project.data_ecdc import EcdcCountryFactory
-from project.data_ecdc import EcdcContinentFactory
+from project.data_ecdc.factories.ecdc_model_data import EcdcDataFactory
+from project.data_ecdc.factories.ecdc_model_location import EcdcCountryFactory
+from project.data_ecdc.factories.ecdc_model_location_group import EcdcContinentFactory
 
 
 class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):

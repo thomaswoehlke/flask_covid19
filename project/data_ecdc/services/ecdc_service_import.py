@@ -11,7 +11,7 @@ from project.data_all.services.all_service_mixins import AllServiceMixinImport
 
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
-from project.data_ecdc import EcdcImportFactory
+from project.data_ecdc.factories.ecdc_model_import import EcdcImportFactory
 
 app = covid19_application.app
 db = covid19_application.db
