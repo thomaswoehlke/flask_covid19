@@ -1,5 +1,4 @@
 from project.data.database import app
-from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixin
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.services.ecdc_service import EcdcService
@@ -7,16 +6,6 @@ from project.data_owid.services.owid_service import OwidService
 from project.data_rki.services.rki_service import RkiService
 from project.data_vaccination.services.vaccination_service import VaccinationService
 from project.data_who.services.who_service import WhoService
-
-
-class AllServiceBase:
-
-    def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
-
-    def __log_line(self):
-        app.logger.info("------------------------------------------------------------")
 
 
 class AllServiceDispachterMatrix(AllServiceMixin):
