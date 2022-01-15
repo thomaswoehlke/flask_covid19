@@ -8,7 +8,7 @@ from project.data_vaccination.services.vaccination_service import VaccinationSer
 from project.data_who.services.who_service import WhoService
 
 
-class AllDataServiceDispachterMatrix(AllServiceMixin):
+class AllServiceDispachterMatrix(AllServiceMixin):
     def __init__(
         self,
         who_service: WhoService,
