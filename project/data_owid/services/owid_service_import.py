@@ -53,7 +53,7 @@ class OwidServiceImport(AllServiceMixinImport):
             data.to_sql(
                 name='owid_import_pandas',
                 if_exists='replace',
-                engine=engine
+                con=engine
             )
             app.logger.info(" owid_import_pandas DONE")
         else:

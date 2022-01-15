@@ -55,7 +55,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
             data.to_sql(
                 name='vaccination_import_pandas',
                 if_exists='replace',
-                engine=engine
+                con=engine
             )
             app.logger.info(" vaccination_import_pandas DONE")
         else:

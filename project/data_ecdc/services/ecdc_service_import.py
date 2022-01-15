@@ -55,7 +55,7 @@ class EcdcServiceImport(AllServiceMixinImport):
             data.to_sql(
                 name='ecdc_import_pandas',
                 if_exists='replace',
-                engine=engine
+                con=engine
             )
             app.logger.info(" ecdc_import_pandas DONE")
         else:

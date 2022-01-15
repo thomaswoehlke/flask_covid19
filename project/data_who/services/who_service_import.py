@@ -58,7 +58,7 @@ class WhoServiceImport(AllServiceMixinImport):
             data.to_sql(
                 name='who_import_pandas',
                 if_exists='replace',
-                engine=engine)
+                con=engine)
             app.logger.info(" who_import_pandas DONE")
             app.logger.info(
                 "------------------------------------------------------------")

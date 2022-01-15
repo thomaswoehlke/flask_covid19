@@ -52,7 +52,7 @@ class RkiServiceImport(AllServiceMixinImport):
             data.to_sql(
                 name='rki_import_pandas',
                 if_exists='replace',
-                engine=engine
+                con=engine
             )
             app.logger.info(" rki_import_pandas DONE")
             app.logger.info("------------------------------------------------------------")
