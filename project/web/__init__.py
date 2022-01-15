@@ -3,7 +3,7 @@ import socket
 import subprocess
 
 from project.web.services.web_dispachter_service import web_service
-from project.web.web_views import app, db
+from project.web.web_views import app, db, celery
 
 
 def run_web():

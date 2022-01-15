@@ -1,5 +1,5 @@
 from project.web import run_web
-from project.web.web_views import app, db
+from project.web.web_views import app, db, celery
 from project.web.services.web_dispachter_service import web_service_dispachter_matrix
 from project.web.services.web_dispachter_service import admin_service
 from project.web.services.web_dispachter_service import ecdc_service
