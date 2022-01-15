@@ -5,10 +5,7 @@ from sqlalchemy.orm import Bundle
 
 from project.data.database import db
 from project.data.database import items_per_page
-from project.data_all.model.all_model import AllImport
-from project.data_all.model.all_model_date_reported_factory import (
-    AllDateReportedFactory,
-)
+from project.data_all.model.all_model import AllImport, AllDateReportedFactory
 
 
 class RkiImport(AllImport):

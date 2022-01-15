@@ -1,8 +1,6 @@
 from project.data.database import app
 from project.data.database import db
-from project.data_all.model.all_model_date_reported_factory import (
-    AllDateReportedFactory,
-)
+from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
 from project.data_all_notifications.notifications_model import Notification
