@@ -4,6 +4,7 @@ import pandas
 import sqlalchemy
 
 from project.data.database import covid19_application
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
@@ -16,12 +17,12 @@ app = covid19_application.app
 db = covid19_application.db
 
 
-class OwidServiceImport(AllServiceMixinImport):
+class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
+
     def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
+        super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def count_file_rows(self):
@@ -32,32 +33,34 @@ class OwidServiceImport(AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Notification.create(sector="OWID", task_name="import_file")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="import_file"
+        )
+        self.__log_line()
         app.logger.info(" [OWID] import [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [OWID] import into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" OwidImport.remove_all() START")
         OwidImport.remove_all()
         app.logger.info(" OwidImport.remove_all() DONE")
-        app.logger.info("------------------------------------------------------------")
-        if covid19_application.use_pandoc_only:
-            app.logger.info(" owid_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
-            data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql(
-                name='owid_import_pandas',
-                if_exists='replace',
-                con=engine
-            )
-            app.logger.info(" owid_import_pandas DONE")
-        else:
-            app.logger.info("------------------------------------------------------------")
+        self.__log_line()
+        app.logger.info(" owid_import_pandas START")
+        engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql(
+            name='owid_import_pandas',
+            if_exists='replace',
+            con=engine
+        )
+        app.logger.info(" owid_import_pandas DONE")
+        if not covid19_application.use_pandoc_only:
+            self.__log_line()
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
                 k = 0
@@ -80,14 +83,14 @@ class OwidServiceImport(AllServiceMixinImport):
                 db.session.commit()
                 app.logger.info(" [OWID] import ... {} rows total".format(str(k)))
             app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [OWID] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] import [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self

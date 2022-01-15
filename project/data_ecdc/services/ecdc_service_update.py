@@ -6,6 +6,7 @@ from project.data_all import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
 
 from project.data_all_notifications.notifications_model import Notification
+from project.data_ecdc.factories.ecdc_model_data import EcdcDataFactory
 from project.data_ecdc.model.ecdc_model_date_reported import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
@@ -21,7 +22,7 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def __get_new_dates(self):
@@ -57,10 +58,13 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
-        task = Notification.create(sector="ECDC", task_name="__update_date_reported").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__update_date_reported"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] update date_reported  [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
         for result_item in result_date_rep:
@@ -80,17 +84,20 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 + str(k)
                 + " rows "
             )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] update date_reported  [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __update_continent(self):
-        task = Notification.create(sector="ECDC", task_name="__update_continent").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__update_continent"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] update continent [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         result_continent = EcdcImport.get_continent()
         for result_item in result_continent:
             my_continent_exp = result_item[0]
@@ -98,17 +105,20 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(" [ECDC] update continent ... " + str(o) + " rows ")
             db.session.add(o)
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] update continent [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __update_country(self):
-        task = Notification.create(sector="ECDC", task_name="__update_country")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__update_country"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] update country [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         all_continents = EcdcContinent.find_all()
         for my_continent in all_continents:
             result_countries_of_continent = EcdcImport.get_countries_of_continent(
@@ -119,9 +129,9 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 app.logger.info(" [ECDC] update country " + str(o) + " ")
                 db.session.add(o)
             db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] update country [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -194,7 +204,10 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         return dict_date_reported_from_import
 
     def update_dimension_tables(self):
-        task = Notification.create(sector="ECDC", task_name="update_dimension_tables")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="update_dimension_tables"
+        )
         self.__update_date_reported()
         self.__update_continent()
         self.__update_country()
@@ -202,10 +215,13 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         return self
 
     def __update_data(self):
-        task = Notification.create(sector="ECDC", task_name="__update_data").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__update_data"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] update [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         dict_date_reported_from_import = self.__get_date_reported_from_import()
         for my_date_reported in dict_date_reported_from_import.keys():
@@ -239,23 +255,29 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                     db.session.commit()
         db.session.commit()
         app.logger.info(" [ECDC] update ... " + str(i) + " rows total")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] update [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Notification.create(sector="ECDC", task_name="update_fact_table")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="update_fact_table"
+        )
         self.__update_data()
         Notification.finish(task_id=task.id)
         return self
 
     def delete_last_day(self):
-        task = Notification.create(sector="ECDC", task_name="delete_last_day")
-        app.logger.debug("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="delete_last_day"
+        )
+        self.__log_line()
         app.logger.debug(" [ECDC] delete last_day [START]")
-        app.logger.debug("------------------------------------------------------------")
+        self.__log_line()
         joungest_datum_str = EcdcData.get_joungest_datum()
         joungest_datum = EcdcDateReported.find_by_date_reported(joungest_datum_str)
         app.logger.info(" joungest_datum:")
@@ -276,8 +298,8 @@ class EcdcServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(line)
         app.logger.info(" WhoData.delete_data_for_one_day(joungest_datum)")
         EcdcData.delete_data_for_one_day(joungest_datum)
-        app.logger.debug("------------------------------------------------------------")
+        self.__log_line()
         app.logger.debug(" [ECDC] delete last_day [DONE]")
-        app.logger.debug("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self

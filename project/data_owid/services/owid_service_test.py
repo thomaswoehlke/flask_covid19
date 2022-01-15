@@ -14,11 +14,14 @@ class OwidTestService:
         self.__owid_service = owid_service
         self.cfg = AllServiceConfig.create_config_for_owid()
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def full_update_dimension_tables(self):
-        task = Notification.create(sector="OWID", task_name='full_update_dimension_tables')
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name='full_update_dimension_tables'
+        )
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" OwidTestService.full_update_dimension_tables() [START]")
         app.logger.debug("------------------------------------------------------------")

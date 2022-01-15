@@ -1,6 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all import AllDateReportedFactory
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdateFull
 
@@ -13,26 +14,25 @@ from project.data_owid.model.owid_model_location import OwidCountry
 from project.data_owid.model.owid_model_location import OwidCountryFactory
 from project.data_owid.model.owid_model_location_group import OwidContinent
 from project.data_owid.model.owid_model_location_group import OwidContinentFactory
-from project.data_owid.services.owid_service_update import OwidServiceUpdateBase
 
 
-class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
+class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def __full_update_date_reported(self):
         task = Notification.create(
-            sector="OWID",
+            self.cfg.category,
             task_name="__full_update_date_reported"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] full update date_reported [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         OwidDateReported.remove_all()
         i = 0
         log_lines = []
@@ -50,17 +50,20 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] full update date_reported [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_continent(self):
-        task = Notification.create(sector="OWID", task_name="__full_update_continent").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            self.cfg.category,
+            task_name="__full_update_continent"
+        )
+        self.__log_line()
         app.logger.info(" [OWID] full update continent [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info("")
         log_lines = []
         OwidContinent.remove_all()
@@ -78,17 +81,20 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] full update continent [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
-        task = Notification.create(sector="OWID", task_name="__full_update_country").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            self.cfg.category,
+            task_name="__full_update_country"
+        )
+        self.__log_line()
         app.logger.info(" [OWID] full update country [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info("")
         OwidData.remove_all()
         OwidCountry.remove_all()
@@ -106,17 +112,20 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] full update country [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_fact_table(self):
-        task = Notification.create(sector="OWID", task_name="__full_update_fact_table").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            self.cfg.category,
+            task_name="__full_update_fact_table"
+        )
+        self.__log_line()
         app.logger.info(" [OWID] __full_update_fact_table [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
@@ -182,15 +191,16 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
             + str(lfd_nr_tage)
             + " days"
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] __full_update_fact_table [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
         task = Notification.create(
-            sector="OWID", task_name="full_update_dimension_tables"
+            self.cfg.category,
+            task_name="full_update_dimension_tables"
         )
         OwidData.remove_all()
         self.__full_update_date_reported()
@@ -199,14 +209,17 @@ class OwidServiceUpdateFull(OwidServiceUpdateBase, AllServiceMixinUpdateFull):
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="OWID", task_name="full_update_fact_table")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            self.cfg.category,
+            task_name="full_update_fact_table"
+        )
+        self.__log_line()
         app.logger.info(" [OWID] full update [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         OwidData.remove_all()
         self.__full_update_fact_table()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [OWID] full update [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self

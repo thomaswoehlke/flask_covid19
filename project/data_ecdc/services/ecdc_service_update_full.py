@@ -21,15 +21,17 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def __full_update_date_reported(self):
-        task = Notification.create(sector="ECDC", task_name="__full_update_date_reported")\
-            .read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_date_reported"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] full update date_reported [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         EcdcDateReported.remove_all()
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
@@ -46,18 +48,20 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 " [ECDC] full update date_reported ... " + b + " rows ... (" + a + ")"
             )
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] full update date_reported [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_continent(self):
-        task = Notification.create(sector="ECDC", task_name="__full_update_continent")\
-            .read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_continent"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] full update continent [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         EcdcContinent.remove_all()
         result_continent = EcdcImport.get_continent()
         k = 0
@@ -72,18 +76,20 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             )
             db.session.add(o)
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] full update continent [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
-        task = Notification.create(sector="ECDC", task_name="__full_update_country")\
-            .read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_country"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] full update country [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         EcdcData.remove_all()
         EcdcCountry.remove_all()
         self.__full_update_continent()
@@ -103,15 +109,17 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 )
                 db.session.add(o)
         db.session.commit()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] full update country [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __get_date_reported_from_import(self):
-        task = Notification.create(sector="ECDC", task_name="__get_date_reported_from_import")\
-            .read()
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__get_date_reported_from_import"
+        )
         dict_date_reported_from_import = {}
         result_date_str_from_ecdc_import = EcdcImport.get_date_rep()
         for item_date_str_from_ecdc_import in result_date_str_from_ecdc_import:
@@ -142,8 +150,10 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         return dict_date_reported_from_import
 
     def __get_continent_from_import(self, ecdc_import: EcdcImport):
-        task = Notification.create(sector="ECDC", task_name="__get_continent_from_import")\
-            .read()
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__get_continent_from_import"
+        )
         my_a = ecdc_import.continent_exp
         ecdc_continent = EcdcContinent.find_by_region(
             s_location_group=ecdc_import.continent_exp
@@ -157,10 +167,13 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         return ecdc_continent
 
     def __full_update_data(self):
-        task = Notification.create(sector="ECDC", task_name="__full_update_data").read()
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_data"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] full update [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         EcdcData.remove_all()
         i = 0
         k = 0
@@ -210,21 +223,25 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 db.session.commit()
         db.session.commit()
         app.logger.info(" [ECDC] full update ... " + str(i) + " rows total")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] full update [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="ECDC", task_name="full_update_fact_table")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update_fact_table"
+        )
         self.__full_update_data()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
         task = Notification.create(
-            sector="ECDC", task_name="full_update_dimension_tables"
+            sector=self.cfg.category,
+            task_name="full_update_dimension_tables"
         )
         EcdcData.remove_all()
         self.__full_update_date_reported()

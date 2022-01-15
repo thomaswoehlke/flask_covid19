@@ -22,7 +22,7 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def count_file_rows(self):
@@ -33,10 +33,13 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Notification.create(sector="ECDC", task_name="import_file")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="import_file"
+        )
+        self.__log_line()
         app.logger.info(" [ECDC] import [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [ECDC] import into TABLE: "
             + self.cfg.tablename
@@ -44,23 +47,22 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
             + self.cfg.cvsfile_path
         )
         k = 0
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" EcdcImport.remove_all() START")
         EcdcImport.remove_all()
         app.logger.info(" EcdcImport.remove_all() DONE")
-        app.logger.info("------------------------------------------------------------")
-        if covid19_application.use_pandoc_only:
-            app.logger.info(" ecdc_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
-            data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql(
-                name='ecdc_import_pandas',
-                if_exists='replace',
-                con=engine
-            )
-            app.logger.info(" ecdc_import_pandas DONE")
-        else:
-            app.logger.info("------------------------------------------------------------")
+        self.__log_line()
+        app.logger.info(" ecdc_import_pandas START")
+        engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql(
+            name='ecdc_import_pandas',
+            if_exists='replace',
+            con=engine
+        )
+        app.logger.info(" ecdc_import_pandas DONE")
+        if not covid19_application.use_pandoc_only:
+            self.__log_line()
             with open(self.cfg.cvsfile_path, newline="") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
                 for row in file_reader:
@@ -82,14 +84,14 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
                 db.session.commit()
                 app.logger.info(" [ECDC] import  ...  {} rows total".format(str(k)))
             app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [ECDC] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [ECDC] import [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
