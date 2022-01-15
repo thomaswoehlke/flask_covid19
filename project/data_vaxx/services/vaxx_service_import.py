@@ -37,15 +37,17 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
         return count
 
     def import_file(self):
-        task = Notification.create(sector="Vaccination", task_name="import_file").read()
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="import_file"
+        )
         self.log_line()
         app.logger.info(" [Vaccination] import [begin]")
         self.log_line()
         app.logger.info(
-            " [Vaccination] import into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [Vaccination] import into TABLE: {} <--- from FILE {} [START]".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
         self.log_line()
         VaccinationImport.remove_all()
@@ -88,7 +90,7 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
             app.logger.info("")
         self.log_line()
         app.logger.info(
-            " [Vaccination] imported into TABLE: {} {} <--- from FILE ".format(
+            " [Vaccination] import into TABLE: {} <--- from FILE {} [DONE]".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
