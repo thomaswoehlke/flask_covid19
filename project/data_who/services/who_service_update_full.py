@@ -22,14 +22,17 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def __full_update_date_reported(self):
-        task = Notification.create(sector="WHO", task_name="__full_update_date_reported")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_date_reported"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update date_reported [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         WhoDateReported.remove_all()
         log_lines = []
         i = 0
@@ -51,17 +54,20 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update date_reported [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_region(self):
-        task = Notification.create(sector="WHO", task_name="__full_update_region")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_region"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update region [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         WhoCountryRegion.remove_all()
         log_lines = []
         i = 0
@@ -77,17 +83,20 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update region [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_country(self):
-        task = Notification.create(sector="WHO", task_name="__full_update_country")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_country"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update country [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         WhoCountry.remove_all()
         self.__full_update_region()
         log_lines = []
@@ -118,23 +127,26 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         for log_line in log_lines:
             app.logger.info(log_line)
         app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update country [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def __full_update_data(self):
-        task = Notification.create(sector="WHO", task_name="__full_update_data")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="__full_update_data"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] WhoData.remove_all() [begin]")
         WhoData.remove_all()
         # with app.app_context():
         #     cache.clear()
         app.logger.info(" [WHO] WhoData.remove_all() [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         i = 0
         d = 0
         k = 0
@@ -170,34 +182,40 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 k = 0
         db.session.commit()
         app.logger.info(" [WHO] full update:  " + str(i) + " total rows")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
-        task = Notification.create(sector="WHO", task_name="full_update_dimension_tables")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update_dimension_tables"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update dimension_tables [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         WhoData.remove_all()
         self.__full_update_date_reported()
         self.__full_update_country()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update dimension_tables [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="WHO", task_name="full_update_fact_table")
-        app.logger.info("------------------------------------------------------------")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update_fact_table"
+        )
+        self.__log_line()
         app.logger.info(" [WHO] full update fact table [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         self.__full_update_data()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [WHO] full update fact table [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self

@@ -25,9 +25,6 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
             self.cfg, self.__class__.__name__
         ))
 
-    def __log_line(self):
-        app.logger.info("------------------------------------------------------------")
-
     def count_file_rows(self):
         count = 0
         for line in open(self.cfg.cvsfile_path):
@@ -57,17 +54,16 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
         WhoImport.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
         self.__log_line()
-        if covid19_application.use_pandoc_only:
-            app.logger.info(" who_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri)
-            data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql(
-                name='who_import_pandas',
-                if_exists='replace',
-                con=engine)
-            app.logger.info(" who_import_pandas DONE")
-            self.__log_line()
-        else:
+        app.logger.info(" who_import_pandas START")
+        engine = sqlalchemy.create_engine(covid19_application.db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql(
+            name='who_import_pandas',
+            if_exists='replace',
+            con=engine)
+        app.logger.info(" who_import_pandas DONE")
+        self.__log_line()
+        if not covid19_application.use_pandoc_only:
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
                 k = 0
