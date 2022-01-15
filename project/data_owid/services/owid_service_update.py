@@ -1,6 +1,6 @@
 from project.data.database import app
 from project.data.database import db
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
 
@@ -16,7 +16,7 @@ from project.data_owid.model.owid_model_location_group import OwidContinentFacto
 
 
 class OwidServiceUpdateBase:
-    def __init__(self, database, config: BlueprintConfig):
+    def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
         app.logger.debug(" ready: [OWID] Service Update ")

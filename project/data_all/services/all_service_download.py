@@ -3,12 +3,12 @@ import subprocess
 import wget
 
 from project.data.database import app
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinDownload
 
 
 class AllDownloadService(AllServiceMixinDownload):
-    def __init__(self, database, config: BlueprintConfig):
+    def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
         app.logger.info(" ready: [" + self.cfg.category + "] Download Service")

@@ -1,5 +1,5 @@
 from project.data.database import app
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
 
@@ -12,7 +12,7 @@ from project.data_ecdc.services.ecdc_service_update_full import EcdcServiceUpdat
 class EcdcService(AllServiceMixin):
     def __init__(self, database):
         self.__database = database
-        self.cfg = BlueprintConfig.create_config_for_ecdc()
+        self.cfg = AllServiceConfig.create_config_for_ecdc()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = EcdcServiceImport(database, self.cfg)
         self.service_update = EcdcServiceUpdate(database, self.cfg)

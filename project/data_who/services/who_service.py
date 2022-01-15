@@ -1,5 +1,5 @@
 from project.data.database import app
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
 from project.data_all_notifications.notifications_model import Notification
@@ -11,7 +11,7 @@ from project.data_who.services.who_service_update_full import WhoServiceUpdateFu
 class WhoService(AllServiceMixin):
     def __init__(self, database):
         self.__database = database
-        self.cfg = BlueprintConfig.create_config_for_who()
+        self.cfg = AllServiceConfig.create_config_for_who()
         self.service_download = AllDownloadService(database, self.cfg)
         self.service_import = WhoServiceImport(database, self.cfg)
         self.service_update = WhoServiceUpdate(database, self.cfg)

@@ -1,7 +1,7 @@
 from project.data_all_notifications.notifications_model import Notification
 from project.data.database import app
 from project.data.database import db
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_location import OwidCountry
@@ -12,7 +12,7 @@ class OwidTestService:
     def __init__(self, database, owid_service):
         self.__database = database
         self.__owid_service = owid_service
-        self.cfg = BlueprintConfig.create_config_for_owid()
+        self.cfg = AllServiceConfig.create_config_for_owid()
         app.logger.info(" ready: [OWID] Test Service ")
 
     def full_update_dimension_tables(self):

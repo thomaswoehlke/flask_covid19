@@ -1,6 +1,6 @@
 from project.data.database import app
 from project.data.database import db
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
 from project.data_all_notifications.notifications_model import Notification
@@ -13,14 +13,14 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 
 class VaccinationServiceUpdateBase:
 
-    def __init__(self, database, config: BlueprintConfig):
+    def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
 
 
 class VaccinationServiceUpdate(VaccinationServiceUpdateBase, AllServiceMixinUpdate):
 
-    def __init__(self, database, config: BlueprintConfig):
+    def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
         app.logger.info(" ready [{}] {} ".format(
             self.cfg, self.__class__.__name__

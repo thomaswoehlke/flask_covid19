@@ -9,7 +9,7 @@ from project.data_vaccination.model.vaccination_model_import import VaccinationI
 from project.data_who.model.who_model_import import WhoImport
 
 
-class BlueprintConfig:
+class AllServiceConfig:
     def __init__(
         self,
         slug: str,
@@ -76,7 +76,7 @@ class BlueprintConfig:
 
     @classmethod
     def create_config_for_who(cls):
-        return BlueprintConfig(
+        return AllServiceConfig(
             slug="who",
             category="WHO",
             cvsfile_subpath="who",
@@ -92,7 +92,7 @@ class BlueprintConfig:
 
     @classmethod
     def create_config_for_rki_vaccination(cls):
-        return BlueprintConfig(
+        return AllServiceConfig(
             slug="vaccination",
             category="Vaccination",
             cvsfile_subpath="vaccination",
@@ -108,7 +108,7 @@ class BlueprintConfig:
 
     @classmethod
     def create_config_for_owid(cls):
-        return BlueprintConfig(
+        return AllServiceConfig(
             slug="owid",
             category="OWID",
             cvsfile_subpath="owid",
@@ -124,7 +124,7 @@ class BlueprintConfig:
 
     @classmethod
     def create_config_for_ecdc(cls):
-        return BlueprintConfig(
+        return AllServiceConfig(
             slug="ecdc",
             category="ECDC",
             cvsfile_subpath="ecdc",
@@ -140,7 +140,7 @@ class BlueprintConfig:
 
     @classmethod
     def create_config_for_rki(cls):
-        return BlueprintConfig(
+        return AllServiceConfig(
             slug="rki",
             category="RKI",
             cvsfile_subpath="rki",

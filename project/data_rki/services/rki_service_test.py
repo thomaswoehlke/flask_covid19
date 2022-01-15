@@ -3,7 +3,7 @@ from sqlalchemy.orm import Bundle
 
 from project.data.database import app
 from project.data.database import db
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location import RkiLandkreis
 from project.data_rki.model.rki_model_data_location_group import RkiBundesland
@@ -15,7 +15,7 @@ class RkiTestService:
     def __init__(self, database, rki_service):
         self.__database = database
         self.__rki_service = rki_service
-        self.cfg = BlueprintConfig.create_config_for_owid()
+        self.cfg = AllServiceConfig.create_config_for_owid()
         app.logger.info(" ready: [RKI] Test Service ")
 
     def full_update_dimension_tables(self):

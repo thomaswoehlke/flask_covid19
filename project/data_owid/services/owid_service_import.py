@@ -4,7 +4,7 @@ import pandas
 import sqlalchemy
 
 from project.data.database import covid19_application
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.model.all_model import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 
@@ -17,7 +17,7 @@ db = covid19_application.db
 
 
 class OwidServiceImport(AllServiceMixinImport):
-    def __init__(self, database, config: BlueprintConfig):
+    def __init__(self, database, config: AllServiceConfig):
         self.__database = database
         self.cfg = config
         app.logger.info(" ready: [OWID] Service Import ")

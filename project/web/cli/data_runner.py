@@ -2,11 +2,11 @@
 import os
 
 import pandas as pd
-from project.data_all.services.all_config import BlueprintConfig
+from project.data_all.services.all_service_config import AllServiceConfig
 
 
 class Runner:
-    def __init__(self, cfg: BlueprintConfig):
+    def __init__(self, cfg: AllServiceConfig):
         self.config = cfg
         print(self.config.category)
         print(self.config.category + " - csv_file_path: " + self.config.cvsfile_path)
