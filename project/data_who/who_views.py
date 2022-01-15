@@ -53,10 +53,10 @@ class WhoUrls:
         return render_template("who/who_info.html", page_info=page_info)
 
     @staticmethod
-    @app_who.route("/imported/page/<int:page>")
     @app_who.route("/imported")
     @login_required
     def url_who_imported(page=1):
+        # https://stackoverflow.com/questions/52644035/how-to-show-a-pandas-dataframe-into-a-existing-flask-html-table
         page_info = WebPageContent("WHO", "Last Import")
         try:
             page_data = WhoImport.get_all(page)
