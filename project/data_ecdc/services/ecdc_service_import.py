@@ -56,7 +56,7 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
         app.logger.info(" EcdcImport.remove_all() DONE")
         self.log_line()
         app.logger.info(" ecdc_import_pandas START")
-        engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+        engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(self.cfg.cvsfile_path)
         data.to_sql(
             name='ecdc_import_pandas',
