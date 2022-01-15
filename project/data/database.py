@@ -21,6 +21,7 @@ class Covid19Application:
             self.app.config.from_object(pytestconfig)
         else:
             self.app.config.from_object(config)
+        self.use_pandoc_only = self.app.config["USE_PANDOC_ONLY"]
         self.__init_db()
         self.__init_login()
         self.__init_bootstrap()
@@ -43,7 +44,6 @@ class Covid19Application:
         ] = False  # silence the deprecation warning
         self.items_per_page = self.app.config["SQLALCHEMY_ITEMS_PER_PAGE"]
         self.db_uri_pandas = self.db_uri + "_pandas"
-        self.use_pandoc_only = self.app.config["USE_PANDOC_ONLY"]
         return self
 
     def __int_cache(self):

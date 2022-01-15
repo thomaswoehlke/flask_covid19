@@ -94,7 +94,7 @@ class BlueprintConfig:
     def create_config_for_rki_vaccination(cls):
         return BlueprintConfig(
             slug="vaccination",
-            category="RKI",
+            category="Vaccination",
             cvsfile_subpath="vaccination",
             sub_category="Vaccination",
             tablename=VaccinationImport.__tablename__,
