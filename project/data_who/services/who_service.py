@@ -34,9 +34,9 @@ class WhoService(AllServiceMixin):
         return self
 
     def full_update_dimension_tables(self):
-        task = Notification.create(sector="WHO", task_name="full_update_dimension_tables")
+        n = Notification.create(sector="WHO", task_name="full_update_dimension_tables")
         self.service_update_full.full_update_dimension_tables()
-        Notification.finish(task_id=task.id)
+        Notification.finish(task_id=n.id)
         return self
 
     def update_dimension_tables(self):

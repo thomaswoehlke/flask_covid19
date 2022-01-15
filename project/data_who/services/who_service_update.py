@@ -24,6 +24,7 @@ class WhoServiceUpdateBase:
 
 
 class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
+
     def __who_import_get_new_dates(self):
         todo = []
         odr_list = WhoDateReported.find_all_as_str()
@@ -64,7 +65,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return todo
 
     def __update_date_reported(self):
-        task = Notification.create(sector="WHO", task_name="__update_date_reported").read()
+        task = Notification.create(sector="WHO", task_name="__update_date_reported")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update date_reported [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -88,7 +89,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_location_group(self):
-        task = Notification.create(sector="WHO", task_name="__update_location_group").read()
+        task = Notification.create(sector="WHO", task_name="__update_location_group")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location_group [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -118,7 +119,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_location(self):
-        task = Notification.create(sector="WHO", task_name="__update_location").read()
+        task = Notification.create(sector="WHO", task_name="__update_location")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update location [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -161,7 +162,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def __update_data(self):
-        task = Notification.create(sector="WHO", task_name="__update_data").read()
+        task = Notification.create(sector="WHO", task_name="__update_data")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update data [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -207,7 +208,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_dimension_tables(self):
-        task = Notification.create(sector="WHO", task_name="update_dimension_tables").read()
+        task = Notification.create(sector="WHO", task_name="update_dimension_tables")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update dimension_tables [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -221,7 +222,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def update_fact_table(self):
-        task = Notification.create(sector="WHO", task_name="update_fact_table").read()
+        task = Notification.create(sector="WHO", task_name="update_fact_table")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [WHO] update fact_table [begin]")
         app.logger.info("------------------------------------------------------------")
@@ -234,7 +235,7 @@ class WhoServiceUpdate(WhoServiceUpdateBase, AllServiceMixinUpdate):
         return self
 
     def delete_last_day(self):
-        task = Notification.create(sector="WHO", task_name="delete_last_day").read()
+        task = Notification.create(sector="WHO", task_name="delete_last_day")
         app.logger.debug("------------------------------------------------------------")
         app.logger.debug(" [WHO] delete last_day [START]")
         app.logger.debug("------------------------------------------------------------")

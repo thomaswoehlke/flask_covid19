@@ -25,6 +25,9 @@ class VaccinationServiceImport(AllServiceMixinImport):
         self.cfg = config
         app.logger.info(" ready: [Vaccination] Service Import ")
 
+    def __log_line(self):
+        app.logger.info("------------------------------------------------------------")
+
     def count_file_rows(self):
         count = 0
         for line in open(self.cfg.cvsfile_path):
@@ -34,18 +37,18 @@ class VaccinationServiceImport(AllServiceMixinImport):
 
     def import_file(self):
         task = Notification.create(sector="Vaccination", task_name="import_file").read()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [Vaccination] import [begin]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [Vaccination] import into TABLE: "
             + self.cfg.tablename
             + " <--- from FILE "
             + self.cfg.cvsfile_path
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         VaccinationImport.remove_all()
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         if covid19_application.use_pandoc_only:
             app.logger.info(" vaccination_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri)
@@ -59,7 +62,7 @@ class VaccinationServiceImport(AllServiceMixinImport):
             )
             app.logger.info(" vaccination_import_pandas DONE")
         else:
-            app.logger.info("------------------------------------------------------------")
+            self.__log_line()
             k = 0
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(csv_file, delimiter="\t", quotechar='"')
@@ -75,18 +78,22 @@ class VaccinationServiceImport(AllServiceMixinImport):
                     k += 1
                     if (k % 100) == 0:
                         db.session.commit()
-                        app.logger.info(" [Vaccination] import  ... {} rows".format(str(k)))
+                        app.logger.info(" [Vaccination] import ... {} rows".format(
+                            str(k))
+                        )
                 db.session.commit()
-                app.logger.info(" [Vaccination] import  ... {} rows total".format(str(k)))
+                app.logger.info(" [Vaccination] import ... {} rows total".format(
+                    str(k))
+                )
             app.logger.info("")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(
             " [Vaccination] imported into TABLE: {} {} <--- from FILE ".format(
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         app.logger.info(" [Vaccination] import [done]")
-        app.logger.info("------------------------------------------------------------")
+        self.__log_line()
         Notification.finish(task_id=task.id)
         return self
