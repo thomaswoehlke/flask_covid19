@@ -22,7 +22,7 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
         self.__database = database
         self.cfg = config
         app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
+            self.cfg.category, self.__class__.__name__
         ))
 
     def count_file_rows(self):
@@ -34,7 +34,7 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def import_file(self):
         task = Notification.create(
-            sector="WHO",
+            self.cfg.category,
             task_name="import_file"
         )
         self.__log_line()
