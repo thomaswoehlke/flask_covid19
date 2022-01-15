@@ -1,7 +1,7 @@
 from project.data.database import app
 from project.data.database import db
 from project.data_all.model.all_model import AllDateReportedFactory
-from project.data_all.services.all_service_base import AllServiceBase
+from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
