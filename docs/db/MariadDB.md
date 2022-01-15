@@ -17,9 +17,9 @@
 
 ````sql
     use mysql;
-    select Host,User,Password,plugin,authentication_string from user;
-    update user set password=PASSWORD("mysql") where User='root';
-    update user set plugin='' where User='root';
+    select Host,WebUser,Password,plugin,authentication_string from user;
+    update user set password=PASSWORD("mysql") where WebUser='root';
+    update user set plugin='' where WebUser='root';
     flush privileges;
     exit
 ````

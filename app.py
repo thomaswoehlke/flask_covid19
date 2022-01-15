@@ -1,6 +1,6 @@
 from project.web import run_web
 from project.web.web_views import app, db
-from project.web.services.web_dispachter_service import all_service_dispachter_matrix
+from project.web.services.web_dispachter_service import web_service_dispachter_matrix
 from project.web.services.web_dispachter_service import admin_service
 from project.web.services.web_dispachter_service import ecdc_service
 from project.web.services.web_dispachter_service import owid_service
@@ -28,56 +28,56 @@ def create_user():
 def all_download():
     """[ALL] download"""
     with app.app_context():
-        all_service_dispachter_matrix.download()
+        web_service_dispachter_matrix.download()
 
 
 @app.cli.command("all-import")
 def all_import():
     """[ALL] import file"""
     with app.app_context():
-        all_service_dispachter_matrix.import_file()
+        web_service_dispachter_matrix.import_file()
 
 
 @app.cli.command("all-update")
 def all_update():
     """[ALL] update"""
     with app.app_context():
-        all_service_dispachter_matrix.update()
+        web_service_dispachter_matrix.update()
 
 
 @app.cli.command("all-update-full")
 def all_full_update():
     """[ALL] full update"""
     with app.app_context():
-        all_service_dispachter_matrix.full_update()
+        web_service_dispachter_matrix.full_update()
 
 
 @app.cli.command("all-update-full-dimensions")
 def all_full_update_dimension_tables():
     """[ALL] full update dimension tables"""
     with app.app_context():
-        all_service_dispachter_matrix.full_update_dimension_tables()
+        web_service_dispachter_matrix.full_update_dimension_tables()
 
 
 @app.cli.command("all-update-dimensions")
 def all_update_dimension_tables():
     """[ALL] update dimension tables"""
     with app.app_context():
-        all_service_dispachter_matrix.update_dimension_tables()
+        web_service_dispachter_matrix.update_dimension_tables()
 
 
 @app.cli.command("all-update-full-data")
 def all_full_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
-        all_service_dispachter_matrix.full_update_fact_table()
+        web_service_dispachter_matrix.full_update_fact_table()
 
 
 @app.cli.command("all-update-data")
 def all_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
-        all_service_dispachter_matrix.update_fact_table()
+        web_service_dispachter_matrix.update_fact_table()
 
 
 @app.cli.command("who-download")

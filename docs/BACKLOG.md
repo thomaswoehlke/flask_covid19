@@ -213,7 +213,7 @@
 * Fixed #70 load package.json from Bootstrap-Template sb-admin-angular into statics
 * Fixed #67 implement Flask-Login (wontfix)
 * Issue #159 merge Branch ISSUE_66_ATTEMPT_01 to master
-* Fixed #71 add python modules to requirements.txt for User Login, Authentication and Autorisation
+* Fixed #71 add python modules to requirements.txt for WebUser Login, Authentication and Autorisation
 * Fixed #72 add python modules to requirements.txt for Ajax and other JS Features
 * Fixed #73 add python modules to requirements.txt for further research and development
 * Fixed #74 add Tasks to WHO Tasks Html

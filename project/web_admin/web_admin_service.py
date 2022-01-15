@@ -2,7 +2,7 @@ import os
 import subprocess
 
 from project.data.database import app, db
-from project.web_user.user_model import User
+from project.web_user.user_model import WebUser
 from project.data_all_notifications.notifications_model import Notification
 from project.data_ecdc.model.ecdc_model import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
@@ -197,7 +197,7 @@ class WebAdminService:
             RkiAltersgruppe,
             RkiBundesland,
             Notification,
-            User,
+            WebUser,
             WhoDateReported,
             OwidDateReported,
             VaccinationDateReported,

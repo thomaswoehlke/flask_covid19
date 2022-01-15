@@ -14,7 +14,7 @@ from wtforms import SubmitField
 from wtforms import validators
 
 
-class User(UserMixin, db.Model):
+class WebUser(UserMixin, db.Model):
     __tablename__ = "usr"
     __table_args__ = (
         db.UniqueConstraint("email", name="uix_usr"),
@@ -45,7 +45,7 @@ class User(UserMixin, db.Model):
 
     @classmethod
     def create_new(cls, email: str, name: str, password_hash: str):
-        o = User()
+        o = WebUser()
         o.email = email
         o.name = name
         o.password_hash = password_hash
