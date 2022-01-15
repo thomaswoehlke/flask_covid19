@@ -1,4 +1,5 @@
 from celery import states
+
 from flask import Blueprint
 from flask import flash
 from flask import redirect
@@ -6,11 +7,14 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
+
+from sqlalchemy.exc import OperationalError
+
 from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.web.services.web_dispachter_service import owid_service
+from project.data_owid.services.owid_service import OwidService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
@@ -18,20 +22,28 @@ from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_location import OwidCountry
 from project.data_owid.model.owid_model_location_group import OwidContinent
 from project.data_owid.services.owid_service_test import OwidTestService
-from sqlalchemy.exc import OperationalError
 
-app_owid = Blueprint("owid", __name__, template_folder="templates", url_prefix="/owid")
 
-app_owid_report = Blueprint("owid_report", __name__, template_folder="templates",
-                            url_prefix="/owid/report")
+owid_service = OwidService(db)
+owid_test_service = OwidTestService(db, owid_service)
+
+app_owid = Blueprint(
+    "owid", __name__,
+    template_folder="templates",
+    url_prefix="/owid"
+)
+
+app_owid_report = Blueprint(
+    "owid_report", __name__,
+    template_folder="templates",
+    url_prefix="/owid/report"
+)
 
 admin.add_view(ModelView(OwidImport, db.session, category="OWID"))
 admin.add_view(ModelView(OwidDateReported, db.session, category="OWID"))
 admin.add_view(ModelView(OwidContinent, db.session, category="OWID"))
 admin.add_view(ModelView(OwidCountry, db.session, category="OWID"))
 admin.add_view(ModelView(OwidData, db.session, category="OWID"))
-
-owid_test_service = OwidTestService(db, owid_service)
 
 # ---------------------------------------------------------------------------------------------------------------
 #  Url Routes Frontend

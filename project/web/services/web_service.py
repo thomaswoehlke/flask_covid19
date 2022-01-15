@@ -2,6 +2,7 @@ from project.data.database import app
 
 
 class WebService:
+
     def __init__(self, database, user_service):
         self.__database = database
         self.__user_service = user_service

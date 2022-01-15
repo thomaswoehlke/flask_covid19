@@ -155,7 +155,10 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
     __tablename__ = "all_date_reported"
     __table_args__ = (
         db.UniqueConstraint(
-            "date_reported_import_str", "datum", "type", name="uix_all_date_reported"
+            "date_reported_import_str",
+            "datum",
+            "type",
+            name="uix_all_date_reported"
         ),
     )
 

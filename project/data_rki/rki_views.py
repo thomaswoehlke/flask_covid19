@@ -6,11 +6,13 @@ from flask import render_template
 from flask import url_for
 from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required
+from sqlalchemy.exc import OperationalError
+
 from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.web.services.web_dispachter_service import rki_service
+from project.data_rki.services.rki_service import RkiService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
@@ -19,7 +21,9 @@ from project.data_rki.model.rki_model_data_location_group import RkiBundesland
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.services.rki_service_test import RkiTestService
-from sqlalchemy.exc import OperationalError
+
+
+rki_service = RkiService(db)
 
 drop_and_create_data_again = True
 

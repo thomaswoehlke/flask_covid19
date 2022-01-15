@@ -12,8 +12,8 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
+from project.data_ecdc.services.ecdc_service import EcdcService
 
-from project.web.services.web_dispachter_service import ecdc_service
 from project.web.model.web_model_transient import WebPageContent
 from project.data_ecdc.model.ecdc_model_date_reported import EcdcDateReported
 from project.data_ecdc.model.ecdc_model_data import EcdcData
@@ -22,6 +22,8 @@ from project.data_ecdc.model.ecdc_model_location import EcdcCountry
 from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
 from project.data_ecdc.services.ecdc_service_test import EcdcTestService
 
+
+ecdc_service = EcdcService(db)
 
 app_ecdc = Blueprint("ecdc", __name__, template_folder="templates", url_prefix="/ecdc")
 

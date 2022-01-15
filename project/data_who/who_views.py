@@ -10,7 +10,7 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
-from project.web.services.web_dispachter_service import who_service
+from project.data_who.services.who_service import WhoService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_date_reported import WhoDateReported
@@ -19,6 +19,8 @@ from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location_group import WhoCountryRegion
 from project.data_who.services.who_service_test import WhoTestService
 from sqlalchemy.exc import OperationalError
+
+who_service = WhoService(db)
 
 who_test_service = WhoTestService(db, who_service)
 
