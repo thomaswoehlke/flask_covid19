@@ -102,7 +102,6 @@ class AllEntity(db.Model, AllEntityMixin):
         return cls.__query_all().count()
 
 
-
 class AllImport(AllEntity, AllImportMixin):
     __tablename__ = "all_import"
     __mapper_args__ = {"concrete": True}
