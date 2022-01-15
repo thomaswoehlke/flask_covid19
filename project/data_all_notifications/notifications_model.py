@@ -75,6 +75,18 @@ class Notification(db.Model, AllEntityMixinBase):
     data3_code = db.Column(db.Integer, nullable=False)
     data3_txt = db.Column(db.String(255), nullable=False)
 
+    def set_data1(self, code: int, txt: str):
+        self.data1_code = code
+        self.data1_txt = txt
+
+    def set_data2(self, code: int, txt: str):
+        self.data2_code = code
+        self.data2_txt = txt
+
+    def set_data3(self, code: int, txt: str):
+        self.data3_code = code
+        self.data3_txt = txt
+
     def read(self):
         self.notification = False
         return self

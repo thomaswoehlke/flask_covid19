@@ -24,7 +24,7 @@ class RkiService(AllServiceMixin):
         app.logger.info(" ready: [RKI] Service ")
 
     def download(self):
-        task = Notification.create(sector="RKI", task_name="download")
+        task = Notification.create(sector=self.cfg.category, task_name="download")
         self.service_download.download()
         Notification.finish(task_id=task.id)
         return self
@@ -33,13 +33,13 @@ class RkiService(AllServiceMixin):
         return self.service_import.count_file_rows()
 
     def import_file(self):
-        task = Notification.create(sector="RKI", task_name="import_file")
+        task = Notification.create(sector=self.cfg.category, task_name="import_file")
         self.service_import.import_file()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
-        task = Notification.create(sector="RKI", task_name="full_update_dimension_tables")
+        task = Notification.create(sector=self.cfg.category, task_name="full_update_dimension_tables")
         self.service_update_full.full_update_dimension_tables()
         Notification.finish(task_id=task.id)
         return self
@@ -51,19 +51,19 @@ class RkiService(AllServiceMixin):
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="RKI", task_name="full_update_fact_table")
+        task = Notification.create(sector=self.cfg.category, task_name="full_update_fact_table")
         self.service_update_full.full_update_fact_table()
         Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Notification.create(sector="RKI", task_name="update_fact_table")
+        task = Notification.create(sector=self.cfg.category, task_name="update_fact_table")
         self.service_update.update_fact_table()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update(self):
-        task = Notification.create(sector="RKI", task_name="full_update")
+        task = Notification.create(sector=self.cfg.category, task_name="full_update")
         self.service_import.import_file()
         self.service_update_full.full_update_dimension_tables()
         self.service_update_full.full_update_fact_table()
@@ -71,7 +71,7 @@ class RkiService(AllServiceMixin):
         return self
 
     def update(self):
-        task = Notification.create(sector="RKI", task_name="update")
+        task = Notification.create(sector=self.cfg.category, task_name="update")
         # self.service_import.import_file()
         self.service_update.update_dimension_tables()
         self.service_update.update_fact_table()
@@ -79,13 +79,13 @@ class RkiService(AllServiceMixin):
         return self
 
     def delete_last_day(self):
-        task = Notification.create(sector="RKI", task_name="delete_last_day")
+        task = Notification.create(sector=self.cfg.category, task_name="delete_last_day")
         self.service_update.delete_last_day()
         Notification.finish(task_id=task.id)
         return self
 
     def update_clean_brokenup(self):
-        task = Notification.create(sector="RKI", task_name="update_clean_brokenup")
+        task = Notification.create(sector=self.cfg.category, task_name="update_clean_brokenup")
         result2 = Notification.get_rki_update_broken_date()
         result = Notification.get_rki_full_update_broken_date()
         resultlist = result.all()
