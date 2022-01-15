@@ -33,7 +33,8 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         )
         self.__log_line()
         app.logger.info(" [{}] full update meldedatum [begin]".format(
-            self.cfg.category))
+            self.cfg.category)
+        )
         self.__log_line()
         RkiMeldedatum.remove_all()
         i = 0

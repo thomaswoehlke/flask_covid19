@@ -48,20 +48,19 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
         self.__log_line()
-        if covid19_application.use_pandoc_only:
-            app.logger.info(" rki_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri)
-            data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql(
-                name='rki_import_pandas',
-                if_exists='replace',
-                con=engine,
-                chunksize=5000,
-                method='multi'
-            )
-            app.logger.info(" rki_import_pandas DONE")
-            self.__log_line()
-        else:
+        app.logger.info(" rki_import_pandas START")
+        engine = sqlalchemy.create_engine(covid19_application.db_uri)
+        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data.to_sql(
+            name='rki_import_pandas',
+            if_exists='replace',
+            con=engine,
+            chunksize=5000,
+            method='multi'
+        )
+        app.logger.info(" rki_import_pandas DONE")
+        self.__log_line()
+        if not covid19_application.use_pandoc_only:
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(
                     csv_file,
