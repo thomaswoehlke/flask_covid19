@@ -9,8 +9,8 @@ from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 from project.data_all_notifications.notifications_model import Notification
-from project.data_vaccination.model.vaccination_model_import import VaccinationImport
-from project.data_vaccination.model.vaccination_model_import import (
+from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaccination_model_import import (
     VaccinationImportFactory,
 )
 

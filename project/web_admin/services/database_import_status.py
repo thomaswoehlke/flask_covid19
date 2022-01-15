@@ -12,9 +12,9 @@ from project.data_owid.owid_views import owid_service
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.rki_views import rki_service
-from project.data_vaccination.model.vaccination_model_data import VaccinationData
-from project.data_vaccination.model.vaccination_model_import import VaccinationImport
-from project.data_vaccination.vaccination_views import vaccination_service
+from project.data_vaxx.model.vaccination_model_data import VaccinationData
+from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.vaccination_views import vaccination_service
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_import import WhoImport
 from project.data_who.who_views import who_service

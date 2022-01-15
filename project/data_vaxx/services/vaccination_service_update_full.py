@@ -8,12 +8,12 @@ from project.data_all.services.all_service_mixins import (
     AllServiceMixinUpdateFull,
 )
 from project.data_all_notifications.notifications_model import Notification
-from project.data_vaccination.model.vaccination_model_data import VaccinationData
-from project.data_vaccination.model.vaccination_model_data import VaccinationDataFactory
-from project.data_vaccination.model.vaccination_model_date_reported import (
+from project.data_vaxx.model.vaccination_model_data import VaccinationData
+from project.data_vaxx.model.vaccination_model_data import VaccinationDataFactory
+from project.data_vaxx.model.vaccination_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaccination.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaccination_model_import import VaccinationImport
 
 
 class VaccinationServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):

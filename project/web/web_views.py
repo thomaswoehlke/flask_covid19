@@ -18,7 +18,7 @@ from project.web.notifications_view import app_notification
 from project.data_ecdc.ecdc_views import app_ecdc
 from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
-from project.data_vaccination.vaccination_views import app_vaccination
+from project.data_vaxx.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
 from project.web.services.web_service import WebService
 

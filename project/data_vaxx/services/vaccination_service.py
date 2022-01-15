@@ -4,13 +4,13 @@ from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
 
 from project.data_all_notifications.notifications_model import Notification
-from project.data_vaccination.services.vaccination_service_import import (
+from project.data_vaxx.services.vaccination_service_import import (
     VaccinationServiceImport,
 )
-from project.data_vaccination.services.vaccination_service_update import (
+from project.data_vaxx.services.vaccination_service_update import (
     VaccinationServiceUpdate,
 )
-from project.data_vaccination.services.vaccination_service_update_full import (
+from project.data_vaxx.services.vaccination_service_update_full import (
     VaccinationServiceUpdateFull,
 )
 
