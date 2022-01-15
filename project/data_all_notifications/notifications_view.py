@@ -7,6 +7,9 @@ from flask_login import login_required
 from project.data.database import app, db
 from project.web.model.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
+from project.data_all_notifications.notifications_service import NotificationService
+
+notification_service = NotificationService(db)
 
 app_notification = Blueprint(
     "data_all_notifications", __name__,

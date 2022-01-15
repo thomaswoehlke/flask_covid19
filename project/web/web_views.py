@@ -5,10 +5,12 @@ from flask import url_for
 from flask_login import login_required
 
 from project.data.database import app, db, celery
+from project.data_all.services.all_service_dispachter import AllServiceDispachterMatrix
 from project.web.model.web_model_transient import WebPageContent
 from project.data_all_notifications.notifications_model import Notification
+
 from project.web_admin.web_admin_views import app_web_admin
-from project.web_user.user_views import app_web_user
+from project.web_user.user_views import app_web_user, web_user_service
 from project.data_all.all_views import app_all
 from project.data_all_notifications.notifications_view import app_notification
 from project.data_ecdc.ecdc_views import app_ecdc
@@ -16,6 +18,25 @@ from project.data_owid.owid_views import app_owid, app_owid_report
 from project.data_rki.rki_views import app_rki
 from project.data_vaccination.vaccination_views import app_vaccination
 from project.data_who.who_views import app_who
+
+from project.data_ecdc.ecdc_views import ecdc_service
+from project.data_owid.owid_views import owid_service
+from project.data_rki.rki_views import rki_service
+from project.data_vaccination.vaccination_views import vaccination_service
+from project.data_who.who_views import who_service
+
+from project.web.services.web_service import WebService
+
+
+web_service = WebService(db, web_user_service)
+
+web_service_dispachter_matrix = AllServiceDispachterMatrix(
+    who_service=who_service,
+    owid_service=owid_service,
+    rki_service=rki_service,
+    vaccination_service=vaccination_service,
+    ecdc_service=ecdc_service,
+)
 
 app_web = Blueprint(
     "web", __name__, template_folder="templates", url_prefix="/"
@@ -45,7 +66,9 @@ class WebUrls:
     def __init__(self):
         app.logger.info(" ready: [WEB] WebUrls ")
         with app.app_context():
-            task = Notification.create(sector="WEB", task_name="init").read()
+            task = Notification.create(sector="WEB", task_name="init")
+            db.create_all()
+            web_user_service.prepare_default_user_login(db)
             Notification.finish(task_id=task.id)
 
     @staticmethod

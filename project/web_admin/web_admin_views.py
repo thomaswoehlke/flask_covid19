@@ -7,9 +7,11 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.data.database import app, celery
-from project.web.services.web_dispachter_service import admin_service
+from project.data.database import app, celery, db
 from project.web.model.web_model_transient import WebPageContent
+from project.web_admin.web_admin_service import WebAdminService
+
+admin_service = WebAdminService(db)
 
 drop_and_create_data_again = True
 

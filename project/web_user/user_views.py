@@ -17,6 +17,9 @@ from project.data.database import admin, login_manager
 from project.web_user.user_model import LoginForm
 from project.web_user.user_model import WebUser
 from project.web.model.web_model_transient import WebPageContent
+from project.web_user.user_service import WebUserService
+
+web_user_service = WebUserService(db)
 
 app_web_user = Blueprint(
     "web_user", __name__,
