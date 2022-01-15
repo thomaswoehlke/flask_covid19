@@ -1,5 +1,5 @@
 from project.data.database import app, db
-from project.web_admin.app_admin_service import AdminService
+from project.web_admin.web_admin_service import WebAdminService
 from project.web_user.user_service import UserService
 from project.web.web.web_service import WebService
 from project.data_all.services.all_service_dispachter_matrix import AllServiceDispachterMatrix
@@ -15,7 +15,7 @@ from project.data_all_notifications.notifications_service import NotificationSer
 # Services
 #
 notification_service = NotificationService(db)
-admin_service = AdminService(db)
+admin_service = WebAdminService(db)
 web_user_service = UserService(db)
 web_service = WebService(db, web_user_service)
 

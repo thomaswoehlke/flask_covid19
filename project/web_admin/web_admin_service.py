@@ -46,7 +46,7 @@ vaccination_service = VaccinationService(db)
 who_service = WhoService(db)
 
 
-class AdminService:
+class WebAdminService:
 
     def __init__(self, database):
         self.__database = database
@@ -57,7 +57,7 @@ class AdminService:
 
     def database_dump(self):
         app.logger.info("-----------------------------------------------------------")
-        app.logger.info(" AdminService.database_dump() [begin]")
+        app.logger.info(" WebAdminService.database_dump() [begin]")
         app.logger.info("-----------------------------------------------------------")
         app.logger.info(os.getcwd())
         user = app.config["SQLALCHEMY_DATABASE_USER"]
@@ -96,7 +96,7 @@ class AdminService:
         returncode = self.__run_ome_shell_command(cmd)
         app.logger.info(" result: " + str(returncode))
         app.logger.info("-----------------------------------------------------------")
-        app.logger.info(" AdminService.database_dump() [done]")
+        app.logger.info(" WebAdminService.database_dump() [done]")
         app.logger.info("-----------------------------------------------------------")
         return self
 
@@ -114,7 +114,7 @@ class AdminService:
             app.logger.warning(
                 "---------------------------------------------------------"
             )
-            app.logger.warning("  WARN:  AdminService.__run_ome_shell_command")
+            app.logger.warning("  WARN:  WebAdminService.__run_ome_shell_command")
             app.logger.warning(
                 "---------------------------------------------------------"
             )
@@ -126,7 +126,7 @@ class AdminService:
         return returncode
 
     def database_dump_reimport(self):
-        app.logger.info(" AdminService.database_dump_reimport() [begin]")
+        app.logger.info(" WebAdminService.database_dump_reimport() [begin]")
         app.logger.info("-----------------------------------------------------------")
         user = app.config["SQLALCHEMY_DATABASE_USER"]
         url = app.config["SQLALCHEMY_DATABASE_HOST"]
@@ -159,23 +159,23 @@ class AdminService:
                 cmd
             )
             app.logger.info(msg)
-        app.logger.info(" AdminService.database_dump_reimport() [done]")
+        app.logger.info(" WebAdminService.database_dump_reimport() [done]")
         app.logger.info("-----------------------------------------------------------")
         return self
 
     def database_drop_and_create(self):
-        app.logger.info(" AdminService.database_drop_and_create() [begin]")
+        app.logger.info(" WebAdminService.database_drop_and_create() [begin]")
         app.logger.info("-----------------------------------------------------------")
         with app.app_context():
             self.__database.drop_all()
             self.__database.create_all()
         app.logger.info("")
-        app.logger.info(" AdminService.database_drop_and_create() [begin]")
+        app.logger.info(" WebAdminService.database_drop_and_create() [begin]")
         app.logger.info("-----------------------------------------------------------")
         return self
 
     def database_table_row_count(self):
-        app.logger.info(" AdminService.database_table_row_count() [begin]")
+        app.logger.info(" WebAdminService.database_table_row_count() [begin]")
         app.logger.info("-----------------------------------------------------------")
         table_classes = [
             WhoData,
@@ -221,12 +221,12 @@ class AdminService:
                 msg += str(tables_and_rows[key]) + " | "
                 app.logger.info(msg)
         app.logger.info("")
-        app.logger.info(" AdminService.database_table_row_count() [begin]")
+        app.logger.info(" WebAdminService.database_table_row_count() [begin]")
         app.logger.info("------------------------------------------------------------")
         return tables_and_rows
 
     def database_import_status(self):
-        app.logger.info(" AdminService.database_import_status() [begin]")
+        app.logger.info(" WebAdminService.database_import_status() [begin]")
         app.logger.info("-----------------------------------------------------------")
         with app.app_context():
             t = {
@@ -269,6 +269,6 @@ class AdminService:
             df = pd.DataFrame.from_dict(t, orient='index')
             app.logger.info(df)
         app.logger.info("")
-        app.logger.info(" AdminService.database_import_status() [done]")
+        app.logger.info(" WebAdminService.database_import_status() [done]")
         app.logger.info("------------------------------------------------------------")
         return t
