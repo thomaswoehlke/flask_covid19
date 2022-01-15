@@ -81,7 +81,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         app.logger.info(" ready: [ALL] AllServiceDispachterMatrix")
 
     def download(self):
-        task = Notification.create(sector="ALL", task_name="download")
+        task = Notification.create(
+            sector="ALL",
+            task_name="download"
+        )
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] download [start]")
         app.logger.info(" ")
@@ -94,7 +97,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def import_file(self):
-        task = Notification.create(sector="ALL", task_name="import_file")
+        task = Notification.create(
+            sector="ALL",
+            task_name="import_file"
+        )
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] import_file [start]")
         app.logger.debug("------------------------------------------------------------")
@@ -108,7 +114,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update_dimension_tables(self):
-        task = Notification.create(sector="ALL", task_name="full_update_dimension_tables")
+        task = Notification.create(
+            sector="ALL",
+            task_name="full_update_dimension_tables"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update_dimension_tables [start] ")
@@ -125,7 +134,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update_dimension_tables(self):
-        task = Notification.create(sector="ALL", task_name="update_dimension_tables")
+        task = Notification.create(
+            sector="ALL",
+            task_name="update_dimension_tables"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update_dimension_tables [start] ")
@@ -142,7 +154,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="ALL", task_name="full_update_fact_table")
+        task = Notification.create(
+            sector="ALL",
+            task_name="full_update_fact_table"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update_fact_table [start] ")
@@ -159,7 +174,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update_fact_table(self):
-        task = Notification.create(sector="ALL", task_name="update_fact_table")
+        task = Notification.create(
+            sector="ALL",
+            task_name="update_fact_table"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update_fact_table [start] ")
@@ -176,7 +194,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def full_update(self):
-        task = Notification.create(sector="ALL", task_name="full_update")
+        task = Notification.create(
+            sector="ALL",
+            task_name="full_update"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] full_update [start] ")
@@ -193,7 +214,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def update(self):
-        task = Notification.create(sector="ALL", task_name="update")
+        task = Notification.create(
+            sector="ALL",
+            task_name="update"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] update [start] ")
@@ -212,7 +236,10 @@ class AllServiceDispachterMatrix(AllServiceMixin):
         return self
 
     def delete_last_day(self):
-        task = Notification.create(sector="ALL", task_name="delete_last_day")
+        task = Notification.create(
+            sector="ALL",
+            task_name="delete_last_day"
+        )
         app.logger.info(" ")
         app.logger.debug("------------------------------------------------------------")
         app.logger.info(" [ALL] delete_last_day [start] ")
