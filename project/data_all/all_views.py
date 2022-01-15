@@ -7,11 +7,11 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.data.database import app, celery
-from project.web.services.web_dispachter_service import (
-    web_service_dispachter_matrix,
-)
+from project.data.database import app, db, celery
+from project.data_all.services.all_service_dispachter import AllServiceDispachterMatrix
 from project.web.model.web_model_transient import WebPageContent
+
+all_service_dispachter = AllServiceDispachterMatrix(db)
 
 drop_and_create_data_again = True
 
@@ -41,7 +41,7 @@ class AllUrls:
     def url_all_delete_last_day():
         app.logger.info("url_all_delete_last_day [start]")
         flash("url_all_delete_last_day [start]")
-        web_service_dispachter_matrix.delete_last_day()
+        all_service_dispachter.delete_last_day()
         flash("url_all_delete_last_day [done]")
         app.logger.info("url_all_delete_last_day [done]")
         return redirect(url_for("data_all.url_all_info"))
@@ -87,7 +87,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.import_file()
+            all_service_dispachter.import_file()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -111,7 +111,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.full_update_dimension_tables()
+            all_service_dispachter.full_update_dimension_tables()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -135,7 +135,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.update_dimension_tables()
+            all_service_dispachter.update_dimension_tables()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -159,7 +159,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.full_update_fact_table()
+            all_service_dispachter.full_update_fact_table()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -183,7 +183,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.update_fact_table()
+            all_service_dispachter.update_fact_table()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -207,7 +207,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.full_update()
+            all_service_dispachter.full_update()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -231,7 +231,7 @@ class AllTasks:
             app.logger.info(
                 "------------------------------------------------------------"
             )
-            web_service_dispachter_matrix.update()
+            all_service_dispachter.update()
             app.logger.info(
                 "------------------------------------------------------------"
             )
@@ -260,7 +260,7 @@ class AllTaskUrls:
     @login_required
     def url_task_all_download():
         app.logger.info("url_task_all_download_all_files [start]")
-        web_service_dispachter_matrix.download()
+        all_service_dispachter.download()
         app.logger.info("url_task_all_download_all_files [done]")
         return redirect(url_for("data_all.url_all_info"))
 
@@ -331,7 +331,7 @@ class AllTaskUrls:
     @login_required
     def url_task_all_full_update():
         app.logger.info("url_task_all_full_update [start]")
-        web_service_dispachter_matrix.download()
+        all_service_dispachter.download()
         all_tasks.task_all_full_update.apply_async()
         flash(message="async task_all_full_update [start]", category="warning")
         app.logger.warn("async task_all_full_update [start]")
@@ -343,7 +343,7 @@ class AllTaskUrls:
     @login_required
     def url_task_all_update(next=None):
         app.logger.info("url_task_all_update [start]")
-        web_service_dispachter_matrix.download()
+        all_service_dispachter.download()
         all_tasks.task_all_update.apply_async()
         flash(message="async task_all_update [start]", category="warning")
         app.logger.warn("async task_all_update [start]")
