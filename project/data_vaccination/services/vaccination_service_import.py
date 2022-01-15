@@ -48,9 +48,15 @@ class VaccinationServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         if covid19_application.use_pandoc_only:
             app.logger.info(" vaccination_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
-            data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql('vaccination_import_pandas', engine)
+            engine = sqlalchemy.create_engine(covid19_application.db_uri)
+            data = pandas.read_csv(
+                self.cfg.cvsfile_path,
+                delimiter="\t")
+            data.to_sql(
+                name='vaccination_import_pandas',
+                if_exists='replace',
+                engine=engine
+            )
             app.logger.info(" vaccination_import_pandas DONE")
         else:
             app.logger.info("------------------------------------------------------------")
@@ -69,16 +75,15 @@ class VaccinationServiceImport(AllServiceMixinImport):
                     k += 1
                     if (k % 100) == 0:
                         db.session.commit()
-                        app.logger.info(" [Vaccination] import  ... " + str(k) + " rows")
+                        app.logger.info(" [Vaccination] import  ... {} rows".format(str(k)))
                 db.session.commit()
-                app.logger.info(" [Vaccination] import  ... " + str(k) + " rows total")
+                app.logger.info(" [Vaccination] import  ... {} rows total".format(str(k)))
             app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
-            " [Vaccination] imported into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [Vaccination] imported into TABLE: {} {} <--- from FILE ".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [Vaccination] import [done]")

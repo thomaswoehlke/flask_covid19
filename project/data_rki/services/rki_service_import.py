@@ -49,7 +49,11 @@ class RkiServiceImport(AllServiceMixinImport):
             app.logger.info(" rki_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
             data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql('rki_import_pandas', engine)
+            data.to_sql(
+                name='rki_import_pandas',
+                if_exists='replace',
+                engine=engine
+            )
             app.logger.info(" rki_import_pandas DONE")
             app.logger.info("------------------------------------------------------------")
         else:
@@ -68,18 +72,17 @@ class RkiServiceImport(AllServiceMixinImport):
                     if (k % 500) == 0:
                         db.session.commit()
                     if (k % 10000) == 0:
-                        app.logger.info(" [RKI] import ... " + str(k) + " rows")
+                        app.logger.info(" [RKI] import ... {} rows".format(str(k)))
                     if self.cfg.reached_limit_import_for_testing(row_number=k):
                         break
                 db.session.commit()
-                app.logger.info(" [RKI] import ... " + str(k) + " rows total")
+                app.logger.info(" [RKI] import ... {} rows total".format(str(k)))
             app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
-            " [RKI] imported into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [RKI] imported into TABLE: {} {} <--- from FILE ".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [RKI] import_file  [done]")

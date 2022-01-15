@@ -52,7 +52,11 @@ class EcdcServiceImport(AllServiceMixinImport):
             app.logger.info(" ecdc_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
             data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql('ecdc_import_pandas', engine)
+            data.to_sql(
+                name='ecdc_import_pandas',
+                if_exists='replace',
+                engine=engine
+            )
             app.logger.info(" ecdc_import_pandas DONE")
         else:
             app.logger.info("------------------------------------------------------------")
@@ -63,24 +67,25 @@ class EcdcServiceImport(AllServiceMixinImport):
                     d = AllDateReportedFactory.create_new_object_for_ecdc(
                         my_date_reported=date_rep
                     )
-                    o = EcdcImportFactory.create_new(date_reported=date_rep, d=d, row=row)
+                    o = EcdcImportFactory.create_new(
+                        date_reported=date_rep, d=d, row=row
+                    )
                     db.session.add(o)
                     k = k + 1
                     if (k % 1000) == 0:
                         db.session.commit()
                     if (k % 10000) == 0:
-                        app.logger.info(" [ECDC] import  ...  " + str(k) + " rows")
+                        app.logger.info(" [ECDC] import  ...  {} rows".format(str(k)))
                     if self.cfg.reached_limit_import_for_testing(row_number=k):
                         break
                 db.session.commit()
-                app.logger.info(" [ECDC] import  ...  " + str(k) + " rows total")
+                app.logger.info(" [ECDC] import  ...  {} rows total".format(str(k)))
             app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
-            " [ECDC] imported into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [ECDC] imported into TABLE: {} {} <--- from FILE ".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [ECDC] import [done]")

@@ -37,12 +37,10 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info(" [OWID] import [begin]")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
-            " [OWID] import into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [OWID] import into TABLE: {} {} <--- from FILE ".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
-
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" OwidImport.remove_all() START")
         OwidImport.remove_all()
@@ -52,7 +50,11 @@ class OwidServiceImport(AllServiceMixinImport):
             app.logger.info(" owid_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
             data = pandas.read_csv(self.cfg.cvsfile_path)
-            data.to_sql('owid_import_pandas', engine)
+            data.to_sql(
+                name='owid_import_pandas',
+                if_exists='replace',
+                engine=engine
+            )
             app.logger.info(" owid_import_pandas DONE")
         else:
             app.logger.info("------------------------------------------------------------")
@@ -72,18 +74,17 @@ class OwidServiceImport(AllServiceMixinImport):
                     if (k % 2000) == 0:
                         db.session.commit()
                     if (k % 10000) == 0:
-                        app.logger.info(" [OWID] import ... " + str(k) + " rows")
+                        app.logger.info(" [OWID] import ... {} rows".format(str(k)))
                     if self.cfg.reached_limit_import_for_testing(row_number=k):
                         break
                 db.session.commit()
-                app.logger.info(" [OWID] import ... " + str(k) + " rows total")
+                app.logger.info(" [OWID] import ... {} rows total".format(str(k)))
             app.logger.info("")
         app.logger.info("------------------------------------------------------------")
         app.logger.info(
-            " [OWID] imported into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [OWID] imported into TABLE: {} {} <--- from FILE ".format(
+                self.cfg.tablename, self.cfg.cvsfile_path
+            )
         )
         app.logger.info("------------------------------------------------------------")
         app.logger.info(" [OWID] import [done]")
