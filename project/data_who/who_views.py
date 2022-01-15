@@ -57,6 +57,7 @@ class WhoUrls:
     @login_required
     def url_who_imported(page=1):
         # https://stackoverflow.com/questions/52644035/how-to-show-a-pandas-dataframe-into-a-existing-flask-html-table
+        # https://www.geeksforgeeks.org/convert-csv-to-html-table-using-python-pandas-and-flask-framework/
         page_info = WebPageContent("WHO", "Last Import")
         try:
             page_data = WhoImport.get_all(page)

@@ -102,3 +102,8 @@
 * https://docs.pytest.org/en/latest/
 * https://flask.palletsprojects.com/en/2.0.x/testing/
 * https://pytest-flask.readthedocs.io/en/latest/index.html
+
+## Pandas and Flask
+* https://stackoverflow.com/questions/52644035/how-to-show-a-pandas-dataframe-into-a-existing-flask-html-table
+* https://www.geeksforgeeks.org/convert-csv-to-html-table-using-python-pandas-and-flask-framework/
+
