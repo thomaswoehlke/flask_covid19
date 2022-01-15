@@ -1,4 +1,5 @@
-from project.data_ecdc.model import EcdcContinent, EcdcCountry
+from project.data_ecdc.model.ecdc_model_location_group import EcdcContinent
+from project.data_ecdc.model.ecdc_model_location import EcdcCountry
 
 
 class EcdcCountryFactory:

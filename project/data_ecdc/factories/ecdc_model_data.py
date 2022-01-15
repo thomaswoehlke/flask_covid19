@@ -1,4 +1,6 @@
-from project.data_ecdc.model import EcdcDateReported, EcdcCountry, EcdcData
+from project.data_ecdc.model.ecdc_model_date_reported import EcdcDateReported
+from project.data_ecdc.model.ecdc_model_data import EcdcData
+from project.data_ecdc.model.ecdc_model_location import EcdcCountry
 
 
 class EcdcDataFactory:
