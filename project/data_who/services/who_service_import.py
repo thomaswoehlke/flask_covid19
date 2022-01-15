@@ -53,7 +53,7 @@ class WhoServiceImport(AllServiceMixinImport):
         app.logger.info("------------------------------------------------------------")
         if covid19_application.use_pandoc_only:
             app.logger.info(" who_import_pandas START")
-            engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
+            engine = sqlalchemy.create_engine(covid19_application.db_uri)
             data = pandas.read_csv(self.cfg.cvsfile_path)
             data.to_sql(
                 name='who_import_pandas',
