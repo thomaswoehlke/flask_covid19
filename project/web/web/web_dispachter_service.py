@@ -14,10 +14,10 @@ from project.data_all_notifications.notifications_service import NotificationSer
 #
 # Services
 #
+notification_service = NotificationService(db)
 admin_service = AdminService(db)
 web_user_service = UserService(db)
 web_service = WebService(db, web_user_service)
-notification_service = NotificationService(db)
 
 who_service = WhoService(db)
 owid_service = OwidService(db)
@@ -25,7 +25,7 @@ ecdc_service = EcdcService(db)
 vaccination_service = VaccinationService(db)
 rki_service = RkiService(db)
 
-all_dispachter_matrix_service = AllServiceDispachterMatrix(
+all_service_dispachter_matrix = AllServiceDispachterMatrix(
     who_service=who_service,
     owid_service=owid_service,
     rki_service=rki_service,
