@@ -5,7 +5,7 @@ from project.data.database import root_dir
 from project.data_ecdc.model.ecdc_model_import import EcdcImport
 from project.data_owid.model.owid_model_import import OwidImport
 from project.data_rki.model.rki_model_import import RkiImport
-from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 from project.data_who.model.who_model_import import WhoImport
 
 

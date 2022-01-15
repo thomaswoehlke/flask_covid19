@@ -2,10 +2,10 @@ from sqlalchemy import Sequence
 
 from project.data.database import db
 from project.data_all.model.all_model import AllFactTableTimeSeries
-from project.data_vaxx.model.vaccination_model_date_reported import (
+from project.data_vaxx.model.vaxx_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 
 
 class VaccinationData(AllFactTableTimeSeries):

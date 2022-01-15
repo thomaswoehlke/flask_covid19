@@ -3,7 +3,7 @@ from project.web.notifications_view import notification_service
 from project.data_ecdc.ecdc_views import ecdc_service
 from project.data_owid.owid_views import owid_service
 from project.data_rki.rki_views import rki_service
-from project.data_vaxx.vaccination_views import vaccination_service
+from project.data_vaxx.vaxx_views import vaccination_service
 from project.data_who.who_views import who_service
 from project.web import run_web
 from project.web.all_views import all_service_dispachter

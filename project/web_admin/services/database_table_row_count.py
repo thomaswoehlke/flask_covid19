@@ -17,10 +17,10 @@ from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data_location_group import RkiBundesland
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
-from project.data_vaxx.model.vaccination_model_data import VaccinationData
-from project.data_vaxx.model.vaccination_model_date_reported import \
+from project.data_vaxx.model.vaxx_model_data import VaccinationData
+from project.data_vaxx.model.vaxx_model_date_reported import \
     VaccinationDateReported
-from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_date_reported import WhoDateReported
 from project.data_who.model.who_model_import import WhoImport

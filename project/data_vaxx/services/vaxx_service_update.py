@@ -5,11 +5,11 @@ from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinUpdate
 from project.data_all_notifications.notifications_model import Notification
-from project.data_vaxx.model.vaccination_model_data import VaccinationDataFactory
-from project.data_vaxx.model.vaccination_model_date_reported import (
+from project.data_vaxx.model.vaxx_model_data import VaccinationDataFactory
+from project.data_vaxx.model.vaxx_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaxx.model.vaccination_model_import import VaccinationImport
+from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 
 
 class VaccinationServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
