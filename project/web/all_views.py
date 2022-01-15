@@ -11,7 +11,19 @@ from project.data.database import app, db, celery
 from project.data_all.services.all_service_dispachter import AllServiceDispachterMatrix
 from project.web.model.web_model_transient import WebPageContent
 
-all_service_dispachter = AllServiceDispachterMatrix(db)
+from project.data_ecdc.ecdc_views import ecdc_service
+from project.data_owid.owid_views import owid_service
+from project.data_rki.rki_views import rki_service
+from project.data_vaccination.vaccination_views import vaccination_service
+from project.data_who.who_views import who_service
+
+all_service_dispachter = AllServiceDispachterMatrix(
+    who_service=who_service,
+    owid_service=owid_service,
+    rki_service=rki_service,
+    vaccination_service=vaccination_service,
+    ecdc_service=ecdc_service,
+)
 
 drop_and_create_data_again = True
 

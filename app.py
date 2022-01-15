@@ -1,14 +1,14 @@
+
+from project.web.notifications_view import notification_service
+from project.data_ecdc.ecdc_views import ecdc_service
+from project.data_owid.owid_views import owid_service
+from project.data_rki.rki_views import rki_service
+from project.data_vaccination.vaccination_views import vaccination_service
+from project.data_who.who_views import who_service
 from project.web import run_web
-from project.web.web_views import app, db, celery
-from project.web.services.web_dispachter_service import web_service_dispachter_matrix
-from project.web.services.web_dispachter_service import admin_service
-from project.web.services.web_dispachter_service import ecdc_service
-from project.web.services.web_dispachter_service import owid_service
-from project.web.services.web_dispachter_service import rki_service
-from project.web.services.web_dispachter_service import vaccination_service
-from project.web.services.web_dispachter_service import web_service
-from project.web.services.web_dispachter_service import who_service
-from project.web.services.web_dispachter_service import notification_service
+from project.web.all_views import all_service_dispachter
+from project.web.web_views import app, db, web_service, celery
+from project.web_admin.web_admin_views import admin_service
 
 
 def create_app():
@@ -28,56 +28,56 @@ def create_user():
 def all_download():
     """[ALL] download"""
     with app.app_context():
-        web_service_dispachter_matrix.download()
+        all_service_dispachter.download()
 
 
 @app.cli.command("all-import")
 def all_import():
     """[ALL] import file"""
     with app.app_context():
-        web_service_dispachter_matrix.import_file()
+        all_service_dispachter.import_file()
 
 
 @app.cli.command("all-update")
 def all_update():
     """[ALL] update"""
     with app.app_context():
-        web_service_dispachter_matrix.update()
+        all_service_dispachter.update()
 
 
 @app.cli.command("all-update-full")
 def all_full_update():
     """[ALL] full update"""
     with app.app_context():
-        web_service_dispachter_matrix.full_update()
+        all_service_dispachter.full_update()
 
 
 @app.cli.command("all-update-full-dimensions")
 def all_full_update_dimension_tables():
     """[ALL] full update dimension tables"""
     with app.app_context():
-        web_service_dispachter_matrix.full_update_dimension_tables()
+        all_service_dispachter.full_update_dimension_tables()
 
 
 @app.cli.command("all-update-dimensions")
 def all_update_dimension_tables():
     """[ALL] update dimension tables"""
     with app.app_context():
-        web_service_dispachter_matrix.update_dimension_tables()
+        all_service_dispachter.update_dimension_tables()
 
 
 @app.cli.command("all-update-full-data")
 def all_full_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
-        web_service_dispachter_matrix.full_update_fact_table()
+        all_service_dispachter.full_update_fact_table()
 
 
 @app.cli.command("all-update-data")
 def all_update_fact_table():
     """[ALL] full update fact table"""
     with app.app_context():
-        web_service_dispachter_matrix.update_fact_table()
+        all_service_dispachter.update_fact_table()
 
 
 @app.cli.command("who-download")
