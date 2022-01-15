@@ -20,9 +20,12 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg.category, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def __owid_import_get_new_dates(self):
         todo = []

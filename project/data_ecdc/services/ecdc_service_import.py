@@ -21,9 +21,12 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg.category, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def count_file_rows(self):
         count = 0

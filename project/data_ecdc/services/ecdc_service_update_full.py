@@ -20,9 +20,12 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
         super().__init__(database, config)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg.category, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def __full_update_date_reported(self):
         task = Notification.create(

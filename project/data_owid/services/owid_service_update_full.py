@@ -19,11 +19,13 @@ from project.data_owid.model.owid_model_location_group import OwidContinentFacto
 class OwidServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg.category, self.__class__.__name__
-        ))
+        super().__init__(database, config)
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def __full_update_date_reported(self):
         task = Notification.create(

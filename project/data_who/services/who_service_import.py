@@ -18,12 +18,15 @@ db = covid19_application.db
 
 
 class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
+
     def __init__(self, database, config: AllServiceConfig):
-        self.__database = database
-        self.cfg = config
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg.category, self.__class__.__name__
-        ))
+        super().__init__(database, config)
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def count_file_rows(self):
         count = 0
@@ -60,7 +63,8 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
         data.to_sql(
             name='who_import_pandas',
             if_exists='replace',
-            con=engine)
+            con=engine
+        )
         app.logger.info(" who_import_pandas DONE")
         self.__log_line()
         if not covid19_application.use_pandoc_only:
