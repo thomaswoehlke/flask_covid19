@@ -8,5 +8,5 @@ class AllServiceBase:
         self.__database = database
         self.cfg = config
 
-    def __log_line(self):
+    def log_line(self):
         app.logger.info("------------------------------------------------------------")

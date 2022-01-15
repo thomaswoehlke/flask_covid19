@@ -63,9 +63,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update date_reported [begin]")
-        super.__log_line()
+        self.log_line()
         i = 0
         log_lines = []
         OwidDateReported.set_all_processed_update()
@@ -82,9 +82,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(log_line)
         db.session.commit()
         app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update date_reported [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -93,9 +93,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update continent [begin]")
-        super.__log_line()
+        self.log_line()
         app.logger.info("")
         i = 0
         log_lines = []
@@ -108,9 +108,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         for log_line in log_lines:
             app.logger.info(log_line)
         db.session.commit()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update continent [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -119,9 +119,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update country [begin]")
-        super.__log_line()
+        self.log_line()
         app.logger.info("")
         self.__update_continent()
         for ci in self.__get_new_countries_from_import():
@@ -140,9 +140,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             db.session.add(o)
             app.logger.info(" [OWID] added country: " + str(o) + " ")
         db.session.commit()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update country [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -151,9 +151,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="__update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update [begin]")
-        super.__log_line()
+        self.log_line()
         anzahl_db_zeilen_persistent = 0
         anzahl_db_zeilen_transient = 0
         lfd_nr_tage = 0
@@ -199,9 +199,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             + str(lfd_nr_tage)
             + " days"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -210,14 +210,14 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="update_dimension_tables"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update dimension_tables [begin]")
-        super.__log_line()
+        self.log_line()
         self.__update_date_reported()
         self.__update_country()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update dimension_tables [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -226,13 +226,13 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update fact_table [begin]")
-        super.__log_line()
+        self.log_line()
         self.__update_fact_table()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [OWID] update fact_table [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -241,9 +241,9 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             sector=self.cfg.category,
             task_name="delete_last_day"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.debug(" [OWID] delete last_day [START]")
-        super.__log_line()
+        self.log_line()
         joungest_datum = OwidDateReported.get_joungest_datum()
         app.logger.info(" [OWID] joungest_datum:" + str(joungest_datum))
         app.logger.info(" [OWID] OwidData.find_by_date_reported(joungest_datum):")
@@ -254,8 +254,8 @@ class OwidServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
             app.logger.info(line)
         app.logger.info(" [OWID] OwidData.delete_data_for_one_day(joungest_datum)")
         OwidData.delete_data_for_one_day(joungest_datum)
-        super.__log_line()
+        self.log_line()
         app.logger.debug(" [OWID] delete last_day [DONE]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self

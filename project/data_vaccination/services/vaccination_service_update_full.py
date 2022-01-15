@@ -29,7 +29,7 @@ class VaccinationServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
 
     def __full_update_date_reported(self):
         app.logger.info(" [Vaccination] full update date_reported [begin]")
-        super.__log_line()
+        self.log_line()
         VaccinationDateReported.remove_all()
         date_reported_list = VaccinationImport.get_date_reported_as_array()
         i = 0
@@ -45,15 +45,15 @@ class VaccinationServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             app.logger.info(output)
         db.session.commit()
         app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [Vaccination] full update date_reported [done]")
-        super.__log_line()
+        self.log_line()
         return self
 
     def __full_update_fact_table(self):
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [Vaccination] full update [begin]")
-        super.__log_line()
+        self.log_line()
         VaccinationData.remove_all()
         result_date_rep = VaccinationImport.get_date_rep()
         i = 0
@@ -74,9 +74,9 @@ class VaccinationServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         db.session.commit()
         app.logger.info(" [Vaccination] full update ... " + str(i) + " rows total")
         app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [Vaccination] full update [done]")
-        super.__log_line()
+        self.log_line()
         return self
 
     def full_update_dimension_tables(self):

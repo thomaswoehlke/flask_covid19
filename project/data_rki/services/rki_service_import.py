@@ -37,19 +37,19 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
 
     def import_file(self):
         task = Notification.create(sector=self.cfg.category, task_name="import_file")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] import_file  [begin]".format(self.cfg.category))
-        super.__log_line()
+        self.log_line()
         app.logger.info(
             " [{}] import into TABLE: {} <--- from FILE {} [START]".format(
                 self.cfg.category, self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info("START: RkiImport.remove_all()")
         RkiImport.remove_all()
         app.logger.info("DONE: RkiImport.remove_all()")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" rki_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(self.cfg.cvsfile_path)
@@ -61,7 +61,7 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
             method='multi'
         )
         app.logger.info(" rki_import_pandas DONE")
-        super.__log_line()
+        self.log_line()
         if not covid19_application.use_pandoc_only:
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
                 file_reader = csv.DictReader(
@@ -92,14 +92,14 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
                     )
                 )
             app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(
             " [{}] import into TABLE: {} <--- from FILE {} [DONE]".format(
                 self.cfg.category, self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] import_file  [done]".format(self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self

@@ -32,9 +32,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_date_reported"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update date_reported [begin]")
-        super.__log_line()
+        self.log_line()
         EcdcDateReported.remove_all()
         result_date_rep = EcdcImport.get_date_rep()
         k = 0
@@ -51,9 +51,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 " [ECDC] full update date_reported ... " + b + " rows ... (" + a + ")"
             )
         db.session.commit()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update date_reported [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -62,9 +62,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_continent"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update continent [begin]")
-        super.__log_line()
+        self.log_line()
         EcdcContinent.remove_all()
         result_continent = EcdcImport.get_continent()
         k = 0
@@ -79,9 +79,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             )
             db.session.add(o)
         db.session.commit()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update continent [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -90,9 +90,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_country"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update country [begin]")
-        super.__log_line()
+        self.log_line()
         EcdcData.remove_all()
         EcdcCountry.remove_all()
         self.__full_update_continent()
@@ -112,9 +112,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 )
                 db.session.add(o)
         db.session.commit()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update country [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -174,9 +174,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_data"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update [begin]")
-        super.__log_line()
+        self.log_line()
         EcdcData.remove_all()
         i = 0
         k = 0
@@ -226,9 +226,9 @@ class EcdcServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
                 db.session.commit()
         db.session.commit()
         app.logger.info(" [ECDC] full update ... " + str(i) + " rows total")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [ECDC] full update [done]")
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 

@@ -34,11 +34,11 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_meldedatum"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update meldedatum [begin]".format(
             self.cfg.category)
         )
-        super.__log_line()
+        self.log_line()
         RkiMeldedatum.remove_all()
         i = 0
         output_lines = []
@@ -56,10 +56,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update meldedatum [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -68,10 +68,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_altersgruppe"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update altersgruppe [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         RkiAltersgruppe.remove_all()
         app.logger.info("")
         i = 0
@@ -87,10 +87,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update altersgruppe [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -99,10 +99,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_bundesland"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update bundesland [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         RkiBundesland.remove_all()
         app.logger.info("")
         i = 0
@@ -118,10 +118,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         db.session.commit()
         for output in output_lines:
             app.logger.info(output)
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full update bundesland [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -132,10 +132,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         )
         RkiLandkreis.remove_all()
         self.__full_update_bundesland()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __full_update_landkreis [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         i = 0
         output_lines = []
         for bundesland in RkiBundesland.find_all():
@@ -160,10 +160,10 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             for output in output_lines:
                 app.logger.info(output)
         app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __full_update_landkreis [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -172,13 +172,13 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__full_update_data"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __full_update_data [begin]".format(self.cfg.category))
-        super.__log_line()
+        self.log_line()
         app.logger.info("START: RkiData.remove_all()")
         RkiData.remove_all()
         app.logger.info("DONE: RkiData.remove_all()")
-        super.__log_line()
+        self.log_line()
         i = 0
         d = 0
         k = 0
@@ -225,9 +225,9 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             self.cfg.category, str(i))
         )
         app.logger.info("")
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __full_update_data [done]".format(self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -236,19 +236,19 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="__clean_dimension_tables"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __clean_dimension_tables [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         RkiData.remove_all()
         RkiMeldedatum.remove_all()
         RkiAltersgruppe.remove_all()
         RkiLandkreis.remove_all()
         RkiBundesland.remove_all()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] __clean_dimension_tables [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -257,18 +257,18 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="full_update_dimension_tables"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full_update_dimension_tables [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         self.__clean_dimension_tables()
         self.__full_update_meldedatum()
         self.__full_update_altersgruppe()
         self.__full_update_landkreis()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full_update_dimension_tables [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
 
@@ -277,15 +277,15 @@ class RkiServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
             sector=self.cfg.category,
             task_name="full_update_fact_table"
         )
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full_update_fact_table [begin]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         RkiData.remove_all()
         self.__full_update_data()
-        super.__log_line()
+        self.log_line()
         app.logger.info(" [{}] full_update_fact_table [done]".format(
             self.cfg.category))
-        super.__log_line()
+        self.log_line()
         Notification.finish(task_id=task.id)
         return self
