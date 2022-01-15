@@ -9,7 +9,7 @@ from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 
 
 class VaccinationData(AllFactTableTimeSeries):
-    __tablename__ = "vaxx"
+    __tablename__ = "vaccination"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
