@@ -49,9 +49,11 @@ class OwidServiceImport(AllServiceMixinImport):
         app.logger.info(" OwidImport.remove_all() DONE")
         app.logger.info("------------------------------------------------------------")
         if covid19_application.use_pandoc_only:
+            app.logger.info(" owid_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
             data = pandas.read_csv(self.cfg.cvsfile_path)
             data.to_sql('owid_import_pandas', engine)
+            app.logger.info(" owid_import_pandas DONE")
         else:
             app.logger.info("------------------------------------------------------------")
             with open(self.cfg.cvsfile_path, newline="\n") as csv_file:

@@ -47,9 +47,11 @@ class VaccinationServiceImport(AllServiceMixinImport):
         VaccinationImport.remove_all()
         app.logger.info("------------------------------------------------------------")
         if covid19_application.use_pandoc_only:
+            app.logger.info(" vaccination_import_pandas START")
             engine = sqlalchemy.create_engine(covid19_application.db_uri_pandas)
             data = pandas.read_csv(self.cfg.cvsfile_path)
             data.to_sql('vaccination_import_pandas', engine)
+            app.logger.info(" vaccination_import_pandas DONE")
         else:
             app.logger.info("------------------------------------------------------------")
             k = 0
