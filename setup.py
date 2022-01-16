@@ -218,8 +218,8 @@ setup(
     name="flask_covid19",
     description="Covid19 Data Aggregation "
     + "- also a Project to learn Python Flask, SQLAlchemy, Celery et al.",
-    version="0.0.78",
-    url="https://github.com/thomaswoehlke/covid19python.git",
+    version="0.0.91",
+    url="https://github.com/thomaswoehlke/flask_covid19.git",
     author="Thomas Woehlke",
     author_email="thomas.woehlke@gmail.com",
     license="GNU General Public License v3 (GPLv3)",
