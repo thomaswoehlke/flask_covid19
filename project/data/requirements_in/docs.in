@@ -4,8 +4,7 @@ Sphinx
 myst-parser
 babel>=2.9.1
 sphinx-issues
-sphinx.ext.autodoc
-sphinx.ext.intersphinx
+sphinx-autodocgen
 sphinxcontrib-log-cabinet
 sphinxcontrib-images
 sphinxcontrib-srclinks
@@ -14,6 +13,7 @@ sphinxcontrib-needs
 sphinxcontrib-plantuml
 sphinxcontrib-bibtex
 sphinxcontrib-markdown
+sphinxcontrib-autodoc-doxygen
 sphinx-tabs
 sphinx-sql
 sphinx-celery
@@ -23,5 +23,5 @@ sqlalchemy-sphinx
 sphinx-pyreverse
 sphinx-click
 flask-api-autodoc
-sphinxcontrib-autodoc-doxygen
+
 
