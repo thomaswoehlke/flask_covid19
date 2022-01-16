@@ -15,3 +15,13 @@ sphinxcontrib-plantuml
 sphinxcontrib-bibtex
 sphinxcontrib-markdown
 sphinx-tabs
+sphinx-sql
+sphinx-celery
+sphinx-jinja
+sphinx-markdown
+sqlalchemy-sphinx
+sphinx-pyreverse
+sphinx-click
+flask-api-autodoc
+sphinxcontrib-autodoc-doxygen
+
