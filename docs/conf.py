@@ -37,17 +37,17 @@ master_doc = "index"
 extensions = [
     "pallets_sphinx_themes",
     "myst_parser",
+    "sphinx-tabs",
     "sphinx.ext.autodoc",
-    "sphinx.ext.intersphinx",
-    "sphinxcontrib.log_cabinet",
+    #"sphinx.ext.intersphinx",
+    #"sphinxcontrib.log_cabinet",
     "sphinxcontrib.images",
     "sphinxcontrib.srclinks",
     "sphinxcontrib.gravizo",
     "sphinxcontrib.needs",
     "sphinxcontrib.plantuml",
-    "sphinxcontrib.bibtex",
-    "sphinxcontrib.markdown",
-    "sphinx-tabs",
+    #"sphinxcontrib.bibtex",
+    #"sphinxcontrib.markdown",
 ]
 
 source_suffix = {
