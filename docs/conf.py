@@ -39,7 +39,7 @@ extensions = [
     "myst_parser",
     "sphinx-tabs",
     "sphinx.ext.autodoc",
-    #"sphinx.ext.intersphinx",
+    "sphinx.ext.intersphinx",
     #"sphinxcontrib.log_cabinet",
     "sphinxcontrib.images",
     "sphinxcontrib.srclinks",
@@ -85,7 +85,9 @@ srclink_branch = 'master'
 # HTML -----------------------------------------------------------------
 
 html_theme = "flask"
-html_theme_options = {"index_sidebar_logo": True}
+html_theme_options = {
+    "index_sidebar_logo": True
+}
 html_context = {
     "project_links": [
         ProjectLink(
@@ -125,7 +127,13 @@ html_sidebars = {
         'srclinks.html',
     ],
 }
-singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
+singlehtml_sidebars = {
+    "index": [
+        "project.html",
+        "localtoc.html",
+        "ethicalads.html"
+    ]
+}
 html_static_path = ["_static"]
 html_favicon = "_static/flask-icon.png"
 html_logo = "_static/flask-icon.png"
