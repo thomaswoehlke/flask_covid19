@@ -58,7 +58,9 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(
             self.cfg.cvsfile_path,
-            delimiter="\t")
+            delimiter="\t",
+            parse_dates=[0],
+        )
         data.to_sql(
             name='vaccination_import_pandas',
             if_exists='replace',
