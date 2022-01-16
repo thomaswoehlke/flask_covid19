@@ -44,8 +44,10 @@ class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
         app.logger.info(" [OWID] import [begin]")
         self.log_line()
         app.logger.info(
-            " [OWID] import into TABLE: {} {} <--- from FILE ".format(
-                self.cfg.tablename, self.cfg.cvsfile_path
+            " [{}] import into TABLE: {} <--- from FILE {} [START]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
             )
         )
         self.log_line()
@@ -88,8 +90,10 @@ class OwidServiceImport(AllServiceBase, AllServiceMixinImport):
             app.logger.info("")
         self.log_line()
         app.logger.info(
-            " [OWID] imported into TABLE: {} {} <--- from FILE ".format(
-                self.cfg.tablename, self.cfg.cvsfile_path
+            " [{}] imported into TABLE: {} <--- from FILE {} [DONE]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
             )
         )
         self.log_line()
