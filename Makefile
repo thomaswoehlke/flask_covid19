@@ -389,6 +389,7 @@ else
 endif
 
 start:
+	$(UNAME)
 ifeq ($(UNAME),'Linux')
 	make start_linux
 else
