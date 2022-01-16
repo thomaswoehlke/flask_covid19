@@ -68,6 +68,7 @@ pip_compile_windows:
 	@echo "------------------"
 	@echo "making pip_compile_windows"
 	@echo "------------------"
+	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
@@ -87,6 +88,7 @@ pip_compile_linux:
 	@echo "------------------"
 	@echo "making pip_compile_linux"
 	@echo "------------------"
+	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
@@ -377,8 +379,16 @@ start_windows: pip_install_windows_build update_windows
 
 start_linux: pip_install_linux_build update_linux
 
-# update: update_linux
-update: update_windows
+update:
+	ifeq ($(uname),"Linux")
+	  update_linux
+	else
+	  update_windows
+	endif
 
-# start: start_linux
-start: start_windows
+start:
+	ifeq ($(uname), "Linux")
+	  start_linux
+	else
+	  start_windows
+	endif

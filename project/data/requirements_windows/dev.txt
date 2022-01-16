@@ -119,7 +119,7 @@ flask==2.0.2
     #   pytest-flask
 flask-admin==1.5.8
     # via -r project/data/requirements_in/dev.in
-flask-bs4==5.0.0.1
+flask-bs4==5.1.3.0
     # via -r project/data/requirements_in/dev.in
 flask-cors==3.0.10
     # via -r project/data/requirements_in/dev.in
