@@ -44,10 +44,11 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
         app.logger.info(" [ECDC] import [begin]")
         self.log_line()
         app.logger.info(
-            " [ECDC] import into TABLE: "
-            + self.cfg.tablename
-            + " <--- from FILE "
-            + self.cfg.cvsfile_path
+            " [{}] imported into TABLE: {} <--- from FILE {} [START]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
+            )
         )
         k = 0
         self.log_line()
@@ -89,8 +90,10 @@ class EcdcServiceImport(AllServiceBase, AllServiceMixinImport):
             app.logger.info("")
         self.log_line()
         app.logger.info(
-            " [ECDC] imported into TABLE: {} {} <--- from FILE ".format(
-                self.cfg.tablename, self.cfg.cvsfile_path
+            " [{}] imported into TABLE: {} <--- from FILE {} [DONE]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
             )
         )
         self.log_line()

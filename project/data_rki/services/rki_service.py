@@ -21,9 +21,12 @@ class RkiService(AllServiceMixin):
         self.service_import = RkiServiceImport(database, self.cfg)
         self.service_update = RkiServiceUpdate(database, self.cfg)
         self.service_update_full = RkiServiceUpdateFull(database, self.cfg)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def download(self):
         task = Notification.create(sector=self.cfg.category, task_name="download")

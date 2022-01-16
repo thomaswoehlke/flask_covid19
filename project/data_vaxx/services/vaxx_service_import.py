@@ -45,8 +45,10 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
         app.logger.info(" [Vaccination] import [begin]")
         self.log_line()
         app.logger.info(
-            " [Vaccination] import into TABLE: {} <--- from FILE {} [START]".format(
-                self.cfg.tablename, self.cfg.cvsfile_path
+            " [{}] import into TABLE: {} <--- from FILE {} [START]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
             )
         )
         self.log_line()
@@ -90,8 +92,10 @@ class VaccinationServiceImport(AllServiceBase, AllServiceMixinImport):
             app.logger.info("")
         self.log_line()
         app.logger.info(
-            " [Vaccination] import into TABLE: {} <--- from FILE {} [DONE]".format(
-                self.cfg.tablename, self.cfg.cvsfile_path
+            " [{}] import into TABLE: {} <--- from FILE {} [DONE]".format(
+                self.cfg.category,
+                self.cfg.tablename,
+                self.cfg.cvsfile_path
             )
         )
         self.log_line()

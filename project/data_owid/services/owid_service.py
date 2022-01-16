@@ -17,9 +17,12 @@ class OwidService(AllServiceMixin):
         self.service_import = OwidServiceImport(database, self.cfg)
         self.service_update = OwidServiceUpdate(database, self.cfg)
         self.service_update_full = OwidServiceUpdateFull(database, self.cfg)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def download(self):
         task = Notification.create(sector="OWID", task_name="download")

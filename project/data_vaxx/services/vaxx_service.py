@@ -23,9 +23,12 @@ class VaccinationService(AllServiceMixin):
         self.service_import = VaccinationServiceImport(database, self.cfg)
         self.service_update = VaccinationServiceUpdate(database, self.cfg)
         self.service_update_full = VaccinationServiceUpdateFull(database, self.cfg)
-        app.logger.info(" ready [{}] {} ".format(
-            self.cfg, self.__class__.__name__
-        ))
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
 
     def download(self):
         task = Notification.create(sector="Vaccination", task_name="download")
