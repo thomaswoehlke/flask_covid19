@@ -29,9 +29,9 @@ all: start
 # -------------------------------------------------------------------------------------
 
 clean_linux:
-	@echo "------------------"
+	@echo "--------------------"
 	@echo "making clean_linux"
-	@echo "------------------"
+	@echo "--------------------"
 	rm -rf .eggs
 	rm -rf project.egg-info
 	rm -rf flask_covid19.egg-info
@@ -45,15 +45,33 @@ clean_linux:
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
-	@echo "------------------"
+	@echo "-------------------------"
 	@echo "making clean_linux DONE"
-	@echo "------------------"
+	@echo "-------------------------"
 
 clean_windows:
 	@echo "clean_windows"
 	@echo "TBD"
+	@echo "----------------------"
+	@echo "making clean_windows"
+	@echo "----------------------"
+	@echo rm -rf .eggs
+	@echo rm -rf project.egg-info
+	@echo rm -rf flask_covid19.egg-info
+	@echo rm -rf build
+	@echo rm -rf dist
+	@echo rm -rf .checkmate
+	@echo rm -rf node_modules
+	@echo rm -rf broker
+	@echo rm -rf .tox
+	@echo find . -name '*.pyc' -exec rm -f {} +
+	@echo find . -name '*.pyo' -exec rm -f {} +
+	@echo find . -name '*~' -exec rm -f {} +
+	@echo find . -name '__pycache__' -exec rm -rf {} +
+	@echo "---------------------------"
+	@echo "making clean_windows DONE"
+	@echo "---------------------------"
 
-clean:	clean_linux
 
 # -------------------------------------------------------------------------------------
 #
@@ -379,6 +397,13 @@ update_linux: clean_linux pip_compile_linux pip_install_linux pip_check setup_fr
 start_windows: pip_install_windows_build update_windows
 
 start_linux: pip_install_linux_build update_linux
+
+clean:
+ifeq ($(UNAME),Linux)
+	make clean_linux
+else
+	make clean_windows
+endif
 
 update:
 ifeq ($(UNAME),Linux)
