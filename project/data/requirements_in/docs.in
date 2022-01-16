@@ -5,6 +5,7 @@ myst-parser
 babel>=2.9.1
 sphinx-issues
 sphinx-tabs
+#sphinx-sitemap
 #flask-api-autodoc
 #sphinx-autodocgen
 #sphinx-sql

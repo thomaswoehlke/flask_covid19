@@ -8,10 +8,6 @@ alabaster==0.7.12
     # via sphinx
 argparse==1.4.0
     # via pytoolbox
-astroid==2.9.3
-    # via
-    #   pylint
-    #   sphinx-pyreverse
 attrs==21.2.0
     # via
     #   jsonschema
@@ -38,74 +34,39 @@ click==7.1.2
     #   pip-tools
 cycler==0.11.0
     # via matplotlib
-ddlparse==1.10.0
-    # via sphinx-sql
-diagrams==0.20.0
-    # via sphinx-diagrams
 distlib==0.3.4
     # via virtualenv
 docutils==0.16
     # via
     #   myst-parser
-    #   pybtex-docutils
     #   sphinx
-    #   sphinx-jinja
     #   sphinx-panels
-    #   sphinx-pyreverse
-    #   sphinx-rtd-theme
     #   sphinx-tabs
-    #   sphinxcontrib-autodoc-doxygen
-    #   sphinxcontrib-bibtex
 filelock==3.4.0
     # via
     #   tox
     #   virtualenv
 flask==1.1.4
-    # via
-    #   -r project/data/requirements_in/build.in
-    #   flask-api-autodoc
-flask-api-autodoc==1.0.0
-    # via -r project/data/requirements_in/docs.in
+    # via -r project/data/requirements_in/build.in
 fonttools==4.28.3
     # via matplotlib
-graphviz==0.16
-    # via diagrams
-greenlet==1.1.2
-    # via sqlalchemy
 identify==2.4.0
     # via pre-commit
 idna==3.3
     # via requests
 imagesize==1.3.0
     # via sphinx
-importlib-metadata==4.8.2
-    # via markdown
-isort==5.10.1
-    # via pylint
 itsdangerous==1.1.0
     # via flask
 jinja2==2.11.3
     # via
-    #   diagrams
     #   flask
     #   myst-parser
     #   sphinx
-    #   sphinx-jinja
-    #   sphinxcontrib-autodoc-doxygen
 jsonschema==3.2.0
     # via sphinxcontrib-needs
 kiwisolver==1.3.2
     # via matplotlib
-latexcodec==2.0.1
-    # via pybtex
-lazy-object-proxy==1.7.1
-    # via astroid
-lxml==4.7.1
-    # via sphinxcontrib-autodoc-doxygen
-markdown==3.3.6
-    # via
-    #   sphinx-markdown
-    #   sphinxcontrib-markdown
 markdown-it-py==1.1.0
     # via
     #   mdit-py-plugins
@@ -114,12 +75,8 @@ markupsafe==2.0.1
     # via jinja2
 matplotlib==3.5.0
     # via sphinxcontrib-needs
-mccabe==0.6.1
-    # via pylint
 mdit-py-plugins==0.2.8
     # via myst-parser
-mock==4.0.3
-    # via sphinxcontrib-autodoc-doxygen
 myst-parser==0.15.2
     # via -r project/data/requirements_in/docs.in
 nodeenv==1.6.0
@@ -151,9 +108,7 @@ pip-tools==6.4.0
 pipenv==2022.1.8
     # via -r project/data/requirements_in/build.in
 platformdirs==2.4.0
-    # via
-    #   pylint
-    #   virtualenv
+    # via virtualenv
 pluggy==1.0.0
     # via tox
 pre-commit==2.16.0
@@ -162,21 +117,12 @@ py==1.11.0
     # via tox
 pyaml==21.10.1
     # via pytoolbox
-pybtex==0.24.0
-    # via
-    #   pybtex-docutils
-    #   sphinxcontrib-bibtex
-pybtex-docutils==1.0.1
-    # via sphinxcontrib-bibtex
 pygments==2.10.0
     # via
     #   sphinx
     #   sphinx-tabs
-pylint==2.12.2
-    # via sphinx-pyreverse
 pyparsing==3.0.6
     # via
-    #   ddlparse
     #   matplotlib
     #   packaging
 pyrsistent==0.18.0
@@ -198,7 +144,6 @@ pyyaml==6.0
     #   myst-parser
     #   pre-commit
     #   pyaml
-    #   pybtex
 requests==2.26.0
     # via
     #   pytoolbox
@@ -213,8 +158,6 @@ setuptools-scm==6.3.2
 six==1.16.0
     # via
     #   jsonschema
-    #   latexcodec
-    #   pybtex
     #   python-dateutil
     #   requests-file
     #   tox
@@ -226,58 +169,27 @@ sphinx==4.3.1
     #   -r project/data/requirements_in/docs.in
     #   myst-parser
     #   pallets-sphinx-themes
-    #   sphinx-autodocgen
-    #   sphinx-celery
     #   sphinx-copybutton
     #   sphinx-issues
-    #   sphinx-jinja
-    #   sphinx-markdown
     #   sphinx-panels
-    #   sphinx-pyreverse
-    #   sphinx-rtd-theme
-    #   sphinx-sql
     #   sphinx-tabs
-    #   sphinxcontrib-autodoc-doxygen
-    #   sphinxcontrib-bibtex
     #   sphinxcontrib-images
-    #   sphinxcontrib-log-cabinet
-    #   sphinxcontrib-markdown
     #   sphinxcontrib-needs
     #   sphinxcontrib-plantuml
     #   sphinxcontrib-programoutput
     #   sphinxcontrib-srclinks
-sphinx-autodocgen==1.3
-    # via -r project/data/requirements_in/docs.in
-sphinx-celery==2.0.0
-    # via -r project/data/requirements_in/docs.in
 sphinx-copybutton==0.3.3
     # via sphinxcontrib-needs
 sphinx-data-viewer==0.1.2
     # via sphinxcontrib-needs
-sphinx-diagrams==0.4.0
-    # via -r project/data/requirements_in/docs.in
 sphinx-issues==1.2.0
-    # via -r project/data/requirements_in/docs.in
-sphinx-jinja==1.4.0
-    # via -r project/data/requirements_in/docs.in
-sphinx-markdown==1.0.2
     # via -r project/data/requirements_in/docs.in
 sphinx-panels==0.6.0
     # via sphinxcontrib-needs
-sphinx-pyreverse==0.0.17
-    # via -r project/data/requirements_in/docs.in
-sphinx-rtd-theme==1.0.0
-    # via sphinx-sql
-sphinx-sql==1.3.1
-    # via -r project/data/requirements_in/docs.in
 sphinx-tabs==3.2.0
     # via -r project/data/requirements_in/docs.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
-sphinxcontrib-autodoc-doxygen==0.7.0
-    # via -r project/data/requirements_in/docs.in
-sphinxcontrib-bibtex==2.4.1
-    # via -r project/data/requirements_in/docs.in
 sphinxcontrib-devhelp==1.0.2
     # via sphinx
 sphinxcontrib-gravizo==0.0.4
@@ -288,10 +200,6 @@ sphinxcontrib-images==0.9.4
     # via -r project/data/requirements_in/docs.in
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
-sphinxcontrib-log-cabinet==1.0.1
-    # via -r project/data/requirements_in/docs.in
-sphinxcontrib-markdown==0.1.0
-    # via -r project/data/requirements_in/docs.in
 sphinxcontrib-needs==0.7.4
     # via -r project/data/requirements_in/docs.in
 sphinxcontrib-plantuml==0.21
@@ -306,15 +214,10 @@ sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sphinxcontrib-srclinks==0.2.4
     # via -r project/data/requirements_in/docs.in
-sqlalchemy==1.4.29
-    # via sqlalchemy-sphinx
-sqlalchemy-sphinx==0.9.0
-    # via -r project/data/requirements_in/docs.in
 toml==0.10.2
     # via
     #   -r project/data/requirements_in/build.in
     #   pre-commit
-    #   pylint
     #   tox
 tomli==1.2.2
     # via
@@ -323,10 +226,6 @@ tomli==1.2.2
     #   setuptools-scm
 tox==3.24.4
     # via -r project/data/requirements_in/build.in
-typing-extensions==4.0.1
-    # via
-    #   astroid
-    #   pylint
 urllib3==1.26.7
     # via
     #   -r project/data/requirements_in/build.in
@@ -345,10 +244,6 @@ wheel==0.37.0
     # via
     #   -r project/data/requirements_in/build.in
     #   pip-tools
-wrapt==1.13.3
-    # via astroid
-zipp==3.6.0
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
