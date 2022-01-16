@@ -4,12 +4,14 @@ Sphinx
 myst-parser
 babel>=2.9.1
 sphinx-issues
+sphinx.ext.autodoc
+sphinx.ext.intersphinx
 sphinxcontrib-log-cabinet
-sphinxcontrib-plantuml
-sphinxcontrib-bibtex
 sphinxcontrib-images
+sphinxcontrib-srclinks
 sphinxcontrib-gravizo
 sphinxcontrib-needs
+sphinxcontrib-plantuml
+sphinxcontrib-bibtex
 sphinxcontrib-markdown
-sphinxcontrib-srclinks
 sphinx-tabs

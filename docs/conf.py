@@ -35,8 +35,8 @@ version = "0.0.91"
 master_doc = "index"
 
 extensions = [
-    "myst_parser",
     "pallets_sphinx_themes",
+    "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.log_cabinet",
@@ -45,6 +45,9 @@ extensions = [
     "sphinxcontrib.gravizo",
     "sphinxcontrib.needs",
     "sphinxcontrib.plantuml",
+    "sphinxcontrib.bibtex",
+    "sphinxcontrib.markdown",
+    "sphinx-tabs",
 ]
 
 source_suffix = {
@@ -54,6 +57,7 @@ source_suffix = {
 }
 
 autodoc_typehints = "description"
+
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "werkzeug": ("https://werkzeug.palletsprojects.com/", None),
@@ -69,26 +73,57 @@ issues_github_path = "thomaswoehlke/flask_covid19"
 
 plantuml = 'java -jar plantuml.jar'
 
+
+# srclink settings
+srclink_project = 'https://github.com/thomaswoehlke/flask_covid19'
+#srclink_project = 'git@github.com:thomaswoehlke/flask_covid19.git'
+srclink_src_path = 'docs/'
+#srclink_src_path = ''
+srclink_branch = 'master'
+#srclink_branch = 'develop'
+
 # HTML -----------------------------------------------------------------
 
 html_theme = "flask"
 html_theme_options = {"index_sidebar_logo": True}
 html_context = {
     "project_links": [
-        ProjectLink("Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"),
-        ProjectLink("PyPI Releases", "https://pypi.org/project/Flask_covid19/"),
-        ProjectLink("Source Code", "https://github.com/thomaswoehlke/flask_covid19/"),
+        ProjectLink(
+            "Donate", "https://www.paypal.com/paypalme/ThomasWoehlke"
+        ),
+        ProjectLink(
+            "PyPI Releases", "https://pypi.org/project/flask_covid19/"
+        ),
+        ProjectLink(
+            "Source Code", "https://github.com/thomaswoehlke/flask_covid19/"
+        ),
         ProjectLink(
             "Issue Tracker", "https://github.com/thomaswoehlke/flask_covid19/issues/"
         ),
-        ProjectLink("Website", "https://palletsprojects.com/p/flask_covid19/"),
-        ProjectLink("Twitter", "https://twitter.com/ThomasWoehlke"),
-        ProjectLink("Chat", "https://discord.gg/ThomasWoehlke"),
+        ProjectLink(
+            "Website", "https://palletsprojects.com/p/flask_covid19/"
+        ),
+        ProjectLink(
+            "Twitter", "https://twitter.com/ThomasWoehlke"
+        ),
+        ProjectLink(
+            "Chat", "https://discord.gg/ThomasWoehlke"
+        ),
     ]
 }
 html_sidebars = {
-    "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html"],
-    "**": ["localtoc.html", "relations.html", "searchbox.html", "ethicalads.html"],
+    "**": [
+        "localtoc.html",
+        "relations.html",
+        "searchbox.html",
+        'srclinks.html',
+    ],
+    "index": [
+        "project.html",
+        "localtoc.html",
+        "searchbox.html",
+        'srclinks.html',
+    ],
 }
 singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
 html_static_path = ["_static"]
