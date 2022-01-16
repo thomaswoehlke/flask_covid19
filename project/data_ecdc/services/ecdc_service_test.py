@@ -7,4 +7,9 @@ class EcdcTestService:
         self.__database = database
         self.__ecdc_service = ecdc_service
         self.cfg = AllServiceConfig.create_config_for_ecdc()
-        app.logger.info(" ready: [ECDC] Test Service ")
+        app.logger.info(
+            " ready [{}] {} ".format(
+                self.cfg.category,
+                self.__class__.__name__
+            )
+        )
