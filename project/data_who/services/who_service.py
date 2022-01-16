@@ -1,4 +1,7 @@
-from project.data.database import app
+import pandas as pd
+import sqlalchemy
+
+from project.data.database import app, covid19_application
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
@@ -24,7 +27,10 @@ class WhoService(AllServiceMixin):
         )
 
     def download(self):
-        task = Notification.create(sector="WHO", task_name="download")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="download"
+        )
         self.service_download.download()
         Notification.finish(task_id=task.id)
         return self
@@ -33,37 +39,55 @@ class WhoService(AllServiceMixin):
         return self.service_import.count_file_rows()
 
     def import_file(self):
-        task = Notification.create(sector="WHO", task_name="import_file")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="import_file"
+        )
         self.service_import.import_file()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_dimension_tables(self):
-        n = Notification.create(sector="WHO", task_name="full_update_dimension_tables")
+        n = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update_dimension_tables"
+        )
         self.service_update_full.full_update_dimension_tables()
         Notification.finish(task_id=n.id)
         return self
 
     def update_dimension_tables(self):
-        task = Notification.create(sector="WHO", task_name="update_dimension_tables")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="update_dimension_tables"
+        )
         self.service_update.update_dimension_tables()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update_fact_table(self):
-        task = Notification.create(sector="WHO", task_name="full_update_fact_table")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update_fact_table"
+        )
         self.service_update_full.full_update_fact_table()
         Notification.finish(task_id=task.id)
         return self
 
     def update_fact_table(self):
-        task = Notification.create(sector="WHO", task_name="update_fact_table")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="update_fact_table"
+        )
         self.service_update.update_fact_table()
         Notification.finish(task_id=task.id)
         return self
 
     def full_update(self):
-        task = Notification.create(sector="WHO", task_name="full_update")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="full_update"
+        )
         self.service_import.import_file()
         self.service_update_full.full_update_dimension_tables()
         self.service_update_full.full_update_fact_table()
@@ -71,7 +95,10 @@ class WhoService(AllServiceMixin):
         return self
 
     def update(self):
-        task = Notification.create(sector="WHO", task_name="update")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="update"
+        )
         # self.service_import.import_file()
         self.service_update.update_dimension_tables()
         self.service_update.update_fact_table()
@@ -79,7 +106,16 @@ class WhoService(AllServiceMixin):
         return self
 
     def delete_last_day(self):
-        task = Notification.create(sector="WHO", task_name="delete_last_day")
+        task = Notification.create(
+            sector=self.cfg.category,
+            task_name="delete_last_day"
+        )
         self.service_update.delete_last_day()
         Notification.finish(task_id=task.id)
         return self
+
+    def get_all_imported(self, page: int):
+        engine = sqlalchemy.create_engine(covid19_application.db_uri)
+        mypd = pd.read_sql_table('who_import_pandas', con=engine)
+        return mypd
+

@@ -65,12 +65,18 @@ class WhoUrls:
         # https://sarahleejane.github.io/learning/python/2015/08/09/simple-tables-in-webapps-using-flask-and-pandas-with-python.html
         page_info = WebPageContent("WHO", "Last Import")
         try:
-            page_data = WhoImport.get_all(page)
+            page_data = who_service.get_all_imported(page)
         except OperationalError:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "who/imported/who_imported.html", page_data=page_data, page_info=page_info
+            "who/imported/who_imported.html",
+            page_data=page_data.head(10).to_html(
+                classes='table table-striped table-hover',
+                na_rep=' ',
+                index=False,
+            ),
+            page_info=page_info
         )
 
     @staticmethod

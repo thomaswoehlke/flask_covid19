@@ -10,17 +10,20 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                {% include 'vaxx/imported/vaccination_imported_pagination.html' %}
+                {#% include 'vaxx/imported/vaccination_imported_pagination.html' %#}
             </div>
         </div>
         <div class="row">
             <div class="col">
-                {% include 'vaxx/imported/vaccination_imported_table.html' %}
+              <div class="table-responsive">
+                {{ page_data|safe }}
+              </div>
+                {#% include 'vaxx/imported/vaccination_imported_table.html' %#}
             </div>
         </div>
         <div class="row">
             <div class="col">
-                {% include 'vaxx/imported/vaccination_imported_pagination.html' %}
+                {#% include 'vaxx/imported/vaccination_imported_pagination.html' %#}
             </div>
         </div>
     </div>

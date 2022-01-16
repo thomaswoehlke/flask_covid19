@@ -62,9 +62,15 @@ class EcdcUrls:
     @app_ecdc.route("/imported")
     def url_ecdc_imported(page=1):
         page_info = WebPageContent("ECDC", "Last Import")
-        page_data = EcdcImport.get_all(page)
+        page_data = ecdc_service.get_all_imported(page)
         return render_template(
-            "ecdc/imported/ecdc_imported.html", page_data=page_data, page_info=page_info
+            "ecdc/imported/ecdc_imported.html",
+            page_data=page_data.head(10).to_html(
+                classes='table table-striped table-hover',
+                na_rep=' ',
+                index=False,
+            ),
+            page_info=page_info
         )
 
     @staticmethod

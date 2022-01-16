@@ -1,4 +1,7 @@
-from project.data.database import app
+import pandas as pd
+import sqlalchemy
+
+from project.data.database import app, covid19_application
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
@@ -92,3 +95,8 @@ class VaccinationService(AllServiceMixin):
         self.service_update.delete_last_day()
         Notification.finish(task_id=task.id)
         return self
+
+    def get_all_imported(self, page: int):
+        engine = sqlalchemy.create_engine(covid19_application.db_uri)
+        mypd = pd.read_sql_table('vaccination_import_pandas', con=engine)
+        return mypd

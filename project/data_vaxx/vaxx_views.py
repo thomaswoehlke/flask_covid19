@@ -59,10 +59,14 @@ class VaccinationUrls:
     @app_vaccination.route("/imported")
     def url_vaccination_imported(page=1):
         page_info = WebPageContent("Vaccination", "Data: Germany Timeline imported")
-        page_data = VaccinationImport.get_all(page)
+        page_data = vaccination_service.get_all_imported(page)
         return render_template(
             "vaxx/imported/vaccination_imported.html",
-            page_data=page_data,
+            page_data=page_data.head(10).to_html(
+                classes='table table-striped table-hover',
+                na_rep=' ',
+                index=False,
+            ),
             page_info=page_info,
         )
 

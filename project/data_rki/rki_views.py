@@ -65,12 +65,18 @@ class RkiUrls:
     def url_rki_imported(page=1):
         page_info = WebPageContent("RKI", "Last Import")
         try:
-            page_data = RkiImport.get_all(page)
+            page_data = rki_service.get_all_imported(page)
         except OperationalError:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "rki/imported/rki_imported.html", page_data=page_data, page_info=page_info
+            "rki/imported/rki_imported.html",
+            page_data=page_data.to_html(
+                classes='table table-striped table-hover',
+                na_rep=' ',
+                index=False,
+            ),
+            page_info=page_info
         )
 
     @staticmethod

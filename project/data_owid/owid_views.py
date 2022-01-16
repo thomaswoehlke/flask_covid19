@@ -72,26 +72,18 @@ class OwidUrls:
     def url_owid_imported(page=1):
         page_info = WebPageContent("OWID", "Last Import")
         try:
-            page_data = OwidImport.get_all(page)
+            page_data = owid_service.get_all_imported(page)
         except OperationalError:
             flash("No data in the database.")
             page_data = None
         return render_template(
-            "owid/imported/owid_imported.html", page_data=page_data, page_info=page_info
-        )
-
-    @staticmethod
-    @app_owid.route("/flat/page/<int:page>")
-    @app_owid.route("/flat")
-    def url_owid_flat(page=1):
-        page_info = WebPageContent("OWID", "flat")
-        try:
-            page_data = OwidImport.get_all(page)
-        except OperationalError:
-            flash("No data in the database.")
-            page_data = None
-        return render_template(
-            "owid/flat/owid_flat.html", page_data=page_data, page_info=page_info
+            "owid/imported/owid_imported.html",
+            page_data=page_data.head(10).to_html(
+                classes='table table-striped table-hover',
+                na_rep=' ',
+                index=False,
+            ),
+            page_info=page_info
         )
 
     @staticmethod
