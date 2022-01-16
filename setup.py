@@ -65,16 +65,18 @@ keywords_list = [
 
 requires_build = [
     "wheel",
+    "build",
     "pip-tools",
-    "pipenv",
+    "pre-commit",
+    "tox",
+    "toml",
+    "pipenv>=2022.1.8",
     "virtualenv",
     "pytoolbox",
     "python-dotenv",
-    "tox",
-    "toml",
     "Flask",
     "urllib3>=1.26.5",
-    "pillow>=8.3.2",
+    "Pillow>=9.0.0",
 ]
 
 requires_test = [
@@ -90,15 +92,12 @@ requires_docs = [
     "myst-parser",
     "babel>=2.9.1",
     "sphinx-issues",
-    "sphinxcontrib-log-cabinet",
-    "sphinxcontrib-plantuml",
-    "sphinxcontrib-bibtex",
+    "sphinx-tabs",
     "sphinxcontrib-images",
+    "sphinxcontrib-srclinks",
     "sphinxcontrib-gravizo",
     "sphinxcontrib-needs",
-    "sphinxcontrib-markdown",
-    "sphinxcontrib-srclinks",
-    "sphinx-tabs",
+    "sphinxcontrib-plantuml",
 ]
 
 needs_pytest = {"pytest", "test", "ptr"}.intersection(sys.argv)
@@ -124,12 +123,15 @@ requires_dev = [
     "flask-login-dictabase-blueprint",
     "SQLAlchemy",
     "sqlalchemy-mixins",
+    "ibm_db",
+    "psycopg2",
     "mysql-connector-python",
     "mysqldb-wrapper",
     "mariadb",
+    "cx_Oracle",
     "wget",
     "email_validator",
-    "celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.1",
+    "celery[redis,sqlalchemy,auth,msgpack,eventlet]>=5.2.2",
     "dataframetodb",
     "pangres",
     "scipy",
