@@ -50,24 +50,13 @@ clean_linux:
 	@echo "-------------------------"
 
 clean_windows:
-	@echo "clean_windows"
-	@echo "TBD"
 	@echo "----------------------"
 	@echo "making clean_windows"
 	@echo "----------------------"
-	@echo rm -rf .eggs
-	@echo rm -rf project.egg-info
-	@echo rm -rf flask_covid19.egg-info
-	@echo rm -rf build
-	@echo rm -rf dist
-	@echo rm -rf .checkmate
-	@echo rm -rf node_modules
-	@echo rm -rf broker
-	@echo rm -rf .tox
-	@echo find . -name '*.pyc' -exec rm -f {} +
-	@echo find . -name '*.pyo' -exec rm -f {} +
-	@echo find . -name '*~' -exec rm -f {} +
-	@echo find . -name '__pycache__' -exec rm -rf {} +
+	$(shell rm -rf flask_covid19.egg-info)
+	$(shell rm -rf node_modules)
+	$(shell rm -rf .tox)
+	$(shell rm -rf broker)
 	@echo "---------------------------"
 	@echo "making clean_windows DONE"
 	@echo "---------------------------"
