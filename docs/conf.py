@@ -37,7 +37,6 @@ master_doc = "index"
 extensions = [
     "pallets_sphinx_themes",
     "myst_parser",
-    "sphinx-tabs",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     #"sphinxcontrib.log_cabinet",
@@ -48,6 +47,7 @@ extensions = [
     "sphinxcontrib.plantuml",
     #"sphinxcontrib.bibtex",
     #"sphinxcontrib.markdown",
+    #"sphinx-tabs",
 ]
 
 source_suffix = {
@@ -118,20 +118,21 @@ html_sidebars = {
         "localtoc.html",
         "relations.html",
         "searchbox.html",
-        'srclinks.html',
+        #"srclinks.html",
     ],
     "index": [
         "project.html",
         "localtoc.html",
         "searchbox.html",
-        'srclinks.html',
+        #"srclinks.html",
     ],
 }
 singlehtml_sidebars = {
     "index": [
         "project.html",
         "localtoc.html",
-        "ethicalads.html"
+        "searchbox.html",
+        #"srclinks.html",
     ]
 }
 html_static_path = ["_static"]
