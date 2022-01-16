@@ -388,8 +388,6 @@ else
 endif
 
 start:
-	@echo $(UNAME)
-	@echo $(UNAME)
 ifeq ($(UNAME),Linux)
 	make start_linux
 else
