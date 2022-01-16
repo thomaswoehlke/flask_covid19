@@ -381,16 +381,16 @@ start_windows: pip_install_windows_build update_windows
 start_linux: pip_install_linux_build update_linux
 
 update:
-	ifeq ($(UNAME),'Linux')
-	  echo "update_linux"
-	else
-	  echo "update_windows"
-	endif
+ifeq ($(UNAME),'Linux')
+	make update_linux
+else
+	make update_windows
+endif
 
 start:
-	ifeq ($(UNAME),'Linux')
-	  echo "start_linux"
-	else
-	  echo "start_windows"
-	endif
+ifeq ($(UNAME),'Linux')
+	make start_linux
+else
+	make start_windows
+endif
 
