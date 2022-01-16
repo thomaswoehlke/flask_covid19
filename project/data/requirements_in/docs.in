@@ -13,7 +13,6 @@ sphinx-jinja
 sphinx-markdown
 sqlalchemy-sphinx
 sphinx-pyreverse
-sphinx-click
 sphinx-diagrams
 sphinxcontrib-log-cabinet
 sphinxcontrib-images
