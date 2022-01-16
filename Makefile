@@ -380,14 +380,14 @@ start_windows: pip_install_windows_build update_windows
 start_linux: pip_install_linux_build update_linux
 
 update:
-	ifeq ($(uname),"Linux")
+	ifeq (uname,"Linux")
 	  update_linux
 	else
 	  update_windows
 	endif
 
 start:
-	ifeq ($(uname), "Linux")
+	ifeq (uname, "Linux")
 	  start_linux
 	else
 	  start_windows
