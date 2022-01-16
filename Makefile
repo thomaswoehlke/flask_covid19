@@ -382,14 +382,15 @@ start_linux: pip_install_linux_build update_linux
 
 update:
 	ifeq ($(UNAME),'Linux')
-	  update_linux
+	  echo "update_linux"
 	else
-	  update_windows
+	  echo "update_windows"
 	endif
 
 start:
 	ifeq ($(UNAME),'Linux')
-	  start_linux
+	  echo "start_linux"
 	else
-	  start_windows
+	  echo "start_windows"
 	endif
+
