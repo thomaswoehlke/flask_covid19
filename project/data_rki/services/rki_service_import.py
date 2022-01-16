@@ -52,13 +52,14 @@ class RkiServiceImport(AllServiceBase, AllServiceMixinImport):
         self.log_line()
         app.logger.info(" rki_import_pandas START")
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
-        data = pandas.read_csv(self.cfg.cvsfile_path)
+        data = pandas.read_csv(
+            self.cfg.cvsfile_path,
+            parse_dates=[8, 13],
+        )
         data.to_sql(
             name='rki_import_pandas',
             if_exists='replace',
             con=engine,
-            chunksize=1000,
-            method='multi'
         )
         app.logger.info(" rki_import_pandas DONE")
         self.log_line()
