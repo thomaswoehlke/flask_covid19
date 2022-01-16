@@ -381,6 +381,7 @@ start_windows: pip_install_windows_build update_windows
 start_linux: pip_install_linux_build update_linux
 
 update:
+	$(UNAME)
 ifeq ($(UNAME),'Linux')
 	make update_linux
 else
