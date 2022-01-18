@@ -40,6 +40,10 @@ admin.add_view(ModelView(WhoData, db.session, category="WHO"))
 # ---------------------------------------------------------------------------------------------------------------
 #
 
+# https://pythonrepo.com/repo/thomaxxl-safrs-python-documentation#endpoint-naming
+# https://jsonapi.org/format/
+# https://github.com/thomaxxl/safrs/blob/master/examples/mini_app.py
+*
 # https://www.geeksforgeeks.org/how-to-return-the-response-from-an-asynchronous-call-in-javascript/?ref=rp
 # https://www.geeksforgeeks.org/how-to-return-a-json-response-form-a-flask-api/
 class WhoAjaxUrls:

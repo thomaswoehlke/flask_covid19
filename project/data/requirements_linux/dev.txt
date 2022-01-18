@@ -13,6 +13,8 @@ alembic==1.7.5
     #   pangres
 amqp==5.0.9
     # via kombu
+aniso8601==9.0.1
+    # via flask-restful
 argparse==1.4.0
     # via pytoolbox
 attrs==21.2.0
@@ -103,8 +105,9 @@ flask==2.0.2
     #   flask-login
     #   flask-login-dictabase-blueprint
     #   flask-migrate
-    #   flask-rest
+    #   flask-restful
     #   flask-sqlalchemy
+    #   flask-swagger-ui
     #   flask-wtf
     #   pytest-flask
 flask-admin==1.5.8
@@ -123,15 +126,18 @@ flask-login-dictabase-blueprint==1.1.4
     # via -r project/data/requirements_in/dev.in
 flask-migrate==3.1.0
     # via -r project/data/requirements_in/dev.in
-flask-rest==1.3
-    # via -r project/data/requirements_in/dev.in
-flask-serialize==2.0.2
-    # via -r project/data/requirements_in/dev.in
+flask-restful==0.3.9
+    # via flask-restful-swagger-2
+flask-restful-swagger-2==0.35
+    # via safrs
 flask-sqlalchemy==2.5.1
     # via
     #   -r project/data/requirements_in/dev.in
     #   flask-migrate
     #   pytest-flask-sqlalchemy
+    #   safrs
+flask-swagger-ui==3.36.0
+    # via safrs
 flask-wtf==1.0.0
     # via flask-bs4
 fonttools==4.28.3
@@ -238,8 +244,6 @@ pep517==0.12.0
     # via
     #   build
     #   pip-tools
-permissive-dict==1.0.4
-    # via flask-serialize
 pillow==9.0.0
     # via
     #   -r project/data/requirements_in/build.in
@@ -309,6 +313,7 @@ pytz==2021.3
     # via
     #   babel
     #   celery
+    #   flask-restful
     #   pandas
     #   pytoolbox
 pyyaml==6.0
@@ -316,6 +321,7 @@ pyyaml==6.0
     #   myst-parser
     #   pre-commit
     #   pyaml
+    #   safrs
 redis==3.5.3
     # via celery
 requests==2.26.0
@@ -327,6 +333,8 @@ requests==2.26.0
     #   sphinxcontrib-needs
 requests-file==1.5.1
     # via sphinxcontrib-needs
+safrs==2.12.2
+    # via -r project/data/requirements_in/dev.in
 scipy==1.7.3
     # via
     #   -r project/data/requirements_in/dev.in
@@ -338,6 +346,7 @@ six==1.16.0
     #   click-repl
     #   eventlet
     #   flask-cors
+    #   flask-restful
     #   jsonschema
     #   patsy
     #   python-dateutil
