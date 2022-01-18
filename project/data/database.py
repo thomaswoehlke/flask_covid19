@@ -9,6 +9,7 @@ from flask_bs4 import Bootstrap
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_restful import Resource, Api
 from project.data import config
 from project.data import pytestconfig
 
@@ -17,6 +18,7 @@ class Covid19Application:
     def __init__(self, testing=False):
         self.app = Flask("flask_covid19")
         self.app_cors = CORS()
+        self.api = Api()
         if testing:
             self.app.config.from_object(pytestconfig)
         else:
@@ -27,7 +29,9 @@ class Covid19Application:
         self.__init_bootstrap()
         self.__init_admin()
         self.__init_loging()
-        oo_list = [self.db, self.app_cors, self.login_manager, self.app_bootstrap]
+        oo_list = [
+            self.db, self.app_cors, self.login_manager, self.app_bootstrap, self.api
+        ]
         for oo in oo_list:
             oo.init_app(self.app)
         self.root_dir = os.getcwd()

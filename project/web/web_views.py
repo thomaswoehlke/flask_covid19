@@ -27,7 +27,7 @@ web_service = WebService(db, web_user_service)
 
 
 app_web = Blueprint(
-    "web", __name__, template_folder="templates", url_prefix="/"
+    "app_web", __name__, template_folder="templates", url_prefix="/"
 )
 
 app.register_blueprint(app_web_user, url_prefix="/app/web_user")
