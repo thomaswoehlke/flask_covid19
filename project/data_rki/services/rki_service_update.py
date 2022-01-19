@@ -9,10 +9,10 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_data import RkiDataFactory
-from project.data_rki.model.rki_model_data_location import RkiLandkreis
-from project.data_rki.model.rki_model_data_location import RkiLandkreisFactory
-from project.data_rki.model.rki_model_data_location_group import RkiBundesland
-from project.data_rki.model.rki_model_data_location_group import RkiBundeslandFactory
+from project.data_rki.model.rki_model_location import RkiLandkreis
+from project.data_rki.model.rki_model_location import RkiLandkreisFactory
+from project.data_rki.model.rki_model_location_group import RkiBundesland
+from project.data_rki.model.rki_model_location_group import RkiBundeslandFactory
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
 

@@ -1,7 +1,7 @@
 from project.data.database import db
 from project.data_all.model.all_model import AllLocation
 
-from project.data_rki.model.rki_model_data_location_group import RkiBundesland
+from project.data_rki.model.rki_model_location_group import RkiBundesland
 
 
 class RkiLandkreis(AllLocation):

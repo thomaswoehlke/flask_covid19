@@ -3,7 +3,7 @@ from project.data.database import items_per_page
 from project.data_all.model.all_model import AllFactTable
 from project.data_all import AllDateReportedFactory
 
-from project.data_rki.model.rki_model_data_location import RkiLandkreis
+from project.data_rki.model.rki_model_location import RkiLandkreis
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
 from sqlalchemy import and_, Sequence

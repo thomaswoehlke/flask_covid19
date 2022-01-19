@@ -17,8 +17,8 @@ from project.data_owid.model.owid_model_location_group import OwidContinent
 from project.data_owid.owid_views import owid_service
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
 from project.data_rki.model.rki_model_data import RkiData
-from project.data_rki.model.rki_model_data_location import RkiLandkreis
-from project.data_rki.model.rki_model_data_location_group import RkiBundesland
+from project.data_rki.model.rki_model_location import RkiLandkreis
+from project.data_rki.model.rki_model_location_group import RkiBundesland
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.rki_views import rki_service
