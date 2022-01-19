@@ -37,6 +37,9 @@ class RkiService(AllServiceMixin):
         Notification.finish(task_id=task.id)
         return self
 
+    def get_file_date(self):
+        return "01.03.2022"
+
     def count_file_rows(self):
         return self.service_import.count_file_rows()
 
