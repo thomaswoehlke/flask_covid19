@@ -4,7 +4,7 @@ import json
 from sqlalchemy import not_, and_, Sequence
 from sqlalchemy.orm import subqueryload
 from datetime import date
-from flask_serialize import FlaskSerialize
+# from flask_serialize import FlaskSerialize
 
 from project.data_all.model.all_model_mixins import AllEntityMixin, AllImportMixin
 from project.data_all.model.all_model_mixins import AllDateReportedMixin, AllLocationMixin
@@ -12,10 +12,11 @@ from project.data_all.model.all_model_mixins import AllFactTableTimeSeriesMixin
 from project.data_all.model.all_model_mixins import AllLocationGroupMixin, AllFactTableMixin
 from project.data.database import db, items_per_page
 
-fs_mixin = FlaskSerialize(db)
+# fs_mixin = FlaskSerialize(db)
 
 
-class AllEntity(db.Model, fs_mixin, AllEntityMixin):
+#class AllEntity(db.Model, fs_mixin, AllEntityMixin):
+class AllEntity(db.Model, AllEntityMixin):
     __abstract__ = True
 
     all_entity_id_seq = Sequence('all_entity_id_seq')
@@ -214,8 +215,8 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
         })
         return o
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__())
+    #def to_json(self):
+    #    return json.dumps(self, default=lambda self: self.__dict__())
 
     @classmethod
     def __query_all(cls):
@@ -331,8 +332,8 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
         db.UniqueConstraint("location_group", "type", name="uix_all_location_group"),
     )
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__)
+    #def to_json(self):
+    #    return json.dumps(self, default=lambda self: self.__dict__)
 
     def __str__(self):
         result = " " + self.location_group + " "

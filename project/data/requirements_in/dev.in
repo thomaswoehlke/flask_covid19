@@ -2,7 +2,7 @@
 -r docs.in
 -r tests.in
 -r typing.in
-safrs
+# safrs
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-Cors

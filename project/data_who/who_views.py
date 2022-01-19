@@ -43,7 +43,7 @@ admin.add_view(ModelView(WhoData, db.session, category="WHO"))
 # https://pythonrepo.com/repo/thomaxxl-safrs-python-documentation#endpoint-naming
 # https://jsonapi.org/format/
 # https://github.com/thomaxxl/safrs/blob/master/examples/mini_app.py
-*
+#
 # https://www.geeksforgeeks.org/how-to-return-the-response-from-an-asynchronous-call-in-javascript/?ref=rp
 # https://www.geeksforgeeks.org/how-to-return-a-json-response-form-a-flask-api/
 class WhoAjaxUrls:
@@ -52,9 +52,9 @@ class WhoAjaxUrls:
 
     @staticmethod
     @app_who.route("/ajax/date_reported/all")
-    def url_ajax_who_date_reported_all(page: int = 1):
-        page_data = WhoDateReported.get_all(page)
-        return jsonify(page_data)
+    def url_ajax_who_date_reported_all():
+        data = WhoDateReported.find_all()
+        return jsonify(data)
 
 
 who_ajax_urls = WhoAjaxUrls()
@@ -102,9 +102,9 @@ class WhoUrls:
         )
 
     @staticmethod
-    @app_who.route("/date_reported/all/page/<int:page>")
     @app_who.route("/date_reported/all")
-    def url_who_date_reported_all(page: int = 1):
+    def url_who_date_reported_all():
+        page = 1
         page_info = WebPageContent("WHO", "Date Reported", "All")
         try:
             page_data = WhoDateReported.get_all(page)
