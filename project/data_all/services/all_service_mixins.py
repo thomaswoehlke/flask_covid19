@@ -6,6 +6,9 @@ class AllServiceMixinDownload:
 
 
 class AllServiceMixinImport:
+    def get_file_date(self):
+        pass
+
     def count_file_rows(self):
         pass
 

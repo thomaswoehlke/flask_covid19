@@ -5,8 +5,8 @@ from project.data.database import app
 from project.data.database import db
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_rki.model.rki_model_data import RkiData
-from project.data_rki.model.rki_model_data_location import RkiLandkreis
-from project.data_rki.model.rki_model_data_location_group import RkiBundesland
+from project.data_rki.model.rki_model_location import RkiLandkreis
+from project.data_rki.model.rki_model_location_group import RkiBundesland
 from project.data_rki.model.rki_model_import import RkiImport
 
 
