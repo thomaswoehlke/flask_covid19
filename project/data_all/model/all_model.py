@@ -106,8 +106,8 @@ class AllImport(AllEntity, AllImportMixin):
     __tablename__ = "all_import"
     __mapper_args__ = {"concrete": True}
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__)
+#    def to_json(self):
+#        return json.dumps(self, default=lambda self: self.__dict__)
 
     def __str__(self):
         return (
@@ -197,23 +197,23 @@ class AllDateReported(AllEntity, AllDateReportedMixin):
     def __str__(self):
         return self.datum.isoformat()
 
-    def __dict__(self):
-        o = dict({
-            'id': str(self.id),
-            'processed_update': str(self.processed_update),
-            'processed_full_update': str(self.processed_full_update),
-            'date_reported_import_str': self.date_reported_import_str,
-            'datum': str(self.datum.isoformat()),
-            'year_day_of_year': str(self.year_day_of_year),
-            'year_month': str(self.year_month),
-            'year_week': str(self.year_week),
-            'year': str(self.year),
-            'month': str(self.month),
-            'day_of_month': str(self.day_of_month),
-            'day_of_year': str(self.day_of_week),
-            'week_of_year': str(self.week_of_year),
-        })
-        return o
+    #def __dict__(self):
+    #    o = dict({
+    #        'id': str(self.id),
+    #        'processed_update': str(self.processed_update),
+    #        'processed_full_update': str(self.processed_full_update),
+    #        'date_reported_import_str': self.date_reported_import_str,
+    #        'datum': str(self.datum.isoformat()),
+    #        'year_day_of_year': str(self.year_day_of_year),
+    #        'year_month': str(self.year_month),
+    #        'year_week': str(self.year_week),
+    #        'year': str(self.year),
+    #        'month': str(self.month),
+    #        'day_of_month': str(self.day_of_month),
+    #        'day_of_year': str(self.day_of_week),
+    #        'week_of_year': str(self.week_of_year),
+    #    })
+    #    return o
 
     #def to_json(self):
     #    return json.dumps(self, default=lambda self: self.__dict__())
@@ -405,8 +405,8 @@ class AllLocation(AllEntity, AllLocationMixin):
     __tablename__ = "all_location"
     __table_args__ = (db.UniqueConstraint("location", "type", name="uix_all_location"),)
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__)
+    #def to_json(self):
+    #    return json.dumps(self, default=lambda self: self.__dict__)
 
     def __str__(self):
         return (
@@ -565,8 +565,8 @@ class AllFactTableTimeSeries(AllEntity, AllFactTableTimeSeriesMixin):
         db.UniqueConstraint("date_reported_id", name="uix_all_data_timeline"),
     )
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__)
+    #def to_json(self):
+    #    return json.dumps(self, default=lambda self: self.__dict__)
 
     def __str__(self):
         return self.date_reported.__str__()
@@ -629,8 +629,8 @@ class AllFactTable(AllFactTableTimeSeries, AllFactTableMixin):
         db.UniqueConstraint("location_id", "date_reported_id", name="uix_all_data"),
     )
 
-    def to_json(self):
-        return json.dumps(self, default=lambda self: self.__dict__)
+    #def to_json(self):
+    #    return json.dumps(self, default=lambda self: self.__dict__)
 
     def __str__(self):
         return self.date_reported.__str__() + " " + self.location.__str__()
