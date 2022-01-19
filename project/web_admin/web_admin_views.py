@@ -73,7 +73,7 @@ class AppAdminUrls:
         page_info = WebPageContent("Admin", "DB Import Status")
         db_import_status = database_import_status.database_import_status()
         return render_template(
-            "app_web_admin/db_import_status/database_import_status.html",
+            "app_web_admin/db_import_status/db_import_status.html",
             db_import_status=db_import_status,
             page_info=page_info
         )
