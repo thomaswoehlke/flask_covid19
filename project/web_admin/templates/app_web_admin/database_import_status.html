@@ -12,47 +12,47 @@
       <table class="table table-hover table-dark table-striped caption-top">
         <caption>DB Import Status</caption>
         <thead class="table-secondary">
-            <th class="">&nbsp;</th>
-            <th class="">data class</th>
-            <th class="">import class</th>
-            <th class="">data count</th>
-            <th class="">import count</th>
-            <th class="">file count</th>
-            <th class=""><i class="fas fa-play-circle"></i> update</th>
-            <th class=""><i class="fas fa-play-circle"></i> import</th>
-            <th class=""><i class="fas fa-play-circle"></i> download</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">data class</th>
+            <th scope="col">import class</th>
+            <th scope="col">data count</th>
+            <th scope="col">import count</th>
+            <th scope="col">file count</th>
+            <th scope="col"><i class="fas fa-play-circle"></i> update</th>
+            <th scope="col"><i class="fas fa-play-circle"></i> import</th>
+            <th scope="col"><i class="fas fa-play-circle"></i> download</th>
         </thead>
         <tbody>
         <tr>
-            <th class="table-secondary">WHO</th>
-            <td class="p-2 bg-dark text-white">
+            <th scope="row" class="table-secondary">WHO</th>
+            <td>
               {{ db_import_status['WHO']['data_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['WHO']['import_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['WHO']['data_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['WHO']['import_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['WHO']['file_count'] }}
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'who.url_task_who_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-update
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'who.url_task_who_import_files') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-import
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'who.url_download_files') }}" role="button">
                 <i class="fas fa-play-circle"></i> who-download
@@ -61,34 +61,34 @@
         </tr>
         <tr>
             <th class="table-secondary">OWID</th>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['OWID']['data_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['OWID']['import_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['OWID']['data_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['OWID']['import_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['OWID']['file_count'] }}
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'owid.url_task_owid_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-update
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'owid.url_task_owid_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-import
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'owid.url_task_owid_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> owid-download
@@ -97,34 +97,34 @@
         </tr>
         <tr>
             <th class="table-secondary">ECDC</th>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['ECDC']['data_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['ECDC']['import_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['ECDC']['data_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['ECDC']['import_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['ECDC']['file_count'] }}
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'ecdc.url_task_ecdc_update') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-update
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'ecdc.url_ecdc_task_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-import
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'ecdc.url_ecdc_task_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> ecdc-download
@@ -133,36 +133,36 @@
         </tr>
         <tr>
             <th class="table-secondary">Vaccination</th>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['Vaccination']['data_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['Vaccination']['import_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['Vaccination']['data_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['Vaccination']['import_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['Vaccination']['file_count'] }}
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'vaxx.url_task_vaccination_update') }}"
                  role="button">
                 <i class="fas fa-play-circle"></i> vacc-update
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'vaxx.url_task_vaccination_import') }}"
                  role="button">
                 <i class="fas fa-play-circle"></i> vacc-import
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'vaxx.url_task_vaccination_download') }}"
                  role="button">
@@ -172,43 +172,44 @@
         </tr>
         <tr class="">
             <th class="table-secondary">RKI</th>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['RKI']['data_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['RKI']['import_class'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['RKI']['data_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['RKI']['import_count'] }}
             </td>
-            <td class="p-2 bg-dark text-white">
+            <td>
               {{ db_import_status['RKI']['file_count'] }}
             </td>
-            <td class="">
+            <td>
               <p>
-              <a class="btn btn-secondary btn-sm"
-                 href="{{ url_for( 'rki.url_task_rki_update_dimension_tables') }}"
-                 role="button">
-                <i class="fas fa-play-circle"></i> rki-update-dimensions
-              </a>
-              </p><p>
-              <a class="btn btn-secondary btn-sm"
-                 href="{{ url_for( 'rki.url_task_rki_update_fact_table') }}"
-                 role="button">
-                <i class="fas fa-play-circle"></i> rki-update-data
-              </a>
+                <a class="btn btn-secondary btn-sm"
+                   href="{{ url_for( 'rki.url_task_rki_update_dimension_tables') }}"
+                   role="button">
+                  <i class="fas fa-play-circle"></i> rki-update-dimensions
+                </a>
+              </p>
+              <p>
+                <a class="btn btn-secondary btn-sm"
+                   href="{{ url_for( 'rki.url_task_rki_update_fact_table') }}"
+                   role="button">
+                  <i class="fas fa-play-circle"></i> rki-update-data
+                </a>
               </p>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'rki.url_task_rki_import') }}" role="button">
                 <i class="fas fa-play-circle"></i> rki-import
               </a>
             </td>
-            <td class="">
+            <td>
               <a class="btn btn-secondary btn-sm"
                  href="{{ url_for( 'rki.url_task_rki_download') }}" role="button">
                 <i class="fas fa-play-circle"></i> rki-download
@@ -218,21 +219,21 @@
         </tbody>
         <tfoot class="table-light">
         <tr>
-          <th class="table-light">&nbsp;</th>
-          <td colspan="5" class="">&nbsp;</td>
-          <th class="">
+          <th scope="col" class="table-light">&nbsp;</th>
+          <th scope="col" colspan="5" class="">&nbsp;</th>
+          <th scope="col">
             <a class="btn btn-secondary"
                href="{{ url_for( 'data_all.url_task_all_update') }}" role="button">
               <i class="fas fa-play-circle"></i> all-update
             </a>
           </th>
-          <th class="">
+         <th scope="col">
             <a class="btn btn-secondary"
                href="{{ url_for( 'data_all.url_task_all_import') }}" role="button">
               <i class="fas fa-play-circle"></i> all-import
             </a>
           </th>
-          <th class="">
+         <th scope="col">
             <a class="btn btn-secondary"
                href="{{ url_for( 'data_all.url_task_all_download') }}" role="button">
               <i class="fas fa-play-circle"></i> all-download
