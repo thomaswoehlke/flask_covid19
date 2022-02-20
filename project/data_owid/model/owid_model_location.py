@@ -77,7 +77,7 @@ class OwidCountry(db.Model, AllLocationMixin):
         )
 
     def __str__(self):
-        return "{} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {}".format(
+        return " {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} ".format(
             self.location_code,
             self.location,
             self.population,

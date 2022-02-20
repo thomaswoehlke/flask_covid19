@@ -1,4 +1,5 @@
 # import json
+from datetime import date
 from sqlalchemy import not_, Sequence
 from project.data.database import db, items_per_page
 from project.data_all.model.all_model_mixins import AllDateReportedMixin
@@ -37,6 +38,10 @@ class WhoDateReported(db.Model, AllDateReportedMixin):
             self.date_reported_import_str,
             self.datum.isoformat()
         )
+
+    def __init__(self, date_reported_import_str: str, datum: date):
+        self.date_reported_import_str = date_reported_import_str
+        self.datum = datum
 
     def set_processed_update(self):
         self.processed_update = True

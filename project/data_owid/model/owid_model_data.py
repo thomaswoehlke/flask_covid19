@@ -91,7 +91,186 @@ class OwidData(AllFactTable):
     stringency_index = db.Column(db.Float, nullable=True)
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.date_reported.__repr__()} {self.location.__repr__()})"
+        return "{}({} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {})".format(
+            self.__class__.__name__,
+            self.date_reported,
+            self.location,
+            self.total_cases,
+            self.new_cases,
+            self.new_cases_smoothed,
+            self.total_deaths,
+            self.new_deaths,
+            self.new_deaths_smoothed,
+            self.total_cases_per_million,
+            self.new_cases_per_million,
+            self.new_cases_smoothed_per_million,
+            self.total_deaths_per_million,
+            self.new_deaths_per_million,
+            self.new_deaths_smoothed_per_million,
+            self.reproduction_rate,
+            self.icu_patients,
+            self.icu_patients_per_million,
+            self.hosp_patients,
+            self.hosp_patients_per_million,
+            self.weekly_icu_admissions,
+            self.weekly_icu_admissions_per_million,
+            self.weekly_hosp_admissions,
+            self.weekly_hosp_admissions_per_million,
+            self.new_tests,
+            self.total_tests,
+            self.total_tests_per_thousand,
+            self.new_tests_per_thousand,
+            self.new_tests_smoothed,
+            self.new_tests_smoothed_per_thousand,
+            self.positive_rate,
+            self.tests_per_case,
+            self.tests_units,
+            self.total_vaccinations,
+            self.people_vaccinated,
+            self.people_fully_vaccinated,
+            self.new_vaccinations,
+            self.new_vaccinations_smoothed,
+            self.total_vaccinations_per_hundred,
+            self.people_vaccinated_per_hundred,
+            self.people_fully_vaccinated_per_hundred,
+            self.new_vaccinations_smoothed_per_million,
+            self.stringency_index,
+        )
+
+    def __str__(self):
+        return "{} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {} {}".format(
+            self.date_reported,
+            self.location,
+            self.total_cases,
+            self.new_cases,
+            self.new_cases_smoothed,
+            self.total_deaths,
+            self.new_deaths,
+            self.new_deaths_smoothed,
+            self.total_cases_per_million,
+            self.new_cases_per_million,
+            self.new_cases_smoothed_per_million,
+            self.total_deaths_per_million,
+            self.new_deaths_per_million,
+            self.new_deaths_smoothed_per_million,
+            self.reproduction_rate,
+            self.icu_patients,
+            self.icu_patients_per_million,
+            self.hosp_patients,
+            self.hosp_patients_per_million,
+            self.weekly_icu_admissions,
+            self.weekly_icu_admissions_per_million,
+            self.weekly_hosp_admissions,
+            self.weekly_hosp_admissions_per_million,
+            self.new_tests,
+            self.total_tests,
+            self.total_tests_per_thousand,
+            self.new_tests_per_thousand,
+            self.new_tests_smoothed,
+            self.new_tests_smoothed_per_thousand,
+            self.positive_rate,
+            self.tests_per_case,
+            self.tests_units,
+            self.total_vaccinations,
+            self.people_vaccinated,
+            self.people_fully_vaccinated,
+            self.new_vaccinations,
+            self.new_vaccinations_smoothed,
+            self.total_vaccinations_per_hundred,
+            self.people_vaccinated_per_hundred,
+            self.people_fully_vaccinated_per_hundred,
+            self.new_vaccinations_smoothed_per_million,
+            self.stringency_index,
+        )
+
+    def __init__(self,
+                 date_reported: OwidDateReported,
+                 location: OwidCountry,
+                 total_cases: float,
+                 new_cases: float,
+                 new_cases_smoothed: float,
+                 total_deaths: float,
+                 new_deaths: float,
+                 new_deaths_smoothed: float,
+                 total_cases_per_million: float,
+                 new_cases_per_million: float,
+                 new_cases_smoothed_per_million: float,
+                 total_deaths_per_million: float,
+                 new_deaths_per_million: float,
+                 new_deaths_smoothed_per_million: float,
+                 reproduction_rate: float,
+                 icu_patients: float,
+                 icu_patients_per_million: float,
+                 hosp_patients: float,
+                 hosp_patients_per_million: float,
+                 weekly_icu_admissions: float,
+                 weekly_icu_admissions_per_million: float,
+                 weekly_hosp_admissions: float,
+                 weekly_hosp_admissions_per_million: float,
+                 new_tests: float,
+                 total_tests: float,
+                 total_tests_per_thousand: float,
+                 new_tests_per_thousand: float,
+                 new_tests_smoothed: float,
+                 new_tests_smoothed_per_thousand: float,
+                 positive_rate: float,
+                 tests_per_case: float,
+                 tests_units: str,
+                 total_vaccinations: float,
+                 people_vaccinated: float,
+                 people_fully_vaccinated: float,
+                 new_vaccinations: float,
+                 new_vaccinations_smoothed: float,
+                 total_vaccinations_per_hundred: float,
+                 people_vaccinated_per_hundred: float,
+                 people_fully_vaccinated_per_hundred: float,
+                 new_vaccinations_smoothed_per_million: float,
+                 stringency_index: float):
+        self.date_reported = date_reported
+        self.location = location
+        self.total_cases = total_cases
+        self.new_cases = new_cases
+        self.new_cases_smoothed = new_cases_smoothed
+        self.total_deaths = total_deaths
+        self.new_deaths = new_deaths
+        self.new_deaths_smoothed = new_deaths_smoothed
+        self.total_cases_per_million = total_cases_per_million
+        self.new_cases_per_million = new_cases_per_million
+        self.new_cases_smoothed_per_million = new_cases_smoothed_per_million
+        self.total_deaths_per_million = total_deaths_per_million
+        self.new_deaths_per_million = new_deaths_per_million
+        self.new_deaths_smoothed_per_million = new_deaths_smoothed_per_million
+        self.reproduction_rate = reproduction_rate
+        self.icu_patients = icu_patients
+        self.icu_patients_per_million = icu_patients_per_million
+        self.hosp_patients = hosp_patients
+        self.hosp_patients_per_million = hosp_patients_per_million
+        self.weekly_icu_admissions = weekly_icu_admissions
+        self.weekly_icu_admissions_per_million = weekly_icu_admissions_per_million
+        self.weekly_hosp_admissions = weekly_hosp_admissions
+        self.weekly_hosp_admissions_per_million = weekly_hosp_admissions_per_million
+        self.new_tests = new_tests
+        self.total_tests = total_tests
+        self.total_tests_per_thousand = total_tests_per_thousand
+        self.new_tests_per_thousand = new_tests_per_thousand
+        self.new_tests_smoothed = new_tests_smoothed
+        self.new_tests_smoothed_per_thousand = new_tests_smoothed_per_thousand
+        self.positive_rate = positive_rate
+        self.tests_per_case = tests_per_case
+        self.tests_units = tests_units
+        self.total_vaccinations = total_vaccinations
+        self.people_vaccinated = people_vaccinated
+        self.people_fully_vaccinated = people_fully_vaccinated
+        self.new_vaccinations = new_vaccinations
+        self.new_vaccinations_smoothed = new_vaccinations_smoothed
+        self.total_vaccinations_per_hundred = total_vaccinations_per_hundred
+        self.people_vaccinated_per_hundred = people_vaccinated_per_hundred
+        self.people_fully_vaccinated_per_hundred = people_fully_vaccinated_per_hundred
+        self.new_vaccinations_smoothed_per_million = \
+            new_vaccinations_smoothed_per_million
+        self.stringency_index = stringency_index
+        self.processed_update = False
+        self.processed_full_update = False
 
     @classmethod
     def __query_by_location(cls, location: OwidCountry):
@@ -355,7 +534,5 @@ class OwidDataFactory:
             stringency_index=0.0
             if "" == oi.stringency_index or oi.stringency_index is None
             else float(oi.stringency_index),
-            processed_update=False,
-            processed_full_update=False,
         )
         return o
