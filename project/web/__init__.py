@@ -12,12 +12,17 @@ def run_web():
     with app.app_context():
         db.create_all()
         web_service.prepare_run_web(db)
+        app.logger.info("------------------------------------------------------------")
         app.logger.info(os.getcwd())
+        app.logger.info("------------------------------------------------------------")
         debug = app.config["FLASK_APP_DEBUGGER_ACTIVE"]
         port = app.config["PORT"]
         host = socket.gethostname()
         app.logger.info(host)
         load_dotenv = True
+        app.logger.info("------------------------------------------------------------")
+        app.logger.info("-                Covid19 Data - WEB                        -")
+        app.logger.info("------------------------------------------------------------")
         app.run(
             host=host,
             port=port,

@@ -5,15 +5,13 @@ from project.data_owid.owid_views import owid_service
 from project.data_rki.rki_views import rki_service
 from project.data_vaxx.vaxx_views import vaccination_service
 from project.data_who.who_views import who_service
-from project.web import run_web
 from project.web.all_views import all_service_dispachter
-
 from project.web.web_views import web_service
 from project.web.web_views import app
 from project.web.web_views import db
 from project.web.web_views import celery
-
 from project.web_admin.web_admin_views import admin_service
+from project.web import run_web
 
 
 def create_app():
