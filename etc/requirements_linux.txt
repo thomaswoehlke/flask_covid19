@@ -157,7 +157,7 @@ locket==0.2.0
 lockfile==0.12.2
 logilab-common==1.8.1
 louis==3.18.0
-lxml==4.6.3
+lxml==4.6.5
 m2r==0.2.1
 Magnus==1.0.3
 Mako==1.1.3
