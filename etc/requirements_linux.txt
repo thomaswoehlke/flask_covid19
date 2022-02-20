@@ -192,7 +192,7 @@ notebook==6.2.0
 notify2==0.3
 numba==0.52.0
 numexpr==2.7.2
-numpy==1.19.5
+numpy==1.21.0
 numpydoc==1.1.0
 oauthlib==3.1.0
 objgraph==3.5.0
