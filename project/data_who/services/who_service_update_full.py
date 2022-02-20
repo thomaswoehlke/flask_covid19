@@ -10,7 +10,7 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_data import WhoDataFactory
 from project.data_who.model.who_model_date_reported import WhoDateReported
-from project.data_who.model.who_import_pandas import WhoImportPandas
+from project.data_who.model.who_model_import_dao import WhoImportPandas
 from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location import WhoCountryFactory
 from project.data_who.model.who_model_location_group import WhoCountryRegion
