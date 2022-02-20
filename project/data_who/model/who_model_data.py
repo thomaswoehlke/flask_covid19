@@ -32,7 +32,6 @@ class WhoData(db.Model, AllFactTableMixin):
         "WhoDateReported",
         lazy="joined",
         cascade="save-update",
-        enable_typechecks=True,
         order_by="desc(WhoDateReported.datum)",
     )
     location_id = db.Column(
@@ -42,7 +41,6 @@ class WhoData(db.Model, AllFactTableMixin):
         "WhoCountry",
         lazy="joined",
         cascade="save-update",
-        enable_typechecks=True,
         order_by="asc(WhoCountry.location)",
     )
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -73,7 +71,9 @@ class WhoData(db.Model, AllFactTableMixin):
             self.location.__str__(),
         )
 
-    def __init__(self, cases_new, cases_cumulative, deaths_new, deaths_cumulative,
+    def __init__(self,
+                 cases_new: int, cases_cumulative: int,
+                 deaths_new: int, deaths_cumulative: int,
                  my_date: WhoDateReported, my_country: WhoCountry):
         self.cases_new = cases_new
         self.cases_cumulative = cases_cumulative
@@ -292,10 +292,10 @@ class WhoDataFactory:
         cls, my_who_import, my_date: WhoDateReported, my_country: WhoCountry
     ):
         o = WhoData(
-            cases_new=my_who_import["new_cases"],
-            cases_cumulative=my_who_import["cumulative_cases"],
-            deaths_new=my_who_import["new_deaths"],
-            deaths_cumulative=my_who_import["cumulative_deaths"],
+            cases_new=int(my_who_import["new_cases"]),
+            cases_cumulative=int(my_who_import["cumulative_cases"]),
+            deaths_new=int(my_who_import["new_deaths"]),
+            deaths_cumulative=int(my_who_import["cumulative_deaths"]),
             my_date=my_date,
             my_country=my_country,
         )

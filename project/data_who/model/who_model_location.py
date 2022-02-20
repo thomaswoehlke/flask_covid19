@@ -1,10 +1,10 @@
 # import json
 
 from sqlalchemy import not_, and_, Sequence
-from sqlalchemy.orm import subqueryload
-from datetime import date
+# from sqlalchemy.orm import subqueryload
+# from datetime import date
 
-from project.data_all.model.all_model import AllLocation
+# from project.data_all.model.all_model import AllLocation
 from project.data_all.model.all_model_mixins import AllLocationMixin
 from project.data_who.model.who_model_location_group import WhoCountryRegion
 from project.data.database import db, items_per_page
@@ -33,7 +33,6 @@ class WhoCountry(db.Model, AllLocationMixin):
         "WhoCountryRegion",
         lazy="joined",
         cascade="all",
-        enable_typechecks=True,
         order_by="WhoCountryRegion.location_group",
     )
 
