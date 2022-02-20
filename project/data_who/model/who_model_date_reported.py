@@ -1,5 +1,5 @@
 # import json
-from sqlalchemy import not_, and_, Sequence
+from sqlalchemy import not_, Sequence
 from project.data.database import db, items_per_page
 from project.data_all.model.all_model_mixins import AllDateReportedMixin
 

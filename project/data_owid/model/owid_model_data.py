@@ -11,6 +11,7 @@ from sqlalchemy.orm import joinedload
 
 
 class OwidData(AllFactTable):
+
     __tablename__ = "owid"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
@@ -21,9 +22,6 @@ class OwidData(AllFactTable):
         ),
     )
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.date_reported.__repr__()} {self.location.__repr__()})"
-
     id_seq = Sequence('owid_id_seq')
     id = db.Column(db.Integer,
                    id_seq,
@@ -33,7 +31,7 @@ class OwidData(AllFactTable):
     processed_full_update = db.Column(db.Boolean, nullable=False)
     #
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+        db.Integer, db.ForeignKey("owid_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "OwidDateReported",
@@ -42,7 +40,7 @@ class OwidData(AllFactTable):
         order_by="desc(OwidDateReported.datum)",
     )
     location_id = db.Column(
-        db.Integer, db.ForeignKey("all_location.id"), nullable=False
+        db.Integer, db.ForeignKey("owid_location.id"), nullable=False
     )
     location = db.relationship(
         "OwidCountry",
@@ -91,6 +89,9 @@ class OwidData(AllFactTable):
     people_fully_vaccinated_per_hundred = db.Column(db.Float, nullable=True)
     new_vaccinations_smoothed_per_million = db.Column(db.Float, nullable=True)
     stringency_index = db.Column(db.Float, nullable=True)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.date_reported.__repr__()} {self.location.__repr__()})"
 
     @classmethod
     def __query_by_location(cls, location: OwidCountry):

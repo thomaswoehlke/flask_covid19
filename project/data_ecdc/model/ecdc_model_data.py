@@ -40,7 +40,7 @@ class EcdcData(AllFactTable):
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+        db.Integer, db.ForeignKey("ecdc_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "EcdcDateReported",
@@ -49,7 +49,7 @@ class EcdcData(AllFactTable):
         order_by="desc(EcdcDateReported.datum)",
     )
     location_id = db.Column(
-        db.Integer, db.ForeignKey("all_location.id"), nullable=False
+        db.Integer, db.ForeignKey("ecdc_location.id"), nullable=False
     )
     location = db.relationship(
         "EcdcCountry",

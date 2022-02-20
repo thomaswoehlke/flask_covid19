@@ -11,35 +11,12 @@ from sqlalchemy.orm import joinedload
 
 
 class RkiData(AllFactTable):
+
     __tablename__ = "rki"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint("fid", name="uix_rki"),
     )
-
-    def __repr__(self):
-        return "{} ({} {} {} {} {} {} {})".format(
-            self.__class__.__name__,
-            self.date_reported.__repr__(),
-            self.location.__repr__(),
-            self.altersgruppe.__repr__(),
-            self.geschlecht,
-            self.datenstand_datum.isoformat(),
-            self.ref_datum_datum.isoformat(),
-            self.fid,
-        )
-
-    def __str__(self):
-        return "{} ({}, {}, {}, {}, {}, {}, {})".format(
-            self.__class__.__name__,
-            self.date_reported.__str__(),
-            self.location.__str__(),
-            self.altersgruppe.__str__(),
-            self.geschlecht,
-            self.datenstand_datum.isoformat(),
-            self.ref_datum_datum.isoformat(),
-            self.fid,
-        )
 
     id_seq = Sequence('rki_id_seq')
     id = db.Column(db.Integer,
@@ -94,6 +71,30 @@ class RkiData(AllFactTable):
     anzahl_genesen = db.Column(db.Integer, nullable=False)
     ist_erkrankungsbeginn = db.Column(db.Integer, nullable=False)
     altersgruppe2 = db.Column(db.String(255), nullable=False)
+
+    def __repr__(self):
+        return "{} ({} {} {} {} {} {} {})".format(
+            self.__class__.__name__,
+            self.date_reported.__repr__(),
+            self.location.__repr__(),
+            self.altersgruppe.__repr__(),
+            self.geschlecht,
+            self.datenstand_datum.isoformat(),
+            self.ref_datum_datum.isoformat(),
+            self.fid,
+        )
+
+    def __str__(self):
+        return "{} ({}, {}, {}, {}, {}, {}, {})".format(
+            self.__class__.__name__,
+            self.date_reported.__str__(),
+            self.location.__str__(),
+            self.altersgruppe.__str__(),
+            self.geschlecht,
+            self.datenstand_datum.isoformat(),
+            self.ref_datum_datum.isoformat(),
+            self.fid,
+        )
 
     @classmethod
     def delete_all(cls):
