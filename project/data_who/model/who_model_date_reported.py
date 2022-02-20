@@ -74,11 +74,21 @@ class WhoDateReported(db.Model, AllDateReportedMixin):
 
     @classmethod
     def find_all_as_dict(cls):
-        pass
+        all_as_dict = {}
+        for o in cls.find_all():
+            all_as_dict[o.date_reported_import_str] = o
+        return all_as_dict
 
     @classmethod
     def find_all_as_str(cls):
-        pass
+        all_as_str = []
+        for o in cls.find_all():
+            all_as_str.append(o.date_reported_import_str)
+        return all_as_str
+
+    @classmethod
+    def get_joungest_datum(cls):
+        return db.session.query(cls).order_by(cls.datum.desc()).first()
 
     @classmethod
     def get_by_id(cls, other_id):

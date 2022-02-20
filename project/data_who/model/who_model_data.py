@@ -241,6 +241,12 @@ class WhoData(db.Model, AllFactTableMixin):
         )
 
     @classmethod
+    def get_data_for_one_day(cls, date_reported: WhoDateReported):
+        return db.session.query(cls).filter(
+            cls.date_reported_id == date_reported.id
+        ).all()
+
+    @classmethod
     def delete_data_for_one_day(cls, date_reported: WhoDateReported):
         db.session.query(cls).filter(cls.date_reported_id == date_reported.id).delete()
         db.session.commit()

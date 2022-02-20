@@ -6,6 +6,8 @@ from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_download import AllDownloadService
 from project.data_all.services.all_service_mixins import AllServiceMixin
 from project.data_all_notifications.notifications_model import Notification
+from project.data_who.model.who_model_date_reported import WhoDateReported
+from project.data_who.model.who_model_import_dao import WhoImportPandas
 from project.data_who.services.who_service_import import WhoServiceImport
 from project.data_who.services.who_service_update import WhoServiceUpdate
 from project.data_who.services.who_service_update_full import WhoServiceUpdateFull
@@ -122,3 +124,11 @@ class WhoService(AllServiceMixin):
         mypd = pd.read_sql_table('who_import_pandas', con=engine)
         return mypd
 
+    def get_new_dates_as_array(self):
+        new_dates_as_array = []
+        old_dates = WhoDateReported.find_all_as_str()
+        for news_date in WhoImportPandas.get_datum_list():
+            nd = news_date["Date_reported"]
+            if nd not in old_dates:
+                new_dates_as_array.append(nd)
+        return new_dates_as_array
