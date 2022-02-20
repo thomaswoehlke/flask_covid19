@@ -61,7 +61,8 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
         engine = sqlalchemy.create_engine(covid19_application.db_uri)
         data = pandas.read_csv(
             self.cfg.cvsfile_path,
-            parse_dates=[0],
+            parse_dates=False,
+            infer_datetime_format=False
         )
         data.to_sql(
             name='who_import_pandas',

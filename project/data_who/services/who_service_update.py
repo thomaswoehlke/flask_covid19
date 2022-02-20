@@ -8,7 +8,7 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_data import WhoDataFactory
 from project.data_who.model.who_model_date_reported import WhoDateReported
-from project.data_who.model.who_model_import import WhoImport
+from project.data_who.model.who_import_pandas import WhoImportPandas
 from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location import WhoCountryFactory
 from project.data_who.model.who_model_location_group import WhoCountryRegion
@@ -29,9 +29,9 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
     def __who_import_get_new_dates(self):
         todo = []
         odr_list = WhoDateReported.find_all_as_str()
-        for datum_list in WhoImport.get_datum_list():
-            o = datum_list["date_reported_import_str"]
-            # app.logger.info("o: " + str(o))
+        for datum_list in WhoImportPandas.get_datum_list():
+            o = datum_list["Date_reported"]
+            app.logger.info("o: " + str(o))
             if o not in odr_list:
                 todo.append(o)
         return todo
@@ -39,7 +39,7 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
     def __get_new_location_groups(self):
         todo = []
         who_region_all = WhoCountryRegion.find_all_as_str()
-        for oi in WhoImport.get_regions():
+        for oi in WhoImportPandas.get_regions():
             item = oi.who_region
             if item not in who_region_all:
                 todo.append(item)
@@ -55,7 +55,7 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
                 "location_group": oc.location_group.location_group,
             }
             who_countries.append(oc_key)
-        for oi in WhoImport.countries():
+        for oi in WhoImportPandas.countries():
             country = {
                 "location_code": oi.countries.country_code,
                 "location": oi.countries.country,
@@ -171,7 +171,7 @@ class WhoServiceUpdate(AllServiceBase, AllServiceMixinUpdate):
         d = 0
         k = 0
         for my_date_reported in WhoDateReported.find_by_not_processed_update():
-            for who_import in WhoImport.find_by_datum(my_date_reported.datum):
+            for who_import in WhoImportPandas.find_by_datum(my_date_reported.datum):
                 if who_import.country_code == "":
                     my_country = WhoCountry.find_by_location(who_import.country)
                 else:
