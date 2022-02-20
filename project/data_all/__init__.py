@@ -6,7 +6,6 @@ from project.data_owid.model.owid_model_date_reported import OwidDateReported
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
 from project.data_vaxx.model.vaxx_model_date_reported import \
     VaccinationDateReported
-from project.data_who.model.who_model_date_reported import WhoDateReported
 
 
 class AllDateReportedFactory:
@@ -261,8 +260,3 @@ class AllDateReportedFactory:
     def create_new_object_for_vaccination(cls, my_date_reported: str):
         o = cls.__create_new_object_factory_for_isoformat(my_date_reported)
         return cls.__get_vaccination(o)
-
-    @classmethod
-    def create_new_object_for_who(cls, my_date_reported: str):
-        o = cls.__create_new_object_factory_for_isoformat(my_date_reported)
-        return cls.__get_who(o)

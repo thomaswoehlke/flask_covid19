@@ -9,25 +9,21 @@ class WhoImportPandas(AllImportMixin):
 
     @classmethod
     def count(cls):
-        number = 0
         s = text(
             'select count(*) as number from who_import_pandas'
         )
-        for i in db.session.execute(s).fetchall():
-            number = i['number']
-        return number
+        return db.session.execute(s).first()
 
     @classmethod
     def find_by_datum(cls, datum: date):
-        day = datum.isoformat()
-        return cls.find_by_datum_str(day)
+        return cls.find_by_datum_str(datum)
 
     @classmethod
     def find_by_datum_str(cls, datum: date):
         s = text(
             'select * from who_import_pandas where Date_reported = :day'
         )
-        return db.session.execute(s, {"day": datum}).fetchall()
+        return db.session.execute(s, {"day": datum.isoformat()}).fetchall()
 
     @classmethod
     def find_by_datum_reported(cls, datum: date):
@@ -36,21 +32,25 @@ class WhoImportPandas(AllImportMixin):
     @classmethod
     def get_datum_list(cls):
         s = text(
-            'select "Date_reported" from who_import_pandas group by "Date_reported" order by "Date_reported"'
+            'select "Date_reported" from who_import_pandas'
+            + ' group by "Date_reported" order by "Date_reported"'
         )
         return db.session.execute(s).fetchall()
 
     @classmethod
     def get_regions(cls):
         s = text(
-            'select "WHO_region" from who_import_pandas group by "WHO_region" order by "WHO_region"'
+            'select "WHO_region" from who_import_pandas '
+            + 'group by "WHO_region" order by "WHO_region"'
         )
         return db.session.execute(s).fetchall()
 
     @classmethod
     def get_all_countries(cls):
         s = text(
-            'select "Country","Country_code","WHO_region" from who_import_pandas group by "Country","Country_code","WHO_region" order by "Country"'
+            'select "Country","Country_code","WHO_region" from who_import_pandas '
+            + 'group by "Country","Country_code","WHO_region" '
+            + 'order by "Country"'
         )
         return db.session.execute(s).fetchall()
 
@@ -80,7 +80,8 @@ class WhoImportPandas(AllImportMixin):
     @classmethod
     def find_by_datum_and_country(cls, date_reported: str, country: str):
         s = text(
-            'select * from who_import_pandas where Date_reported = :day and Country = :country'
+            'select * from who_import_pandas '
+            + 'where Date_reported = :day and Country = :country'
         )
         return db.session.execute(
             s, {"day": date_reported, "country": country}

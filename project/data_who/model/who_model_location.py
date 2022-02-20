@@ -5,14 +5,17 @@ from sqlalchemy.orm import subqueryload
 from datetime import date
 
 from project.data_all.model.all_model import AllLocation
-from project.data_all.model.all_model_mixins import AllEntityMixin, AllLocationMixin
+from project.data_all.model.all_model_mixins import AllLocationMixin
 from project.data_who.model.who_model_location_group import WhoCountryRegion
 from project.data.database import db, items_per_page
 
 
-class WhoCountry(db.Model, AllEntityMixin, AllLocationMixin):
+class WhoCountry(db.Model, AllLocationMixin):
     __tablename__ = "who_location"
-    __table_args__ = db.UniqueConstraint("location", name="who_location_uix")
+    __mapper_args__ = {"concrete": True}
+    __table_args__ = (
+        db.UniqueConstraint("location", name="who_location_uix"),
+    )
 
     id_seq = Sequence('who_location_id_seq')
     id = db.Column(db.Integer,

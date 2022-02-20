@@ -1,14 +1,15 @@
-import json
+# import json
 
 from sqlalchemy import Sequence, not_
 
-from project.data_all.model.all_model import AllLocationGroup
+# from project.data_all.model.all_model import AllLocationGroup
 from project.data.database import db, items_per_page
 from project.data_all.model.all_model_mixins import AllLocationGroupMixin
 
 
 class WhoCountryRegion(db.Model, AllLocationGroupMixin):
     __tablename__ = "who_location_group"
+    __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint("location_group", name="who_location_group_uix"),
     )

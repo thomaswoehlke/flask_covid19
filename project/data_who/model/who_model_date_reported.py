@@ -1,11 +1,12 @@
 # import json
 from sqlalchemy import not_, and_, Sequence
 from project.data.database import db, items_per_page
-from project.data_all.model.all_model_mixins import AllDateReportedMixin, AllEntityMixin
+from project.data_all.model.all_model_mixins import AllDateReportedMixin
 
 
-class WhoDateReported(db.Model, AllEntityMixin, AllDateReportedMixin):
+class WhoDateReported(db.Model, AllDateReportedMixin):
     __tablename__ = "who_date_reported"
+    __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
             "date_reported_import_str",

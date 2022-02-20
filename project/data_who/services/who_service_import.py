@@ -7,11 +7,9 @@ import sqlalchemy
 from project.data.database import covid19_application
 from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
-from project.data_all import AllDateReportedFactory
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 from project.data_all_notifications.notifications_model import Notification
-from project.data_who.model.who_model_import import WhoImport
-from project.data_who.model.who_model_import import WhoImportFactory
+from project.data_who.model.who_model_import_dao import WhoImportPandas
 
 app = covid19_application.app
 db = covid19_application.db
@@ -48,13 +46,13 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
                 self.cfg.tablename, self.cfg.cvsfile_path
             )
         )
-        if sys.platform == "linux":
-            keyDate_reported = "\ufeffDate_reported"
-        else:
-            keyDate_reported = "ï»¿Date_reported"
+        #if sys.platform == "linux":
+        #    keyDate_reported = "\ufeffDate_reported"
+        #else:
+        #    keyDate_reported = "ï»¿Date_reported"
         self.log_line()
         app.logger.info(" WhoImport.remove_all() START")
-        WhoImport.remove_all()
+        WhoImportPandas.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
         self.log_line()
         app.logger.info(" who_import_pandas START")
@@ -70,34 +68,6 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
             con=engine
         )
         app.logger.info(" who_import_pandas DONE")
-        self.log_line()
-        if not covid19_application.use_pandoc_only:
-            with open(self.cfg.cvsfile_path, newline="\n") as csv_file:
-                file_reader = csv.DictReader(csv_file, delimiter=",", quotechar='"')
-                k = 0
-                for row in file_reader:
-                    date_reported = row[keyDate_reported]
-                    d = AllDateReportedFactory.create_new_object_for_who(
-                        my_date_reported=date_reported
-                    )
-                    o = WhoImportFactory.create_new(
-                        date_reported=date_reported, d=d, row=row
-                    )
-                    db.session.add(o)
-                    k += 1
-                    if (k % 2000) == 0:
-                        db.session.commit()
-                    if (k % 10000) == 0:
-                        app.logger.info(" [WHO] import ... {} rows".format(
-                            str(k))
-                        )
-                    if self.cfg.reached_limit_import_for_testing(row_number=k):
-                        break
-                db.session.commit()
-                app.logger.info(" [WHO] import ... {} rows total".format(
-                    str(k))
-                )
-            app.logger.info("")
         self.log_line()
         app.logger.info(
             " [WHO] import into TABLE: {} {} <--- from FILE [DONE]".format(

@@ -1,19 +1,17 @@
-# import json
 
 from sqlalchemy import and_, Sequence
 from sqlalchemy.orm import joinedload
 
 from project.data.database import db
 from project.data.database import items_per_page
-from project.data_all.model.all_model_mixins import AllEntityMixin, \
-    AllFactTableTimeSeriesMixin, AllFactTableMixin
+from project.data_all.model.all_model_mixins import AllFactTableMixin
 from project.data_who.model.who_model_date_reported import WhoDateReported
-from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_location import WhoCountry
 
 
-class WhoData(db.Model, AllEntityMixin, AllFactTableTimeSeriesMixin, AllFactTableMixin):
+class WhoData(db.Model, AllFactTableMixin):
     __tablename__ = "who"
+    __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
             "date_reported_id",
@@ -75,7 +73,8 @@ class WhoData(db.Model, AllEntityMixin, AllFactTableTimeSeriesMixin, AllFactTabl
             self.location.__str__(),
         )
 
-    def __init__(self, cases_new, cases_cumulative, deaths_new, deaths_cumulative, my_date: WhoDateReported, my_country: WhoCountry):
+    def __init__(self, cases_new, cases_cumulative, deaths_new, deaths_cumulative,
+                 my_date: WhoDateReported, my_country: WhoCountry):
         self.cases_new = cases_new
         self.cases_cumulative = cases_cumulative
         self.deaths_new = deaths_new
