@@ -14,11 +14,11 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
+from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.services.owid_service import OwidService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_owid.model.owid_model_data import OwidData
 from project.data_owid.model.owid_model_date_reported import OwidDateReported
-from project.data_owid.model.owid_model_import import OwidImport
 from project.data_owid.model.owid_model_location import OwidCountry
 from project.data_owid.model.owid_model_location_group import OwidContinent
 from project.data_owid.services.owid_service_test import OwidTestService

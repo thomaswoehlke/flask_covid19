@@ -12,6 +12,7 @@ from project.data.database import admin
 from project.data.database import app
 from project.data.database import celery
 from project.data.database import db
+from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.services.rki_service import RkiService
 from project.web.model.web_model_transient import WebPageContent
 from project.data_rki.model.rki_model_altersgruppe import RkiAltersgruppe
@@ -19,7 +20,6 @@ from project.data_rki.model.rki_model_data import RkiData
 from project.data_rki.model.rki_model_location import RkiLandkreis
 from project.data_rki.model.rki_model_location_group import RkiBundesland
 from project.data_rki.model.rki_model_date_reported import RkiMeldedatum
-from project.data_rki.model.rki_model_import import RkiImport
 from project.data_rki.services.rki_service_test import RkiTestService
 
 
@@ -29,8 +29,6 @@ drop_and_create_data_again = True
 
 app_rki = Blueprint("rki", __name__, template_folder="templates", url_prefix="/rki")
 
-
-admin.add_view(ModelView(RkiImport, db.session, category="RKI"))
 admin.add_view(ModelView(RkiMeldedatum, db.session, category="RKI"))
 admin.add_view(ModelView(RkiBundesland, db.session, category="RKI"))
 admin.add_view(ModelView(RkiLandkreis, db.session, category="RKI"))

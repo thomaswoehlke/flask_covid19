@@ -15,7 +15,6 @@ from project.data_vaxx.model.vaxx_model_data import VaccinationData
 from project.data_vaxx.model.vaxx_model_date_reported import (
     VaccinationDateReported,
 )
-from project.data_vaxx.model.vaxx_model_import import VaccinationImport
 
 vaccination_service = VaccinationService(db)
 
@@ -25,7 +24,6 @@ app_vaccination = Blueprint(
     url_prefix="/vaxx"
 )
 
-admin.add_view(ModelView(VaccinationImport, db.session, category="Vaccination"))
 admin.add_view(ModelView(VaccinationDateReported, db.session, category="Vaccination"))
 admin.add_view(ModelView(VaccinationData, db.session, category="Vaccination"))
 

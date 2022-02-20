@@ -7,7 +7,10 @@ from flask import render_template
 from flask import url_for
 from flask_login import login_required
 
-from project.data.database import app, db, celery
+from project.data.database import app
+from project.data.database import db
+from project.data.database import celery
+
 from project.data_all.services.all_service_dispachter import AllServiceDispachterMatrix
 from project.web.model.web_model_transient import WebPageContent
 
