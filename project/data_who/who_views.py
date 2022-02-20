@@ -760,7 +760,7 @@ class WhoTestUrls:
         flash(
             "url_who_test_who_data_get_datum_of_all_who_data - START: WhoData.get_datum_of_all_who_data()"
         )
-        for datum in WhoData.get_datum_of_all_data():
+        for datum in WhoData.get_datum_list():
             app.logger.info(str(datum))
         flash(
             "url_who_test_who_data_get_datum_of_all_who_data - DONE: WhoData.get_datum_of_all_who_data()"

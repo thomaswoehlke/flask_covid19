@@ -6,10 +6,13 @@ from sqlalchemy.orm import subqueryload
 from datetime import date
 # from flask_serialize import FlaskSerialize
 
-from project.data_all.model.all_model_mixins import AllEntityMixin, AllImportMixin
-from project.data_all.model.all_model_mixins import AllDateReportedMixin, AllLocationMixin
+from project.data_all.model.all_model_mixins import AllEntityMixin
+from project.data_all.model.all_model_mixins import AllImportMixin
+from project.data_all.model.all_model_mixins import AllDateReportedMixin
+from project.data_all.model.all_model_mixins import AllLocationMixin
 from project.data_all.model.all_model_mixins import AllFactTableTimeSeriesMixin
-from project.data_all.model.all_model_mixins import AllLocationGroupMixin, AllFactTableMixin
+from project.data_all.model.all_model_mixins import AllLocationGroupMixin
+from project.data_all.model.all_model_mixins import AllFactTableMixin
 from project.data.database import db, items_per_page
 
 # fs_mixin = FlaskSerialize(db)

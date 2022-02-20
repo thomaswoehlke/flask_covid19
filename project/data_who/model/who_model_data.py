@@ -1,6 +1,6 @@
 
 from sqlalchemy import and_, Sequence
-from sqlalchemy.orm import joinedload
+from sqlalchemy.orm import joinedload, subqueryload
 
 from project.data.database import db
 from project.data.database import items_per_page
@@ -252,6 +252,38 @@ class WhoData(db.Model, AllFactTableMixin):
         db.session.commit()
         db.session.delete(date_reported)
         db.session.commit()
+
+    @classmethod
+    def get_datum_list(cls):
+        datum_list = []
+        for data in db.session.query(cls).options(
+            subqueryload("date_reported").load_only("datum")
+        ):
+            datum = data.date_reported.datum.isoformat()
+            if not datum in datum_list:
+                datum_list.append(datum)
+        datum_list.sort()
+        return datum_list
+
+    @classmethod
+    def get_date_reported_list(cls):
+        date_reported_list = []
+        for data in db.session.query(cls).options(
+            subqueryload("date_reported").load_only("datum")
+        ):
+            datum = data.date_reported.datum.isoformat()
+            if not datum in date_reported_list:
+                date_reported_list.append(datum)
+        date_reported_list.sort()
+        return date_reported_list
+
+    @classmethod
+    def get_joungest_date_reported(cls):
+        data = cls.get_date_reported_list()
+        if len(data) > 0:
+            return data.pop()
+        else:
+            return None
 
 
 class WhoDataFactory:
