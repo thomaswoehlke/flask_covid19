@@ -403,7 +403,9 @@ class AllLocationGroup(AllEntity, AllLocationGroupMixin):
 
 class AllLocation(AllEntity, AllLocationMixin):
     __tablename__ = "all_location"
-    __table_args__ = (db.UniqueConstraint("location", "type", name="uix_all_location"),)
+    __table_args__ = (
+        db.UniqueConstraint("location", "type", name="uix_all_location"),
+    )
 
     #def to_json(self):
     #    return json.dumps(self, default=lambda self: self.__dict__)

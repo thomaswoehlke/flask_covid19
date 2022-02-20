@@ -5,39 +5,22 @@ from sqlalchemy.orm import joinedload
 
 from project.data.database import db
 from project.data.database import items_per_page
-from project.data_all.model.all_model import AllFactTable
+from project.data_all.model.all_model_mixins import AllEntityMixin, \
+    AllFactTableTimeSeriesMixin, AllFactTableMixin
 from project.data_who.model.who_model_date_reported import WhoDateReported
 from project.data_who.model.who_model_import import WhoImport
 from project.data_who.model.who_model_location import WhoCountry
 
 
-class WhoData(AllFactTable):
+class WhoData(db.Model, AllEntityMixin, AllFactTableTimeSeriesMixin, AllFactTableMixin):
     __tablename__ = "who"
-    __mapper_args__ = {"concrete": True}
     __table_args__ = (
         db.UniqueConstraint(
             "date_reported_id",
             "location_id",
-            name="uix_who"
+            name="who_uix"
         ),
     )
-
-    def __repr__(self):
-        return "{}({} {})".format(
-            self.__class__.__name__,
-            self.date_reported_id,
-            self.location_id
-        )
-
-    def __str__(self):
-        return "{} {} {} {} {} {}".format(
-            self.date_reported_id,
-            self.location_id,
-            self.cases_new,
-            self.cases_cumulative,
-            self.deaths_new,
-            self.deaths_cumulative,
-        )
 
     id_seq = Sequence('who_id_seq')
     id = db.Column(db.Integer,
@@ -45,21 +28,23 @@ class WhoData(AllFactTable):
                    server_default=id_seq.next_value(),
                    primary_key=True)
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+        db.Integer, db.ForeignKey("who_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "WhoDateReported",
         lazy="joined",
         cascade="save-update",
+        enable_typechecks=True,
         order_by="desc(WhoDateReported.datum)",
     )
     location_id = db.Column(
-        db.Integer, db.ForeignKey("all_location.id"), nullable=False
+        db.Integer, db.ForeignKey("who_location.id"), nullable=False
     )
     location = db.relationship(
         "WhoCountry",
         lazy="joined",
         cascade="save-update",
+        enable_typechecks=True,
         order_by="asc(WhoCountry.location)",
     )
     processed_update = db.Column(db.Boolean, nullable=False)
@@ -68,6 +53,37 @@ class WhoData(AllFactTable):
     cases_cumulative = db.Column(db.Integer, nullable=False)
     deaths_new = db.Column(db.Integer, nullable=False)
     deaths_cumulative = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return "{}({} {} {} {} {} {})".format(
+            self.__class__.__name__,
+            self.cases_new,
+            self.cases_cumulative,
+            self.deaths_new,
+            self.deaths_cumulative,
+            self.date_reported.__repr__(),
+            self.location.__repr__(),
+        )
+
+    def __str__(self):
+        return "{} {} {} {} {} {}".format(
+            self.cases_new,
+            self.cases_cumulative,
+            self.deaths_new,
+            self.deaths_cumulative,
+            self.date_reported.__str__(),
+            self.location.__str__(),
+        )
+
+    def __init__(self, cases_new, cases_cumulative, deaths_new, deaths_cumulative, my_date: WhoDateReported, my_country: WhoCountry):
+        self.cases_new = cases_new
+        self.cases_cumulative = cases_cumulative
+        self.deaths_new = deaths_new
+        self.deaths_cumulative = deaths_cumulative
+        self.date_reported = my_date
+        self.location = my_country
+        self.processed_update = False
+        self.processed_full_update = False
 
     @classmethod
     def delete_by_datum(cls, datum: WhoDateReported):
@@ -236,16 +252,14 @@ class WhoData(AllFactTable):
 class WhoDataFactory:
     @classmethod
     def create_new(
-        cls, my_who_import: WhoImport, my_date: WhoDateReported, my_country: WhoCountry
+        cls, my_who_import, my_date: WhoDateReported, my_country: WhoCountry
     ):
         o = WhoData(
-            cases_new=int(my_who_import.new_cases),
-            cases_cumulative=int(my_who_import.cumulative_cases),
-            deaths_new=int(my_who_import.new_deaths),
-            deaths_cumulative=int(my_who_import.cumulative_deaths),
-            date_reported=my_date,
-            location=my_country,
-            processed_update=False,
-            processed_full_update=False,
+            cases_new=my_who_import["new_cases"],
+            cases_cumulative=my_who_import["cumulative_cases"],
+            deaths_new=my_who_import["new_deaths"],
+            deaths_cumulative=my_who_import["cumulative_deaths"],
+            my_date=my_date,
+            my_country=my_country,
         )
         return o

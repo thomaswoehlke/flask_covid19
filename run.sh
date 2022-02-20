@@ -5,6 +5,6 @@
 export FLASK_APP=app.py
 export FLASK_ENV=development
 
-celery --app app.celery worker --pool eventlet --loglevel INFO &
+# celery --app app.celery worker --pool eventlet --loglevel INFO &
 
 flask run  --host=0.0.0.0 --port=9090
