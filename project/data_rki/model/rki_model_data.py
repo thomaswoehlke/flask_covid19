@@ -15,7 +15,7 @@ class RkiData(AllFactTable):
     __tablename__ = "rki"
     __mapper_args__ = {"concrete": True}
     __table_args__ = (
-        db.UniqueConstraint("fid", name="uix_rki"),
+        db.UniqueConstraint("fid", name="rki_uix"),
     )
 
     id_seq = Sequence('rki_id_seq')
@@ -26,7 +26,7 @@ class RkiData(AllFactTable):
     processed_update = db.Column(db.Boolean, nullable=False)
     processed_full_update = db.Column(db.Boolean, nullable=False)
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+        db.Integer, db.ForeignKey("rki_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "RkiMeldedatum",
@@ -36,7 +36,7 @@ class RkiData(AllFactTable):
         order_by="desc(RkiMeldedatum.datum)",
     )
     location_id = db.Column(
-        db.Integer, db.ForeignKey("all_location.id"), nullable=False
+        db.Integer, db.ForeignKey("rki_location.id"), nullable=False
     )
     location = db.relationship(
         "RkiLandkreis",

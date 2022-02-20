@@ -14,7 +14,7 @@ class VaccinationData(AllFactTableTimeSeries):
     __table_args__ = (
         db.UniqueConstraint(
             "date_reported_id",
-            name="uix_vaccination"
+            name="vaccination_uix"
         ),
     )
 
@@ -30,7 +30,7 @@ class VaccinationData(AllFactTableTimeSeries):
                    server_default=vaccination_id_seq.next_value(),
                    primary_key=True)
     date_reported_id = db.Column(
-        db.Integer, db.ForeignKey("all_date_reported.id"), nullable=False
+        db.Integer, db.ForeignKey("vaccination_date_reported.id"), nullable=False
     )
     date_reported = db.relationship(
         "VaccinationDateReported",

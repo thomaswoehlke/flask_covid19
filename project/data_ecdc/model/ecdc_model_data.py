@@ -15,7 +15,7 @@ class EcdcData(AllFactTable):
         db.UniqueConstraint(
             "date_reported_id",
             "location_id",
-            name="uix_ecdc"
+            name="ecdc_uix"
         ),
     )
 

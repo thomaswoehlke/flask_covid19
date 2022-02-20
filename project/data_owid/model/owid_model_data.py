@@ -18,7 +18,7 @@ class OwidData(AllFactTable):
         db.UniqueConstraint(
             "date_reported_id",
             "location_id",
-            name="uix_owid"
+            name="owid_uix"
         ),
     )
 
