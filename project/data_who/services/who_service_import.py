@@ -9,7 +9,7 @@ from project.data_all.services.all_service import AllServiceBase
 from project.data_all.services.all_service_config import AllServiceConfig
 from project.data_all.services.all_service_mixins import AllServiceMixinImport
 from project.data_all_notifications.notifications_model import Notification
-from project.data_who.model.who_model_import_dao import WhoImportPandas
+from project.data_who.model.who_model_import_dao import WhoImportDao
 
 app = covid19_application.app
 db = covid19_application.db
@@ -52,7 +52,7 @@ class WhoServiceImport(AllServiceBase, AllServiceMixinImport):
         #    keyDate_reported = "ï»¿Date_reported"
         self.log_line()
         app.logger.info(" WhoImport.remove_all() START")
-        WhoImportPandas.remove_all()
+        WhoImportDao.remove_all()
         app.logger.info(" WhoImport.remove_all() DONE")
         self.log_line()
         app.logger.info(" who_import_pandas START")

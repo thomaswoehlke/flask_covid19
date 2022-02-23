@@ -10,7 +10,7 @@ from project.data_all_notifications.notifications_model import Notification
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_data import WhoDataFactory
 from project.data_who.model.who_model_date_reported import WhoDateReported
-from project.data_who.model.who_model_import_dao import WhoImportPandas
+from project.data_who.model.who_model_import_dao import WhoImportDao
 from project.data_who.model.who_model_location import WhoCountry
 from project.data_who.model.who_model_location import WhoCountryFactory
 from project.data_who.model.who_model_location_group import WhoCountryRegion
@@ -39,7 +39,7 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         self.log_line()
         log_lines = []
         i = 0
-        for s_date_reported in WhoImportPandas.get_datum_list():
+        for s_date_reported in WhoImportDao.get_datum_list():
             i += 1
             o = AllDateReportedFactory.create_new_object_for_who(
                 my_date_reported=s_date_reported["Date_reported"]
@@ -70,7 +70,7 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         self.log_line()
         log_lines = []
         i = 0
-        for region_str in WhoImportPandas.get_regions():
+        for region_str in WhoImportDao.get_regions():
             i += 1
             o = WhoCountryRegionFactory.create_new(
                 location_group_str=region_str["WHO_region"]
@@ -102,7 +102,7 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         self.log_line()
         log_lines = []
         i = 0
-        for country_item in WhoImportPandas.countries():
+        for country_item in WhoImportDao.countries():
             i += 1
             str_country_code = country_item["Country_code"]
             str_country = country_item["Country"]
@@ -150,7 +150,7 @@ class WhoServiceUpdateFull(AllServiceBase, AllServiceMixinUpdateFull):
         who_country_dict = WhoCountry.find_all_as_dict()
         for who_date_reported in WhoDateReported.find_all():
             # app.logger.info(" my_date: " + str(my_date))
-            for who_import in WhoImportPandas.find_by_datum(who_date_reported.datum):
+            for who_import in WhoImportDao.find_by_datum(who_date_reported.datum):
                 app.logger.info("who_import: " + str(who_import))
                 who_country = who_country_dict[who_import["Country"]]
                 o = WhoDataFactory.create_new(

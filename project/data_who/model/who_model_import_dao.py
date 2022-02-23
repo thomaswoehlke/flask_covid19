@@ -5,7 +5,7 @@ from project.data.database import db, items_per_page
 from project.data_all.model.all_model_mixins import AllImportMixin
 
 
-class WhoImportPandas(AllImportMixin):
+class WhoImportDao(AllImportMixin):
 
     @classmethod
     def count(cls):

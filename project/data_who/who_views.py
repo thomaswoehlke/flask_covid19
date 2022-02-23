@@ -14,7 +14,7 @@ from project.data.database import celery
 from project.data.database import db
 from project.data_who.services.who_service import WhoService
 from project.web.model.web_model_transient import WebPageContent
-from project.data_who.model.who_model_import_dao import WhoImportPandas
+from project.data_who.model.who_model_import_dao import WhoImportDao
 from project.data_who.model.who_model_data import WhoData
 from project.data_who.model.who_model_date_reported import WhoDateReported
 from project.data_who.model.who_model_location import WhoCountry
@@ -426,7 +426,7 @@ class WhoUrls:
         flash("url_who_mytest - START: WhoImport.countries()")
         app.logger.info("url_who_mytest - START: WhoImport.countries()")
         i = 0
-        for c in WhoImportPandas.countries():
+        for c in WhoImportDao.countries():
             i += 1
             line =" | {} | {} | {} | {} | ".format(
                 str(i), c["Country_code"], c["Country"], c["WHO_region"]
@@ -716,7 +716,7 @@ class WhoTestUrls:
         flash("url_who_mytest - START: WhoImport.countries()")
         app.logger.info("url_who_mytest - START: WhoImport.countries()")
         i = 0
-        for c in WhoImportPandas.get_all_countries():
+        for c in WhoImportDao.get_all_countries():
             i += 1
             line = (
                 " | "
@@ -780,7 +780,7 @@ class WhoTestUrls:
         flash(
             "url_who_test_who_data_get_datum_of_all_who_import - START: WhoImport.get_datum_of_all_who_import()"
         )
-        for datum in WhoImportPandas.get_datum_of_all_who_import():
+        for datum in WhoImportDao.get_datum_of_all_who_import():
             app.logger.info(str(datum))
         flash(
             "url_who_test_who_data_get_datum_of_all_who_import - DONE: WhoImport.get_datum_of_all_who_import()"
