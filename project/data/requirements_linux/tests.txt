@@ -8,7 +8,7 @@ argparse==1.4.0
     # via pytoolbox
 attrs==21.2.0
     # via pytest
-backports.entry-points-selectable==1.1.1
+backports-entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
     # via -r project/data/requirements_in/build.in

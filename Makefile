@@ -72,11 +72,17 @@ pip_check:
 	@echo "pip_check"
 	$(PYTHON) -m pip check
 
+pip_compile_upgrade_pip:
+	@echo "------------------"
+	@echo "making pip_compile_upgrade_pip"
+	@echo "------------------"
+	python -m pip install --upgrade pip
+	python -m pip install --upgrade pip-tools
+
 pip_compile_windows:
 	@echo "------------------"
 	@echo "making pip_compile_windows"
 	@echo "------------------"
-	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_WINDOWS_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
@@ -96,14 +102,13 @@ pip_compile_linux:
 	@echo "------------------"
 	@echo "making pip_compile_linux"
 	@echo "------------------"
-	python -m pip install --upgrade pip
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/build.txt $(PIP_REQUIREMENTS_IN_DIR)/build.in
+	@echo "------------------"
+	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/typing.txt $(PIP_REQUIREMENTS_IN_DIR)/typing.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/docs.txt $(PIP_REQUIREMENTS_IN_DIR)/docs.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/tests.txt $(PIP_REQUIREMENTS_IN_DIR)/tests.in
-	@echo "------------------"
-	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/typing.txt $(PIP_REQUIREMENTS_IN_DIR)/typing.in
 	@echo "------------------"
 	$(PIP_COMPILE) -r --output-file $(PIP_REQUIREMENTS_LINUX_DIR)/dev.txt $(PIP_REQUIREMENTS_IN_DIR)/dev.in
 	@echo "------------------"
@@ -112,7 +117,7 @@ pip_compile_linux:
 	@echo "making pip_compile_linux DONE"
 	@echo "------------------"
 
-pip_install_windows_build:
+pip_install_windows_build: pip_compile_upgrade_pip
 	@echo "------------------"
 	@echo "making pip_install"
 	@echo "------------------"
@@ -140,7 +145,7 @@ pip_install_windows: pip_install_windows_build
 	@echo "making pip_install DONE"
 	@echo "------------------"
 
-pip_install_linux_build:
+pip_install_linux_build: pip_compile_upgrade_pip
 	@echo "------------------"
 	@echo "making pip_install_linux_build"
 	@echo "------------------"
@@ -211,6 +216,8 @@ setup_setuptools:
 	@echo "------------------"
 	@echo "making setup_setuptools DONE"
 	@echo "------------------"
+
+pip_setuptools: pip_compile_upgrade_pip
 
 setup_development: pip_setuptools
 	@echo "making setup_development"
