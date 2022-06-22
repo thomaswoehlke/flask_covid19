@@ -69,7 +69,7 @@ mysqlclient==2.1.0
 mysqldb-wrapper==0.10.6
 myst-parser==0.15.2
 nodeenv==1.6.0
-numpy==1.21.4
+numpy==1.22.0
 packaging==21.3
 Pallets-Sphinx-Themes==2.0.2
 pandas==1.3.4
