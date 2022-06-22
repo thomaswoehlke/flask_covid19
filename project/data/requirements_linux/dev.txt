@@ -197,7 +197,7 @@ myst-parser==0.15.2
     # via -r project/data/requirements_in/docs.in
 nodeenv==1.6.0
     # via pre-commit
-numpy==1.21.4
+numpy==1.22.0
     # via
     #   dataframetodb
     #   matplotlib
