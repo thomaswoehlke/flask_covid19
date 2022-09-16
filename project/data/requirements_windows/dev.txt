@@ -177,7 +177,7 @@ kombu==5.2.3
     # via celery
 latexcodec==2.0.1
     # via pybtex
-mako==1.1.6
+mako==1.2.2
     # via alembic
 mariadb==1.0.8
     # via -r project/data/requirements_in/dev.in
