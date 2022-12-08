@@ -12,7 +12,7 @@ backports-entry-points-selectable==1.1.1
     # via virtualenv
 build==0.7.0
     # via -r project/data/requirements_in/build.in
-certifi==2021.10.8
+certifi==2022.12.7
     # via
     #   pipenv
     #   requests
