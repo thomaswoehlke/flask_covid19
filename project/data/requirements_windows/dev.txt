@@ -36,7 +36,7 @@ build==0.7.0
     # via -r project/data/requirements_in\build.in
 celery[auth,eventlet,msgpack,redis,sqlalchemy]==5.2.3
     # via -r project/data/requirements_in/dev.in
-certifi==2021.10.8
+certifi==2022.12.7
     # via
     #   pipenv
     #   requests
