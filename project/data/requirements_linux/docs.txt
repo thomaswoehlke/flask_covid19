@@ -240,7 +240,7 @@ virtualenv-clone==0.5.7
     # via pipenv
 werkzeug==1.0.1
     # via flask
-wheel==0.37.0
+wheel==0.38.1
     # via
     #   -r project/data/requirements_in/build.in
     #   pip-tools
