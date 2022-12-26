@@ -491,7 +491,7 @@ werkzeug==2.0.2
     #   pytest-flask
 wget==3.2
     # via -r project/data/requirements_in\dev.in
-wheel==0.37.0
+wheel==0.38.1
     # via
     #   -r project/data/requirements_in\build.in
     #   pip-tools
