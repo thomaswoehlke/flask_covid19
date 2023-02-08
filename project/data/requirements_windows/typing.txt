@@ -6,7 +6,7 @@
 #
 cffi==1.15.0
     # via cryptography
-cryptography==36.0.0
+cryptography==39.0.1
     # via -r project/data/requirements_in/typing.in
 mypy==0.910
     # via -r project/data/requirements_in/typing.in
