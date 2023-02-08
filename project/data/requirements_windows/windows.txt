@@ -67,7 +67,7 @@ colorama==0.4.4
     #   pytest
     #   sphinx
     #   tox
-cryptography==36.0.0
+cryptography==39.0.1
     # via
     #   -r project/data/requirements_in\typing.in
     #   celery
