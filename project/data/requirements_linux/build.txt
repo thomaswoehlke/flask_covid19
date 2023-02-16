@@ -109,7 +109,7 @@ virtualenv==20.10.0
     #   tox
 virtualenv-clone==0.5.7
     # via pipenv
-werkzeug==2.0.2
+werkzeug==2.2.3
     # via flask
 wheel==0.37.0
     # via
