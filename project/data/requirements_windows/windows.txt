@@ -485,7 +485,7 @@ visitor==0.1.3
     # via flask-bs4
 wcwidth==0.2.5
     # via prompt-toolkit
-werkzeug==2.0.2
+werkzeug==2.2.3
     # via
     #   flask
     #   pytest-flask
