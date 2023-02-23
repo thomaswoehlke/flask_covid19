@@ -57,7 +57,7 @@ latexcodec==2.0.1
 Mako==1.1.6
 mariadb==1.0.8
 Markdown==3.3.6
-markdown-it-py==1.1.0
+markdown-it-py==2.2.0
 MarkupSafe==2.0.1
 matplotlib==3.5.0
 mdit-py-plugins==0.2.8
