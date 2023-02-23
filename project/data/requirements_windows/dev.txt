@@ -183,7 +183,7 @@ mariadb==1.0.8
     # via -r project/data/requirements_in/dev.in
 markdown==3.3.6
     # via sphinxcontrib-markdown
-markdown-it-py==1.1.0
+markdown-it-py==2.2.0
     # via
     #   mdit-py-plugins
     #   myst-parser
