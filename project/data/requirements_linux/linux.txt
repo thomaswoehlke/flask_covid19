@@ -166,7 +166,7 @@ mako==1.1.6
     # via alembic
 mariadb==1.0.8
     # via -r project/data/requirements_in/dev.in
-markdown-it-py==1.1.0
+markdown-it-py==2.2.0
     # via
     #   mdit-py-plugins
     #   myst-parser
